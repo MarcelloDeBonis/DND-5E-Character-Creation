@@ -1,6 +1,6 @@
 # Reyla
 
-**Elfa Alta Druido 3** (Circolo della Luna) · Forestiera · Neutrale Buono · 900 PE
+**Elfa Alta Druida 3** (Circolo della Luna) · Forestiera · Neutrale Buono · 900 PE
 
 | Caratteristica | Punteggio | Mod. | TS |
 |---|---|---|---|
@@ -30,12 +30,12 @@
 - Intrattenere (CAR): +0
 - Intuizione (SAG): +2
 - Medicina (SAG): +2
-- Natura (INT): +2 ● classe (Druido)
+- Natura (INT): +2 ● classe (Druida)
 - Percezione (SAG): +4 ● razza (Sensi Acuti)
 - Persuasione (CAR): +0
 - Rapidità di Mano (DES): +3
 - Religione (INT): +0
-- Sopravvivenza (SAG): +4 ● classe (Druido)
+- Sopravvivenza (SAG): +4 ● classe (Druida)
 - Storia (INT): +0
 
 ## Attacchi
@@ -48,7 +48,7 @@
 - Caratteristica: Saggezza · CD tiro salvezza 12 · attacco con incantesimo +4
 - Slot: 4 di 1°, 2 di 2°
 - Incantesimi preparabili: 5
-- Trucchetti: Illusione Minore (Elfa Alta, INT: CD 10, attacco +2), Produrre Fiamma (Druido), Guida (Druido)
+- Trucchetti: Illusione Minore (Elfa Alta, INT: CD 10, attacco +2), Produrre Fiamma (Druida), Guida (Druida)
 - 1° livello: Cura Ferite, Parola Guaritrice, Intralciare (C), Bacche Benefiche
 - 2° livello: Raggio di Luna (C)
 

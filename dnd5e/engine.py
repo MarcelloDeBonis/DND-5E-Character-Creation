@@ -610,7 +610,7 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
                 if sp["level"] > max_level:
                     raise RulesError(f"{sp['name']} è di {sp['level']}° livello ma hai slot solo fino al {max_level}°")
             prepared.append(sp)
-        if caster.get("prepared") == "ability_plus_level":
+        if caster.get("prepared") == "ability_plus_level" and slots:
             prepared_max = max(1, mods[spell_ability] + (level if caster["type"] == "full" else level // 2))
             if len(prepared) != prepared_max:
                 warnings.append(f"Incantesimi preparati: {len(prepared)} su {prepared_max} possibili")
@@ -760,7 +760,8 @@ def build_sheet(char: dict, rules: dict | None = None) -> dict:
                   "save": anc["save"], "save_name": skills_rules["abilities"][anc["save"]]["it"]}
 
     # --- segnaposto per i testi semplici ---
-    placeholders = {"livello": level, "forma_ore": wild_shape["duration_hours"] if wild_shape else ""}
+    hours = wild_shape["duration_hours"] if wild_shape else 0
+    placeholders = {"livello": level, "forma_ore": f"{hours} {'ora' if hours == 1 else 'ore'}" if hours else ""}
     if spellcasting:
         placeholders.update(cd=spellcasting["save_dc"], att=fmt_mod(spellcasting["attack_bonus"]), mod=fmt_mod(spellcasting["mod"]))
     if breath:

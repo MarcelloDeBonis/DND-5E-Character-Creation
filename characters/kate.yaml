@@ -38,6 +38,10 @@ equipment:
   - "Libro degli incantesimi"
   - "Focus arcano (bacchetta di ossidiana)"
   - pack: scholars_pack
+  - "Strumenti da fabbro"
+  - "Lettera di presentazione della gilda dei fabbri Rigliovolar"
+  - "Abiti da viaggio"
+include_background_equipment: false   # l'equipaggiamento dell'Artigiana di Gilda è già scritto qui sopra
 money: {gp: 15}
 
 personality:

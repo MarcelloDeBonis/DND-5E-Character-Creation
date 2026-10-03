@@ -1,8 +1,14 @@
-# Classi del Manuale del Giocatore (PHB 2014). Il Guerriero è completo (privilegi 1-20 + archetipi).
+# Classi del Manuale del Giocatore (PHB 2014). Guerriero, Druido e Mago sono completi (privilegi 1-20 + sottoclassi).
 # Le altre classi hanno i dati strutturali (dado vita, TS, competenze, abilità) e i privilegi dei primi livelli.
 # features: per livello, lista di {name, short, text}. Le voci con "level" dentro un archetipo seguono lo stesso schema.
+# name_f: nome al femminile (classe, sottoclasse o privilegio con nome di genere).
+# kid: testo semplicissimo per le bambine (seconda persona, cosa significa in gioco). Segnaposto: {cd} {att} {mod}
+#      {livello} {soffio_cd} {soffio_danni} {soffio_tipo} {soffio_area} {soffio_ts} {forma_ore}.
+# kid_hide: true = voce di sola contabilità (già riportata altrove sulla scheda), nascosta nella versione semplice.
+# grants_cantrip: trucchetto dato gratis dal privilegio (non conta nei trucchetti conosciuti).
 fighter:
   name: Guerriero
+  name_f: Guerriera
   name_en: Fighter
   hit_die: 10
   saves: [str, con]
@@ -25,126 +31,163 @@ fighter:
       - name: Stile di Combattimento
         short: "Adotti uno stile di combattimento come specialità (vedi sotto)."
         text: "Il guerriero adotta uno stile di combattimento particolare come sua specialità. Non può scegliere lo stesso stile più di una volta, anche se in seguito può sceglierne un altro."
+        kid_hide: true
       - name: Recupero Energie
         short: "Azione bonus: recuperi 1d10 + livello da guerriero PF. 1/riposo breve o lungo."
         text: "Il guerriero dispone di una riserva limitata di resistenza a cui attingere per proteggersi. Nel suo turno può usare un'azione bonus per recuperare un numero di punti ferita pari a 1d10 + il suo livello da guerriero. Una volta usato, deve completare un riposo breve o lungo prima di poterlo usare di nuovo."
+        kid: "Con un'azione bonus riprendi fiato e recuperi 1d10 + {livello} PF. Poi devi riposare (anche un riposo breve) per rifarlo."
     2:
       - name: Azione Impetuosa
         short: "Nel tuo turno effettui un'azione aggiuntiva. 1/riposo breve o lungo (2 usi dal 17°)."
         text: "Il guerriero può spingersi oltre i suoi normali limiti per un momento. Nel suo turno può effettuare un'azione aggiuntiva oltre alla sua azione normale e a un'eventuale azione bonus. Una volta usato, deve completare un riposo breve o lungo prima di poterlo usare di nuovo. Dal 17° livello può usarlo due volte prima di un riposo, ma solo una volta nello stesso turno."
+        kid: "Una volta per riposo, nel tuo turno puoi fare un'azione in più: per esempio attaccare ancora."
     3:
       - name: Archetipo Marziale
         short: "Scegli un archetipo (Campione, Maestro di Battaglia o Cavaliere Mistico)."
         text: "Al 3° livello il guerriero sceglie un archetipo che si impegna a emulare nei suoi stili e tecniche di combattimento. L'archetipo scelto conferisce privilegi al 3°, 7°, 10°, 15° e 18° livello."
+        kid_hide: true
     4:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
         text: "Il guerriero può aumentare un punteggio di caratteristica di 2 o due punteggi di 1 (massimo 20), oppure scegliere un talento."
+        kid_hide: true
     5:
       - name: Attacco Extra
         short: "Quando effettui l'azione di Attacco, attacchi due volte."
         text: "Il guerriero può attaccare due volte, anziché una, ogni volta che effettua l'azione di Attacco nel suo turno. Il numero di attacchi aumenta a tre all'11° livello e a quattro al 20°."
+        kid: "Quando scegli di attaccare, colpisci due volte invece di una."
     6:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
         text: "Vedi 4° livello."
+        kid_hide: true
     8:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
         text: "Vedi 4° livello."
+        kid_hide: true
     9:
       - name: Indomito
+        name_f: Indomita
         short: "Puoi ripetere un TS fallito. 1/riposo lungo (2 al 13°, 3 al 17°)."
         text: "Il guerriero può ripetere un tiro salvezza fallito, ma deve usare il nuovo risultato. Può usarlo una volta per riposo lungo; due volte dal 13° livello e tre dal 17°."
+        kid: "Se fallisci un tiro salvezza puoi ritirarlo, ma tieni il nuovo risultato. Una volta per riposo lungo."
     11:
       - name: Attacco Extra (2)
         short: "Attacchi tre volte con l'azione di Attacco."
         text: "Il guerriero attacca tre volte quando effettua l'azione di Attacco."
+        kid: "Quando scegli di attaccare, colpisci tre volte."
     12:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
         text: "Vedi 4° livello."
+        kid_hide: true
     13:
       - name: Indomito (2 usi)
+        name_f: Indomita (2 usi)
         short: "Due usi di Indomito per riposo lungo."
         text: "Vedi 9° livello."
+        kid: "Puoi ritirare un tiro salvezza fallito 2 volte per riposo lungo."
     14:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
         text: "Vedi 4° livello."
+        kid_hide: true
     16:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
         text: "Vedi 4° livello."
+        kid_hide: true
     17:
       - name: Azione Impetuosa (2 usi)
         short: "Due usi di Azione Impetuosa per riposo."
         text: "Vedi 2° livello."
+        kid: "Puoi fare l'azione in più 2 volte per riposo, ma solo una volta per turno."
       - name: Indomito (3 usi)
+        name_f: Indomita (3 usi)
         short: "Tre usi di Indomito per riposo lungo."
         text: "Vedi 9° livello."
+        kid: "Puoi ritirare un tiro salvezza fallito 3 volte per riposo lungo."
     19:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
         text: "Vedi 4° livello."
+        kid_hide: true
     20:
       - name: Attacco Extra (3)
         short: "Attacchi quattro volte con l'azione di Attacco."
         text: "Il guerriero attacca quattro volte quando effettua l'azione di Attacco."
+        kid: "Quando scegli di attaccare, colpisci quattro volte."
   subclasses:
     champion:
       name: Campione
+      name_f: Campionessa
       name_en: Champion
       features:
         3:
           - name: Critico Migliorato
             short: "I tuoi attacchi con le armi ottengono un colpo critico con 19 o 20."
             text: "Gli attacchi con le armi del guerriero mettono a segno un colpo critico quando il tiro del d20 è 19 o 20."
+            kid: "Fai un colpo critico anche quando esce 19 sul dado, non solo con 20."
         7:
           - name: Atleta Straordinario
             short: "Aggiungi metà del bonus di competenza (arrotondato per eccesso) alle prove di FOR, DES e COS senza competenza. Salto in lungo con rincorsa: +30 cm per ogni punto di mod. FOR."
             text: "Il guerriero aggiunge la metà del suo bonus di competenza (arrotondato per eccesso) a qualsiasi prova di Forza, Destrezza o Costituzione che non usi già il bonus di competenza. Inoltre, quando effettua un salto in lungo con rincorsa, la distanza aumenta di un numero di centimetri pari a 30 x il suo modificatore di Forza."
+            kid: "Sei più brava nelle prove di Forza, Destrezza e Costituzione, e salti più lontano."
         10:
           - name: Stile di Combattimento Aggiuntivo
             short: "Scegli un secondo stile di combattimento."
             text: "Il guerriero sceglie una seconda opzione dal privilegio Stile di Combattimento."
+            kid_hide: true
         15:
           - name: Critico Superiore
             short: "Colpo critico con 18, 19 o 20."
             text: "Gli attacchi con le armi del guerriero mettono a segno un colpo critico quando il tiro del d20 è 18, 19 o 20."
+            kid: "Fai un colpo critico quando esce 18, 19 o 20 sul dado."
         18:
           - name: Sopravvissuto
+            name_f: Sopravvissuta
             short: "All'inizio del tuo turno, se ti resta non più della metà dei PF (e almeno 1), recuperi 5 + mod. COS PF."
             text: "All'inizio di ogni suo turno, il guerriero recupera punti ferita pari a 5 + il suo modificatore di Costituzione se gli rimane non più della metà dei suoi punti ferita (e almeno 1)."
+            kid: "Se hai metà dei PF o meno (ma almeno 1), all'inizio di ogni tuo turno recuperi 5 + Costituzione PF."
     battle_master:
       name: Maestro di Battaglia
+      name_f: Maestra di Battaglia
       name_en: Battle Master
       features:
         3:
           - name: Superiorità in Combattimento
             short: "Conosci 3 manovre e hai 4 dadi di superiorità (d8), recuperati con un riposo breve o lungo. CD manovre = 8 + comp. + mod. FOR o DES."
-            text: "Il guerriero apprende tre manovre a sua scelta e dispone di quattro dadi di superiorità (d8), che recupera al termine di un riposo breve o lungo. Alcune manovre richiedono un tiro salvezza: CD = 8 + bonus di competenza + modificatore di Forza o Destrezza (a scelta). Apprende altre manovre al 7°, 10° e 15° livello; ottiene un dado in più al 7° e al 15°; i dadi diventano d10 al 10° e d12 al 18°."
+            text: "Il guerriero apprende tre manovre a sua scelta e dispone di quattro dadi di superiorità (d8), che recupera al termine di un riposo breve o lungo. Alcune manovre richiedono un tiro salvezza: CD = 8 + bonus di competenza + modificatore di Forza o Destrezza (a scelta). Apprende altre due manovre al 7°, 10° e 15° livello; ottiene un dado in più al 7° e al 15°; i dadi diventano d10 al 10° e d12 al 18°."
+            kid: "Hai 4 dadi speciali (d8) per fare le tue mosse da combattimento, le manovre (vedi sotto). Li riprendi dopo un riposo breve o lungo."
           - name: Studioso di Guerra
+            name_f: Studiosa di Guerra
             short: "Competenza in uno strumento da artigiano a scelta."
             text: "Il guerriero ottiene competenza in uno strumento da artigiano a sua scelta."
+            kid_hide: true
         7:
           - name: Conosci il Tuo Nemico
             short: "Osservando una creatura per 1 minuto, scopri alcune delle sue capacità rispetto alle tue."
             text: "Se il guerriero trascorre almeno 1 minuto a osservare o interagire con un'altra creatura fuori dal combattimento, può apprendere alcune informazioni sulle capacità di quella creatura rispetto alle sue (Forza, Destrezza, Costituzione, Classe Armatura, punti ferita attuali, livelli di classe totali, livelli da guerriero): due a scelta."
+            kid: "Se osservi qualcuno per 1 minuto, scopri se è più forte o più debole di te in due cose a scelta."
         10:
           - name: Superiorità Migliorata
             short: "I dadi di superiorità diventano d10."
             text: "I dadi di superiorità diventano d10."
+            kid: "I tuoi dadi di superiorità diventano d10."
         15:
           - name: Implacabile
             short: "Quando tiri iniziativa senza dadi di superiorità, ne recuperi 1."
             text: "Quando il guerriero tira per l'iniziativa e non ha più dadi di superiorità, ne recupera uno."
+            kid: "Se all'inizio di un combattimento non hai più dadi di superiorità, ne recuperi 1."
         18:
           - name: Superiorità Migliorata (d12)
             short: "I dadi di superiorità diventano d12."
             text: "I dadi di superiorità diventano d12."
+            kid: "I tuoi dadi di superiorità diventano d12."
     eldritch_knight:
       name: Cavaliere Mistico
+      name_f: Cavaliera Mistica
       name_en: Eldritch Knight
       spellcasting: {ability: int, list: wizard, type: third}
       features:
@@ -152,29 +195,36 @@ fighter:
           - name: Incantesimi
             short: "Conosci 2 trucchetti e 3 incantesimi da mago (abiurazione/invocazione). Caratteristica: Intelligenza."
             text: "Il guerriero apprende a lanciare incantesimi da mago: 2 trucchetti e 3 incantesimi di 1° livello (due dalle scuole di abiurazione o invocazione, uno qualsiasi). Caratteristica da incantatore: Intelligenza. CD tiro salvezza = 8 + bonus di competenza + modificatore di Intelligenza; bonus di attacco = bonus di competenza + modificatore di Intelligenza."
+            kid_hide: true
           - name: Legame con l'Arma
             short: "Rituale di 1 ora: leghi un'arma (max 2). Non puoi essere disarmato e puoi evocarla come azione bonus."
             text: "Il guerriero può eseguire un rituale di 1 ora per creare un legame magico con un'arma. Non può essere disarmato di quell'arma a meno che non sia incapacitato, e se l'arma si trova sullo stesso piano può evocarla nella sua mano come azione bonus. Può avere fino a due armi legate."
+            kid: "Leghi con la magia fino a 2 armi: nessuno può strappartele di mano, e con un'azione bonus l'arma torna nella tua mano."
         7:
           - name: Magia da Guerra
             short: "Quando usi l'azione per lanciare un trucchetto, puoi fare un attacco con un'arma come azione bonus."
             text: "Quando il guerriero usa la sua azione per lanciare un trucchetto, può effettuare un attacco con un'arma come azione bonus."
+            kid: "Quando lanci un trucchetto con la tua azione, puoi anche attaccare con l'arma come azione bonus."
         10:
           - name: Colpo Mistico
             short: "Se colpisci una creatura con un'arma, ha svantaggio al prossimo TS contro un tuo incantesimo entro la fine del tuo turno successivo."
             text: "Quando il guerriero colpisce una creatura con un attacco con un'arma, quella creatura ha svantaggio al prossimo tiro salvezza che effettua contro un incantesimo lanciato dal guerriero prima della fine del suo turno successivo."
+            kid: "Se colpisci un nemico con l'arma, ha svantaggio contro il tuo prossimo incantesimo (fino alla fine del tuo prossimo turno)."
         15:
           - name: Carica Arcana
             short: "Quando usi Azione Impetuosa puoi teletrasportarti di 9 m."
             text: "Quando usa Azione Impetuosa, il guerriero può teletrasportarsi fino a 9 metri in uno spazio libero che può vedere, prima o dopo l'azione aggiuntiva."
+            kid: "Quando usi Azione Impetuosa puoi anche teletrasportarti fino a 9 m."
         18:
           - name: Magia da Guerra Migliorata
             short: "Quando usi l'azione per lanciare un incantesimo, puoi fare un attacco con un'arma come azione bonus."
             text: "Quando il guerriero usa la sua azione per lanciare un incantesimo, può effettuare un attacco con un'arma come azione bonus."
+            kid: "Quando lanci un incantesimo con la tua azione, puoi anche attaccare con l'arma come azione bonus."
 
 # ---- Altre classi: dati strutturali + privilegi iniziali (da estendere quando servono) ----
 barbarian:
   name: Barbaro
+  name_f: Barbara
   name_en: Barbarian
   hit_die: 12
   saves: [str, con]
@@ -196,6 +246,7 @@ barbarian:
 
 bard:
   name: Bardo
+  name_f: Barda
   name_en: Bard
   hit_die: 8
   saves: [dex, cha]
@@ -220,13 +271,14 @@ bard:
 
 cleric:
   name: Chierico
+  name_f: Chierica
   name_en: Cleric
   hit_die: 8
   saves: [wis, cha]
   armor: [light, medium, shields]
   weapons: [simple]
   skill_choices: {count: 2, from: [history, insight, medicine, persuasion, religion]}
-  spellcasting: {ability: wis, type: full}
+  spellcasting: {ability: wis, type: full, prepared: ability_plus_level, list: cleric}
   subclass_level: 1
   subclass_label: Dominio Divino
   asi_levels: [4, 8, 12, 16, 19]
@@ -239,6 +291,7 @@ cleric:
 
 druid:
   name: Druido
+  name_f: Druida
   name_en: Druid
   hit_die: 8
   saves: [int, wis]
@@ -266,53 +319,68 @@ druid:
       - name: Druidico
         short: "Conosci il Druidico, linguaggio segreto dei druidi; messaggi nascosti riconoscibili solo da chi lo conosce."
         text: "Il druido conosce il Druidico, il linguaggio segreto dei druidi. Può parlarlo e usarlo per lasciare messaggi nascosti: chi conosce il Druidico li individua automaticamente, gli altri devono superare una prova di Saggezza (Percezione) con CD 15 per notarli, senza poterli decifrare senza magia."
+        kid_hide: true
       - name: Incantesimi
         short: "Incantatrice completa (Saggezza). Prepari un numero di incantesimi pari a mod. SAG + livello da druido; puoi lanciare i rituali; usi un focus druidico."
         text: "Attingendo all'essenza divina della natura, il druido lancia incantesimi. Conosce tutti i trucchetti scelti e prepara ogni giorno, dalla lista del druido, un numero di incantesimi pari al suo modificatore di Saggezza + il suo livello da druido (minimo 1), di livello per cui ha slot. Caratteristica da incantatore: Saggezza (CD = 8 + bonus di competenza + mod. SAG; attacco = bonus di competenza + mod. SAG). Può lanciare come rituale gli incantesimi preparati con il descrittore rituale e usare un focus druidico come focus."
+        kid_hide: true
     2:
       - name: Forma Selvatica
         short: "Azione: ti trasformi in una bestia già vista (vedi tabella in appendice). 2 usi per riposo breve o lungo; dura metà livello ore."
         text: "Il druido può usare la sua azione per assumere magicamente la forma di una bestia che ha già visto, due volte per riposo breve o lungo, per un numero di ore pari alla metà del suo livello da druido (arrotondato per difetto). Può tornare alla forma normale con un'azione bonus; torna automaticamente se scende a 0 PF o se scade la durata. In forma di bestia usa le statistiche della bestia (tranne allineamento, personalità, INT, SAG e CAR, competenze nei TS e nelle abilità), non può lanciare incantesimi né parlare, ma mantiene la concentrazione; quando torna normale riprende i PF che aveva prima, e i danni in eccesso si riversano sulla forma normale. Al 2° livello: GS massimo 1/4, senza velocità di volo o nuoto; al 4°: GS 1/2, senza volo; all'8°: GS 1."
+        kid: "Con un'azione diventi un animale che hai già visto (vedi la guida). Puoi farlo 2 volte, poi devi riposare. Dura fino a {forma_ore}. Quando i PF dell'animale finiscono torni te stessa con i tuoi PF."
       - name: Circolo Druidico
         short: "Scegli un circolo: Terra o Luna."
         text: "Al 2° livello il druido sceglie di identificarsi con un circolo di druidi: il Circolo della Terra o il Circolo della Luna. La scelta conferisce privilegi al 2°, 6°, 10° e 14° livello."
+        kid_hide: true
     4:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
         text: "Il druido può aumentare un punteggio di caratteristica di 2 o due punteggi di 1 (massimo 20), oppure scegliere un talento."
+        kid_hide: true
       - name: Forma Selvatica Migliorata
         short: "Forma Selvatica: GS massimo 1/2, senza velocità di volo."
         text: "Dal 4° livello la Forma Selvatica permette bestie di GS massimo 1/2, senza velocità di volo."
+        kid: "Ora puoi trasformarti anche in animali che nuotano e in animali più forti (vedi la guida)."
     8:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
         text: "Vedi 4° livello."
+        kid_hide: true
       - name: Forma Selvatica Migliorata
         short: "Forma Selvatica: GS massimo 1, senza restrizioni."
         text: "Dall'8° livello la Forma Selvatica permette bestie di GS massimo 1, anche con velocità di volo o nuoto."
+        kid: "Ora puoi trasformarti anche in animali che volano e in animali ancora più forti (vedi la guida)."
     12:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
         text: "Vedi 4° livello."
+        kid_hide: true
     16:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
         text: "Vedi 4° livello."
+        kid_hide: true
     18:
       - name: Corpo Senza Tempo
         short: "Invecchi 1 anno ogni 10."
         text: "La magia primordiale rallenta l'invecchiamento del druido: per ogni 10 anni trascorsi, il suo corpo invecchia di 1 solo anno."
+        kid: "Invecchi pochissimo: 1 anno ogni 10."
       - name: Incantesimi Bestiali
         short: "Puoi lanciare molti incantesimi da druido anche in Forma Selvatica (senza componenti materiali)."
         text: "Il druido può lanciare molti dei suoi incantesimi da druido in qualsiasi forma assunta con Forma Selvatica, eseguendo le componenti somatiche e verbali, ma non può fornire componenti materiali."
+        kid: "Anche quando sei un animale puoi lanciare i tuoi incantesimi, se non servono componenti materiali."
     19:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
         text: "Vedi 4° livello."
+        kid_hide: true
     20:
       - name: Arcidruido
+        name_f: Arcidruida
         short: "Forma Selvatica illimitata; ignori le componenti verbali, somatiche e materiali degli incantesimi da druido."
         text: "Il druido può usare Forma Selvatica un numero illimitato di volte e può ignorare le componenti verbali e somatiche dei suoi incantesimi da druido, nonché le componenti materiali prive di costo che non vengono consumate."
+        kid: "Puoi trasformarti in animale tutte le volte che vuoi, e lanci i tuoi incantesimi senza parole né gesti."
   subclasses:
     land:
       name: Circolo della Terra
@@ -333,25 +401,31 @@ druid:
             short: "Conosci un trucchetto da druido in più."
             text: "Il druido apprende un trucchetto aggiuntivo a sua scelta dalla lista del druido."
             cantrip_bonus: 1
+            kid_hide: true
           - name: Recupero Naturale
             short: "1/giorno, dopo un riposo breve, recuperi slot per un totale di livelli pari a metà del livello da druido (per eccesso), nessuno di 6° o superiore."
             text: "Una volta al giorno, durante un riposo breve, il druido può recuperare parte della sua energia magica: slot incantesimo spesi per un totale di livelli pari o inferiore alla metà del suo livello da druido (arrotondato per eccesso), nessuno di 6° livello o superiore."
+            kid: "Una volta al giorno, durante un riposo breve, recuperi slot già usati: in tutto tanti livelli quanto la metà del tuo livello ({livello}), arrotondata per eccesso."
         3:
           - name: Incantesimi del Circolo
             short: "Incantesimi aggiuntivi sempre preparati, legati al terreno scelto (vedi appendice)."
             text: "Il legame mistico del druido con la terra gli conferisce incantesimi aggiuntivi in base al terreno scelto (artico, costa, deserto, foresta, pascolo, montagna, palude o Sottosuolo). Al 3°, 5°, 7° e 9° livello ottiene accesso a incantesimi del circolo che sono sempre considerati preparati e non contano nel numero di incantesimi preparabili."
+            kid_hide: true
         6:
           - name: Passo della Terra
             short: "Terreno difficile naturale non ti costa movimento extra; attraversi piante non magiche senza danni; vantaggio ai TS contro piante magiche."
             text: "Muoversi attraverso terreno difficile non magico non costa al druido movimento extra. Può anche attraversare piante non magiche senza esserne rallentato e senza subire danni da spine o simili. Ha vantaggio ai tiri salvezza contro piante create o manipolate magicamente per impedire il movimento."
+            kid: "Cespugli, rovi e terreno difficile naturale non ti rallentano e non ti graffiano."
         10:
           - name: Egida della Natura
             short: "Immune all'essere affascinato o spaventato da elementali e fate; immune a veleno e malattie."
             text: "Il druido non può essere affascinato o spaventato da elementali o fate, ed è immune al veleno e alle malattie."
+            kid: "Elementali e fate non possono spaventarti né incantarti, e veleni e malattie non ti fanno niente."
         14:
           - name: Santuario della Natura
             short: "Bestie e vegetali che ti attaccano devono superare un TS su SAG (CD incantesimi) o scegliere un altro bersaglio."
             text: "Quando una bestia o una creatura vegetale attacca il druido, deve superare un tiro salvezza su Saggezza contro la CD degli incantesimi del druido; se fallisce, deve scegliere un altro bersaglio o l'attacco manca automaticamente. Se supera il tiro salvezza, la creatura è immune a questo effetto per 24 ore."
+            kid: "Animali e piante che vogliono attaccarti devono superare un tiro salvezza su Saggezza con CD {cd}, altrimenti scelgono un altro bersaglio."
     moon:
       name: Circolo della Luna
       name_en: Circle of the Moon
@@ -366,23 +440,30 @@ druid:
           - name: Forma Selvatica da Combattimento
             short: "Forma Selvatica come azione bonus. In forma di bestia, azione bonus: spendi uno slot per recuperare 1d8 PF per livello dello slot."
             text: "Il druido può usare Forma Selvatica come azione bonus anziché come azione. Inoltre, mentre è trasformato, può usare un'azione bonus per spendere uno slot incantesimo e recuperare 1d8 punti ferita per ogni livello dello slot speso."
+            kid: "Ti trasformi in animale con un'azione bonus, più in fretta. Da animale, con un'azione bonus puoi usare uno slot incantesimo per curarti 1d8 PF per ogni livello dello slot."
           - name: Forme del Circolo
             short: "Forma Selvatica fino a GS 1 (dal 6°: GS pari a un terzo del livello da druido). Restano i limiti di volo e nuoto per livello."
             text: "I riti del circolo concedono al druido forme animali più potenti: può trasformarsi in una bestia di GS fino a 1 (ignorando la colonna GS massimo della tabella, ma rispettando le altre restrizioni). Dal 6° livello può trasformarsi in bestie di GS pari a un terzo del suo livello da druido (arrotondato per difetto)."
+            kid: "Puoi diventare animali più forti di quelli degli altri druidi, fino a GS 1 (vedi la guida)."
         6:
           - name: Colpo Primordiale
             short: "Gli attacchi in forma di bestia contano come magici."
             text: "Gli attacchi del druido in forma di bestia contano come magici per superare resistenze e immunità ad attacchi e danni non magici."
+            kid: "Da animale i tuoi attacchi sono magici: funzionano anche contro i mostri che resistono alle armi normali."
         10:
           - name: Forma Selvatica Elementale
             short: "Spendendo due usi di Forma Selvatica ti trasformi in un elementale dell'aria, dell'acqua, della terra o del fuoco."
             text: "Il druido può spendere due usi di Forma Selvatica contemporaneamente per trasformarsi in un elementale dell'aria, dell'acqua, della terra o del fuoco."
+            kid: "Usando 2 trasformazioni insieme puoi diventare un elementale dell'aria, dell'acqua, della terra o del fuoco."
         14:
           - name: Mille Forme
             short: "Puoi lanciare alterare se stesso a volontà."
             text: "Il druido ha imparato a usare la magia per alterare la sua forma fisica in modi più sottili: può lanciare alterare se stesso a volontà."
+            kid: "Puoi lanciare alterare se stesso tutte le volte che vuoi, senza usare slot."
+
 monk:
   name: Monaco
+  name_f: Monaca
   name_en: Monk
   hit_die: 8
   saves: [str, dex]
@@ -406,13 +487,14 @@ monk:
 
 paladin:
   name: Paladino
+  name_f: Paladina
   name_en: Paladin
   hit_die: 10
   saves: [wis, cha]
   armor: [light, medium, heavy, shields]
   weapons: [simple, martial]
   skill_choices: {count: 2, from: [athletics, insight, intimidation, medicine, persuasion, religion]}
-  spellcasting: {ability: cha, type: half}
+  spellcasting: {ability: cha, type: half, prepared: ability_plus_level, list: paladin}   # preparati: mod. CAR + metà livello da paladino
   subclass_level: 3
   subclass_label: Giuramento Sacro
   asi_levels: [4, 8, 12, 16, 19]
@@ -430,6 +512,7 @@ paladin:
 
 ranger:
   name: Ranger
+  name_f: Ranger
   name_en: Ranger
   hit_die: 10
   saves: [str, dex]
@@ -453,6 +536,7 @@ ranger:
 
 rogue:
   name: Ladro
+  name_f: Ladra
   name_en: Rogue
   hit_die: 8
   saves: [dex, int]
@@ -475,6 +559,7 @@ rogue:
 
 sorcerer:
   name: Stregone
+  name_f: Stregona
   name_en: Sorcerer
   hit_die: 6
   saves: [con, cha]
@@ -496,6 +581,7 @@ sorcerer:
 
 warlock:
   name: Warlock
+  name_f: Warlock
   name_en: Warlock
   hit_die: 8
   saves: [wis, cha]
@@ -517,19 +603,316 @@ warlock:
 
 wizard:
   name: Mago
+  name_f: Maga
   name_en: Wizard
   hit_die: 6
   saves: [int, wis]
   armor: []
   weapons: [dagger, dart, sling, quarterstaff, light_crossbow]
+  tools: []
   skill_choices: {count: 2, from: [arcana, history, insight, investigation, medicine, religion]}
-  spellcasting: {ability: int, type: full}
+  starting_equipment:
+    - choice: ["Un bastone ferrato", "Un pugnale"]
+    - choice: ["Una borsa per componenti", "Un focus arcano"]
+    - choice: ["Dotazione da studioso", "Dotazione da esploratore"]
+    - fixed: ["Libro degli incantesimi"]
+  spellcasting: {ability: int, type: full, prepared: ability_plus_level, list: wizard, ritual: true, spellbook: true, focus: "focus arcano"}
   subclass_level: 2
   subclass_label: Tradizione Arcana
   asi_levels: [4, 8, 12, 16, 19]
   features:
     1:
-      - {name: Incantesimi, short: "Incantatore completo (Intelligenza), libro degli incantesimi, prepara gli incantesimi.", text: "Il mago lancia incantesimi usando l'Intelligenza e li registra nel suo libro degli incantesimi."}
-      - {name: Recupero Arcano, short: "1/giorno dopo un riposo breve recuperi slot per un totale di livelli pari a metà del livello da mago (per eccesso).", text: "Una volta al giorno, al termine di un riposo breve, il mago può recuperare slot incantesimo per un valore complessivo pari a metà del suo livello da mago (arrotondato per eccesso), nessuno di livello 6 o superiore."}
+      - name: Incantesimi
+        short: "Incantatore completo (Intelligenza). Libro con 6 incantesimi di 1° livello (+2 gratis a ogni livello); prepari mod. INT + livello da mago incantesimi dal libro; rituali dal libro senza prepararli; focus arcano."
+        text: "Il mago è uno studioso di magia arcana. Conosce tre trucchetti da mago (quattro dal 4° livello, cinque dal 10°) e possiede un libro degli incantesimi che al 1° livello contiene sei incantesimi da mago di 1° livello a sua scelta; ogni volta che sale di livello ne aggiunge gratuitamente due, di un livello per cui ha slot. Ogni giorno prepara dal libro un numero di incantesimi pari al suo modificatore di Intelligenza + il suo livello da mago (minimo 1), di livello per cui ha slot; può cambiarli dopo un riposo lungo (1 minuto di studio per livello di ogni incantesimo). Caratteristica da incantatore: Intelligenza (CD = 8 + bonus di competenza + mod. INT; attacco = bonus di competenza + mod. INT). Può lanciare come rituale qualsiasi incantesimo da mago con il descrittore rituale presente nel suo libro, anche se non lo ha preparato, e può usare un focus arcano. Può copiare nel libro altri incantesimi da mago trovati durante l'avventura: servono 2 ore e 50 mo per livello dell'incantesimo."
+        kid_hide: true
+      - name: Recupero Arcano
+        short: "1/giorno, dopo un riposo breve, recuperi slot per un totale di livelli pari a metà del livello da mago (per eccesso), nessuno di 6° livello o superiore."
+        text: "Il mago impara a recuperare parte della sua energia magica studiando il suo libro degli incantesimi. Una volta al giorno, quando completa un riposo breve, sceglie quali slot incantesimo spesi recuperare: il loro livello totale può essere pari o inferiore alla metà del suo livello da mago (arrotondato per eccesso) e nessuno può essere di 6° livello o superiore. Per esempio, un mago di 4° livello può recuperare uno slot di 2° livello oppure due slot di 1° livello."
+        kid: "Una volta al giorno, dopo un riposo breve, studi il tuo libro e recuperi slot già usati: in tutto tanti livelli quanto la metà del tuo livello ({livello}), arrotondata per eccesso."
     2:
-      - {name: Tradizione Arcana, short: "Scegli una scuola di magia.", text: "Il mago sceglie una tradizione arcana che plasma la sua pratica della magia."}
+      - name: Tradizione Arcana
+        short: "Scegli una scuola di magia (Abiurazione, Ammaliamento, Divinazione, Evocazione, Illusione, Invocazione, Necromanzia o Trasmutazione)."
+        text: "Al 2° livello il mago sceglie una tradizione arcana, che modella la sua pratica della magia secondo i precetti di una delle otto scuole di magia. La scelta conferisce privilegi al 2°, 6°, 10° e 14° livello."
+        kid_hide: true
+    4:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Il mago può aumentare un punteggio di caratteristica di 2 o due punteggi di 1 (massimo 20), oppure scegliere un talento."
+        kid_hide: true
+    8:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid_hide: true
+    12:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid_hide: true
+    16:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid_hide: true
+    18:
+      - name: Maestria negli Incantesimi
+        name_en: Spell Mastery
+        short: "Scegli un incantesimo da mago di 1° e uno di 2° livello del libro: se preparati, li lanci al loro livello più basso senza spendere slot. Puoi cambiarli con 8 ore di studio."
+        text: "Il mago sceglie un incantesimo da mago di 1° livello e uno di 2° livello contenuti nel suo libro degli incantesimi. Quando li ha preparati, può lanciarli al loro livello più basso senza spendere uno slot incantesimo; per lanciarli a un livello superiore deve spendere uno slot come di consueto. Dedicando 8 ore allo studio, può sostituire uno o entrambi gli incantesimi scelti con altri degli stessi livelli."
+        kid: "Scegli un incantesimo di 1° e uno di 2° livello dal tuo libro: puoi lanciarli tutte le volte che vuoi senza usare slot."
+    19:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid_hide: true
+    20:
+      - name: Incantesimi Personali
+        name_en: Signature Spells
+        short: "Scegli due incantesimi da mago di 3° livello del libro: sempre preparati (non contano nel limite) e lanciabili una volta ciascuno al 3° livello senza slot, 1/riposo breve o lungo."
+        text: "Il mago sceglie due incantesimi da mago di 3° livello contenuti nel suo libro degli incantesimi come suoi incantesimi personali. Li considera sempre preparati, non li conta nel numero di incantesimi preparati e può lanciare ognuno di essi una volta al 3° livello senza spendere uno slot incantesimo; quando lo fa, non può farlo di nuovo finché non completa un riposo breve o lungo. Per lanciarli a un livello superiore deve spendere uno slot come di consueto."
+        kid: "Scegli 2 incantesimi di 3° livello: sono sempre pronti e puoi lanciarli una volta ciascuno senza usare slot, poi devi riposare (anche breve)."
+  subclasses:
+    abjuration:
+      name: Scuola di Abiurazione
+      name_en: School of Abjuration
+      features:
+        2:
+          - name: Abiuratore Esperto
+            name_f: Abiuratrice Esperta
+            short: "Copiare un incantesimo di abiurazione nel libro costa metà tempo e metà oro."
+            text: "A partire da quando sceglie questa scuola al 2° livello, il tempo e il denaro che il mago deve spendere per copiare un incantesimo di abiurazione nel suo libro degli incantesimi sono dimezzati."
+            kid: "Copiare nel tuo libro un incantesimo di abiurazione ti costa metà tempo e metà oro."
+            kid_hide: true
+          - name: Interdizione Arcana
+            short: "Quando lanci un incantesimo di abiurazione di 1° livello o superiore puoi creare su di te un'interdizione (PF = 2 x livello da mago + mod. INT) che assorbe i danni al posto tuo. Creabile 1/riposo lungo; recupera 2 PF per livello di ogni incantesimo di abiurazione che lanci."
+            text: "Quando il mago lancia un incantesimo di abiurazione di 1° livello o superiore, può usare un filo della magia dell'incantesimo per creare su se stesso un'interdizione magica che dura finché non completa un riposo lungo. L'interdizione ha punti ferita pari al doppio del livello da mago + il modificatore di Intelligenza. Quando il mago subisce danni, è l'interdizione a subirli; se la riducono a 0 punti ferita, il mago subisce i danni rimanenti. A 0 punti ferita l'interdizione non può assorbire danni, ma la sua magia rimane. Ogni volta che il mago lancia un incantesimo di abiurazione di 1° livello o superiore, l'interdizione recupera punti ferita pari al doppio del livello dell'incantesimo. Una volta creata, il mago non può crearla di nuovo finché non completa un riposo lungo."
+            kid: "Quando lanci un incantesimo di abiurazione crei su di te uno scudo magico che prende i danni al posto tuo (PF = 2 x livello + Intelligenza), una volta per riposo lungo. Ogni altro incantesimo di abiurazione lo ricarica."
+        6:
+          - name: Interdizione Proiettata
+            short: "Reazione: quando una creatura che vedi entro 9 m subisce danni, la tua Interdizione Arcana li assorbe al suo posto."
+            text: "Quando una creatura che il mago può vedere entro 9 metri da lui subisce danni, il mago può usare la sua reazione per far sì che sia la sua Interdizione Arcana ad assorbirli. Se i danni riducono l'interdizione a 0 punti ferita, la creatura protetta subisce i danni rimanenti."
+            kid: "Con la tua reazione, il tuo scudo magico può prendere i danni al posto di un amico che vedi entro 9 m."
+        10:
+          - name: Abiurazione Migliorata
+            short: "Quando un tuo incantesimo di abiurazione richiede una prova di caratteristica (es. controincantesimo, dissolvi magie), aggiungi il bonus di competenza."
+            text: "Quando il mago lancia un incantesimo di abiurazione che richiede di effettuare una prova di caratteristica come parte del lancio (come controincantesimo e dissolvi magie), aggiunge il suo bonus di competenza a quella prova."
+            kid: "Quando un tuo incantesimo di abiurazione ti fa tirare una prova (come controincantesimo o dissolvi magie), aggiungi la tua competenza."
+        14:
+          - name: Resistenza agli Incantesimi
+            short: "Vantaggio ai TS contro gli incantesimi e resistenza ai danni degli incantesimi."
+            text: "Il mago ha vantaggio ai tiri salvezza contro gli incantesimi e resistenza ai danni degli incantesimi."
+            kid: "Hai vantaggio sui tiri salvezza contro gli incantesimi, e i loro danni ti fanno solo la metà."
+    conjuration:
+      name: Scuola di Evocazione
+      name_en: School of Conjuration
+      features:
+        2:
+          - name: Evocatore Esperto
+            name_f: Evocatrice Esperta
+            short: "Copiare un incantesimo di evocazione nel libro costa metà tempo e metà oro."
+            text: "A partire da quando sceglie questa scuola al 2° livello, il tempo e il denaro che il mago deve spendere per copiare un incantesimo di evocazione nel suo libro degli incantesimi sono dimezzati."
+            kid: "Copiare nel tuo libro un incantesimo di evocazione ti costa metà tempo e metà oro."
+            kid_hide: true
+          - name: Evocazione Minore
+            short: "Azione: evochi in mano o a terra entro 3 m un oggetto non magico che hai già visto (max 90 cm per lato e 5 kg). Sparisce dopo 1 ora, se subisce o infligge danni o se usi di nuovo il privilegio."
+            text: "Il mago può usare la sua azione per evocare un oggetto inanimato nella sua mano o sul terreno, in uno spazio libero che può vedere entro 3 metri. L'oggetto non può essere più grande di 90 cm per lato né pesare più di 5 kg, e deve avere la forma di un oggetto non magico che il mago ha già visto. È visibilmente magico e irradia luce fioca entro 1,5 metri. Scompare dopo 1 ora, quando il mago usa di nuovo questo privilegio, oppure se subisce o infligge danni."
+            kid: "Con un'azione fai apparire un oggetto normale che hai già visto (al massimo 90 cm e 5 kg). Sparisce dopo 1 ora, o se colpisce o viene colpito."
+        6:
+          - name: Trasposizione Benevola
+            short: "Azione: ti teletrasporti fino a 9 m in uno spazio libero che vedi, o scambi di posto con una creatura consenziente Piccola o Media entro 9 m. Di nuovo dopo un riposo lungo o lanciando un incantesimo di evocazione di 1° livello o superiore."
+            text: "Il mago può usare la sua azione per teletrasportarsi fino a 9 metri in uno spazio libero che può vedere. In alternativa, può scegliere uno spazio entro gittata occupato da una creatura Piccola o Media: se la creatura è consenziente, si teletrasportano entrambi scambiandosi di posto. Una volta usato questo privilegio, non può usarlo di nuovo finché non completa un riposo lungo o non lancia un incantesimo di evocazione di 1° livello o superiore."
+            kid: "Con un'azione ti teletrasporti fino a 9 m, oppure scambi di posto con un amico. Per rifarlo devi fare un riposo lungo o lanciare un incantesimo di evocazione."
+        10:
+          - name: Evocazione Focalizzata
+            short: "Subire danni non può interrompere la tua concentrazione su un incantesimo di evocazione."
+            text: "Mentre il mago è concentrato su un incantesimo di evocazione, la sua concentrazione non può essere interrotta a causa dei danni subiti."
+            kid: "Quando ti concentri su un incantesimo di evocazione, le ferite non ti fanno perdere la concentrazione."
+        14:
+          - name: Evocazioni Durature
+            short: "Le creature che evochi o crei con un incantesimo di evocazione hanno 30 PF temporanei."
+            text: "Qualsiasi creatura evocata o creata dal mago con un incantesimo di evocazione ha 30 punti ferita temporanei."
+            kid: "Le creature che fai comparire con un incantesimo di evocazione hanno 30 PF temporanei in più."
+    divination:
+      name: Scuola di Divinazione
+      name_en: School of Divination
+      features:
+        2:
+          - name: Divinatore Esperto
+            name_f: Divinatrice Esperta
+            short: "Copiare un incantesimo di divinazione nel libro costa metà tempo e metà oro."
+            text: "A partire da quando sceglie questa scuola al 2° livello, il tempo e il denaro che il mago deve spendere per copiare un incantesimo di divinazione nel suo libro degli incantesimi sono dimezzati."
+            kid: "Copiare nel tuo libro un incantesimo di divinazione ti costa metà tempo e metà oro."
+            kid_hide: true
+          - name: Presagio
+            short: "Dopo un riposo lungo tira 2d20 e annota i risultati: puoi sostituire con uno di essi un tiro per colpire, un TS o una prova tua o di una creatura che vedi (prima del tiro, 1 volta per turno)."
+            text: "Quando completa un riposo lungo, il mago tira due d20 e ne annota i risultati. Può sostituire qualsiasi tiro per colpire, tiro salvezza o prova di caratteristica effettuato da lui o da una creatura che può vedere con uno di questi tiri premonitori, decidendolo prima del tiro; può farlo una sola volta per turno. Ogni tiro premonitore si usa una volta sola; quelli non usati si perdono al riposo lungo successivo."
+            kid: "Dopo un riposo lungo tiri 2 d20 e segni i numeri. Prima che tu o qualcuno che vedi tiri un d20, puoi decidere che il risultato è uno dei tuoi numeri!"
+        6:
+          - name: Divinazione Esperta
+            short: "Quando lanci un incantesimo di divinazione di 2° livello o superiore con uno slot, recuperi uno slot speso di livello inferiore (max 5°)."
+            text: "Quando il mago lancia un incantesimo di divinazione di 2° livello o superiore usando uno slot incantesimo, recupera uno slot incantesimo speso. Lo slot recuperato deve essere di livello inferiore a quello dell'incantesimo lanciato e non può essere superiore al 5°."
+            kid: "Quando lanci un incantesimo di divinazione di 2° livello o più, recuperi uno slot già usato di livello più basso."
+        10:
+          - name: Il Terzo Occhio
+            short: "Azione: scegli scurovisione 18 m, vista eterea 18 m, comprensione di ogni lingua scritta o vedere l'invisibile entro 3 m, fino al prossimo riposo o finché sei incapacitato. 1/riposo breve o lungo."
+            text: "Il mago può usare la sua azione per accrescere i suoi poteri di percezione, scegliendo uno dei benefici seguenti, che dura finché non diventa incapacitato o non effettua un riposo breve o lungo: scurovisione entro 18 metri; vista eterea (vede nel Piano Etereo entro 18 metri); comprensione superiore (sa leggere qualsiasi linguaggio); vedere l'invisibile (vede creature e oggetti invisibili entro 3 metri nella sua linea di vista). Una volta usato, non può usarlo di nuovo finché non completa un riposo breve o lungo."
+            kid: "Con un'azione ottieni un super-senso fino al prossimo riposo: vedere al buio, vedere l'invisibile, vedere il mondo degli spiriti o leggere ogni lingua."
+        14:
+          - name: Presagio Superiore
+            short: "Per Presagio tiri 3d20 invece di 2."
+            text: "Le visioni nei sogni del mago si intensificano: quando usa il privilegio Presagio tira tre d20 anziché due."
+            kid: "Per il Presagio tiri 3 d20 invece di 2."
+    enchantment:
+      name: Scuola di Ammaliamento
+      name_en: School of Enchantment
+      features:
+        2:
+          - name: Ammaliatore Esperto
+            name_f: Ammaliatrice Esperta
+            short: "Copiare un incantesimo di ammaliamento nel libro costa metà tempo e metà oro."
+            text: "A partire da quando sceglie questa scuola al 2° livello, il tempo e il denaro che il mago deve spendere per copiare un incantesimo di ammaliamento nel suo libro degli incantesimi sono dimezzati."
+            kid: "Copiare nel tuo libro un incantesimo di ammaliamento ti costa metà tempo e metà oro."
+            kid_hide: true
+          - name: Sguardo Ipnotico
+            short: "Azione: una creatura entro 1,5 m che ti vede o ti sente fa un TS su SAG (CD incantesimi); se fallisce è affascinata fino alla fine del tuo prossimo turno (velocità 0, incapacitata). Puoi mantenerlo con un'azione a ogni turno."
+            text: "Come azione, il mago sceglie una creatura entro 1,5 metri che possa vederlo o udirlo. Il bersaglio deve superare un tiro salvezza su Saggezza contro la CD degli incantesimi da mago o essere affascinato dal mago fino alla fine del turno successivo del mago: la sua velocità scende a 0 ed è incapacitato e visibilmente frastornato. Nei turni successivi il mago può usare la sua azione per mantenere l'effetto fino alla fine del suo turno successivo. L'effetto termina se il mago si allontana di più di 1,5 metri, se la creatura non può più vederlo né udirlo o se subisce danni. Quando l'effetto termina, o se la creatura supera il tiro salvezza iniziale, il mago non può usare di nuovo questo privilegio su di essa finché non completa un riposo lungo."
+            kid: "Con un'azione fissi negli occhi una creatura vicinissima (1,5 m): se fallisce un tiro salvezza su Saggezza con CD {cd}, resta incantata e immobile fino al tuo prossimo turno. Ogni turno puoi usare un'azione per tenerla incantata."
+        6:
+          - name: Charme Istintivo
+            short: "Reazione: quando una creatura che vedi entro 9 m ti attacca, deve superare un TS su SAG (CD incantesimi) o attaccare invece la creatura più vicina a lei. Se lo supera, non puoi riusarlo su di lei fino a un riposo lungo."
+            text: "Quando una creatura che il mago può vedere entro 9 metri effettua un tiro per colpire contro di lui, il mago può usare la sua reazione per deviare l'attacco, purché un'altra creatura si trovi entro la gittata dell'attacco. L'attaccante deve effettuare un tiro salvezza su Saggezza contro la CD degli incantesimi da mago: se lo fallisce, deve bersagliare la creatura più vicina a sé, escludendo il mago e se stesso (se ce n'è più d'una, sceglie l'attaccante). Se lo supera, il mago non può usare di nuovo questo privilegio su di esso finché non completa un riposo lungo. Il mago deve decidere prima di sapere se l'attacco colpisce. Le creature che non possono essere affascinate sono immuni."
+            kid: "Quando qualcuno entro 9 m ti attacca, con la tua reazione puoi confonderlo: se fallisce un tiro salvezza su Saggezza con CD {cd}, attacca la creatura più vicina a lui invece di te."
+        10:
+          - name: Dividere l'Ammaliamento
+            short: "Un incantesimo di ammaliamento di 1° livello o superiore che bersaglia una sola creatura può bersagliarne una seconda."
+            text: "Quando il mago lancia un incantesimo di ammaliamento di 1° livello o superiore che bersaglia una sola creatura, può fare in modo che bersagli anche una seconda creatura."
+            kid: "Gli incantesimi di ammaliamento che colpiscono una sola creatura possono colpirne due."
+        14:
+          - name: Alterare i Ricordi
+            short: "Chi affascini con un incantesimo di ammaliamento può non accorgersene; con un'azione puoi fargli dimenticare fino a 1 + mod. CAR ore (TS su INT)."
+            text: "Quando il mago lancia un incantesimo di ammaliamento per affascinare una o più creature, può alterare la percezione di una di esse in modo che non si renda conto di essere stata affascinata. Inoltre, una volta prima che l'incantesimo termini, può usare la sua azione per cercare di farle dimenticare parte del tempo trascorso affascinata: la creatura deve superare un tiro salvezza su Intelligenza contro la CD degli incantesimi da mago o perdere i ricordi di un numero di ore pari a 1 + il modificatore di Carisma del mago (minimo 1). Il mago può farle dimenticare meno tempo, e comunque non più della durata dell'incantesimo."
+            kid: "Chi incanti con un incantesimo di ammaliamento non si accorge di essere stato incantato, e puoi provare a fargli dimenticare un po' di quel tempo."
+    evocation:
+      name: Scuola di Invocazione
+      name_en: School of Evocation
+      features:
+        2:
+          - name: Invocatore Esperto
+            name_f: Invocatrice Esperta
+            short: "Copiare un incantesimo di invocazione nel libro costa metà tempo e metà oro."
+            text: "A partire da quando sceglie questa scuola al 2° livello, il tempo e il denaro che il mago deve spendere per copiare un incantesimo di invocazione nel suo libro degli incantesimi sono dimezzati."
+            kid: "Copiare nel tuo libro un incantesimo di invocazione ti costa metà tempo e metà oro."
+            kid_hide: true
+          - name: Plasmare Incantesimi
+            short: "Con un incantesimo di invocazione che colpisce creature che vedi, scegline fino a 1 + livello dell'incantesimo: superano automaticamente il TS e non subiscono danni se ne subirebbero la metà."
+            text: "Il mago può creare sacche di relativa sicurezza all'interno degli effetti dei suoi incantesimi di invocazione. Quando lancia un incantesimo di invocazione che influenza altre creature che può vedere, può sceglierne un numero pari a 1 + il livello dell'incantesimo: le creature scelte superano automaticamente i tiri salvezza contro l'incantesimo e non subiscono danni se normalmente ne subirebbero la metà con un tiro salvezza superato."
+            kid: "Quando lanci un incantesimo di invocazione su un'area, puoi proteggere alcuni amici (1 + il livello dell'incantesimo): non subiscono danni."
+        6:
+          - name: Trucchetto Potente
+            short: "Chi supera il TS contro un tuo trucchetto che infligge danni subisce comunque metà dei danni (ma nessun altro effetto)."
+            text: "I trucchetti del mago che infliggono danni influenzano anche le creature che altrimenti eviterebbero il grosso dell'effetto: quando una creatura supera un tiro salvezza contro un trucchetto del mago, subisce la metà dei danni del trucchetto (se previsti), ma nessun effetto aggiuntivo."
+            kid: "Anche chi supera il tiro salvezza contro i tuoi trucchetti subisce metà dei danni."
+        10:
+          - name: Invocazione Potente
+            short: "Aggiungi il mod. INT a un tiro per i danni di ogni incantesimo di invocazione da mago."
+            text: "Il mago aggiunge il suo modificatore di Intelligenza a un tiro per i danni di qualsiasi incantesimo di invocazione da mago che lancia."
+            kid: "Aggiungi {mod} (la tua Intelligenza) ai danni dei tuoi incantesimi di invocazione."
+        14:
+          - name: Saturazione Magica
+            short: "Un incantesimo da mago di 1°-5° livello che infligge danni può infliggere il massimo. Dal secondo uso prima di un riposo lungo subisci 2d12 danni necrotici per livello dell'incantesimo (+1d12 per ogni uso successivo)."
+            text: "Quando il mago lancia un incantesimo da mago compreso tra il 1° e il 5° livello che infligge danni, può infliggere il massimo dei danni con quell'incantesimo. La prima volta non subisce alcun effetto avverso; se usa di nuovo questo privilegio prima di completare un riposo lungo, subito dopo il lancio subisce 2d12 danni necrotici per ogni livello dell'incantesimo, e ogni uso successivo prima del riposo lungo aumenta questi danni di 1d12 per livello. Questi danni ignorano resistenze e immunità."
+            kid: "Un incantesimo da 1° a 5° livello che fa danni può fare il massimo dei danni. La prima volta va bene, ma se lo rifai prima di un riposo lungo ti ferisci tu."
+    illusion:
+      name: Scuola di Illusione
+      name_en: School of Illusion
+      features:
+        2:
+          - name: Illusionista Esperto
+            name_f: Illusionista Esperta
+            short: "Copiare un incantesimo di illusione nel libro costa metà tempo e metà oro."
+            text: "A partire da quando sceglie questa scuola al 2° livello, il tempo e il denaro che il mago deve spendere per copiare un incantesimo di illusione nel suo libro degli incantesimi sono dimezzati."
+            kid: "Copiare nel tuo libro un incantesimo di illusione ti costa metà tempo e metà oro."
+            kid_hide: true
+          - name: Illusione Minore Migliorata
+            short: "Impari illusione minore senza contarla tra i trucchetti (se la conosci già, un altro trucchetto da mago); con un solo lancio crei sia un suono sia un'immagine."
+            text: "Quando il mago sceglie questa scuola al 2° livello, impara il trucchetto illusione minore; se lo conosce già, impara invece un altro trucchetto da mago a sua scelta. Questo trucchetto non conta nel numero di trucchetti conosciuti. Quando lancia illusione minore, può creare sia un suono sia un'immagine con un singolo lancio dell'incantesimo."
+            grants_cantrip: minor_illusion
+            kid: "Conosci il trucchetto illusione minore in regalo, e con un solo lancio crei insieme un suono e un'immagine."
+        6:
+          - name: Illusioni Malleabili
+            short: "Con un'azione puoi modificare un tuo incantesimo di illusione che dura 1 minuto o più, se puoi vedere l'illusione."
+            text: "Quando il mago lancia un incantesimo di illusione con una durata di 1 minuto o più, può usare la sua azione per cambiare la natura di quell'illusione (rispettando i normali parametri dell'incantesimo), purché possa vederla."
+            kid: "Con un'azione puoi cambiare le tue illusioni che durano 1 minuto o più, purché tu le veda."
+        10:
+          - name: Sé Illusorio
+            short: "Reazione: quando una creatura ti attacca, interponi un tuo doppio illusorio e l'attacco ti manca automaticamente. 1/riposo breve o lungo."
+            text: "Quando una creatura effettua un tiro per colpire contro il mago, egli può usare la sua reazione per interporre un duplicato illusorio tra sé e l'attaccante. L'attacco manca automaticamente il mago, poi l'illusione si dissolve. Una volta usato questo privilegio, non può usarlo di nuovo finché non completa un riposo breve o lungo."
+            kid: "Quando qualcuno ti attacca, con la tua reazione crei un tuo doppio illusorio e l'attacco ti manca. Poi devi riposare (anche breve) per rifarlo."
+        14:
+          - name: Realtà Illusoria
+            short: "Quando lanci un incantesimo di illusione di 1° livello o superiore, con un'azione bonus rendi reale per 1 minuto un oggetto inanimato non magico dell'illusione (non può infliggere danni)."
+            text: "Quando il mago lancia un incantesimo di illusione di 1° livello o superiore, può scegliere un oggetto inanimato e non magico che fa parte dell'illusione e renderlo reale, come azione bonus nel suo turno finché l'incantesimo dura. L'oggetto resta reale per 1 minuto. Per esempio, può creare l'illusione di un ponte su un precipizio e poi renderlo reale per attraversarlo. L'oggetto non può infliggere danni né danneggiare direttamente nessuno."
+            kid: "Con un'azione bonus puoi rendere vero per 1 minuto un oggetto delle tue illusioni (per esempio un ponte), ma non può fare male a nessuno."
+    necromancy:
+      name: Scuola di Necromanzia
+      name_en: School of Necromancy
+      features:
+        2:
+          - name: Necromante Esperto
+            name_f: Necromante Esperta
+            short: "Copiare un incantesimo di necromanzia nel libro costa metà tempo e metà oro."
+            text: "A partire da quando sceglie questa scuola al 2° livello, il tempo e il denaro che il mago deve spendere per copiare un incantesimo di necromanzia nel suo libro degli incantesimi sono dimezzati."
+            kid: "Copiare nel tuo libro un incantesimo di necromanzia ti costa metà tempo e metà oro."
+            kid_hide: true
+          - name: Raccolto Sinistro
+            short: "1 volta per turno, quando uccidi una o più creature con un incantesimo di 1° livello o superiore, recuperi PF pari al doppio del livello dell'incantesimo (triplo se di necromanzia). Non con costrutti o non morti."
+            text: "Il mago ottiene la capacità di raccogliere energia vitale dalle creature che uccide con i suoi incantesimi. Una volta per turno, quando uccide una o più creature con un incantesimo di 1° livello o superiore, recupera punti ferita pari al doppio del livello dell'incantesimo, o al triplo se l'incantesimo appartiene alla scuola di necromanzia. Non ottiene questo beneficio uccidendo costrutti o non morti."
+            kid: "Quando sconfiggi un nemico con un incantesimo di 1° livello o più, recuperi PF: il doppio del livello dell'incantesimo (il triplo se è di necromanzia)."
+        6:
+          - name: Servitori Non Morti
+            short: "Aggiungi animare morti al libro; quando lo lanci animi un cadavere in più. I non morti che crei con la necromanzia hanno PF massimi + livello da mago e aggiungono il tuo bonus di competenza ai danni delle armi."
+            text: "Il mago aggiunge l'incantesimo animare morti al suo libro degli incantesimi, se non lo possiede già. Quando lancia animare morti, può bersagliare un cadavere o un mucchio di ossa aggiuntivo, creando un altro zombi o scheletro. Ogni non morto che crea con un incantesimo di necromanzia ottiene due benefici: il suo massimo dei punti ferita aumenta di un ammontare pari al livello da mago, e aggiunge il bonus di competenza del mago ai tiri per i danni delle sue armi."
+            kid: "Quando animi dei non morti ne crei uno in più, e sono più forti del normale."
+        10:
+          - name: Abituato alla Non Morte
+            name_f: Abituata alla Non Morte
+            short: "Resistenza ai danni necrotici; il tuo massimo dei PF non può essere ridotto."
+            text: "Il mago ha resistenza ai danni necrotici e il suo massimo dei punti ferita non può essere ridotto."
+            kid: "I danni necrotici ti fanno solo metà danno, e nessuno può abbassare i tuoi PF massimi."
+        14:
+          - name: Comandare Non Morti
+            short: "Azione: un non morto entro 18 m fa un TS su CAR (CD incantesimi); se fallisce diventa amichevole e ti obbedisce finché non riusi il privilegio. Vantaggio al TS se ha INT 8+; se ha INT 12+ ripete il TS ogni ora."
+            text: "Il mago può usare la magia per porre i non morti sotto il suo controllo, anche quelli creati da altri. Come azione, sceglie un non morto che può vedere entro 18 metri: la creatura deve effettuare un tiro salvezza su Carisma contro la CD degli incantesimi da mago. Se lo supera, il mago non può usare di nuovo questo privilegio su di essa; se lo fallisce, diventa amichevole nei suoi confronti e obbedisce ai suoi ordini finché il mago non usa di nuovo questo privilegio. Un non morto con Intelligenza pari o superiore a 8 ha vantaggio al tiro salvezza; se lo fallisce e ha Intelligenza pari o superiore a 12, può ripeterlo alla fine di ogni ora finché non lo supera e si libera."
+            kid: "Con un'azione puoi provare a comandare un non morto entro 18 m: se fallisce un tiro salvezza su Carisma con CD {cd}, diventa tuo amico e ti obbedisce."
+    transmutation:
+      name: Scuola di Trasmutazione
+      name_en: School of Transmutation
+      features:
+        2:
+          - name: Trasmutatore Esperto
+            name_f: Trasmutatrice Esperta
+            short: "Copiare un incantesimo di trasmutazione nel libro costa metà tempo e metà oro."
+            text: "A partire da quando sceglie questa scuola al 2° livello, il tempo e il denaro che il mago deve spendere per copiare un incantesimo di trasmutazione nel suo libro degli incantesimi sono dimezzati."
+            kid: "Copiare nel tuo libro un incantesimo di trasmutazione ti costa metà tempo e metà oro."
+            kid_hide: true
+          - name: Alchimia Minore
+            short: "Trasformi temporaneamente un oggetto non magico di legno, pietra (non preziosa), ferro, rame o argento in un altro di questi materiali (10 minuti per ogni cubo di 30 cm); dura 1 ora o finché non perdi la concentrazione."
+            text: "Il mago può alterare temporaneamente le proprietà fisiche di un oggetto non magico, trasformandolo da una sostanza a un'altra. Esegue una speciale procedura alchemica su un oggetto composto interamente di legno, pietra (ma non pietre preziose), ferro, rame o argento, trasformandolo in uno degli altri materiali; servono 10 minuti per ogni cubo di 30 cm di lato. Dopo 1 ora, o se il mago perde la concentrazione (come se si stesse concentrando su un incantesimo), il materiale torna alla sostanza originale."
+            kid: "Con un po' di lavoro trasformi per 1 ora un oggetto di legno, pietra, ferro, rame o argento in uno di questi altri materiali."
+        6:
+          - name: Pietra del Trasmutatore
+            short: "In 8 ore crei una pietra che dà a chi la porta un beneficio a scelta: scurovisione 18 m, +3 m di velocità, competenza nei TS su COS o resistenza ad acido, freddo, fuoco, fulmine o tuono. Puoi cambiarlo quando lanci un incantesimo di trasmutazione di 1° livello o superiore."
+            text: "Il mago può dedicare 8 ore a creare una pietra del trasmutatore che immagazzina magia di trasmutazione; può tenerla o darla a un'altra creatura. Chi la possiede ottiene un beneficio scelto dal mago alla creazione: scurovisione entro 18 metri; velocità aumentata di 3 metri finché non è ingombrato; competenza nei tiri salvezza su Costituzione; resistenza ai danni da acido, freddo, fuoco, fulmine o tuono (a scelta del mago). Ogni volta che il mago lancia un incantesimo di trasmutazione di 1° livello o superiore, può cambiare l'effetto della pietra se la ha con sé. Se crea una nuova pietra, la precedente smette di funzionare."
+            kid: "In 8 ore crei una pietra magica che dà un dono a chi la porta: vedere al buio, correre più veloce, resistere a un tipo di danno o essere più tenace (tiri salvezza su Costituzione)."
+        10:
+          - name: Mutaforma
+            short: "Aggiungi metamorfosi al libro; puoi lanciarla senza slot, solo su te stesso, trasformandoti in una bestia di GS 1 o inferiore. 1/riposo breve o lungo."
+            text: "Il mago aggiunge l'incantesimo metamorfosi al suo libro degli incantesimi, se non lo possiede già. Può lanciare metamorfosi senza spendere uno slot incantesimo: quando lo fa, può bersagliare solo se stesso e trasformarsi in una bestia di grado di sfida pari o inferiore a 1. Una volta lanciato così, non può farlo di nuovo finché non completa un riposo breve o lungo, anche se può comunque lanciarlo normalmente usando uno slot."
+            kid: "Una volta per riposo (anche breve) puoi diventare un animale fino a GS 1, lanciando metamorfosi su di te senza usare slot."
+        14:
+          - name: Maestro Trasmutatore
+            name_f: Maestra Trasmutatrice
+            short: "Azione: consumi la pietra del trasmutatore per un effetto: Trasformazione Superiore, Panacea, Ripristinare la Vita (rianimare morti senza slot) o Ripristinare la Giovinezza. Non puoi crearne un'altra fino a un riposo lungo."
+            text: "Il mago può usare la sua azione per consumare in un colpo solo la magia contenuta nella sua pietra del trasmutatore, che viene distrutta (non può crearne un'altra finché non completa un riposo lungo), scegliendo uno degli effetti seguenti. Trasformazione Superiore: trasmuta un oggetto non magico che entra in un cubo di 1,5 metri in un altro oggetto non magico di taglia e massa simili e di valore pari o inferiore, manipolandolo per 10 minuti. Panacea: una creatura toccata con la pietra viene liberata da tutte le maledizioni, le malattie e i veleni e recupera tutti i punti ferita. Ripristinare la Vita: lancia rianimare morti su una creatura toccata con la pietra senza spendere slot e senza averlo nel libro. Ripristinare la Giovinezza: l'età apparente di una creatura consenziente toccata con la pietra si riduce di 3d10 anni (minimo 13), senza allungarne la vita."
+            kid: "Puoi consumare la tua pietra per una grande magia: trasformare un oggetto, guarire del tutto qualcuno, riportarlo in vita o farlo ringiovanire."

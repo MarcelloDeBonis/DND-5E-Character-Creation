@@ -493,6 +493,6 @@ def how_to_play(s: dict) -> list:
     ws = s["wild_shape"]
     if ws:
         lines.append(f"<b>Forma Selvatica.</b> Con un'azione bonus diventi un animale che hai già visto (sono nella guida). {ws['uses']} volte, poi riposo. "
-                     f"Dura fino a {ws['duration_hours']} ora. Usi PF, CA e attacchi dell'animale; quando i suoi PF finiscono torni te stessa "
+                     f"Dura fino a {ws['duration_hours']} {'ora' if ws['duration_hours'] == 1 else 'ore'}. Usi PF, CA e attacchi dell'animale; quando i suoi PF finiscono torni te stessa "
                      "con i tuoi PF. Da animale non lanci magie, ma con un'azione bonus puoi spendere uno slot per curarti 1d8 PF per livello dello slot.")
     return lines

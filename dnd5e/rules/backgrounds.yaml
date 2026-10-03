@@ -1,133 +1,161 @@
 # Background del Manuale del Giocatore (PHB 2014).
-# skills: competenze fisse. tools: competenze negli strumenti. languages: numero di linguaggi extra a scelta.
-# feature: privilegio del background. equipment: dotazione iniziale (lista di stringhe). gold: monete d'oro incluse.
+# name_f: nome al femminile. skills: competenze fisse. tools: competenze negli strumenti. languages: numero di linguaggi extra a scelta.
+# feature: privilegio del background ("kid" = testo semplicissimo per le bambine). equipment: dotazione iniziale (lista di stringhe).
+# gold: monete d'oro incluse (nella borsa da cintura).
 acolyte:
   name: Accolito
+  name_f: Accolita
   skills: [insight, religion]
   tools: []
   languages: 2
   feature:
     name: Rifugio dei Fedeli
-    text: "L'accolito e i suoi compagni possono ricevere cure e assistenza gratuite in un tempio o santuario della sua fede; i fedeli lo sosterranno con uno stile di vita modesto."
+    text: "L'accolito e i suoi compagni possono ricevere cure e assistenza gratuite in un tempio o santuario della sua fede (fornendo le eventuali componenti degli incantesimi); i fedeli sosterranno lui solo con uno stile di vita modesto. Può avere legami con un tempio specifico, dove gode di una residenza e può chiedere aiuto ai sacerdoti, purché non sia pericoloso."
+    kid: "Nei templi della tua fede tu e i tuoi amici venite curati gratis, e i fedeli ti aiutano con cibo e un posto per dormire."
   equipment: ["Simbolo sacro", "Libro di preghiere o ruota di preghiera", "5 bastoncini di incenso", "Vesti", "Abiti comuni"]
   gold: 15
 charlatan:
   name: Ciarlatano
+  name_f: Ciarlatana
   skills: [deception, sleight_of_hand]
   tools: ["Trucchi per il camuffamento", "Arnesi da falsario"]
   languages: 0
   feature:
     name: Falsa Identità
-    text: "Il ciarlatano ha creato una seconda identità con documenti, conoscenze e travestimenti; sa falsificare documenti ufficiali e lettere."
+    text: "Il ciarlatano ha creato una seconda identità con documenti, conoscenze e travestimenti; sa falsificare documenti ufficiali e lettere, purché ne abbia visto un esempio."
+    kid: "Hai una seconda identità segreta, con documenti e travestimento, e sai copiare lettere e documenti."
   equipment: ["Abiti pregiati", "Trucchi per il camuffamento", "Strumenti del raggiro (es. dadi truccati, ampolle di liquido colorato)"]
   gold: 15
 criminal:
   name: Criminale
+  name_f: Criminale
   skills: [deception, stealth]
   tools: ["Un tipo di gioco a scelta", "Arnesi da scasso"]
   languages: 0
   feature:
     name: Contatto Criminale
     text: "Il criminale ha un contatto fidato che funge da collegamento con una rete di altri criminali; sa come trasmettere messaggi a questo contatto anche a grande distanza."
+    kid: "Conosci una persona fidata che ti collega ad altri furfanti, e sai come mandarle messaggi anche da lontano."
   equipment: ["Piede di porco", "Abiti comuni scuri con cappuccio"]
   gold: 15
 entertainer:
   name: Intrattenitore
+  name_f: Intrattenitrice
   skills: [acrobatics, performance]
   tools: ["Trucchi per il camuffamento", "Uno strumento musicale a scelta"]
   languages: 0
   feature:
     name: Richiesto dal Pubblico
-    text: "L'intrattenitore trova sempre un posto in cui esibirsi, ricevendo vitto e alloggio gratuiti di livello modesto o confortevole, e il favore della gente del posto."
+    text: "L'intrattenitore trova sempre un posto in cui esibirsi: finché si esibisce ogni sera riceve vitto e alloggio gratuiti di livello modesto o confortevole, e diventa una figura conosciuta e benvoluta dalla gente del posto."
+    kid: "Trovi sempre un posto dove esibirti: se ti esibisci ogni sera hai cibo e letto gratis, e la gente del posto ti riconosce."
   equipment: ["Uno strumento musicale a scelta", "Il pegno di un ammiratore", "Costume"]
   gold: 15
 folk_hero:
   name: Eroe Popolare
+  name_f: Eroina Popolare
   skills: [animal_handling, survival]
   tools: ["Un tipo di strumenti da artigiano a scelta", "Veicoli (terrestri)"]
   languages: 0
   feature:
     name: Ospitalità Rustica
-    text: "La gente comune offre all'eroe popolare un posto in cui nascondersi, riposare o riprendersi, e lo protegge dalle autorità (purché non rischi la vita)."
+    text: "La gente comune offre all'eroe popolare un posto in cui nascondersi, riposare o riprendersi (a meno che non si sia dimostrato un pericolo per loro) e lo protegge dalla legge o da chi lo cerca, purché non debba rischiare la vita."
+    kid: "La gente comune ti aiuta: ti nasconde, ti fa riposare e non dice alle guardie dove sei, ma non rischia la vita per te."
   equipment: ["Un tipo di strumenti da artigiano a scelta", "Vanga", "Pentola di ferro", "Abiti comuni"]
   gold: 10
 guild_artisan:
   name: Artigiano di Gilda
+  name_f: Artigiana di Gilda
   skills: [insight, persuasion]
   tools: ["Un tipo di strumenti da artigiano a scelta"]
   languages: 1
+  # Variante Mercante di Gilda: strumenti da navigatore o un linguaggio aggiuntivo al posto degli strumenti da artigiano.
   feature:
-    name: Appartenenza alla Gilda
-    text: "La gilda offre alloggio e cibo, assistenza legale e sostegno politico; in cambio l'artigiano paga 5 mo al mese di quote."
+    name: Membro di una Gilda
+    text: "Come membro stimato di una gilda, l'artigiano riceve dai confratelli vitto e alloggio se necessario, e la gilda paga il suo funerale. Nella sede della gilda può incontrare potenziali clienti, alleati o seguaci. Se è accusato di un crimine, la gilda lo sostiene se c'è una buona ragione per crederlo innocente o se il crimine è giustificabile; tramite la gilda può anche ottenere accesso a figure politiche importanti, a volte in cambio di donazioni. Deve pagare alla gilda una quota di 5 mo al mese: se salta dei pagamenti, deve saldare gli arretrati per restare nelle sue grazie."
+    kid: "La tua gilda ti dà cibo e un letto quando serve e ti difende davanti alla legge, se hai ragione. In cambio paghi 5 mo al mese."
   equipment: ["Un tipo di strumenti da artigiano a scelta", "Lettera di presentazione della gilda", "Abiti da viaggio"]
   gold: 15
 hermit:
   name: Eremita
+  name_f: Eremita
   skills: [medicine, religion]
   tools: ["Borsa da erborista"]
   languages: 1
   feature:
     name: Scoperta
-    text: "L'isolamento ha permesso all'eremita di fare una scoperta unica e potente, il cui esatto contenuto va definito con il DM."
-  equipment: ["Astuccio da cartografo pieno di appunti", "Coperta invernale", "Abiti comuni", "Borsa da erborista"]
+    text: "L'isolamento ha permesso all'eremita di fare una scoperta unica e potente (una grande verità sul cosmo, sugli dei o sulla natura, un luogo mai visto da nessuno, un fatto dimenticato o una reliquia del passato), il cui esatto contenuto va definito con il DM."
+    kid: "Mentre vivevi da sola hai fatto una scoperta importante e segreta: decidi con il Master qual è."
+  equipment: ["Custodia per pergamene piena di appunti", "Coperta invernale", "Abiti comuni", "Borsa da erborista"]
   gold: 5
 noble:
   name: Nobile
+  name_f: Nobile
   skills: [history, persuasion]
   tools: ["Un tipo di gioco a scelta"]
   languages: 1
   feature:
     name: Posizione Privilegiata
-    text: "Grazie alla nascita nobile, la gente è incline a pensare il meglio del nobile; è il benvenuto nell'alta società e la gente comune fa del suo meglio per accontentarlo."
+    text: "Grazie alla nascita nobile, la gente è incline a pensare il meglio del nobile; è il benvenuto nell'alta società e la gente comune fa del suo meglio per accontentarlo ed evitare il suo disappunto. Se lo chiede, può ottenere udienza presso un nobile locale."
+    kid: "Sei nobile: la gente ti tratta con rispetto, puoi entrare nei palazzi e parlare con i signori del posto."
   equipment: ["Abiti pregiati", "Anello con sigillo", "Pergamena di nobiltà"]
   gold: 25
 outlander:
   name: Forestiero
+  name_f: Forestiera
   skills: [athletics, survival]
   tools: ["Un tipo di strumento musicale a scelta"]
   languages: 1
   feature:
     name: Viandante
-    text: "Il forestiero ha un'ottima memoria per mappe e geografia e riesce sempre a ricordare la disposizione generale dei terreni; trova cibo e acqua per sé e fino a cinque persone al giorno."
+    text: "Il forestiero ha un'ottima memoria per mappe e geografia e riesce sempre a ricordare la disposizione generale dei terreni, degli insediamenti e degli altri elementi del luogo; se la terra offre bacche, piccola selvaggina e acqua, trova cibo e acqua fresca per sé e fino a cinque persone al giorno."
+    kid: "Ti ricordi sempre le strade e i posti che hai visto, e nella natura trovi ogni giorno cibo e acqua per te e altre 5 persone."
   equipment: ["Bastone", "Trappola da caccia", "Trofeo di un animale ucciso", "Abiti da viaggio"]
   gold: 10
 sage:
   name: Saggio
+  name_f: Saggia
   skills: [arcana, history]
   tools: []
   languages: 2
   feature:
     name: Ricercatore
-    text: "Quando il saggio non conosce un'informazione, spesso sa dove e da chi può ottenerla (biblioteca, scriptorium, università o un altro saggio)."
+    text: "Quando il saggio cerca di apprendere o ricordare un'informazione che non conosce, spesso sa dove e da chi può ottenerla (una biblioteca, uno scriptorium, un'università, un altro saggio o una creatura erudita). Il DM può stabilire che l'informazione sia nascosta in un luogo quasi inaccessibile o che sia introvabile."
+    kid: "Se non sai qualcosa, di solito sai dove scoprirlo: in una biblioteca, in un'università o da un'altra persona saggia."
   equipment: ["Bottiglia di inchiostro nero", "Penna", "Coltellino", "Lettera di un collega defunto con una domanda senza risposta", "Abiti comuni"]
   gold: 10
 sailor:
   name: Marinaio
+  name_f: Marinaia
   skills: [athletics, perception]
   tools: ["Strumenti da navigatore", "Veicoli (acquatici)"]
   languages: 0
   feature:
     name: Passaggio su Nave
-    text: "Il marinaio può ottenere un passaggio gratuito su una nave per sé e i suoi compagni, in cambio di aiuto a bordo durante il viaggio."
-  equipment: ["Randello", "15 m di corda di seta", "Portafortuna", "Abiti comuni"]
+    text: "Il marinaio può ottenere un passaggio gratuito su una nave per sé e i suoi compagni, in cambio di aiuto a bordo durante il viaggio; non può però decidere la rotta né i tempi."
+    kid: "Tu e i tuoi amici potete viaggiare gratis sulle navi, se aiutate l'equipaggio durante il viaggio."
+  equipment: ["Caviglia (randello)", "15 m di corda di seta", "Portafortuna", "Abiti comuni"]
   gold: 10
 soldier:
   name: Soldato
+  name_f: Soldatessa
   skills: [athletics, intimidation]
   tools: ["Un tipo di gioco a scelta", "Veicoli (terrestri)"]
   languages: 0
   feature:
     name: Grado Militare
-    text: "Il soldato ha un grado militare: i soldati fedeli alla sua vecchia organizzazione riconoscono ancora la sua autorità e può ottenere accesso ad accampamenti e fortezze amiche."
+    text: "Il soldato ha un grado militare: i soldati fedeli alla sua vecchia organizzazione riconoscono ancora la sua autorità e gli obbediscono se sono di grado inferiore. Può usare il suo grado per esercitare influenza su altri soldati e farsi prestare equipaggiamento semplice o cavalli, e di solito ottiene accesso ad accampamenti e fortezze amiche."
+    kid: "I soldati del tuo vecchio esercito ti rispettano e ti obbediscono, e puoi entrare nei loro accampamenti e nelle loro fortezze."
   equipment: ["Insegne del grado", "Trofeo preso da un nemico caduto", "Un set di dadi o carte", "Abiti comuni"]
   gold: 10
 urchin:
   name: Monello
+  name_f: Monella
   skills: [sleight_of_hand, stealth]
   tools: ["Trucchi per il camuffamento", "Arnesi da scasso"]
   languages: 0
   feature:
     name: Segreti della Città
-    text: "Il monello conosce i passaggi segreti della città: fuori dal combattimento, lui e i suoi compagni viaggiano tra due punti della città al doppio della velocità normale."
+    text: "Il monello conosce gli schemi e il flusso nascosti delle città e trova passaggi che altri non vedrebbero: fuori dal combattimento, lui e i suoi compagni viaggiano tra due punti della città al doppio della velocità normale."
+    kid: "Conosci tutte le scorciatoie della città: fuori dal combattimento, tu e i tuoi amici vi muovete in città al doppio della velocità."
   equipment: ["Coltellino", "Mappa della città natale", "Topolino domestico", "Pegno dei genitori", "Abiti comuni"]
   gold: 10
