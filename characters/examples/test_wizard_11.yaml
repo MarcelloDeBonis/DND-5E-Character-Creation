@@ -1,0 +1,70 @@
+# TEST: Maga di 11° livello — Elfa Alta, Nobile, Scuola di Invocazione, nomi al femminile
+# Verifica: trucchetto razziale dalla lista del mago, ASI al 4°, talento Resiliente (COS) all'8°,
+# 5 trucchetti dal 10°, slot fino al 6°, armi elfiche, Muro di Forza (incantesimo di 5° livello).
+# Genera con:  python -m dnd5e build characters/examples/test_wizard_11.yaml
+
+name: Lyraen
+template: official_it
+player: "Test"
+gender: f
+race: elf
+subrace: high_elf
+class: wizard
+subclass: evocation           # Scuola di Invocazione
+level: 11
+xp: 85000
+background: noble             # Nobile: Storia e Persuasione, 1 linguaggio, un gioco
+alignment: LN
+
+abilities:
+  method: point_buy
+  base: {str: 8, dex: 15, con: 14, int: 15, wis: 10, cha: 8}   # 27 punti; elfa alta +2 DES, +1 INT
+  asi:
+    - {int: 2}                # 4° livello
+
+feats:
+  - {key: resilient, ability: con}   # 8° livello: +1 COS e competenza nei TS su COS
+
+hp:
+  method: average
+
+skills: [arcana, investigation]      # 2 abilità da maga (Percezione dalla razza, Storia e Persuasione dal Nobile)
+languages_extra: [draconic, sylvan]  # 1 della razza + 1 del Nobile
+background_tools: ["Set da gioco (scacchi dei draghi)"]
+
+racial_cantrips: [prestidigitation]  # trucchetto dell'Elfa Alta (lista del mago, INT)
+cantrips: [fire_bolt, ray_of_frost, shocking_grasp, mage_hand, light]   # 5 trucchetti dal 10° livello
+spellbook: [mage_armor, magic_missile, shield, burning_hands, thunderwave, detect_magic, find_familiar, chromatic_orb,
+            scorching_ray, misty_step, shatter, web,
+            fireball, counterspell, lightning_bolt, dispel_magic,
+            ice_storm, wall_of_fire, dimension_door, otilukes_resilient_sphere,
+            cone_of_cold, wall_of_force, bigbys_hand, cloudkill,
+            chain_lightning, otilukes_freezing_sphere]   # 6 + 2 x 10 = 26
+spells: [mage_armor, magic_missile, shield, scorching_ray, misty_step, web, fireball, counterspell, lightning_bolt,
+         dispel_magic, ice_storm, dimension_door, cone_of_cold, wall_of_force, chain_lightning]   # INT +4 + 11 = 15
+
+armor: null
+weapons: [dagger, longbow, longsword]
+equipment:
+  - "Libro degli incantesimi"
+  - "Focus arcano (bastone di quercia argentata)"
+  - pack: scholars_pack
+  - "20 frecce"
+money: {gp: 120, pp: 5}
+
+personality:
+  traits: "Parlo come se dettassi a un segretario. Non tollero il disordine."
+  ideals: "Responsabilità. Il potere va usato per proteggere chi non ne ha. (Legale)"
+  bonds: "La mia casata ha perso le sue terre: le riavrò."
+  flaws: "Disprezzo chi non ha studiato e non so nasconderlo."
+
+appearance:
+  age: "160"
+  height: "1,70 m"
+  weight: "55 kg"
+  eyes: "Viola"
+  skin: "Pallida"
+  hair: "Argento, lunghissimi"
+
+backstory: |
+  Ultima erede di una casata elfica decaduta, Lyraen ha trasformato il fuoco e il fulmine nella sua diplomazia.

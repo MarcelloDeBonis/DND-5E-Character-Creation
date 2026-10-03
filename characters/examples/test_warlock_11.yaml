@@ -1,0 +1,83 @@
+# TEST: Warlock di 11° livello, Patrono l'Immondo, Patto della Lama, Umano Variante, Soldato, point buy.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_warlock_11.yaml
+
+name: Garrick
+template: official_it
+player: "Test"
+race: human
+subrace: variant_human
+class: warlock
+subclass: fiend              # Patrono Ultraterreno: l'Immondo
+level: 11
+xp: 85000
+background: soldier          # Soldato: Atletica, Intimidire, un gioco, veicoli terrestri
+alignment: LE
+
+abilities:
+  method: point_buy
+  base: {str: 14, dex: 12, con: 14, int: 8, wis: 8, cha: 15}    # 7 + 4 + 7 + 0 + 0 + 9 = 27
+  racial_choice: [str, cha]  # Umano variante: +1 FOR, +1 CAR
+  asi:
+    - {cha: 2}               # 4° livello: CAR 16 -> 18
+    - {cha: 2}               # 8° livello: CAR 18 -> 20
+feats:
+  - war_caster               # talento dell'umano variante (1° livello): Incantatore da Guerra
+
+hp:
+  method: average
+
+skills: [arcana, deception]                     # 2 abilità di classe
+racial_skills: [perception]                     # abilità a scelta dell'umano variante
+background_skills: [athletics, intimidation]    # Soldato
+background_tools: ["Dadi", "Veicoli (terrestri)"]
+languages_extra: [infernal]                     # 1 linguaggio extra dell'umano
+
+class_options:
+  pact_boons: [pact_of_the_blade]               # Dono del Patto (3° livello)
+  invocations:                                  # 5 suppliche all'11° livello
+    - thirsting_blade                           # 5° livello, Patto della Lama: due attacchi
+    - devils_sight
+    - fiendish_vigor                            # vita falsata a volontà
+    - sign_of_ill_omen                          # 5° livello: scagliare maledizione 1/riposo lungo con uno slot
+    - ascendant_step                            # 9° livello: levitazione a volontà
+
+cantrips: [eldritch_blast, minor_illusion, mage_hand, prestidigitation]   # 4 trucchetti dal 10° livello
+spells:                                          # 11 incantesimi conosciuti (slot di 5° livello)
+  - hex
+  - armor_of_agathys
+  - command                  # lista ampliata dell'Immondo
+  - misty_step
+  - scorching_ray            # lista ampliata dell'Immondo
+  - fireball                 # lista ampliata dell'Immondo
+  - counterspell
+  - fire_shield              # lista ampliata dell'Immondo
+  - banishment
+  - flame_strike             # lista ampliata dell'Immondo
+  - hold_monster
+  - circle_of_death          # Arcanum Mistico (6° livello): non conta tra gli 11 conosciuti
+
+armor: studded_leather
+weapons:
+  - {key: longsword, name: "Spada lunga (arma del patto)", proficient: true}   # arma del patto: sempre competente
+  - light_crossbow
+equipment:
+  - "Balestra leggera e 20 quadrelli"
+  - "Focus arcano (anello di ferro nero)"
+  - pack: explorers_pack
+  - "Due pugnali"
+include_background_equipment: true
+money: {gp: 300}
+
+personality:
+  traits: "Tratto ogni patto come un ordine da eseguire alla lettera."
+  ideals: "Potere. Chi è forte decide le regole. (Malvagio)"
+  bonds: "Il mio vecchio reggimento è stato tradito: la mia spada infernale lo vendicherà."
+  flaws: "Non chiedo mai aiuto, nemmeno quando sto per cadere."
+
+appearance:
+  age: "38"
+  height: "1,85 m"
+  weight: "88 kg"
+  eyes: "Neri"
+  skin: "Abbronzata, piena di cicatrici"
+  hair: "Rasati"

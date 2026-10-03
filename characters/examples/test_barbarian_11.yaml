@@ -1,0 +1,62 @@
+# TEST: Barbaro di 11° livello, Cammino del Berserker, Umano (Variante), Eroe Popolare.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_barbarian_11.yaml
+
+name: Halvard
+player: "Test"
+template: official_it
+race: human
+subrace: variant_human
+class: barbarian
+subclass: berserker
+level: 11
+xp: 85000
+background: folk_hero        # Eroe Popolare: Addestrare Animali e Sopravvivenza
+alignment: CG
+
+abilities:
+  method: point_buy          # 9 + 5 + 9 + 0 + 3 + 1 = 27
+  base: {str: 15, dex: 13, con: 15, int: 8, wis: 11, cha: 9}
+  racial_choice: [str, con]  # umano variante: +1 a due caratteristiche
+  asi:
+    - {str: 2}               # 4° livello: +2 FOR
+                             # 8° livello: talento Resiliente (Saggezza), sotto in feats
+
+hp:
+  method: average
+
+feats:
+  - tough                    # 1° livello: talento dell'umano variante (Robusto, +2 PF per livello)
+  - {key: resilient, ability: wis}   # 8° livello: Resiliente (+1 SAG, competenza nei TS su Saggezza)
+
+skills: [athletics, perception]          # 2 abilità di classe
+racial_skills: [intimidation]            # 1 abilità a scelta dell'umano variante
+languages_extra: [giant]                 # 1 dalla razza (Comune automatico)
+background_tools: ["Strumenti da carpentiere", "Veicoli (terrestri)"]
+
+armor: null
+shield: false
+weapons: [greataxe, handaxe, javelin]
+equipment:
+  - "Ascia bipenne"
+  - "2 asce"
+  - "4 giavellotti"
+  - pack: explorers_pack
+money: {gp: 120}
+
+personality:
+  traits: "Difendo i deboli."
+  ideals: "Libertà."
+  bonds: "Il mio villaggio."
+  flaws: "Perdo la testa in battaglia."
+
+appearance:
+  age: "30"
+  height: "1,90 m"
+  weight: "100 kg"
+  eyes: "Azzurri"
+  skin: "Chiara"
+  hair: "Biondi"
+
+allies: ""
+treasure: ""
+backstory: "Personaggio di prova per controllare il barbaro di 11° livello."

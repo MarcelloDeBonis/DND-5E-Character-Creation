@@ -1,5 +1,9 @@
 # Background del Manuale del Giocatore (PHB 2014).
-# name_f: nome al femminile. skills: competenze fisse. tools: competenze negli strumenti. languages: numero di linguaggi extra a scelta.
+# name_f: nome al femminile. skills: competenze fisse. tools: competenze fisse negli strumenti (nomi come in
+# equipment.yaml > tools). tool_choices: strumenti a scelta, lista di {count, label, category}: count = quanti,
+# label = testo da mostrare, category = gruppo di equipment.yaml > tools da cui sceglierli (artisan, gaming, musical).
+# Nel personaggio gli strumenti scelti vanno in 'background_tools' (che oggi sostituisce l'intera lista del background:
+# chi lo usa scrive anche quelli fissi). languages: numero di linguaggi extra a scelta.
 # feature: privilegio del background ("kid" = testo semplicissimo per le bambine). equipment: dotazione iniziale (lista di stringhe).
 # gold: monete d'oro incluse (nella borsa da cintura).
 acolyte:
@@ -30,7 +34,8 @@ criminal:
   name: Criminale
   name_f: Criminale
   skills: [deception, stealth]
-  tools: ["Un tipo di gioco a scelta", "Arnesi da scasso"]
+  tools: ["Arnesi da scasso"]
+  tool_choices: [{count: 1, label: "Un tipo di gioco a scelta", category: gaming}]
   languages: 0
   feature:
     name: Contatto Criminale
@@ -42,7 +47,8 @@ entertainer:
   name: Intrattenitore
   name_f: Intrattenitrice
   skills: [acrobatics, performance]
-  tools: ["Trucchi per il camuffamento", "Uno strumento musicale a scelta"]
+  tools: ["Trucchi per il camuffamento"]
+  tool_choices: [{count: 1, label: "Uno strumento musicale a scelta", category: musical}]
   languages: 0
   feature:
     name: Richiesto dal Pubblico
@@ -54,7 +60,8 @@ folk_hero:
   name: Eroe Popolare
   name_f: Eroina Popolare
   skills: [animal_handling, survival]
-  tools: ["Un tipo di strumenti da artigiano a scelta", "Veicoli (terrestri)"]
+  tools: ["Veicoli (terrestri)"]
+  tool_choices: [{count: 1, label: "Un tipo di strumenti da artigiano a scelta", category: artisan}]
   languages: 0
   feature:
     name: Ospitalità Rustica
@@ -66,7 +73,8 @@ guild_artisan:
   name: Artigiano di Gilda
   name_f: Artigiana di Gilda
   skills: [insight, persuasion]
-  tools: ["Un tipo di strumenti da artigiano a scelta"]
+  tools: []
+  tool_choices: [{count: 1, label: "Un tipo di strumenti da artigiano a scelta", category: artisan}]
   languages: 1
   # Variante Mercante di Gilda: strumenti da navigatore o un linguaggio aggiuntivo al posto degli strumenti da artigiano.
   feature:
@@ -84,14 +92,15 @@ hermit:
   feature:
     name: Scoperta
     text: "L'isolamento ha permesso all'eremita di fare una scoperta unica e potente (una grande verità sul cosmo, sugli dei o sulla natura, un luogo mai visto da nessuno, un fatto dimenticato o una reliquia del passato), il cui esatto contenuto va definito con il DM."
-    kid: "Mentre vivevi da sola hai fatto una scoperta importante e segreta: decidi con il Master qual è."
+    kid: "Mentre vivevi da sol{o} hai fatto una scoperta importante e segreta: decidi con il Master qual è."
   equipment: ["Custodia per pergamene piena di appunti", "Coperta invernale", "Abiti comuni", "Borsa da erborista"]
   gold: 5
 noble:
   name: Nobile
   name_f: Nobile
   skills: [history, persuasion]
-  tools: ["Un tipo di gioco a scelta"]
+  tools: []
+  tool_choices: [{count: 1, label: "Un tipo di gioco a scelta", category: gaming}]
   languages: 1
   feature:
     name: Posizione Privilegiata
@@ -103,7 +112,8 @@ outlander:
   name: Forestiero
   name_f: Forestiera
   skills: [athletics, survival]
-  tools: ["Un tipo di strumento musicale a scelta"]
+  tools: []
+  tool_choices: [{count: 1, label: "Un tipo di strumento musicale a scelta", category: musical}]
   languages: 1
   feature:
     name: Viandante
@@ -139,7 +149,8 @@ soldier:
   name: Soldato
   name_f: Soldatessa
   skills: [athletics, intimidation]
-  tools: ["Un tipo di gioco a scelta", "Veicoli (terrestri)"]
+  tools: ["Veicoli (terrestri)"]
+  tool_choices: [{count: 1, label: "Un tipo di gioco a scelta", category: gaming}]
   languages: 0
   feature:
     name: Grado Militare

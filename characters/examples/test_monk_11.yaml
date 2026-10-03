@@ -1,0 +1,62 @@
+# TEST: Monaca di 11° livello, Via dei Quattro Elementi (Umana variante, Saggia).
+# Genera con:  python -m dnd5e build characters/examples/test_monk_11.yaml
+
+name: Suien
+template: official_it
+player: "Test"
+gender: f
+race: human
+subrace: variant_human       # +1 a due caratteristiche, 1 abilità, 1 talento
+class: monk
+subclass: four_elements      # Via dei Quattro Elementi
+level: 11
+xp: 85000
+background: sage             # Saggio: Arcano, Storia, 2 linguaggi
+alignment: NG
+
+abilities:
+  method: point_buy          # 10+15+14+8+15+8 = 2+9+7+0+9+0 = 27 punti
+  base: {str: 10, dex: 15, con: 14, int: 8, wis: 15, cha: 8}
+  racial_choice: [dex, wis]  # umana variante: DES 16, SAG 16
+  asi:
+    - {dex: 2}               # 4° livello: DES 18
+    - {wis: 2}               # 8° livello: SAG 18
+
+feats: [mobile]              # talento dell'umana variante (1° livello): +3 m di velocità
+
+hp:
+  method: average
+
+skills: [acrobatics, insight]          # 2 abilità di classe
+racial_skills: [perception]            # umana variante
+languages_extra: [elvish, primordial, celestial]   # 1 dalla razza + 2 dal background
+tools: ["Liuto"]                       # strumento musicale scelto dalla monaca
+
+class_options:
+  elemental_disciplines: [water_whip, clench_of_the_north_wind, flames_of_the_phoenix]   # 3 discipline all'11° livello
+
+armor: null
+shield: false
+weapons: [quarterstaff, dart]
+equipment:
+  - "10 dardi"
+  - pack: explorers_pack
+money: {gp: 120}
+
+personality:
+  traits: "Parlo agli elementi come a vecchi amici."
+  ideals: "Conoscenza. Capire il mondo è il primo passo per proteggerlo. (Neutrale)"
+  bonds: "Custodisco gli scritti del mio monastero, distrutto da un incendio."
+  flaws: "Mi perdo nei miei pensieri nei momenti meno opportuni."
+
+appearance:
+  age: "34"
+  height: "1,68 m"
+  weight: "58 kg"
+  eyes: "Grigi"
+  skin: "Olivastra"
+  hair: "Neri, raccolti"
+
+allies: "I monaci del Tempio dei Quattro Venti."
+treasure: ""
+backstory: "Studiosa e monaca, ha imparato a piegare aria, acqua, terra e fuoco al suo ki."

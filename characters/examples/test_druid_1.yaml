@@ -1,0 +1,55 @@
+# TEST: Druida di 1° livello (nessun circolo), Elfa dei Boschi, Eremita. Personaggio di prova del motore.
+# Genera con:  python -m dnd5e build characters/examples/test_druid_1.yaml
+
+name: Lirien
+template: official_it
+player: "Test"
+gender: f                    # nomi al femminile
+race: elf
+subrace: wood_elf            # +2 DES, +1 SAG, velocità 35 piedi
+class: druid
+level: 1
+xp: 0
+background: hermit           # Eremita: Medicina, Religione, Borsa da erborista, 1 linguaggio
+alignment: N
+
+abilities:
+  method: point_buy          # 0 + 7 + 7 + 2 + 9 + 2 = 27 punti
+  base: {str: 8, dex: 14, con: 14, int: 10, wis: 15, cha: 10}   # dopo la razza: DES 16, SAG 16
+
+hp:
+  method: average            # 8 + COS 2 = 10
+
+skills: [animal_handling, nature]          # 2 abilità di classe (Percezione arriva da Sensi Acuti)
+background_skills: [medicine, religion]    # Eremita
+background_tools: ["Strumenti da calligrafo"]   # l'Eremita dà la Borsa da erborista, già data dalla classe: sostituita con un altro strumento
+languages_extra: [sylvan]                  # 1 dal background (Comune ed Elfico dalla razza, Druidico dalla classe)
+
+cantrips: [druidcraft, shillelagh]         # 2 trucchetti al 1° livello
+spells: [cure_wounds, entangle, faerie_fire, speak_with_animals]   # preparati: SAG +3 + livello 1 = 4
+
+armor: leather               # 11 + DES 3
+shield: "Scudo di legno"     # +2 -> CA 16
+weapons: [scimitar, longbow] # arco lungo: competenza da Addestramento nelle Armi Elfiche
+equipment:
+  - "Focus druidico (bastone di tasso)"
+  - "20 frecce"
+  - pack: explorers_pack
+money: {gp: 5}
+
+personality:
+  traits: "Parlo più con gli alberi che con le persone."
+  ideals: "Equilibrio. La natura deve restare in armonia. (Neutrale)"
+  bonds: "Proteggo il bosco dove sono cresciuta."
+  flaws: "Diffido di chiunque venga dalla città."
+
+appearance:
+  age: "110"
+  height: "1,65 m"
+  weight: "50 kg"
+  eyes: "Nocciola"
+  skin: "Ramata"
+  hair: "Castani, intrecciati"
+
+backstory: |
+  Lirien ha vissuto per anni da eremita in una radura del bosco, studiando le erbe e ascoltando gli animali.

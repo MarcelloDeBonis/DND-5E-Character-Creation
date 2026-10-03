@@ -1,0 +1,67 @@
+# TEST: Ranger di 11° livello, Signora delle Bestie (compagna: pantera), femmina.
+# Genera con:  python -m dnd5e build characters/examples/test_ranger_11.yaml
+
+name: Ilyra
+template: official_it
+player: "Test"
+gender: f
+race: half_elf               # +2 CAR, +1 a due caratteristiche a scelta, 2 abilità a scelta, 1 linguaggio extra
+class: ranger
+subclass: beast_master
+level: 11
+xp: 85000
+background: criminal         # Criminale: Inganno, Furtività
+alignment: N
+
+abilities:
+  method: standard_array     # 15, 14, 13, 12, 10, 8
+  base: {str: 12, dex: 15, con: 13, int: 8, wis: 14, cha: 10}
+  racial_choice: [dex, wis]
+  asi:
+    - {dex: 2}               # 4° livello: +2 DES
+                             # 8° livello: talento Osservatore (+1 SAG), vedi feats
+
+feats:
+  - {key: observant, ability: wis}
+
+hp:
+  method: average
+
+skills: [perception, survival, animal_handling]   # 3 abilità di classe
+racial_skills: [insight, nature]                   # Versatilità nelle Abilità del mezzelfo
+background_tools: ["Dadi", "Arnesi da scasso"]
+languages_extra: [sylvan, orc, goblin]             # 1 dalla razza + 2 da Nemico Prescelto (1° e 6° livello)
+
+fighting_style: dueling
+spells: [hunters_mark, cure_wounds, speak_with_animals, pass_without_trace, barkskin, conjure_animals, lightning_arrow]   # 7 conosciuti all'11° livello (slot fino al 3°)
+
+class_options:
+  favored_enemy: [monstrosities, humanoids]        # 2 all'11° livello (umanoidi: orchi e goblin)
+  favored_terrain: [forest, swamp, coast]          # 3 dal 10° livello
+
+armor: breastplate           # 14 + DES (max 2)
+shield: true
+weapons: [rapier, longbow, dagger]
+equipment:
+  - "Faretra con 20 frecce"
+  - pack: dungeoneers_pack
+money: {gp: 250}
+
+companion: panther           # Compagno del Ranger: Pantera (GS 1/4). Atteso: CA 12 + 4 = 16; PF max 44 (4 x livello 11);
+                             # Morso +4+4 = +8, 1d6+2+4; Artiglio +8, 1d4+2+4; velocità 15 m, scalata 12 m.
+
+personality:
+  traits: "Parlo più con la mia pantera che con le persone."
+  ideals: "Libertà."
+  bonds: "Ombra, la mia pantera."
+  flaws: "Rubo quando nessuno guarda."
+
+appearance:
+  age: "35"
+  height: "1,68 m"
+  weight: "55 kg"
+  eyes: "Grigi"
+  skin: "Olivastra"
+  hair: "Neri"
+
+backstory: "Personaggio di prova per il ranger di 11° livello, Signora delle Bestie."

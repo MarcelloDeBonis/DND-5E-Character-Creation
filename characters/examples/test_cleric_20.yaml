@@ -1,0 +1,68 @@
+# TEST: Chierica 20° livello, Dominio della Guerra, Tiefling, Soldatessa
+# Genera con:  python -m dnd5e build characters/examples/test_cleric_20.yaml
+
+name: Vexa Ferrocorno
+template: official_it
+player: "Test"
+gender: f
+race: tiefling
+class: cleric
+subclass: war                 # Dominio della Guerra
+level: 20
+xp: 355000
+background: soldier           # Soldatessa
+alignment: LN
+
+abilities:
+  method: point_buy
+  base: {str: 15, dex: 8, con: 14, int: 10, wis: 15, cha: 8}   # 9+0+7+2+9+0 = 27
+  asi:
+    - {str: 1, wis: 1}        # 4° livello
+    - {wis: 2}                # 8° livello
+    - {wis: 2}                # 16° livello
+    - {str: 1, con: 1}        # 19° livello
+feats:
+  - heavy_armor_master        # 12° livello: +1 FOR
+
+hp:
+  method: average
+
+skills: [insight, religion]                       # 2 abilità di classe
+background_tools: ["Dadi", "Veicoli (terrestri)"]
+
+cantrips: [sacred_flame, guidance, light, spare_the_dying, resistance]   # 5 da chierica (Taumaturgia è del tiefling)
+spells: [bless, cure_wounds, guiding_bolt, healing_word, command, sanctuary,
+         aid, lesser_restoration, hold_person, silence,
+         revivify, dispel_magic, mass_healing_word, remove_curse,
+         banishment, death_ward, guardian_of_faith,
+         greater_restoration, commune,
+         heal, heroes_feast,
+         divine_word, regenerate,
+         holy_aura,
+         mass_heal]                               # SAG +5 + livello 20 = 25
+
+armor: plate
+shield: true
+weapons: [longsword, javelin, light_crossbow]
+equipment:
+  - "Simbolo sacro (emblema sullo scudo)"
+  - "20 quadrelli"
+  - pack: explorers_pack
+money: {gp: 2500}
+
+personality:
+  traits: "Sono sempre educata, anche con il nemico."
+  ideals: "Responsabilità. (Legale)"
+  bonds: "Il mio vecchio reggimento."
+  flaws: "Obbedisco agli ordini anche quando sono sbagliati."
+
+appearance:
+  age: "45"
+  height: "1,78 m"
+  weight: "70 kg"
+  eyes: "Oro"
+  skin: "Rossa"
+  hair: "Neri, corna ricurve"
+
+backstory: |
+  Personaggio di prova per il motore: chierica della Guerra di 20° livello.

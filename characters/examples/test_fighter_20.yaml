@@ -1,0 +1,80 @@
+# TEST: Guerriera di 20° livello, Cavaliera Mistica — Elfa Alta, Saggia.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_fighter_20.yaml
+
+name: Aelith
+template: official_it
+player: "Test"
+gender: f
+race: elf
+subrace: high_elf            # +2 DES, +1 INT
+class: fighter
+subclass: eldritch_knight
+level: 20
+xp: 355000
+background: sage             # Saggia: Arcano, Storia
+alignment: LG
+
+abilities:
+  method: standard_array
+  base: {str: 15, dex: 12, con: 14, int: 13, wis: 10, cha: 8}   # dopo la razza: DES 14, INT 14
+  asi:                       # 7 aumenti (4, 6, 8, 12, 14, 16, 19): 5 qui + 2 talenti
+    - {str: 2}               # 4°  -> FOR 17
+    - {str: 1, int: 1}       # 8°  -> FOR 18, INT 15
+    - {str: 2}               # 12° -> FOR 20
+    - {int: 1, con: 1}       # 14° -> INT 16, COS 15
+    - {int: 2}               # 19° -> INT 18
+
+feats:
+  - war_caster                       # 6°
+  - {key: resilient, ability: wis}   # 16° -> SAG 11, competenza TS SAG
+
+hp:
+  method: average            # 10 + 2 + 19 x (6 + 2) = 164
+
+skills: [athletics, insight]          # Percezione dalla razza, Arcano e Storia dal background
+languages_extra: [draconic, dwarvish, celestial]   # 1 dalla razza + 2 dal background
+fighting_style: dueling
+
+racial_cantrips: [light]                            # trucchetto dell'Elfa Alta
+cantrips: [fire_bolt, shocking_grasp, mage_hand]    # 3 trucchetti al 10°+ livello
+# 13 incantesimi conosciuti al 20°: 9 di abiurazione/invocazione + 4 di scuola libera (3°, 8°, 14°, 20°)
+spells:
+  - shield            # abiurazione, 1°
+  - magic_missile     # invocazione, 1°
+  - thunderwave       # invocazione, 1°
+  - find_familiar     # libera (3° livello), 1°
+  - scorching_ray     # invocazione, 2°
+  - shatter           # invocazione, 2°
+  - misty_step        # libera (8° livello), 2°
+  - counterspell      # abiurazione, 3°
+  - fireball          # invocazione, 3°
+  - dispel_magic      # abiurazione, 3°
+  - haste             # libera (14° livello), 3°
+  - banishment        # abiurazione, 4°
+  - dimension_door    # libera (20° livello), 4°
+
+armor: plate                 # 18 + scudo 2 = 20
+shield: true
+weapons: [longsword, longbow, dagger]
+equipment:
+  - "20 frecce (faretra)"
+  - pack: explorers_pack
+money: {gp: 500}
+
+personality:
+  traits: "Uso parole lunghe per sembrare più colta."
+  ideals: "Conoscenza. La via del potere passa per lo studio. (Neutrale)"
+  bonds: "Custodisco un antico tomo di magia da guerra."
+  flaws: "Mi distraggo facilmente quando trovo un mistero."
+
+appearance:
+  age: "180"
+  height: "1,70 m"
+  weight: "55 kg"
+  eyes: "Viola"
+  skin: "Pallida"
+  hair: "Argentei"
+
+allies: "L'Accademia della Spada Arcana."
+treasure: ""
+backstory: "Personaggio di prova (guerriera di 20° livello, Cavaliera Mistica)."

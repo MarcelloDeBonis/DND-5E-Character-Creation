@@ -1,0 +1,55 @@
+# TEST: Umano (Variante), Paladino (Giuramento di Vendetta) di 20° livello, Soldato.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_paladin_20.yaml
+
+name: Kaelen
+template: official_it
+player: "Test"
+race: human
+subrace: variant_human        # +1 a due caratteristiche, 1 abilità, 1 talento
+class: paladin
+subclass: vengeance
+level: 20
+xp: 355000
+background: soldier           # Soldato: Atletica, Intimidire
+alignment: LN
+
+abilities:
+  method: point_buy
+  base: {str: 15, dex: 8, con: 14, int: 8, wis: 10, cha: 15}    # 9+0+7+0+2+9 = 27 punti
+  racial_choice: [str, cha]   # umano variante: +1 FOR, +1 CAR
+  asi:
+    - {str: 2}                # 4° livello
+    - {cha: 2}                # 8° livello
+    - {str: 2}                # 12° livello
+    - {cha: 2}                # 16° livello
+feats:
+  - great_weapon_master       # talento dell'umano variante (1° livello)
+  - {key: resilient, ability: con}   # 19° livello: Resiliente (COS)
+
+hp:
+  method: average
+
+skills: [insight, persuasion]                   # 2 abilità di classe
+racial_skills: [perception]                     # abilità dell'umano variante
+background_tools: ["Dadi", "Veicoli (terrestri)"]
+languages_extra: [giant]                        # 1 dalla razza umana
+fighting_style: great_weapon_fighting
+
+spells: [bless, command, cure_wounds, shield_of_faith, wrathful_smite, aid, find_steed, lesser_restoration,
+         revivify, dispel_magic, crusaders_mantle, aura_of_vitality, death_ward, aura_of_life, destructive_wave]  # CAR (+5) + 10 = 15
+
+armor: plate
+shield: false
+weapons:
+  - {key: greatsword, name: "Spadone del Giuramento", magic_bonus: 1}
+  - javelin
+equipment:
+  - "Simbolo sacro (emblema sullo scudo da parata)"
+  - pack: explorers_pack
+money: {gp: 500, pp: 20}
+
+personality:
+  traits: "Non dimentico mai un torto."
+  ideals: "Vendetta. (Legale)"
+  bonds: "I miei compagni caduti."
+  flaws: "Non ho pietà per i nemici giurati."

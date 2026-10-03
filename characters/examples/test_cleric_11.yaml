@@ -1,0 +1,65 @@
+# TEST: Chierico 11° livello, Dominio della Conoscenza, Nano delle Colline, Saggio
+# Genera con:  python -m dnd5e build characters/examples/test_cleric_11.yaml
+
+name: Durin Pietrasaggia
+template: official_it
+player: "Test"
+race: dwarf
+subrace: hill_dwarf
+class: cleric
+subclass: knowledge           # Dominio della Conoscenza
+level: 11
+xp: 85000
+background: sage              # Saggio
+alignment: LN
+
+abilities:
+  method: point_buy
+  base: {str: 14, dex: 8, con: 14, int: 12, wis: 15, cha: 8}   # 7+0+7+4+9+0 = 27
+  asi:
+    - {wis: 2}                # 4° livello
+feats:
+  - tough                     # 8° livello: Robusto (+2 PF per livello)
+
+hp:
+  method: average
+
+skills: [insight, medicine]                   # 2 abilità di classe
+extra_skills: [nature, religion]              # Benedizioni della Conoscenza
+expertise: [nature, religion]                 # bonus di competenza raddoppiato
+tools: ["Strumenti da fabbro"]                # nano: 1 strumento da artigiano a scelta
+languages_extra: [celestial, draconic, elvish, giant]   # 2 dal Saggio + 2 dal dominio
+
+cantrips: [sacred_flame, guidance, light, thaumaturgy, spare_the_dying]   # 5 all'11° livello
+spells: [bless, cure_wounds, guiding_bolt, healing_word, sanctuary,
+         aid, lesser_restoration, spiritual_weapon,
+         spirit_guardians, revivify, dispel_magic,
+         banishment, death_ward,
+         greater_restoration,
+         heal]                                 # SAG +4 + livello 11 = 15
+
+armor: half_plate
+shield: true
+weapons: [warhammer, light_crossbow]
+equipment:
+  - "Simbolo sacro (martello d'argento)"
+  - "20 quadrelli"
+  - pack: priests_pack
+money: {gp: 120}
+
+personality:
+  traits: "Cito sempre un libro."
+  ideals: "Conoscenza. (Neutrale)"
+  bonds: "La biblioteca del mio clan."
+  flaws: "Non ammetto di non sapere qualcosa."
+
+appearance:
+  age: "160"
+  height: "1,35 m"
+  weight: "75 kg"
+  eyes: "Neri"
+  skin: "Rosata"
+  hair: "Grigi, barba lunga"
+
+backstory: |
+  Personaggio di prova per il motore: chierico della Conoscenza di 11° livello.

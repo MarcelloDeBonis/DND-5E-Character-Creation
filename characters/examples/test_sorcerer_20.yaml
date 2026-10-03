@@ -1,0 +1,72 @@
+# Test: Stregone 20 (Magia Selvaggia), Mezzelfo, Ciarlatano.
+# Genera con:  python -m dnd5e build characters/examples/test_sorcerer_20.yaml
+
+name: Corvin
+template: official_it
+player: "Test"
+race: half_elf
+class: sorcerer
+subclass: wild_magic
+level: 20
+xp: 355000
+background: charlatan
+alignment: CN
+
+abilities:
+  method: standard_array          # 15, 14, 13, 12, 10, 8
+  base: {str: 8, dex: 13, con: 14, int: 10, wis: 12, cha: 15}
+  racial_choice: [dex, con]       # Mezzelfo: +2 CAR, +1 DES, +1 COS
+  asi:
+    - {cha: 1, con: 1}            # 4° livello  (CAR 17 -> 18, COS 15 -> 16)
+    - {cha: 2}                    # 8° livello  (CAR 18 -> 20)
+    - {dex: 2}                    # 16° livello (DES 14 -> 16)
+
+feats:
+  - tough                         # 12° livello: +2 PF per livello
+  - alert                         # 19° livello: +5 iniziativa
+
+hp:
+  method: average
+
+skills: [intimidation, persuasion]                # 2 abilità di classe
+background_skills: [deception, sleight_of_hand]   # Ciarlatano
+racial_skills: [perception, insight]              # Mezzelfo: 2 abilità a scelta
+languages_extra: [infernal]                       # 1 dalla razza
+
+class_options:
+  metamagic: [careful_spell, heightened_spell, quickened_spell, twinned_spell]   # 4 opzioni dal 17° livello
+
+cantrips: [fire_bolt, chill_touch, mage_hand, prestidigitation, minor_illusion, friends]   # 6 trucchetti
+spells: [shield, magic_missile,              # 1°
+         misty_step, mirror_image,           # 2°
+         counterspell, fireball,             # 3°
+         polymorph, banishment,              # 4°
+         animate_objects,                    # 5°
+         disintegrate,                       # 6°
+         plane_shift, finger_of_death,       # 7°
+         power_word_stun,                    # 8°
+         wish, time_stop]                    # 9°: 15 incantesimi conosciuti al 20°
+
+armor: null
+weapons: [dagger, light_crossbow]
+equipment:
+  - "Balestra leggera e 20 quadrelli"
+  - "Focus arcano (dado d'avorio)"
+  - pack: dungeoneers_pack
+  - "Due pugnali"
+include_background_equipment: true
+money: {gp: 5000, pp: 100}
+
+personality:
+  traits: "Ogni problema si risolve con un sorriso, una bugia e, se serve, un desiderio."
+  ideals: "Indipendenza. Nessuno mi dice cosa fare, nemmeno il caos. (Caotico)"
+  bonds: "Devo un favore a un mago che non ho mai visto in faccia."
+  flaws: "Non so resistere a una scommessa."
+
+appearance:
+  age: "61"
+  height: "1,78 m"
+  weight: "70 kg"
+  eyes: "Uno verde e uno oro"
+  skin: "Chiara"
+  hair: "Argento"

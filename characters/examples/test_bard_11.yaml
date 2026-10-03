@@ -1,0 +1,76 @@
+# TEST: Barda di 11° livello, Collegio del Valore, Umana Variante, Soldatessa, point buy.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_bard_11.yaml
+
+name: Brunhild
+template: official_it
+player: "Test"
+gender: f
+race: human
+subrace: variant_human
+class: bard
+subclass: valor              # Collegio del Valore
+level: 11
+xp: 85000
+background: soldier          # Soldatessa: Atletica, Intimidire, un gioco, veicoli terrestri
+alignment: LG
+
+abilities:
+  method: point_buy
+  base: {str: 8, dex: 14, con: 13, int: 10, wis: 12, cha: 15}   # 0+7+5+2+4+9 = 27
+  racial_choice: [cha, dex]  # Umano variante: +1 a due caratteristiche
+  asi:
+    - {cha: 2}               # 4° livello: CAR 16 -> 18
+    - {cha: 2}               # 8° livello: CAR 18 -> 20
+feats:
+  - {key: resilient, ability: con}   # talento dell'umano variante (1° livello): COS 13 -> 14 e competenza nei TS su COS
+
+hp:
+  method: average
+
+skills: [persuasion, performance, perception]   # 3 abilità di classe
+racial_skills: [insight]                        # abilità a scelta dell'umano variante
+background_tools: ["Dadi", "Veicoli (terrestri)"]
+tools: ["Corno", "Tamburo", "Cornamusa"]        # i tre strumenti musicali del bardo
+expertise: [persuasion, performance, perception, intimidation]   # Maestria al 3° e al 10° livello (2 + 2)
+languages_extra: [dwarvish]                     # 1 linguaggio extra dell'umano
+
+cantrips: [vicious_mockery, friends, light, message]   # 4 trucchetti al 10°+ livello
+spells:                                          # 15 incantesimi conosciuti (inclusi i 2 Segreti Magici del 10°)
+  - healing_word
+  - heroism
+  - dissonant_whispers
+  - faerie_fire
+  - shatter
+  - invisibility
+  - hypnotic_pattern
+  - dispel_magic
+  - greater_invisibility
+  - dimension_door
+  - hold_monster
+  - greater_restoration
+  - mass_suggestion
+  - counterspell             # Segreti Magici (mago)
+  - spirit_guardians         # Segreti Magici (chierico)
+
+armor: breastplate
+shield: true
+weapons: [rapier, longbow, longsword]
+equipment:
+  - pack: explorers_pack
+  - "Corno da guerra"
+  - "20 frecce"
+money: {gp: 120}
+
+personality:
+  traits: "Canto sempre prima della battaglia."
+  ideals: "Onore. Combatto per chi non può farlo."
+  bonds: "La mia vecchia compagnia è la mia famiglia."
+  flaws: "Non mi tiro mai indietro da una sfida."
+
+appearance:
+  age: "35"
+  height: "1,78 m"
+  weight: "70 kg"
+  eyes: "Azzurri"
+  skin: "Chiara"
+  hair: "Biondi, in una treccia"

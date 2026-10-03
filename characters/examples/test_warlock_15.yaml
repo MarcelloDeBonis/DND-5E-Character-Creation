@@ -1,0 +1,84 @@
+# TEST: Warlock di 15° livello, Patrono l'Arcifata, Patto della Catena, Umana, Accolita. Versione semplice, al femminile.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_warlock_15.yaml
+
+name: Ninfea
+template: official_it
+player: "Test"
+gender: f
+simple: true                 # versione per bambini: testi facili e guida separata
+race: human
+class: warlock
+subclass: archfey            # Patrono Ultraterreno: l'Arcifata
+level: 15
+xp: 165000
+background: acolyte          # Accolita: Intuizione, Religione, 2 linguaggi
+alignment: CG
+
+abilities:
+  method: point_buy          # 0 + 7 + 5 + 2 + 4 + 9 = 27 punti
+  base: {str: 8, dex: 14, con: 13, int: 10, wis: 12, cha: 15}   # prima del +1 a tutto dell'umano
+  asi:
+    - {cha: 2}               # 4° livello:  CAR 16 -> 18
+    - {cha: 2}               # 8° livello:  CAR 18 -> 20
+    - {dex: 1, con: 1}       # 12° livello: DES 15 -> 16, COS 14 -> 15
+
+hp:
+  method: average
+
+skills: [arcana, nature]                        # 2 abilità di classe
+background_skills: [insight, religion]          # Accolita
+languages_extra: [sylvan, elvish, celestial]    # 1 dall'umano + 2 dall'Accolita
+
+class_options:
+  pact_boons: [pact_of_the_chain]               # Dono del Patto (3° livello): il famiglio
+  invocations:                                  # 7 suppliche al 15° livello
+    - voice_of_the_chain_master                 # Patto della Catena
+    - chains_of_carceri                         # 15° livello, Patto della Catena: blocca mostri a volontà
+    - beguiling_influence                       # competenza in Inganno e Persuasione
+    - bewitching_whispers                       # 7° livello: compulsione 1/riposo lungo con uno slot
+    - misty_visions                             # immagine silenziosa a volontà
+    - beast_speech                              # parlare con gli animali a volontà
+    - agonizing_blast
+
+cantrips: [eldritch_blast, minor_illusion, friends, mage_hand]   # 4 trucchetti dal 10° livello
+spells:                                          # 13 incantesimi conosciuti (slot di 5° livello)
+  - faerie_fire              # lista ampliata dell'Arcifata
+  - sleep                    # lista ampliata dell'Arcifata
+  - charm_person
+  - hex
+  - misty_step
+  - calm_emotions            # lista ampliata dell'Arcifata
+  - blink                    # lista ampliata dell'Arcifata
+  - hypnotic_pattern
+  - greater_invisibility     # lista ampliata dell'Arcifata
+  - dimension_door
+  - dominate_person          # lista ampliata dell'Arcifata
+  - seeming                  # lista ampliata dell'Arcifata
+  - hold_monster
+  - conjure_fey              # Arcanum Mistico (6° livello)
+  - etherealness             # Arcanum Mistico (7° livello)
+  - dominate_monster         # Arcanum Mistico (8° livello)
+
+armor: leather
+weapons: [dagger, light_crossbow]
+equipment:
+  - "Balestra leggera e 20 quadrelli"
+  - "Focus arcano (ramo di biancospino)"
+  - pack: scholars_pack
+  - "Due pugnali"
+include_background_equipment: true
+money: {gp: 900}
+
+personality:
+  traits: "Parlo con i fiori e con le farfalle, e a volte mi rispondono."
+  ideals: "Gioia. Il mondo è troppo grigio senza un po' di magia delle fate. (Caotica)"
+  bonds: "La Regina delle Fate mi ha fatto un dono: un giorno verrà a chiedere il conto."
+  flaws: "Prometto sempre più di quello che posso mantenere."
+
+appearance:
+  age: "30"
+  height: "1,65 m"
+  weight: "55 kg"
+  eyes: "Verdi come foglie"
+  skin: "Chiara, con lentiggini dorate"
+  hair: "Rossi, con fiori intrecciati"

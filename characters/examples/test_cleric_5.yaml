@@ -1,0 +1,59 @@
+# TEST: Chierica 5° livello, Dominio della Luce, Mezzelfa, Accolita (versione semplice)
+# Genera con:  python -m dnd5e build characters/examples/test_cleric_5.yaml
+
+name: Lisandra Albachiara
+template: official_it
+player: "Test"
+gender: f
+simple: true
+race: half_elf
+class: cleric
+subclass: light               # Dominio della Luce
+level: 5
+xp: 6500
+background: acolyte           # Accolita
+alignment: LG
+
+abilities:
+  method: point_buy
+  base: {str: 8, dex: 14, con: 14, int: 10, wis: 15, cha: 10}   # 0+7+7+2+9+2 = 27
+  racial_choice: [wis, con]   # mezzelfa: +2 CAR, +1 SAG, +1 COS
+  asi:
+    - {wis: 2}                # 4° livello
+
+hp:
+  method: average
+
+skills: [medicine, persuasion]                # 2 abilità di classe (Intuizione e Religione arrivano dal background)
+racial_skills: [perception, arcana]           # Versatilità nelle Abilità (mezzelfa)
+languages_extra: [dwarvish, celestial, infernal]   # 1 dalla razza + 2 dall'Accolita
+
+cantrips: [sacred_flame, guidance, spare_the_dying, thaumaturgy]   # 4 al 5° livello; Luce è gratis dal dominio
+spells: [bless, cure_wounds, healing_word, guiding_bolt, aid, lesser_restoration,
+         spiritual_weapon, spirit_guardians, revivify]              # SAG +4 + livello 5 = 9
+
+armor: scale_mail
+shield: true
+weapons: [mace, light_crossbow]
+equipment:
+  - "Simbolo sacro (sole d'oro)"
+  - "20 quadrelli"
+  - pack: priests_pack
+money: {gp: 15}
+
+personality:
+  traits: "Vedo il lato luminoso di ogni cosa."
+  ideals: "Carità. Aiuto chi ha bisogno. (Buona)"
+  bonds: "Il tempio del Sole dove sono cresciuta."
+  flaws: "Mi fido troppo di chi prega il mio stesso dio."
+
+appearance:
+  age: "30"
+  height: "1,68 m"
+  weight: "58 kg"
+  eyes: "Grigi"
+  skin: "Chiara"
+  hair: "Biondi"
+
+backstory: |
+  Personaggio di prova per il motore: chierica della Luce di 5° livello, versione semplice.

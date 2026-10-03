@@ -1,3 +1,12 @@
+# Paladino (PHB 2014), privilegi 1-20 e i tre Giuramenti Sacri del Manuale del Giocatore.
+# Testi in italiano (traduzione ufficiale Asmodee dove nota). Distanze in metri (1,5 m = 5 piedi).
+# table: valori per livello (indice 0 = 1° livello), usabili nei testi come {t_<colonna>}.
+#   lay_on_hands = riserva di Imposizione delle Mani (5 x livello); aura_range = raggio delle aure in metri
+#   (0 prima del 6°, 3 dal 6°, 9 dal 18°); smite_max = danni massimi di Punizione Divina con lo slot più alto
+#   (senza il +1d8 contro non morti e immondi, che può portarli a 6d8).
+# fighting_style_options: stili che il paladino può scegliere (chiavi di equipment.yaml > fighting_styles).
+# always_prepared: {livello da paladino: [chiavi incantesimo]} = incantesimi di giuramento, sempre preparati e fuori
+#   dal conteggio degli incantesimi preparati.
 paladin:
   name: Paladino
   name_f: Paladina
@@ -24,6 +33,7 @@ paladin:
     focus: "simbolo sacro"
   subclass_level: 3
   subclass_label: Giuramento Sacro
+  always_prepared_tag: giuramento   # etichetta degli incantesimi di giuramento a pagina 3 e nella guida
   asi_levels: [4, 8, 12, 16, 19]
   table:
     lay_on_hands: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100]
@@ -34,11 +44,11 @@ paladin:
       - name: Percezione del Divino
         short: "Azione: fino alla fine del tuo turno successivo sai dove si trovano celestiali, immondi e non morti entro 18 m (non dietro copertura totale) e percepisci luoghi e oggetti consacrati o profanati. Usi: 1 + mod. CAR per riposo lungo."
         text: "La presenza di un male potente colpisce i sensi del paladino come un odore nauseabondo, mentre un bene potente risuona come una musica celestiale. Come azione, fino alla fine del suo turno successivo, il paladino conosce la posizione di ogni celestiale, immondo o non morto entro 18 metri che non si trovi dietro copertura totale; ne conosce il tipo (celestiale, immondo o non morto) ma non l'identità. Entro lo stesso raggio individua anche luoghi o oggetti consacrati o profanati, come con l'incantesimo santificare. Può usare questo privilegio un numero di volte pari a 1 + il suo modificatore di Carisma; recupera tutti gli usi spesi al termine di un riposo lungo."
-        kid: "Con un'azione, fino al tuo prossimo turno senti dove sono celestiali (come gli angeli), immondi (come i demoni) e non morti entro 18 m. Usi: 1 + il tuo bonus di Carisma, poi serve un riposo lungo."
+        kid: "Con un'azione, fino alla fine del tuo prossimo turno senti dove sono celestiali (come gli angeli), immondi (come i demoni) e non morti entro 18 m. Usi: 1 + il tuo bonus di Carisma, poi serve un riposo lungo."
       - name: Imposizione delle Mani
         short: "Riserva di {t_lay_on_hands} PF (5 x livello), ricaricata con un riposo lungo. Azione: tocchi una creatura e le fai recuperare PF dalla riserva, oppure spendi 5 punti per curare una malattia o neutralizzare un veleno. Nessun effetto su non morti e costrutti."
         text: "Il tocco benedetto del paladino può guarire le ferite. Dispone di una riserva di potere curativo che si ricarica al termine di un riposo lungo, con cui può ripristinare un numero totale di punti ferita pari a 5 x il suo livello da paladino. Come azione può toccare una creatura e attingere alla riserva per farle recuperare un numero di punti ferita a sua scelta, fino al massimo rimasto nella riserva. In alternativa può spendere 5 punti ferita dalla riserva per curare il bersaglio da una malattia o neutralizzare un veleno che lo affligge; può curare più malattie e veleni con un solo uso, spendendo 5 punti separatamente per ciascuno. Questo privilegio non ha effetto sui non morti e sui costrutti."
-        kid: "Hai {t_lay_on_hands} punti di cura, che tornano dopo un riposo lungo. Con un'azione tocchi qualcuno e gli ridai i punti ferita che vuoi, togliendoli dalla riserva. Con 5 punti guarisci una malattia o un veleno."
+        kid: "Hai {t_lay_on_hands} punti di cura, che tornano dopo un riposo lungo. Con un'azione tocchi qualcuno (anche te stess{o}) e gli ridai i punti ferita che vuoi, togliendoli dalla riserva. Con 5 punti guarisci una malattia o un veleno."
     2:
       - name: Stile di Combattimento
         short: "Scegli uno stile: Difesa, Duello, Combattere con Armi Possenti o Protezione."
@@ -52,6 +62,7 @@ paladin:
         text: "Dal 2° livello il paladino ha imparato ad attingere alla magia divina attraverso la meditazione e la preghiera, lanciando incantesimi come un chierico. Prepara ogni giorno, dalla lista del paladino, un numero di incantesimi pari al suo modificatore di Carisma + la metà del suo livello da paladino (arrotondata per difetto, minimo 1), di livello per cui ha slot incantesimo. Lanciare un incantesimo spende uno slot del suo livello o superiore; gli slot spesi si recuperano con un riposo lungo. Al termine di un riposo lungo può cambiare la lista degli incantesimi preparati: servono 1 minuto per livello di incantesimo per ogni incantesimo della lista. Caratteristica da incantatore: Carisma (CD tiro salvezza = 8 + bonus di competenza + mod. CAR; attacco con incantesimo = bonus di competenza + mod. CAR). Può usare un simbolo sacro come focus da incantatore."
         kid: "Puoi lanciare incantesimi da paladino spendendo i tuoi slot. Chi resiste ai tuoi incantesimi deve fare almeno {cd}; quando attacchi con un incantesimo tira d20{att}."
         kid_hide: true
+        sheet_hide: false     # nascosto nella versione semplice, visibile sulla scheda completa
       - name: Punizione Divina
         short: "Quando colpisci con un attacco con arma da mischia puoi spendere uno slot: +2d8 danni radiosi con uno slot di 1° livello, +1d8 per ogni livello di slot oltre il 1° (max 5d8); +1d8 contro non morti e immondi."
         text: "Quando il paladino colpisce una creatura con un attacco con arma da mischia, può spendere uno slot incantesimo per infliggere al bersaglio danni radiosi in aggiunta ai danni dell'arma. I danni extra sono 2d8 per uno slot di 1° livello, più 1d8 per ogni livello dello slot superiore al 1°, fino a un massimo di 5d8. I danni aumentano di 1d8 se il bersaglio è un non morto o un immondo."
@@ -85,7 +96,7 @@ paladin:
       - name: Aura di Protezione
         short: "Tu e le creature amiche entro {t_aura_range} m aggiungete il tuo mod. CAR (min +1) ai tiri salvezza, se sei cosciente. Raggio 3 m (9 m dal 18°)."
         text: "Ogni volta che il paladino o una creatura amica entro 3 metri da lui deve effettuare un tiro salvezza, la creatura ottiene un bonus al tiro salvezza pari al modificatore di Carisma del paladino (minimo +1). Il paladino deve essere cosciente per conferire il bonus. Al 18° livello il raggio dell'aura sale a 9 metri."
-        kid: "Finché non perdi i sensi, tu e i tuoi amici entro {t_aura_range} m da te aggiungete {mod} (almeno +1) a ogni tiro salvezza."
+        kid: "Finché non perdi i sensi, tu e chi è dalla tua parte entro {t_aura_range} m da te aggiungete {mod} (almeno +1) a ogni tiro salvezza."
     8:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
@@ -96,7 +107,7 @@ paladin:
       - name: Aura di Coraggio
         short: "Tu e le creature amiche entro {t_aura_range} m non potete essere spaventati, se sei cosciente. Raggio 3 m (9 m dal 18°)."
         text: "Il paladino e le creature amiche entro 3 metri da lui non possono essere spaventati finché il paladino è cosciente. Al 18° livello il raggio dell'aura sale a 9 metri."
-        kid: "Finché non perdi i sensi, né tu né i tuoi amici entro {t_aura_range} m da te potete essere spaventati."
+        kid: "Finché non perdi i sensi, nessuno può spaventare te o chi è dalla tua parte entro {t_aura_range} m da te."
     11:
       - name: Punizione Divina Migliorata
         short: "Ogni tuo colpo con un'arma da mischia infligge 1d8 danni radiosi extra (si somma a Punizione Divina)."
@@ -112,7 +123,7 @@ paladin:
       - name: Tocco Purificatore
         short: "Azione: poni fine a un incantesimo su di te o su una creatura consenziente che tocchi. Usi = mod. CAR (min 1) per riposo lungo."
         text: "Il paladino può usare la sua azione per porre fine a un incantesimo su se stesso o su una creatura consenziente che tocca. Può usare questo privilegio un numero di volte pari al suo modificatore di Carisma (minimo una volta); recupera gli usi spesi al termine di un riposo lungo."
-        kid: "Con un'azione tocchi te o un amico e cancelli un incantesimo che ha addosso. Puoi farlo tante volte quanto il tuo bonus di Carisma (almeno 1), poi serve un riposo lungo."
+        kid: "Con un'azione tocchi te o {un_amico} e cancelli un incantesimo che ha addosso. Puoi farlo tante volte quanto il tuo bonus di Carisma (almeno 1), poi serve un riposo lungo."
     16:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
@@ -164,7 +175,7 @@ paladin:
           - name: Aura di Devozione
             short: "Tu e le creature amiche entro {t_aura_range} m non potete essere affascinati, se sei cosciente. Raggio 3 m (9 m dal 18°)."
             text: "Il paladino e le creature amiche entro 3 metri da lui non possono essere affascinati finché il paladino è cosciente. Al 18° livello il raggio dell'aura sale a 9 metri."
-            kid: "Finché non perdi i sensi, nessuno può incantare (affascinare) te o i tuoi amici entro {t_aura_range} m da te."
+            kid: "Finché non perdi i sensi, nessuno può incantare (affascinare) te o chi è dalla tua parte entro {t_aura_range} m da te."
         15:
           - name: Purezza di Spirito
             short: "Sei sempre sotto l'effetto dell'incantesimo protezione dal bene e dal male."
@@ -191,8 +202,8 @@ paladin:
             text: "Il Giuramento degli Antichi è antico quanto gli elfi e i riti druidici: chi lo presta si schiera con la luce nella lotta cosmica contro l'oscurità perché ama le cose belle e vitali del mondo, non necessariamente perché crede nei principi di onore, coraggio e giustizia. Dettami: Accendi la Luce (con misericordia, gentilezza e perdono accendi la speranza nel mondo); Proteggi la Luce (dove c'è bene, bellezza, amore e allegria, opponiti a ciò che vorrebbe distruggerli; dove la vita fiorisce, difendila); Preserva la Tua Luce (gioisci della musica, delle risate, della bellezza e dell'arte: se la luce si spegne nel tuo cuore, non puoi difenderla nel mondo); Sii la Luce (sii un faro per chi vive nella disperazione)."
             kid: "Hai promesso di proteggere la luce del mondo: gentilezza, bellezza, natura e allegria. Perdona, aiuta chi è triste e non smettere mai di cantare, ridere e divertirti."
           - name: Incantesimi di Giuramento
-            short: "Sempre preparati (non contano nel limite): 3° Colpo Intrappolante, Parlare con gli Animali; 5° Raggio di Luna, Passo Velato; 9° Crescita Vegetale, Protezione dall'Energia; 13° Tempesta di Ghiaccio, Pelle di Pietra; 17° Comunione con la Natura, Passaggio Arboreo."
-            text: "Il paladino ottiene incantesimi di giuramento ai livelli da paladino indicati: 3° colpo intrappolante, parlare con gli animali; 5° raggio di luna, passo velato; 9° crescita vegetale, protezione dall'energia; 13° tempesta di ghiaccio, pelle di pietra; 17° comunione con la natura, passaggio arboreo. Sono sempre preparati e non contano nel numero di incantesimi che può preparare ogni giorno. Se un incantesimo di giuramento non è nella lista del paladino, per lui conta comunque come incantesimo da paladino."
+            short: "Sempre preparati (non contano nel limite): 3° Colpo Intrappolante, Parlare con gli Animali; 5° Bagliore Lunare, Passo Velato; 9° Crescita Vegetale, Protezione dall'Energia; 13° Tempesta di Ghiaccio, Pelle di Pietra; 17° Comunione con la Natura, Traslazione Arborea."
+            text: "Il paladino ottiene incantesimi di giuramento ai livelli da paladino indicati: 3° colpo intrappolante, parlare con gli animali; 5° raggio di luna, passo velato; 9° crescita vegetale, protezione dall'energia; 13° tempesta di ghiaccio, pelle di pietra; 17° comunione con la natura, traslazione arborea. Sono sempre preparati e non contano nel numero di incantesimi che può preparare ogni giorno. Se un incantesimo di giuramento non è nella lista del paladino, per lui conta comunque come incantesimo da paladino."
             kid: "Alcuni incantesimi del tuo giuramento sono sempre pronti e non contano tra quelli che prepari."
             kid_hide: true
           - name: "Incanalare Divinità: Ira della Natura"
@@ -207,7 +218,7 @@ paladin:
           - name: Aura di Interdizione
             short: "Tu e le creature amiche entro {t_aura_range} m avete resistenza ai danni degli incantesimi. Raggio 3 m (9 m dal 18°)."
             text: "La magia antica è così radicata nel paladino da formare una protezione mistica. Il paladino e le creature amiche entro 3 metri da lui hanno resistenza ai danni degli incantesimi. Al 18° livello il raggio dell'aura sale a 9 metri."
-            kid: "Tu e i tuoi amici entro {t_aura_range} m da te subite solo metà dei danni degli incantesimi."
+            kid: "Tu e chi è dalla tua parte entro {t_aura_range} m da te subite solo metà dei danni degli incantesimi."
         15:
           - name: Sentinella Imperitura
             short: "Quando scendi a 0 PF senza morire sul colpo, puoi restare a 1 PF (1/riposo lungo). Non subisci gli svantaggi della vecchiaia e la magia non può farti invecchiare."
@@ -215,6 +226,7 @@ paladin:
             kid: "Quando scendi a 0 punti ferita (e non muori subito), puoi restare in piedi con 1 punto ferita: 1 volta, poi serve un riposo lungo. La vecchiaia non ti indebolisce e nessuna magia può farti invecchiare."
         20:
           - name: Campione Antico
+            name_f: Campionessa Antica
             short: "Azione, 1 minuto: all'inizio di ogni tuo turno recuperi 10 PF; lanci gli incantesimi da paladino da 1 azione come azione bonus; i nemici entro 3 m hanno svantaggio ai TS contro i tuoi incantesimi da paladino e Incanalare Divinità. 1/riposo lungo."
             text: "Come azione, il paladino assume la forma di un'antica forza della natura, con un aspetto a sua scelta (la pelle può diventare verde o di corteccia, i capelli frondosi o di muschio, può spuntargli un palco di corna o una criniera leonina). Per 1 minuto: all'inizio di ogni suo turno recupera 10 punti ferita; ogni volta che lancia un incantesimo da paladino con tempo di lancio di 1 azione, può lanciarlo invece come azione bonus; le creature nemiche entro 3 metri da lui hanno svantaggio ai tiri salvezza contro i suoi incantesimi da paladino e le sue opzioni di Incanalare Divinità. Una volta usato, deve completare un riposo lungo prima di poterlo usare di nuovo."
             kid: "Con un'azione, per 1 minuto: all'inizio di ogni tuo turno recuperi 10 PF, lanci gli incantesimi da 1 azione con un'azione bonus, e i nemici entro 3 m resistono alle tue magie con 2 d20 tenendo il più basso. Poi riposo lungo."
@@ -248,6 +260,7 @@ paladin:
             kid: "Con un'azione bonus scegli un nemico entro 3 m: per 1 minuto, quando lo attacchi hai vantaggio (tira 2 d20 e tieni il più alto)."
         7:
           - name: Vendicatore Implacabile
+            name_f: Vendicatrice Implacabile
             short: "Quando colpisci una creatura con un attacco di opportunità, puoi muoverti fino a metà della tua velocità subito dopo, come parte della stessa reazione, senza provocare attacchi di opportunità."
             text: "La capacità soprannaturale del paladino di concentrarsi sul nemico lo aiuta a impedirgli la fuga. Quando colpisce una creatura con un attacco di opportunità, può muoversi fino a metà della sua velocità immediatamente dopo l'attacco, come parte della stessa reazione. Questo movimento non provoca attacchi di opportunità."
             kid: "Quando colpisci un nemico che prova a scappare da te (attacco di opportunità), subito dopo puoi inseguirlo per metà della tua velocità, e mentre ti sposti così i nemici non possono colpirti al volo (niente attacchi di opportunità)."
@@ -260,19 +273,4 @@ paladin:
           - name: Angelo Vendicatore
             short: "Azione, 1 ora: ali con velocità di volo 18 m; aura di minaccia di 9 m: un nemico che vi entra o vi inizia il turno per la prima volta in una battaglia fa un TS su SAG o è spaventato per 1 minuto o finché subisce danni, e gli attacchi contro di lui hanno vantaggio. 1/riposo lungo."
             text: "Come azione, il paladino si trasforma per 1 ora: gli spuntano ali dalla schiena che gli conferiscono una velocità di volo di 18 metri, ed emana un'aura di minaccia con un raggio di 9 metri. La prima volta che una creatura nemica entra nell'aura o vi inizia il suo turno durante una battaglia, deve superare un tiro salvezza su Saggezza o diventa spaventata dal paladino per 1 minuto o finché non subisce danni. I tiri per colpire contro la creatura spaventata hanno vantaggio. Una volta usato, deve completare un riposo lungo prima di poterlo usare di nuovo."
-            kid: "Con un'azione ti spuntano le ali per 1 ora (voli a 18 m). Un nemico che arriva entro 9 m tira un d20 per resistere (Saggezza contro {cd}): se fallisce ha paura e chi lo attacca ha vantaggio, finché non viene ferito. Riposo lungo."
-
-# Ranger (PHB 2014), privilegi 1-20 e i due Archetipi Ranger del Manuale del Giocatore (Cacciatore, Signore delle Bestie).
-# Nomi italiani: privilegi base e Cacciatore come nell'SRD 5.1 in italiano; Signore delle Bestie dal Manuale del Giocatore.
-# Testi riassunti con parole nostre (meccaniche del PHB 2014 con l'errata ufficiale: Compagno del Ranger,
-# Addestramento Eccezionale, Furia Bestiale). Il PHB include anche il Sottosuolo tra i terreni prescelti (l'SRD no).
-# Distanze in metri (1,5 m = 5 piedi, 3 m = 10 piedi, 9 m = 30 piedi, 1,5 km = 1 miglio, 9 km = 6 miglia).
-# table: valori per livello (indice 0 = 1° livello), usabili nei testi come {t_<colonna>}.
-#   spells_known = colonna "Incantesimi conosciuti" del PHB (0 al 1° livello: il ranger lancia incantesimi dal 2°).
-#   favored_enemies / favored_terrains = quanti nemici e terreni prescelti si hanno (servono come count_table).
-# Gli slot incantesimo sono quelli standard da mezzo incantatore (spells.yaml > half).
-# Il ranger del PHB 2014 non ha un focus da incantatore e non lancia rituali (focus: null, ritual: false).
-# fighting_style_options: stili che il ranger può scegliere (chiavi di equipment.yaml > fighting_styles).
-# Nelle option_lists dell'archetipo, "level" = livello da ranger a cui si sceglie l'opzione.
-# name_f: forma al femminile dei privilegi che descrivono il personaggio (Esploratrice Nata, Sterminatrice...).
-# Equipaggiamento: nomi allineati a equipment.yaml (nel PHB italiano: "corazza a scaglie", "dotazione da avventuriero").
+            kid: "Con un'azione ti spuntano le ali per 1 ora (voli a 18 m). Un nemico che arriva entro 9 m tira un d20 per resistere (Saggezza contro {cd}): se fallisce ha paura e chi lo attacca ha vantaggio, finché non viene ferito. Poi riposo lungo."

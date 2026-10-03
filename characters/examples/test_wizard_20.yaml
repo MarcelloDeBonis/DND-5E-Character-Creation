@@ -1,0 +1,90 @@
+# TEST: Maga di 20° livello — Nana delle Montagne, Eroina Popolare, Scuola di Necromanzia, nomi al femminile
+# Verifica: armatura media (competenza razziale), ASI al 4°/12°/19° e talenti Allerta (8°) e Resiliente (16°),
+# slot fino al 9°, libro da 44 + Animare Morti gratis (Servitori Non Morti), Maestria negli Incantesimi,
+# Incantesimi Personali.
+# Genera con:  python -m dnd5e build characters/examples/test_wizard_20.yaml
+
+name: Brunhild
+template: official_it
+player: "Test"
+gender: f
+race: dwarf
+subrace: mountain_dwarf
+class: wizard
+subclass: necromancy          # Scuola di Necromanzia
+level: 20
+xp: 355000
+background: folk_hero         # Eroina Popolare: Addestrare Animali e Sopravvivenza
+alignment: N
+
+abilities:
+  method: point_buy
+  base: {str: 8, dex: 14, con: 14, int: 15, wis: 12, cha: 8}   # 27 punti; nana delle montagne +2 COS, +2 FOR
+  asi:
+    - {int: 2}                # 4° livello
+    - {int: 2}                # 12° livello
+    - {int: 1, con: 1}        # 19° livello
+
+feats:
+  - alert                            # 8° livello: +5 iniziativa
+  - {key: resilient, ability: con}   # 16° livello: +1 COS e competenza nei TS su COS
+
+hp:
+  method: average
+
+skills: [arcana, medicine]           # 2 abilità da maga
+tools: ["Strumenti da fabbro"]       # competenza negli strumenti della razza (a scelta)
+background_tools: ["Strumenti da carpentiere", "Veicoli (terrestri)"]
+languages_extra: []                  # l'Eroina Popolare non dà linguaggi
+
+cantrips: [chill_touch, fire_bolt, mage_hand, minor_illusion, prestidigitation]   # 5 trucchetti
+spellbook: [mage_armor, magic_missile, shield, false_life, ray_of_sickness, detect_magic, find_familiar, identify, alarm, comprehend_languages,
+            misty_step, blindness_deafness, ray_of_enfeeblement, hold_person, see_invisibility, web,
+            counterspell, fireball, vampiric_touch, fly, dispel_magic, remove_curse,
+            blight, dimension_door, polymorph, banishment,
+            cloudkill, cone_of_cold, hold_monster, dominate_person,
+            circle_of_death, create_undead, globe_of_invulnerability, magic_jar,
+            finger_of_death, plane_shift, teleport,
+            clone, mind_blank, feeblemind,
+            wish, power_word_kill, astral_projection, time_stop,
+            animate_dead]   # 6 + 2 x 19 = 44, più Animare Morti aggiunto gratis da Servitori Non Morti (6°)
+spells: [shield, magic_missile, false_life, detect_magic,
+         misty_step, hold_person, web, blindness_deafness,
+         animate_dead, vampiric_touch, fly, dispel_magic,
+         blight, dimension_door, polymorph,
+         cloudkill, hold_monster, cone_of_cold,
+         circle_of_death, create_undead, globe_of_invulnerability,
+         finger_of_death, teleport, feeblemind, wish]   # INT +5 + 20 = 25 (Controincantesimo e Palla di Fuoco sono Incantesimi Personali)
+spell_mastery: [shield, misty_step]          # Maestria negli Incantesimi (18°): 1° e 2° livello del libro, senza spendere slot
+signature_spells: [counterspell, fireball]   # Incantesimi Personali (20°): 3° livello del libro, sempre preparati fuori dal conto
+
+armor: breastplate
+weapons: [warhammer, dagger, light_crossbow]
+equipment:
+  - "Libro degli incantesimi"
+  - "Focus arcano (teschio di drago)"
+  - pack: explorers_pack
+  - "20 quadrelli"
+  - "Strumenti da carpentiere"
+  - "Vanga"
+  - "Pentola di ferro"
+  - "Abiti comuni"
+include_background_equipment: false   # l'equipaggiamento dell'Eroina Popolare è già scritto qui sopra
+money: {gp: 2500, pp: 40}
+
+personality:
+  traits: "Parlo poco e con i morti più che con i vivi."
+  ideals: "Ordine. Anche la morte ha le sue regole: io le conosco. (Neutrale)"
+  bonds: "Il mio villaggio sotto la montagna esiste ancora grazie a me."
+  flaws: "Considero i vivi un problema temporaneo."
+
+appearance:
+  age: "212"
+  height: "1,35 m"
+  weight: "80 kg"
+  eyes: "Neri"
+  skin: "Grigia"
+  hair: "Bianchi, trecce"
+
+backstory: |
+  Brunhild salvò il suo villaggio da una piaga animando i caduti per scavare le difese. Da allora la montagna la teme e la rispetta.

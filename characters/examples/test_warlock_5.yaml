@@ -1,0 +1,61 @@
+# TEST: Warlock di 5° livello, Patrono l'Immondo, Patto del Tomo, Tiefling, Monello. Versione semplice, al maschile.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_warlock_5.yaml
+
+name: Brann
+template: official_it
+player: "Test"
+simple: true                 # versione per bambini: testi facili e guida separata
+race: tiefling
+class: warlock
+subclass: fiend              # Patrono Ultraterreno: l'Immondo
+level: 5
+xp: 6500
+background: urchin           # Monello: Rapidità di Mano, Furtività, trucchi per il camuffamento, arnesi da scasso
+alignment: CN
+
+abilities:
+  method: point_buy          # 0 + 7 + 7 + 2 + 2 + 9 = 27 punti
+  base: {str: 8, dex: 14, con: 14, int: 10, wis: 10, cha: 15}   # prima dei bonus razziali (+2 CAR, +1 INT)
+  asi:
+    - {cha: 1, con: 1}       # 4° livello: CAR 17 -> 18, COS 14 -> 15
+
+hp:
+  method: average
+
+skills: [arcana, intimidation]                     # 2 abilità di classe
+background_skills: [sleight_of_hand, stealth]      # Monello
+background_tools: ["Trucchi per il camuffamento", "Arnesi da scasso"]
+
+class_options:
+  pact_boons:                                      # Dono del Patto (3° livello)
+    - {key: pact_of_the_tome, cantrips: [guidance, light, druidcraft]}   # 3 trucchetti da altre liste nel Libro delle Ombre
+  invocations: [agonizing_blast, armor_of_shadows, beguiling_influence]   # 3 suppliche al 5° livello
+
+cantrips: [eldritch_blast, mage_hand, minor_illusion]   # 3 trucchetti da warlock al 4°+ livello (taumaturgia arriva dal tiefling)
+spells: [hex, armor_of_agathys, burning_hands,          # 1° (mani brucianti: lista ampliata dell'Immondo)
+         misty_step, scorching_ray,                     # 2° (raggio rovente: lista ampliata)
+         fireball]                                      # 3° (palla di fuoco: lista ampliata). 6 conosciuti al 5° livello
+
+armor: null                  # nessuna armatura: usa Armatura delle Ombre (armatura magica a volontà)
+weapons: [light_crossbow, dagger]
+equipment:
+  - "Balestra leggera e 20 quadrelli"
+  - "Focus arcano (corno nero)"
+  - pack: dungeoneers_pack
+  - "Due pugnali"
+include_background_equipment: true
+money: {gp: 10}
+
+personality:
+  traits: "Faccio battute anche quando ho paura."
+  ideals: "Libertà. Nessuno mi dirà più cosa fare. (Caotico)"
+  bonds: "Il mio patrono mi ha salvato dalla strada: gli devo tutto, ma non mi fido."
+  flaws: "Prendo le cose che luccicano, anche quando non sono mie."
+
+appearance:
+  age: "16"
+  height: "1,60 m"
+  weight: "50 kg"
+  eyes: "Rossi, senza pupille"
+  skin: "Rosso scuro"
+  hair: "Neri, con due piccole corna"

@@ -50,7 +50,7 @@
 - Incantesimi preparabili: 5
 - Trucchetti: Illusione Minore (Elfa Alta, INT: CD 10, attacco +2), Produrre Fiamma (Druida), Guida (Druida)
 - 1° livello: Cura Ferite, Parola Guaritrice, Intralciare (C), Bacche Benefiche
-- 2° livello: Raggio di Luna (C)
+- 2° livello: Bagliore Lunare (C)
 
 ## Forma Selvatica
 
@@ -67,7 +67,7 @@
 - **Trucchetto** (Elfa Alta): Conosci un trucchetto dalla lista del mago (caratteristica: Intelligenza).
 - **Linguaggio Extra** (Elfa Alta): Parli, leggi e scrivi un linguaggio aggiuntivo a tua scelta.
 - **Druidico** (Druida): Conosci il Druidico, linguaggio segreto dei druidi; messaggi nascosti riconoscibili solo da chi lo conosce.
-- **Incantesimi** (Druida): Incantatrice completa (Saggezza). Prepari un numero di incantesimi pari a mod. SAG + livello da druido; puoi lanciare i rituali; usi un focus druidico.
+- **Incantesimi** (Druida): Lanci incantesimi da druido con la Saggezza. Prepari un numero di incantesimi pari a mod. SAG + livello da druido; puoi lanciare i rituali; usi un focus druidico.
 - **Forma Selvatica** (Druida): Azione: ti trasformi in una bestia già vista (vedi tabella in appendice). 2 usi per riposo breve o lungo; dura metà livello ore.
 - **Circolo Druidico** (Druida): Scegli un circolo: Terra o Luna.
 - **Forma Selvatica da Combattimento** (Circolo della Luna): Forma Selvatica come azione bonus. In forma di bestia, azione bonus: spendi uno slot per recuperare 1d8 PF per livello dello slot.

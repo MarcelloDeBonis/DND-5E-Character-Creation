@@ -165,10 +165,11 @@ warlock:
       kid: 'La tua magia è un regalo di un essere potentissimo: il tuo patrono. Leggi i poteri che ti dà; altri arrivano al 6°, 10° e 14° livello.'
       kid_hide: true
     - name: Magia del Patto
-      short: 'Incantatore del patto (Carisma): conosci {t_cantrips} trucchetti e {t_spells_known} incantesimi da warlock; hai {t_slots} slot, tutti di {t_slot_level}° livello, recuperati con un riposo breve
-        o lungo. CD {cd}, attacco {att}; focus arcano; niente rituali.'
-      text: Ogni incantesimo di 1° livello o superiore costa uno slot del patto e viene lanciato sempre al livello degli slot; si imparano solo incantesimi di quel livello o inferiore, e a ogni nuovo livello
-        se ne può scambiare uno conosciuto. CD = 8 + bonus di competenza + mod. CAR; attacco con incantesimo = bonus di competenza + mod. CAR.
+      short: 'Incantatore del patto (Carisma): conosci {t_cantrips} trucchetti e {t_spells_known} incantesimi da warlock; slot del patto: {t_slots} di {t_slot_level}° livello (sempre tutti dello stesso
+        livello), recuperati con un riposo breve o lungo. CD {cd}, attacco {att}; focus arcano; rituali solo col Libro dei Segreti Antichi.'
+      text: Il warlock conosce {t_cantrips} trucchetti e {t_spells_known} incantesimi della sua lista. Ha {t_slots} slot del patto di {t_slot_level}° livello (sono sempre tutti dello stesso livello) e li
+        recupera con un riposo breve o lungo. Ogni incantesimo di 1° livello o superiore costa uno slot del patto e viene lanciato sempre al livello degli slot; si imparano solo incantesimi di quel livello o inferiore, e a ogni nuovo
+        livello se ne può scambiare uno conosciuto con un altro della lista. CD = 8 + bonus di competenza + mod. CAR; attacco con incantesimo = bonus di competenza + mod. CAR. Focus arcano.
       kid: Conosci {t_cantrips} trucchetti (magie gratis) e {t_spells_known} incantesimi. Gli slot (ne hai {t_slots}, di {t_slot_level}° livello) si ricaricano anche con un riposo breve di 1 ora. Per colpire
         con una magia tira d20{att}.
     2:
@@ -193,7 +194,7 @@ warlock:
     8:
     - name: Aumento dei Punteggi di Caratteristica
       short: +2 a una caratteristica o +1 a due (max 20), oppure un talento.
-      text: Vedi 4° livello.
+      text: Il warlock può aumentare di 2 un punteggio di caratteristica, o di 1 due punteggi (massimo 20), oppure scegliere un talento.
       kid: Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sulla scheda sono già aggiornati.
       kid_hide: true
     11:
@@ -206,37 +207,37 @@ warlock:
     12:
     - name: Aumento dei Punteggi di Caratteristica
       short: +2 a una caratteristica o +1 a due (max 20), oppure un talento.
-      text: Vedi 4° livello.
+      text: Il warlock può aumentare di 2 un punteggio di caratteristica, o di 1 due punteggi (massimo 20), oppure scegliere un talento.
       kid: Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sulla scheda sono già aggiornati.
       kid_hide: true
     13:
     - name: Arcanum Mistico (7° livello)
       short: 'Scegli un incantesimo da warlock di 7° livello: 1 lancio senza slot per riposo lungo.'
-      text: Al 13° livello il warlock aggiunge un arcanum di 7° livello, con le stesse regole dell'Arcanum Mistico dell'11° livello.
+      text: Al 13° livello il warlock sceglie come arcanum anche un incantesimo di 7° livello della sua lista e può lanciarlo una volta senza spendere slot, recuperando l'uso con un riposo lungo.
       kid: 'Impari un''altra magia potentissima, di 7° livello: anche questa la lanci 1 volta senza slot e torna dopo un riposo lungo.'
       arcanum_level: 7
     15:
     - name: Arcanum Mistico (8° livello)
       short: 'Scegli un incantesimo da warlock di 8° livello: 1 lancio senza slot per riposo lungo.'
-      text: Al 15° livello il warlock aggiunge un arcanum di 8° livello, con le stesse regole dell'Arcanum Mistico dell'11° livello.
+      text: Al 15° livello il warlock sceglie come arcanum anche un incantesimo di 8° livello della sua lista e può lanciarlo una volta senza spendere slot, recuperando l'uso con un riposo lungo.
       kid: 'Impari un''altra magia potentissima, di 8° livello: la lanci 1 volta senza slot e torna dopo un riposo lungo.'
       arcanum_level: 8
     16:
     - name: Aumento dei Punteggi di Caratteristica
       short: +2 a una caratteristica o +1 a due (max 20), oppure un talento.
-      text: Vedi 4° livello.
+      text: Il warlock può aumentare di 2 un punteggio di caratteristica, o di 1 due punteggi (massimo 20), oppure scegliere un talento.
       kid: Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sulla scheda sono già aggiornati.
       kid_hide: true
     17:
     - name: Arcanum Mistico (9° livello)
       short: 'Scegli un incantesimo da warlock di 9° livello: 1 lancio senza slot per riposo lungo.'
-      text: Al 17° livello il warlock aggiunge un arcanum di 9° livello, con le stesse regole dell'Arcanum Mistico dell'11° livello.
+      text: Al 17° livello il warlock sceglie come arcanum anche un incantesimo di 9° livello della sua lista e può lanciarlo una volta senza spendere slot, recuperando l'uso con un riposo lungo.
       kid: 'Impari la magia più forte che esista, di 9° livello: la lanci 1 volta senza slot e torna dopo un riposo lungo.'
       arcanum_level: 9
     19:
     - name: Aumento dei Punteggi di Caratteristica
       short: +2 a una caratteristica o +1 a due (max 20), oppure un talento.
-      text: Vedi 4° livello.
+      text: Il warlock può aumentare di 2 un punteggio di caratteristica, o di 1 due punteggi (massimo 20), oppure scegliere un talento.
       kid: Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sulla scheda sono già aggiornati.
       kid_hide: true
     20:
@@ -254,6 +255,11 @@ warlock:
           name: Deflagrazione Agonizzante
           prerequisite: Trucchetto deflagrazione occulta
           requires_cantrip: eldritch_blast
+          cantrip_damage_bonus:
+            ability: cha
+            spells:
+            - eldritch_blast
+            per_beam: true
           short: Ogni raggio di deflagrazione occulta che colpisce aggiunge il mod. di Carisma ai danni.
           text: Quando un raggio di deflagrazione occulta va a segno, il warlock somma il proprio modificatore di Carisma ai danni di quel raggio.
           kid: Ogni raggio della tua Deflagrazione Occulta che colpisce fa {mod} danni in più. Se lanci più raggi, il bonus vale per ognuno!
@@ -261,6 +267,7 @@ warlock:
           name: Armatura delle Ombre
           prerequisite: null
           spell: mage_armor
+          spell_uses: at_will
           short: Lanci armatura magica su di te a volontà, senza slot né componenti materiali (senza armatura CA 13 + mod. DES per 8 ore).
           text: Il warlock può lanciare armatura magica su se stesso quando vuole, senza spendere slot né componenti materiali. Se non indossa armature, la sua CA diventa 13 + modificatore di Destrezza
             per 8 ore.
@@ -270,6 +277,7 @@ warlock:
           prerequisite: 9° livello
           min_level: 9
           spell: levitate
+          spell_uses: at_will
           short: Lanci levitazione su di te a volontà, senza slot né componenti materiali (sali o scendi fino a 6 m per turno; concentrazione, fino a 10 minuti).
           text: Il warlock può lanciare levitazione su se stesso quando vuole, senza slot né componenti materiali. Finché mantiene la concentrazione (massimo 10 minuti) può spostarsi in verticale di 6 m
             per turno.
@@ -278,6 +286,7 @@ warlock:
           name: Linguaggio delle Bestie
           prerequisite: null
           spell: speak_with_animals
+          spell_uses: at_will
           short: Lanci parlare con gli animali a volontà, senza slot (10 minuti).
           text: Il warlock può lanciare parlare con gli animali quando vuole, senza spendere slot. Per 10 minuti capisce le bestie e si fa capire da loro.
           kid: 'Quando vuoi, senza usare slot, parli con gli animali per 10 minuti: capisci quello che dicono e loro capiscono te.'
@@ -289,12 +298,13 @@ warlock:
           - persuasion
           short: Ottieni competenza nelle abilità Inganno e Persuasione.
           text: Il warlock diventa competente nelle abilità Inganno e Persuasione.
-          kid: 'Diventi bravissimo a convincere le persone e a raccontare bugie credibili: aggiungi il bonus di competenza alle prove di Persuasione e di Inganno.'
+          kid: 'Diventi bravissim{o} a convincere le persone e a raccontare bugie credibili: aggiungi il bonus di competenza alle prove di Persuasione e di Inganno.'
         bewitching_whispers:
           name: Sussurri Ammalianti
           prerequisite: 7° livello
           min_level: 7
           spell: compulsion
+          spell_uses: long_rest_slot
           short: Una volta per riposo lungo lanci compulsione con uno slot da warlock (creature a scelta entro 9 m che ti sentono, TS su SAG; concentrazione, fino a 1 minuto).
           text: Il warlock può lanciare compulsione spendendo uno slot di Magia del Patto, poi deve completare un riposo lungo per farlo di nuovo. Chi fallisce il TS su Saggezza deve muoversi nella direzione
             che il warlock indica con un'azione bonus.
@@ -303,17 +313,25 @@ warlock:
           name: Libro dei Segreti Antichi
           prerequisite: Patto del Tomo
           requires_pact: pact_of_the_tome
-          short: Copi nel Libro delle Ombre due incantesimi rituali di 1° livello di qualsiasi classe e li lanci solo come rituali; puoi aggiungerne altri che trovi (livello massimo metà del tuo livello
-            da warlock, per eccesso; 2 ore e 50 mo per livello).
-          text: Il warlock trascrive nel Libro delle Ombre due incantesimi rituali di 1° livello presi da liste di qualsiasi classe, che può lanciare solo come rituali. In seguito può copiarvi altri rituali
+          spell_choice:
+            count: 2
+            level: 1
+            ritual_only: true
+            lists: any
+          short: Copi nel Libro delle Ombre due incantesimi rituali di 1° livello di qualsiasi classe (non contano tra quelli conosciuti) e, col libro in mano, li lanci solo come rituali; così puoi lanciare
+            come rituali anche gli incantesimi da warlock che conosci con l'etichetta rituale. Puoi aggiungere altri rituali che trovi (livello massimo metà del tuo livello da warlock, per eccesso; 2 ore e
+            50 mo per livello).
+          text: Il warlock trascrive nel Libro delle Ombre due incantesimi rituali di 1° livello presi da liste di qualsiasi classe, che non contano tra gli incantesimi conosciuti e che può lanciare solo
+            come rituali tenendo in mano il libro; da quel momento può lanciare come rituale anche ogni incantesimo da warlock conosciuto che abbia l'etichetta rituale. In seguito può copiarvi altri rituali
             trovati, di livello non superiore alla metà del suo livello da warlock arrotondata per eccesso, spendendo 2 ore e 50 mo per ogni livello dell'incantesimo.
-          kid: 'Nel tuo libro magico scrivi 2 incantesimi rituali di 1° livello presi da qualsiasi classe. Li lanci solo come rituali: ci metti 10 minuti in più, ma non consumi slot.'
+          kid: 'Nel tuo libro magico scrivi 2 incantesimi rituali di 1° livello presi da qualsiasi classe. Li lanci solo come rituali, con il libro in mano: ci metti 10 minuti in più, ma non consumi slot.'
         chains_of_carceri:
           name: Catene di Carceri
           prerequisite: 15° livello, Patto della Catena
           min_level: 15
           requires_pact: pact_of_the_chain
           spell: hold_monster
+          spell_uses: at_will
           short: Lanci blocca mostri a volontà, senza slot né componenti materiali, ma solo su celestiali, immondi ed elementali; una creatura già bersagliata non può esserlo di nuovo prima del tuo riposo
             lungo.
           text: Il warlock può lanciare blocca mostri a volontà, senza slot né componenti materiali, purché il bersaglio sia un celestiale, un immondo o un elementale. Non può bersagliare di nuovo la stessa
@@ -331,6 +349,7 @@ warlock:
           prerequisite: 7° livello
           min_level: 7
           spell: confusion
+          spell_uses: long_rest_slot
           short: Una volta per riposo lungo lanci confusione con uno slot da warlock (sfera di 3 m di raggio entro 27 m, TS su SAG; concentrazione, fino a 1 minuto).
           text: Il warlock può lanciare confusione spendendo uno slot di Magia del Patto, poi deve completare un riposo lungo per farlo di nuovo.
           kid: 'Una volta, poi serve un riposo lungo (usi uno slot): confondi i nemici in una zona di 3 m di raggio entro 27 m. Chi fallisce il tiro (Saggezza contro {cd}) si comporta a caso fino a 1 minuto.'
@@ -338,6 +357,7 @@ warlock:
           name: Vista Occulta
           prerequisite: null
           spell: detect_magic
+          spell_uses: at_will
           short: Lanci individuazione del magico a volontà, senza slot (percepisci la magia entro 9 m; concentrazione, fino a 10 minuti).
           text: Il warlock può lanciare individuazione del magico quando vuole, senza spendere slot.
           kid: Quando vuoi, senza usare slot, senti la magia attorno a te fino a 9 m e vedi brillare oggetti e creature magiche, fino a 10 minuti.
@@ -345,6 +365,8 @@ warlock:
           name: Lancia Occulta
           prerequisite: Trucchetto deflagrazione occulta
           requires_cantrip: eldritch_blast
+          range_override:
+            eldritch_blast: 90
           short: La gittata di deflagrazione occulta passa da 36 m a 90 m.
           text: Quando il warlock lancia deflagrazione occulta, la gittata dell'incantesimo diventa di 90 m.
           kid: 'La tua Deflagrazione Occulta arriva lontanissimo: fino a 90 m invece di 36 m.'
@@ -358,17 +380,18 @@ warlock:
           name: Vigore Immondo
           prerequisite: null
           spell: false_life
+          spell_uses: at_will
           short: Lanci vita falsata su di te a volontà come incantesimo di 1° livello, senza slot né componenti materiali (1d4 + 4 punti ferita temporanei per 1 ora).
           text: Il warlock può lanciare vita falsata su se stesso a volontà, sempre come incantesimo di 1° livello e senza slot né componenti materiali.
           kid: 'Quando vuoi, senza usare slot, ti dai 1d4 + 4 punti ferita temporanei per 1 ora: si consumano prima dei tuoi punti ferita veri. Non si sommano: se lo rifai, tieni quelli che preferisci.'
         gaze_of_two_minds:
           name: Sguardo delle Due Menti
           prerequisite: null
-          short: 'Azione: tocchi un umanoide consenziente e percepisci con i suoi sensi fino alla fine del tuo turno successivo; ogni turno puoi prolungare con un''azione. Intanto sei cieco e sordo verso
-            ciò che ti circonda.'
-          text: Con un'azione il warlock tocca un umanoide consenziente e vede e sente ciò che percepisce lui fino alla fine del proprio turno successivo, rinnovando l'effetto con un'azione nei turni seguenti.
-            Nel frattempo è cieco e sordo rispetto a ciò che ha attorno.
-          kid: Con un'azione tocchi un amico e vedi e senti quello che vede e sente lui. Intanto però non vedi e non senti niente attorno a te. Ogni turno spendi un'azione per continuare.
+          short: 'Azione: tocchi un umanoide consenziente e percepisci con i suoi sensi fino alla fine del tuo turno successivo; finché siete sullo stesso piano puoi prolungare con un''azione ogni turno.
+            Intanto sei ciec{o} e sord{o} verso ciò che ti circonda.'
+          text: Con un'azione il warlock tocca un umanoide consenziente e vede e sente ciò che percepisce lui fino alla fine del proprio turno successivo; finché la creatura resta sul suo stesso piano di
+            esistenza può rinnovare l'effetto con un'azione nei turni seguenti. Nel frattempo ne usa anche i sensi speciali ed è cieco e sordo rispetto a ciò che ha attorno.
+          kid: Con un'azione tocchi una persona che è d'accordo e vedi e senti quello che vede e sente lei. Intanto però non vedi e non senti niente attorno a te. Ogni turno spendi un'azione per continuare.
         lifedrinker:
           name: Bevitore di Vita
           prerequisite: 12° livello, Patto della Lama
@@ -381,6 +404,7 @@ warlock:
           name: Maschera dai Molti Volti
           prerequisite: null
           spell: disguise_self
+          spell_uses: at_will
           short: Lanci camuffare se stesso a volontà, senza slot (cambi aspetto e abiti con un'illusione per 1 ora).
           text: Il warlock può lanciare camuffare se stesso quando vuole, senza spendere slot.
           kid: 'Quando vuoi, senza usare slot, cambi faccia e vestiti per 1 ora. È solo un''illusione: chi ti tocca o ti osserva con molta attenzione può accorgersene.'
@@ -389,6 +413,7 @@ warlock:
           prerequisite: 15° livello
           min_level: 15
           spell: alter_self
+          spell_uses: at_will
           short: Lanci alterare se stesso a volontà, senza slot (concentrazione, fino a 1 ora).
           text: Il warlock può lanciare alterare se stesso quando vuole, senza spendere slot.
           kid: 'Quando vuoi, senza usare slot, cambi il tuo corpo fino a 1 ora: respiri sott''acqua, cambi aspetto, oppure ti spuntano artigli o zanne magiche da 1d6 danni. Devi mantenere la concentrazione.'
@@ -397,6 +422,7 @@ warlock:
           prerequisite: 9° livello
           min_level: 9
           spell: conjure_elemental
+          spell_uses: long_rest_slot
           short: Una volta per riposo lungo lanci evoca elementale con uno slot da warlock (tempo di lancio 1 minuto; concentrazione, fino a 1 ora).
           text: Il warlock può lanciare evoca elementale spendendo uno slot di Magia del Patto, poi deve completare un riposo lungo per farlo di nuovo.
           kid: 'Una volta, poi serve un riposo lungo (usi uno slot): chiami un elementale di aria, terra, fuoco o acqua che ti obbedisce fino a 1 ora. Se perdi la concentrazione diventa tuo nemico!'
@@ -405,6 +431,7 @@ warlock:
           prerequisite: 5° livello
           min_level: 5
           spell: slow
+          spell_uses: long_rest_slot
           short: Una volta per riposo lungo lanci lentezza con uno slot da warlock (fino a 6 creature in un cubo di 12 m entro 36 m, TS su SAG; concentrazione, fino a 1 minuto).
           text: Il warlock può lanciare lentezza spendendo uno slot di Magia del Patto, poi deve completare un riposo lungo per farlo di nuovo.
           kid: 'Una volta, poi serve un riposo lungo (usi uno slot): fino a 6 nemici entro 36 m tirano un d20 (Saggezza contro {cd}). Chi fallisce diventa lento fino a 1 minuto: metà velocità, -2 alla CA
@@ -413,6 +440,7 @@ warlock:
           name: Visioni Nebbiose
           prerequisite: null
           spell: silent_image
+          spell_uses: at_will
           short: Lanci immagine silenziosa a volontà, senza slot né componenti materiali (illusione muta grande fino a un cubo di 4,5 m entro 18 m; concentrazione, fino a 10 minuti).
           text: Il warlock può lanciare immagine silenziosa quando vuole, senza slot né componenti materiali.
           kid: Quando vuoi, senza usare slot, crei un'illusione che si vede ma non fa rumore, grande fino a 4,5 m ed entro 18 m da te. Dura fino a 10 minuti se mantieni la concentrazione.
@@ -428,6 +456,7 @@ warlock:
           prerequisite: 9° livello
           min_level: 9
           spell: jump
+          spell_uses: at_will
           short: Lanci salto su di te a volontà, senza slot né componenti materiali (distanza di salto triplicata per 1 minuto).
           text: Il warlock può lanciare salto su se stesso quando vuole, senza slot né componenti materiali.
           kid: Quando vuoi, senza usare slot, per 1 minuto salti tre volte più lontano del normale.
@@ -443,6 +472,7 @@ warlock:
           prerequisite: 7° livello
           min_level: 7
           spell: polymorph
+          spell_uses: long_rest_slot
           short: Una volta per riposo lungo lanci metamorfosi con uno slot da warlock (una creatura entro 18 m, TS su SAG se non consenziente; concentrazione, fino a 1 ora).
           text: Il warlock può lanciare metamorfosi spendendo uno slot di Magia del Patto, poi deve completare un riposo lungo per farlo di nuovo.
           kid: 'Una volta, poi serve un riposo lungo (usi uno slot): trasformi una creatura entro 18 m in un animale, fino a 1 ora. Se non vuole, tira un d20 (Saggezza contro {cd}) per resistere.'
@@ -451,6 +481,7 @@ warlock:
           prerequisite: 5° livello
           min_level: 5
           spell: bestow_curse
+          spell_uses: long_rest_slot
           short: Una volta per riposo lungo lanci scagliare maledizione con uno slot da warlock (a contatto, TS su SAG; con slot di 3° concentrazione fino a 1 minuto, di 4° fino a 10 minuti, di 5° 8 ore
             senza concentrazione).
           text: Il warlock può lanciare scagliare maledizione spendendo uno slot di Magia del Patto, poi deve completare un riposo lungo per farlo di nuovo.
@@ -460,6 +491,7 @@ warlock:
           name: Ladro dei Cinque Fati
           prerequisite: null
           spell: bane
+          spell_uses: long_rest_slot
           short: Una volta per riposo lungo lanci anatema con uno slot da warlock (3 creature entro 9 m, +1 per ogni livello dello slot oltre il 1°; TS su CAR; -1d4 ai tiri per colpire e ai TS; concentrazione,
             fino a 1 minuto).
           text: Il warlock può lanciare anatema spendendo uno slot di Magia del Patto, poi deve completare un riposo lungo per farlo di nuovo.
@@ -478,6 +510,7 @@ warlock:
           prerequisite: 15° livello
           min_level: 15
           spell: arcane_eye
+          spell_uses: at_will
           short: Lanci occhio arcano a volontà, senza slot (occhio invisibile che si muove e ti mostra ciò che vede; concentrazione, fino a 1 ora).
           text: Il warlock può lanciare occhio arcano quando vuole, senza spendere slot.
           kid: Quando vuoi, senza usare slot, crei un occhio magico invisibile che vola dove dici tu (9 m per turno) e ti fa vedere cosa c'è, anche al buio. Dura fino a 1 ora con la concentrazione.
@@ -494,6 +527,7 @@ warlock:
           prerequisite: 9° livello
           min_level: 9
           spell: speak_with_dead
+          spell_uses: at_will
           short: Lanci parlare con i morti a volontà, senza slot (fino a 5 domande a un cadavere entro 3 m, in 10 minuti).
           text: Il warlock può lanciare parlare con i morti quando vuole, senza spendere slot.
           kid: Quando vuoi, senza usare slot, fai fino a 5 domande a un cadavere che ha ancora la bocca. Risponde con quello che sapeva da vivo, a volte in modo misterioso.
@@ -514,11 +548,13 @@ warlock:
           name: Patto della Catena
           prerequisite: null
           spell: find_familiar
+          spell_uses: ritual
           short: Impari trova famiglio e lo lanci come rituale (non conta tra gli incantesimi conosciuti); il famiglio può essere anche un imp, uno pseudodrago, un quasit o un folletto. Quando usi l'azione
             di Attacco puoi rinunciare a un tuo attacco perché il famiglio attacchi con la sua reazione.
           text: Il warlock conosce trova famiglio, lo lancia come rituale e può dare al famiglio anche forme speciali (imp, pseudodrago, quasit o folletto). Durante l'azione di Attacco può cedere uno dei
             propri attacchi al famiglio, che lo esegue usando la reazione.
-          kid: 'Hai un famiglio, un piccolo aiutante magico: un animaletto oppure un diavoletto, un minidrago o un folletto. Puoi rinunciare a uno dei tuoi attacchi per farlo attaccare al posto tuo.'
+          kid: 'Hai un famiglio, un piccolo aiutante magico: un animaletto oppure un diavoletto, un demonietto, un minidrago o un folletto. Puoi rinunciare a uno dei tuoi attacchi per farlo attaccare al
+            posto tuo.'
         pact_of_the_blade:
           name: Patto della Lama
           prerequisite: null
@@ -526,10 +562,14 @@ warlock:
             durante un riposo breve puoi legarti un''arma magica ed evocare quella.'
           text: Con un'azione il warlock fa comparire in mano un'arma da mischia a scelta, che sa usare e che conta come magica; sparisce se resta a più di 1,5 m da lui per 1 minuto, se ne crea un'altra,
             se la congeda o se lui muore. Con un rituale di 1 ora durante un riposo breve può invece legarsi un'arma magica (non un artefatto né un'arma senziente) e richiamarla nello stesso modo.
-          kid: Con un'azione fai apparire in mano un'arma magica a tua scelta (spada, ascia, lancia...) e la sai usare. Se resta lontana da te per 1 minuto sparisce, ma puoi richiamarla quando vuoi.
+          kid: Con un'azione fai apparire in mano un'arma magica a tua scelta (spada, ascia, lancia...) e la sai usare. Se resta lontana da te per 1 minuto sparisce, ma con un'altra azione la fai riapparire.
         pact_of_the_tome:
           name: Patto del Tomo
           prerequisite: null
+          cantrip_choice:
+            count: 3
+            lists: any
+            ability: cha
           short: 'Ricevi il Libro delle Ombre: scegli 3 trucchetti da qualsiasi lista di classe, che lanci a volontà finché hai il libro con te (non contano tra i trucchetti conosciuti). Se lo perdi, un
             rito di 1 ora durante un riposo te ne dà uno nuovo.'
           text: Il warlock riceve un grimorio con tre trucchetti scelti da liste di qualsiasi classe, che per lui contano come incantesimi da warlock e si lanciano a volontà finché il libro è con lui. Un
@@ -584,7 +624,7 @@ warlock:
         10:
         - name: Difese Seducenti
           name_en: Beguiling Defenses
-          short: 'Sei immune all''essere affascinato. Se una creatura ci prova, con la reazione le rimandi l''effetto: TS su SAG (CD {cd}) o è affascinata da te per 1 minuto o finché non subisce danni.'
+          short: 'Sei immune all''essere affascinat{o}. Se una creatura ci prova, con la reazione le rimandi l''effetto: TS su SAG (CD {cd}) o è affascinata da te per 1 minuto o finché non subisce danni.'
           text: 'Nessun effetto può renderti affascinato. Quando una creatura tenta di affascinarti puoi usare la reazione per ritorcerle contro il tentativo: se fallisce un tiro salvezza su Saggezza contro
             la tua CD degli incantesimi, resta affascinata da te per 1 minuto o finché non subisce danni.'
           kid: 'Nessuno può incantarti. Se qualcuno ci prova, con la reazione gli rimandi la magia: se non fa almeno {cd}, diventa lui tuo amico per 1 minuto, o finché qualcuno non gli fa male.'
@@ -595,7 +635,7 @@ warlock:
             Finisce se subisce danni. 1/riposo breve o lungo.'
           text: 'Con un''azione scegli una creatura entro 18 m che vedi: se fallisce un tiro salvezza su Saggezza contro la tua CD, per 1 minuto (con concentrazione, come per un incantesimo) è affascinata
             o spaventata a tua scelta e percepisce solo te e un mondo illusorio. L''effetto finisce prima se la creatura subisce danni; l''uso si ricarica con un riposo breve o lungo.'
-          kid: 'Con un''azione chiudi un nemico entro 18 m in un sogno strano: se non fa almeno {cd}, per 1 minuto vede solo te e ti adora o ti teme. Devi restare concentrato; se viene ferito si sveglia.
+          kid: 'Con un''azione chiudi un nemico entro 18 m in un sogno strano: se non fa almeno {cd}, per 1 minuto vede solo te e ti adora o ti teme. Devi restare concentrat{o}; se viene ferito si sveglia.
             Una volta per riposo.'
     fiend:
       name: Immondo

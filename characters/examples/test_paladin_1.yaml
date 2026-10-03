@@ -1,0 +1,40 @@
+# TEST: Tiefling, Paladina di 1° livello (nessun giuramento prima del 3°), Accolita.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_paladin_1.yaml
+
+name: Seraphine
+template: official_it
+player: "Test"
+gender: f                   # nomi al femminile
+race: tiefling              # +2 CAR, +1 INT; trucchetto taumaturgia (CAR)
+class: paladin
+level: 1
+xp: 0
+background: acolyte         # Accolita: Intuizione, Religione, 2 linguaggi
+alignment: LG
+
+abilities:
+  method: point_buy
+  base: {str: 15, dex: 10, con: 14, int: 8, wis: 12, cha: 13}   # 9+2+7+0+4+5 = 27 punti
+
+hp:
+  method: average
+
+skills: [athletics, persuasion]                 # 2 abilità di classe (Intuizione e Religione dal background)
+languages_extra: [celestial, abyssal]           # 2 dal background Accolito
+
+armor: chain_mail
+shield: true
+weapons: [longsword, javelin]
+equipment:
+  - "Cotta di maglia"
+  - "Scudo"
+  - "Spada lunga"
+  - "5 giavellotti"
+  - pack: priests_pack
+money: {gp: 15}
+
+personality:
+  traits: "Cito sempre i testi sacri."
+  ideals: "Fede. (Legale)"
+  bonds: "Il mio tempio."
+  flaws: "Giudico chi non ha fede."

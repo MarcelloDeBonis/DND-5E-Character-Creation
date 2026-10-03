@@ -1,0 +1,55 @@
+# TEST: Barda di 5° livello, Collegio della Sapienza, Halfling Piedelesto, Ciarlatana, point buy, versione semplice.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_bard_5.yaml
+
+name: Pippa
+template: official_it
+player: "Test"
+gender: f
+simple: true
+race: halfling
+subrace: lightfoot
+class: bard
+subclass: lore               # Collegio della Sapienza
+level: 5
+xp: 6500
+background: charlatan        # Ciarlatana: Inganno, Rapidità di Mano, camuffamento, falsario
+alignment: CN
+
+abilities:
+  method: point_buy
+  base: {str: 8, dex: 14, con: 14, int: 10, wis: 10, cha: 15}   # 0+7+7+2+2+9 = 27; razza +2 DES, +1 CAR
+  asi:
+    - {cha: 2}               # 4° livello: CAR 16 -> 18
+
+hp:
+  method: average
+
+skills: [persuasion, performance, insight]       # 3 abilità di classe
+extra_skills: [perception, stealth, investigation]   # Competenze Bonus del Collegio della Sapienza (3)
+expertise: [performance, persuasion]             # Maestria al 3° livello (2)
+tools: ["Liuto", "Flauto", "Tamburo"]            # i tre strumenti musicali del bardo
+
+cantrips: [vicious_mockery, mage_hand, prestidigitation]   # 3 trucchetti al 5° livello
+spells: [healing_word, dissonant_whispers, sleep, invisibility, suggestion, shatter, hypnotic_pattern, dispel_magic]   # 8 conosciuti
+
+armor: leather
+weapons: [rapier, hand_crossbow, dagger]
+equipment:
+  - pack: diplomats_pack
+  - "Liuto"
+  - "20 quadrelli"
+money: {gp: 15}
+
+personality:
+  traits: "Ho sempre una battuta pronta."
+  ideals: "Indipendenza. Nessuno mi dice cosa fare."
+  bonds: "Devo un favore a una vecchia amica."
+  flaws: "Non so tenere un segreto."
+
+appearance:
+  age: "30"
+  height: "0,95 m"
+  weight: "18 kg"
+  eyes: "Nocciola"
+  skin: "Rosata"
+  hair: "Ricci castani"

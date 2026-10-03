@@ -1,0 +1,59 @@
+# Test: Stregona 5 (Magia Selvaggia), Halfling Piedelesto, Intrattenitrice. Versione semplice, al femminile.
+# Genera con:  python -m dnd5e build characters/examples/test_sorcerer_5.yaml
+
+name: Pip
+template: official_it
+player: "Test"
+gender: f
+simple: true
+race: halfling
+subrace: lightfoot               # +2 DES, +1 CAR
+class: sorcerer
+subclass: wild_magic
+level: 5
+xp: 6500
+background: entertainer
+alignment: CG
+
+abilities:
+  method: point_buy              # 0 + 7 + 7 + 0 + 4 + 9 = 27 punti
+  base: {str: 8, dex: 14, con: 14, int: 8, wis: 12, cha: 15}
+  asi:
+    - {cha: 2}                   # 4° livello: +2 Carisma (16 -> 18)
+
+hp:
+  method: average
+
+skills: [deception, persuasion]                  # 2 abilità di classe
+background_skills: [acrobatics, performance]     # Intrattenitrice
+background_tools: ["Trucchi per il camuffamento", "Liuto"]
+
+class_options:
+  metamagic: [careful_spell, twinned_spell]      # 2 opzioni di Metamagia (3° livello)
+
+cantrips: [fire_bolt, shocking_grasp, mage_hand, minor_illusion, prestidigitation]   # 5 trucchetti dal 4° livello
+spells: [magic_missile, shield, scorching_ray, misty_step, fireball, fly]           # 6 incantesimi conosciuti al 5° livello
+
+armor: null
+weapons: [dagger, light_crossbow]
+equipment:
+  - "Balestra leggera e 20 quadrelli"
+  - "Borsa per componenti"
+  - pack: dungeoneers_pack
+  - "Due pugnali"
+include_background_equipment: true
+money: {gp: 15}
+
+personality:
+  traits: "Rido sempre, soprattutto quando la mia magia combina guai."
+  ideals: "Libertà. La magia è fatta per sorprendere. (Caotica)"
+  bonds: "La mia compagnia di saltimbanchi è la mia famiglia."
+  flaws: "Non resisto a un pubblico: faccio scintille anche quando non dovrei."
+
+appearance:
+  age: "24"
+  height: "0,90 m"
+  weight: "18 kg"
+  eyes: "Viola"
+  skin: "Rosea"
+  hair: "Ricci, cambiano colore"

@@ -1,0 +1,67 @@
+# TEST: Mago di 5° livello — Umano (Variante), Ciarlatano, Scuola di Illusione, versione semplice
+# Verifica: variante umana (2 x +1, abilità e talento al 1°), talento Osservatore (+1 INT, +5 Percezione passiva),
+# ASI al 4°, Illusione Minore Migliorata (trucchetto gratuito), testi semplici e guida, nomi al maschile.
+# Genera con:  python -m dnd5e build characters/examples/test_wizard_5.yaml
+
+name: Corvino
+template: official_it
+player: "Test"
+simple: true
+race: human
+subrace: variant_human
+class: wizard
+subclass: illusion            # Scuola di Illusione
+level: 5
+xp: 6500
+background: charlatan         # Ciarlatano: Inganno e Rapidità di Mano
+alignment: CN
+
+abilities:
+  method: point_buy
+  base: {str: 8, dex: 14, con: 14, int: 15, wis: 12, cha: 8}   # 27 punti
+  racial_choice: [int, con]   # umano variante: +1 a due caratteristiche
+  asi:
+    - {int: 1, dex: 1}        # 4° livello: +1 INT, +1 DES
+
+feats:
+  - {key: observant, ability: int}   # talento dell'umano variante (1° livello): +1 INT
+
+hp:
+  method: average
+
+skills: [arcana, investigation]    # 2 abilità da mago
+racial_skills: [perception]        # abilità dell'umano variante
+languages_extra: [elvish]          # 1 della razza (il Ciarlatano non dà linguaggi)
+
+cantrips: [fire_bolt, mage_hand, prestidigitation, light]   # 4 trucchetti al 5° livello (+ Illusione Minore gratis dalla scuola)
+spellbook: [mage_armor, magic_missile, shield, silent_image, disguise_self, color_spray, sleep, find_familiar,
+            mirror_image, invisibility, misty_step, phantasmal_force,
+            major_image, hypnotic_pattern]   # 6 + 2 x 4 = 14
+spells: [mage_armor, magic_missile, shield, color_spray, mirror_image, invisibility, misty_step,
+         hypnotic_pattern, major_image]      # preparati: INT +4 + livello 5 = 9
+
+armor: null
+weapons: [dagger, light_crossbow]
+equipment:
+  - "Libro degli incantesimi"
+  - "Focus arcano (bacchetta)"
+  - pack: scholars_pack
+  - "20 quadrelli"
+money: {gp: 15}
+
+personality:
+  traits: "Ho una storia per ogni occasione, e nessuna è vera."
+  ideals: "Libertà. Le illusioni aprono porte che le chiavi non aprono. (Caotico)"
+  bonds: "Devo un favore a un mercante che mi ha salvato dalla forca."
+  flaws: "Non resisto a una truffa ben fatta, anche quando è una pessima idea."
+
+appearance:
+  age: "28"
+  height: "1,75 m"
+  weight: "68 kg"
+  eyes: "Grigi"
+  skin: "Olivastra"
+  hair: "Neri, raccolti"
+
+backstory: |
+  Corvino vendeva pozioni false nelle fiere finché non scoprì che le sue illusioni erano vera magia.

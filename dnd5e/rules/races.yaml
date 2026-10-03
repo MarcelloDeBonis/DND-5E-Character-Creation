@@ -5,6 +5,12 @@
 #   kid: testo semplicissimo per le bambine (seconda persona, cosa significa in gioco). Segnaposto: {cd} {att} {mod}
 #        {livello} {soffio_cd} {soffio_danni} {soffio_tipo} {soffio_area} {soffio_ts} {forma_ore}.
 #   kid_hide: true = voce di sola contabilità (già riportata altrove sulla scheda), nascosta nella versione semplice.
+#   Nei testi kid anche {o} = desinenza o/a riferita a chi gioca (es. "bravissim{o}").
+# Magia innata dei tratti: fixed_cantrips = trucchetti noti subito; innate_ability = caratteristica da incantatore;
+#   innate_spells = {livello del personaggio: [chiave incantesimo | {key, cast_level}]} = incantesimi che si ottengono
+#   a quel livello (cast_level = livello a cui si lancia, se più alto del suo); innate_uses = quante volte si lanciano
+#   senza slot (es. "1/riposo lungo" ciascuno).
+# Dragonide: ancestry.<colore>.label = nome completo del drago per il testo ("drago d'ottone"), name = colore breve.
 elf:
   name: Elfo
   name_f: Elfa
@@ -93,6 +99,8 @@ elf:
           short: "Conosci il trucchetto luci danzanti; dal 3° livello luminescenza e dal 5° oscurità (1/riposo lungo). Caratteristica: Carisma."
           fixed_cantrips: [dancing_lights]
           innate_ability: cha
+          innate_spells: {3: [faerie_fire], 5: [darkness]}
+          innate_uses: "1/riposo lungo"
           text: "Il drow conosce il trucchetto luci danzanti. Al 3° livello può lanciare luminescenza una volta per riposo lungo; al 5° livello può lanciare oscurità una volta per riposo lungo. La caratteristica da incantatore è il Carisma."
           kid: "Sai creare luci danzanti. Dal 3° livello puoi lanciare luminescenza e dal 5° oscurità, una volta ciascuno, poi devi fare un riposo lungo."
         - name: Addestramento nelle Armi dei Drow
@@ -167,6 +175,7 @@ dwarf:
       short: "Competenza in strumenti da fabbro, da birraio o da muratore (a scelta)."
       text: "Il nano ha competenza in uno strumento da artigiano a sua scelta tra strumenti da fabbro, da birraio o da muratore."
       tool_choice: 1
+      tool_choice_category: artisan   # gruppo di equipment.yaml > tools da proporre (qui: Strumenti da fabbro, Scorte da birraio, Strumenti da muratore)
       kid_hide: true
     - name: Scalpellino
       name_f: Scalpellina
@@ -184,7 +193,7 @@ dwarf:
           short: "+1 punto ferita massimo per livello."
           text: "I punti ferita massimi del nano aumentano di 1 e aumentano di 1 ogni volta che acquisisce un livello."
           hp_per_level: 1
-          kid: "Sei più robusta: hai 1 punto ferita in più per ogni livello (è già contato)."
+          kid: "Sei più robust{o}: hai 1 punto ferita in più per ogni livello (è già contato)."
           kid_hide: true
     mountain_dwarf:
       name: Nano delle Montagne
@@ -317,6 +326,8 @@ tiefling:
       short: "Conosci taumaturgia; dal 3° livello intimorire infernale (2° liv.) e dal 5° oscurità, 1/riposo lungo. Caratteristica: Carisma."
       fixed_cantrips: [thaumaturgy]
       innate_ability: cha
+      innate_spells: {3: [{key: hellish_rebuke, cast_level: 2}], 5: [darkness]}
+      innate_uses: "1/riposo lungo"
       text: "Il tiefling conosce il trucchetto taumaturgia. Al 3° livello può lanciare intimorire infernale come incantesimo di 2° livello una volta per riposo lungo; al 5° livello può lanciare oscurità una volta per riposo lungo. La caratteristica da incantatore è il Carisma."
       kid: "Sai fare piccoli prodigi con taumaturgia. Dal 3° livello puoi lanciare intimorire infernale e dal 5° oscurità, una volta ciascuno per riposo lungo."
 
@@ -331,16 +342,16 @@ dragonborn:
   # Discendenza draconica (PHB 2014): il personaggio sceglie la chiave in 'draconic_ancestry'.
   # damage_type = danno del soffio e resistenza; area = forma del soffio; save = TS richiesto (dex/con).
   ancestry:
-    black:  {name: Nero,    damage_type: acido,   area: "una linea di 1,5 x 9 m", save: dex}
-    blue:   {name: Blu,     damage_type: fulmine, area: "una linea di 1,5 x 9 m", save: dex}
-    brass:  {name: Ottone,  damage_type: fuoco,   area: "una linea di 1,5 x 9 m", save: dex}
-    bronze: {name: Bronzo,  damage_type: fulmine, area: "una linea di 1,5 x 9 m", save: dex}
-    copper: {name: Rame,    damage_type: acido,   area: "una linea di 1,5 x 9 m", save: dex}
-    gold:   {name: Oro,     damage_type: fuoco,   area: "un cono di 4,5 m",       save: dex}
-    green:  {name: Verde,   damage_type: veleno,  area: "un cono di 4,5 m",       save: con}
-    red:    {name: Rosso,   damage_type: fuoco,   area: "un cono di 4,5 m",       save: dex}
-    silver: {name: Argento, damage_type: freddo,  area: "un cono di 4,5 m",       save: con}
-    white:  {name: Bianco,  damage_type: freddo,  area: "un cono di 4,5 m",       save: con}
+    black:  {name: Nero, label: "drago nero",    damage_type: acido,   area: "una linea di 1,5 x 9 m", save: dex}
+    blue:   {name: Blu, label: "drago blu",     damage_type: fulmine, area: "una linea di 1,5 x 9 m", save: dex}
+    brass:  {name: Ottone, label: "drago d'ottone",  damage_type: fuoco,   area: "una linea di 1,5 x 9 m", save: dex}
+    bronze: {name: Bronzo, label: "drago di bronzo",  damage_type: fulmine, area: "una linea di 1,5 x 9 m", save: dex}
+    copper: {name: Rame, label: "drago di rame",    damage_type: acido,   area: "una linea di 1,5 x 9 m", save: dex}
+    gold:   {name: Oro, label: "drago d'oro",     damage_type: fuoco,   area: "un cono di 4,5 m",       save: dex}
+    green:  {name: Verde, label: "drago verde",   damage_type: veleno,  area: "un cono di 4,5 m",       save: con}
+    red:    {name: Rosso, label: "drago rosso",   damage_type: fuoco,   area: "un cono di 4,5 m",       save: dex}
+    silver: {name: Argento, label: "drago d'argento", damage_type: freddo,  area: "un cono di 4,5 m",       save: con}
+    white:  {name: Bianco, label: "drago bianco",  damage_type: freddo,  area: "un cono di 4,5 m",       save: con}
   traits:
     - name: Discendenza Draconica
       short: "Scegli un tipo di drago: determina il tipo di danno del soffio e della resistenza."
@@ -399,7 +410,7 @@ gnome:
         - name: Sapienza dell'Artefice
           short: "Doppio bonus di competenza alle prove di Storia su oggetti magici, alchemici o tecnologici."
           text: "Quando effettua una prova di Intelligenza (Storia) relativa a oggetti magici, alchemici o tecnologici, lo gnomo delle rocce aggiunge il doppio del bonus di competenza."
-          kid: "Quando studi oggetti magici, pozioni o congegni, sei bravissima a capire cosa sono e da dove vengono."
+          kid: "Quando studi oggetti magici, pozioni o congegni, sei bravissim{o} a capire cosa sono e da dove vengono."
         - name: Trafficone
           name_f: Trafficona
           short: "Competenza negli strumenti da inventore; puoi costruire piccoli congegni meccanici."

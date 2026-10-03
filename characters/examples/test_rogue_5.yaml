@@ -1,0 +1,53 @@
+# TEST: Ladra di 5° livello, Furfante, Mezzelfa, Monella, point buy, versione semplice al femminile
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_rogue_5.yaml
+
+name: Lira Vento
+template: official_it
+player: "Test"
+gender: f
+simple: true
+race: half_elf
+class: rogue
+subclass: thief
+level: 5
+xp: 6500
+background: urchin          # Monella: Rapidità di Mano, Furtività
+alignment: CG
+
+abilities:
+  method: point_buy
+  base: {str: 8, dex: 15, con: 14, int: 10, wis: 12, cha: 13}   # 0+9+7+2+4+5 = 27 punti
+  racial_choice: [dex, con]                                     # mezzelfa: +2 CAR, +1 a due a scelta
+  asi:
+    - {dex: 2}                                                  # 4° livello -> DES 18
+
+hp:
+  method: average
+
+skills: [acrobatics, perception, insight, deception]     # 4 abilità di classe
+racial_skills: [athletics, persuasion]                   # Versatilità nelle Abilità (mezzelfa)
+expertise: [stealth, perception]                         # Maestria: 2 al 1° livello
+background_tools: ["Trucchi per il camuffamento", "Strumenti da cartografo"]   # arnesi da scasso doppi con la classe: sostituiti
+languages_extra: [halfling]                              # 1 dalla razza
+
+armor: studded_leather
+weapons: [shortsword, shortbow, dagger]
+equipment:
+  - "Faretra con 20 frecce"
+  - "Arnesi da scasso"
+  - pack: burglars_pack
+money: {gp: 10}
+
+personality:
+  traits: "Mi muovo sui tetti meglio che per strada."
+  ideals: "Aiutare chi non ha niente, come me un tempo. (Buona)"
+  bonds: "Proteggo i bambini del vicolo dove sono cresciuta."
+  flaws: "Non riesco a stare ferma ad aspettare."
+appearance:
+  age: "19"
+  height: "1,65 m"
+  weight: "52 kg"
+  eyes: "Grigi"
+  skin: "Chiara"
+  hair: "Neri, corti"
+backstory: "Personaggio di prova per il test della classe Ladro al 5° livello, versione semplice."

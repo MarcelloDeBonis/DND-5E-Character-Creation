@@ -1,0 +1,72 @@
+# TEST: Arcidruido di 20° livello, Circolo della Terra (deserto), Umano Variante, Accolito.
+# Genera con:  python -m dnd5e build characters/examples/test_druid_20.yaml
+
+name: Hamid
+template: official_it
+player: "Test"
+race: human
+subrace: variant_human       # +1 a due caratteristiche, 1 abilità, 1 talento al 1° livello
+class: druid
+subclass: land               # Circolo della Terra
+circle_terrain: desert       # Sfocatura, Silenzio; Creare Cibo e Acqua, Protezione dall'Energia; Inaridire, Terreno Illusorio; Piaga degli Insetti, Muro di Pietra
+level: 20
+xp: 355000
+background: acolyte          # Accolito: Intuizione, Religione, 2 linguaggi
+alignment: LN
+
+abilities:
+  method: point_buy          # 0 + 7 + 7 + 2 + 9 + 2 = 27 punti
+  base: {str: 8, dex: 14, con: 14, int: 10, wis: 15, cha: 10}
+  racial_choice: [dex, wis]  # Umano Variante: DES 15, SAG 16
+  asi:
+    - {wis: 2}               # 4° livello: SAG 18
+    - {wis: 2}               # 8° livello: SAG 20
+    - {con: 2}               # 12° livello: COS 16
+    - {dex: 1, con: 1}       # 19° livello: DES 16, COS 17
+feats:
+  - war_caster               # talento dell'Umano Variante (1° livello)
+  - alert                    # 16° livello: Allerta (+5 iniziativa)
+
+hp:
+  method: average            # 8 + 3, poi 19 x (5 + 3) -> 163
+
+skills: [animal_handling, nature]      # 2 abilità di classe
+racial_skills: [perception]            # Umano Variante
+languages_extra: [elvish, sylvan, celestial]   # 1 dalla razza + 2 dal background
+
+cantrips: [druidcraft, guidance, produce_flame, shillelagh, thorn_whip]   # 4 dal 10° livello + 1 Trucchetto Bonus
+spells: [cure_wounds, healing_word, faerie_fire, goodberry,
+         moonbeam, pass_without_trace, lesser_restoration, spike_growth,
+         conjure_animals, dispel_magic, call_lightning,
+         polymorph, freedom_of_movement, stoneskin,
+         greater_restoration, commune_with_nature, antilife_shell,
+         heal, sunbeam, wall_of_thorns,
+         fire_storm, regenerate,
+         control_weather, sunburst,
+         foresight]                     # preparati: SAG +5 + livello 20 = 25
+
+armor: studded_leather       # 12 + DES 3
+shield: "Scudo di legno"     # -> CA 17
+weapons: [quarterstaff, sling]
+equipment:
+  - "Focus druidico (bastone di legno di palma)"
+  - "20 proiettili per fionda"
+  - pack: explorers_pack
+money: {gp: 500}
+
+personality:
+  traits: "Parlo lentamente, come la sabbia che scorre."
+  ideals: "Tradizione. Le antiche vie del deserto vanno custodite. (Legale)"
+  bonds: "Custodisco l'oasi sacra dei miei antenati."
+  flaws: "Non mi fido di chi spreca l'acqua."
+
+appearance:
+  age: "68"
+  height: "1,78 m"
+  weight: "70 kg"
+  eyes: "Neri"
+  skin: "Bruna"
+  hair: "Bianchi, lunghi"
+
+backstory: |
+  Hamid è l'arcidruido dell'oasi sacra: ha passato la vita a custodire l'acqua nel deserto.

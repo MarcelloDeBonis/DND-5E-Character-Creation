@@ -1,0 +1,53 @@
+# TEST: Warlock di 1° livello, Patrono il Grande Antico, Mezzelfo, Saggio, array standard.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_warlock_1.yaml
+
+name: Oswin
+template: official_it
+player: "Test"
+race: half_elf
+class: warlock
+subclass: great_old_one      # Patrono Ultraterreno: il Grande Antico (si sceglie al 1° livello)
+level: 1
+xp: 0
+background: sage             # Saggio: Arcano, Storia, 2 linguaggi
+alignment: N
+
+abilities:
+  method: standard_array
+  base: {str: 8, dex: 14, con: 13, int: 12, wis: 10, cha: 15}   # prima dei bonus razziali (+2 CAR, +1 DES, +1 COS)
+  racial_choice: [dex, con]                                      # Mezzelfo: +1 a due caratteristiche diverse dal Carisma
+
+hp:
+  method: average
+
+skills: [deception, intimidation]                  # 2 abilità di classe (Arcano e Storia arrivano dal Saggio)
+racial_skills: [insight, persuasion]               # Versatilità nelle Abilità del mezzelfo (2)
+background_skills: [arcana, history]               # Saggio
+languages_extra: [deep_speech, abyssal, draconic]  # 1 dal mezzelfo + 2 dal Saggio
+
+cantrips: [eldritch_blast, minor_illusion]         # 2 trucchetti al 1° livello
+spells: [hex, dissonant_whispers]                  # 2 incantesimi conosciuti (sussurri dissonanti dalla lista ampliata)
+
+armor: leather
+weapons: [light_crossbow, dagger]
+equipment:
+  - "Balestra leggera e 20 quadrelli"
+  - "Borsa per componenti"
+  - pack: scholars_pack
+  - "Due pugnali"
+include_background_equipment: true
+money: {gp: 10}
+
+personality:
+  traits: "Parlo da solo, ma in realtà rispondo a una voce che sento solo io."
+  ideals: "Conoscenza. Ogni segreto ha un prezzo, e io lo pago. (Neutrale)"
+  bonds: "Il libro proibito che ho letto in biblioteca mi ha cambiato per sempre."
+  flaws: "Non so tenere la bocca chiusa quando scopro qualcosa."
+
+appearance:
+  age: "27"
+  height: "1,75 m"
+  weight: "64 kg"
+  eyes: "Grigi, con riflessi viola"
+  skin: "Pallida"
+  hair: "Neri, lunghi"

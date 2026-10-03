@@ -1,0 +1,67 @@
+# TEST: Guerriera di 5° livello, Maestra di Battaglia — Umana (Variante), Eroina Popolare. Versione semplice.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_fighter_5.yaml
+
+name: Lyra
+template: official_it
+player: "Test"
+gender: f
+simple: true
+race: human
+subrace: variant_human       # +1 a due caratteristiche, 1 abilità, 1 talento
+class: fighter
+subclass: battle_master
+level: 5
+xp: 6500
+background: folk_hero        # Eroina Popolare: Addestrare Animali, Sopravvivenza
+alignment: NG
+
+abilities:
+  method: standard_array     # 15, 14, 13, 12, 10, 8
+  base: {str: 8, dex: 15, con: 14, int: 10, wis: 13, cha: 12}
+  racial_choice: [dex, con]  # umana variante: +1 DES, +1 COS -> DES 16, COS 15
+  asi:
+    - {dex: 2}               # 4° livello: +2 DES -> 18
+
+feats: [sharpshooter]        # talento dell'umana variante (1° livello)
+
+hp:
+  method: average            # 10 + 2 + 4 x (6 + 2) = 44
+
+skills: [acrobatics, perception]     # 2 abilità di classe
+racial_skills: [stealth]             # abilità dell'umana variante
+background_tools: ["Strumenti da falegname", "Veicoli (terrestri)"]
+tools: ["Strumenti da calligrafo"]   # Studiosa di Guerra (Maestra di Battaglia)
+languages_extra: [elvish]            # linguaggio extra dell'umana
+fighting_style: archery
+maneuvers: [precision_attack, pushing_attack, distracting_strike]   # 3 manovre al 3°-6° livello
+
+armor: studded_leather       # 12 + DES 4 = 16
+shield: false
+weapons: [longbow, shortsword, dagger]
+equipment:
+  - "20 frecce (faretra)"
+  - pack: explorers_pack
+  - "Strumenti da falegname"
+  - "Vanga"
+  - "Pentola di ferro"
+  - "Abiti comuni"
+include_background_equipment: false
+money: {gp: 10}
+
+personality:
+  traits: "Giudico le persone dalle azioni, non dalle parole."
+  ideals: "Equità. Nessuno deve avere privilegi davanti alla legge. (Buona)"
+  bonds: "Proteggo il villaggio dove sono cresciuta."
+  flaws: "Mi fido troppo di chi sembra sincero."
+
+appearance:
+  age: "22"
+  height: "1,68 m"
+  weight: "58 kg"
+  eyes: "Grigi"
+  skin: "Abbronzata"
+  hair: "Castani, raccolti"
+
+allies: "Gli abitanti del villaggio di Querciafonda."
+treasure: ""
+backstory: "Personaggio di prova (guerriera di 5° livello, versione semplice)."

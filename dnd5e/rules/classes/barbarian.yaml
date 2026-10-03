@@ -1,3 +1,27 @@
+# Barbaro (PHB 2014, cap. 3): privilegi 1-20 e i due Cammini Primordiali del Manuale del Giocatore
+# (Cammino del Berserker; Cammino del Combattente Totemico con gli animali totem orso, aquila e lupo).
+# Stesso schema di bard/sorcerer. Distanze in metri (1,5 m = 5 piedi, 3 m = 10 piedi, 9 m = 30 piedi,
+# 18 m = 60 piedi, 30 m = 100 piedi, 1,5 km = 1 miglio). Testi riassunti con parole nostre.
+# Nomi italiani: privilegi base come nell'SRD 5.1 in italiano; Cammino del Berserker e Combattente Totemico dal
+# Manuale del Giocatore (alcuni nomi delle sottoclassi da ricontrollare sul manuale cartaceo).
+# table: valori per livello (indice 0 = 1° livello), usabili nei testi come {t_<colonna>}.
+#   rages = usi di Ira per riposo lungo (99 = illimitati, 20° livello); rages_text = lo stesso valore come frase
+#     per i testi ("2 volte per riposo lungo" ... "quante volte vuoi");
+#   rage_damage = bonus ai danni in ira (numero: nei testi si scrive "+{t_rage_damage}");
+#   brutal_critical = dadi extra di Critico Brutale (0 prima del 9°); brutal_critical_dice = lo stesso come testo.
+# Il barbaro non ha 'spellcasting': {att} e {mod} non servono. {cd} serve solo al Cammino del Berserker
+#   (Presenza Intimidatoria) e si calcola con save_dc della sottoclasse: 8 + bonus di competenza + mod. CAR.
+# Campi macchina (oltre a quelli comuni):
+#   speed_bonus: 3 (metri) + requires_no_heavy_armor: true -> Movimento Veloce (solo senza armatura pesante)
+#   unarmored_ac: {base, abilities, shield_allowed}       -> Difesa senza Armatura (oggi il motore la calcola
+#                                                            già per la chiave 'barbarian')
+#   uses_table / damage_bonus_table                       -> Ira: colonne con usi e bonus ai danni
+#   initiative_advantage: true                            -> Istinto Ferino
+#   ability_bonus / ability_max                           -> Campione Primordiale (+4 FOR e COS, massimo 24)
+#   ritual_only_spells: [chiavi incantesimo]              -> incantesimi lanciabili solo come rituali
+#   save_dc: {ability, placeholder} (nella sottoclasse)   -> come calcolare {cd}
+# Nelle option_lists della sottoclasse, "level" = livello da barbaro a cui si sceglie l'opzione; a ogni livello
+#   si può scegliere lo stesso animale dei livelli precedenti o uno diverso.
 barbarian:
   name: Barbaro
   name_f: Barbara

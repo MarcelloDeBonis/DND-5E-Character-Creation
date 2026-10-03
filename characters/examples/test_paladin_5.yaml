@@ -1,0 +1,49 @@
+# TEST: Umano, Paladino (Giuramento di Devozione) di 5° livello, Eroe Popolare, versione semplice.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_paladin_5.yaml
+
+name: Aldric
+template: official_it
+player: "Test"
+simple: true                # versione per bambini: testi facili, guida separata
+race: human                 # +1 a tutte le caratteristiche
+class: paladin
+subclass: devotion
+level: 5
+xp: 6500
+background: folk_hero       # Eroe Popolare: Addestrare Animali, Sopravvivenza
+alignment: LG
+
+abilities:
+  method: standard_array
+  base: {str: 15, dex: 10, con: 13, int: 8, wis: 12, cha: 14}
+  asi:
+    - {str: 1, cha: 1}      # 4° livello: +1 FOR, +1 CAR
+
+hp:
+  method: average
+
+skills: [athletics, intimidation]               # 2 abilità di classe
+background_tools: ["Strumenti da carpentiere", "Veicoli (terrestri)"]
+languages_extra: [dwarvish]                     # 1 dalla razza umana
+fighting_style: defense                         # 2° livello: Difesa (+1 CA con armatura)
+
+spells: [bless, cure_wounds, shield_of_faith, find_steed, aid]   # preparati: CAR (+3) + metà livello (2) = 5
+
+armor: splint
+shield: true
+weapons: [longsword, javelin]
+equipment:
+  - "Simbolo sacro (amuleto)"
+  - pack: explorers_pack
+  - "Strumenti da carpentiere"   # dal background Eroe Popolare
+  - "Vanga"
+  - "Pentola di ferro"
+  - "Abiti comuni"
+include_background_equipment: false   # l'equipaggiamento dell'Eroe Popolare è già scritto qui sopra
+money: {gp: 10}
+
+personality:
+  traits: "Difendo sempre i deboli."
+  ideals: "Giustizia. (Legale)"
+  bonds: "Il mio villaggio."
+  flaws: "Mi fido troppo."

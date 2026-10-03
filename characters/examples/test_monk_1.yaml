@@ -1,0 +1,51 @@
+# TEST: Monaca di 1° livello (Elfa dei Boschi, Eremita). Nessuna tradizione (si sceglie al 3° livello).
+# Genera con:  python -m dnd5e build characters/examples/test_monk_1.yaml
+
+name: Lirael
+template: official_it
+player: "Test"
+gender: f
+race: elf
+subrace: wood_elf            # +2 DES, +1 SAG, velocità 10,5 m
+class: monk
+level: 1
+xp: 0
+background: hermit           # Eremita: Medicina, Religione, borsa da erborista, 1 linguaggio
+alignment: LN
+
+abilities:
+  method: standard_array     # 15, 14, 13, 12, 10, 8
+  base: {str: 12, dex: 15, con: 13, int: 10, wis: 14, cha: 8}   # -> DES 17, SAG 15
+
+hp:
+  method: average
+
+skills: [acrobatics, stealth]          # 2 abilità di classe (Percezione dalla razza, Medicina e Religione dal background)
+languages_extra: [sylvan]              # 1 dal background (Eremita)
+tools: ["Strumenti da calligrafo"]     # strumento da artigiano scelto dal monaco
+
+armor: null
+shield: false
+weapons: [quarterstaff, dart]
+equipment:
+  - "10 dardi"
+  - pack: explorers_pack
+money: {gp: 5}
+
+personality:
+  traits: "Parlo poco e ascolto molto."
+  ideals: "Equilibrio. Il corpo e la mente devono essere in armonia. (Legale)"
+  bonds: "Il mio vecchio maestro mi ha mandato nel mondo con una domanda: devo trovarne la risposta."
+  flaws: "Giudico chi non sa controllare le proprie emozioni."
+
+appearance:
+  age: "120"
+  height: "1,65 m"
+  weight: "50 kg"
+  eyes: "Verdi"
+  skin: "Ramata"
+  hair: "Castani, rasati ai lati"
+
+allies: "Il monastero del Bosco Silente."
+treasure: ""
+backstory: "Cresciuta in un monastero nascosto nella foresta, ha passato anni in meditazione prima di partire."

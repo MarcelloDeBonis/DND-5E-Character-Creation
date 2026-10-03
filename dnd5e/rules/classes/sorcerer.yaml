@@ -37,6 +37,7 @@ sorcerer:
         text: "Un evento nel passato dello stregone, o nella vita di un suo parente o antenato, gli ha infuso magia arcana. Trucchetti: ne conosce 4 al 1° livello (5 dal 4°, 6 dal 10°), scelti dalla lista dello stregone. Incantesimi conosciuti: 2 di 1° livello al 1° livello, poi altri come indicato dalla tabella dello stregone (fino a 15), ognuno di un livello per cui possiede slot; ogni volta che sale di livello può sostituire un incantesimo conosciuto con un altro della lista, sempre di un livello per cui ha slot. Per lanciare un incantesimo di 1° livello o superiore spende uno slot di livello pari o superiore; recupera tutti gli slot spesi con un riposo lungo. Caratteristica da incantatore: Carisma (CD del tiro salvezza = 8 + bonus di competenza + mod. CAR; attacco con incantesimo = bonus di competenza + mod. CAR). Può usare un focus arcano come focus da incantatore. Lo stregone non lancia incantesimi come rituali."
         kid: "Conosci {t_cantrips} trucchetti (magie che puoi fare quando vuoi) e {t_spells_known} incantesimi. Per lanciare un incantesimo usi uno slot: gli slot tornano dopo un riposo lungo."
         kid_hide: true
+        sheet_hide: false   # nascosto ai bambini, visibile sulla scheda completa
       - name: Origine Stregonesca
         short: "Scegli l'origine del tuo potere innato: Discendenza Draconica o Magia Selvaggia (privilegi al 1°, 6°, 14° e 18° livello)."
         text: "Lo stregone sceglie un'origine stregonesca che definisce la fonte dei suoi poteri magici innati: Discendenza Draconica o Magia Selvaggia. Questa scelta gli conferisce privilegi al 1° livello e poi di nuovo al 6°, al 14° e al 18° livello."
@@ -62,37 +63,37 @@ sorcerer:
     8:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
-        text: "Vedi 4° livello."
+        text: "Lo stregone può aumentare un punteggio di caratteristica a sua scelta di 2, oppure due punteggi di caratteristica di 1 (massimo 20), oppure scegliere un talento."
         kid: "Hai aumentato le tue caratteristiche (o preso un talento): i numeri sulla scheda sono già aggiornati."
         kid_hide: true
     10:
       - name: Metamagia (terza opzione)
         short: "Impari un'altra opzione di Metamagia (3 in tutto)."
-        text: "Vedi 3° livello: lo stregone ottiene un'altra opzione di Metamagia a sua scelta."
+        text: "Lo stregone impara un'altra opzione di Metamagia a sua scelta (3 in tutto)."
         kid: "Impari un nuovo trucco di Metamagia: ora ne conosci 3."
         kid_hide: true
     12:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
-        text: "Vedi 4° livello."
+        text: "Lo stregone può aumentare un punteggio di caratteristica a sua scelta di 2, oppure due punteggi di caratteristica di 1 (massimo 20), oppure scegliere un talento."
         kid: "Hai aumentato le tue caratteristiche (o preso un talento): i numeri sulla scheda sono già aggiornati."
         kid_hide: true
     16:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
-        text: "Vedi 4° livello."
+        text: "Lo stregone può aumentare un punteggio di caratteristica a sua scelta di 2, oppure due punteggi di caratteristica di 1 (massimo 20), oppure scegliere un talento."
         kid: "Hai aumentato le tue caratteristiche (o preso un talento): i numeri sulla scheda sono già aggiornati."
         kid_hide: true
     17:
       - name: Metamagia (quarta opzione)
         short: "Impari un'altra opzione di Metamagia (4 in tutto)."
-        text: "Vedi 3° livello: lo stregone ottiene un'altra opzione di Metamagia a sua scelta."
+        text: "Lo stregone impara un'altra opzione di Metamagia a sua scelta (4 in tutto)."
         kid: "Impari un nuovo trucco di Metamagia: ora ne conosci 4."
         kid_hide: true
     19:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
-        text: "Vedi 4° livello."
+        text: "Lo stregone può aumentare un punteggio di caratteristica a sua scelta di 2, oppure due punteggi di caratteristica di 1 (massimo 20), oppure scegliere un talento."
         kid: "Hai aumentato le tue caratteristiche (o preso un talento): i numeri sulla scheda sono già aggiornati."
         kid_hide: true
     20:
@@ -103,6 +104,7 @@ sorcerer:
   option_lists:
     metamagic:
       label: Metamagia
+      level: 3
       count_table: metamagic_known
       items:
         careful_spell:
@@ -110,7 +112,7 @@ sorcerer:
           cost: 1
           short: "1 punto stregoneria: quando un tuo incantesimo impone un TS, scegli fino a mod. CAR creature (minimo 1) che lo superano automaticamente."
           text: "Quando lo stregone lancia un incantesimo che obbliga altre creature a effettuare un tiro salvezza, può proteggere alcune di esse dalla piena forza dell'incantesimo: spende 1 punto stregoneria e sceglie un numero di creature pari al massimo al suo modificatore di Carisma (minimo una). Ogni creatura scelta supera automaticamente il suo tiro salvezza contro l'incantesimo."
-          kid: "Spendi 1 punto stregoneria quando lanci un incantesimo che fa fare un tiro salvezza: scegli tanti amici quanto il tuo bonus di Carisma ({mod}, almeno 1). Loro superano il tiro salvezza senza tirare il dado."
+          kid: "Spendi 1 punto stregoneria quando lanci un incantesimo che fa fare un tiro salvezza: scegli tante persone del tuo gruppo quanto il tuo bonus di Carisma ({mod}, almeno 1). Loro superano il tiro salvezza senza tirare il dado."
         distant_spell:
           name: Incantesimo Distante
           cost: 1
@@ -152,7 +154,7 @@ sorcerer:
           cost: "livello dell'incantesimo (1 per un trucchetto)"
           short: "Punti stregoneria pari al livello dell'incantesimo (1 per un trucchetto): un incantesimo che bersaglia una sola creatura (gittata non incantatore) ne bersaglia una seconda entro gittata."
           text: "Quando lo stregone lancia un incantesimo che bersaglia una sola creatura e non ha gittata «incantatore», può spendere un numero di punti stregoneria pari al livello dell'incantesimo (1 se è un trucchetto) per bersagliare con lo stesso incantesimo una seconda creatura entro gittata. L'incantesimo non deve poter bersagliare più di una creatura al livello a cui viene lanciato: per esempio dardo incantato e raggio rovente non sono idonei, raggio di gelo sì."
-          kid: "Un incantesimo che può colpire una sola creatura (e non solo te stesso) ne colpisce due, se sono entrambe a gittata! Costa tanti punti stregoneria quanto il livello dell'incantesimo (1 per un trucchetto)."
+          kid: "Un incantesimo che può colpire una sola creatura (e che non sia solo per te) ne colpisce due, se sono entrambe a gittata! Costa tanti punti stregoneria quanto il livello dell'incantesimo (1 per un trucchetto)."
   subclasses:
     draconic_bloodline:
       name: Discendenza Draconica
@@ -281,53 +283,53 @@ sorcerer:
             text: "A partire dal 18° livello l'energia dannosa degli incantesimi dello stregone si intensifica. Quando tira i danni di un incantesimo e ottiene il numero più alto possibile su uno qualsiasi dei dadi, sceglie uno di quei dadi, lo tira di nuovo e aggiunge il risultato ai danni. Può usare questo privilegio una sola volta per turno."
             kid: "Quando tiri i danni di un incantesimo e un dado fa il numero più alto (per esempio 8 su un d8), tiri di nuovo quel dado e aggiungi anche il nuovo numero. Una volta per turno."
       surge_table:
-        - {min: 1, max: 2, roll: "01-02", text: "Per il prossimo minuto tiri su questa tabella all'inizio di ogni tuo turno, ignorando questo risultato nei tiri successivi."}
-        - {min: 3, max: 4, roll: "03-04", text: "Per il prossimo minuto puoi vedere qualsiasi creatura invisibile, se hai una linea di vista verso di essa."}
-        - {min: 5, max: 6, roll: "05-06", text: "Un modron scelto e controllato dal DM appare in uno spazio libero entro 1,5 m da te e scompare dopo 1 minuto."}
-        - {min: 7, max: 8, roll: "07-08", text: "Lanci palla di fuoco come incantesimo di 3° livello centrato su di te."}
-        - {min: 9, max: 10, roll: "09-10", text: "Lanci dardo incantato come incantesimo di 5° livello."}
-        - {min: 11, max: 12, roll: "11-12", text: "Tira un d10: la tua altezza cambia di 2,5 cm per ogni punto del risultato. Se il risultato è dispari rimpicciolisci, se è pari cresci."}
-        - {min: 13, max: 14, roll: "13-14", text: "Lanci confusione centrato su di te."}
-        - {min: 15, max: 16, roll: "15-16", text: "Per il prossimo minuto recuperi 5 punti ferita all'inizio di ogni tuo turno."}
-        - {min: 17, max: 18, roll: "17-18", text: "Ti cresce una lunga barba di piume che resta finché non starnutisci: allora le piume esplodono via dalla tua faccia."}
-        - {min: 19, max: 20, roll: "19-20", text: "Lanci unto centrato su di te."}
-        - {min: 21, max: 22, roll: "21-22", text: "Le creature hanno svantaggio ai tiri salvezza contro il prossimo incantesimo che lanci entro 1 minuto e che richiede un tiro salvezza."}
-        - {min: 23, max: 24, roll: "23-24", text: "La tua pelle diventa di un blu acceso. Un incantesimo rimuovi maledizione può porre fine all'effetto."}
-        - {min: 25, max: 26, roll: "25-26", text: "Per il prossimo minuto ti appare un occhio sulla fronte: hai vantaggio alle prove di Saggezza (Percezione) basate sulla vista."}
-        - {min: 27, max: 28, roll: "27-28", text: "Per il prossimo minuto tutti i tuoi incantesimi con tempo di lancio di 1 azione hanno tempo di lancio di 1 azione bonus."}
-        - {min: 29, max: 30, roll: "29-30", text: "Ti teletrasporti fino a 18 m in uno spazio libero a tua scelta che puoi vedere."}
-        - {min: 31, max: 32, roll: "31-32", text: "Vieni trasportato sul Piano Astrale fino alla fine del tuo prossimo turno; poi torni nello spazio che occupavi o, se è occupato, in quello libero più vicino."}
-        - {min: 33, max: 34, roll: "33-34", text: "Il prossimo incantesimo che infligge danni lanciato da te entro 1 minuto infligge il massimo dei danni."}
-        - {min: 35, max: 36, roll: "35-36", text: "Tira un d10: la tua età cambia di tanti anni quanto il risultato. Se è dispari ringiovanisci (minimo 1 anno di età), se è pari invecchi."}
-        - {min: 37, max: 38, roll: "37-38", text: "Appaiono 1d6 flumph controllati dal DM in spazi liberi entro 18 m da te: sono spaventati da te e svaniscono dopo 1 minuto."}
-        - {min: 39, max: 40, roll: "39-40", text: "Recuperi 2d10 punti ferita."}
-        - {min: 41, max: 42, roll: "41-42", text: "Ti trasformi in una pianta in vaso fino all'inizio del tuo prossimo turno. Come pianta sei incapacitato e hai vulnerabilità a tutti i danni; se scendi a 0 punti ferita il vaso si rompe e torni alla tua forma."}
-        - {min: 43, max: 44, roll: "43-44", text: "Per il prossimo minuto, in ognuno dei tuoi turni puoi teletrasportarti fino a 6 m come azione bonus."}
-        - {min: 45, max: 46, roll: "45-46", text: "Lanci levitazione su di te."}
-        - {min: 47, max: 48, roll: "47-48", text: "Un unicorno controllato dal DM appare in uno spazio entro 1,5 m da te e scompare dopo 1 minuto."}
-        - {min: 49, max: 50, roll: "49-50", text: "Per il prossimo minuto non puoi parlare: ogni volta che ci provi, dalla tua bocca escono bolle rosa."}
-        - {min: 51, max: 52, roll: "51-52", text: "Per il prossimo minuto uno scudo spettrale fluttua vicino a te: ottieni +2 alla CA e immunità a dardo incantato."}
-        - {min: 53, max: 54, roll: "53-54", text: "Per i prossimi 5d6 giorni l'alcol non può ubriacarti."}
-        - {min: 55, max: 56, roll: "55-56", text: "Ti cadono i capelli, ma ricrescono entro 24 ore."}
-        - {min: 57, max: 58, roll: "57-58", text: "Per il prossimo minuto ogni oggetto infiammabile che tocchi, se non è indossato o trasportato da un'altra creatura, prende fuoco."}
-        - {min: 59, max: 60, roll: "59-60", text: "Recuperi lo slot incantesimo speso di livello più basso."}
-        - {min: 61, max: 62, roll: "61-62", text: "Per il prossimo minuto devi urlare quando parli."}
-        - {min: 63, max: 64, roll: "63-64", text: "Lanci nube di nebbia centrata su di te."}
-        - {min: 65, max: 66, roll: "65-66", text: "Fino a tre creature a tua scelta entro 9 m da te subiscono 4d10 danni da fulmine."}
-        - {min: 67, max: 68, roll: "67-68", text: "Sei spaventato dalla creatura più vicina fino alla fine del tuo prossimo turno."}
-        - {min: 69, max: 70, roll: "69-70", text: "Ogni creatura entro 9 m da te diventa invisibile per il prossimo minuto. L'invisibilità di una creatura termina quando attacca o lancia un incantesimo."}
-        - {min: 71, max: 72, roll: "71-72", text: "Per il prossimo minuto ottieni resistenza a tutti i danni."}
-        - {min: 73, max: 74, roll: "73-74", text: "Una creatura casuale entro 18 m da te è avvelenata per 1d4 ore."}
-        - {min: 75, max: 76, roll: "75-76", text: "Per il prossimo minuto emani luce intensa in un raggio di 9 m. Ogni creatura che termina il suo turno entro 1,5 m da te è accecata fino alla fine del suo turno successivo."}
-        - {min: 77, max: 78, roll: "77-78", text: "Lanci metamorfosi su di te. Se fallisci il tiro salvezza, diventi una pecora per la durata dell'incantesimo."}
-        - {min: 79, max: 80, roll: "79-80", text: "Per il prossimo minuto farfalle e petali di fiori illusori svolazzano nell'aria entro 3 m da te."}
-        - {min: 81, max: 82, roll: "81-82", text: "Puoi effettuare subito un'azione aggiuntiva."}
-        - {min: 83, max: 84, roll: "83-84", text: "Ogni creatura entro 9 m da te subisce 1d10 danni necrotici. Recuperi punti ferita pari al totale dei danni necrotici inflitti."}
-        - {min: 85, max: 86, roll: "85-86", text: "Lanci immagine speculare."}
-        - {min: 87, max: 88, roll: "87-88", text: "Lanci volare su una creatura casuale entro 18 m da te."}
-        - {min: 89, max: 90, roll: "89-90", text: "Per il prossimo minuto diventi invisibile e le altre creature non possono sentirti. L'invisibilità termina se attacchi o lanci un incantesimo."}
-        - {min: 91, max: 92, roll: "91-92", text: "Se muori entro il prossimo minuto, torni subito in vita come con l'incantesimo reincarnazione."}
-        - {min: 93, max: 94, roll: "93-94", text: "Per il prossimo minuto la tua taglia aumenta di una categoria."}
-        - {min: 95, max: 96, roll: "95-96", text: "Per il prossimo minuto tu e tutte le creature entro 9 m da te ottenete vulnerabilità ai danni perforanti."}
-        - {min: 97, max: 98, roll: "97-98", text: "Per il prossimo minuto sei circondato da una leggera musica eterea."}
+        - {min: 1, max: 2, roll: "01-02", text: "Per 1 minuto, a inizio turno tiri di nuovo su questa tabella (se esce di nuovo questo risultato, ignoralo)."}
+        - {min: 3, max: 4, roll: "03-04", text: "Per 1 minuto vedi le creature invisibili che hai in linea di vista."}
+        - {min: 5, max: 6, roll: "05-06", text: "Accanto a te (entro 1,5 m) compare un modron guidato dal DM: se ne va dopo 1 minuto."}
+        - {min: 7, max: 8, roll: "07-08", text: "Una Palla di Fuoco di 3° livello esplode con te al centro."}
+        - {min: 9, max: 10, roll: "09-10", text: "Parte un Dardo Incantato come se usassi uno slot di 5° livello."}
+        - {min: 11, max: 12, roll: "11-12", text: "Tira 1d10: la tua altezza cambia di 2,5 cm per punto (dispari ti rimpicciolisci, pari cresci)."}
+        - {min: 13, max: 14, roll: "13-14", text: "Si attiva Confusione con te al centro."}
+        - {min: 15, max: 16, roll: "15-16", text: "Per 1 minuto recuperi 5 PF all'inizio di ogni tuo turno."}
+        - {min: 17, max: 18, roll: "17-18", text: "Ti spunta una barba di piume, che vola via al tuo prossimo starnuto."}
+        - {min: 19, max: 20, roll: "19-20", text: "Si attiva Unto con te al centro."}
+        - {min: 21, max: 22, roll: "21-22", text: "Il prossimo incantesimo con tiro salvezza che lanci entro 1 minuto: i bersagli tirano con svantaggio."}
+        - {min: 23, max: 24, roll: "23-24", text: "La tua pelle diventa blu brillante, finché Rimuovi Maledizione non la fa tornare normale."}
+        - {min: 25, max: 26, roll: "25-26", text: "Per 1 minuto hai un terzo occhio in fronte: vantaggio alle prove di Percezione che usano la vista."}
+        - {min: 27, max: 28, roll: "27-28", text: "Per 1 minuto gli incantesimi da 1 azione li lanci con un'azione bonus."}
+        - {min: 29, max: 30, roll: "29-30", text: "Ti teletrasporti in un punto libero che vedi, entro 18 m."}
+        - {min: 31, max: 32, roll: "31-32", text: "Finisci sul Piano Astrale fino alla fine del tuo prossimo turno, poi torni dove eri (o nel punto libero più vicino)."}
+        - {min: 33, max: 34, roll: "33-34", text: "Il prossimo incantesimo con danni che lanci entro 1 minuto fa il massimo dei danni."}
+        - {min: 35, max: 36, roll: "35-36", text: "Tira 1d10: la tua età cambia di tanti anni (dispari ringiovanisci, minimo 1 anno; pari invecchi)."}
+        - {min: 37, max: 38, roll: "37-38", text: "Compaiono 1d6 flumph guidati dal DM entro 18 m: hanno paura di te e spariscono dopo 1 minuto."}
+        - {min: 39, max: 40, roll: "39-40", text: "Recuperi 2d10 PF."}
+        - {min: 41, max: 42, roll: "41-42", text: "Fino al tuo prossimo turno sei una pianta in vaso: non puoi agire e ogni danno è doppio; a 0 PF il vaso si rompe e torni normale."}
+        - {min: 43, max: 44, roll: "43-44", text: "Per 1 minuto, una volta per turno, puoi teletrasportarti fino a 6 m con un'azione bonus."}
+        - {min: 45, max: 46, roll: "45-46", text: "Si attiva Levitazione su di te."}
+        - {min: 47, max: 48, roll: "47-48", text: "Accanto a te (entro 1,5 m) compare un unicorno guidato dal DM: se ne va dopo 1 minuto."}
+        - {min: 49, max: 50, roll: "49-50", text: "Per 1 minuto non riesci a parlare: dalla bocca escono solo bolle rosa."}
+        - {min: 51, max: 52, roll: "51-52", text: "Per 1 minuto ti protegge uno scudo fantasma: +2 alla CA e Dardo Incantato non ti fa nulla."}
+        - {min: 53, max: 54, roll: "53-54", text: "Per 5d6 giorni l'alcol non ha effetto su di te."}
+        - {min: 55, max: 56, roll: "55-56", text: "Perdi tutti i capelli: ricrescono in 24 ore."}
+        - {min: 57, max: 58, roll: "57-58", text: "Per 1 minuto prende fuoco ogni cosa infiammabile che tocchi (se nessun altro la porta addosso)."}
+        - {min: 59, max: 60, roll: "59-60", text: "Ti torna lo slot speso di livello più basso."}
+        - {min: 61, max: 62, roll: "61-62", text: "Per 1 minuto riesci a parlare solo urlando."}
+        - {min: 63, max: 64, roll: "63-64", text: "Si attiva Nube di Nebbia con te al centro."}
+        - {min: 65, max: 66, roll: "65-66", text: "Scegli fino a 3 creature entro 9 m: ognuna subisce 4d10 danni da fulmine."}
+        - {min: 67, max: 68, roll: "67-68", text: "Fino alla fine del tuo prossimo turno hai paura della creatura più vicina."}
+        - {min: 69, max: 70, roll: "69-70", text: "Per 1 minuto tutte le creature entro 9 m sono invisibili (ognuna torna visibile se attacca o lancia un incantesimo)."}
+        - {min: 71, max: 72, roll: "71-72", text: "Per 1 minuto hai resistenza a tutti i danni."}
+        - {min: 73, max: 74, roll: "73-74", text: "Una creatura a caso entro 18 m resta avvelenata per 1d4 ore."}
+        - {min: 75, max: 76, roll: "75-76", text: "Per 1 minuto brilli di luce intensa (9 m): ogni creatura che finisce il turno entro 1,5 m da te resta accecata fino alla fine del suo turno seguente."}
+        - {min: 77, max: 78, roll: "77-78", text: "Si attiva Metamorfosi su di te: se fallisci il tiro salvezza diventi una pecora finché dura."}
+        - {min: 79, max: 80, roll: "79-80", text: "Per 1 minuto farfalle e petali illusori ti volano intorno (3 m)."}
+        - {min: 81, max: 82, roll: "81-82", text: "Ottieni subito un'azione in più."}
+        - {min: 83, max: 84, roll: "83-84", text: "Ogni creatura entro 9 m subisce 1d10 danni necrotici; tu recuperi PF pari al totale inflitto."}
+        - {min: 85, max: 86, roll: "85-86", text: "Si attiva Immagine Speculare su di te."}
+        - {min: 87, max: 88, roll: "87-88", text: "Si attiva Volare su una creatura a caso entro 18 m."}
+        - {min: 89, max: 90, roll: "89-90", text: "Per 1 minuto sei invisibile e nessuno ti sente; finisce se attacchi o lanci un incantesimo."}
+        - {min: 91, max: 92, roll: "91-92", text: "Se muori entro 1 minuto, torni subito in vita come con Reincarnazione."}
+        - {min: 93, max: 94, roll: "93-94", text: "Per 1 minuto diventi di una taglia più grande."}
+        - {min: 95, max: 96, roll: "95-96", text: "Per 1 minuto tu e le creature entro 9 m subite danni perforanti doppi (vulnerabilità)."}
+        - {min: 97, max: 98, roll: "97-98", text: "Per 1 minuto ti accompagna una musica leggera e misteriosa."}
         - {min: 99, max: 100, roll: "99-00", text: "Recuperi tutti i punti stregoneria spesi."}

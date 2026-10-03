@@ -20,9 +20,10 @@ wizard:
   features:
     1:
       - name: Incantesimi
-        short: "Incantatore completo (Intelligenza). Libro con 6 incantesimi di 1° livello (+2 gratis a ogni livello); prepari mod. INT + livello da mago incantesimi dal libro; rituali dal libro senza prepararli; focus arcano."
+        short: "Lanci incantesimi da mago con l'Intelligenza. Libro con 6 incantesimi di 1° livello (+2 gratis a ogni livello); prepari mod. INT + livello da mago incantesimi dal libro; rituali dal libro senza prepararli; focus arcano."
         text: "Il mago è uno studioso di magia arcana. Conosce tre trucchetti da mago (quattro dal 4° livello, cinque dal 10°) e possiede un libro degli incantesimi che al 1° livello contiene sei incantesimi da mago di 1° livello a sua scelta; ogni volta che sale di livello ne aggiunge gratuitamente due, di un livello per cui ha slot. Ogni giorno prepara dal libro un numero di incantesimi pari al suo modificatore di Intelligenza + il suo livello da mago (minimo 1), di livello per cui ha slot; può cambiarli dopo un riposo lungo (1 minuto di studio per livello di ogni incantesimo). Caratteristica da incantatore: Intelligenza (CD = 8 + bonus di competenza + mod. INT; attacco = bonus di competenza + mod. INT). Può lanciare come rituale qualsiasi incantesimo da mago con il descrittore rituale presente nel suo libro, anche se non lo ha preparato, e può usare un focus arcano. Può copiare nel libro altri incantesimi da mago trovati durante l'avventura: servono 2 ore e 50 mo per livello dell'incantesimo."
-        kid_hide: true
+        kid_hide: true             # per i bambini lo dice già la pagina degli incantesimi
+        sheet_hide: false          # sulla scheda completa resta nel riquadro Privilegi
       - name: Recupero Arcano
         short: "1/giorno, dopo un riposo breve, recuperi slot per un totale di livelli pari a metà del livello da mago (per eccesso), nessuno di 6° livello o superiore."
         text: "Il mago impara a recuperare parte della sua energia magica studiando il suo libro degli incantesimi. Una volta al giorno, quando completa un riposo breve, sceglie quali slot incantesimo spesi recuperare: il loro livello totale può essere pari o inferiore alla metà del suo livello da mago (arrotondato per eccesso) e nessuno può essere di 6° livello o superiore. Per esempio, un mago di 4° livello può recuperare uno slot di 2° livello oppure due slot di 1° livello."
@@ -40,20 +41,20 @@ wizard:
     8:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
-        text: "Vedi 4° livello."
+        text: "Il mago può aumentare un punteggio di caratteristica di 2 o due punteggi di 1 (massimo 20), oppure scegliere un talento."
         kid_hide: true
     12:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
-        text: "Vedi 4° livello."
+        text: "Il mago può aumentare un punteggio di caratteristica di 2 o due punteggi di 1 (massimo 20), oppure scegliere un talento."
         kid_hide: true
     16:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
-        text: "Vedi 4° livello."
+        text: "Il mago può aumentare un punteggio di caratteristica di 2 o due punteggi di 1 (massimo 20), oppure scegliere un talento."
         kid_hide: true
     18:
-      - name: Maestria negli Incantesimi
+      - name: Maestria negli Incantesimi   # scelta nel personaggio: spell_mastery: [<1° livello>, <2° livello>]
         name_en: Spell Mastery
         short: "Scegli un incantesimo da mago di 1° e uno di 2° livello del libro: se preparati, li lanci al loro livello più basso senza spendere slot. Puoi cambiarli con 8 ore di studio."
         text: "Il mago sceglie un incantesimo da mago di 1° livello e uno di 2° livello contenuti nel suo libro degli incantesimi. Quando li ha preparati, può lanciarli al loro livello più basso senza spendere uno slot incantesimo; per lanciarli a un livello superiore deve spendere uno slot come di consueto. Dedicando 8 ore allo studio, può sostituire uno o entrambi gli incantesimi scelti con altri degli stessi livelli."
@@ -61,10 +62,10 @@ wizard:
     19:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
-        text: "Vedi 4° livello."
+        text: "Il mago può aumentare un punteggio di caratteristica di 2 o due punteggi di 1 (massimo 20), oppure scegliere un talento."
         kid_hide: true
     20:
-      - name: Incantesimi Personali
+      - name: Incantesimi Personali       # scelta nel personaggio: signature_spells: [<3° livello>, <3° livello>]
         name_en: Signature Spells
         short: "Scegli due incantesimi da mago di 3° livello del libro: sempre preparati (non contano nel limite) e lanciabili una volta ciascuno al 3° livello senza slot, 1/riposo breve o lungo."
         text: "Il mago sceglie due incantesimi da mago di 3° livello contenuti nel suo libro degli incantesimi come suoi incantesimi personali. Li considera sempre preparati, non li conta nel numero di incantesimi preparati e può lanciare ognuno di essi una volta al 3° livello senza spendere uno slot incantesimo; quando lo fa, non può farlo di nuovo finché non completa un riposo breve o lungo. Per lanciarli a un livello superiore deve spendere uno slot come di consueto."
@@ -84,12 +85,12 @@ wizard:
           - name: Interdizione Arcana
             short: "Quando lanci un incantesimo di abiurazione di 1° livello o superiore puoi creare su di te un'interdizione (PF = 2 x livello da mago + mod. INT) che assorbe i danni al posto tuo. Creabile 1/riposo lungo; recupera 2 PF per livello di ogni incantesimo di abiurazione che lanci."
             text: "Quando il mago lancia un incantesimo di abiurazione di 1° livello o superiore, può usare un filo della magia dell'incantesimo per creare su se stesso un'interdizione magica che dura finché non completa un riposo lungo. L'interdizione ha punti ferita pari al doppio del livello da mago + il modificatore di Intelligenza. Quando il mago subisce danni, è l'interdizione a subirli; se la riducono a 0 punti ferita, il mago subisce i danni rimanenti. A 0 punti ferita l'interdizione non può assorbire danni, ma la sua magia rimane. Ogni volta che il mago lancia un incantesimo di abiurazione di 1° livello o superiore, l'interdizione recupera punti ferita pari al doppio del livello dell'incantesimo. Una volta creata, il mago non può crearla di nuovo finché non completa un riposo lungo."
-            kid: "Quando lanci un incantesimo di abiurazione crei su di te uno scudo magico che prende i danni al posto tuo (PF = 2 x livello + Intelligenza), una volta per riposo lungo. Ogni altro incantesimo di abiurazione lo ricarica."
+            kid: "Quando lanci un incantesimo di abiurazione di 1° livello o più crei su di te uno scudo magico che prende i danni al posto tuo (PF = 2 x livello + Intelligenza), una volta per riposo lungo. Ogni altro incantesimo di abiurazione lo ricarica."
         6:
           - name: Interdizione Proiettata
             short: "Reazione: quando una creatura che vedi entro 9 m subisce danni, la tua Interdizione Arcana li assorbe al suo posto."
             text: "Quando una creatura che il mago può vedere entro 9 metri da lui subisce danni, il mago può usare la sua reazione per far sì che sia la sua Interdizione Arcana ad assorbirli. Se i danni riducono l'interdizione a 0 punti ferita, la creatura protetta subisce i danni rimanenti."
-            kid: "Con la tua reazione, il tuo scudo magico può prendere i danni al posto di un amico che vedi entro 9 m."
+            kid: "Con la tua reazione, il tuo scudo magico può prendere i danni al posto di {un_amico} che vedi entro 9 m."
         10:
           - name: Abiurazione Migliorata
             short: "Quando un tuo incantesimo di abiurazione richiede una prova di caratteristica (es. controincantesimo, dissolvi magie), aggiungi il bonus di competenza."
@@ -119,7 +120,7 @@ wizard:
           - name: Trasposizione Benevola
             short: "Azione: ti teletrasporti fino a 9 m in uno spazio libero che vedi, o scambi di posto con una creatura consenziente Piccola o Media entro 9 m. Di nuovo dopo un riposo lungo o lanciando un incantesimo di evocazione di 1° livello o superiore."
             text: "Il mago può usare la sua azione per teletrasportarsi fino a 9 metri in uno spazio libero che può vedere. In alternativa, può scegliere uno spazio entro gittata occupato da una creatura Piccola o Media: se la creatura è consenziente, si teletrasportano entrambi scambiandosi di posto. Una volta usato questo privilegio, non può usarlo di nuovo finché non completa un riposo lungo o non lancia un incantesimo di evocazione di 1° livello o superiore."
-            kid: "Con un'azione ti teletrasporti fino a 9 m, oppure scambi di posto con un amico. Per rifarlo devi fare un riposo lungo o lanciare un incantesimo di evocazione."
+            kid: "Con un'azione ti teletrasporti fino a 9 m, oppure scambi di posto con {un_amico}. Per rifarlo devi fare un riposo lungo o lanciare un incantesimo di evocazione."
         10:
           - name: Evocazione Focalizzata
             short: "Subire danni non può interrompere la tua concentrazione su un incantesimo di evocazione."
@@ -152,14 +153,15 @@ wizard:
             kid: "Quando lanci un incantesimo di divinazione di 2° livello o più, recuperi uno slot già usato di livello più basso."
         10:
           - name: Il Terzo Occhio
-            short: "Azione: scegli scurovisione 18 m, vista eterea 18 m, comprensione di ogni lingua scritta o vedere l'invisibile entro 3 m, fino al prossimo riposo o finché sei incapacitato. 1/riposo breve o lungo."
+            short: "Azione: scegli scurovisione 18 m, vista eterea 18 m, comprensione di ogni lingua scritta o vedere l'invisibile entro 3 m, fino al prossimo riposo o finché sei incapacitat{o}. 1/riposo breve o lungo."
             text: "Il mago può usare la sua azione per accrescere i suoi poteri di percezione, scegliendo uno dei benefici seguenti, che dura finché non diventa incapacitato o non effettua un riposo breve o lungo: scurovisione entro 18 metri; vista eterea (vede nel Piano Etereo entro 18 metri); comprensione superiore (sa leggere qualsiasi linguaggio); vedere l'invisibile (vede creature e oggetti invisibili entro 3 metri nella sua linea di vista). Una volta usato, non può usarlo di nuovo finché non completa un riposo breve o lungo."
             kid: "Con un'azione ottieni un super-senso fino al prossimo riposo: vedere al buio, vedere l'invisibile, vedere il mondo degli spiriti o leggere ogni lingua."
         14:
           - name: Presagio Superiore
-            short: "Per Presagio tiri 3d20 invece di 2."
-            text: "Le visioni nei sogni del mago si intensificano: quando usa il privilegio Presagio tira tre d20 anziché due."
-            kid: "Per il Presagio tiri 3 d20 invece di 2."
+            replaces: Presagio
+            short: "Dopo un riposo lungo tira 3d20 (non più 2) e annota i risultati: puoi sostituire con uno di essi un tiro per colpire, un TS o una prova tua o di una creatura che vedi (prima del tiro, 1 volta per turno)."
+            text: "Le visioni nei sogni del mago si intensificano. Quando completa un riposo lungo, il mago tira tre d20 (anziché due) e ne annota i risultati. Può sostituire qualsiasi tiro per colpire, tiro salvezza o prova di caratteristica effettuato da lui o da una creatura che può vedere con uno di questi tiri premonitori, decidendolo prima del tiro; può farlo una sola volta per turno. Ogni tiro premonitore si usa una volta sola; quelli non usati si perdono al riposo lungo successivo."
+            kid: "Dopo un riposo lungo tiri 3 d20 e segni i numeri. Prima che tu o qualcuno che vedi tiri un d20, puoi decidere che il risultato è uno dei tuoi numeri!"
     enchantment:
       name: Scuola di Ammaliamento
       name_en: School of Enchantment
@@ -189,7 +191,7 @@ wizard:
           - name: Alterare i Ricordi
             short: "Chi affascini con un incantesimo di ammaliamento può non accorgersene; con un'azione puoi fargli dimenticare fino a 1 + mod. CAR ore (TS su INT)."
             text: "Quando il mago lancia un incantesimo di ammaliamento per affascinare una o più creature, può alterare la percezione di una di esse in modo che non si renda conto di essere stata affascinata. Inoltre, una volta prima che l'incantesimo termini, può usare la sua azione per cercare di farle dimenticare parte del tempo trascorso affascinata: la creatura deve superare un tiro salvezza su Intelligenza contro la CD degli incantesimi da mago o perdere i ricordi di un numero di ore pari a 1 + il modificatore di Carisma del mago (minimo 1). Il mago può farle dimenticare meno tempo, e comunque non più della durata dell'incantesimo."
-            kid: "Chi incanti con un incantesimo di ammaliamento non si accorge di essere stato incantato, e puoi provare a fargli dimenticare un po' di quel tempo."
+            kid: "Chi incanti con un incantesimo di ammaliamento non si accorge dell'incanto, e puoi provare a fargli dimenticare un po' di quel tempo."
     evocation:
       name: Scuola di Invocazione
       name_en: School of Evocation
@@ -204,7 +206,7 @@ wizard:
           - name: Plasmare Incantesimi
             short: "Con un incantesimo di invocazione che colpisce creature che vedi, scegline fino a 1 + livello dell'incantesimo: superano automaticamente il TS e non subiscono danni se ne subirebbero la metà."
             text: "Il mago può creare sacche di relativa sicurezza all'interno degli effetti dei suoi incantesimi di invocazione. Quando lancia un incantesimo di invocazione che influenza altre creature che può vedere, può sceglierne un numero pari a 1 + il livello dell'incantesimo: le creature scelte superano automaticamente i tiri salvezza contro l'incantesimo e non subiscono danni se normalmente ne subirebbero la metà con un tiro salvezza superato."
-            kid: "Quando lanci un incantesimo di invocazione su un'area, puoi proteggere alcuni amici (1 + il livello dell'incantesimo): non subiscono danni."
+            kid: "Quando lanci un incantesimo di invocazione su un'area, puoi proteggere alcune creature a tua scelta (1 + il livello dell'incantesimo): superano il tiro salvezza e non subiscono danni."
         6:
           - name: Trucchetto Potente
             short: "Chi supera il TS contro un tuo trucchetto che infligge danni subisce comunque metà dei danni (ma nessun altro effetto)."
@@ -215,6 +217,8 @@ wizard:
             short: "Aggiungi il mod. INT a un tiro per i danni di ogni incantesimo di invocazione da mago."
             text: "Il mago aggiunge il suo modificatore di Intelligenza a un tiro per i danni di qualsiasi incantesimo di invocazione da mago che lancia."
             kid: "Aggiungi {mod} (la tua Intelligenza) ai danni dei tuoi incantesimi di invocazione."
+            # trucchetti da mago di invocazione che fanno danni (Dardo di Fuoco, Raggio di Gelo, Stretta Folgorante)
+            cantrip_damage_bonus: {ability: int, spells: [fire_bolt, ray_of_frost, shocking_grasp]}
         14:
           - name: Saturazione Magica
             short: "Un incantesimo da mago di 1°-5° livello che infligge danni può infliggere il massimo. Dal secondo uso prima di un riposo lungo subisci 2d12 danni necrotici per livello dell'incantesimo (+1d12 per ogni uso successivo)."
@@ -234,8 +238,8 @@ wizard:
           - name: Illusione Minore Migliorata
             short: "Impari illusione minore senza contarla tra i trucchetti (se la conosci già, un altro trucchetto da mago); con un solo lancio crei sia un suono sia un'immagine."
             text: "Quando il mago sceglie questa scuola al 2° livello, impara il trucchetto illusione minore; se lo conosce già, impara invece un altro trucchetto da mago a sua scelta. Questo trucchetto non conta nel numero di trucchetti conosciuti. Quando lancia illusione minore, può creare sia un suono sia un'immagine con un singolo lancio dell'incantesimo."
-            grants_cantrip: minor_illusion
-            kid: "Conosci il trucchetto illusione minore in regalo, e con un solo lancio crei insieme un suono e un'immagine."
+            grants_cantrip: minor_illusion   # se lo conosce già, il motore chiede un altro trucchetto da mago (E14)
+            kid: "Impari in regalo il trucchetto illusione minore (se lo conoscevi già, scegli un altro trucchetto da mago). Con un solo lancio di illusione minore crei insieme un suono e un'immagine."
         6:
           - name: Illusioni Malleabili
             short: "Con un'azione puoi modificare un tuo incantesimo di illusione che dura 1 minuto o più, se puoi vedere l'illusione."
@@ -268,6 +272,7 @@ wizard:
             kid: "Quando sconfiggi un nemico con un incantesimo di 1° livello o più, recuperi PF: il doppio del livello dell'incantesimo (il triplo se è di necromanzia)."
         6:
           - name: Servitori Non Morti
+            spellbook_add: animate_dead      # gratis nel libro, fuori dal conto 6 + 2 per livello
             short: "Aggiungi animare morti al libro; quando lo lanci animi un cadavere in più. I non morti che crei con la necromanzia hanno PF massimi + livello da mago e aggiungono il tuo bonus di competenza ai danni delle armi."
             text: "Il mago aggiunge l'incantesimo animare morti al suo libro degli incantesimi, se non lo possiede già. Quando lancia animare morti, può bersagliare un cadavere o un mucchio di ossa aggiuntivo, creando un altro zombi o scheletro. Ogni non morto che crea con un incantesimo di necromanzia ottiene due benefici: il suo massimo dei punti ferita aumenta di un ammontare pari al livello da mago, e aggiunge il bonus di competenza del mago ai tiri per i danni delle sue armi."
             kid: "Quando animi dei non morti ne crei uno in più, e sono più forti del normale."
@@ -281,7 +286,7 @@ wizard:
           - name: Comandare Non Morti
             short: "Azione: un non morto entro 18 m fa un TS su CAR (CD incantesimi); se fallisce diventa amichevole e ti obbedisce finché non riusi il privilegio. Vantaggio al TS se ha INT 8+; se ha INT 12+ ripete il TS ogni ora."
             text: "Il mago può usare la magia per porre i non morti sotto il suo controllo, anche quelli creati da altri. Come azione, sceglie un non morto che può vedere entro 18 metri: la creatura deve effettuare un tiro salvezza su Carisma contro la CD degli incantesimi da mago. Se lo supera, il mago non può usare di nuovo questo privilegio su di essa; se lo fallisce, diventa amichevole nei suoi confronti e obbedisce ai suoi ordini finché il mago non usa di nuovo questo privilegio. Un non morto con Intelligenza pari o superiore a 8 ha vantaggio al tiro salvezza; se lo fallisce e ha Intelligenza pari o superiore a 12, può ripeterlo alla fine di ogni ora finché non lo supera e si libera."
-            kid: "Con un'azione puoi provare a comandare un non morto entro 18 m: se fallisce un tiro salvezza su Carisma con CD {cd}, diventa tuo amico e ti obbedisce."
+            kid: "Con un'azione puoi provare a comandare un non morto entro 18 m: se fallisce un tiro salvezza su Carisma con CD {cd}, diventa amichevole e ti obbedisce."
     transmutation:
       name: Scuola di Trasmutazione
       name_en: School of Transmutation
@@ -304,7 +309,8 @@ wizard:
             kid: "In 8 ore crei una pietra magica che dà un dono a chi la porta: vedere al buio, correre più veloce, resistere a un tipo di danno o essere più tenace (tiri salvezza su Costituzione)."
         10:
           - name: Mutaforma
-            short: "Aggiungi metamorfosi al libro; puoi lanciarla senza slot, solo su te stesso, trasformandoti in una bestia di GS 1 o inferiore. 1/riposo breve o lungo."
+            spellbook_add: polymorph         # gratis nel libro, fuori dal conto 6 + 2 per livello
+            short: "Aggiungi metamorfosi al libro; puoi lanciarla senza slot, solo su te stess{o}, trasformandoti in una bestia di GS 1 o inferiore. 1/riposo breve o lungo."
             text: "Il mago aggiunge l'incantesimo metamorfosi al suo libro degli incantesimi, se non lo possiede già. Può lanciare metamorfosi senza spendere uno slot incantesimo: quando lo fa, può bersagliare solo se stesso e trasformarsi in una bestia di grado di sfida pari o inferiore a 1. Una volta lanciato così, non può farlo di nuovo finché non completa un riposo breve o lungo, anche se può comunque lanciarlo normalmente usando uno slot."
             kid: "Una volta per riposo (anche breve) puoi diventare un animale fino a GS 1, lanciando metamorfosi su di te senza usare slot."
         14:

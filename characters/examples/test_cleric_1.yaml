@@ -1,0 +1,61 @@
+# TEST: Chierico 1° livello, Dominio della Natura, Umano (Variante), Eroe Popolare
+# Genera con:  python -m dnd5e build characters/examples/test_cleric_1.yaml
+
+name: Bram Verdesiepe
+template: official_it
+player: "Test"
+race: human
+subrace: variant_human        # +1 a due caratteristiche, 1 abilità, 1 talento
+class: cleric
+subclass: nature              # Dominio della Natura
+level: 1
+xp: 0
+background: folk_hero         # Eroe Popolare
+alignment: NG
+
+abilities:
+  method: standard_array
+  base: {str: 13, dex: 10, con: 14, int: 8, wis: 15, cha: 12}
+  racial_choice: [wis, con]   # umano variante: +1 SAG, +1 COS
+
+feats:
+  - {key: resilient, ability: con}   # talento dell'umano variante: +1 COS e competenza nei TS su COS
+
+hp:
+  method: average
+
+skills: [medicine, religion]                      # 2 abilità di classe
+background_skills: [animal_handling, survival]    # Eroe Popolare
+racial_skills: [perception]                       # abilità dell'umano variante
+extra_skills: [nature]                            # Accolito della Natura (Addestrare Animali / Natura / Sopravvivenza)
+background_tools: ["Strumenti da falegname", "Veicoli (terrestri)"]
+languages_extra: [sylvan]                         # 1 dall'umano
+
+cantrips: [sacred_flame, guidance, spare_the_dying, produce_flame]   # 3 da chierico + 1 da druido (Accolito della Natura)
+spells: [bless, cure_wounds, healing_word, guiding_bolt]             # SAG +3 + livello 1 = 4
+
+armor: chain_mail             # Dominio della Natura: armature pesanti; FOR 13 richiesta
+shield: true
+weapons: [mace, light_crossbow]
+equipment:
+  - "Simbolo sacro (amuleto di quercia)"
+  - "20 quadrelli"
+  - pack: priests_pack
+money: {gp: 10}
+
+personality:
+  traits: "Parlo con gli alberi come con i vecchi amici."
+  ideals: "Equilibrio. La natura dà e prende. (Neutrale)"
+  bonds: "Il bosco del mio villaggio."
+  flaws: "Mi fido più degli animali che delle persone."
+
+appearance:
+  age: "24"
+  height: "1,80 m"
+  weight: "80 kg"
+  eyes: "Castani"
+  skin: "Abbronzata"
+  hair: "Castani, raccolti"
+
+backstory: |
+  Personaggio di prova per il motore: chierico della Natura di 1° livello.

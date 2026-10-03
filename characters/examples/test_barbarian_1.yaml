@@ -1,0 +1,52 @@
+# TEST: Barbara di 1° livello (nessun cammino), Mezzorca, Forestiera, array standard, al femminile.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_barbarian_1.yaml
+
+name: Grusha
+player: "Test"
+template: official_it
+gender: f                    # Mezzorca, Barbara, Forestiera
+race: half_orc
+class: barbarian
+level: 1
+xp: 0
+background: outlander        # Forestiera: Atletica e Sopravvivenza
+alignment: CN
+
+abilities:
+  method: standard_array     # 15, 14, 13, 12, 10, 8
+  base: {str: 15, dex: 13, con: 14, int: 8, wis: 12, cha: 10}   # prima dei bonus razziali (+2 FOR, +1 COS)
+
+hp:
+  method: average
+
+skills: [animal_handling, perception]   # 2 abilità di classe (Atletica e Sopravvivenza dal background, Intimidire dalla razza)
+languages_extra: [giant]                # 1 dal background (Comune e Orchesco dalla razza)
+background_tools: ["Corno (strumento musicale)"]
+
+armor: null
+shield: false
+weapons: [greataxe, handaxe, javelin]
+equipment:
+  - "Ascia bipenne"
+  - "2 asce"
+  - "4 giavellotti"
+  - pack: explorers_pack
+money: {gp: 10}
+
+personality:
+  traits: "Parlo poco e osservo molto."
+  ideals: "Libertà."
+  bonds: "La mia tribù."
+  flaws: "Mi fido solo della mia ascia."
+
+appearance:
+  age: "18"
+  height: "1,85 m"
+  weight: "90 kg"
+  eyes: "Gialli"
+  skin: "Grigio-verde"
+  hair: "Neri, raccolti"
+
+allies: ""
+treasure: ""
+backstory: "Personaggio di prova per controllare il barbaro di 1° livello."

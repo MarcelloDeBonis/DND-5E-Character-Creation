@@ -1,0 +1,60 @@
+# Test: Stregone 1 (Discendenza Draconica, drago d'oro), Dragonide, Nobile.
+# Personaggio di prova per verificare le regole dello stregone al 1° livello.
+# Genera con:  python -m dnd5e build characters/examples/test_sorcerer_1.yaml
+
+name: Vaskar
+template: official_it
+player: "Test"
+race: dragonborn
+draconic_ancestry: gold          # drago d'oro: soffio di fuoco a cono di 4,5 m (TS Destrezza)
+class: sorcerer
+subclass: draconic_bloodline     # Origine Stregonesca al 1° livello
+level: 1
+xp: 0
+background: noble
+alignment: LG
+
+abilities:
+  method: standard_array          # 15, 14, 13, 12, 10, 8 prima dei bonus razziali (+2 FOR, +1 CAR)
+  base: {str: 8, dex: 13, con: 14, int: 10, wis: 12, cha: 15}
+
+hp:
+  method: average
+
+skills: [intimidation, insight]                  # 2 abilità di classe (Persuasione è già del Nobile)
+background_skills: [history, persuasion]         # Nobile
+background_tools: ["Scacchi dei draghi"]         # un tipo di gioco a scelta
+languages_extra: [elvish]                        # 1 linguaggio dal Nobile (Draconico è già della razza)
+
+class_options:
+  dragon_ancestor: [gold]                        # antenato draconico: oro (fuoco)
+
+cantrips: [fire_bolt, ray_of_frost, light, prestidigitation]   # 4 trucchetti al 1° livello
+spells: [burning_hands, shield]                                 # 2 incantesimi conosciuti al 1° livello
+
+armor: null
+weapons: [dagger, light_crossbow]
+equipment:
+  - "Balestra leggera e 20 quadrelli"
+  - "Focus arcano (cristallo dorato)"
+  - pack: explorers_pack
+  - "Due pugnali"
+include_background_equipment: true
+money: {gp: 25}
+
+personality:
+  traits: "Parlo con la calma di chi sa di avere sangue di drago."
+  ideals: "Responsabilità. Il potere va usato per proteggere chi non ne ha. (Legale)"
+  bonds: "La mia casata custodisce un uovo d'oro che non si è mai schiuso."
+  flaws: "Disprezzo chi non rispetta le regole della nobiltà."
+
+appearance:
+  age: "22"
+  height: "1,95 m"
+  weight: "110 kg"
+  eyes: "Dorati"
+  skin: "Scaglie d'oro"
+  hair: "—"
+
+backstory: |
+  Erede di una casata dragonide che discende da un drago d'oro, Vaskar ha sentito il fuoco del suo antenato risvegliarsi a sedici anni.

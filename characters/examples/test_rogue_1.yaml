@@ -1,0 +1,48 @@
+# TEST: Ladro di 1° livello (nessun archetipo), Halfling Piedelesto, Criminale, array standard
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_rogue_1.yaml
+
+name: Pip Sottoponte
+template: official_it
+player: "Test"
+race: halfling
+subrace: lightfoot          # +2 DES (razza), +1 CAR (Piedelesto)
+class: rogue
+level: 1
+xp: 0
+background: criminal        # Criminale: Inganno, Furtività
+alignment: CN
+
+abilities:
+  method: standard_array
+  base: {str: 8, dex: 15, con: 14, int: 10, wis: 13, cha: 12}   # -> DES 17, CAR 13
+
+hp:
+  method: average
+
+skills: [acrobatics, perception, investigation, sleight_of_hand]   # 4 abilità di classe
+expertise: [stealth, perception]                                   # Maestria al 1° livello: 2
+background_tools: ["Set di dadi", "Arnesi da falsario"]            # gli arnesi da scasso del Criminale doppiano quelli di classe: sostituiti
+languages_extra: []                                                # halfling: Comune e Halfling; il Criminale non dà linguaggi
+
+armor: leather
+weapons: [rapier, shortbow, dagger]
+equipment:
+  - "Faretra con 20 frecce"
+  - "Secondo pugnale"
+  - "Arnesi da scasso"
+  - pack: burglars_pack
+money: {gp: 15}
+
+personality:
+  traits: "Ho sempre un piano B, e anche un piano C."
+  ideals: "Libertà. Le catene sono fatte per essere spezzate. (Caotico)"
+  bonds: "Devo un grosso favore a chi mi ha tirato fuori di prigione."
+  flaws: "Se vedo una serratura devo aprirla."
+appearance:
+  age: "24"
+  height: "0,90 m"
+  weight: "18 kg"
+  eyes: "Nocciola"
+  skin: "Abbronzata"
+  hair: "Castani, ricci"
+backstory: "Personaggio di prova per il test della classe Ladro al 1° livello."

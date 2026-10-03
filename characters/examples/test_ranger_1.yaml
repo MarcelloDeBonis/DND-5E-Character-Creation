@@ -1,0 +1,57 @@
+# TEST: Ranger di 1° livello (nessun archetipo, nessuno stile, nessun incantesimo ancora).
+# Tiefling (trucchetto razziale Taumaturgia, CAR) per verificare la pagina incantesimi di un ranger che non lancia ancora.
+# Genera con:  python -m dnd5e build characters/examples/test_ranger_1.yaml
+
+name: Vesh
+template: official_it
+player: "Test"
+gender: f                    # nomi al femminile
+race: tiefling               # +2 CAR, +1 INT; Taumaturgia (CAR)
+class: ranger
+level: 1
+xp: 0
+background: folk_hero        # Eroe Popolare: Addestrare Animali, Sopravvivenza
+alignment: CG
+
+abilities:
+  method: point_buy          # 10+15+14+8+14+10 -> 2+9+7+0+7+2 = 27 punti
+  base: {str: 10, dex: 15, con: 14, int: 8, wis: 14, cha: 10}
+
+hp:
+  method: average
+
+skills: [perception, stealth, nature]          # 3 abilità di classe (nessun doppione con il background)
+background_tools: ["Strumenti da carpentiere", "Veicoli (terrestri)"]
+languages_extra: [abyssal]                      # 1 da Nemico Prescelto (immondi)
+
+class_options:
+  favored_enemy: [fiends]                       # 1 nemico prescelto al 1° livello
+  favored_terrain: [forest]                     # 1 terreno prescelto al 1° livello
+
+armor: scale_mail            # Corazza di scaglie: 14 + DES (max 2)
+weapons: [shortsword, shortsword, longbow]
+equipment:
+  - "Faretra con 20 frecce"
+  - pack: explorers_pack
+  - "Strumenti da carpentiere"
+  - "Vanga"
+  - "Pentola di ferro"
+  - "Abiti comuni"
+include_background_equipment: false   # l'equipaggiamento dell'Eroina Popolare è già scritto qui sopra (con lo strumento scelto)
+money: {gp: 10}
+
+personality:
+  traits: "Parlo poco e ascolto il bosco."
+  ideals: "Proteggere chi non sa difendersi."
+  bonds: "Il mio villaggio."
+  flaws: "Non mi fido dei nobili."
+
+appearance:
+  age: "22"
+  height: "1,70 m"
+  weight: "62 kg"
+  eyes: "Oro"
+  skin: "Rosso scuro"
+  hair: "Neri"
+
+backstory: "Personaggio di prova per il ranger di 1° livello."

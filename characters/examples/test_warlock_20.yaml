@@ -1,0 +1,94 @@
+# TEST: Warlock di 20° livello, Patrono il Grande Antico, Patto del Tomo, Elfo Alto, Saggio, array standard.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_warlock_20.yaml
+
+name: Ysolde
+template: official_it
+player: "Test"
+gender: f
+race: elf
+subrace: high_elf
+class: warlock
+subclass: great_old_one      # Patrono Ultraterreno: il Grande Antico
+level: 20
+xp: 355000
+background: sage             # Saggia: Arcano, Storia, 2 linguaggi
+alignment: N                 # Neutrale (codice N; "TN" non esiste nelle regole)
+
+abilities:
+  method: standard_array
+  base: {str: 8, dex: 14, con: 13, int: 12, wis: 10, cha: 15}   # prima dei bonus razziali (+2 DES, +1 INT)
+  asi:
+    - {cha: 2}               # 4° livello:  CAR 15 -> 17
+    - {cha: 2}               # 8° livello:  CAR 17 -> 19
+    - {cha: 1, con: 1}       # 12° livello: CAR 19 -> 20, COS 13 -> 14
+feats:
+  - war_caster               # 16° livello
+  - alert                    # 19° livello
+
+hp:
+  method: average
+
+skills: [deception, intimidation]                 # 2 abilità di classe (Percezione arriva dall'elfo)
+background_skills: [arcana, history]              # Saggia
+languages_extra: [deep_speech, abyssal, draconic] # 1 dall'elfo alto + 2 dalla Saggia
+racial_cantrips: [ray_of_frost]                   # trucchetto da mago dell'elfo alto (Intelligenza)
+
+class_options:
+  pact_boons:                                     # Dono del Patto (3° livello)
+    - {key: pact_of_the_tome, cantrips: [guidance, sacred_flame, vicious_mockery]}   # 3 trucchetti da liste di altre classi
+  invocations:                                    # 8 suppliche dal 18° livello
+    - agonizing_blast
+    - eldritch_spear
+    - {key: book_of_ancient_secrets, spells: [identify, tensers_floating_disk]}   # 2 rituali di 1° livello nel Libro delle Ombre
+    - devils_sight
+    - witch_sight                                 # 15° livello
+    - visions_of_distant_realms                   # 15° livello: occhio arcano a volontà
+    - dreadful_word                               # 7° livello: confusione 1/riposo lungo con uno slot
+    - eyes_of_the_rune_keeper
+
+cantrips: [eldritch_blast, minor_illusion, mage_hand, prestidigitation]   # 4 trucchetti da warlock
+spells:                                            # 15 incantesimi conosciuti (slot di 5° livello)
+  - dissonant_whispers         # lista ampliata del Grande Antico
+  - tashas_hideous_laughter    # lista ampliata del Grande Antico
+  - hex
+  - detect_thoughts            # lista ampliata del Grande Antico
+  - misty_step
+  - suggestion
+  - clairvoyance               # lista ampliata del Grande Antico
+  - counterspell
+  - fly
+  - evards_black_tentacles     # lista ampliata del Grande Antico
+  - dimension_door
+  - telekinesis                # lista ampliata del Grande Antico
+  - dominate_person            # lista ampliata del Grande Antico
+  - scrying
+  - hold_monster
+  - eyebite                    # Arcanum Mistico (6° livello)
+  - forcecage                  # Arcanum Mistico (7° livello)
+  - feeblemind                 # Arcanum Mistico (8° livello)
+  - foresight                  # Arcanum Mistico (9° livello)
+
+armor: leather
+weapons: [dagger, light_crossbow]
+equipment:
+  - "Balestra leggera e 20 quadrelli"
+  - "Focus arcano (occhio di vetro)"
+  - "Libro delle Ombre"
+  - pack: scholars_pack
+  - "Due pugnali"
+include_background_equipment: true
+money: {gp: 5000, pp: 50}
+
+personality:
+  traits: "Ascolto più di quanto parlo, e prendo appunti su tutti."
+  ideals: "Conoscenza. Le stelle hanno un messaggio, e io lo decifrerò. (Neutrale)"
+  bonds: "Il Libro delle Ombre è la cosa più preziosa che ho."
+  flaws: "A volte sento la voce del mio patrono e smetto di ascoltare gli amici."
+
+appearance:
+  age: "310"
+  height: "1,72 m"
+  weight: "54 kg"
+  eyes: "Neri come il cielo senza stelle"
+  skin: "Pallida, quasi blu"
+  hair: "Argento"

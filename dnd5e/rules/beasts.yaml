@@ -1,4 +1,5 @@
-# Bestie del Manuale dei Mostri / SRD 5.1 utilizzabili con Forma Selvatica (GS fino a 1).
+# Bestie del Manuale dei Mostri / SRD 5.1 utilizzabili con Forma Selvatica: GS fino a 1 per tutti i druidi, fino a 6
+# per il Circolo della Luna (GS = livello da druido / 3 dal 6° livello), più gli elementali dal 10° livello.
 # cr: grado di sfida. speed in metri (walk; climb/burrow/fly/swim se presenti). attacks: testo riassuntivo. traits: capacità speciali.
 # Nomi italiani della traduzione ufficiale Asmodee del Manuale dei Mostri.
 #
@@ -9,6 +10,9 @@
 #   kid_attacks: un elemento per attacco: name, hit (bonus per colpire), damage (dadi; "1" se fisso;
 #                "-" se non fa danni), type (tipo di danno), extra (opzionale: effetto spiegato semplice)
 #   kid_traits:  "Nome: spiegazione semplice" (lista vuota se non ne ha)
+# I testi kid sono in seconda persona (chi gioca è l'animale): niente aggettivi al maschile o al femminile riferiti
+# a chi gioca; se servono si scrive {o} ("attent{o}" -> attento / attenta), che il motore sostituisce.
+#   elemental: true = elementale (solo con Forma Selvatica Elementale); cost = usi di Forma Selvatica spesi.
 
 baboon:
   name: Babbuino
@@ -111,7 +115,7 @@ goat:
   kid_attacks:
     - {name: "Incornata", hit: "+3", damage: "1d4+1", type: "contundenti"}
   kid_traits:
-    - "Carica: se corri dritta verso il nemico per almeno 6 m e lo colpisci con l'Incornata, fai 1d4 danni in più e lui tira un d20 per non cadere (tiro salvezza su Forza contro 10): se sbaglia cade a terra."
+    - "Carica: se corri dritt{o} verso il nemico per almeno 6 m e lo colpisci con l'Incornata, fai 1d4 danni in più e lui tira un d20 per non cadere (tiro salvezza su Forza contro 10): se sbaglia cade a terra."
     - "Piede Sicuro: è difficile farti cadere: quando fai un tiro salvezza per non finire a terra tiri 2 d20 e tieni il più alto (vantaggio)."
 
 hyena:
@@ -160,7 +164,7 @@ lizard:
   attacks: "Morso +0, 1 perforante"
   traits: "Scurovisione 9 m"
   role: esplorare
-  kid: "Una lucertolina che si arrampica sui muri: perfetta per passare inosservata e infilarti nelle fessure."
+  kid: "Una lucertolina che si arrampica sui muri: perfetta per passare inosservat{o} e infilarti nelle fessure."
   kid_attacks:
     - {name: "Morso", hit: "+0", damage: "1", type: "perforante"}
   kid_traits:
@@ -373,7 +377,7 @@ boar:
   kid_attacks:
     - {name: "Zanna", hit: "+3", damage: "1d6+1", type: "taglienti"}
   kid_traits:
-    - "Carica: se corri dritta verso il nemico per almeno 6 m e lo colpisci con la Zanna, fai 1d6 danni in più e lui tira un d20 per non cadere (tiro salvezza su Forza contro 11): se sbaglia cade a terra."
+    - "Carica: se corri dritt{o} verso il nemico per almeno 6 m e lo colpisci con la Zanna, fai 1d6 danni in più e lui tira un d20 per non cadere (tiro salvezza su Forza contro 11): se sbaglia cade a terra."
     - "Implacabile: se un colpo da 7 danni o meno ti porterebbe a 0 PF, resti in piedi con 1 PF. Funziona una volta, poi serve un riposo (breve o lungo)."
 
 draft_horse:
@@ -408,7 +412,7 @@ elk:
     - {name: "Incornata", hit: "+5", damage: "1d6+3", type: "contundenti"}
     - {name: "Zoccoli", hit: "+5", damage: "2d4+3", type: "contundenti", extra: "Puoi usarli solo contro un nemico che è già a terra."}
   kid_traits:
-    - "Carica: se corri dritta verso il nemico per almeno 6 m e lo colpisci con l'Incornata, fai 2d6 danni in più e lui tira un d20 per non cadere (tiro salvezza su Forza contro 13): se sbaglia cade a terra."
+    - "Carica: se corri dritt{o} verso il nemico per almeno 6 m e lo colpisci con l'Incornata, fai 2d6 danni in più e lui tira un d20 per non cadere (tiro salvezza su Forza contro 13): se sbaglia cade a terra."
 
 giant_badger:
   name: Tasso Gigante
@@ -502,7 +506,7 @@ panther:
     - {name: "Artiglio", hit: "+4", damage: "1d4+2", type: "taglienti", extra: "Usalo dopo una corsa di 6 m per fare il Balzo."}
   kid_traits:
     - "Olfatto Acuto: annusi benissimo: quando cerchi qualcosa con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
-    - "Balzo: se corri dritta verso un nemico per almeno 6 m e lo colpisci con l'Artiglio, lui tira un d20 per non cadere (tiro salvezza su Forza contro 12): se sbaglia cade a terra e tu puoi dargli subito un Morso in più (azione bonus)."
+    - "Balzo: se corri dritt{o} verso un nemico per almeno 6 m e lo colpisci con l'Artiglio, lui tira un d20 per non cadere (tiro salvezza su Forza contro 12): se sbaglia cade a terra e tu puoi dargli subito un Morso in più (azione bonus)."
 
 riding_horse:
   name: Cavallo da Sella
@@ -590,7 +594,7 @@ giant_goat:
   kid_attacks:
     - {name: "Incornata", hit: "+5", damage: "2d4+3", type: "contundenti"}
   kid_traits:
-    - "Carica: se corri dritta verso il nemico per almeno 6 m e lo colpisci con l'Incornata, fai 2d4 danni in più e lui tira un d20 per non cadere (tiro salvezza su Forza contro 13): se sbaglia cade a terra."
+    - "Carica: se corri dritt{o} verso il nemico per almeno 6 m e lo colpisci con l'Incornata, fai 2d4 danni in più e lui tira un d20 per non cadere (tiro salvezza su Forza contro 13): se sbaglia cade a terra."
     - "Piede Sicuro: è difficile farti cadere: quando fai un tiro salvezza per non finire a terra tiri 2 d20 e tieni il più alto (vantaggio)."
 
 warhorse:
@@ -608,7 +612,7 @@ warhorse:
   kid_attacks:
     - {name: "Zoccoli", hit: "+6", damage: "2d6+4", type: "contundenti"}
   kid_traits:
-    - "Carica Travolgente: se corri dritta verso un nemico per almeno 6 m e lo colpisci con gli Zoccoli, lui tira un d20 per non cadere (tiro salvezza su Forza contro 14): se sbaglia cade a terra e tu puoi dargli subito un altro colpo di Zoccoli (azione bonus)."
+    - "Carica Travolgente: se corri dritt{o} verso un nemico per almeno 6 m e lo colpisci con gli Zoccoli, lui tira un d20 per non cadere (tiro salvezza su Forza contro 14): se sbaglia cade a terra e tu puoi dargli subito un altro colpo di Zoccoli (azione bonus)."
 
 brown_bear:
   name: Orso Bruno
@@ -704,7 +708,7 @@ lion:
   kid_traits:
     - "Olfatto Acuto: annusi benissimo: quando cerchi qualcosa con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
     - "Tattiche di Branco: se un tuo amico che può combattere è accanto al nemico (entro 1,5 m), quando lo attacchi tiri 2 d20 e tieni il più alto (vantaggio)."
-    - "Balzo: se corri dritta verso un nemico per almeno 6 m e lo colpisci con l'Artiglio, lui tira un d20 per non cadere (tiro salvezza su Forza contro 13): se sbaglia cade a terra e tu puoi dargli subito un Morso in più (azione bonus)."
+    - "Balzo: se corri dritt{o} verso un nemico per almeno 6 m e lo colpisci con l'Artiglio, lui tira un d20 per non cadere (tiro salvezza su Forza contro 13): se sbaglia cade a terra e tu puoi dargli subito un Morso in più (azione bonus)."
     - "Salto con Rincorsa: se prendi la rincorsa per almeno 3 m, salti in lungo fino a 7,5 m."
 
 tiger:
@@ -724,7 +728,7 @@ tiger:
     - {name: "Artiglio", hit: "+5", damage: "1d8+3", type: "taglienti", extra: "Usalo dopo una corsa di 6 m per fare il Balzo."}
   kid_traits:
     - "Olfatto Acuto: annusi benissimo: quando cerchi qualcosa con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
-    - "Balzo: se corri dritta verso un nemico per almeno 6 m e lo colpisci con l'Artiglio, lui tira un d20 per non cadere (tiro salvezza su Forza contro 13): se sbaglia cade a terra e tu puoi dargli subito un Morso in più (azione bonus)."
+    - "Balzo: se corri dritt{o} verso un nemico per almeno 6 m e lo colpisci con l'Artiglio, lui tira un d20 per non cadere (tiro salvezza su Forza contro 13): se sbaglia cade a terra e tu puoi dargli subito un Morso in più (azione bonus)."
     - "Scurovisione 18 m: vedi al buio fino a 18 m (in bianco e nero)."
 
 # --- Bestie con nuoto o volo (escluse ai livelli bassi; incluse per completezza) ---
@@ -777,7 +781,7 @@ crocodile:
   attacks: "Morso +4, 1d10+2 perforanti + afferrato (fuga CD 12) e trattenuto"
   traits: "Trattenere il Respiro (15 minuti)"
   role: nuotare
-  kid: "In acqua sei fortissimo: nuoti veloce, afferri il nemico con la bocca e non lo lasci andare."
+  kid: "In acqua sei fortissim{o}: nuoti veloce, afferri il nemico con la bocca e non lo lasci andare."
   kid_attacks:
     - {name: "Morso", hit: "+4", damage: "1d10+2", type: "perforanti", extra: "Se colpisci, tieni il nemico in bocca: è afferrato e trattenuto (non si muove, colpisce peggio e tutti colpiscono lui più facilmente). Per liberarsi deve usare la sua azione e fare almeno 12 con una prova di Forza (Atletica) o Destrezza (Acrobazia). Finché lo tieni non puoi mordere nessun altro."}
   kid_traits:
@@ -814,7 +818,7 @@ giant_octopus:
   attacks: "Tentacoli +5 (portata 4,5 m), 2d6+3 contundenti + afferrato e trattenuto (CD 16)"
   traits: "Respira solo sott'acqua (Trattenere il Respiro: 1 ora fuori dall'acqua), Nube d'Inchiostro (raggio 6 m), Camuffamento Subacqueo, scurovisione 18 m"
   role: nuotare
-  kid: "La regina del mare: nuoti velocissima (18 m a turno), ti mimetizzi e afferri i nemici da lontano con i tentacoli."
+  kid: "La regina del mare: nuoti velocissim{o} (18 m a turno), ti mimetizzi e afferri i nemici da lontano con i tentacoli."
   kid_attacks:
     - {name: "Tentacoli", hit: "+5", damage: "2d6+3", type: "contundenti", extra: "Arrivi lontano: fino a 4,5 m. Se colpisci, il nemico è afferrato e trattenuto (non si muove, colpisce peggio e tutti colpiscono lui più facilmente). Per liberarsi deve usare la sua azione e fare almeno 16 con una prova di Forza (Atletica) o Destrezza (Acrobazia). Finché lo tieni non puoi usare i tentacoli su nessun altro."}
   kid_traits:
@@ -838,7 +842,7 @@ giant_bat:
   kid_attacks:
     - {name: "Morso", hit: "+4", damage: "1d6+2", type: "perforanti"}
   kid_traits:
-    - "Ecolocazione: la tua Vista Cieca funziona con i suoni: se diventi sorda non funziona più."
+    - "Ecolocazione: la tua Vista Cieca funziona con i suoni: se diventi sord{o} non funziona più."
     - "Udito Acuto: senti benissimo: quando cerchi qualcosa con le orecchie tiri 2 d20 e tieni il più alto (vantaggio)."
     - "Vista Cieca 18 m: senti tutto quello che c'è intorno a te fino a 18 m anche senza vedere, perfino al buio."
 
@@ -872,7 +876,7 @@ giant_eagle:
   attacks: "Multiattacco: Becco +5, 1d6+3 perforanti; Artigli +5, 2d6+3 taglienti"
   traits: "Vista Acuta"
   role: volare
-  kid: "Voli velocissima (24 m a turno): puoi portare in volo un amico e attaccare con becco e artigli nello stesso turno."
+  kid: "Voli velocissim{o} (24 m a turno): puoi portare in volo un amico e attaccare con becco e artigli nello stesso turno."
   multi: "Nello stesso turno puoi fare sia il Becco che gli Artigli."
   kid_attacks:
     - {name: "Becco", hit: "+5", damage: "1d6+3", type: "perforanti"}
@@ -916,7 +920,7 @@ bat:
   kid_attacks:
     - {name: "Morso", hit: "+0", damage: "1", type: "perforante"}
   kid_traits:
-    - "Ecolocazione: la tua Vista Cieca funziona con i suoni: se diventi sorda non funziona più."
+    - "Ecolocazione: la tua Vista Cieca funziona con i suoni: se diventi sord{o} non funziona più."
     - "Udito Acuto: senti benissimo: quando cerchi qualcosa con le orecchie tiri 2 d20 e tieni il più alto (vantaggio)."
     - "Vista Cieca 18 m: senti tutto quello che c'è intorno a te fino a 18 m anche senza vedere, perfino al buio."
 
@@ -949,7 +953,7 @@ eagle:
   attacks: "Artigli +4, 1d4+2 taglienti"
   traits: "Vista Acuta"
   role: volare
-  kid: "Voli alta (18 m a turno) e vedi tutto da lontano: perfetta per guardare dall'alto cosa c'è più avanti."
+  kid: "Voli alt{o} (18 m a turno) e vedi tutto da lontano: perfett{o} per guardare dall'alto cosa c'è più avanti."
   kid_attacks:
     - {name: "Artigli", hit: "+4", damage: "1d4+2", type: "taglienti"}
   kid_traits:
@@ -966,7 +970,7 @@ frog:
   attacks: "Nessun attacco"
   traits: "Anfibio, Salto da Fermo (salto in lungo 3 m, in alto 1,5 m, anche senza rincorsa), scurovisione 9 m"
   role: nuotare
-  kid: "Una ranocchia minuscola: nuoti, salti e ti nascondi nell'erba. Attenta: non sai attaccare!"
+  kid: "Una ranocchia minuscola: nuoti, salti e ti nascondi nell'erba. Attent{o}: non sai attaccare!"
   kid_attacks: []
   kid_traits:
     - "Anfibio: respiri sia fuori che sott'acqua."
@@ -1076,7 +1080,7 @@ sea_horse:
   attacks: "Nessun attacco"
   traits: "Respira solo sott'acqua"
   role: nuotare
-  kid: "Un cavalluccio marino minuscolo: puoi solo nuotare e nasconderti tra le alghe. Attenta: non sai attaccare!"
+  kid: "Un cavalluccio marino minuscolo: puoi solo nuotare e nasconderti tra le alghe. Attent{o}: non sai attaccare!"
   kid_attacks: []
   kid_traits:
     - "Respirare sott'Acqua: respiri solo sott'acqua: fuori dall'acqua soffochi, quindi usa questa forma solo quando sei già in acqua."
@@ -1183,7 +1187,7 @@ stirge:
   role: volare
   kid: "Un piccolo mostriciattolo volante che si attacca ai nemici e succhia il loro sangue."
   kid_attacks:
-    - {name: "Succhiare Sangue", hit: "+5", damage: "1d4+3", type: "perforanti", extra: "Se colpisci, resti attaccata al nemico e non attacchi più: all'inizio di ogni tuo turno lui perde 1d4+3 PF. Ti stacchi quando gli hai succhiato 10 PF in tutto o se muore (o quando vuoi, usando 1,5 m di movimento). Il nemico o un suo amico può usare la sua azione per staccarti."}
+    - {name: "Succhiare Sangue", hit: "+5", damage: "1d4+3", type: "perforanti", extra: "Se colpisci, resti attaccat{o} al nemico e non attacchi più: all'inizio di ogni tuo turno lui perde 1d4+3 PF. Ti stacchi quando gli hai succhiato 10 PF in tutto o se muore (o quando vuoi, usando 1,5 m di movimento). Il nemico o un suo amico può usare la sua azione per staccarti."}
   kid_traits:
     - "Scurovisione 18 m: vedi al buio fino a 18 m (in bianco e nero)."
 
@@ -1219,7 +1223,7 @@ giant_sea_horse:
   kid_attacks:
     - {name: "Incornata", hit: "+3", damage: "1d6+1", type: "contundenti"}
   kid_traits:
-    - "Carica: se nuoti dritta verso il nemico per almeno 6 m e lo colpisci con l'Incornata, fai 2d6 danni in più e lui tira un d20 per non cadere (tiro salvezza su Forza contro 11): se sbaglia viene rovesciato (prono)."
+    - "Carica: se nuoti dritt{o} verso il nemico per almeno 6 m e lo colpisci con l'Incornata, fai 2d6 danni in più e lui tira un d20 per non cadere (tiro salvezza su Forza contro 11): se sbaglia viene rovesciato (prono)."
     - "Respirare sott'Acqua: respiri solo sott'acqua: fuori dall'acqua soffochi, quindi usa questa forma solo quando sei già in acqua."
 
 giant_wasp:
@@ -1256,3 +1260,429 @@ reef_shark:
     - "Tattiche di Branco: se un tuo amico che può combattere è accanto al nemico (entro 1,5 m), quando lo attacchi tiri 2 d20 e tieni il più alto (vantaggio)."
     - "Respirare sott'Acqua: respiri solo sott'acqua: fuori dall'acqua soffochi, quindi usa questa forma solo quando sei già in acqua."
     - "Vista Cieca 9 m: senti tutto quello che c'è intorno a te fino a 9 m anche senza vedere, perfino al buio."
+
+# --- Circolo della Luna: bestie di GS 2-6 (dal 6° livello il GS massimo è il livello da druido diviso 3) ---
+# Statistiche del Manuale dei Mostri (le stesse dell'SRD 5.1, tranne Allosauro, Anchilosauro e Orso delle Caverne).
+giant_elk:
+  name: Alce Gigante
+  name_en: Giant Elk
+  cr: 2
+  size: Enorme
+  ac: 14
+  hp: 42
+  speed: {walk: 18}
+  attacks: "Sfondamento +6, 2d6+4 contundenti (portata 3 m); Zoccoli +6, 4d8+4 contundenti (solo contro una creatura prona)"
+  traits: "Carica (+2d6, TS FOR CD 14 o prono)"
+  role: combattere
+  kid: "Un alce enorme e velocissimo (18 m a turno): carica i nemici con le corna e poi li calpesta quando sono a terra."
+  kid_attacks:
+    - {name: "Sfondamento", hit: "+6", damage: "2d6+4", type: "contundenti", extra: "Arrivi fino a 3 m. Usalo dopo una corsa di 6 m per fare la Carica."}
+    - {name: "Zoccoli", hit: "+6", damage: "4d8+4", type: "contundenti", extra: "Puoi usarli solo contro un nemico che è già a terra."}
+  kid_traits:
+    - "Carica: se corri in linea retta verso il nemico per almeno 6 m e lo colpisci con lo Sfondamento, fai 2d6 danni in più e lui tira un d20 per non cadere (tiro salvezza su Forza contro 14): se sbaglia cade a terra."
+
+polar_bear:
+  name: Orso Polare
+  name_en: Polar Bear
+  cr: 2
+  size: Grande
+  ac: 12
+  hp: 42
+  speed: {walk: 12, swim: 9}
+  attacks: "Multiattacco: Morso +7, 1d8+5 perforanti; Artigli +7, 2d6+5 taglienti"
+  traits: "Olfatto Acuto"
+  role: combattere
+  kid: "Un orso enorme dei ghiacci: nuota bene e nello stesso turno morde e graffia con una forza incredibile."
+  multi: "Nello stesso turno puoi fare sia il Morso che gli Artigli."
+  kid_attacks:
+    - {name: "Morso", hit: "+7", damage: "1d8+5", type: "perforanti"}
+    - {name: "Artigli", hit: "+7", damage: "2d6+5", type: "taglienti"}
+  kid_traits:
+    - "Olfatto Acuto: annusi benissimo: quando cerchi qualcosa con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+
+cave_bear:
+  name: Orso delle Caverne
+  name_en: Cave Bear
+  cr: 2
+  size: Grande
+  ac: 12
+  hp: 42
+  speed: {walk: 12, swim: 9}
+  attacks: "Multiattacco: Morso +7, 1d8+5 perforanti; Artigli +7, 2d6+5 taglienti"
+  traits: "Olfatto Acuto, scurovisione 18 m (variante dell'Orso Polare del Manuale dei Mostri)"
+  role: combattere
+  kid: "Un orso gigantesco che vive nelle grotte: vede al buio e nello stesso turno morde e graffia fortissimo."
+  multi: "Nello stesso turno puoi fare sia il Morso che gli Artigli."
+  kid_attacks:
+    - {name: "Morso", hit: "+7", damage: "1d8+5", type: "perforanti"}
+    - {name: "Artigli", hit: "+7", damage: "2d6+5", type: "taglienti"}
+  kid_traits:
+    - "Olfatto Acuto: annusi benissimo: quando cerchi qualcosa con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Scurovisione 18 m: vedi al buio fino a 18 m (in bianco e nero)."
+
+giant_boar:
+  name: Cinghiale Gigante
+  name_en: Giant Boar
+  cr: 2
+  size: Grande
+  ac: 12
+  hp: 42
+  speed: {walk: 12}
+  attacks: "Zanne +5, 2d6+3 taglienti"
+  traits: "Carica (+2d6, TS FOR CD 13 o prono), Implacabile (10 danni o meno che lo porterebbero a 0 PF: resta a 1 PF; 1/riposo breve o lungo)"
+  role: combattere
+  kid: "Un cinghiale grande come un cavallo: carica a testa bassa e resta in piedi anche quando dovrebbe cadere."
+  kid_attacks:
+    - {name: "Zanne", hit: "+5", damage: "2d6+3", type: "taglienti", extra: "Usale dopo una corsa di 6 m per fare la Carica."}
+  kid_traits:
+    - "Carica: se corri in linea retta verso il nemico per almeno 6 m e lo colpisci con le Zanne, fai 2d6 danni in più e lui tira un d20 per non cadere (tiro salvezza su Forza contro 13): se sbaglia cade a terra."
+    - "Implacabile: se un colpo da 10 danni o meno ti porterebbe a 0 PF, resti in piedi con 1 PF. Funziona una volta, poi serve un riposo (breve o lungo)."
+
+giant_constrictor_snake:
+  name: Serpente Costrittore Gigante
+  name_en: Giant Constrictor Snake
+  cr: 2
+  size: Enorme
+  ac: 12
+  hp: 60
+  speed: {walk: 9, swim: 9}
+  attacks: "Morso +6, 2d6+4 perforanti (portata 3 m); Stretta +6, 2d8+4 contundenti + afferrato (fuga CD 16) e trattenuto"
+  traits: "Vista Cieca 3 m"
+  role: combattere
+  kid: "Un serpente enorme: morde da lontano (3 m) e stritola un nemico così forte che non riesce più a muoversi."
+  kid_attacks:
+    - {name: "Morso", hit: "+6", damage: "2d6+4", type: "perforanti", extra: "Arrivi fino a 3 m."}
+    - {name: "Stretta", hit: "+6", damage: "2d8+4", type: "contundenti", extra: "Se colpisci, ti avvolgi intorno al nemico: è afferrato e trattenuto (non si muove, colpisce peggio e tutti colpiscono lui più facilmente). Per liberarsi deve usare la sua azione e fare almeno 16 con una prova di Forza (Atletica) o Destrezza (Acrobazia). Finché lo stringi non puoi stringere nessun altro."}
+  kid_traits:
+    - "Vista Cieca 3 m: senti tutto quello che c'è intorno a te fino a 3 m anche senza vedere, perfino al buio."
+
+hunter_shark:
+  name: Squalo Cacciatore
+  name_en: Hunter Shark
+  cr: 2
+  size: Grande
+  ac: 12
+  hp: 45
+  speed: {walk: 0, swim: 12}
+  attacks: "Morso +6, 2d8+4 perforanti"
+  traits: "Frenesia di Sangue, respira solo sott'acqua, Vista Cieca 9 m"
+  role: nuotare
+  kid: "Uno squalo grande e feroce: nuota veloce, sente le prede senza vederle e morde ancora meglio chi è già ferito."
+  kid_attacks:
+    - {name: "Morso", hit: "+6", damage: "2d8+4", type: "perforanti"}
+  kid_traits:
+    - "Frenesia di Sangue: se il nemico è già ferito (non ha tutti i suoi PF), quando lo attacchi da vicino tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Respirare sott'Acqua: respiri solo sott'acqua: fuori dall'acqua soffochi, quindi usa questa forma solo quando sei già in acqua."
+    - "Vista Cieca 9 m: senti tutto quello che c'è intorno a te fino a 9 m anche senza vedere, perfino al buio."
+
+plesiosaurus:
+  name: Plesiosauro
+  name_en: Plesiosaurus
+  cr: 2
+  size: Grande
+  ac: 13
+  hp: 68
+  speed: {walk: 6, swim: 12}
+  attacks: "Morso +6, 3d6+4 perforanti (portata 3 m)"
+  traits: "Trattenere il Respiro (1 ora)"
+  role: nuotare
+  kid: "Un rettile marino dal collo lunghissimo: nuota veloce, morde da 3 m e resta sott'acqua per un'ora intera."
+  kid_attacks:
+    - {name: "Morso", hit: "+6", damage: "3d6+4", type: "perforanti", extra: "Arrivi fino a 3 m."}
+  kid_traits:
+    - "Trattenere il Respiro: puoi stare sott'acqua 1 ora senza respirare."
+
+rhinoceros:
+  name: Rinoceronte
+  name_en: Rhinoceros
+  cr: 2
+  size: Grande
+  ac: 11
+  hp: 45
+  speed: {walk: 12}
+  attacks: "Incornata +7, 2d8+5 contundenti"
+  traits: "Carica (+2d8, TS FOR CD 15 o prono)"
+  role: combattere
+  kid: "Pesante e fortissimo: prende la rincorsa e travolge il nemico con il corno."
+  kid_attacks:
+    - {name: "Incornata", hit: "+7", damage: "2d8+5", type: "contundenti", extra: "Usala dopo una corsa di 6 m per fare la Carica."}
+  kid_traits:
+    - "Carica: se corri in linea retta verso il nemico per almeno 6 m e lo colpisci con l'Incornata, fai 2d8 danni in più e lui tira un d20 per non cadere (tiro salvezza su Forza contro 15): se sbaglia cade a terra."
+
+saber_toothed_tiger:
+  name: Tigre dai Denti a Sciabola
+  name_en: Saber-Toothed Tiger
+  cr: 2
+  size: Grande
+  ac: 12
+  hp: 52
+  speed: {walk: 12}
+  attacks: "Morso +6, 1d10+5 perforanti; Artiglio +6, 2d6+5 taglienti"
+  traits: "Olfatto Acuto, Balzo (TS FOR CD 14)"
+  role: combattere
+  kid: "Una tigre enorme con denti lunghissimi: salta addosso al nemico, lo butta a terra e lo morde."
+  kid_attacks:
+    - {name: "Morso", hit: "+6", damage: "1d10+5", type: "perforanti"}
+    - {name: "Artiglio", hit: "+6", damage: "2d6+5", type: "taglienti", extra: "Usalo dopo una corsa di 6 m per fare il Balzo."}
+  kid_traits:
+    - "Olfatto Acuto: annusi benissimo: quando cerchi qualcosa con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Balzo: se corri in linea retta verso un nemico per almeno 6 m e lo colpisci con l'Artiglio, lui tira un d20 per non cadere (tiro salvezza su Forza contro 14): se sbaglia cade a terra e tu puoi dargli subito un Morso in più (azione bonus)."
+
+allosaurus:
+  name: Allosauro
+  name_en: Allosaurus
+  cr: 2
+  size: Grande
+  ac: 13
+  hp: 51
+  speed: {walk: 18}
+  attacks: "Morso +6, 2d10+4 perforanti; Artiglio +6, 1d8+4 taglienti"
+  traits: "Balzo (TS FOR CD 13)"
+  role: combattere
+  kid: "Un dinosauro cacciatore velocissimo (18 m a turno): salta sulla preda, la butta a terra e la morde."
+  kid_attacks:
+    - {name: "Morso", hit: "+6", damage: "2d10+4", type: "perforanti"}
+    - {name: "Artiglio", hit: "+6", damage: "1d8+4", type: "taglienti", extra: "Usalo dopo una corsa di 9 m per fare il Balzo."}
+  kid_traits:
+    - "Balzo: se corri in linea retta verso un nemico per almeno 9 m e lo colpisci con l'Artiglio, lui tira un d20 per non cadere (tiro salvezza su Forza contro 13): se sbaglia cade a terra e tu puoi dargli subito un Morso in più (azione bonus)."
+
+ankylosaurus:
+  name: Anchilosauro
+  name_en: Ankylosaurus
+  cr: 3
+  size: Enorme
+  ac: 15
+  hp: 68
+  speed: {walk: 9}
+  attacks: "Coda +7, 4d6+4 contundenti (portata 3 m) + TS FOR CD 14 o prono"
+  traits: ""
+  role: combattere
+  kid: "Un dinosauro con una corazza durissima (CA 15) e una coda a mazza: colpisce da 3 m e butta a terra i nemici."
+  kid_attacks:
+    - {name: "Coda", hit: "+7", damage: "4d6+4", type: "contundenti", extra: "Arrivi fino a 3 m. Se colpisci, il nemico tira un d20 per non cadere (tiro salvezza su Forza contro 14): se sbaglia cade a terra."}
+  kid_traits: []
+
+giant_scorpion:
+  name: Scorpione Gigante
+  name_en: Giant Scorpion
+  cr: 3
+  size: Grande
+  ac: 15
+  hp: 52
+  speed: {walk: 12}
+  attacks: "Multiattacco: 2 Chele +4, 1d8+2 contundenti + afferrato (fuga CD 12); Pungiglione +4, 1d10+2 perforanti + TS COS CD 12, 4d10 veleno, metà se supera"
+  traits: "Vista Cieca 18 m"
+  role: combattere
+  kid: "Uno scorpione grande come un cavallo: afferra i nemici con le chele e li punge con un veleno fortissimo."
+  multi: "Nello stesso turno puoi fare 2 attacchi con le Chele e 1 con il Pungiglione."
+  kid_attacks:
+    - {name: "Chela", hit: "+4", damage: "1d8+2", type: "contundenti", extra: "Se colpisci, il nemico è afferrato: non può allontanarsi da te. Per liberarsi deve usare la sua azione e fare almeno 12 con una prova di Forza (Atletica) o Destrezza (Acrobazia). Hai due chele: puoi tenere fino a due nemici, uno per chela."}
+    - {name: "Pungiglione", hit: "+4", damage: "1d10+2", type: "perforanti", extra: "Se colpisci, il nemico tira un d20 (tiro salvezza su Costituzione contro 12): se sbaglia subisce anche 4d10 danni da veleno, se riesce ne subisce la metà."}
+  kid_traits:
+    - "Vista Cieca 18 m: senti tutto quello che c'è intorno a te fino a 18 m anche senza vedere, perfino al buio."
+
+killer_whale:
+  name: Orca Assassina
+  name_en: Killer Whale
+  cr: 3
+  size: Enorme
+  ac: 12
+  hp: 90
+  speed: {walk: 0, swim: 18}
+  attacks: "Morso +6, 5d6+4 perforanti"
+  traits: "Ecolocazione (Vista Cieca 36 m, non funziona se assordata), Trattenere il Respiro (30 minuti), Udito Acuto"
+  role: nuotare
+  kid: "La regina del mare: nuota velocissima (18 m a turno), ha tantissimi punti ferita (90) e un morso fortissimo."
+  kid_attacks:
+    - {name: "Morso", hit: "+6", damage: "5d6+4", type: "perforanti"}
+  kid_traits:
+    - "Ecolocazione: con i suoni senti tutto quello che c'è intorno a te fino a 36 m, anche senza vedere; non funziona se non senti niente."
+    - "Trattenere il Respiro: puoi stare sott'acqua 30 minuti senza respirare."
+    - "Udito Acuto: senti benissimo: quando cerchi qualcosa con le orecchie tiri 2 d20 e tieni il più alto (vantaggio)."
+
+elephant:
+  name: Elefante
+  name_en: Elephant
+  cr: 4
+  size: Enorme
+  ac: 12
+  hp: 76
+  speed: {walk: 12}
+  attacks: "Incornata +8, 3d8+6 perforanti; Pestone +8, 3d10+6 contundenti (solo contro una creatura prona)"
+  traits: "Carica Travolgente (TS FOR CD 12 o prono, poi Pestone come azione bonus)"
+  role: combattere
+  kid: "Enorme e fortissimo: carica i nemici con le zanne e li schiaccia quando sono a terra."
+  kid_attacks:
+    - {name: "Incornata", hit: "+8", damage: "3d8+6", type: "perforanti", extra: "Usala dopo una corsa di 6 m per fare la Carica Travolgente."}
+    - {name: "Pestone", hit: "+8", damage: "3d10+6", type: "contundenti", extra: "Puoi usarlo solo contro un nemico che è già a terra."}
+  kid_traits:
+    - "Carica Travolgente: se corri in linea retta verso un nemico per almeno 6 m e lo colpisci con l'Incornata, lui tira un d20 per non cadere (tiro salvezza su Forza contro 12): se sbaglia cade a terra e tu puoi dargli subito un Pestone (azione bonus)."
+
+giant_crocodile:
+  name: Coccodrillo Gigante
+  name_en: Giant Crocodile
+  cr: 5
+  size: Enorme
+  ac: 14
+  hp: 85
+  speed: {walk: 9, swim: 15}
+  attacks: "Multiattacco: Morso +8, 3d10+5 perforanti + afferrato (fuga CD 16) e trattenuto; Coda +8, 2d8+5 contundenti (portata 3 m, non contro chi tiene in bocca) + TS FOR CD 16 o prono"
+  traits: "Trattenere il Respiro (30 minuti)"
+  role: combattere
+  kid: "Un coccodrillo enorme: nello stesso turno morde e frusta con la coda, e in acqua nuota velocissimo."
+  multi: "Nello stesso turno puoi fare sia il Morso che la Coda (la Coda contro un nemico diverso da quello che tieni in bocca)."
+  kid_attacks:
+    - {name: "Morso", hit: "+8", damage: "3d10+5", type: "perforanti", extra: "Se colpisci, tieni il nemico in bocca: è afferrato e trattenuto (non si muove, colpisce peggio e tutti colpiscono lui più facilmente). Per liberarsi deve usare la sua azione e fare almeno 16 con una prova di Forza (Atletica) o Destrezza (Acrobazia). Finché lo tieni non puoi mordere nessun altro."}
+    - {name: "Coda", hit: "+8", damage: "2d8+5", type: "contundenti", extra: "Arrivi fino a 3 m. Se colpisci, il nemico tira un d20 per non cadere (tiro salvezza su Forza contro 16): se sbaglia cade a terra."}
+  kid_traits:
+    - "Trattenere il Respiro: puoi stare sott'acqua 30 minuti senza respirare."
+
+giant_shark:
+  name: Squalo Gigante
+  name_en: Giant Shark
+  cr: 5
+  size: Enorme
+  ac: 13
+  hp: 126
+  speed: {walk: 0, swim: 15}
+  attacks: "Morso +9, 3d10+6 perforanti"
+  traits: "Frenesia di Sangue, respira solo sott'acqua, Vista Cieca 18 m"
+  role: nuotare
+  kid: "Lo squalo più grande del mare (126 punti ferita!): sente le prede da lontano e il suo morso è terribile."
+  kid_attacks:
+    - {name: "Morso", hit: "+9", damage: "3d10+6", type: "perforanti"}
+  kid_traits:
+    - "Frenesia di Sangue: se il nemico è già ferito (non ha tutti i suoi PF), quando lo attacchi da vicino tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Respirare sott'Acqua: respiri solo sott'acqua: fuori dall'acqua soffochi, quindi usa questa forma solo quando sei già in acqua."
+    - "Vista Cieca 18 m: senti tutto quello che c'è intorno a te fino a 18 m anche senza vedere, perfino al buio."
+
+triceratops:
+  name: Triceratopo
+  name_en: Triceratops
+  cr: 5
+  size: Enorme
+  ac: 13
+  hp: 95
+  speed: {walk: 15}
+  attacks: "Incornata +9, 4d8+6 perforanti; Pestone +9, 3d10+6 contundenti (solo contro una creatura prona)"
+  traits: "Carica Travolgente (TS FOR CD 13 o prono, poi Pestone come azione bonus)"
+  role: combattere
+  kid: "Un dinosauro con tre corna: corre veloce (15 m a turno), incorna i nemici e li schiaccia quando sono a terra."
+  kid_attacks:
+    - {name: "Incornata", hit: "+9", damage: "4d8+6", type: "perforanti", extra: "Usala dopo una corsa di 6 m per fare la Carica Travolgente."}
+    - {name: "Pestone", hit: "+9", damage: "3d10+6", type: "contundenti", extra: "Puoi usarlo solo contro un nemico che è già a terra."}
+  kid_traits:
+    - "Carica Travolgente: se corri in linea retta verso un nemico per almeno 6 m e lo colpisci con l'Incornata, lui tira un d20 per non cadere (tiro salvezza su Forza contro 13): se sbaglia cade a terra e tu puoi dargli subito un Pestone (azione bonus)."
+
+mammoth:
+  name: Mammut
+  name_en: Mammoth
+  cr: 6
+  size: Enorme
+  ac: 13
+  hp: 126
+  speed: {walk: 12}
+  attacks: "Incornata +10, 4d8+7 perforanti (portata 3 m); Pestone +10, 4d10+7 contundenti (solo contro una creatura prona)"
+  traits: "Carica Travolgente (TS FOR CD 18 o prono, poi Pestone come azione bonus)"
+  role: combattere
+  kid: "Un elefante gigante e peloso: la bestia più forte di tutte, con 126 punti ferita e zanne che arrivano a 3 m."
+  kid_attacks:
+    - {name: "Incornata", hit: "+10", damage: "4d8+7", type: "perforanti", extra: "Arrivi fino a 3 m. Usala dopo una corsa di 6 m per fare la Carica Travolgente."}
+    - {name: "Pestone", hit: "+10", damage: "4d10+7", type: "contundenti", extra: "Puoi usarlo solo contro un nemico che è già a terra."}
+  kid_traits:
+    - "Carica Travolgente: se corri in linea retta verso un nemico per almeno 6 m e lo colpisci con l'Incornata, lui tira un d20 per non cadere (tiro salvezza su Forza contro 18): se sbaglia cade a terra e tu puoi dargli subito un Pestone (azione bonus)."
+
+# --- Elementali (Forma Selvatica Elementale, Circolo della Luna dal 10° livello) ---
+# elemental: true = non è una bestia: compare solo se la riga di wild_shape della sottoclasse ha elementals: true.
+# cost: usi di Forma Selvatica spesi per prendere questa forma (2 per gli elementali).
+air_elemental:
+  name: Elementale dell'Aria
+  name_en: Air Elemental
+  cr: 5
+  elemental: true
+  cost: 2
+  size: Grande
+  ac: 15
+  hp: 90
+  speed: {walk: 0, fly: 27}
+  attacks: "Multiattacco: 2 Schianti +8, 2d8+5 contundenti; Vortice (ricarica 4-6): chi è nel suo spazio fa TS FOR CD 13, 3d8+2 contundenti, scagliato a 6 m e prono; metà e niente spinta se supera"
+  traits: "Forma d'Aria; resistenza a fulmine, tuono e ai colpi non magici; immune al veleno; scurovisione 18 m; vola fluttuando"
+  role: volare
+  kid: "Un turbine di vento vivo: voli a 27 m a turno, passi nelle fessure più strette e con il Vortice scagli via i nemici."
+  multi: "Nello stesso turno puoi fare 2 Schianti. Il Vortice invece prende tutta l'azione."
+  kid_attacks:
+    - {name: "Schianto", hit: "+8", damage: "2d8+5", type: "contundenti"}
+  kid_traits:
+    - "Vortice (al posto degli Schianti): chi è nel tuo spazio tira un d20 (tiro salvezza su Forza contro 13): se sbaglia subisce 3d8+2 danni, vola via di 6 m e cade a terra; se riesce subisce metà danni e resta dov'è. Dopo averlo usato, all'inizio di ogni tuo turno tira un d6: con 4, 5 o 6 puoi usarlo di nuovo."
+    - "Forma d'Aria: puoi entrare nello spazio di un nemico e restarci, e passi da fessure larghe 2,5 cm."
+    - "Difese: il veleno non ti fa niente; fulmini, tuoni e i colpi di armi non magiche ti fanno metà danni."
+    - "Scurovisione 18 m: vedi al buio fino a 18 m (in bianco e nero)."
+
+earth_elemental:
+  name: Elementale della Terra
+  name_en: Earth Elemental
+  cr: 5
+  elemental: true
+  cost: 2
+  size: Grande
+  ac: 17
+  hp: 126
+  speed: {walk: 9, burrow: 9}
+  attacks: "Multiattacco: 2 Schianti +8, 2d8+5 contundenti (portata 3 m)"
+  traits: "Scivolare nella Terra, Mostro da Assedio; vulnerabile al tuono; resistenza ai colpi non magici; immune al veleno; percezione tellurica 18 m; scurovisione 18 m"
+  role: combattere
+  kid: "Un gigante di roccia: corazza durissima (CA 17), 126 punti ferita, e nuoti dentro la terra e la pietra."
+  multi: "Nello stesso turno puoi fare 2 Schianti."
+  kid_attacks:
+    - {name: "Schianto", hit: "+8", damage: "2d8+5", type: "contundenti", extra: "Arrivi fino a 3 m."}
+  kid_traits:
+    - "Scivolare nella Terra: scavi e ti muovi dentro terra e roccia (9 m a turno) senza lasciare buchi."
+    - "Mostro da Assedio: a porte, muri e oggetti fai danni doppi."
+    - "Difese: il veleno non ti fa niente e i colpi di armi non magiche ti fanno metà danni, ma il tuono ti fa danni doppi."
+    - "Percezione Tellurica 18 m: senti chi si muove sul terreno fino a 18 m, anche senza vederlo."
+
+fire_elemental:
+  name: Elementale del Fuoco
+  name_en: Fire Elemental
+  cr: 5
+  elemental: true
+  cost: 2
+  size: Grande
+  ac: 13
+  hp: 102
+  speed: {walk: 15}
+  attacks: "Multiattacco: 2 Tocchi +6, 2d6+3 fuoco; il bersaglio prende fuoco (1d10 fuoco all'inizio di ogni suo turno finché qualcuno non usa un'azione per spegnerlo)"
+  traits: "Forma di Fuoco, Illuminazione (9 m + 9 m), Suscettibilità all'Acqua; resistenza ai colpi non magici; immune a fuoco e veleno; scurovisione 18 m"
+  role: combattere
+  kid: "Una fiamma viva e veloce (15 m a turno): fai luce, bruci chi ti tocca e dai fuoco ai nemici."
+  multi: "Nello stesso turno puoi fare 2 Tocchi."
+  kid_attacks:
+    - {name: "Tocco", hit: "+6", damage: "2d6+3", type: "da fuoco", extra: "Il nemico prende fuoco: all'inizio di ogni suo turno subisce 1d10 danni da fuoco, finché qualcuno non usa un'azione per spegnerlo."}
+  kid_traits:
+    - "Forma di Fuoco: chi ti tocca o ti colpisce da vicino subisce 1d10 danni da fuoco. Puoi entrare nello spazio di un nemico: la prima volta in un turno lui subisce 1d10 danni da fuoco e prende fuoco."
+    - "Illuminazione: fai luce forte fino a 9 m e luce debole per altri 9 m."
+    - "Acqua: per ogni 1,5 m che fai nell'acqua (o per ogni secchio d'acqua che ti tirano addosso) subisci 1 danno da freddo."
+    - "Difese: fuoco e veleno non ti fanno niente; i colpi di armi non magiche ti fanno metà danni."
+
+water_elemental:
+  name: Elementale dell'Acqua
+  name_en: Water Elemental
+  cr: 5
+  elemental: true
+  cost: 2
+  size: Grande
+  ac: 14
+  hp: 114
+  speed: {walk: 9, swim: 27}
+  attacks: "Multiattacco: 2 Schianti +7, 2d8+4 contundenti; Sommergere (ricarica 4-6): chi è nel suo spazio fa TS FOR CD 15, 2d8+4 contundenti e, se Grande o più piccolo, afferrato (fuga CD 14), trattenuto e senza aria; 2d8+4 a ogni suo turno"
+  traits: "Forma d'Acqua, Congelamento (con danni da freddo -6 m di velocità); resistenza ad acido e ai colpi non magici; immune al veleno; scurovisione 18 m"
+  role: nuotare
+  kid: "Un'onda viva: nuoti a 27 m a turno e puoi inghiottire i nemici dentro di te, dove non respirano."
+  multi: "Nello stesso turno puoi fare 2 Schianti. Sommergere invece prende tutta l'azione."
+  kid_attacks:
+    - {name: "Schianto", hit: "+7", damage: "2d8+4", type: "contundenti"}
+  kid_traits:
+    - "Sommergere (al posto degli Schianti): chi è nel tuo spazio tira un d20 (tiro salvezza su Forza contro 15): se sbaglia subisce 2d8+4 danni e, se è Grande o più piccolo, resta chiuso dentro di te: non si muove e non respira (per uscire deve fare almeno 14 con una prova di Forza), e a ogni tuo turno subisce altri 2d8+4 danni. Se riesce, viene spinto fuori. Dopo averlo usato, all'inizio di ogni tuo turno tira un d6: con 4, 5 o 6 puoi usarlo di nuovo."
+    - "Forma d'Acqua: puoi entrare nello spazio di un nemico e restarci, e passi da fessure larghe 2,5 cm."
+    - "Congelamento: se subisci danni da freddo, fino alla fine del tuo prossimo turno ti muovi 6 m in meno."
+    - "Difese: il veleno non ti fa niente; acido e colpi di armi non magiche ti fanno metà danni."

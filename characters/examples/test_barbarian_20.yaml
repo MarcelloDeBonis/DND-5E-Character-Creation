@@ -1,0 +1,68 @@
+# TEST: Barbara di 20° livello, Cammino del Combattente Totemico (lupo / aquila / orso), Dragonide (drago d'argento), Marinaia.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_barbarian_20.yaml
+
+name: Vyrsa
+player: "Test"
+template: official_it
+gender: f
+race: dragonborn
+draconic_ancestry: silver    # soffio di freddo, cono di 4,5 m, TS Costituzione
+class: barbarian
+subclass: totem_warrior
+level: 20
+xp: 355000
+background: sailor           # Marinaia: Atletica e Percezione
+alignment: NG
+
+abilities:
+  method: point_buy          # 9 + 7 + 9 + 0 + 2 + 0 = 27
+  base: {str: 15, dex: 14, con: 15, int: 8, wis: 10, cha: 8}   # prima dei bonus razziali (+2 FOR, +1 CAR)
+  asi:
+    - {str: 1, con: 1}       # 4° livello
+    - {str: 2}               # 8° livello -> FOR 20
+                             # 12° livello: talento Allerta (sotto in feats)
+    - {con: 2}               # 16° livello
+    - {con: 2}               # 19° livello -> COS 20
+                             # 20° livello: Campione Primordiale +4 FOR e COS (max 24), dal privilegio di classe
+
+hp:
+  method: average
+
+feats:
+  - alert                    # 12° livello: Allerta (+5 iniziativa)
+
+skills: [intimidation, survival]         # 2 abilità di classe (Atletica e Percezione dal background)
+class_options:
+  totem_spirit: [wolf]                   # 3° livello
+  aspect_of_the_beast: [eagle]           # 6° livello
+  totemic_attunement: [bear]             # 14° livello
+languages_extra: []                      # Comune e Draconico dalla razza; la Marinaia non dà linguaggi
+
+armor: null
+shield: false
+weapons: [greataxe, handaxe, javelin]
+equipment:
+  - "Ascia bipenne"
+  - "2 asce"
+  - "4 giavellotti"
+  - "Totem: piume d'aquila e zanne di lupo"
+  - pack: explorers_pack
+money: {gp: 500}
+
+personality:
+  traits: "Rido in faccia alle tempeste."
+  ideals: "Libertà."
+  bonds: "La mia nave."
+  flaws: "Bevo troppo."
+
+appearance:
+  age: "40"
+  height: "1,95 m"
+  weight: "120 kg"
+  eyes: "Argento"
+  skin: "Scaglie d'argento"
+  hair: "—"
+
+allies: ""
+treasure: ""
+backstory: "Personaggio di prova per controllare il barbaro di 20° livello."

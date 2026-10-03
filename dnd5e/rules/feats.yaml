@@ -2,6 +2,18 @@
 # feats: [alert, {key: resilient, ability: con}, ...]; campi di calcolo: ability_bonus, ability_choice,
 # initiative_bonus, speed_bonus (m), hp_per_level, passive_bonus, armor_proficiencies, weapon_proficiencies,
 # skill_choice, languages, save_proficiency_choice.
+# weapon_proficiencies: lista di chiavi di equipment.yaml (armi o categorie: simple, martial, improvised; i nomi
+#   italiani delle categorie sono in equipment.yaml > weapon_categories) oppure {count, from} se si sceglie.
+# Talenti con incantesimi (magic_initiate, spell_sniper, ritual_caster): nel personaggio la scelta è un
+# dizionario con la lista di classe e le magie prese da quella lista:
+#   {key: magic_initiate, list: wizard, cantrips: [fire_bolt, light], spell: magic_missile}
+#       list = bard|cleric|druid|sorcerer|warlock|wizard; cantrips = 2 trucchetti; spell = 1 incantesimo di 1° livello
+#   {key: spell_sniper, list: warlock, cantrips: [eldritch_blast]}
+#       cantrips = 1 trucchetto che richiede un tiro per colpire
+#   {key: ritual_caster, list: wizard, spells: [find_familiar, detect_magic]}
+#       spells = 2 incantesimi di 1° livello con il descrittore rituale (si lanciano solo come rituali)
+# La caratteristica da incantatore viene da ability_by_list della lista scelta. I testi kid possono usare
+# {livello} e i segnaposto di genere {o} {un_amico} {amici}.
 alert:
   name: Allerta
   name_en: Alert
@@ -152,8 +164,8 @@ healer:
     una creatura morente, quella creatura recupera anche 1 punto ferita; come azione, può spendere un utilizzo di una borsa del guaritore per curare una creatura e farle recuperare 1d6 + 4 punti ferita,
     più un numero di punti ferita aggiuntivi pari al numero massimo di Dadi Vita della creatura. La creatura non può più recuperare punti ferita grazie a questo talento finché non completa un riposo breve
     o lungo.'
-  kid: Con la borsa del guaritore, un'amica a 0 punti ferita si rialza subito con 1 punto ferita. Con un'azione puoi anche ridarle 1d6 + 4 punti ferita, più 1 per ogni suo livello (poi deve riposare prima
-    di riprovare).
+  kid: Con la borsa del guaritore, {un_amico} a 0 punti ferita si rialza subito con 1 punto ferita. Con un'azione puoi anche curare una persona di 1d6 + 4 punti ferita, più 1 per ogni suo livello (poi
+    quella persona deve riposare prima di poter essere curata di nuovo così).
 heavily_armored:
   name: Corazze Pesanti
   name_en: Heavily Armored
@@ -471,7 +483,7 @@ sentinel:
     della creatura diventa 0 per il resto del turno; le creature provocano attacchi di opportunità da parte sua anche se effettuano l''azione di Disimpegno prima di uscire dalla sua portata; quando una
     creatura entro 1,5 metri da lui effettua un attacco contro un bersaglio diverso da lui (e quel bersaglio non possiede questo talento), può usare la sua reazione per effettuare un attacco con un''arma
     da mischia contro la creatura attaccante.'
-  kid: Se colpisci un nemico che scappa da te (attacco di opportunità), lui si blocca lì. Non ti sfugge nemmeno col Disimpegno, e se un nemico a 1,5 m attacca un tuo amico, con la reazione colpisci lui.
+  kid: Se colpisci un nemico che scappa da te (attacco di opportunità), lui si blocca lì. Non ti sfugge nemmeno col Disimpegno, e se un nemico a 1,5 m attacca {un_amico}, con la reazione colpisci lui.
 sharpshooter:
   name: Tiratore Scelto
   name_en: Sharpshooter
@@ -511,7 +523,7 @@ skulker:
   prerequisite: Destrezza 13 o superiore
   prereq_ability:
     dex: 13
-  short: Puoi tentare di nasconderti anche se sei solo leggermente oscurato alla vista di chi ti cerca; se sei nascosto e manchi una creatura con un attacco con un'arma a distanza, non riveli la tua posizione;
+  short: Puoi tentare di nasconderti anche in un'area solo leggermente oscurata per chi ti cerca; se sei nascosto e manchi una creatura con un attacco con un'arma a distanza, non riveli la tua posizione;
     la luce fioca non ti dà svantaggio alle prove di Saggezza (Percezione) basate sulla vista.
   text: 'Il personaggio è esperto nel restare nell''ombra e ottiene i seguenti benefici: può tentare di nascondersi quando è soltanto leggermente oscurato alla vista della creatura da cui si nasconde; quando
     è nascosto a una creatura e la manca con un attacco con un''arma a distanza, effettuare l''attacco non rivela la sua posizione; la luce fioca non gli impone svantaggio alle prove di Saggezza (Percezione)

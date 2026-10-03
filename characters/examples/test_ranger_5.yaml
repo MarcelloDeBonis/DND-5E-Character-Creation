@@ -1,0 +1,59 @@
+# TEST: Ranger di 5° livello, Cacciatore, versione semplice (simple: true), maschio.
+# Genera con:  python -m dnd5e build characters/examples/test_ranger_5.yaml
+
+name: Tharion
+template: official_it
+player: "Test"
+simple: true                 # versione per bambini: testi facili, niente appendice, guida separata
+race: elf
+subrace: wood_elf            # +2 DES, +1 SAG, velocità 10,5 m, Percezione da Sensi Acuti
+class: ranger
+subclass: hunter
+level: 5
+xp: 6500
+background: outlander        # Forestiero: Atletica, Sopravvivenza
+alignment: NG
+
+abilities:
+  method: point_buy          # 10+15+14+10+14+8 -> 2+9+7+2+7+0 = 27 punti
+  base: {str: 10, dex: 15, con: 14, int: 10, wis: 14, cha: 8}
+  asi:
+    - {dex: 1, wis: 1}       # 4° livello: +1 DES, +1 SAG
+
+hp:
+  method: average
+
+skills: [stealth, nature, investigation]        # 3 abilità di classe (Percezione è già dell'elfo)
+background_tools: ["Flauto"]
+languages_extra: [sylvan, giant]                # 1 dal Forestiero + 1 da Nemico Prescelto (giganti)
+
+fighting_style: archery
+spells: [hunters_mark, cure_wounds, goodberry, pass_without_trace]   # 4 incantesimi conosciuti al 5° livello (slot fino al 2°)
+
+class_options:
+  favored_enemy: [giants]
+  favored_terrain: [mountain]
+  hunters_prey: [colossus_slayer]
+
+armor: scale_mail            # 14 + DES (max 2): verifica il limite della DES (+4)
+weapons: [longbow, shortsword, shortsword]
+equipment:
+  - "Faretra con 20 frecce"
+  - pack: explorers_pack
+money: {gp: 10}
+
+personality:
+  traits: "Sono calmo e paziente."
+  ideals: "La natura va protetta."
+  bonds: "Le montagne dove sono cresciuto."
+  flaws: "Mi fido poco delle città."
+
+appearance:
+  age: "110"
+  height: "1,80 m"
+  weight: "65 kg"
+  eyes: "Verdi"
+  skin: "Bruna"
+  hair: "Castani"
+
+backstory: "Personaggio di prova per il ranger di 5° livello in versione semplice."

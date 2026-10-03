@@ -1,0 +1,72 @@
+# TEST: Ladra di 20° livello, Mistificatrice Arcana, Elfa Alta, Saggia, point buy, talenti
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_rogue_20.yaml
+
+name: Ilyana Sussurro
+template: official_it
+player: "Test"
+gender: f
+race: elf
+subrace: high_elf           # +2 DES, +1 INT
+class: rogue
+subclass: arcane_trickster
+level: 20
+xp: 355000
+background: sage            # Saggia: Arcano, Storia, 2 linguaggi
+alignment: CN
+
+abilities:
+  method: point_buy
+  base: {str: 8, dex: 15, con: 14, int: 15, wis: 10, cha: 8}   # 0+9+7+9+2+0 = 27 punti -> DES 17, INT 16
+  asi:
+    - {dex: 1, int: 1}      # 4° livello  -> DES 18, INT 17
+    - {dex: 2}              # 8° livello  -> DES 20
+    - {int: 1, con: 1}      # 10° livello -> INT 18, COS 15
+    - {int: 2}              # 16° livello -> INT 20
+feats:
+  - war_caster                          # 12° livello
+  - {key: resilient, ability: con}      # 19° livello -> COS 16, competenza nei TS su COS
+
+hp:
+  method: average
+
+skills: [stealth, acrobatics, investigation, sleight_of_hand]   # 4 abilità di classe (Percezione dalla razza)
+expertise: [stealth, perception, investigation, sleight_of_hand]
+racial_cantrips: [prestidigitation]     # trucchetto dell'elfa alta
+languages_extra: [draconic, dwarvish, gnomish]   # 1 dalla razza + 2 dal background
+cantrips: [fire_bolt, minor_illusion, message]   # 3 trucchetti da mago (Mano Magica è automatica)
+spells:                                  # 13 incantesimi conosciuti al 20° livello
+  - shield                 # scuola libera (3° livello)
+  - misty_step             # scuola libera (8° livello)
+  - counterspell           # scuola libera (14° livello)
+  - dimension_door         # scuola libera (20° livello)
+  - disguise_self          # illusione
+  - invisibility           # illusione
+  - mirror_image           # illusione
+  - suggestion             # ammaliamento
+  - hypnotic_pattern       # illusione
+  - major_image            # illusione
+  - fear                   # illusione
+  - greater_invisibility   # illusione
+  - phantasmal_killer      # illusione
+
+armor: studded_leather
+weapons: [rapier, longbow, dagger]
+equipment:
+  - "Faretra con 20 frecce"
+  - "Arnesi da scasso"
+  - pack: burglars_pack
+money: {gp: 500}
+
+personality:
+  traits: "Colleziono segreti come altri collezionano monete."
+  ideals: "Conoscenza. Ogni porta chiusa nasconde qualcosa che merito di sapere. (Neutrale)"
+  bonds: "Il mio vecchio maestro di magia, scomparso senza lasciare tracce."
+  flaws: "Non resisto a un mistero, anche se è una trappola evidente."
+appearance:
+  age: "180"
+  height: "1,70 m"
+  weight: "55 kg"
+  eyes: "Viola"
+  skin: "Pallida"
+  hair: "Argento, lunghi"
+backstory: "Personaggio di prova per il test della classe Ladro al 20° livello (Mistificatrice Arcana)."

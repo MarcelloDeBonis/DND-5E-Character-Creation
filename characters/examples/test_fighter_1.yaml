@@ -1,0 +1,50 @@
+# TEST: Guerriero di 1° livello (nessun archetipo) — Mezzorco, Soldato. Personaggio di prova per controllare il motore.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_fighter_1.yaml
+
+name: Grushnak
+template: official_it
+player: "Test"
+race: half_orc               # +2 FOR, +1 COS; Minaccioso = Intimidire
+class: fighter
+level: 1
+xp: 0
+background: soldier          # Soldato: Atletica, Intimidire (Intimidire già dalla razza -> sostituita con Storia)
+alignment: LN
+
+abilities:
+  method: point_buy          # 9 + 5 + 7 + 0 + 4 + 2 = 27 punti
+  base: {str: 15, dex: 13, con: 14, int: 8, wis: 12, cha: 10}   # dopo la razza: FOR 17, COS 15
+
+hp:
+  method: average            # 10 + COS (+2) = 12
+
+skills: [perception, survival]            # 2 abilità di classe
+background_skills: [athletics, history]   # Intimidire doppiata dalla razza: sostituita con Storia (PHB p. 125)
+background_tools: ["Dadi", "Veicoli (terrestri)"]
+fighting_style: great_weapon_fighting     # Combattere con Armi Possenti
+
+armor: chain_mail            # CA 16 (richiede FOR 13)
+shield: false
+weapons: [greatsword, longsword, handaxe]  # due armi da guerra + due asce (dotazione iniziale)
+equipment:
+  - "2 asce"
+  - pack: explorers_pack
+money: {gp: 10}
+
+personality:
+  traits: "Ho sempre una storia di guerra pronta per ogni occasione."
+  ideals: "Ordine. La catena di comando tiene in vita i soldati. (Legale)"
+  bonds: "Combatterò per chi non può farlo da solo."
+  flaws: "Obbedisco agli ordini anche quando sono sbagliati."
+
+appearance:
+  age: "19"
+  height: "1,90 m"
+  weight: "110 kg"
+  eyes: "Gialli"
+  skin: "Grigio-verde"
+  hair: "Neri, rasati ai lati"
+
+allies: "La sua vecchia compagnia di fanteria."
+treasure: ""
+backstory: "Personaggio di prova (guerriero di 1° livello)."

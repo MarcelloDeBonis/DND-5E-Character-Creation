@@ -1,0 +1,51 @@
+# TEST: Bardo di 1° livello (nessun collegio), Mezzelfo, Intrattenitore, array standard.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_bard_1.yaml
+
+name: Lirien
+template: official_it
+player: "Test"
+race: half_elf
+class: bard
+level: 1
+xp: 0
+background: entertainer      # Intrattenitore: Acrobazia, Intrattenere, trucchi per il camuffamento + 1 strumento
+alignment: CG
+
+abilities:
+  method: standard_array
+  base: {str: 8, dex: 14, con: 13, int: 10, wis: 12, cha: 15}   # prima dei bonus razziali (+2 CAR, +1 DES, +1 COS)
+  racial_choice: [dex, con]                                      # Mezzelfo: +1 a due caratteristiche diverse dal Carisma
+
+hp:
+  method: average
+
+skills: [persuasion, insight, perception]          # 3 abilità di classe a scelta
+racial_skills: [deception, stealth]                # Versatilità nelle Abilità del mezzelfo (2)
+background_skills: [acrobatics, performance]       # Intrattenitore
+background_tools: ["Trucchi per il camuffamento", "Viola"]
+tools: ["Liuto", "Flauto", "Lira"]                 # i tre strumenti musicali del bardo
+languages_extra: [halfling]                        # 1 linguaggio extra del mezzelfo
+
+cantrips: [vicious_mockery, minor_illusion]        # 2 trucchetti al 1° livello
+spells: [healing_word, dissonant_whispers, faerie_fire, tashas_hideous_laughter]   # 4 incantesimi conosciuti
+
+armor: leather
+weapons: [rapier, dagger]
+equipment:
+  - pack: entertainers_pack
+  - "Liuto"
+money: {gp: 15}
+
+personality:
+  traits: "Conosco una storia per ogni occasione."
+  ideals: "Bellezza. La musica rende il mondo migliore."
+  bonds: "Il mio liuto è un regalo del mio maestro."
+  flaws: "Non resisto a un pubblico."
+
+appearance:
+  age: "24"
+  height: "1,70 m"
+  weight: "62 kg"
+  eyes: "Grigi"
+  skin: "Chiara"
+  hair: "Neri"

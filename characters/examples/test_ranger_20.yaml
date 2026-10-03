@@ -1,0 +1,75 @@
+# TEST: Ranger di 20° livello, Cacciatrice, umana variante, femmina.
+# Genera con:  python -m dnd5e build characters/examples/test_ranger_20.yaml
+
+name: Maren
+template: official_it
+player: "Test"
+gender: f
+race: human
+subrace: variant_human       # +1 a due caratteristiche, 1 abilità, 1 talento al 1° livello
+class: ranger
+subclass: hunter
+level: 20
+xp: 355000
+background: sailor           # Marinaio: Atletica, Percezione
+alignment: LG
+
+abilities:
+  method: point_buy          # 10+15+14+8+15+8 -> 2+9+7+0+9+0 = 27 punti
+  base: {str: 10, dex: 15, con: 14, int: 8, wis: 15, cha: 8}
+  racial_choice: [dex, wis]
+  asi:
+    - {dex: 2}               # 4° livello
+    - {dex: 2}               # 8° livello
+    - {wis: 2}               # 12° livello
+                             # 16° livello: Robusto; 19° livello: Resiliente (COS)
+
+feats:
+  - sharpshooter             # 1° livello (umana variante)
+  - tough                    # 16° livello
+  - {key: resilient, ability: con}   # 19° livello
+
+hp:
+  method: average
+
+skills: [stealth, survival, nature]             # 3 abilità di classe
+racial_skills: [insight]                        # abilità dell'umana variante
+languages_extra: [elvish, draconic, infernal, giant]   # 1 dalla razza + 3 da Nemico Prescelto (1°, 6°, 14°)
+
+fighting_style: archery
+spells: [hunters_mark, ensnaring_strike, goodberry, pass_without_trace, spike_growth, silence,
+         lightning_arrow, conjure_barrage, freedom_of_movement, stoneskin, conjure_volley]   # 11 conosciuti (slot fino al 5°)
+
+class_options:
+  favored_enemy: [dragons, fiends, giants]      # 3 dal 14° livello
+  favored_terrain: [mountain, arctic, underdark]
+  hunters_prey: [horde_breaker]
+  defensive_tactics: [escape_the_horde]
+  multiattack: [volley]
+  superior_hunters_defense: [uncanny_dodge]
+
+armor: studded_leather       # 12 + DES
+weapons:
+  - {key: longbow, name: "Arco Lungo +1", magic_bonus: 1}
+  - shortsword
+  - shortsword
+equipment:
+  - "Faretra con 40 frecce"
+  - pack: explorers_pack
+money: {gp: 5000}
+
+personality:
+  traits: "Non manco mai un bersaglio."
+  ideals: "Il dovere prima di tutto."
+  bonds: "La mia vecchia nave."
+  flaws: "Testarda."
+
+appearance:
+  age: "45"
+  height: "1,72 m"
+  weight: "64 kg"
+  eyes: "Azzurri"
+  skin: "Abbronzata"
+  hair: "Grigi"
+
+backstory: "Personaggio di prova per il ranger di 20° livello, Cacciatrice."

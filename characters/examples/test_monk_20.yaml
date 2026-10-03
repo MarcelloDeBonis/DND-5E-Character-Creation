@@ -1,0 +1,58 @@
+# TEST: Monaco di 20° livello, Via della Mano Aperta (Nano delle Colline, Accolito).
+# Genera con:  python -m dnd5e build characters/examples/test_monk_20.yaml
+
+name: Borin
+template: official_it
+player: "Test"
+race: dwarf
+subrace: hill_dwarf          # +2 COS, +1 SAG, +1 PF per livello, velocità 7,5 m
+class: monk
+subclass: open_hand          # Via della Mano Aperta
+level: 20
+xp: 355000
+background: acolyte          # Accolito: Intuizione, Religione, 2 linguaggi
+alignment: LG
+
+abilities:
+  method: standard_array
+  base: {str: 12, dex: 15, con: 13, int: 10, wis: 14, cha: 8}   # -> COS 15, SAG 15
+  asi:
+    - {dex: 1, wis: 1}       # 4° livello: DES 16, SAG 16
+    - {dex: 2}               # 8° livello: DES 18
+    - {wis: 2}               # 12° livello: SAG 18
+    - {dex: 2}               # 16° livello: DES 20
+
+feats: [tough]               # 19° livello: Robusto (+2 PF per livello)
+
+hp:
+  method: average
+
+skills: [acrobatics, stealth]          # 2 abilità di classe (Intuizione e Religione dal background)
+languages_extra: [celestial, giant]    # 2 dal background
+tools: ["Strumenti da birraio", "Strumenti da calligrafo"]   # nano (birraio) + monaco (calligrafo)
+
+armor: null
+shield: false
+weapons: [shortsword, dart]
+equipment:
+  - "10 dardi"
+  - pack: explorers_pack
+money: {gp: 500}
+
+personality:
+  traits: "Sorrido sempre, anche nella battaglia più dura."
+  ideals: "Tradizione. Gli insegnamenti antichi vanno custoditi e tramandati. (Legale)"
+  bonds: "Il mio monastero sotto la montagna è la mia casa."
+  flaws: "Sono testardo come una roccia."
+
+appearance:
+  age: "210"
+  height: "1,30 m"
+  weight: "75 kg"
+  eyes: "Marroni"
+  skin: "Abbronzata"
+  hair: "Calvo, barba bianca intrecciata"
+
+allies: "Il Monastero della Pietra Quieta."
+treasure: ""
+backstory: "Gran maestro della Mano Aperta, ha raggiunto la perfezione interiore."

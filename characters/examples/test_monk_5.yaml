@@ -1,0 +1,52 @@
+# TEST: Monaco di 5° livello, Via dell'Ombra (Tiefling, Monello), versione semplice.
+# Genera con:  python -m dnd5e build characters/examples/test_monk_5.yaml
+
+name: Malek
+template: official_it
+player: "Test"
+simple: true
+race: tiefling               # +2 CAR, +1 INT, taumaturgia (CAR)
+class: monk
+subclass: shadow             # Via dell'Ombra
+level: 5
+xp: 6500
+background: urchin           # Monello: Rapidità di Mano, Furtività, trucchi per il camuffamento, arnesi da scasso
+alignment: CN
+
+abilities:
+  method: point_buy          # 8+15+14+8+15+10 = 0+9+7+0+9+2 = 27 punti
+  base: {str: 8, dex: 15, con: 14, int: 8, wis: 15, cha: 10}
+  asi:
+    - {dex: 1, wis: 1}       # 4° livello: DES 16, SAG 16
+
+hp:
+  method: average
+
+skills: [acrobatics, insight]          # 2 abilità di classe (Furtività già dal background)
+tools: ["Flauto"]                      # strumento musicale scelto dal monaco
+
+armor: null
+shield: false
+weapons: [shortsword, dart]
+equipment:
+  - "10 dardi"
+  - pack: dungeoneers_pack
+money: {gp: 10}
+
+personality:
+  traits: "Mi muovo nell'ombra senza fare rumore."
+  ideals: "Libertà. Nessuno deve vivere in catene. (Caotico)"
+  bonds: "Proteggo i bambini di strada della mia città."
+  flaws: "Non mi fido di chi porta una divisa."
+
+appearance:
+  age: "19"
+  height: "1,78 m"
+  weight: "68 kg"
+  eyes: "Oro, senza pupille"
+  skin: "Rossa scura"
+  hair: "Neri, corna ricurve"
+
+allies: "La gilda delle Ombre Silenziose."
+treasure: ""
+backstory: "Cresciuto per strada, fu accolto da un ordine di monaci che vivono nelle ombre."

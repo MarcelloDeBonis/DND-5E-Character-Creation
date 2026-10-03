@@ -59,7 +59,7 @@
 - **Discendenza Draconica** (Dragonide (drago rosso)): Scegli un tipo di drago: determina il tipo di danno del soffio e della resistenza.
 - **Arma a Soffio** (Dragonide (drago rosso)): Azione: esali energia distruttiva (area e danno dalla discendenza). TS con CD 8 + mod. COS + comp.: 2d6 danni, metà se riesce (3d6 al 6°, 4d6 all'11°, 5d6 al 16°). 1/riposo breve o lungo.
 - **Resistenza ai Danni** (Dragonide (drago rosso)): Resistenza al tipo di danno della tua discendenza draconica.
-- **Incantesimi** (Maga): Incantatore completo (Intelligenza). Libro con 6 incantesimi di 1° livello (+2 gratis a ogni livello); prepari mod. INT + livello da mago incantesimi dal libro; rituali dal libro senza prepararli; focus arcano.
+- **Incantesimi** (Maga): Lanci incantesimi da mago con l'Intelligenza. Libro con 6 incantesimi di 1° livello (+2 gratis a ogni livello); prepari mod. INT + livello da mago incantesimi dal libro; rituali dal libro senza prepararli; focus arcano.
 - **Recupero Arcano** (Maga): 1/giorno, dopo un riposo breve, recuperi slot per un totale di livelli pari a metà del livello da mago (per eccesso), nessuno di 6° livello o superiore.
 - **Tradizione Arcana** (Maga): Scegli una scuola di magia (Abiurazione, Ammaliamento, Divinazione, Evocazione, Illusione, Invocazione, Necromanzia o Trasmutazione).
 - **Ammaliatrice Esperta** (Scuola di Ammaliamento): Copiare un incantesimo di ammaliamento nel libro costa metà tempo e metà oro.

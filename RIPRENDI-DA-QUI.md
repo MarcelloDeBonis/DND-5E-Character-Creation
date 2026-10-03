@@ -29,7 +29,7 @@ Nessun segreto e nessun file fuori da git: tutto quello che serve sta nel reposi
 | Reyla | Arianna (10 anni) | Elfa Alta, Druida 3, Circolo della Luna, Forestiera | `characters/reyla.yaml` |
 | Kate | Rebecca (10 anni) | Dragonide (drago rosso), Maga 3, Scuola di Ammaliamento, Artigiana di Gilda | `characters/kate.yaml` |
 
-Scelte di Arianna (3/10/2026): trucchetti Produrre Fiamma e Guida, trucchetto da elfa Illusione Minore. Incantesimi preparati: Cura Ferite, Parola Guaritrice, Intralciare, Bacche Benefiche, Raggio di Luna. Abilità: Natura e Sopravvivenza.
+Scelte di Arianna (3/10/2026): trucchetti Produrre Fiamma e Guida, trucchetto da elfa Illusione Minore. Incantesimi preparati: Cura Ferite, Parola Guaritrice, Intralciare, Bacche Benefiche, Bagliore Lunare (nel manuale italiano; prima era scritto "Raggio di Luna"). Abilità: Natura e Sopravvivenza.
 Scelte per Rebecca (3/10/2026): background Artigiana di Gilda, drago rosso, Scuola di Ammaliamento. Trucchetti Dardo di Fuoco, Mano Magica, Prestidigitazione. Nel libro: Armatura Magica, Dardo Incantato, Scudo, Sonno, Immagine Silenziosa, Camuffare Se Stesso, Passo Velato, Immagine Speculare, Invisibilità, Suggestione. Preparati: Armatura Magica, Dardo Incantato, Scudo, Sonno, Immagine Speculare. Caratteristiche consigliate (point buy): FOR 10, DES 14, COS 14, INT 15, SAG 10, CAR 11. Abilità: Arcano e Indagare. Ritratto preso da Download.
 
 ## A che punto siamo

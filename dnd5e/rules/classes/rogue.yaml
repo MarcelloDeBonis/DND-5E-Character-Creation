@@ -25,13 +25,15 @@ rogue:
       - name: Maestria
         short: "Scegli 2 tue competenze in abilità (oppure 1 abilità e gli arnesi da scasso): nelle prove che le usano il bonus di competenza raddoppia. Altre 2 al 6° livello."
         text: "Il ladro sceglie due competenze fra le sue abilità e gli arnesi da scasso: nelle prove che le usano somma il doppio del bonus di competenza. Al 6° livello ne sceglie altre due."
-        kid: "Scegli 2 cose in cui sei bravissimo (abilità o arnesi da scasso): quando le usi aggiungi il doppio del bonus di competenza. Sulla scheda il numero è già calcolato."
+        kid: "Scegli 2 cose in cui sei bravissim{o} (abilità o arnesi da scasso): quando le usi aggiungi il doppio del bonus di competenza. Sulla scheda il numero è già calcolato."
         kid_hide: true
+        sheet_hide: false       # sulla scheda completa resta: la maestria negli arnesi da scasso non compare in nessun numero
         expertise_count: 2
+        expertise_tools: [thieves_tools]
       - name: Attacco Furtivo
-        short: "1 volta per turno: danni extra di Attacco Furtivo (1d6 al 1° livello, poi +1d6 al 3°, 5°, 7°… fino a 10d6 al 19°) a una creatura che colpisci con un'arma accurata o a distanza, se hai vantaggio, oppure se un altro nemico del bersaglio (non incapacitato) è entro 1,5 m da esso e tu non hai svantaggio."
-        text: "Una volta per turno, quando colpisce una creatura con un'arma accurata o a distanza, il ladro aggiunge ai danni i dadi di Attacco Furtivo (1d6 al 1° livello, +1d6 ogni due livelli, fino a 10d6 al 19°). Gli serve vantaggio al tiro per colpire, oppure un altro nemico del bersaglio, non incapacitato, entro 1,5 m da esso, sempre che il ladro non abbia svantaggio."
-        kid: "Una volta per turno, se colpisci con un'arma accurata (come il pugnale) o a distanza, fai {t_sneak_attack} danni in più. Serve vantaggio (tiri 2 d20 e tieni il più alto) o un amico entro 1,5 m dal nemico, senza svantaggio."
+        short: "1 volta per turno: +{t_sneak_attack} danni (Attacco Furtivo, +1d6 ogni 2 livelli, fino a 10d6 al 19°) a una creatura che colpisci con un'arma accurata o a distanza, se hai vantaggio, oppure se un altro nemico del bersaglio (non incapacitato) è entro 1,5 m da esso e tu non hai svantaggio."
+        text: "Una volta per turno il ladro infligge +{t_sneak_attack} danni (Attacco Furtivo: 1d6 al 1° livello, +1d6 ogni due livelli, fino a 10d6 al 19°) quando colpisce una creatura con un'arma accurata o a distanza. Gli serve vantaggio al tiro per colpire, oppure un altro nemico del bersaglio, non incapacitato, entro 1,5 m da esso, sempre che il ladro non abbia svantaggio."
+        kid: "Una volta per turno, se colpisci con un'arma accurata (come il pugnale) o a distanza, fai {t_sneak_attack} danni in più. Serve vantaggio (tiri 2 d20 e tieni il più alto) oppure qualcuno del tuo gruppo entro 1,5 m dal nemico, e non devi avere svantaggio."
       - name: Gergo Ladresco
         short: "Conosci il gergo ladresco: nascondi messaggi in una conversazione normale (ci vuole il quadruplo del tempo) e capisci i segni segreti dei ladri."
         text: "Il ladro conosce il gergo segreto dei ladri: può infilare un messaggio nascosto in una chiacchierata qualunque, comprensibile solo da chi conosce il gergo, impiegando quattro volte il tempo normale. Sa anche leggere i simboli che i ladri lasciano per segnalare pericoli, bottini, prede facili o rifugi."
@@ -62,9 +64,11 @@ rogue:
       - name: Maestria
         short: "Scegli altre 2 competenze (abilità o arnesi da scasso): il tuo bonus di competenza raddoppia per quelle prove."
         text: "Il ladro sceglie altre due competenze fra le sue abilità e gli arnesi da scasso, che ricevono anch'esse il bonus di competenza raddoppiato."
-        kid: "Scegli altre 2 cose in cui diventi bravissimo: quando le usi aggiungi il doppio del bonus di competenza. Sulla scheda il numero è già calcolato."
+        kid: "Scegli altre 2 cose in cui diventi bravissim{o} (abilità o arnesi da scasso): quando le usi aggiungi il doppio del bonus di competenza. Sulla scheda il numero è già calcolato."
         kid_hide: true
+        sheet_hide: false
         expertise_count: 2
+        expertise_tools: [thieves_tools]
     7:
       - name: Elusione
         short: "Contro effetti che permettono un TS su DES per dimezzare i danni: nessun danno se superi il TS, metà dei danni se lo fallisci."
@@ -113,9 +117,9 @@ rogue:
         kid_hide: true
     18:
       - name: Inafferrabile
-        short: "Finché non sei incapacitato, nessun tiro per colpire contro di te può avere vantaggio."
+        short: "Finché non sei incapacitat{o}, nessun tiro per colpire contro di te può avere vantaggio."
         text: "Finché il ladro non è incapacitato, nessun tiro per colpire contro di lui può avere vantaggio."
-        kid: "Sei così sfuggente che nessun nemico può avere vantaggio quando ti attacca (cioè tirare 2 d20 e tenere il più alto), a meno che tu non sia incapacitato."
+        kid: "Sei così sfuggente che nessun nemico può avere vantaggio quando ti attacca (cioè tirare 2 d20 e tenere il più alto), a meno che tu non sia incapacitat{o}."
     19:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
@@ -153,9 +157,9 @@ rogue:
             kid: "Puoi usare qualsiasi oggetto magico, anche quelli fatti solo per maghi, per chierici, per gli elfi o per eroi di livello alto: per te quei limiti non valgono."
         17:
           - name: Riflessi del Furfante
-            short: "Nel primo round di ogni combattimento effettui due turni: il primo alla tua iniziativa, il secondo alla tua iniziativa meno 10. Non funziona se sei sorpreso."
+            short: "Nel primo round di ogni combattimento effettui due turni: il primo alla tua iniziativa, il secondo alla tua iniziativa meno 10. Non funziona se sei sorpres{o}."
             text: "Nel primo round di ogni combattimento il ladro gioca due turni: uno al suo punteggio di iniziativa e uno all'iniziativa meno 10. Se è sorpreso non può usare questo privilegio."
-            kid: "Nel primo round di ogni combattimento giochi due turni: uno al tuo posto normale e uno quando l'iniziativa arriva al tuo numero meno 10. Non vale se vieni sorpreso."
+            kid: "Nel primo round di ogni combattimento giochi due turni: uno al tuo posto normale e uno quando l'iniziativa arriva al tuo numero meno 10. Non vale se vieni sorpres{o}."
     assassin:
       name: Assassino
       name_f: Assassina
@@ -180,6 +184,7 @@ rogue:
             kid: "Spendendo 7 giorni e 25 monete d'oro ti inventi una nuova identità, con vestiti, lettere e documenti. Chi ti incontra crede che tu sia davvero quella persona, finché non trova un indizio evidente."
         13:
           - name: Impostore
+            name_f: Impostora
             short: "Dopo almeno 3 ore di studio imiti alla perfezione voce, scrittura e modi di un'altra persona; se qualcuno sospetta, hai vantaggio alle prove di Carisma (Inganno) per non farti scoprire."
             text: "Dopo almeno 3 ore passate a studiare come parla, scrive e si comporta una persona, il ladro la imita così bene che un osservatore qualunque non si accorge di nulla. Se una creatura sospetta qualcosa, il ladro ha vantaggio alle prove di Carisma (Inganno) per non farsi smascherare."
             kid: "Se studi una persona per 3 ore (come parla, come scrive, come si muove), poi la imiti alla perfezione. Se qualcuno sospetta, nelle prove di Inganno hai vantaggio (tiri 2 d20 e tieni il più alto)."
@@ -224,9 +229,9 @@ rogue:
             kid: "La tua Mano Magica può diventare invisibile: prende o infila oggetti nelle borse degli altri e apre serrature da lontano. La muovi con l'azione bonus. Per non farti scoprire: tua Rapidità di Mano contro la sua Percezione."
         9:
           - name: Imboscata Magica
-            short: "Se sei nascosto a una creatura quando le lanci un incantesimo, ha svantaggio a ogni TS contro quell'incantesimo in questo turno."
+            short: "Se sei nascost{o} a una creatura quando le lanci un incantesimo, ha svantaggio a ogni TS contro quell'incantesimo in questo turno."
             text: "Se il ladro è nascosto a una creatura quando le lancia un incantesimo, quella creatura ha svantaggio a tutti i tiri salvezza contro l'incantesimo per il resto del turno."
-            kid: "Se lanci una magia su un nemico mentre sei nascosto, quando lui prova a resistere (tiro salvezza contro {cd}) tira 2 d20 e tiene il più basso: è lo svantaggio."
+            kid: "Se lanci una magia su un nemico mentre sei nascost{o}, quando lui prova a resistere (tiro salvezza contro {cd}) tira 2 d20 e tiene il più basso: è lo svantaggio."
         13:
           - name: Mistificatore Versatile
             name_f: Mistificatrice Versatile

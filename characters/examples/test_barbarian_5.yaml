@@ -1,0 +1,61 @@
+# TEST: Barbaro di 5° livello, Cammino del Combattente Totemico (orso), Nano delle Montagne, Soldato, versione semplice.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_barbarian_5.yaml
+
+name: Durgan
+player: "Test"
+template: official_it
+simple: true                 # versione semplice: testi facili, niente appendice, guida separata
+race: dwarf
+subrace: mountain_dwarf
+class: barbarian
+subclass: totem_warrior
+level: 5
+xp: 6500
+background: soldier          # Soldato: Atletica e Intimidire
+alignment: LN
+
+abilities:
+  method: point_buy          # 9 + 7 + 9 + 0 + 2 + 0 = 27
+  base: {str: 15, dex: 14, con: 15, int: 8, wis: 10, cha: 8}   # prima dei bonus razziali (+2 FOR, +2 COS)
+  asi:
+    - {str: 1, con: 1}       # 4° livello: +1 FOR, +1 COS
+
+hp:
+  method: average
+
+skills: [perception, survival]           # 2 abilità di classe (Atletica e Intimidire dal background)
+class_options:
+  totem_spirit: [bear]                   # 3° livello: Spirito Totemico dell'orso
+languages_extra: []                      # nessun linguaggio extra (Comune e Nanico dalla razza)
+tools: ["Strumenti da fabbro"]           # strumento a scelta del nano
+background_tools: ["Dadi", "Veicoli (terrestri)"]
+
+armor: null
+shield: true
+weapons: [battleaxe, handaxe, javelin]
+equipment:
+  - "Ascia da battaglia"
+  - "Scudo"
+  - "2 asce"
+  - "4 giavellotti"
+  - "Totem: collana di artigli d'orso"
+  - pack: explorers_pack
+money: {gp: 10}
+
+personality:
+  traits: "Racconto sempre le stesse storie di guerra."
+  ideals: "Responsabilità."
+  bonds: "I miei compagni d'arme."
+  flaws: "Non mi tiro mai indietro."
+
+appearance:
+  age: "60"
+  height: "1,30 m"
+  weight: "75 kg"
+  eyes: "Castani"
+  skin: "Abbronzata"
+  hair: "Barba rossa intrecciata"
+
+allies: ""
+treasure: ""
+backstory: "Personaggio di prova per controllare il barbaro di 5° livello in versione semplice."

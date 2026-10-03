@@ -1,3 +1,17 @@
+# Ranger (PHB 2014), privilegi 1-20 e i due Archetipi Ranger del Manuale del Giocatore (Cacciatore, Signore delle Bestie).
+# Nomi italiani: privilegi base e Cacciatore come nell'SRD 5.1 in italiano; Signore delle Bestie dal Manuale del Giocatore.
+# Testi riassunti con parole nostre (meccaniche del PHB 2014 con l'errata ufficiale: Compagno del Ranger,
+# Addestramento Eccezionale, Furia Bestiale). Il PHB include anche il Sottosuolo tra i terreni prescelti (l'SRD no).
+# Distanze in metri (1,5 m = 5 piedi, 3 m = 10 piedi, 9 m = 30 piedi, 1,5 km = 1 miglio, 9 km = 6 miglia).
+# table: valori per livello (indice 0 = 1° livello), usabili nei testi come {t_<colonna>}.
+#   spells_known = colonna "Incantesimi conosciuti" del PHB (0 al 1° livello: il ranger lancia incantesimi dal 2°).
+#   favored_enemies / favored_terrains = quanti nemici e terreni prescelti si hanno (servono come count_table).
+# Gli slot incantesimo sono quelli standard da mezzo incantatore (spells.yaml > half).
+# Il ranger del PHB 2014 non ha un focus da incantatore e non lancia rituali (focus: null, ritual: false).
+# fighting_style_options: stili che il ranger può scegliere (chiavi di equipment.yaml > fighting_styles).
+# Nelle option_lists dell'archetipo, "level" = livello da ranger a cui si sceglie l'opzione.
+# name_f: forma al femminile dei privilegi che descrivono il personaggio (Esploratrice Nata, Sterminatrice...).
+# Equipaggiamento: nomi allineati a equipment.yaml (nel PHB italiano: "corazza a scaglie", "dotazione da avventuriero").
 ranger:
   name: Ranger
   name_f: Ranger
@@ -34,13 +48,13 @@ ranger:
       - name: Nemico Prescelto
         short: "Nemici prescelti: {t_favored_enemies} (uno in più al 6° e al 14° livello). Vantaggio alle prove di SAG (Sopravvivenza) per seguirne le tracce e alle prove di INT per ricordare informazioni su di loro. Impari una lingua parlata da loro, se ne hanno una."
         text: "Il ranger sceglie come nemico prescelto un tipo di creatura oppure due razze di umanoidi. Contro i nemici prescelti tira con vantaggio le prove di Saggezza (Sopravvivenza) per seguirne le tracce e le prove di Intelligenza per ricordare cosa sa di loro, e impara una lingua che parlano, se ne hanno una. Ne aggiunge un altro, con la relativa lingua, al 6° e al 14° livello."
-        kid: "Conosci benissimo un tipo di nemico. Per seguire le sue tracce o ricordare cosa sai di lui tiri 2 d20 e tieni il più alto (vantaggio). Parli anche la sua lingua, se ne ha una."
+        kid: "Conosci benissimo i tuoi nemici prescelti (li trovi sulla scheda). Per seguire le loro tracce o ricordare cosa sai di loro tiri 2 d20 e tieni il più alto (vantaggio). Parli anche la loro lingua, se ne hanno una."
         extra_languages: 1
       - name: Esploratore Nato
         name_f: Esploratrice Nata
-        short: "Terreni prescelti: {t_favored_terrains} (uno in più al 6° e al 10° livello). Bonus di competenza raddoppiato alle prove di INT e SAG legate al terreno prescelto, se usi un'abilità in cui sei competente. Dopo almeno 1 ora di viaggio lì: il terreno difficile non rallenta il gruppo, non vi perdete (salvo magia), resti all'erta anche facendo altro, da solo ti muovi furtivamente a passo normale, foraggiando trovi il doppio del cibo, dalle tracce scopri numero esatto, taglia e da quanto tempo sono passate le creature."
+        short: "Terreni prescelti: {t_favored_terrains} (uno in più al 6° e al 10° livello). Bonus di competenza raddoppiato alle prove di INT e SAG legate al terreno prescelto, se usi un'abilità in cui sei competente. Dopo almeno 1 ora di viaggio lì: il terreno difficile non rallenta il gruppo, non vi perdete (salvo magia), resti all'erta anche facendo altro, se viaggi senza compagni ti muovi furtivamente a passo normale, foraggiando trovi il doppio del cibo, dalle tracce scopri numero esatto, taglia e da quanto tempo sono passate le creature."
         text: "Il ranger sceglie un terreno prescelto (artico, costa, deserto, foresta, montagna, palude, prateria o Sottosuolo) e raddoppia il bonus di competenza nelle prove di Intelligenza o Saggezza che lo riguardano, se usa un'abilità in cui è competente. Dopo almeno 1 ora di viaggio in quel terreno il gruppo non è rallentato dal terreno difficile e non si perde (salvo magia), il ranger resta vigile anche mentre foraggia, si orienta o segue tracce, da solo si muove furtivamente a passo normale, trova il doppio del cibo e dalle tracce capisce numero esatto, taglia e da quanto tempo sono passate le creature. Aggiunge altri terreni prescelti al 6° e al 10° livello."
-        kid: "Quando viaggi per almeno 1 ora nel tuo ambiente preferito, il gruppo non si perde e non rallenta, trovi il doppio del cibo e dalle tracce capisci quante creature sono passate, quanto sono grandi e quando."
+        kid: "Nei tuoi ambienti preferiti (li trovi sulla scheda) sei di casa: nelle prove che li riguardano, con un'abilità che conosci, aggiungi due volte il bonus di competenza. Se ci viaggi per almeno 1 ora il gruppo non si perde e non rallenta, trovi il doppio del cibo e dalle tracce capisci quante creature sono passate, quanto sono grandi e quando."
     2:
       - name: Stile di Combattimento
         short: "Scegli uno stile: Combattere con Due Armi, Difesa, Duello o Tiro."
@@ -54,6 +68,7 @@ ranger:
         text: "Il ranger lancia incantesimi grazie alla natura, con la Saggezza come caratteristica (CD = 8 + bonus di competenza + modificatore di Saggezza; attacco = bonus di competenza + modificatore di Saggezza). Parte con due incantesimi di 1° livello della lista del ranger e ne impara altri secondo la colonna Incantesimi Conosciuti, sempre di livelli per cui ha slot; a ogni nuovo livello da ranger può scambiarne uno con un altro della lista. Ogni incantesimo consuma uno slot di livello pari o superiore e gli slot tornano tutti con un riposo lungo; non ha un focus da incantatore (per le componenti materiali senza costo usa una borsa per componenti) e non lancia rituali."
         kid: "Conosci {t_spells_known} magie da ranger. Per lanciarne una spendi uno slot (un gettone di magia); li recuperi tutti con un riposo lungo. Per resistere alle tue magie il nemico tira un d20 e deve fare almeno {cd}."
         kid_hide: true
+        sheet_hide: false        # nascosto ai bambini (c'è il riquadro "Come si gioca"), visibile sulla scheda completa
     3:
       - name: Archetipo Ranger
         short: "Scegli un archetipo: Cacciatore o Signore delle Bestie. Ti dà privilegi al 3°, 7°, 11° e 15° livello."
@@ -67,7 +82,7 @@ ranger:
     4:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
-        text: "Il ranger aumenta di 2 un punteggio di caratteristica, o di 1 due punteggi, senza superare 20; in alternativa può prendere un talento. Lo stesso accade all'8°, 12°, 16° e 19° livello."
+        text: "Il ranger aumenta di 2 un punteggio di caratteristica, o di 1 due punteggi, senza superare 20; in alternativa può prendere un talento. Succede al 4°, all'8°, al 12°, al 16° e al 19° livello."
         kid: "Le tue caratteristiche sono migliorate: i numeri sulla scheda sono già aggiornati."
         kid_hide: true
     5:
@@ -76,22 +91,24 @@ ranger:
         text: "Dal 5° livello il ranger effettua due attacchi, invece di uno, ogni volta che sceglie l'azione di Attacco nel suo turno."
         kid: "Quando usi l'azione di Attacco nel tuo turno, attacchi 2 volte invece di 1: tira il d20 per ogni attacco. Puoi anche colpire due nemici diversi."
     6:
+      # Le due voci "Migliorato" si ripetono (6°/14° e 6°/10°) con lo stesso testo, così la scheda le unisce in una riga
+      # con i livelli. Restano kid_hide (e quindi sheet_hide): i totali sono già nelle voci base ({t_favored_*}).
       - name: Nemico Prescelto Migliorato
-        short: "Scegli un altro nemico prescelto e impari una lingua parlata da lui, se ne ha una."
-        text: "Il ranger aggiunge un secondo nemico prescelto, con tutti i benefici di Nemico Prescelto, e impara una lingua che quel nemico parla, se ne ha una."
+        short: "Scegli un altro nemico prescelto (ora ne hai {t_favored_enemies}) e impari una lingua che parla, se ne ha una."
+        text: "Il ranger aggiunge un nemico prescelto, con tutti i benefici di Nemico Prescelto, e impara una lingua che quel nemico parla, se ne ha una. Succede al 6° e al 14° livello."
         kid: "Conosci benissimo un nuovo tipo di nemico: anche con lui hai il vantaggio per seguire le tracce e ricordare cosa sai, e ne parli la lingua."
         kid_hide: true
         extra_languages: 1
       - name: Esploratore Nato Migliorato
         name_f: Esploratrice Nata Migliorata
-        short: "Scegli un secondo terreno prescelto."
-        text: "Il ranger aggiunge un secondo terreno prescelto, in cui ottiene tutti i benefici di Esploratore Nato."
-        kid: "Hai un secondo ambiente preferito dove sei di casa, con tutti i vantaggi di prima."
+        short: "Scegli un altro terreno prescelto (ora ne hai {t_favored_terrains})."
+        text: "Il ranger aggiunge un terreno prescelto, in cui ottiene tutti i benefici di Esploratore Nato. Succede al 6° e al 10° livello."
+        kid: "Hai un nuovo ambiente preferito dove sei di casa, con tutti i vantaggi di prima."
         kid_hide: true
     8:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
-        text: "Vedi 4° livello."
+        text: "Il ranger aumenta di 2 un punteggio di caratteristica, o di 1 due punteggi, senza superare 20; in alternativa può prendere un talento. Succede al 4°, all'8°, al 12°, al 16° e al 19° livello."
         kid: "Le tue caratteristiche sono migliorate: i numeri sulla scheda sono già aggiornati."
         kid_hide: true
       - name: Andatura sul Territorio
@@ -101,25 +118,25 @@ ranger:
     10:
       - name: Esploratore Nato Migliorato
         name_f: Esploratrice Nata Migliorata
-        short: "Scegli un terzo terreno prescelto."
-        text: "Il ranger aggiunge un terzo terreno prescelto, in cui ottiene tutti i benefici di Esploratore Nato."
-        kid: "Hai un terzo ambiente preferito dove sei di casa, con tutti i vantaggi di prima."
+        short: "Scegli un altro terreno prescelto (ora ne hai {t_favored_terrains})."
+        text: "Il ranger aggiunge un terreno prescelto, in cui ottiene tutti i benefici di Esploratore Nato. Succede al 6° e al 10° livello."
+        kid: "Hai un nuovo ambiente preferito dove sei di casa, con tutti i vantaggi di prima."
         kid_hide: true
       - name: Nascondersi in Piena Vista
-        short: "1 minuto per mimetizzarti con materiale naturale (fango fresco, terra, piante, fuliggine). Poi, appiattito contro una superficie solida alta e larga almeno quanto te (albero, muro), hai +10 alle prove di DES (Furtività) finché resti fermo senza agire; se ti muovi o usi un'azione o una reazione devi mimetizzarti di nuovo."
+        short: "1 minuto per mimetizzarti con materiale naturale (fango fresco, terra, piante, fuliggine). Poi, se ti premi contro una superficie solida alta e larga almeno quanto te (albero, muro), hai +10 alle prove di DES (Furtività); muoverti o usare un'azione o una reazione annulla il camuffamento, che va rifatto da capo."
         text: "Dal 10° livello il ranger può passare 1 minuto a camuffarsi con materiale naturale come fango fresco, terra, piante o fuliggine. Se poi si nasconde premuto contro una superficie solida alta e larga almeno quanto lui, come un tronco o un muro, ha +10 alle prove di Destrezza (Furtività) finché resta immobile senza agire; muoversi o usare un'azione o una reazione annulla il camuffamento."
         kid: "Ti copri di fango e foglie per 1 minuto, poi ti appoggi a un albero o a un muro grande almeno come te. Finché non ti muovi e non fai nulla, aggiungi +10 alle prove di Furtività."
     12:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
-        text: "Vedi 4° livello."
+        text: "Il ranger aumenta di 2 un punteggio di caratteristica, o di 1 due punteggi, senza superare 20; in alternativa può prendere un talento. Succede al 4°, all'8°, al 12°, al 16° e al 19° livello."
         kid: "Le tue caratteristiche sono migliorate: i numeri sulla scheda sono già aggiornati."
         kid_hide: true
     14:
       - name: Nemico Prescelto Migliorato
-        short: "Scegli un terzo nemico prescelto e impari una lingua parlata da lui, se ne ha una."
-        text: "Il ranger aggiunge un terzo nemico prescelto, con tutti i benefici di Nemico Prescelto, e impara una lingua che quel nemico parla, se ne ha una."
-        kid: "Conosci benissimo un altro tipo di nemico: anche con lui hai il vantaggio per seguire le tracce e ricordare cosa sai, e ne parli la lingua."
+        short: "Scegli un altro nemico prescelto (ora ne hai {t_favored_enemies}) e impari una lingua che parla, se ne ha una."
+        text: "Il ranger aggiunge un nemico prescelto, con tutti i benefici di Nemico Prescelto, e impara una lingua che quel nemico parla, se ne ha una. Succede al 6° e al 14° livello."
+        kid: "Conosci benissimo un nuovo tipo di nemico: anche con lui hai il vantaggio per seguire le tracce e ricordare cosa sai, e ne parli la lingua."
         kid_hide: true
         extra_languages: 1
       - name: Svanire
@@ -129,18 +146,18 @@ ranger:
     16:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
-        text: "Vedi 4° livello."
+        text: "Il ranger aumenta di 2 un punteggio di caratteristica, o di 1 due punteggi, senza superare 20; in alternativa può prendere un talento. Succede al 4°, all'8°, al 12°, al 16° e al 19° livello."
         kid: "Le tue caratteristiche sono migliorate: i numeri sulla scheda sono già aggiornati."
         kid_hide: true
     18:
       - name: Sensi Ferini
-        short: "Attaccare una creatura che non vedi non ti dà svantaggio. Sai dove si trova ogni creatura invisibile entro 9 m, se non si è nascosta a te e tu non sei accecato o assordato."
+        short: "Attaccare una creatura che non vedi non ti dà svantaggio. Sai dove si trova ogni creatura invisibile entro 9 m, se non si è nascosta a te e se ci vedi e ci senti."
         text: "Dal 18° livello il ranger non subisce svantaggio ai tiri per colpire contro le creature che non riesce a vedere. Conosce inoltre la posizione di ogni creatura invisibile entro 9 m, a meno che non si sia nascosta a lui o che il ranger sia accecato o assordato."
         kid: "Puoi attaccare un nemico che non vedi (al buio o invisibile) senza tirare 2 d20 tenendo il più basso. Sai anche dove sono le creature invisibili entro 9 m, se non si nascondono e tu ci vedi e ci senti."
     19:
       - name: Aumento dei Punteggi di Caratteristica
         short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
-        text: "Vedi 4° livello."
+        text: "Il ranger aumenta di 2 un punteggio di caratteristica, o di 1 due punteggi, senza superare 20; in alternativa può prendere un talento. Succede al 4°, all'8°, al 12°, al 16° e al 19° livello."
         kid: "Le tue caratteristiche sono migliorate: i numeri sulla scheda sono già aggiornati."
         kid_hide: true
     20:
@@ -278,7 +295,7 @@ ranger:
           - name: Preda del Cacciatore
             short: "Scegli una tecnica: Devastatore dell'Orda, Sterminatore di Colossi o Uccisore di Giganti."
             text: "Al 3° livello il ranger impara una tecnica di caccia a scelta tra Devastatore dell'Orda, Sterminatore di Colossi e Uccisore di Giganti."
-            kid: "Hai imparato una tecnica da cacciatore: la trovi spiegata tra le tue scelte."
+            kid: "Hai imparato una tecnica di caccia: la trovi spiegata tra le tue scelte."
             kid_hide: true
         7:
           - name: Tattiche Difensive
@@ -296,7 +313,7 @@ ranger:
           - name: Difesa del Cacciatore Superiore
             short: "Scegli una tecnica: Elusione, Opporsi alla Marea o Schivata Prodigiosa."
             text: "Al 15° livello il ranger impara una difesa a scelta tra Elusione, Opporsi alla Marea e Schivata Prodigiosa."
-            kid: "Hai imparato una difesa da grande cacciatore: la trovi spiegata tra le tue scelte."
+            kid: "Hai imparato una tecnica di caccia per difenderti ancora meglio: la trovi spiegata tra le tue scelte."
             kid_hide: true
       option_lists:
         hunters_prey:
@@ -341,7 +358,7 @@ ranger:
               kid: "Quando un nemico ti colpisce, per il resto del suo turno hai +4 alla CA (quanto è difficile colpirti) contro i suoi altri attacchi."
             steel_will:
               name: Volontà d'Acciaio
-              short: "Vantaggio ai tiri salvezza contro l'essere spaventato."
+              short: "Vantaggio ai tiri salvezza contro la condizione spaventato."
               text: "Il ranger tira con vantaggio i tiri salvezza per non essere spaventato."
               kid: "Quando qualcosa prova a spaventarti, per resistere tiri 2 d20 e tieni il più alto (vantaggio)."
         multiattack:
@@ -393,12 +410,16 @@ ranger:
         hp_per_ranger_level: 4
         add_proficiency: [ac, attack, damage, saves, skills]
         examples: [hawk, mastiff, panther]
+        # Testi per la carta del compagno (versione semplice e guida). Le bestie qui sopra hanno kid, kid_attacks e kid_traits
+        # in beasts.yaml; i numeri della carta (CA, PF, attacchi + bonus di competenza) li calcola il motore.
+        kid: "È il tuo animale compagno: viaggia sempre con te, ti ubbidisce e combatte al tuo fianco. Agisce nel tuo turno. Dirgli dove muoversi è gratis; per fargli fare qualcosa usi la tua azione: attaccare, correre (Scatto), allontanarsi senza farsi colpire (Disimpegno), schivare (Schivata) o aiutare (Aiuto). Dal 5° livello, quando gli ordini di attaccare, attacchi anche tu una volta con la tua arma. Se tu non puoi dare ordini, si muove e combatte da solo per proteggervi. I numeri della sua carta contano già il tuo bonus di competenza."
+        tip: "Mandalo avanti a esplorare; in battaglia fallo attaccare lo stesso nemico che colpisci tu, così cade prima."
       features:
         3:
           - name: Compagno del Ranger
-            short: "Ottieni una bestia compagna di taglia Media o inferiore e GS 1/4 o meno (es. falco, mastino, pantera). Somma il tuo bonus di competenza a CA, tiri per colpire, danni e a TS e abilità in cui è competente; PF massimi = i suoi normali o 4 x il tuo livello da ranger, se più alti. Agisce alla tua iniziativa: la muovi a voce gratis e con la tua azione le ordini Attacco, Scatto, Disimpegno, Schivata o Aiuto (con Attacco Extra, quando le ordini di attaccare fai anche tu un attacco con arma). Se sei incapacitato agisce da sola; se muore, ti leghi a un'altra bestia non ostile con 8 ore di legame magico."
+            short: "Ottieni una bestia compagna di taglia Media o inferiore e GS 1/4 o meno (es. falco, mastino, pantera). Somma il tuo bonus di competenza a CA, tiri per colpire, danni e a TS e abilità in cui è competente; PF massimi = i suoi normali o 4 x il tuo livello da ranger, se più alti. Agisce alla tua iniziativa: la muovi a voce gratis e con la tua azione le ordini Attacco, Scatto, Disimpegno, Schivata o Aiuto (con Attacco Extra, quando le ordini di attaccare fai anche tu un attacco con arma). Se non puoi agire o non ci sei, agisce da sola per proteggere entrambi; se muore, ti leghi a un'altra bestia non ostile con 8 ore di legame magico."
             text: "Al 3° livello il ranger ottiene una bestia compagna di taglia Media o inferiore e GS 1/4 o meno (per esempio falco, mastino o pantera), che somma il bonus di competenza del ranger a CA, tiri per colpire e danni e ai tiri salvezza e alle abilità in cui è competente; i suoi PF massimi sono i suoi normali o 4 x il livello da ranger, se più alti, e nei riposi brevi può spendere Dadi Vita. Agisce al turno di iniziativa del ranger, che le indica gratis dove muoversi e con la propria azione le ordina Attacco, Scatto, Disimpegno, Schivata o Aiuto (con Attacco Extra, quando le ordina di attaccare, può fare anche lui un attacco con un'arma); se il ranger è incapacitato o assente la bestia agisce da sola per proteggere entrambi, e la reazione la usa sempre senza bisogno di ordini. Viaggiando nel terreno prescelto con la sola bestia il ranger si muove furtivamente a passo normale; se la bestia muore, può sostituirla legandosi magicamente per 8 ore a una bestia non ostile."
-            kid: "Hai un animale compagno (per esempio un falco, un mastino o una pantera). Nel tuo turno gli dici dove andare. Se usi la tua azione per dargli un ordine, attacca, corre, schiva, si allontana o aiuta."
+            kid: "Hai un animale compagno (per esempio un falco, un mastino o una pantera) che viaggia e combatte con te. Nel tuo turno gli dici gratis dove andare. Se usi la tua azione per dargli un ordine, attacca, corre, schiva, si allontana o aiuta. Dal 5° livello, quando gli ordini di attaccare, attacchi anche tu una volta con l'arma."
         7:
           - name: Addestramento Eccezionale
             short: "Nei tuoi turni in cui la bestia non attacca, con un'azione bonus le ordini Scatto, Disimpegno, Schivata o Aiuto. I suoi attacchi contano come magici contro resistenze e immunità ai danni non magici."
@@ -411,6 +432,6 @@ ranger:
             kid: "Quando ordini al tuo animale di attaccare, fa 2 attacchi invece di 1."
         15:
           - name: Condividere Incantesimi
-            short: "Quando lanci un incantesimo che ha come bersaglio te stesso, puoi farlo agire anche sulla bestia compagna, se è entro 9 m da te."
+            short: "Quando lanci un incantesimo che ha te come bersaglio, puoi farlo agire anche sulla bestia compagna, se è entro 9 m da te."
             text: "Dal 15° livello, quando il ranger lancia un incantesimo che ha come bersaglio sé stesso, può farlo agire anche sulla bestia compagna, purché si trovi entro 9 m da lui."
-            kid: "Quando lanci una magia che ha come bersaglio te stesso, se il tuo animale è entro 9 m la magia funziona anche su di lui, senza spendere niente in più."
+            kid: "Quando lanci su di te una magia, se il tuo animale è entro 9 m la magia funziona anche su di lui, senza spendere niente in più."

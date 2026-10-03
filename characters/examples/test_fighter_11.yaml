@@ -1,0 +1,58 @@
+# TEST: Guerriero di 11° livello, Campione — Nano delle Montagne, Marinaio.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_fighter_11.yaml
+
+name: Borin
+template: official_it
+player: "Test"
+race: dwarf
+subrace: mountain_dwarf      # +2 COS, +2 FOR
+class: fighter
+subclass: champion
+level: 11
+xp: 85000
+background: sailor           # Marinaio: Atletica, Percezione
+alignment: CG
+
+abilities:
+  method: point_buy          # 9 + 4 + 9 + 0 + 4 + 1 = 27
+  base: {str: 15, dex: 12, con: 15, int: 8, wis: 12, cha: 9}   # dopo la razza: FOR 17, COS 17
+  asi:
+    - {str: 1, con: 1}       # 4° livello -> FOR 18, COS 18
+
+feats:
+  - tough                    # 6° livello: +2 PF per livello
+  - {key: resilient, ability: wis}   # 8° livello: +1 SAG e competenza nei TS su SAG
+
+hp:
+  method: average            # 10 + 4 + 10 x (6 + 4) + 2 x 11 (Robusto) = 136
+
+skills: [insight, intimidation]
+tools: ["Strumenti da fabbro"]       # Competenza negli Strumenti del nano
+fighting_style: defense              # 1° livello
+fighting_styles: [great_weapon_fighting]   # Stile di Combattimento Aggiuntivo (Campione, 10° livello)
+
+armor: plate                 # 18 + Difesa 1 = 19
+shield: false
+weapons: [greatsword, warhammer, heavy_crossbow]
+equipment:
+  - "20 quadrelli"
+  - pack: dungeoneers_pack
+money: {gp: 120}
+
+personality:
+  traits: "Il mio linguaggio è colorito come quello di un vecchio lupo di mare."
+  ideals: "Libertà. Il mare è libertà. (Caotico)"
+  bonds: "La nave su cui ho servito è la mia casa."
+  flaws: "Bevo troppo nei porti."
+
+appearance:
+  age: "80"
+  height: "1,35 m"
+  weight: "80 kg"
+  eyes: "Neri"
+  skin: "Rossastra"
+  hair: "Barba rossa intrecciata"
+
+allies: "L'equipaggio della Balena Grigia."
+treasure: ""
+backstory: "Personaggio di prova (guerriero di 11° livello, Campione)."

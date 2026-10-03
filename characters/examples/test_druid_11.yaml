@@ -1,0 +1,64 @@
+# TEST: Druida di 11° livello, Circolo della Luna, Mezzelfa, Saggia.
+# Genera con:  python -m dnd5e build characters/examples/test_druid_11.yaml
+
+name: Seraphine
+template: official_it
+player: "Test"
+gender: f
+race: half_elf               # +2 CAR, +1 a due caratteristiche a scelta, 2 abilità a scelta
+class: druid
+subclass: moon               # Circolo della Luna
+level: 11
+xp: 85000
+background: sage             # Saggio: Arcano, Storia, 2 linguaggi
+alignment: CG
+
+abilities:
+  method: point_buy          # 0 + 7 + 7 + 4 + 9 + 0 = 27 punti
+  base: {str: 8, dex: 14, con: 14, int: 12, wis: 15, cha: 8}
+  racial_choice: [wis, con]  # Mezzelfo: +1 SAG, +1 COS -> SAG 16, COS 15, CAR 10
+  asi:
+    - {wis: 2}               # 4° livello: SAG 18
+feats:
+  - {key: resilient, ability: con}   # 8° livello: Resiliente (COS 16, competenza nei TS su COS)
+
+hp:
+  method: average            # 8 + 3, poi 10 x (5 + 3) -> 91
+
+skills: [perception, survival]          # 2 abilità di classe
+racial_skills: [insight, stealth]       # Versatilità nelle Abilità
+languages_extra: [sylvan, draconic, giant]   # 1 dalla razza + 2 dal background
+
+cantrips: [druidcraft, guidance, produce_flame, thorn_whip]   # 4 dal 10° livello
+spells: [cure_wounds, healing_word, faerie_fire,
+         moonbeam, pass_without_trace, lesser_restoration,
+         conjure_animals, dispel_magic, call_lightning,
+         polymorph, freedom_of_movement, stoneskin,
+         greater_restoration, commune_with_nature,
+         sunbeam]                       # preparati: SAG +4 + livello 11 = 15 (slot fino al 6°)
+
+armor: hide                  # 12 + DES 2
+shield: "Scudo di legno"     # -> CA 16
+weapons: [scimitar, sling]
+equipment:
+  - "Focus druidico (pietra di luna)"
+  - "20 proiettili per fionda"
+  - pack: explorers_pack
+money: {gp: 120}
+
+personality:
+  traits: "Prendo appunti su ogni animale che incontro."
+  ideals: "Conoscenza. La natura è un libro da leggere. (Neutrale)"
+  bonds: "Il mio maestro mi ha lasciato un diario incompleto sulle bestie della luna."
+  flaws: "Quando sono un animale dimentico di tornare."
+
+appearance:
+  age: "40"
+  height: "1,70 m"
+  weight: "58 kg"
+  eyes: "Argento"
+  skin: "Pallida"
+  hair: "Neri, corti"
+
+backstory: |
+  Seraphine ha studiato le bestie della luna per anni prima di imparare a diventarle.

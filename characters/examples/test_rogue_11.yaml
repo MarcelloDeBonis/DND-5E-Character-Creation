@@ -1,0 +1,56 @@
+# TEST: Ladro di 11° livello, Assassino, Umano Variante, Ciarlatano, array standard, talenti
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_rogue_11.yaml
+
+name: Corvo Nero
+template: official_it
+player: "Test"
+race: human
+subrace: variant_human      # +1 a due caratteristiche, 1 abilità, 1 talento
+class: rogue
+subclass: assassin
+level: 11
+xp: 85000
+background: charlatan       # Ciarlatano: Inganno, Rapidità di Mano
+alignment: NE
+
+abilities:
+  method: standard_array
+  base: {str: 8, dex: 15, con: 14, int: 10, wis: 12, cha: 13}
+  racial_choice: [dex, con]                       # -> DES 16, COS 15
+  asi:
+    - {dex: 2}                                    # 4° livello -> DES 18
+    - {con: 1, cha: 1}                            # 8° livello -> COS 16, CAR 14
+feats:
+  - alert                                         # talento dell'umano variante (1° livello)
+  - mobile                                        # 10° livello, al posto dell'aumento
+
+hp:
+  method: average
+
+skills: [stealth, perception, acrobatics, intimidation]   # 4 abilità di classe
+racial_skills: [insight]                                  # umano variante
+expertise: [stealth, perception, deception, acrobatics]   # Maestria: 2 al 1° + 2 al 6°
+background_tools: ["Arnesi da falsario", "Strumenti da calligrafo"]   # i trucchi per il camuffamento doppiano l'Assassino: sostituiti
+languages_extra: [elvish]                                 # 1 dall'umano
+
+armor: studded_leather
+weapons: [rapier, hand_crossbow, dagger, shortsword]
+equipment:
+  - "20 quadrelli"
+  - "Arnesi da scasso"
+  - pack: burglars_pack
+money: {gp: 150}
+
+personality:
+  traits: "Ho una storia diversa per ogni locanda."
+  ideals: "Il denaro è l'unica cosa che non mente. (Malvagio)"
+  bonds: "Un vecchio contratto non ancora concluso."
+  flaws: "Non mi fido di nessuno, nemmeno dei miei compagni."
+appearance:
+  age: "35"
+  height: "1,78 m"
+  weight: "70 kg"
+  eyes: "Neri"
+  skin: "Olivastra"
+  hair: "Neri, raccolti"
+backstory: "Personaggio di prova per il test della classe Ladro all'11° livello (Assassino)."

@@ -1,0 +1,69 @@
+# Test: Stregona 11 (Discendenza Draconica, drago blu), Umana (Variante), Saggia.
+# Genera con:  python -m dnd5e build characters/examples/test_sorcerer_11.yaml
+
+name: Ilyra
+template: official_it
+player: "Test"
+gender: f
+race: human
+subrace: variant_human           # +1 a due caratteristiche, 1 abilità, 1 talento
+class: sorcerer
+subclass: draconic_bloodline
+level: 11
+xp: 85000
+background: sage
+alignment: N
+
+abilities:
+  method: point_buy              # 0 + 7 + 7 + 2 + 2 + 9 = 27 punti
+  base: {str: 8, dex: 14, con: 14, int: 10, wis: 10, cha: 15}
+  racial_choice: [cha, con]      # Umana (Variante): +1 CAR, +1 COS
+  asi:
+    - {cha: 2}                   # 4° livello: +2 Carisma (16 -> 18)
+
+feats:
+  - war_caster                   # talento dell'Umana (Variante), 1° livello
+  - {key: resilient, ability: dex}   # 8° livello: talento al posto dell'aumento (DES 14 -> 15, TS DES)
+
+hp:
+  method: average
+
+skills: [deception, persuasion]                  # 2 abilità di classe
+background_skills: [arcana, history]             # Saggia
+racial_skills: [perception]                      # Umana (Variante)
+languages_extra: [elvish, dwarvish, celestial]   # 1 dalla razza + 2 dal background
+
+class_options:
+  dragon_ancestor: [blue]                        # antenato: drago blu (fulmine)
+  metamagic: [quickened_spell, twinned_spell, subtle_spell]   # 3 opzioni dal 10° livello
+
+cantrips: [fire_bolt, shocking_grasp, mage_hand, message, light, minor_illusion]   # 6 trucchetti dal 10° livello
+spells: [shield, chromatic_orb, witch_bolt,                       # 1° livello
+         misty_step, hold_person,                                 # 2° livello
+         lightning_bolt, counterspell, haste,                     # 3° livello
+         greater_invisibility, dimension_door,                    # 4° livello
+         hold_monster,                                            # 5° livello
+         chain_lightning]                                         # 6° livello: 12 incantesimi conosciuti all'11°
+
+armor: null
+weapons: [quarterstaff, dagger]
+equipment:
+  - "Focus arcano (bastone con punta di zaffiro)"
+  - pack: explorers_pack
+  - "Due pugnali"
+include_background_equipment: true
+money: {gp: 350}
+
+personality:
+  traits: "Prendo appunti su tutto, anche durante una battaglia."
+  ideals: "Conoscenza. La tempesta che ho dentro va capita, non temuta. (Neutrale)"
+  bonds: "Cerco il drago blu da cui discende la mia famiglia."
+  flaws: "Mi distraggo facilmente con un buon libro."
+
+appearance:
+  age: "34"
+  height: "1,70 m"
+  weight: "58 kg"
+  eyes: "Azzurri elettrici"
+  skin: "Olivastra con scaglie blu sui polsi"
+  hair: "Neri"

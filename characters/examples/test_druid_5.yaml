@@ -1,0 +1,60 @@
+# TEST: Druido di 5° livello, Circolo della Terra (foresta), Nano delle Colline, Eroe Popolare, versione semplice.
+# Genera con:  python -m dnd5e build characters/examples/test_druid_5.yaml
+
+name: Borin
+template: official_it
+player: "Test"
+simple: true                 # versione semplice: testi facili, niente appendice, guida separata
+race: dwarf
+subrace: hill_dwarf          # +2 COS, +1 SAG, +1 PF per livello, velocità 25 piedi
+class: druid
+subclass: land               # Circolo della Terra
+circle_terrain: forest       # Pelle Coriacea, Scalare come un Ragno (3°); Invocare il Fulmine, Crescita Vegetale (5°)
+level: 5
+xp: 6500
+background: folk_hero        # Eroe Popolare: Addestrare Animali, Sopravvivenza
+alignment: NG
+
+abilities:
+  method: standard_array     # 15, 14, 13, 12, 10, 8
+  base: {str: 10, dex: 13, con: 14, int: 8, wis: 15, cha: 12}   # dopo la razza: COS 16, SAG 16
+  asi:
+    - {wis: 2}               # 4° livello: +2 SAG -> 18
+
+hp:
+  method: average            # 8 + 3 + 1 = 12, poi 4 x (5 + 3 + 1) = 36 -> 48
+
+skills: [medicine, perception]               # 2 abilità di classe
+background_tools: ["Strumenti da falegname", "Veicoli (terrestri)"]
+tools: ["Strumenti da birraio"]              # competenza negli strumenti del nano (a scelta)
+
+cantrips: [guidance, produce_flame, shillelagh, thorn_whip]   # 3 al 4° livello + 1 Trucchetto Bonus del Circolo della Terra
+spells: [cure_wounds, healing_word, entangle, goodberry, moonbeam, pass_without_trace,
+         lesser_restoration, conjure_animals, dispel_magic]    # preparati: SAG +4 + livello 5 = 9
+
+armor: hide                  # 12 + DES 1 (max 2)
+shield: "Scudo di legno"     # +2 -> CA 15
+weapons: [quarterstaff, handaxe]   # ascia: competenza da Addestramento da Combattimento dei Nani
+equipment:
+  - "Focus druidico (rametto di vischio)"
+  - "Strumenti da falegname"
+  - pack: explorers_pack
+include_background_equipment: false
+money: {gp: 10}
+
+personality:
+  traits: "Aiuto chiunque sia in difficoltà, anche se brontolo."
+  ideals: "Comunità. Il villaggio viene prima di tutto. (Buono)"
+  bonds: "Ho salvato il mio villaggio da un incendio nella foresta."
+  flaws: "Sono testardo come la roccia."
+
+appearance:
+  age: "80"
+  height: "1,30 m"
+  weight: "75 kg"
+  eyes: "Grigi"
+  skin: "Abbronzata"
+  hair: "Barba rossa con foglie intrecciate"
+
+backstory: |
+  Borin è un nano delle colline che ha imparato dai druidi della foresta a parlare con gli alberi.

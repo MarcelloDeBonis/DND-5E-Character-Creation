@@ -1,4 +1,5 @@
 # Armi e armature (PHB 2014, cap. 5). Danni in notazione dadi; gittata in metri (normale/lunga).
+# Anche: weapon_categories (nomi italiani delle categorie di armi), tools (strumenti), packs (dotazioni), fighting_styles.
 # properties: finesse, light, heavy, two_handed, versatile (con danno), thrown, ammunition, reach, loading, special
 weapons:
   # --- Armi semplici da mischia ---
@@ -104,3 +105,57 @@ fighting_styles:
   two_weapon_fighting:
     name: Combattere con Due Armi
     text: "Aggiungi il modificatore di caratteristica ai danni del secondo attacco quando combatti con due armi."
+
+# Categorie di armi usate nelle competenze (classi, talenti): chiave -> nome italiano per la scheda.
+weapon_categories:
+  simple: armi semplici
+  martial: armi da guerra
+  improvised: armi improvvisate
+
+# Strumenti (PHB 2014, cap. 5; nomi dell'SRD 5.1 in italiano). La chiave serve a expertise_tools, tool_choices e a
+# evitare doppioni; "name" è la stringa che compare in tools / background_tools (deve coincidere).
+# category: artisan = strumenti da artigiano, gaming = giochi, musical = strumenti musicali, other = gli altri.
+tools:
+  # --- strumenti da artigiano ---
+  alchemists_supplies:    {name: Scorte da alchimista,        category: artisan}
+  brewers_supplies:       {name: Scorte da birraio,           category: artisan}
+  calligraphers_supplies: {name: Scorte da calligrafo,        category: artisan}
+  carpenters_tools:       {name: Strumenti da falegname,      category: artisan}
+  cartographers_tools:    {name: Strumenti da cartografo,     category: artisan}
+  cobblers_tools:         {name: Strumenti da calzolaio,      category: artisan}
+  cooks_utensils:         {name: Utensili da cuoco,           category: artisan}
+  glassblowers_tools:     {name: Strumenti da soffiatore,     category: artisan}
+  jewelers_tools:         {name: Strumenti da gioielliere,    category: artisan}
+  leatherworkers_tools:   {name: Strumenti da conciatore,     category: artisan}
+  masons_tools:           {name: Strumenti da muratore,       category: artisan}
+  painters_supplies:      {name: Strumenti da pittore,        category: artisan}
+  potters_tools:          {name: Strumenti da vasaio,         category: artisan}
+  smiths_tools:           {name: Strumenti da fabbro,         category: artisan}
+  tinkers_tools:          {name: Strumenti da inventore,      category: artisan}
+  weavers_tools:          {name: Strumenti da tessitore,      category: artisan}
+  woodcarvers_tools:      {name: Strumenti da intagliatore,   category: artisan}
+  # --- giochi ---
+  dice_set:               {name: Dadi,                        category: gaming}
+  dragonchess_set:        {name: Scacchi dei draghi,          category: gaming}
+  playing_card_set:       {name: Mazzo di carte,              category: gaming}
+  three_dragon_ante_set:  {name: Tre Draghi al Buio,          category: gaming}
+  # --- strumenti musicali ---
+  bagpipes:               {name: Cornamusa,                   category: musical}
+  drum:                   {name: Tamburo,                     category: musical}
+  dulcimer:               {name: Dulcimer,                    category: musical}
+  flute:                  {name: Flauto,                      category: musical}
+  horn:                   {name: Corno,                       category: musical}
+  lute:                   {name: Liuto,                       category: musical}
+  lyre:                   {name: Lira,                        category: musical}
+  pan_flute:              {name: Flauto di pan,               category: musical}
+  shawm:                  {name: Ciaramella,                  category: musical}
+  viol:                   {name: Viola,                       category: musical}
+  # --- altri strumenti ---
+  disguise_kit:           {name: Trucchi per il camuffamento, category: other}
+  forgery_kit:            {name: Arnesi da falsario,          category: other}
+  herbalism_kit:          {name: Borsa da erborista,          category: other}
+  navigators_tools:       {name: Strumenti da navigatore,     category: other}
+  poisoners_kit:          {name: Sostanze da avvelenatore,    category: other}
+  thieves_tools:          {name: Arnesi da scasso,            category: other}
+  land_vehicles:          {name: Veicoli (terrestri),         category: other}
+  water_vehicles:         {name: Veicoli (acquatici),         category: other}

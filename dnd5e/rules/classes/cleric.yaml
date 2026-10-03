@@ -1,3 +1,21 @@
+# Chierico (PHB 2014, cap. 3), livelli 1-20, con tutti i sette Domini Divini del Manuale del Giocatore.
+# Stesso schema delle altre classi in dnd5e/rules/classes/ (un file per classe).
+# table: colonne che cambiano con il livello (indice 0 = 1° livello), usabili nei testi come {t_<colonna>}.
+#   divine_strike e preserve_life servono ai domini (Colpo Divino, Preservare Vita).
+# Campi macchina nei privilegi: bonus_proficiencies, extra_languages, expertise_count, grants_cantrip.
+#   Campi aggiuntivi (non ancora nello schema comune):
+#   - expertise_from: le abilità tra cui scegliere la Maestria (Benedizioni della Conoscenza raddoppia il bonus
+#     solo nelle due abilità scelte con lo stesso privilegio).
+#   - cantrip_choice: {list, count, ability} = trucchetto a scelta da un'altra lista (Accolito della Natura:
+#     un trucchetto da druido), stesso formato del tratto razziale.
+# always_prepared: {livello da chierico: [chiavi incantesimo]} = incantesimi di dominio, sempre preparati e fuori
+#   dal conteggio degli incantesimi preparati; always_prepared_tag (radice della classe) = etichetta stampata
+#   dopo di loro a pagina 3 e nella guida ("dominio").
+# Campi del contratto comune usati qui:
+#   - sheet_hide: nasconde la voce dal riquadro PRIVILEGI di pagina 1 della scheda completa (se manca vale
+#     come kid_hide); "Incantesimi" ha sheet_hide: false, così resta visibile agli adulti.
+#   - replaces: nome di un privilegio precedente che questa voce sostituisce (Intervento Divino Migliorato).
+#   - cantrip_damage_bonus: {ability, lists} = Incantesimi Potenziati (Conoscenza e Luce, 8° livello).
 cleric:
   name: Chierico
   name_f: Chierica
@@ -25,6 +43,7 @@ cleric:
     focus: "simbolo sacro"
   subclass_level: 1
   subclass_label: Dominio Divino
+  always_prepared_tag: dominio
   asi_levels: [4, 8, 12, 16, 19]
   table:
     cantrips: [3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
@@ -35,9 +54,10 @@ cleric:
   features:
     1:
       - name: Incantesimi
-        short: "Incantatore completo (Saggezza). Conosci {t_cantrips} trucchetti; ogni giorno prepari mod. SAG + livello da chierico incantesimi (min 1); rituali preparati; simbolo sacro come focus. CD {cd}, attacco {att}."
+        short: "Lanci incantesimi con la Saggezza. Conosci {t_cantrips} trucchetti; ogni giorno prepari mod. SAG + livello da chierico incantesimi (min 1); rituali preparati; simbolo sacro come focus. CD {cd}, attacco {att}."
         text: "Il chierico è un tramite del potere divino e lancia incantesimi da chierico. Conosce tre trucchetti a scelta dalla lista del chierico (quattro dal 4° livello, cinque dal 10°). Per lanciare un incantesimo di 1° livello o superiore spende uno slot di livello pari o superiore; recupera tutti gli slot spesi con un riposo lungo. Ogni giorno prepara dalla lista del chierico un numero di incantesimi pari al suo modificatore di Saggezza + il suo livello da chierico (minimo 1), di livello per cui ha slot; lanciare un incantesimo non lo toglie dalla lista dei preparati. Può cambiare la lista dopo un riposo lungo, dedicando almeno 1 minuto di preghiera e meditazione per livello di ogni incantesimo. Caratteristica da incantatore: Saggezza (CD del tiro salvezza = 8 + bonus di competenza + mod. SAG; attacco con incantesimo = bonus di competenza + mod. SAG). Può lanciare come rituale un incantesimo da chierico preparato che abbia il descrittore rituale e può usare un simbolo sacro come focus da incantatore."
         kid_hide: true
+        sheet_hide: false
       - name: Dominio Divino
         short: "Scegli un dominio legato alla tua divinità: Conoscenza, Vita, Luce, Natura, Tempesta, Inganno o Guerra."
         text: "Il chierico sceglie un dominio legato alla sua divinità: Conoscenza, Vita, Luce, Natura, Tempesta, Inganno o Guerra. Il dominio conferisce incantesimi di dominio e privilegi al 1° livello, altri modi di usare Incanalare Divinità dal 2° livello e ulteriori benefici al 6°, all'8° e al 17° livello. Gli incantesimi di dominio, ottenuti ai livelli da chierico indicati nel dominio, sono sempre considerati preparati e non contano nel numero di incantesimi che il chierico può preparare ogni giorno; se uno di essi non compare nella lista del chierico, per lui è comunque un incantesimo da chierico."
@@ -117,9 +137,10 @@ cleric:
         kid_hide: true
     20:
       - name: Intervento Divino Migliorato
-        short: "La tua richiesta di Intervento Divino ha successo automaticamente, senza tiro."
-        text: "Al 20° livello la richiesta di intervento divino del chierico ha successo automaticamente, senza bisogno di tirare il dado percentuale. Se la divinità interviene, il chierico non può usare di nuovo il privilegio per 7 giorni."
-        kid: "Quando chiedi aiuto al tuo dio con Intervento Divino, lui risponde sempre: non serve tirare i dadi. Poi aspetti 7 giorni prima di chiederlo di nuovo."
+        replaces: Intervento Divino
+        short: "Azione: descrivi l'aiuto che chiedi alla tua divinità; interviene sempre, senza tiro (sceglie il DM come). Poi non puoi riusarlo per 7 giorni."
+        text: "Il chierico può invocare l'intervento della sua divinità nel momento del bisogno. Con un'azione descrive l'assistenza che desidera: dal 20° livello la richiesta ha successo automaticamente, senza tirare il dado percentuale. È il DM a scegliere la natura dell'intervento; l'effetto di qualsiasi incantesimo da chierico o di dominio è appropriato. Dopo che la divinità è intervenuta, il chierico non può usare di nuovo questo privilegio per 7 giorni."
+        kid: "Con un'azione preghi il tuo dio e dici che aiuto ti serve: lui risponde sempre, non serve tirare i dadi. Poi aspetti 7 giorni prima di chiederlo di nuovo."
   subclasses:
     # ------------------------------------------------------------------ Conoscenza
     knowledge:
@@ -140,7 +161,7 @@ cleric:
           - name: Benedizioni della Conoscenza
             short: "Impari 2 linguaggi a scelta. Competenza in 2 abilità a scelta tra Arcano, Natura, Religione e Storia, con bonus di competenza raddoppiato nelle prove con quelle abilità."
             text: "Al 1° livello il chierico impara due linguaggi a sua scelta. Inoltre ottiene competenza in due abilità a sua scelta tra Arcano, Natura, Religione e Storia, e il suo bonus di competenza è raddoppiato per qualsiasi prova di caratteristica che usi una di queste due abilità."
-            kid: "Parli 2 lingue in più. In 2 materie da studioso (scelte tra Arcano, Natura, Religione e Storia) hai una preparazione speciale: nelle prove aggiungi il doppio del bonus di competenza (è già scritto sulla scheda)."
+            kid: "Parli 2 lingue in più. In 2 materie di studio (scelte tra Arcano, Natura, Religione e Storia) hai una preparazione speciale: nelle prove aggiungi il doppio del bonus di competenza (è già scritto sulla scheda)."
             extra_languages: 2
             bonus_proficiencies:
               skill_choice:
@@ -152,7 +173,7 @@ cleric:
           - name: "Incanalare Divinità: Conoscenza dei Secoli"
             short: "Azione: scegli un'abilità o uno strumento; per 10 minuti ne hai competenza."
             text: "Il chierico può usare Incanalare Divinità per attingere a una fonte divina di conoscenza. Con un'azione sceglie un'abilità o uno strumento: per 10 minuti ha competenza in quell'abilità o strumento."
-            kid: "Usi una carica di potere divino: con un'azione scegli un'abilità o un attrezzo e per 10 minuti lo sai usare come un esperto (aggiungi il bonus di competenza)."
+            kid: "Usi una carica di potere divino: con un'azione scegli un'abilità o un attrezzo e per 10 minuti lo sai usare alla perfezione (aggiungi il bonus di competenza)."
         6:
           - name: "Incanalare Divinità: Leggere i Pensieri"
             short: "Azione: una creatura che vedi entro 18 m fa un TS su SAG (CD {cd}). Se fallisce, per 1 minuto leggi i suoi pensieri superficiali e puoi lanciarle suggestione senza slot (fallisce il TS in automatico)."
@@ -163,6 +184,7 @@ cleric:
             short: "Aggiungi il mod. SAG ({mod}) ai danni dei trucchetti da chierico."
             text: "Il chierico aggiunge il suo modificatore di Saggezza ai danni che infligge con qualsiasi trucchetto da chierico."
             kid: "Ai danni dei tuoi trucchetti da chierico (come fiamma sacra) aggiungi {mod}."
+            cantrip_damage_bonus: {ability: wis, lists: [cleric]}
         17:
           - name: Visioni del Passato
             short: "Meditando almeno 1 minuto (con concentrazione, al massimo tanti minuti quanto il punteggio di SAG) hai visioni del passato di un oggetto che tieni o del luogo intorno a te. 1/riposo breve o lungo."
@@ -199,7 +221,7 @@ cleric:
           - name: "Incanalare Divinità: Preservare Vita"
             short: "Azione: dividi {t_preserve_life} PF (5 x livello da chierico) tra creature a scelta entro 9 m, ognuna fino a metà del suo massimo di PF. Non su costrutti e non morti."
             text: "Il chierico può usare Incanalare Divinità per curare chi è gravemente ferito. Con un'azione brandisce il simbolo sacro ed evoca un flusso di energia curativa che ripristina un numero di punti ferita pari a cinque volte il suo livello da chierico, suddivisi a sua scelta tra creature entro 9 metri. Questo privilegio non può riportare una creatura a più della metà del suo massimo dei punti ferita e non funziona su costrutti e non morti."
-            kid: "Con una carica di potere divino alzi il simbolo sacro e dividi {t_preserve_life} punti ferita tra gli amici entro 9 m che vuoi. Ognuno però può tornare al massimo a metà dei suoi PF."
+            kid: "Con una carica di potere divino alzi il simbolo sacro e dividi {t_preserve_life} punti ferita come vuoi tra chi è entro 9 m da te. Nessuno però può tornare a più di metà dei suoi PF."
         6:
           - name: Guaritore Benedetto
             name_f: Guaritrice Benedetta
@@ -250,12 +272,13 @@ cleric:
           - name: Bagliore Migliorato
             short: "Puoi usare Bagliore Protettivo anche quando una creatura che vedi entro 9 m attacca qualcun altro."
             text: "Il chierico può usare il privilegio Bagliore Protettivo anche quando una creatura che può vedere entro 9 metri da lui attacca una creatura diversa da lui."
-            kid: "Puoi abbagliare un nemico anche quando attacca un tuo amico, se lo vedi ed è entro 9 m da te."
+            kid: "Puoi abbagliare un nemico anche quando attacca qualcun altro, se lo vedi ed è entro 9 m da te."
         8:
           - name: Incantesimi Potenziati
             short: "Aggiungi il mod. SAG ({mod}) ai danni dei trucchetti da chierico."
             text: "Il chierico aggiunge il suo modificatore di Saggezza ai danni che infligge con qualsiasi trucchetto da chierico."
             kid: "Ai danni dei tuoi trucchetti da chierico (come fiamma sacra) aggiungi {mod}."
+            cantrip_damage_bonus: {ability: wis, lists: [cleric]}
         17:
           - name: Corona di Luce
             short: "Azione: per 1 minuto (o finché la congedi con un'azione) emani luce intensa in un raggio di 18 m e luce fioca per altri 9 m; i nemici nella luce intensa hanno svantaggio ai TS contro incantesimi che infliggono danni da fuoco o radiosi."
@@ -274,8 +297,8 @@ cleric:
       features:
         1:
           - name: Incantesimi del Dominio della Natura
-            short: "Sempre preparati: 1° amicizia con gli animali, parlare con gli animali; 3° crescita di spine, pelle coriacea; 5° crescita vegetale, muro di vento; 7° dominare bestie, rampicante afferrante; 9° passaggio arboreo, piaga degli insetti."
-            text: "Il chierico ottiene questi incantesimi di dominio ai livelli da chierico indicati: 1° amicizia con gli animali e parlare con gli animali; 3° crescita di spine e pelle coriacea; 5° crescita vegetale e muro di vento; 7° dominare bestie e rampicante afferrante; 9° passaggio arboreo e piaga degli insetti. Sono sempre preparati e non contano nel numero di incantesimi preparabili."
+            short: "Sempre preparati: 1° amicizia con gli animali, parlare con gli animali; 3° crescita di spine, pelle coriacea; 5° crescita vegetale, muro di vento; 7° dominare bestie, rampicante afferrante; 9° piaga degli insetti, traslazione arborea."
+            text: "Il chierico ottiene questi incantesimi di dominio ai livelli da chierico indicati: 1° amicizia con gli animali e parlare con gli animali; 3° crescita di spine e pelle coriacea; 5° crescita vegetale e muro di vento; 7° dominare bestie e rampicante afferrante; 9° piaga degli insetti e traslazione arborea. Sono sempre preparati e non contano nel numero di incantesimi preparabili."
             kid_hide: true
           - name: Accolito della Natura
             name_f: Accolita della Natura
@@ -300,12 +323,12 @@ cleric:
           - name: "Incanalare Divinità: Ammaliare Animali e Vegetali"
             short: "Azione: ogni bestia o creatura vegetale entro 9 m che ti vede fa un TS su SAG (CD {cd}); se fallisce è affascinata da te per 1 minuto o finché subisce danni, ed è amichevole con te e con chi indichi."
             text: "Il chierico può usare Incanalare Divinità per ammaliare animali e vegetali. Con un'azione presenta il simbolo sacro e invoca il nome della sua divinità: ogni bestia o creatura vegetale entro 9 metri che può vederlo deve effettuare un tiro salvezza su Saggezza. Se lo fallisce, è affascinata dal chierico per 1 minuto o finché non subisce danni; mentre è affascinata è amichevole nei confronti del chierico e delle altre creature da lui designate."
-            kid: "Con una carica di potere divino, ogni animale o pianta viva entro 9 m che ti vede tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}). Se fallisce, è tuo amico (e di chi scegli) per 1 minuto o finché è ferito."
+            kid: "Con una carica di potere divino, ogni animale o pianta viva entro 9 m che ti vede tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}). Se fallisce, è amichevole con te (e con chi scegli) per 1 minuto o finché è ferito."
         6:
           - name: Smorzare Elementi
             short: "Reazione: quando tu o una creatura entro 9 m subite danni da acido, freddo, fuoco, fulmine o tuono, concedi resistenza contro quel danno."
             text: "Quando il chierico o una creatura entro 9 metri da lui subisce danni da acido, freddo, fuoco, fulmine o tuono, il chierico può usare la sua reazione per conferire a quella creatura resistenza contro quell'istanza di danni."
-            kid: "Quando tu o un amico entro 9 m venite colpiti da acido, freddo, fuoco, fulmine o tuono, con la tua reazione (una mossa rapida fuori dal tuo turno) quel danno si dimezza."
+            kid: "Quando qualcuno entro 9 m da te (anche tu) subisce danni da acido, freddo, fuoco, fulmine o tuono, con la tua reazione (una mossa rapida fuori dal tuo turno) quel danno si dimezza."
         8:
           - name: Colpo Divino
             short: "Una volta per turno, quando colpisci con un attacco con arma, infliggi {t_divine_strike} danni extra da freddo, fuoco o fulmine, a scelta (1d8, 2d8 dal 14°)."
@@ -316,7 +339,7 @@ cleric:
             name_f: Signora della Natura
             short: "Mentre delle creature sono affascinate dal tuo Ammaliare Animali e Vegetali, con un'azione bonus ordini a voce cosa farà ciascuna nel suo turno successivo."
             text: "Il chierico ottiene la capacità di comandare animali e creature vegetali. Mentre delle creature sono affascinate dal suo privilegio Ammaliare Animali e Vegetali, il chierico può usare un'azione bonus nel suo turno per ordinare verbalmente cosa farà ciascuna di quelle creature nel suo turno successivo."
-            kid: "Gli animali e le piante che hai reso amici con il tuo potere divino ti obbediscono: con un'azione bonus dici a ognuno cosa fare nel suo prossimo turno."
+            kid: "Gli animali e le piante che hai reso amichevoli con il tuo potere divino ti obbediscono: con un'azione bonus dici a ognuno cosa fare nel suo prossimo turno."
     # ------------------------------------------------------------------ Tempesta
     tempest:
       name: Dominio della Tempesta
@@ -330,8 +353,8 @@ cleric:
       features:
         1:
           - name: Incantesimi del Dominio della Tempesta
-            short: "Sempre preparati: 1° nube di nebbia, onda di tuono; 3° folata di vento, frantumare; 5° evoca fulmini, tempesta di nevischio; 7° controllare acqua, tempesta di ghiaccio; 9° onda distruttiva, piaga degli insetti."
-            text: "Il chierico ottiene questi incantesimi di dominio ai livelli da chierico indicati: 1° nube di nebbia e onda di tuono; 3° folata di vento e frantumare; 5° evoca fulmini e tempesta di nevischio; 7° controllare acqua e tempesta di ghiaccio; 9° onda distruttiva e piaga degli insetti. Sono sempre preparati e non contano nel numero di incantesimi preparabili."
+            short: "Sempre preparati: 1° nube di nebbia, onda tonante; 3° folata di vento, frantumare; 5° evoca fulmini, tempesta di nevischio; 7° controllare acqua, tempesta di ghiaccio; 9° onda distruttiva, piaga degli insetti."
+            text: "Il chierico ottiene questi incantesimi di dominio ai livelli da chierico indicati: 1° nube di nebbia e onda tonante; 3° folata di vento e frantumare; 5° evoca fulmini e tempesta di nevischio; 7° controllare acqua e tempesta di ghiaccio; 9° onda distruttiva e piaga degli insetti. Sono sempre preparati e non contano nel numero di incantesimi preparabili."
             kid_hide: true
           - name: Competenze Bonus
             short: "Competenza nelle armi da guerra e nelle armature pesanti."
@@ -384,12 +407,12 @@ cleric:
           - name: Benedizione dell'Ingannatore
             short: "Azione: tocchi una creatura consenziente diversa da te; ha vantaggio alle prove di Destrezza (Furtività) per 1 ora o finché non usi di nuovo questo privilegio."
             text: "Il chierico può usare la sua azione per toccare una creatura consenziente diversa da sé e conferirle vantaggio alle prove di Destrezza (Furtività). Questa benedizione dura 1 ora o finché il chierico non usa di nuovo questo privilegio."
-            kid: "Con un'azione tocchi un amico (non te stesso): per 1 ora, quando prova a nascondersi o a muoversi in silenzio, ha vantaggio (tira 2 d20 e tiene il più alto)."
+            kid: "Con un'azione dai una benedizione a chi tocchi (non a te): per 1 ora, quando prova a nascondersi o a muoversi in silenzio, ha vantaggio (tira 2 d20 e tiene il più alto)."
         2:
           - name: "Incanalare Divinità: Invocare Duplicità"
             short: "Azione: crei un'illusione perfetta di te entro 9 m per 1 minuto (concentrazione). Azione bonus: la sposti di 9 m (max 36 m da te). Puoi lanciare incantesimi dal suo spazio; vantaggio agli attacchi contro una creatura se tu e l'illusione siete entro 1,5 m da lei."
             text: "Il chierico può usare Incanalare Divinità per creare un'illusione di se stesso. Con un'azione crea un'illusione perfetta di sé che dura 1 minuto o finché non perde la concentrazione (come se si stesse concentrando su un incantesimo). L'illusione appare in uno spazio libero che il chierico può vedere entro 9 metri. Con un'azione bonus nel suo turno può spostarla fino a 9 metri in uno spazio che può vedere, ma deve restare entro 36 metri da lui. Per la durata, il chierico può lanciare incantesimi come se si trovasse nello spazio dell'illusione, ma usando i propri sensi. Inoltre, quando sia lui sia l'illusione si trovano entro 1,5 metri da una creatura che può vedere l'illusione, il chierico ha vantaggio ai tiri per colpire contro quella creatura, che è distratta dall'illusione."
-            kid: "Con una carica di potere divino crei un tuo doppio finto per 1 minuto; con l'azione bonus lo sposti di 9 m e lanci magie da lì. Se siete entrambi accanto a un nemico, lo attacchi con vantaggio (2 d20, tieni il più alto)."
+            kid: "Con una carica di potere divino crei un tuo doppio finto per 1 minuto; con l'azione bonus lo sposti di 9 m e lanci magie da lì. Se tu e il doppio siete accanto allo stesso nemico, lo attacchi con vantaggio (2 d20, tieni il più alto)."
         6:
           - name: "Incanalare Divinità: Mantello d'Ombre"
             short: "Azione: diventi invisibile fino alla fine del tuo turno successivo, o finché non attacchi o lanci un incantesimo."
@@ -442,7 +465,7 @@ cleric:
           - name: "Incanalare Divinità: Benedizione del Dio della Guerra"
             short: "Reazione: quando una creatura entro 9 m effettua un tiro per colpire, usi Incanalare Divinità per darle +10 al tiro (dopo aver visto il tiro, prima dell'esito)."
             text: "Quando una creatura entro 9 metri dal chierico effettua un tiro per colpire, il chierico può usare la sua reazione per conferirle un bonus di +10 al tiro, usando Incanalare Divinità. Sceglie di farlo dopo aver visto il risultato, ma prima che il DM dica se l'attacco colpisce o manca."
-            kid: "Quando un amico entro 9 m attacca, con la tua reazione e una carica di potere divino gli dai +10 al tiro, dopo aver visto il dado ma prima che il Master dica se ha colpito."
+            kid: "Quando qualcuno entro 9 m da te attacca, con la tua reazione e una carica di potere divino aggiungi +10 al suo tiro, dopo aver visto il dado ma prima che il Master dica se ha colpito."
         8:
           - name: Colpo Divino
             short: "Una volta per turno, quando colpisci con un attacco con arma, infliggi {t_divine_strike} danni extra dello stesso tipo dell'arma (1d8, 2d8 dal 14°)."

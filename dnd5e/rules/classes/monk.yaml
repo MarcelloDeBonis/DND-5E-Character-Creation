@@ -1,3 +1,29 @@
+# Monaco (PHB 2014, cap. 3): privilegi 1-20 e le tre tradizioni monastiche del Manuale del Giocatore
+# (Via della Mano Aperta, Via dell'Ombra, Via dei Quattro Elementi con tutte le discipline elementali).
+# Stesso schema di fighter/druid in classes.yaml. Distanze in metri (1,5 m = 5 piedi).
+# Nomi italiani dei privilegi base e della Via della Mano Aperta verificati sull'SRD 5.1 in italiano (WotC, CC-BY).
+# table: valori per livello (indice 0 = 1° livello), usabili nei testi come {t_<colonna>}.
+#   martial_arts = dado di Arti Marziali; ki = punti ki; unarmored_movement = bonus di velocità in metri come
+#   testo con la virgola ("4,5"), per i testi; unarmored_movement_ft = lo stesso bonus in piedi (numero), per il
+#   calcolo della velocità nel motore (che lavora in piedi). Colonne di supporto per i testi: slow_fall (Caduta
+#   Lenta, 5 x livello), wholeness_of_body (Integrità del Corpo, 3 x livello), disciplines_known (discipline
+#   elementali a scelta della Via dei Quattro Elementi, Sintonia Elementale esclusa: è sempre conosciuta),
+#   ki_spell_max (tabella "Incantesimi e Punti Ki" della Via dei Quattro Elementi: ki massimi spendibili per un
+#   incantesimo di una disciplina, costo base incluso; 0 = prima del 5° livello non si può potenziare).
+# Segnaposto: {livello}, {t_<colonna>} e {cd} = CD del tiro salvezza ki = 8 + bonus di competenza + mod. SAG.
+#   Il monaco non ha 'spellcasting': il motore deve riempire {cd} usando ki_save (la stessa CD vale per
+#   Tranquillità e per gli incantesimi lanciati con le discipline elementali). {att} e {mod} non servono.
+# Campi extra (informativi, da gestire nel motore):
+#   ki_save: {ability, placeholder}  -> come calcolare {cd} (8 + competenza + mod. della caratteristica)
+#   speed_bonus_table: unarmored_movement_ft (+ requires_unarmored) -> bonus di velocità in piedi,
+#     solo senza armatura né scudo
+#   save_proficiencies: [...]        -> competenza aggiuntiva nei tiri salvezza (Anima Adamantina: tutti)
+#   ki_cost / ki_spells / spell / min_level -> costo in ki, incantesimi lanciati col ki, livello minimo della disciplina
+#   tool_choice: {count, label}      -> strumento a scelta della classe (in 'tools' restano solo quelli fissi)
+#   martial_arts: {die_column, weapons, simple_melee, exclude_properties, requires_unarmored} -> Arti Marziali:
+#     colonna del dado, armi da monaco (spada corta + armi semplici da mischia non a due mani né pesanti),
+#     solo senza armatura né scudo
+#   grants_cantrip + cantrip_ability -> trucchetto dato dal privilegio e caratteristica con cui si usa (Arti dell'Ombra: SAG)
 monk:
   name: Monaco
   name_f: Monaca
@@ -6,7 +32,9 @@ monk:
   saves: [str, dex]
   armor: []
   weapons: [simple, shortsword]
-  tools: ["Un tipo di strumenti da artigiano o uno strumento musicale a scelta"]
+  tools: []
+  tool_choice: {count: 1, label: "Un tipo di strumenti da artigiano o uno strumento musicale a scelta"}
+  martial_arts: {die_column: martial_arts, weapons: [shortsword], simple_melee: true, exclude_properties: [two_handed, heavy], requires_unarmored: true}
   skill_choices:
     count: 2
     from: [acrobatics, athletics, history, insight, religion, stealth]
@@ -62,7 +90,7 @@ monk:
       - name: Movimento Senza Armatura
         short: "Senza armatura né scudo la tua velocità aumenta di {t_unarmored_movement} m."
         text: "La velocità del monaco aumenta di 3 metri finché non indossa armature e non impugna uno scudo. Il bonus aumenta a determinati livelli da monaco: +4,5 m al 6°, +6 m al 10°, +7,5 m al 14° e +9 m al 18° livello (colonna Movimento Senza Armatura). Al 9° livello ottiene anche la capacità di muoversi lungo le superfici verticali e sui liquidi durante il suo turno senza cadere durante il movimento (vedi 9° livello)."
-        kid: "Senza armatura e senza scudo sei velocissimo: a ogni turno ti muovi di {t_unarmored_movement} m in più."
+        kid: "Senza armatura e senza scudo la tua corsa è velocissima: a ogni turno ti muovi di {t_unarmored_movement} m in più."
         speed_bonus_table: unarmored_movement_ft
         requires_unarmored: true
     3:
@@ -84,7 +112,7 @@ monk:
       - name: Caduta Lenta
         short: "Reazione quando cadi: riduci i danni da caduta di {t_slow_fall} (5 x livello da monaco)."
         text: "Il monaco può usare la sua reazione quando cade per ridurre i danni da caduta che subisce di un ammontare pari a cinque volte il suo livello da monaco."
-        kid: "Se cadi dall'alto, usa la reazione: atterri leggero come un gatto e togli {t_slow_fall} punti dal danno della caduta."
+        kid: "Se cadi dall'alto, usa la reazione per atterrare come un gatto: togli {t_slow_fall} punti dal danno della caduta, e spesso atterri senza farti male."
     5:
       - name: Attacco Extra
         short: "Quando effettui l'azione di Attacco nel tuo turno, attacchi due volte."
@@ -206,8 +234,9 @@ monk:
           - name: Arti dell'Ombra
             short: "Azione, 2 ki: lanci oscurità, scurovisione, passare senza tracce o silenzio, senza componenti materiali. Conosci il trucchetto illusione minore."
             text: "Il monaco può usare il suo ki per duplicare gli effetti di certi incantesimi. Come azione, può spendere 2 punti ki per lanciare oscurità, scurovisione, passare senza tracce o silenzio, senza fornire componenti materiali. Inoltre ottiene il trucchetto illusione minore, se non lo conosce già."
-            kid: "Spendi 2 ki (azione) per una magia d'ombra: Oscurità (buio magico di 4,5 m di raggio), Scurovisione (vedi al buio), Passare senza Tracce (+10 a Furtività per te e gli amici vicini) o Silenzio. Sai anche fare Illusione Minore."
+            kid: "Spendi 2 ki (azione) per una magia d'ombra: Oscurità (buio magico di 4,5 m di raggio), Scurovisione (vedi al buio), Passare senza Tracce (+10 a Furtività per te e per chi ti sta vicino) o Silenzio. Sai anche fare Illusione Minore."
             grants_cantrip: minor_illusion
+            cantrip_ability: wis
             ki_cost: 2
             ki_spells: [darkness, darkvision, pass_without_trace, silence]
         6:
@@ -224,13 +253,14 @@ monk:
           - name: Opportunista
             short: "Reazione: quando una creatura entro 1,5 m da te è colpita dall'attacco di qualcun altro, effettui un attacco in mischia contro di lei."
             text: "Il monaco sa sfruttare la distrazione momentanea di una creatura quando viene colpita da un attacco. Ogni volta che una creatura entro 1,5 metri da lui viene colpita da un attacco effettuato da una creatura diversa dal monaco, il monaco può usare la sua reazione per effettuare un attacco in mischia contro quella creatura."
-            kid: "Quando un amico colpisce un nemico che ti sta vicino (entro 1,5 m), usa la reazione: lo attacchi subito anche tu, approfittando della sua distrazione."
+            kid: "Quando qualcun altro colpisce un nemico che ti sta vicino (entro 1,5 m), usa la reazione: lo attacchi subito anche tu, approfittando della sua distrazione."
     four_elements:
       name: Via dei Quattro Elementi
       name_en: Way of the Four Elements
       features:
         3:
           - name: Discepolo degli Elementi
+            name_f: Discepola degli Elementi
             short: "Conosci Sintonia Elementale e {t_disciplines_known} discipline elementali a scelta (una in più al 6°, 11° e 17°). TS delle discipline: CD ki ({cd}). Incantesimi senza componenti materiali; dal 5° livello ki extra per alzarne il livello (max per incantesimo, costo base incluso: 3 ki dal 5°, 4 dal 9°, 5 dal 13°, 6 dal 17°)."
             text: "Il monaco apprende discipline magiche che sfruttano il potere dei quattro elementi. Una disciplina richiede di spendere punti ki ogni volta che viene usata. Il monaco conosce la disciplina Sintonia Elementale e un'altra disciplina elementale a sua scelta; ne apprende una aggiuntiva a sua scelta al 6°, all'11° e al 17° livello. Ogni volta che apprende una nuova disciplina, può anche sostituire una disciplina che già conosce con un'altra. Alcune discipline richiedono un livello minimo da monaco. Le discipline sono privilegi del ki: quando richiedono un tiro salvezza usano la CD del tiro salvezza ki. Lanciare incantesimi elementali: alcune discipline permettono di lanciare incantesimi; il monaco ne usa il tempo di lancio e le altre regole, ma non deve fornire componenti materiali. Dal 5° livello può spendere punti ki aggiuntivi per aumentare il livello di un incantesimo lanciato con una disciplina, se l'incantesimo ha un effetto potenziato ai livelli superiori (come mani brucianti): il livello aumenta di 1 per ogni punto ki aggiuntivo (per esempio, al 5° livello può spendere 3 ki con Colpo Spazzante di Cenere per lanciare mani brucianti di 2° livello). Il massimo di punti ki spendibili per un incantesimo, costo base incluso, è 3 dal 5° all'8° livello, 4 dal 9° al 12°, 5 dal 13° al 16° e 6 dal 17° al 20°."
             kid: "Comandi aria, acqua, terra e fuoco! Conosci Sintonia Elementale e {t_disciplines_known} mosse elementali scelte da te (sono qui sotto), che costano ki. Chi deve resistere tira un d20 contro {cd}."
@@ -240,18 +270,21 @@ monk:
             kid: "Senza spendere ki (azione), entro 9 m: fai scintille, un soffio di vento o un po' di nebbia; accendi o spegni una candela o una torcia; scaldi o raffreddi un piccolo oggetto; dai una forma a un po' d'acqua, terra o fuoco."
         6:
           - name: Discepolo degli Elementi (nuova disciplina)
+            name_f: Discepola degli Elementi (nuova disciplina)
             short: "Impari una nuova disciplina elementale a scelta (puoi anche sostituirne una che conosci)."
             text: "Al 6° livello il monaco apprende una disciplina elementale aggiuntiva a sua scelta e può sostituire una disciplina che già conosce con un'altra."
             kid: "Impari una nuova mossa elementale: la trovi nell'elenco delle discipline."
             kid_hide: true
         11:
           - name: Discepolo degli Elementi (nuova disciplina)
+            name_f: Discepola degli Elementi (nuova disciplina)
             short: "Impari una nuova disciplina elementale a scelta (puoi anche sostituirne una che conosci)."
             text: "All'11° livello il monaco apprende una disciplina elementale aggiuntiva a sua scelta e può sostituire una disciplina che già conosce con un'altra."
             kid: "Impari una nuova mossa elementale: la trovi nell'elenco delle discipline."
             kid_hide: true
         17:
           - name: Discepolo degli Elementi (nuova disciplina)
+            name_f: Discepola degli Elementi (nuova disciplina)
             short: "Impari una nuova disciplina elementale a scelta (puoi anche sostituirne una che conosci)."
             text: "Al 17° livello il monaco apprende una disciplina elementale aggiuntiva a sua scelta e può sostituire una disciplina che già conosce con un'altra."
             kid: "Impari una nuova mossa elementale: la trovi nell'elenco delle discipline."
@@ -259,6 +292,7 @@ monk:
       option_lists:
         elemental_disciplines:
           label: Discipline Elementali
+          level: 3
           count_table: disciplines_known
           items:
             breath_of_winter:
@@ -281,13 +315,13 @@ monk:
               kid: "Spendi 3 ki (azione): una persona entro 18 m tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}). Se fallisce resta paralizzata come una statua fino a 1 minuto; ritenta alla fine di ogni suo turno. Devi mantenere la concentrazione."
             eternal_mountain_defense:
               name: Difesa della Montagna Eterna
-              prerequisite: "17° livello"
-              min_level: 17
+              prerequisite: "11° livello"
+              min_level: 11
               ki_cost: 5
               spell: stoneskin
-              short: "5 ki: lanci pelle di pietra su di te, senza polvere di diamante (resistenza ai danni contundenti, perforanti e taglienti non magici; concentrazione, fino a 1 ora)."
-              text: "Il monaco può spendere 5 punti ki per lanciare pelle di pietra, prendendo se stesso come bersaglio."
-              kid: "Spendi 5 ki (azione): la tua pelle diventa dura come la roccia fino a 1 ora. Spade, frecce e mazze normali (non magiche) ti fanno solo metà danni. Devi mantenere la concentrazione."
+              short: "5 ki: lanci pelle di pietra su di te, senza polvere di diamante (resistenza ai danni contundenti, perforanti e taglienti non magici; concentrazione, fino a 1 ora). Si impara dall'11° livello, ma i 5 ki superano il massimo spendibile per un incantesimo (4 all'11° e al 12°): si usa dal 13° livello."
+              text: "Il monaco può spendere 5 punti ki per lanciare pelle di pietra, prendendo se stesso come bersaglio. La disciplina si può scegliere dall'11° livello, ma il suo costo supera il massimo di punti ki spendibili per un singolo incantesimo finché il monaco non arriva al 13° livello (colonna Incantesimi e Punti Ki: 4 ki all'11° e al 12°, 5 dal 13°)."
+              kid: "Spendi 5 ki (azione): la tua pelle diventa dura come la roccia fino a 1 ora. Spade, frecce e mazze normali (non magiche) ti fanno solo metà danni. Devi mantenere la concentrazione. Funziona solo dal 13° livello: prima non puoi spendere 5 ki per una magia."
             fangs_of_the_fire_snake:
               name: Zanne del Serpente di Fuoco
               ki_cost: 1
@@ -387,13 +421,3 @@ monk:
               short: "6 ki: lanci muro di pietra (gittata 36 m; 10 pannelli di 3 x 3 m spessi 15 cm; concentrazione, fino a 10 minuti: se la mantieni per tutta la durata, il muro diventa permanente)."
               text: "Il monaco può spendere 6 punti ki per lanciare muro di pietra."
               kid: "Spendi 6 ki (azione): fai spuntare un muro di pietra entro 36 m, fatto di 10 blocchi di 3 x 3 m, per bloccare i nemici o ripararvi. Se mantieni la concentrazione per 10 minuti, resta per sempre."
-
-# Paladino (PHB 2014), privilegi 1-20 e i tre Giuramenti Sacri del Manuale del Giocatore.
-# Testi in italiano (traduzione ufficiale Asmodee dove nota). Distanze in metri (1,5 m = 5 piedi).
-# table: valori per livello (indice 0 = 1° livello), usabili nei testi come {t_<colonna>}.
-#   lay_on_hands = riserva di Imposizione delle Mani (5 x livello); aura_range = raggio delle aure in metri
-#   (0 prima del 6°, 3 dal 6°, 9 dal 18°); smite_max = danni massimi di Punizione Divina con lo slot più alto
-#   (senza il +1d8 contro non morti e immondi, che può portarli a 6d8).
-# fighting_style_options: stili che il paladino può scegliere (chiavi di equipment.yaml > fighting_styles).
-# always_prepared: {livello da paladino: [chiavi incantesimo]} = incantesimi di giuramento, sempre preparati e fuori
-#   dal conteggio degli incantesimi preparati.

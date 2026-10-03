@@ -16,6 +16,7 @@
 - Iniziativa: +3 · Velocità: 9 m
 - PF massimi: 28 (10 + COS al 1° livello, poi 6 + COS per livello) · Dadi vita: 3d10
 - Percezione passiva: 13
+- Manovre: CD 13, 4 dadi di superiorità (d8)
 
 ## Abilità
 
@@ -59,17 +60,17 @@
 - **Addestramento nelle Armi Elfiche** (Elfo Alto): Competenza in spada lunga, spada corta, arco corto e arco lungo.
 - **Trucchetto** (Elfo Alto): Conosci un trucchetto dalla lista del mago (caratteristica: Intelligenza).
 - **Linguaggio Extra** (Elfo Alto): Parli, leggi e scrivi un linguaggio aggiuntivo a tua scelta.
-- **Stile di Combattimento** (Guerriero): Adotti uno stile di combattimento come specialità (vedi sotto).
+- **Stile di Combattimento** (Guerriero): Scegli uno stile di combattimento come specialità: Tiro, Difesa, Duello, Combattere con Armi Possenti, Protezione o Combattere con Due Armi (descritto sotto).
 - **Recupero Energie** (Guerriero): Azione bonus: recuperi 1d10 + livello da guerriero PF. 1/riposo breve o lungo.
 - **Azione Impetuosa** (Guerriero): Nel tuo turno effettui un'azione aggiuntiva. 1/riposo breve o lungo (2 usi dal 17°).
 - **Archetipo Marziale** (Guerriero): Scegli un archetipo (Campione, Maestro di Battaglia o Cavaliere Mistico).
-- **Superiorità in Combattimento** (Maestro di Battaglia): Conosci 3 manovre e hai 4 dadi di superiorità (d8), recuperati con un riposo breve o lungo. CD manovre = 8 + comp. + mod. FOR o DES.
+- **Superiorità in Combattimento** (Maestro di Battaglia): Conosci 3 manovre e hai 4 dadi di superiorità (d8): ogni manovra ne spende uno e li recuperi tutti con un riposo breve o lungo. CD delle manovre 13 (8 + competenza + mod. FOR o DES).
 - **Studioso di Guerra** (Maestro di Battaglia): Competenza in uno strumento da artigiano a scelta.
 - **Stile di Combattimento: Tiro** (Guerriero): +2 ai tiri per colpire con le armi a distanza.
 - **Viandante (background)** (Forestiero): Il forestiero ha un'ottima memoria per mappe e geografia e riesce sempre a ricordare la disposizione generale dei terreni, degli insediamenti e degli altri elementi del luogo; se la terra offre bacche, piccola selvaggina e acqua, trova cibo e acqua fresca per sé e fino a cinque persone al giorno.
 - **Manovra: Attacco Preciso**: Quando effettui un tiro per colpire con un'arma, puoi spendere un dado di superiorità e aggiungerlo al tiro (anche dopo aver tirato, prima di sapere l'esito).
-- **Manovra: Attacco Sbilanciante**: Quando colpisci con un'arma, spendi un dado di superiorità: danni extra pari al dado; se il bersaglio è Grande o più piccolo deve superare un TS su FOR o cade prono.
-- **Manovra: Attacco Minaccioso**: Quando colpisci con un'arma, spendi un dado di superiorità: danni extra pari al dado e il bersaglio deve superare un TS su SAG o è spaventato da te fino alla fine del tuo prossimo turno.
+- **Manovra: Attacco Sbilanciante**: Quando colpisci con un'arma, spendi un dado di superiorità: danni extra pari al dado; se il bersaglio è Grande o più piccolo deve superare un TS su FOR (CD delle manovre) o cade prono.
+- **Manovra: Attacco Minaccioso**: Quando colpisci con un'arma, spendi un dado di superiorità: danni extra pari al dado e il bersaglio deve superare un TS su SAG (CD delle manovre) o è spaventato da te fino alla fine del tuo prossimo turno.
 
 ## Competenze e linguaggi
 

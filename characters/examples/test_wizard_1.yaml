@@ -1,0 +1,53 @@
+# TEST: Mago di 1° livello — Tiefling, Saggio, array standard (nessuna tradizione arcana: arriva al 2°)
+# Verifica: trucchetto razziale con caratteristica diversa (Taumaturgia, CAR), libro da 6, preparati INT + 1.
+# Genera con:  python -m dnd5e build characters/examples/test_wizard_1.yaml
+
+name: Azazel
+template: official_it
+player: "Test"
+race: tiefling
+class: wizard
+level: 1
+xp: 0
+background: sage              # Saggio: Arcano e Storia, 2 linguaggi
+alignment: CN
+
+abilities:
+  method: standard_array
+  base: {str: 8, dex: 14, con: 13, int: 15, wis: 12, cha: 10}   # 15,14,13,12,10,8; tiefling +1 INT, +2 CAR
+
+hp:
+  method: average
+
+skills: [investigation, religion]          # 2 abilità da mago (Arcano e Storia arrivano dal background)
+languages_extra: [draconic, abyssal]       # 2 dal Saggio (Comune e Infernale sono della razza)
+
+cantrips: [fire_bolt, mage_hand, ray_of_frost]   # 3 trucchetti al 1° livello (Taumaturgia è razziale)
+spellbook: [mage_armor, magic_missile, shield, detect_magic, find_familiar, burning_hands]   # 6 incantesimi di 1° livello
+spells: [mage_armor, magic_missile, shield, burning_hands]   # preparati: INT +3 + livello 1 = 4
+
+armor: null
+weapons: [quarterstaff, dagger, light_crossbow]
+equipment:
+  - "Libro degli incantesimi"
+  - "Borsa per componenti"
+  - pack: scholars_pack
+  - "20 quadrelli"
+money: {gp: 10}
+
+personality:
+  traits: "Cito libri che nessuno ha letto. Le corna mi hanno insegnato a non abbassare lo sguardo."
+  ideals: "Conoscenza. La verità sta scritta da qualche parte: basta trovare la pagina giusta. (Neutrale)"
+  bonds: "Ho giurato di finire il trattato del mio maestro defunto."
+  flaws: "Pur di avere un libro raro sono capace di mentire a chiunque."
+
+appearance:
+  age: "24"
+  height: "1,78 m"
+  weight: "70 kg"
+  eyes: "Oro pieno"
+  skin: "Rosso scuro"
+  hair: "Neri, corna ricurve"
+
+backstory: |
+  Allievo di un archivista morto in circostanze misteriose, Azazel ha ereditato la sua biblioteca e la sua ultima domanda senza risposta.

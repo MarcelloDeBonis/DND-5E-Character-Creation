@@ -1,0 +1,47 @@
+# TEST: Nana delle Colline, Paladina (Giuramento degli Antichi) di 11° livello, Nobile.
+# Genera la scheda con:  python -m dnd5e build characters/examples/test_paladin_11.yaml
+
+name: Brunhild
+template: official_it
+player: "Test"
+gender: f
+race: dwarf
+subrace: hill_dwarf          # +2 COS, +1 SAG, +1 PF per livello
+class: paladin
+subclass: ancients
+level: 11
+xp: 85000
+background: noble            # Nobile: Storia, Persuasione, 1 linguaggio
+alignment: NG
+
+abilities:
+  method: point_buy
+  base: {str: 15, dex: 8, con: 13, int: 8, wis: 12, cha: 15}    # 9+0+5+0+4+9 = 27 punti
+  asi:
+    - {str: 1, cha: 1}       # 4° livello: +1 FOR, +1 CAR
+feats: [tough]               # 8° livello: Robusto (+2 PF per livello)
+
+hp:
+  method: average
+
+skills: [athletics, insight]                    # 2 abilità di classe
+background_tools: ["Set di dadi"]               # Nobile: un tipo di gioco
+tools: ["Strumenti da fabbro"]                  # competenza negli strumenti del nano
+languages_extra: [elvish]                       # 1 dal background
+fighting_style: great_weapon_fighting
+
+spells: [bless, cure_wounds, shield_of_faith, wrathful_smite, aid, magic_weapon, revivify, dispel_magic]   # CAR (+3) + 5 = 8
+
+armor: plate
+shield: false
+weapons: [greatsword, warhammer]
+equipment:
+  - "Simbolo sacro (ghianda d'argento)"
+  - pack: explorers_pack
+money: {gp: 25}
+
+personality:
+  traits: "Amo la musica e le feste."
+  ideals: "Bellezza. (Buona)"
+  bonds: "Il bosco antico vicino al mio castello."
+  flaws: "Sono orgogliosa del mio casato."
