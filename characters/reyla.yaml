@@ -5,6 +5,8 @@
 name: Reyla
 template: official_it         # official (etichette inglesi) | official_it (etichette italiane)
 player: "Arianna"
+gender: f                   # f = nomi al femminile (Elfa Alta, Druida, Forestiera)
+simple: true                # versione semplice per giocatori giovani: testi facili, niente appendice, guida separata
 race: elf
 subrace: high_elf
 class: druid
@@ -23,9 +25,9 @@ hp:
 
 skills: [nature, survival]             # 2 abilità di classe
 background_skills: [athletics, animal_handling]   # Forestiero dà Atletica e Sopravvivenza: Sopravvivenza è già di classe, sostituita con Addestrare Animali
-racial_cantrips: [minor_illusion]      # trucchetto dell'Elfo Alto (lista del mago, Intelligenza)
-cantrips: [guidance, produce_flame]    # 2 trucchetti da druido al 3° livello  (PROVVISORI: scegli dalla lista)
-spells: [cure_wounds, entangle, faerie_fire, goodberry, moonbeam]   # preparati: mod. SAG (+2) + livello (3) = 5  (PROVVISORI)
+racial_cantrips: [minor_illusion]      # trucchetto dell'Elfa Alta (lista del mago, Intelligenza), scelto da Arianna
+cantrips: [produce_flame, guidance]    # 2 trucchetti da druida al 3° livello (scelti da Arianna)
+spells: [cure_wounds, healing_word, entangle, goodberry, moonbeam]   # preparati: mod. SAG (+2) + livello (3) = 5 (scelti da Arianna, si cambiano dopo ogni riposo lungo)
 languages_extra: [sylvan, dwarvish]    # 1 dalla razza + 1 dal background (Comune, Elfico e Druidico sono automatici)
 background_tools: ["Flauto"]           # strumento musicale del Forestiero
 tools: []

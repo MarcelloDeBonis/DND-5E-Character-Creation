@@ -1,0 +1,72 @@
+# Kate — Dragonide (drago rosso), Maga (Scuola di Ammaliamento) di 3° livello, Artigiana di Gilda
+# Giocatrice: Rebecca. Genera la scheda con:  python -m dnd5e build characters/kate.yaml
+
+name: Kate
+template: official_it
+player: "Rebecca"
+gender: f
+simple: true                 # versione semplice per giocatori giovani: testi facili, niente appendice, guida separata
+race: dragonborn
+draconic_ancestry: red       # drago rosso: soffio di fuoco a cono di 4,5 m (TS Destrezza), resistenza al fuoco
+class: wizard
+subclass: enchantment        # Scuola di Ammaliamento (scelta di Rebecca)
+level: 3
+xp: 900
+background: guild_artisan    # Artigiana di Gilda: cresciuta tra le fucine dei nani Rigliovolar
+alignment: CG                # Caotico Buono
+
+abilities:
+  method: point_buy
+  base: {str: 8, dex: 14, con: 14, int: 15, wis: 10, cha: 10}   # prima dei bonus razziali (+2 FOR, +1 CAR)
+
+hp:
+  method: average
+
+skills: [arcana, investigation]                 # 2 abilità di classe
+background_skills: [insight, persuasion]        # Artigiana di Gilda
+background_tools: ["Strumenti da fabbro"]
+languages_extra: [dwarvish]                     # 1 dal background: cresciuta tra i nani
+
+cantrips: [fire_bolt, mage_hand, prestidigitation]    # 3 trucchetti da maga al 3° livello
+spellbook: [mage_armor, magic_missile, shield, sleep, silent_image, disguise_self,
+            misty_step, mirror_image, invisibility, suggestion]   # libro: 6 al 1° livello + 2 per livello
+spells: [mage_armor, magic_missile, shield, sleep, mirror_image]  # preparati: mod. INT (+2) + livello (3) = 5
+
+armor: null
+weapons: [dagger]
+equipment:
+  - "Libro degli incantesimi"
+  - "Focus arcano (bacchetta di ossidiana)"
+  - pack: scholars_pack
+money: {gp: 15}
+
+personality:
+  traits: "Guardo ogni cosa come un'arma da capire: come funziona e dove si può rompere. Sorrido quando gli altri hanno paura di me."
+  ideals: "Conoscenza. Scoprire da dove vengo vale più di qualsiasi tesoro. (Caotica)"
+  bonds: "I nani Rigliovolar del Monte Tha sono la mia famiglia: li proteggerò sempre."
+  flaws: "Non sopporto chi mi giudica per le mie scaglie e a volte uso la magia per spaventarlo."
+
+appearance:
+  age: "20"
+  height: "1,85 m"
+  weight: "90 kg"
+  eyes: "Ambra dorata"
+  skin: "Scura, con segni rossi"
+  hair: "Bianchi con punte di fuoco, corna rosse"
+portrait: kate/portrait.jpg
+
+allies: |
+  I Rigliovolar, i nani fabbri del Monte Tha: l'hanno trovata da piccola e cresciuta come una di loro.
+  Destinazione: Aeurulia, dove spera di studiare la storia dei draconidi e dei Lunari.
+
+treasure: ""
+
+backstory: |
+  Kate è una draconide cresciuta sull'isola del Monte Tha, un'isola separata dal continente di Gravion e collegata ad esso da un lunghissimo ponte. L'isola è abitata quasi esclusivamente dai Rigliovolar, una popolazione di nani conosciuta soprattutto per la produzione di armi. Le loro vite ruotano attorno alle fucine, alla lavorazione dei metalli e alla creazione di armi di altissima qualità.
+  Kate, però, non è una nana. Nessuno sa da dove provenga realmente. Quando era ancora molto piccola, venne trovata sola nei pressi del Monte Tha, senza genitori e senza alcun indizio che potesse spiegare come fosse arrivata fin lì. I Rigliovolar non si fecero troppe domande: per loro era semplicemente una bambina che aveva bisogno di essere accolta. La crebbero quindi come una di loro.
+  Kate trascorse tutta la sua infanzia tra le fucine dei nani, circondata da armi e fabbri. Mentre gli altri osservavano un'arma pensando a come costruirla o utilizzarla, Kate cercava di comprenderne ogni aspetto. Era affascinata dal combattimento, ma anche dalla strategia, dalla percezione e soprattutto dalla magia.
+  Con il tempo iniziò a studiare da sola i poteri arcani, scoprendo di avere una particolare predisposizione per la magia: non solo uno strumento per distruggere un avversario, ma qualcosa capace di ingannare, confondere, proteggere e cambiare completamente il modo di affrontare uno scontro.
+  A diciassette anni un gruppo di ladri umani assaltò l'isola per rubare le preziosissime armi dei nani. Kate decise di combattere per difendere la sua casa e, messa alle strette, risvegliò dentro di sé una magia rimasta sepolta per tutta la sua vita. Per la prima volta comprese che quella magia non era soltanto qualcosa che aveva imparato: era qualcosa che le apparteneva.
+  Da quel giorno una domanda non l'ha più lasciata: "Da dove vengo?". Kate lasciò l'isola per raggiungere Aeurulia, dove spera di studiare la storia dei draconidi e dei Lunari e di scoprire se esista un legame con la sua misteriosa nascita.
+  Nei tre anni successivi affinò enormemente le sue capacità, diventando una maga abile negli inganni e nella manipolazione, capace di vincere con l'astuzia più che con la forza.
+  Ora Kate è diretta verso Aeurulia. Il viaggio non sarà semplice: i draconidi sono rari e spesso considerati mostruosi, e Kate ha imparato a convivere con gli sguardi sospettosi. Non conosce i suoi genitori, non sa perché sia stata trovata ai piedi del Monte Tha, né perché dentro di lei fosse nascosto un potere così forte. Aeurulia è il luogo dove spera finalmente di trovare le risposte.

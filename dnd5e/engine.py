@@ -15,6 +15,8 @@ import yaml
 
 RULES_DIR = Path(__file__).parent / "rules"
 ABILITIES = ["str", "dex", "con", "int", "wis", "cha"]
+ABBR_IT = {"str": "FOR", "dex": "DES", "con": "COS", "int": "INT", "wis": "SAG", "cha": "CAR"}
+MONEY_IT = {"cp": "mr", "sp": "ma", "ep": "me", "gp": "mo", "pp": "mp"}
 
 ARMOR_CATEGORY_NAMES = {
     "light": "armature leggere",
@@ -72,6 +74,30 @@ def _as_list(value) -> list:
     return list(value) if isinstance(value, (list, tuple)) else [value]
 
 
+def is_female(char: dict) -> bool:
+    return str(char.get("gender", "")).lower() in ("f", "femmina", "donna", "female")
+
+
+def _nm(entry: dict, female: bool, default: str = "") -> str:
+    """Nome italiano di una voce di regole, al femminile se richiesto e disponibile (`name_f`)."""
+    if female and entry.get("name_f"):
+        return entry["name_f"]
+    return entry.get("name", default)
+
+
+class _SafeDict(dict):
+    def __missing__(self, key):
+        return "{" + key + "}"
+
+
+def kid_fmt(text: str, values: dict) -> str:
+    """Sostituisce i segnaposto ({cd}, {att}, {mod}, {soffio_cd}...) lasciando intatti quelli sconosciuti."""
+    try:
+        return str(text or "").format_map(_SafeDict(values))
+    except (ValueError, IndexError):
+        return str(text or "")
+
+
 # ---------------------------------------------------------------------------
 # Razza
 # ---------------------------------------------------------------------------
@@ -81,9 +107,10 @@ def resolve_race(char: dict, rules: dict) -> dict:
     if race_key not in races:
         raise RulesError(f"Razza sconosciuta: {race_key}")
     race = copy.deepcopy(races[race_key])
+    female = is_female(char)
     result = {
         "key": race_key,
-        "name": race["name"],
+        "name": _nm(race, female),
         "name_en": race.get("name_en", race["name"]),
         "size": race.get("size", "Medio"),
         "speed": race.get("speed", 30),
@@ -103,7 +130,7 @@ def resolve_race(char: dict, rules: dict) -> dict:
         if sub_key not in pools:
             raise RulesError(f"Sottorazza o variante sconosciuta per {race_key}: {sub_key}")
         sub = pools[sub_key]
-        result["name"] = sub.get("name", result["name"])
+        result["name"] = _nm(sub, female, result["name"])
         result["name_en"] = sub.get("name_en", result["name_en"])
         if sub.get("replaces_base_bonus"):
             result["ability_bonus"] = {}
@@ -121,6 +148,14 @@ def resolve_race(char: dict, rules: dict) -> dict:
         raise RulesError(f"La razza {race_key} richiede una sottorazza tra: {', '.join(subraces)}")
     for trait in result["traits"]:
         result["extra_languages"] += trait.get("extra_languages", 0)
+    result["ancestry"] = None
+    if race.get("ancestry"):
+        anc_key = char.get("draconic_ancestry")
+        if anc_key not in race["ancestry"]:
+            raise RulesError(f"La razza {result['name']} richiede 'draconic_ancestry' tra: {', '.join(race['ancestry'])}")
+        anc = race["ancestry"][anc_key]
+        result["ancestry"] = {"key": anc_key, **anc}
+        result["name"] += f" (drago {anc['name'].lower()})"
     return result
 
 
@@ -220,7 +255,7 @@ def resolve_class(char: dict, rules: dict) -> dict:
         spellcasting = subclass["spellcasting"]
     return {
         "key": key,
-        "name": cls["name"],
+        "name": _nm(cls, is_female(char)),
         "name_en": cls.get("name_en", cls["name"]),
         "level": level,
         "hit_die": cls["hit_die"],
@@ -250,6 +285,7 @@ def resolve_background(char: dict, rules: dict) -> dict:
         if key not in rules["backgrounds"]:
             raise RulesError(f"Background sconosciuto: {key}")
         bg = copy.deepcopy(rules["backgrounds"][key])
+    bg["name"] = _nm(bg, is_female(char), str(key))
     bg.setdefault("skills", [])
     bg.setdefault("tools", [])
     bg.setdefault("languages", 0)
@@ -534,9 +570,33 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
             class_cantrips.append({**sp, "ability": spell_ability})
         if expected is not None and len(picks) != expected + bonus:
             warnings.append(f"Trucchetti di classe: scelti {len(picks)}, al livello {level} ne conosci {expected + bonus}")
-        slot_row = spells_rules["slots"][caster["type"]].get(level, [])
+        # trucchetti gratuiti dati da un privilegio (es. Illusione Minore Migliorata), fuori dal conteggio
+        for f in cls["features"]:
+            key = f.get("grants_cantrip")
+            if key and key not in picks and key not in [c["key"] for c in cantrips]:
+                class_cantrips.append({**lookup(key, f["name"]), "ability": spell_ability})
+        slot_row = spells_rules["slots"][caster["type"]].get(level, []) if caster["type"] in spells_rules["slots"] else []
         slots = {i + 1: n for i, n in enumerate(slot_row) if n}
         max_level = max(slots) if slots else 0
+        book = []
+        if caster.get("spellbook"):
+            book_keys = _as_list(char.get("spellbook"))
+            expected_book = 6 + 2 * (level - 1)
+            if len(book_keys) != expected_book:
+                warnings.append(f"Libro degli incantesimi: {len(book_keys)} incantesimi, al livello {level} ne hai {expected_book} (senza contare quelli copiati)")
+            for key in _as_list(char.get("spells")):
+                if key not in book_keys:
+                    raise RulesError(f"{key} è preparato ma non è nel libro degli incantesimi ('spellbook')")
+            for key in book_keys:
+                sp = lookup(key, cls["name"])
+                if sp["level"] is None:
+                    warnings.append(f"Incantesimo {key} non presente nei dati: aggiungilo a dnd5e/rules/spells.yaml")
+                elif list_key not in sp["lists"]:
+                    raise RulesError(f"{sp['name']} non è nella lista del {cls['name']}")
+                elif sp["level"] > max_level:
+                    raise RulesError(f"{sp['name']} è di {sp['level']}° livello ma hai slot solo fino al {max_level}°")
+                sp["prepared"] = key in _as_list(char.get("spells"))
+                book.append(sp)
         for key in _as_list(char.get("spells")):
             sp = lookup(key, cls["name"])
             if sp["level"] is None:
@@ -570,7 +630,7 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
         return None
     attack_bonus = prof + mods[spell_ability]
     # ogni trucchetto/incantesimo porta la propria caratteristica (razziale o di classe)
-    for sp in all_cantrips + prepared:
+    for sp in all_cantrips + prepared + book:
         ab = sp.get("ability") or spell_ability
         sp["ability"] = ab
         sp["attack_bonus"] = prof + mods[ab]
@@ -582,7 +642,7 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
             dmg = _scale_cantrip(sp["damage"], level) if sp["level"] == 0 else sp["damage"]
             spell_attacks.append({"name": sp["name"], "attack_str": fmt_mod(sp["attack_bonus"]), "damage": f"{dmg} {sp.get('damage_type', '')}".strip(), "range": sp.get("range")})
     by_level: dict[int, list] = {}
-    for sp in prepared + circle_spells:
+    for sp in (book or prepared) + circle_spells:
         by_level.setdefault(sp["level"] or 1, []).append(sp)
     return {
         "ability": spell_ability,
@@ -598,6 +658,11 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
         "focus": caster.get("focus") if caster else None,
         "spell_attacks": spell_attacks,
         "class_caster": bool(caster),
+        "list": (caster or {}).get("list", cls["key"]) if caster else None,
+        "spellbook": bool(book),
+        "prepared": prepared,
+        "max_level": max(slots) if slots else 0,
+        "mod": mods[spell_ability],
     }
 
 
@@ -683,12 +748,30 @@ def build_sheet(char: dict, rules: dict | None = None) -> dict:
     spellcasting = resolve_spellcasting(char, cls, race, abilities, prof, rules, warnings)
     wild_shape = resolve_wild_shape(cls, rules)
 
+    # --- arma a soffio (dragonide) ---
+    breath = None
+    anc = race.get("ancestry")
+    if anc:
+        dice = "2d6" if level < 6 else "3d6" if level < 11 else "4d6" if level < 16 else "5d6"
+        breath = {"dc": 8 + mods["con"] + prof, "dice": dice, "type": anc["damage_type"], "area": anc["area"],
+                  "save": anc["save"], "save_name": skills_rules["abilities"][anc["save"]]["it"]}
+
+    # --- segnaposto per i testi semplici ---
+    placeholders = {"livello": level, "forma_ore": wild_shape["duration_hours"] if wild_shape else ""}
+    if spellcasting:
+        placeholders.update(cd=spellcasting["save_dc"], att=fmt_mod(spellcasting["attack_bonus"]), mod=fmt_mod(spellcasting["mod"]))
+    if breath:
+        placeholders.update(soffio_cd=breath["dc"], soffio_danni=breath["dice"], soffio_tipo=breath["type"],
+                            soffio_area=breath["area"], soffio_ts=breath["save_name"])
+
     # --- privilegi e tratti ---
     features = []
     for t in race["traits"]:
-        features.append({"name": t["name"], "short": t.get("short", ""), "text": t.get("text", ""), "source": race["name"]})
+        features.append({"name": t["name"], "short": t.get("short", ""), "text": t.get("text", ""), "source": race["name"],
+                         "kid": kid_fmt(t.get("kid", ""), placeholders), "kid_hide": t.get("kid_hide", False)})
     for f in cls["features"]:
-        features.append({"name": f["name"], "short": f.get("short", ""), "text": f.get("text", ""), "source": f["source"], "level": f["level"]})
+        features.append({"name": f["name"], "short": f.get("short", ""), "text": f.get("text", ""), "source": f["source"], "level": f["level"],
+                         "kid": kid_fmt(f.get("kid", ""), placeholders), "kid_hide": f.get("kid_hide", False)})
     style_descriptions = []
     for s in styles:
         st = rules["equipment"]["fighting_styles"][s]
@@ -700,7 +783,8 @@ def build_sheet(char: dict, rules: dict | None = None) -> dict:
         maneuvers.append(rules["maneuvers"][m])
     bg_feature = None
     if background.get("feature"):
-        bg_feature = {"name": f"{background['feature']['name']} (background)", "short": background["feature"]["text"], "text": background["feature"]["text"], "source": background["name"]}
+        bg_feature = {"name": f"{background['feature']['name']} (background)", "short": background["feature"]["text"], "text": background["feature"]["text"],
+                      "source": background["name"], "kid": kid_fmt(background["feature"].get("kid", ""), placeholders), "kid_hide": False}
 
     # --- competenze e linguaggi ---
     armor_prof = [ARMOR_CATEGORY_NAMES[a] for a in cls["armor"] if a in ARMOR_CATEGORY_NAMES]
@@ -797,6 +881,12 @@ def build_sheet(char: dict, rules: dict | None = None) -> dict:
         "extra_features": char.get("extra_features", "") or "",
         "attacks_notes": char.get("attacks_notes", "") or "",
         "portrait": str(portrait) if portrait else None,
+        "breath": breath,
+        "mage_armor_ac": (13 + mods["dex"]) if (not char.get("armor") and spellcasting
+                                                and any(s.get("key") == "mage_armor" for s in spellcasting["prepared"])) else None,
+        "placeholders": placeholders,
+        "female": is_female(char),
+        "simple": bool(char.get("simple")),
         "warnings": warnings,
     }
 
@@ -819,11 +909,17 @@ def sheet_markdown(sheet: dict) -> str:
               f"- CA: {sheet['ac']['value']} ({sheet['ac']['breakdown']})",
               f"- Iniziativa: {fmt_mod(sheet['initiative'])} · Velocità: {sheet['speed_m']}",
               f"- PF massimi: {sheet['hp']['max']} ({sheet['hp']['detail']}) · Dadi vita: {sheet['hp']['hit_dice']}",
-              f"- Percezione passiva: {sheet['passive_perception']}", ""]
+              f"- Percezione passiva: {sheet['passive_perception']}"]
+    if sheet.get("mage_armor_ac"):
+        lines.append(f"- CA con Armatura Magica: {sheet['mage_armor_ac']}")
+    b = sheet.get("breath")
+    if b:
+        lines.append(f"- Arma a soffio: {b['area']}, TS {b['save_name']} CD {b['dc']}, {b['dice']} {b['type']} (metà se supera), 1 volta per riposo breve o lungo")
+    lines.append("")
     lines += ["## Abilità", ""]
     for k, s in sorted(sheet["skills"].items(), key=lambda kv: kv[1]["name"]):
         mark = " ● " + (s["source"] or "") if s["proficient"] else ""
-        lines.append(f"- {s['name']} ({s['ability'].upper()}): {fmt_mod(s['value'])}{mark}")
+        lines.append(f"- {s['name']} ({ABBR_IT[s['ability']]}): {fmt_mod(s['value'])}{mark}")
     lines += ["", "## Attacchi", ""]
     for w in sheet["weapons"]:
         lines.append(f"- {w['name']}: {w['attack_str']} per colpire, {w['damage']}" + (f" ({', '.join(w['properties'] + w['notes'])})" if w["properties"] or w["notes"] else ""))
@@ -837,9 +933,10 @@ def sheet_markdown(sheet: dict) -> str:
             lines.append("- Slot: " + ", ".join(f"{n} di {lvl}°" for lvl, n in sp["slots"].items()))
         if sp["prepared_max"]:
             lines.append(f"- Incantesimi preparabili: {sp['prepared_max']}")
-        lines.append("- Trucchetti: " + ", ".join(f"{c['name']} ({c['source']}" + (f", {c['ability'].upper()}: CD {c['save_dc']}, attacco {fmt_mod(c['attack_bonus'])}" if c.get("other_ability") else "") + ")" for c in sp["cantrips"]))
+        lines.append("- Trucchetti: " + ", ".join(f"{c['name']} ({c['source']}" + (f", {ABBR_IT[c['ability']]}: CD {c['save_dc']}, attacco {fmt_mod(c['attack_bonus'])}" if c.get("other_ability") else "") + ")" for c in sp["cantrips"]))
         for lvl in sorted(sp["spells_by_level"]):
-            lines.append(f"- {lvl}° livello: " + ", ".join(s["name"] + (" (C)" if s.get("conc") else "") + (" (R)" if s.get("ritual") else "") for s in sp["spells_by_level"][lvl]))
+            lines.append(f"- {lvl}° livello: " + ", ".join(s["name"] + (" (C)" if s.get("conc") else "") + (" (R)" if s.get("ritual") else "")
+                                                       + (" [nel libro, non preparato]" if s.get("prepared") is False else "") for s in sp["spells_by_level"][lvl]))
     ws = sheet["wild_shape"]
     if ws:
         lines += ["", "## Forma Selvatica", "",
@@ -857,7 +954,7 @@ def sheet_markdown(sheet: dict) -> str:
               f"- Strumenti: {', '.join(p['tools']) or '—'}",
               f"- Linguaggi: {', '.join(sheet['languages'])}", "", "## Equipaggiamento", ""]
     lines += [f"- {e}" for e in sheet["equipment"]]
-    money = ", ".join(f"{v} {k}" for k, v in sheet["money"].items() if v)
+    money = ", ".join(f"{v} {MONEY_IT[k]}" for k, v in sheet["money"].items() if v)
     lines.append(f"- Monete: {money or '—'}")
     if sheet["warnings"]:
         lines += ["", "## Avvisi", ""] + [f"- {w}" for w in sheet["warnings"]]

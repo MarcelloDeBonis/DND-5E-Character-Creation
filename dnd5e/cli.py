@@ -58,6 +58,9 @@ def cmd_list(args):
 
 
 def main(argv=None):
+    for stream in (sys.stdout, sys.stderr):  # console Windows: evita errori con ●, ° ecc.
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(prog="dnd5e", description="Generatore di schede D&D 5e")
     sub = parser.add_subparsers(dest="cmd", required=True)
     b = sub.add_parser("build", help="genera il PDF della scheda")

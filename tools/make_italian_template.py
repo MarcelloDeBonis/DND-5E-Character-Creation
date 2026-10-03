@@ -17,7 +17,8 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC_DIR = ROOT / "templates" / "official"
 DST_DIR = ROOT / "templates" / "official_it"
 SRC_PDF = SRC_DIR / "DnD_5E_CharacterSheet_FormFillable.pdf"
-FONT = "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"
+FONT = next(f for f in ("/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf", "C:/Windows/Fonts/arial.ttf")
+            if Path(f).exists())  # Liberation Sans e Arial hanno le stesse metriche
 FONTNAME = "LibSans"
 _FONT = pymupdf.Font(fontfile=FONT)
 
@@ -43,9 +44,9 @@ LABELS = {
         ("PLAYER NAME", "NOME GIOCATORE", {"align": "left"}), ("RACE", "RAZZA", {"align": "left"}),
         ("ALIGNMENT", "ALLINEAMENTO", {"align": "left"}), ("CHARACTER NAME", "NOME PERSONAGGIO", {"align": "left"}),
         ("EXPERIENCE POINTS", "PUNTI ESPERIENZA", {"align": "left"}), ("INSPIRATION", "ISPIRAZIONE", {}),
-        ("STRENGTH", "FORZA", {}), ("DEXTERITY", "DESTREZZA", {}), ("CONSTITUTION", "COSTITUZIONE", {}),
-        ("INTELLIGENCE", "INTELLIGENZA", {}), ("WISDOM", "SAGGEZZA", {}), ("CHARISMA", "CARISMA", {}),
-        ("ARMOR", "CLASSE", {}), ("CLASS", "ARMATURA", {"x": 238}),
+        ("STRENGTH", "FORZA", {}), ("DEXTERITY", "DESTREZZA", {"maxw": 42}), ("CONSTITUTION", "COSTITUZIONE", {"maxw": 42}),
+        ("INTELLIGENCE", "INTELLIGENZA", {"maxw": 42}), ("WISDOM", "SAGGEZZA", {}), ("CHARISMA", "CARISMA", {}),
+        ("ARMOR", "CLASSE", {"size": 5.2}), ("CLASS", "ARMATURA", {"x": 238, "size": 4.6}),
         ("PROFICIENCY BONUS", "BONUS DI COMPETENZA", {}), ("INITIATIVE", "INIZIATIVA", {}), ("SPEED", "VELOCITÀ", {}),
         ("PERSONALITY TRAITS", "TRATTI CARATTERIALI", {}),
         ("Hit Point Maximum", "Massimo dei Punti Ferita", {"align": "left", "maxw": 59}),
@@ -138,7 +139,7 @@ def main():
             rows = [find(lines, EN_LABELS[key]) for key in EN_ORDER]
             for i, key in enumerate(IT_ORDER):
                 info = skills_it[key]
-                jobs.append((rows[i], f"{info['it']} ({ABBR[info['ability']]})", {"align": "left", "maxw": 80}))
+                jobs.append((rows[i], f"{info['it']} ({ABBR[info['ability']]})", {"align": "left", "maxw": 66}))
         if pno == 2:
             for t, r in lines:  # lettere di "PREPARED" disposte ad arco
                 if len(t) == 1 and t.isalpha() and r.x0 < 50:

@@ -23,13 +23,18 @@ from .engine import ABILITIES, fmt_cr, fmt_mod
 
 TEMPLATES_DIR = Path(__file__).resolve().parent.parent / "templates"
 
+WIN = "C:/Windows/Fonts/"
+LIB = "/usr/share/fonts/truetype/liberation/"
+# Liberation (Linux) oppure gli equivalenti metrici di Windows; in mancanza, i font standard PDF
 FONT_CANDIDATES = {
-    "Serif": ("/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf", "Times-Roman"),
-    "Serif-Bold": ("/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf", "Times-Bold"),
-    "Serif-Italic": ("/usr/share/fonts/truetype/liberation/LiberationSerif-Italic.ttf", "Times-Italic"),
-    "Serif-BoldItalic": ("/usr/share/fonts/truetype/liberation/LiberationSerif-BoldItalic.ttf", "Times-BoldItalic"),
-    "Sans": ("/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf", "Helvetica"),
-    "Sans-Bold": ("/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf", "Helvetica-Bold"),
+    "Serif": ([LIB + "LiberationSerif-Regular.ttf", WIN + "times.ttf"], "Times-Roman"),
+    "Serif-Bold": ([LIB + "LiberationSerif-Bold.ttf", WIN + "timesbd.ttf"], "Times-Bold"),
+    "Serif-Italic": ([LIB + "LiberationSerif-Italic.ttf", WIN + "timesi.ttf"], "Times-Italic"),
+    "Serif-BoldItalic": ([LIB + "LiberationSerif-BoldItalic.ttf", WIN + "timesbi.ttf"], "Times-BoldItalic"),
+    "Sans": ([LIB + "LiberationSans-Regular.ttf", WIN + "arial.ttf"], "Helvetica"),
+    "Sans-Bold": ([LIB + "LiberationSans-Bold.ttf", WIN + "arialbd.ttf"], "Helvetica-Bold"),
+    "Sans-Italic": ([LIB + "LiberationSans-Italic.ttf", WIN + "ariali.ttf"], "Helvetica-Oblique"),
+    "Sans-BoldItalic": ([LIB + "LiberationSans-BoldItalic.ttf", WIN + "arialbi.ttf"], "Helvetica-BoldOblique"),
 }
 FONTS: dict[str, str] = {}
 
@@ -37,16 +42,18 @@ FONTS: dict[str, str] = {}
 def _register_fonts() -> None:
     if FONTS:
         return
-    for alias, (path, fallback) in FONT_CANDIDATES.items():
-        if Path(path).exists():
+    for alias, (paths, fallback) in FONT_CANDIDATES.items():
+        path = next((p for p in paths if Path(p).exists()), None)
+        if path:
             pdfmetrics.registerFont(TTFont(alias, path))
             FONTS[alias] = alias
         else:
             FONTS[alias] = fallback
-    pdfmetrics.registerFontFamily(
-        FONTS["Serif"], normal=FONTS["Serif"], bold=FONTS["Serif-Bold"],
-        italic=FONTS["Serif-Italic"], boldItalic=FONTS["Serif-BoldItalic"],
-    )
+    for fam in ("Serif", "Sans"):
+        pdfmetrics.registerFontFamily(
+            FONTS[fam], normal=FONTS[fam], bold=FONTS[fam + "-Bold"],
+            italic=FONTS[fam + "-Italic"], boldItalic=FONTS[fam + "-BoldItalic"],
+        )
 
 
 # Campi numerici o brevi da centrare
@@ -75,7 +82,7 @@ class SheetRenderer:
         f = self.fields[name]
         return f["page"], f["rect"]
 
-    def text(self, c, name, value, size=10, font="Sans", min_size=5, align=None):
+    def text(self, c, name, value, size=10, font="Sans", min_size=5, align=None, dy=0):
         if value is None or value == "":
             return
         page, (x1, y1, x2, y2) = self._rect(name)
@@ -88,7 +95,7 @@ class SheetRenderer:
         while pdfmetrics.stringWidth(value, fname, size) > w and size > min_size:
             size -= 0.5
         c.setFont(fname, size)
-        baseline = y1 + (h - size * 0.7) / 2
+        baseline = y1 + (h - size * 0.7) / 2 + dy
         if align is None:
             align = "center" if name in CENTERED or name.endswith(("_score", "_mod")) or name.startswith(("save_", "skill_")) else "left"
         if align == "center":
@@ -167,7 +174,7 @@ class SheetRenderer:
             self.text(c, f"skill_{k}", fmt_mod(sk["value"]), size=8)
             self.check(c, f"skill_{k}_prof", sk["proficient"])
         self.text(c, "passive_perception", str(s["passive_perception"]), size=12, font="Sans-Bold")
-        self.text(c, "ac", str(s["ac"]["value"]), size=16, font="Sans-Bold")
+        self.text(c, "ac", str(s["ac"]["value"]), size=15, font="Sans-Bold", dy=4)
         self.text(c, "initiative", fmt_mod(s["initiative"]), size=16, font="Sans-Bold")
         self.text(c, "speed", s["speed_m"], size=12, font="Sans-Bold")
         self.text(c, "hp_max", str(s["hp"]["max"]), size=10, font="Sans-Bold")
@@ -177,6 +184,43 @@ class SheetRenderer:
             self.text(c, f"weapon_{i}_name", w["name"], size=8.5)
             self.text(c, f"weapon_{i}_atk", w["attack_str"], size=9, align="center")
             self.text(c, f"weapon_{i}_dmg", w["damage"], size=7.5)
+        if s.get("simple"):
+            self.box(c, "attacks_spellcasting", simple_attacks(s), size=8)
+        else:
+            self._attacks_full(c, s)
+        # equipaggiamento
+        eq = [esc(e) for e in s["equipment"]]
+        self.box(c, "equipment", eq, size=7.5)
+        for k in ("cp", "sp", "ep", "gp", "pp"):
+            if s["money"].get(k):
+                self.text(c, k, str(s["money"][k]), size=10)
+        # personalità
+        p = s["personality"]
+        self.box(c, "personality_traits", esc(p.get("traits", "")), size=8)
+        self.box(c, "ideals", esc(p.get("ideals", "")), size=8)
+        self.box(c, "bonds", esc(p.get("bonds", "")), size=8)
+        self.box(c, "flaws", esc(p.get("flaws", "")), size=8)
+        # privilegi (versione breve, o semplice per i più giovani)
+        feats = []
+        for f in s["features"] + s["fighting_styles"] + ([s["background_feature"]] if s["background_feature"] else []):
+            if s.get("simple"):
+                if f.get("kid_hide"):
+                    continue
+                feats.append(f"<b>{esc(f['name'].replace(' (background)', ''))}.</b> {esc(f.get('kid') or f['short'])}")
+            else:
+                feats.append(f"<b>{esc(f['name'])}.</b> {esc(f['short'])}")
+        self.box(c, "features_traits", feats, size=8.5 if s.get("simple") else 7.5)
+        # competenze e linguaggi
+        pr = s["proficiencies"]
+        prof_lines = [
+            f"<b>Armature:</b> {esc(', '.join(pr['armor']) or 'nessuna')}",
+            f"<b>Armi:</b> {esc(', '.join(pr['weapons']) or 'nessuna')}",
+            f"<b>Strumenti:</b> {esc(', '.join(pr['tools']) or 'nessuno')}",
+            f"<b>Linguaggi:</b> {esc(', '.join(s['languages']))}",
+        ]
+        self.box(c, "proficiencies_languages", prof_lines, size=8)
+
+    def _attacks_full(self, c, s):
         # riquadro attacchi: armi oltre la terza, dettagli, trucchetti e manovre
         atk = []
         for w in s["weapons"][3:]:
@@ -201,32 +245,6 @@ class SheetRenderer:
         if s["attacks_notes"]:
             atk += [esc(x) for x in s["attacks_notes"].split("\n")]
         self.box(c, "attacks_spellcasting", atk, size=7.5)
-        # equipaggiamento
-        eq = [esc(e) for e in s["equipment"]]
-        self.box(c, "equipment", eq, size=7.5)
-        for k in ("cp", "sp", "ep", "gp", "pp"):
-            if s["money"].get(k):
-                self.text(c, k, str(s["money"][k]), size=10)
-        # personalità
-        p = s["personality"]
-        self.box(c, "personality_traits", esc(p.get("traits", "")), size=8)
-        self.box(c, "ideals", esc(p.get("ideals", "")), size=8)
-        self.box(c, "bonds", esc(p.get("bonds", "")), size=8)
-        self.box(c, "flaws", esc(p.get("flaws", "")), size=8)
-        # privilegi (versione breve)
-        feats = []
-        for f in s["features"] + s["fighting_styles"] + ([s["background_feature"]] if s["background_feature"] else []):
-            feats.append(f"<b>{esc(f['name'])}.</b> {esc(f['short'])}")
-        self.box(c, "features_traits", feats, size=7.5)
-        # competenze e linguaggi
-        pr = s["proficiencies"]
-        prof_lines = [
-            f"<b>Armature:</b> {esc(', '.join(pr['armor']) or 'nessuna')}",
-            f"<b>Armi:</b> {esc(', '.join(pr['weapons']) or 'nessuna')}",
-            f"<b>Strumenti:</b> {esc(', '.join(pr['tools']) or 'nessuno')}",
-            f"<b>Linguaggi:</b> {esc(', '.join(s['languages']))}",
-        ]
-        self.box(c, "proficiencies_languages", prof_lines, size=8)
 
     def _draw_page_1(self, c, s):
         ap = s["appearance"]
@@ -236,6 +254,10 @@ class SheetRenderer:
         self.image(c, "portrait", s["portrait"])
         self.box(c, "allies", esc(s["allies"]), size=8.5)
         self.box(c, "backstory", esc(s["backstory"]), size=8.5, align="justify")
+        self.box(c, "treasure", esc(s["treasure"]), size=8.5)
+        if s.get("simple"):
+            self.box(c, "additional_features", how_to_play(s), size=8.5)
+            return
         feats = []
         for f in s["fighting_styles"] + ([s["background_feature"]] if s["background_feature"] else []):
             feats.append(f"<b>{esc(f['name'])}.</b> {esc(f['text'])}")
@@ -251,7 +273,6 @@ class SheetRenderer:
             feats += [esc(x) for x in s["extra_features"].split("\n")]
         feats.append("<i>Le descrizioni complete di tratti, privilegi, incantesimi e forme animali sono nelle pagine di appendice.</i>")
         self.box(c, "additional_features", feats, size=8)
-        self.box(c, "treasure", esc(s["treasure"]), size=8.5)
 
     def _draw_page_2(self, c, s):
         sp = s["spellcasting"]
@@ -279,7 +300,7 @@ class SheetRenderer:
                 if spell.get("always_prepared"):
                     label += " [circolo]"
                 self.text(c, f"spell_{lvl}_{i}", label, size=8)
-                if f"spell_{lvl}_{i}_prep" in self.fields and (sp["prepares"] or spell.get("always_prepared")):
+                if f"spell_{lvl}_{i}_prep" in self.fields and (sp["prepares"] or spell.get("always_prepared")) and spell.get("prepared", True):
                     self.check(c, f"spell_{lvl}_{i}_prep", True)
 
     # ------------------------------------------------------------------ appendix
@@ -400,7 +421,7 @@ class SheetRenderer:
                 del page["/Annots"]
             page.merge_page(overlay.pages[i])
             writer.add_page(page)
-        if appendix:
+        if appendix and not sheet.get("simple"):
             for page in PdfReader(io.BytesIO(self.appendix_pdf(sheet))).pages:
                 writer.add_page(page)
         output = Path(output)
@@ -412,3 +433,66 @@ class SheetRenderer:
 
 def esc(text) -> str:
     return escape(str(text or ""))
+
+
+def simple_attacks(s: dict) -> list:
+    """Riquadro attacchi in parole semplici: ogni riga dice cosa tirare."""
+    out = []
+    for w in s["weapons"][3:]:
+        out.append(f"<b>{esc(w['name'])}</b>: tira d20{esc(w['attack_str'])}, danni {esc(w['damage'])}")
+    sp = s["spellcasting"]
+    if sp:
+        for at in sp["spell_attacks"]:
+            rng = str(at.get("range", ""))
+            out.append(f"<b>{esc(at['name'])}</b> (magia): tira d20{esc(at['attack_str'])}, danni {esc(at['damage'])}"
+                       + (f", fino a {esc(rng)} m" if rng[:1].isdigit() else ""))
+    b = s.get("breath")
+    if b:
+        out.append(f"<b>Soffio di {esc(b['type'])}</b> (1 volta, poi riposo): {esc(b['area'])}. I nemici tirano {esc(b['save_name'])} "
+                   f"contro <b>{b['dc']}</b>: se sbagliano {esc(b['dice'])} danni, se riescono la metà.")
+    if s.get("mage_armor_ac"):
+        out.append(f"<b>Armatura Magica</b>: lanciala al mattino e la tua CA diventa <b>{s['mage_armor_ac']}</b> per 8 ore.")
+    if sp:
+        out.append(f"<b>Magie</b>: i nemici resistono contro <b>{sp['save_dc']}</b>; i tuoi attacchi magici sono d20{esc(fmt_mod(sp['attack_bonus']))}. "
+                   "Elenco a pagina 3, spiegazioni nella guida.")
+    ws = s["wild_shape"]
+    if ws:
+        out.append(f"<b>Forma Selvatica</b>: diventi un animale {ws['uses']} volte, poi devi riposare. Gli animali sono nella guida.")
+    if s["attacks_notes"]:
+        out += [esc(x) for x in s["attacks_notes"].split("\n")]
+    return out
+
+
+def how_to_play(s: dict) -> list:
+    """Promemoria delle regole base, così la scheda basta per giocare."""
+    lines = [
+        "<b>COME SI GIOCA</b>",
+        f"<b>Il tuo turno.</b> 1) Muoviti fino a {s['speed_m']}. 2) Fai UNA azione: attaccare, lanciare una magia, aiutare un amico, "
+        "nasconderti, scappare... 3) Se hai qualcosa che si fa con un'<i>azione bonus</i>, puoi farlo in più.",
+        "<b>Colpire.</b> Tira il d20 e aggiungi il numero dell'attacco. Se arrivi alla CA del nemico (o più), lo colpisci e tiri i dadi dei danni.",
+        "<b>Prove.</b> Quando il Master chiede una prova (es. Furtività), tira il d20 e aggiungi il numero accanto all'abilità.",
+        "<b>Tiro salvezza.</b> Per resistere a una trappola o a una magia tira il d20 e aggiungi il numero del tiro salvezza giusto.",
+        "<b>Vantaggio / svantaggio.</b> Tiri 2 d20: con il vantaggio tieni il più alto, con lo svantaggio il più basso.",
+        f"<b>Punti Ferita.</b> Ne hai {s['hp']['max']}. Quando ti colpiscono scendono. A 0 cadi a terra svenuta: a ogni tuo turno tira un d20, "
+        "con 10 o più è un successo. 3 successi: sei salva. 3 fallimenti: muori. Un amico può curarti prima.",
+        "<b>Riposo.</b> Breve (1 ora): puoi tirare i Dadi Vita per recuperare PF. Lungo (8 ore di sonno): torni al massimo dei PF e recuperi tutte le magie.",
+    ]
+    sp = s["spellcasting"]
+    if sp and sp["slots"]:
+        slots = ", ".join(f"{n} di {lvl}° livello" for lvl, n in sp["slots"].items())
+        lines.append(f"<b>Magie.</b> I trucchetti sono gratis: li usi quando vuoi. Le altre magie consumano uno <i>slot</i>: ne hai {slots}. "
+                     "Annerisci un cerchietto a pagina 3 quando lo usi; tornano tutti dopo un riposo lungo.")
+        lines.append("<b>Concentrazione (C).</b> Puoi tenere attiva una sola magia con la C alla volta. Se ti fanno male tira d20 + il tuo "
+                     "tiro salvezza su Costituzione: con 10 o più la magia continua.")
+        if sp.get("spellbook"):
+            lines.append("<b>Libro degli incantesimi.</b> Dentro ci sono tutte le tue magie. Ogni mattina scegli quali tenere pronte "
+                         "(quelle con il pallino a pagina 3). Le magie con (R) puoi lanciarle come rituale: 10 minuti in più e nessuno slot.")
+        elif sp["prepares"]:
+            lines.append(f"<b>Magie preparate.</b> Dopo ogni riposo lungo puoi cambiare le {sp['prepared_max'] or ''} magie preparate "
+                         "scegliendole dalla guida.")
+    ws = s["wild_shape"]
+    if ws:
+        lines.append(f"<b>Forma Selvatica.</b> Con un'azione bonus diventi un animale che hai già visto (sono nella guida). {ws['uses']} volte, poi riposo. "
+                     f"Dura fino a {ws['duration_hours']} ora. Usi PF, CA e attacchi dell'animale; quando i suoi PF finiscono torni te stessa "
+                     "con i tuoi PF. Da animale non lanci magie, ma con un'azione bonus puoi spendere uno slot per curarti 1d8 PF per livello dello slot.")
+    return lines
