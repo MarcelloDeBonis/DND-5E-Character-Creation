@@ -1,0 +1,295 @@
+# Razze del Manuale del Giocatore (PHB 2014). Testi in italiano (traduzione ufficiale Asmodee dove nota).
+# ability_bonus: bonus fissi. ability_choice: {count, bonus, exclude} per bonus a scelta (es. mezzelfo).
+# traits: ogni tratto ha "name", "short" (riga breve per la pagina 1) e "text" (descrizione per la pagina 2).
+elf:
+  name: Elfo
+  name_en: Elf
+  size: Medio
+  speed: 30
+  ability_bonus: {dex: 2}
+  languages: [common, elvish]
+  age: "Un elfo raggiunge la maturità fisica verso i 20 anni ma è considerato adulto intorno ai 100 anni; può vivere fino a 750 anni."
+  traits:
+    - name: Scurovisione
+      short: "Vedi a 18 m nella luce fioca come se fosse luce intensa, e nell'oscurità come se fosse luce fioca (solo in scala di grigi)."
+      text: "Abituato alle foreste crepuscolari e al cielo notturno, l'elfo vede a 18 metri nella luce fioca come se fosse luce intensa e nell'oscurità come se fosse luce fioca. Nell'oscurità non distingue i colori, solo sfumature di grigio."
+    - name: Sensi Acuti
+      short: "Competenza nell'abilità Percezione."
+      text: "L'elfo ha competenza nell'abilità Percezione."
+      skills: [perception]
+    - name: Retaggio Fatato
+      short: "Vantaggio ai TS contro l'essere affascinato; la magia non può addormentarti."
+      text: "L'elfo ha vantaggio ai tiri salvezza per non essere affascinato e la magia non può addormentarlo."
+    - name: Trance
+      short: "Non dormi: 4 ore di meditazione semicosciente equivalgono a 8 ore di sonno."
+      text: "Gli elfi non hanno bisogno di dormire: meditano in uno stato di semicoscienza per 4 ore al giorno (trance), sognando a occhi aperti. Dopo questo riposo l'elfo ottiene gli stessi benefici di 8 ore di sonno umano."
+  subraces:
+    high_elf:
+      name: Elfo Alto
+      name_en: High Elf
+      ability_bonus: {int: 1}
+      traits:
+        - name: Addestramento nelle Armi Elfiche
+          short: "Competenza in spada lunga, spada corta, arco corto e arco lungo."
+          text: "L'elfo alto ha competenza nella spada lunga, nella spada corta, nell'arco corto e nell'arco lungo."
+          weapon_proficiencies: [longsword, shortsword, shortbow, longbow]
+        - name: Trucchetto
+          short: "Conosci un trucchetto dalla lista del mago (caratteristica: Intelligenza)."
+          text: "L'elfo alto conosce un trucchetto a sua scelta dalla lista degli incantesimi del mago. La sua caratteristica da incantatore per questo trucchetto è l'Intelligenza."
+          cantrip_choice: {list: wizard, ability: int}
+        - name: Linguaggio Extra
+          short: "Parli, leggi e scrivi un linguaggio aggiuntivo a tua scelta."
+          text: "L'elfo alto può parlare, leggere e scrivere un linguaggio aggiuntivo a sua scelta."
+          extra_languages: 1
+    wood_elf:
+      name: Elfo dei Boschi
+      name_en: Wood Elf
+      ability_bonus: {wis: 1}
+      speed: 35
+      traits:
+        - name: Addestramento nelle Armi Elfiche
+          short: "Competenza in spada lunga, spada corta, arco corto e arco lungo."
+          text: "L'elfo dei boschi ha competenza nella spada lunga, nella spada corta, nell'arco corto e nell'arco lungo."
+          weapon_proficiencies: [longsword, shortsword, shortbow, longbow]
+        - name: Piede Lesto
+          short: "Velocità base di 10,5 m."
+          text: "La velocità base sul terreno dell'elfo dei boschi aumenta a 10,5 metri."
+        - name: Maschera della Natura
+          short: "Puoi tentare di nasconderti anche quando sei solo leggermente oscurato da fogliame, pioggia o neve."
+          text: "L'elfo dei boschi può tentare di nascondersi anche quando è solo leggermente oscurato da fogliame, pioggia battente, neve che cade, foschia o altri fenomeni naturali."
+    drow:
+      name: Elfo Oscuro (Drow)
+      name_en: Dark Elf (Drow)
+      ability_bonus: {cha: 1}
+      traits:
+        - name: Scurovisione Superiore
+          short: "La tua scurovisione arriva a 36 m."
+          text: "La scurovisione del drow ha un raggio di 36 metri."
+        - name: Sensibilità alla Luce Solare
+          short: "Svantaggio ai tiri per colpire e alle prove di Percezione (vista) alla luce diretta del sole."
+          text: "Il drow subisce svantaggio ai tiri per colpire e alle prove di Saggezza (Percezione) basate sulla vista quando lui, il bersaglio o l'oggetto che cerca di percepire si trova alla luce diretta del sole."
+        - name: Magia Drow
+          short: "Conosci il trucchetto luci danzanti; dal 3° livello fuoco fatuo e dal 5° oscurità (1/riposo lungo). Caratteristica: Carisma."
+          text: "Il drow conosce il trucchetto luci danzanti. Al 3° livello può lanciare fuoco fatuo una volta per riposo lungo; al 5° livello può lanciare oscurità una volta per riposo lungo. La caratteristica da incantatore è il Carisma."
+        - name: Addestramento nelle Armi Drow
+          short: "Competenza in stocco, spada corta e balestra a mano."
+          text: "Il drow ha competenza nello stocco, nella spada corta e nella balestra a mano."
+          weapon_proficiencies: [rapier, shortsword, hand_crossbow]
+
+human:
+  name: Umano
+  name_en: Human
+  size: Medio
+  speed: 30
+  ability_bonus: {str: 1, dex: 1, con: 1, int: 1, wis: 1, cha: 1}
+  languages: [common]
+  extra_languages: 1
+  traits:
+    - name: Linguaggio Extra
+      short: "Parli, leggi e scrivi un linguaggio aggiuntivo a tua scelta."
+      text: "L'umano può parlare, leggere e scrivere un linguaggio aggiuntivo a sua scelta."
+  variants:
+    variant_human:
+      name: Umano (Variante)
+      ability_bonus: {}
+      ability_choice: {count: 2, bonus: 1}
+      traits:
+        - name: Abilità
+          short: "Competenza in un'abilità a scelta."
+          text: "L'umano variante ottiene competenza in un'abilità a sua scelta."
+          skill_choice: 1
+        - name: Talento
+          short: "Ottieni un talento a scelta."
+          text: "L'umano variante ottiene un talento a sua scelta."
+          feat_choice: 1
+
+dwarf:
+  name: Nano
+  name_en: Dwarf
+  size: Medio
+  speed: 25
+  ability_bonus: {con: 2}
+  languages: [common, dwarvish]
+  traits:
+    - name: Scurovisione
+      short: "Vedi a 18 m nella luce fioca come se fosse luce intensa, e nell'oscurità come se fosse luce fioca."
+      text: "Il nano vede a 18 metri nella luce fioca come se fosse luce intensa e nell'oscurità come se fosse luce fioca. Nell'oscurità non distingue i colori."
+    - name: Resilienza Nanica
+      short: "Vantaggio ai TS contro il veleno e resistenza ai danni da veleno."
+      text: "Il nano ha vantaggio ai tiri salvezza contro il veleno e resistenza ai danni da veleno."
+    - name: Addestramento da Combattimento dei Nani
+      short: "Competenza in ascia da battaglia, ascia, martello leggero e martello da guerra."
+      text: "Il nano ha competenza nell'ascia da battaglia, nell'ascia, nel martello leggero e nel martello da guerra."
+      weapon_proficiencies: [battleaxe, handaxe, light_hammer, warhammer]
+    - name: Competenza negli Strumenti
+      short: "Competenza in strumenti da fabbro, da birraio o da muratore (a scelta)."
+      text: "Il nano ha competenza in uno strumento da artigiano a sua scelta tra strumenti da fabbro, da birraio o da muratore."
+    - name: Esperto di Pietra
+      short: "Doppio bonus di competenza alle prove di Storia relative alla lavorazione della pietra."
+      text: "Quando effettua una prova di Intelligenza (Storia) relativa all'origine di una lavorazione in pietra, il nano è considerato competente e aggiunge il doppio del bonus di competenza."
+  subraces:
+    hill_dwarf:
+      name: Nano delle Colline
+      ability_bonus: {wis: 1}
+      traits:
+        - name: Robustezza Nanica
+          short: "+1 punto ferita massimo per livello."
+          text: "I punti ferita massimi del nano aumentano di 1 e aumentano di 1 ogni volta che acquisisce un livello."
+          hp_per_level: 1
+    mountain_dwarf:
+      name: Nano delle Montagne
+      ability_bonus: {str: 2}
+      traits:
+        - name: Addestramento nelle Armature dei Nani
+          short: "Competenza nelle armature leggere e medie."
+          text: "Il nano delle montagne ha competenza nelle armature leggere e medie."
+          armor_proficiencies: [light, medium]
+
+halfling:
+  name: Halfling
+  name_en: Halfling
+  size: Piccolo
+  speed: 25
+  ability_bonus: {dex: 2}
+  languages: [common, halfling]
+  traits:
+    - name: Fortunato
+      short: "Quando ottieni 1 a un tiro per colpire, prova o TS puoi ripetere il tiro (devi usare il nuovo risultato)."
+      text: "Quando l'halfling ottiene 1 al tiro del d20 per un tiro per colpire, una prova di caratteristica o un tiro salvezza, può ripetere il tiro e deve usare il nuovo risultato."
+    - name: Coraggioso
+      short: "Vantaggio ai TS contro l'essere spaventato."
+      text: "L'halfling ha vantaggio ai tiri salvezza per non essere spaventato."
+    - name: Agilità Halfling
+      short: "Puoi muoverti attraverso lo spazio di creature di taglia superiore alla tua."
+      text: "L'halfling può muoversi attraverso lo spazio di qualsiasi creatura di taglia superiore alla sua."
+  subraces:
+    lightfoot:
+      name: Halfling Piedelesto
+      ability_bonus: {cha: 1}
+      traits:
+        - name: Furtività Innata
+          short: "Puoi nasconderti dietro una creatura di taglia superiore alla tua."
+          text: "L'halfling piedelesto può tentare di nascondersi anche quando è oscurato solo da una creatura di taglia superiore di almeno una categoria."
+    stout:
+      name: Halfling Tozzo
+      ability_bonus: {con: 1}
+      traits:
+        - name: Resilienza dei Tozzi
+          short: "Vantaggio ai TS contro il veleno e resistenza ai danni da veleno."
+          text: "L'halfling tozzo ha vantaggio ai tiri salvezza contro il veleno e resistenza ai danni da veleno."
+
+half_elf:
+  name: Mezzelfo
+  name_en: Half-Elf
+  size: Medio
+  speed: 30
+  ability_bonus: {cha: 2}
+  ability_choice: {count: 2, bonus: 1, exclude: [cha]}
+  languages: [common, elvish]
+  extra_languages: 1
+  traits:
+    - name: Scurovisione
+      short: "Vedi a 18 m nella luce fioca come se fosse luce intensa, e nell'oscurità come se fosse luce fioca."
+      text: "Il mezzelfo vede a 18 metri nella luce fioca come se fosse luce intensa e nell'oscurità come se fosse luce fioca."
+    - name: Retaggio Fatato
+      short: "Vantaggio ai TS contro l'essere affascinato; la magia non può addormentarti."
+      text: "Il mezzelfo ha vantaggio ai tiri salvezza per non essere affascinato e la magia non può addormentarlo."
+    - name: Versatilità nelle Abilità
+      short: "Competenza in due abilità a scelta."
+      text: "Il mezzelfo ottiene competenza in due abilità a sua scelta."
+      skill_choice: 2
+
+half_orc:
+  name: Mezzorco
+  name_en: Half-Orc
+  size: Medio
+  speed: 30
+  ability_bonus: {str: 2, con: 1}
+  languages: [common, orc]
+  traits:
+    - name: Scurovisione
+      short: "Vedi a 18 m nella luce fioca come se fosse luce intensa, e nell'oscurità come se fosse luce fioca."
+      text: "Il mezzorco vede a 18 metri nella luce fioca come se fosse luce intensa e nell'oscurità come se fosse luce fioca."
+    - name: Minaccioso
+      short: "Competenza nell'abilità Intimidire."
+      text: "Il mezzorco ha competenza nell'abilità Intimidire."
+      skills: [intimidation]
+    - name: Tenacia Implacabile
+      short: "Se scendi a 0 PF senza morire, resti a 1 PF (1/riposo lungo)."
+      text: "Quando il mezzorco scende a 0 punti ferita ma non viene ucciso sul colpo, può invece scendere a 1 punto ferita. Non può usare di nuovo questo privilegio finché non completa un riposo lungo."
+    - name: Attacchi Selvaggi
+      short: "Con un critico in mischia tiri un dado di danno dell'arma in più."
+      text: "Quando il mezzorco mette a segno un colpo critico con un attacco con arma da mischia, può tirare uno dei dadi di danno dell'arma una volta in più e aggiungerlo al danno extra del critico."
+
+tiefling:
+  name: Tiefling
+  name_en: Tiefling
+  size: Medio
+  speed: 30
+  ability_bonus: {int: 1, cha: 2}
+  languages: [common, infernal]
+  traits:
+    - name: Scurovisione
+      short: "Vedi a 18 m nella luce fioca come se fosse luce intensa, e nell'oscurità come se fosse luce fioca."
+      text: "Il tiefling vede a 18 metri nella luce fioca come se fosse luce intensa e nell'oscurità come se fosse luce fioca."
+    - name: Resistenza Infernale
+      short: "Resistenza ai danni da fuoco."
+      text: "Il tiefling ha resistenza ai danni da fuoco."
+    - name: Retaggio Infernale
+      short: "Conosci taumaturgia; dal 3° livello rimprovero infernale (2° liv.) e dal 5° oscurità, 1/riposo lungo. Caratteristica: Carisma."
+      text: "Il tiefling conosce il trucchetto taumaturgia. Al 3° livello può lanciare rimprovero infernale come incantesimo di 2° livello una volta per riposo lungo; al 5° livello può lanciare oscurità una volta per riposo lungo. La caratteristica da incantatore è il Carisma."
+
+dragonborn:
+  name: Dragonide
+  name_en: Dragonborn
+  size: Medio
+  speed: 30
+  ability_bonus: {str: 2, cha: 1}
+  languages: [common, draconic]
+  traits:
+    - name: Discendenza Draconica
+      short: "Scegli un tipo di drago: determina il tipo di danno del soffio e della resistenza."
+      text: "Il dragonide discende da un drago: il tipo di drago determina il danno e la forma dell'arma a soffio e la resistenza ai danni."
+    - name: Arma a Soffio
+      short: "Azione: esala energia distruttiva (2d6, TS DC 8 + mod. COS + comp.; 3d6 al 6°, 4d6 all'11°, 5d6 al 16°). 1/riposo breve o lungo."
+      text: "Il dragonide può usare la sua azione per esalare energia distruttiva. Ogni creatura nell'area deve effettuare un tiro salvezza (CD 8 + modificatore di Costituzione + bonus di competenza), subendo 2d6 danni in caso di fallimento o la metà in caso di successo. Il danno aumenta a 3d6 al 6° livello, 4d6 all'11° e 5d6 al 16°. Dopo l'uso non può riutilizzarlo finché non completa un riposo breve o lungo."
+    - name: Resistenza ai Danni
+      short: "Resistenza al tipo di danno della tua discendenza draconica."
+      text: "Il dragonide ha resistenza al tipo di danno associato alla sua discendenza draconica."
+
+gnome:
+  name: Gnomo
+  name_en: Gnome
+  size: Piccolo
+  speed: 25
+  ability_bonus: {int: 2}
+  languages: [common, gnomish]
+  traits:
+    - name: Scurovisione
+      short: "Vedi a 18 m nella luce fioca come se fosse luce intensa, e nell'oscurità come se fosse luce fioca."
+      text: "Lo gnomo vede a 18 metri nella luce fioca come se fosse luce intensa e nell'oscurità come se fosse luce fioca."
+    - name: Astuzia Gnomesca
+      short: "Vantaggio ai TS su INT, SAG e CAR contro la magia."
+      text: "Lo gnomo ha vantaggio a tutti i tiri salvezza su Intelligenza, Saggezza e Carisma contro la magia."
+  subraces:
+    forest_gnome:
+      name: Gnomo delle Foreste
+      ability_bonus: {dex: 1}
+      traits:
+        - name: Illusionista Nato
+          short: "Conosci il trucchetto illusione minore (caratteristica: Intelligenza)."
+          text: "Lo gnomo delle foreste conosce il trucchetto illusione minore. La caratteristica da incantatore è l'Intelligenza."
+        - name: Parlare con le Piccole Bestie
+          short: "Puoi comunicare idee semplici a bestie di taglia Piccola o inferiore."
+          text: "Attraverso suoni e gesti lo gnomo delle foreste può comunicare idee semplici alle bestie di taglia Piccola o inferiore."
+    rock_gnome:
+      name: Gnomo delle Rocce
+      ability_bonus: {con: 1}
+      traits:
+        - name: Sapienza dell'Artefice
+          short: "Doppio bonus di competenza alle prove di Storia su oggetti magici, alchemici o tecnologici."
+          text: "Quando effettua una prova di Intelligenza (Storia) relativa a oggetti magici, alchemici o tecnologici, lo gnomo delle rocce aggiunge il doppio del bonus di competenza."
+        - name: Trafficone
+          short: "Competenza negli strumenti da inventore; puoi costruire piccoli congegni meccanici."
+          text: "Lo gnomo delle rocce ha competenza negli strumenti da inventore e può usarli per costruire piccoli congegni meccanici (orologio-giocattolo, accendino, scatola musicale)."
+          tool_proficiencies: ["Strumenti da inventore"]

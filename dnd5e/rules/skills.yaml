@@ -1,0 +1,72 @@
+# Caratteristiche e abilità di D&D 5e (PHB 2014).
+abilities:
+  str: {en: Strength,     it: Forza}
+  dex: {en: Dexterity,    it: Destrezza}
+  con: {en: Constitution, it: Costituzione}
+  int: {en: Intelligence, it: Intelligenza}
+  wis: {en: Wisdom,       it: Saggezza}
+  cha: {en: Charisma,     it: Carisma}
+
+skills:
+  acrobatics:       {en: Acrobatics,      it: Acrobazia,          ability: dex}
+  animal_handling:  {en: Animal Handling, it: Addestrare Animali, ability: wis}
+  arcana:           {en: Arcana,          it: Arcano,             ability: int}
+  athletics:        {en: Athletics,       it: Atletica,           ability: str}
+  deception:        {en: Deception,       it: Inganno,            ability: cha}
+  history:          {en: History,         it: Storia,             ability: int}
+  insight:          {en: Insight,         it: Intuizione,         ability: wis}
+  intimidation:     {en: Intimidation,    it: Intimidire,         ability: cha}
+  investigation:    {en: Investigation,   it: Indagare,           ability: int}
+  medicine:         {en: Medicine,        it: Medicina,           ability: wis}
+  nature:           {en: Nature,          it: Natura,             ability: int}
+  perception:       {en: Perception,      it: Percezione,         ability: wis}
+  performance:      {en: Performance,     it: Intrattenere,       ability: cha}
+  persuasion:       {en: Persuasion,      it: Persuasione,        ability: cha}
+  religion:         {en: Religion,        it: Religione,          ability: int}
+  sleight_of_hand:  {en: Sleight of Hand, it: Rapidità di Mano,   ability: dex}
+  stealth:          {en: Stealth,         it: Furtività,          ability: dex}
+  survival:         {en: Survival,        it: Sopravvivenza,      ability: wis}
+
+# Bonus di competenza per livello (PHB p. 15)
+proficiency_bonus: [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6]
+
+# Punti esperienza minimi per livello (PHB p. 15)
+xp_thresholds: [0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000]
+
+# Metodo "point buy" (PHB p. 13): 27 punti, punteggi da 8 a 15
+point_buy:
+  budget: 27
+  costs: {8: 0, 9: 1, 10: 2, 11: 3, 12: 4, 13: 5, 14: 7, 15: 9}
+
+standard_array: [15, 14, 13, 12, 10, 8]
+
+languages:
+  common: Comune
+  elvish: Elfico
+  dwarvish: Nanico
+  giant: Gigante
+  gnomish: Gnomesco
+  goblin: Goblin
+  halfling: Halfling
+  orc: Orchesco
+  abyssal: Abissale
+  celestial: Celestiale
+  draconic: Draconico
+  deep_speech: Linguaggio delle Profondità
+  infernal: Infernale
+  primordial: Primordiale
+  sylvan: Silvano
+  undercommon: Sottocomune
+  druidic: Druidico
+  thieves_cant: Gergo dei Ladri
+
+alignments:
+  LG: Legale Buono
+  NG: Neutrale Buono
+  CG: Caotico Buono
+  LN: Legale Neutrale
+  N:  Neutrale
+  CN: Caotico Neutrale
+  LE: Legale Malvagio
+  NE: Neutrale Malvagio
+  CE: Caotico Malvagio

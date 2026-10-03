@@ -1,0 +1,133 @@
+# Background del Manuale del Giocatore (PHB 2014).
+# skills: competenze fisse. tools: competenze negli strumenti. languages: numero di linguaggi extra a scelta.
+# feature: privilegio del background. equipment: dotazione iniziale (lista di stringhe). gold: monete d'oro incluse.
+acolyte:
+  name: Accolito
+  skills: [insight, religion]
+  tools: []
+  languages: 2
+  feature:
+    name: Rifugio dei Fedeli
+    text: "L'accolito e i suoi compagni possono ricevere cure e assistenza gratuite in un tempio o santuario della sua fede; i fedeli lo sosterranno con uno stile di vita modesto."
+  equipment: ["Simbolo sacro", "Libro di preghiere o ruota di preghiera", "5 bastoncini di incenso", "Vesti", "Abiti comuni"]
+  gold: 15
+charlatan:
+  name: Ciarlatano
+  skills: [deception, sleight_of_hand]
+  tools: ["Trucchi per il camuffamento", "Arnesi da falsario"]
+  languages: 0
+  feature:
+    name: Falsa Identità
+    text: "Il ciarlatano ha creato una seconda identità con documenti, conoscenze e travestimenti; sa falsificare documenti ufficiali e lettere."
+  equipment: ["Abiti pregiati", "Trucchi per il camuffamento", "Strumenti del raggiro (es. dadi truccati, ampolle di liquido colorato)"]
+  gold: 15
+criminal:
+  name: Criminale
+  skills: [deception, stealth]
+  tools: ["Un tipo di gioco a scelta", "Arnesi da scasso"]
+  languages: 0
+  feature:
+    name: Contatto Criminale
+    text: "Il criminale ha un contatto fidato che funge da collegamento con una rete di altri criminali; sa come trasmettere messaggi a questo contatto anche a grande distanza."
+  equipment: ["Piede di porco", "Abiti comuni scuri con cappuccio"]
+  gold: 15
+entertainer:
+  name: Intrattenitore
+  skills: [acrobatics, performance]
+  tools: ["Trucchi per il camuffamento", "Uno strumento musicale a scelta"]
+  languages: 0
+  feature:
+    name: Richiesto dal Pubblico
+    text: "L'intrattenitore trova sempre un posto in cui esibirsi, ricevendo vitto e alloggio gratuiti di livello modesto o confortevole, e il favore della gente del posto."
+  equipment: ["Uno strumento musicale a scelta", "Il pegno di un ammiratore", "Costume"]
+  gold: 15
+folk_hero:
+  name: Eroe Popolare
+  skills: [animal_handling, survival]
+  tools: ["Un tipo di strumenti da artigiano a scelta", "Veicoli (terrestri)"]
+  languages: 0
+  feature:
+    name: Ospitalità Rustica
+    text: "La gente comune offre all'eroe popolare un posto in cui nascondersi, riposare o riprendersi, e lo protegge dalle autorità (purché non rischi la vita)."
+  equipment: ["Un tipo di strumenti da artigiano a scelta", "Vanga", "Pentola di ferro", "Abiti comuni"]
+  gold: 10
+guild_artisan:
+  name: Artigiano di Gilda
+  skills: [insight, persuasion]
+  tools: ["Un tipo di strumenti da artigiano a scelta"]
+  languages: 1
+  feature:
+    name: Appartenenza alla Gilda
+    text: "La gilda offre alloggio e cibo, assistenza legale e sostegno politico; in cambio l'artigiano paga 5 mo al mese di quote."
+  equipment: ["Un tipo di strumenti da artigiano a scelta", "Lettera di presentazione della gilda", "Abiti da viaggio"]
+  gold: 15
+hermit:
+  name: Eremita
+  skills: [medicine, religion]
+  tools: ["Borsa da erborista"]
+  languages: 1
+  feature:
+    name: Scoperta
+    text: "L'isolamento ha permesso all'eremita di fare una scoperta unica e potente, il cui esatto contenuto va definito con il DM."
+  equipment: ["Astuccio da cartografo pieno di appunti", "Coperta invernale", "Abiti comuni", "Borsa da erborista"]
+  gold: 5
+noble:
+  name: Nobile
+  skills: [history, persuasion]
+  tools: ["Un tipo di gioco a scelta"]
+  languages: 1
+  feature:
+    name: Posizione Privilegiata
+    text: "Grazie alla nascita nobile, la gente è incline a pensare il meglio del nobile; è il benvenuto nell'alta società e la gente comune fa del suo meglio per accontentarlo."
+  equipment: ["Abiti pregiati", "Anello con sigillo", "Pergamena di nobiltà"]
+  gold: 25
+outlander:
+  name: Forestiero
+  skills: [athletics, survival]
+  tools: ["Un tipo di strumento musicale a scelta"]
+  languages: 1
+  feature:
+    name: Viandante
+    text: "Il forestiero ha un'ottima memoria per mappe e geografia e riesce sempre a ricordare la disposizione generale dei terreni; trova cibo e acqua per sé e fino a cinque persone al giorno."
+  equipment: ["Bastone", "Trappola da caccia", "Trofeo di un animale ucciso", "Abiti da viaggio"]
+  gold: 10
+sage:
+  name: Saggio
+  skills: [arcana, history]
+  tools: []
+  languages: 2
+  feature:
+    name: Ricercatore
+    text: "Quando il saggio non conosce un'informazione, spesso sa dove e da chi può ottenerla (biblioteca, scriptorium, università o un altro saggio)."
+  equipment: ["Bottiglia di inchiostro nero", "Penna", "Coltellino", "Lettera di un collega defunto con una domanda senza risposta", "Abiti comuni"]
+  gold: 10
+sailor:
+  name: Marinaio
+  skills: [athletics, perception]
+  tools: ["Strumenti da navigatore", "Veicoli (acquatici)"]
+  languages: 0
+  feature:
+    name: Passaggio su Nave
+    text: "Il marinaio può ottenere un passaggio gratuito su una nave per sé e i suoi compagni, in cambio di aiuto a bordo durante il viaggio."
+  equipment: ["Randello", "15 m di corda di seta", "Portafortuna", "Abiti comuni"]
+  gold: 10
+soldier:
+  name: Soldato
+  skills: [athletics, intimidation]
+  tools: ["Un tipo di gioco a scelta", "Veicoli (terrestri)"]
+  languages: 0
+  feature:
+    name: Grado Militare
+    text: "Il soldato ha un grado militare: i soldati fedeli alla sua vecchia organizzazione riconoscono ancora la sua autorità e può ottenere accesso ad accampamenti e fortezze amiche."
+  equipment: ["Insegne del grado", "Trofeo preso da un nemico caduto", "Un set di dadi o carte", "Abiti comuni"]
+  gold: 10
+urchin:
+  name: Monello
+  skills: [sleight_of_hand, stealth]
+  tools: ["Trucchi per il camuffamento", "Arnesi da scasso"]
+  languages: 0
+  feature:
+    name: Segreti della Città
+    text: "Il monello conosce i passaggi segreti della città: fuori dal combattimento, lui e i suoi compagni viaggiano tra due punti della città al doppio della velocità normale."
+  equipment: ["Coltellino", "Mappa della città natale", "Topolino domestico", "Pegno dei genitori", "Abiti comuni"]
+  gold: 10

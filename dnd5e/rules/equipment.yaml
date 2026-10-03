@@ -1,0 +1,124 @@
+# Armi e armature (PHB 2014, cap. 5). Danni in notazione dadi; gittata in metri (normale/lunga).
+# properties: finesse, light, heavy, two_handed, versatile (con danno), thrown, ammunition, reach, loading, special
+weapons:
+  # --- Armi semplici da mischia ---
+  club:          {name: Randello,          category: simple,  type: melee,  damage: 1d4,  damage_type: contundente, properties: [light], weight: 1, cost: "1 ma"}
+  dagger:        {name: Pugnale,           category: simple,  type: melee,  damage: 1d4,  damage_type: perforante,  properties: [finesse, light, thrown], range: "6/18", weight: 0.5, cost: "2 mo"}
+  greatclub:     {name: Randello Pesante,  category: simple,  type: melee,  damage: 1d8,  damage_type: contundente, properties: [two_handed], weight: 5, cost: "2 ma"}
+  handaxe:       {name: Ascia,             category: simple,  type: melee,  damage: 1d6,  damage_type: tagliente,   properties: [light, thrown], range: "6/18", weight: 1, cost: "5 mo"}
+  javelin:       {name: Giavellotto,       category: simple,  type: melee,  damage: 1d6,  damage_type: perforante,  properties: [thrown], range: "9/36", weight: 1, cost: "5 ma"}
+  light_hammer:  {name: Martello Leggero,  category: simple,  type: melee,  damage: 1d4,  damage_type: contundente, properties: [light, thrown], range: "6/18", weight: 1, cost: "2 mo"}
+  mace:          {name: Mazza,             category: simple,  type: melee,  damage: 1d6,  damage_type: contundente, properties: [], weight: 2, cost: "5 mo"}
+  quarterstaff:  {name: Bastone Ferrato,   category: simple,  type: melee,  damage: 1d6,  damage_type: contundente, properties: [versatile], versatile: 1d8, weight: 2, cost: "2 ma"}
+  sickle:        {name: Falcetto,          category: simple,  type: melee,  damage: 1d4,  damage_type: tagliente,   properties: [light], weight: 1, cost: "1 mo"}
+  spear:         {name: Lancia,            category: simple,  type: melee,  damage: 1d6,  damage_type: perforante,  properties: [thrown, versatile], versatile: 1d8, range: "6/18", weight: 1.5, cost: "1 mo"}
+  # --- Armi semplici a distanza ---
+  light_crossbow: {name: Balestra Leggera, category: simple,  type: ranged, damage: 1d8,  damage_type: perforante,  properties: [ammunition, loading, two_handed], range: "24/96", weight: 2.5, cost: "25 mo"}
+  dart:          {name: Dardo,             category: simple,  type: ranged, damage: 1d4,  damage_type: perforante,  properties: [finesse, thrown], range: "6/18", weight: 0.125, cost: "5 mr"}
+  shortbow:      {name: Arco Corto,        category: simple,  type: ranged, damage: 1d6,  damage_type: perforante,  properties: [ammunition, two_handed], range: "24/96", weight: 1, cost: "25 mo"}
+  sling:         {name: Fionda,            category: simple,  type: ranged, damage: 1d4,  damage_type: contundente, properties: [ammunition], range: "9/36", weight: 0, cost: "1 ma"}
+  # --- Armi da guerra da mischia ---
+  battleaxe:     {name: Ascia da Battaglia, category: martial, type: melee, damage: 1d8,  damage_type: tagliente,   properties: [versatile], versatile: 1d10, weight: 2, cost: "10 mo"}
+  flail:         {name: Mazzafrusto,       category: martial, type: melee,  damage: 1d8,  damage_type: contundente, properties: [], weight: 1, cost: "10 mo"}
+  glaive:        {name: Falcione,          category: martial, type: melee,  damage: 1d10, damage_type: tagliente,   properties: [heavy, reach, two_handed], weight: 3, cost: "20 mo"}
+  greataxe:      {name: Ascia Bipenne,     category: martial, type: melee,  damage: 1d12, damage_type: tagliente,   properties: [heavy, two_handed], weight: 3.5, cost: "30 mo"}
+  greatsword:    {name: Spadone,           category: martial, type: melee,  damage: 2d6,  damage_type: tagliente,   properties: [heavy, two_handed], weight: 3, cost: "50 mo"}
+  halberd:       {name: Alabarda,          category: martial, type: melee,  damage: 1d10, damage_type: tagliente,   properties: [heavy, reach, two_handed], weight: 3, cost: "20 mo"}
+  lance:         {name: Lancia da Cavaliere, category: martial, type: melee, damage: 1d12, damage_type: perforante, properties: [reach, special], weight: 3, cost: "10 mo"}
+  longsword:     {name: Spada Lunga,       category: martial, type: melee,  damage: 1d8,  damage_type: tagliente,   properties: [versatile], versatile: 1d10, weight: 1.5, cost: "15 mo"}
+  maul:          {name: Maglio,            category: martial, type: melee,  damage: 2d6,  damage_type: contundente, properties: [heavy, two_handed], weight: 5, cost: "10 mo"}
+  morningstar:   {name: Morning Star,      category: martial, type: melee,  damage: 1d8,  damage_type: perforante,  properties: [], weight: 2, cost: "15 mo"}
+  pike:          {name: Picca,             category: martial, type: melee,  damage: 1d10, damage_type: perforante,  properties: [heavy, reach, two_handed], weight: 9, cost: "5 mo"}
+  rapier:        {name: Stocco,            category: martial, type: melee,  damage: 1d8,  damage_type: perforante,  properties: [finesse], weight: 1, cost: "25 mo"}
+  scimitar:      {name: Scimitarra,        category: martial, type: melee,  damage: 1d6,  damage_type: tagliente,   properties: [finesse, light], weight: 1.5, cost: "25 mo"}
+  shortsword:    {name: Spada Corta,       category: martial, type: melee,  damage: 1d6,  damage_type: perforante,  properties: [finesse, light], weight: 1, cost: "10 mo"}
+  trident:       {name: Tridente,          category: martial, type: melee,  damage: 1d6,  damage_type: perforante,  properties: [thrown, versatile], versatile: 1d8, range: "6/18", weight: 2, cost: "5 mo"}
+  war_pick:      {name: Piccone da Guerra, category: martial, type: melee,  damage: 1d8,  damage_type: perforante,  properties: [], weight: 1, cost: "5 mo"}
+  warhammer:     {name: Martello da Guerra, category: martial, type: melee, damage: 1d8,  damage_type: contundente, properties: [versatile], versatile: 1d10, weight: 1, cost: "15 mo"}
+  whip:          {name: Frusta,            category: martial, type: melee,  damage: 1d4,  damage_type: tagliente,   properties: [finesse, reach], weight: 1.5, cost: "2 mo"}
+  # --- Armi da guerra a distanza ---
+  blowgun:       {name: Cerbottana,        category: martial, type: ranged, damage: "1",  damage_type: perforante,  properties: [ammunition, loading], range: "7,5/30", weight: 0.5, cost: "10 mo"}
+  hand_crossbow: {name: Balestra a Mano,   category: martial, type: ranged, damage: 1d6,  damage_type: perforante,  properties: [ammunition, light, loading], range: "9/36", weight: 1.5, cost: "75 mo"}
+  heavy_crossbow: {name: Balestra Pesante, category: martial, type: ranged, damage: 1d10, damage_type: perforante,  properties: [ammunition, heavy, loading, two_handed], range: "30/120", weight: 9, cost: "50 mo"}
+  longbow:       {name: Arco Lungo,        category: martial, type: ranged, damage: 1d8,  damage_type: perforante,  properties: [ammunition, heavy, two_handed], range: "45/180", weight: 1, cost: "50 mo"}
+  net:           {name: Rete,              category: martial, type: ranged, damage: "—",  damage_type: "",          properties: [special, thrown], range: "1,5/4,5", weight: 1.5, cost: "1 mo"}
+
+armor:
+  # base: CA base. dex: full | max2 | none. stealth_disadvantage. str_req: Forza minima.
+  padded:          {name: Imbottita,          category: light,  base: 11, dex: full, stealth_disadvantage: true,  weight: 4,  cost: "5 mo"}
+  leather:         {name: Cuoio,              category: light,  base: 11, dex: full, stealth_disadvantage: false, weight: 5,  cost: "10 mo"}
+  studded_leather: {name: Cuoio Borchiato,    category: light,  base: 12, dex: full, stealth_disadvantage: false, weight: 6.5, cost: "45 mo"}
+  hide:            {name: Pelle,              category: medium, base: 12, dex: max2, stealth_disadvantage: false, weight: 6,  cost: "10 mo"}
+  chain_shirt:     {name: Giaco di Maglia,    category: medium, base: 13, dex: max2, stealth_disadvantage: false, weight: 10, cost: "50 mo"}
+  scale_mail:      {name: Corazza di Scaglie, category: medium, base: 14, dex: max2, stealth_disadvantage: true,  weight: 22.5, cost: "50 mo"}
+  breastplate:     {name: Corazza di Piastre, category: medium, base: 14, dex: max2, stealth_disadvantage: false, weight: 10, cost: "400 mo"}
+  half_plate:      {name: Mezza Armatura,     category: medium, base: 15, dex: max2, stealth_disadvantage: true,  weight: 20, cost: "750 mo"}
+  ring_mail:       {name: Cotta di Anelli,    category: heavy,  base: 14, dex: none, stealth_disadvantage: true,  weight: 20, cost: "30 mo"}
+  chain_mail:      {name: Cotta di Maglia,    category: heavy,  base: 16, dex: none, stealth_disadvantage: true,  str_req: 13, weight: 27.5, cost: "75 mo"}
+  splint:          {name: Corazza a Strisce,  category: heavy,  base: 17, dex: none, stealth_disadvantage: true,  str_req: 15, weight: 30, cost: "200 mo"}
+  plate:           {name: Armatura Completa,  category: heavy,  base: 18, dex: none, stealth_disadvantage: true,  str_req: 15, weight: 32.5, cost: "1.500 mo"}
+  shield:          {name: Scudo,              category: shield, bonus: 2, weight: 3, cost: "10 mo"}
+
+packs:
+  dungeoneers_pack:
+    name: Dotazione da Esploratore di Sotterranei
+    items: ["Zaino", "Piede di porco", "Martello", "10 pitoni", "10 torce", "Acciarino", "10 giorni di razioni", "Otre", "15 m di corda di canapa"]
+  explorers_pack:
+    name: Dotazione da Esploratore
+    items: ["Zaino", "Sacco a pelo", "Gavetta", "Acciarino", "10 torce", "10 giorni di razioni", "Otre", "15 m di corda di canapa"]
+  burglars_pack:
+    name: Dotazione da Scassinatore
+    items: ["Zaino", "Sacchetto con 1.000 sfere metalliche", "3 m di filo", "Campanella", "5 candele", "Piede di porco", "Martello", "10 pitoni", "Lanterna a cappuccio", "2 fiasche d'olio", "5 giorni di razioni", "Acciarino", "Otre", "15 m di corda di canapa"]
+  priests_pack:
+    name: Dotazione da Sacerdote
+    items: ["Zaino", "Coperta", "10 candele", "Acciarino", "Cassetta delle elemosine", "2 blocchi di incenso", "Incensiere", "Vesti", "2 giorni di razioni", "Otre"]
+  scholars_pack:
+    name: Dotazione da Studioso
+    items: ["Zaino", "Libro di cultura", "Bottiglia di inchiostro", "Penna", "10 fogli di pergamena", "Sacchettino di sabbia", "Coltellino"]
+  entertainers_pack:
+    name: Dotazione da Intrattenitore
+    items: ["Zaino", "Sacco a pelo", "2 costumi", "5 candele", "5 giorni di razioni", "Otre", "Trucchi per il camuffamento"]
+  diplomats_pack:
+    name: Dotazione da Diplomatico
+    items: ["Forziere", "2 astucci per mappe e pergamene", "Abiti pregiati", "Bottiglia di inchiostro", "Penna", "Lampada", "2 fiasche d'olio", "5 fogli di carta", "Fiala di profumo", "Ceralacca", "Sapone"]
+
+fighting_styles:
+  archery:
+    name: Tiro
+    text: "+2 ai tiri per colpire con le armi a distanza."
+    ranged_attack_bonus: 2
+  defense:
+    name: Difesa
+    text: "+1 alla CA quando indossi un'armatura."
+    ac_bonus_armored: 1
+  dueling:
+    name: Duello
+    text: "+2 ai danni quando impugni un'arma da mischia in una mano e nessun'altra arma."
+    dueling_damage_bonus: 2
+  great_weapon_fighting:
+    name: Combattere con Armi Possenti
+    text: "Quando ottieni 1 o 2 a un dado di danno con un'arma da mischia a due mani o versatile usata a due mani, puoi ripetere il tiro (usa il nuovo risultato)."
+  protection:
+    name: Protezione
+    text: "Reazione (con scudo): imponi svantaggio a un attacco contro una creatura entro 1,5 m da te."
+  two_weapon_fighting:
+    name: Combattere con Due Armi
+    text: "Aggiungi il modificatore di caratteristica ai danni del secondo attacco quando combatti con due armi."
+
+wizard_cantrips:
+  acid_splash: {name: Spruzzo Acido, text: "Fino a 2 creature entro 1,5 m l'una dall'altra, a 18 m: TS DES o 1d6 danni da acido."}
+  blade_ward: {name: Barriera di Lame, text: "Resistenza ai danni contundenti, perforanti e taglienti da attacchi con armi fino alla fine del tuo prossimo turno."}
+  chill_touch: {name: Tocco Gelido, text: "Attacco a distanza (36 m): 1d8 danni necrotici, il bersaglio non recupera PF fino al tuo prossimo turno."}
+  dancing_lights: {name: Luci Danzanti, text: "Crei fino a 4 luci fluttuanti (concentrazione, 1 minuto)."}
+  fire_bolt: {name: Dardo di Fuoco, text: "Attacco a distanza (36 m): 1d10 danni da fuoco."}
+  friends: {name: Amici, text: "Vantaggio alle prove di Carisma contro una creatura non ostile per 1 minuto (concentrazione)."}
+  light: {name: Luce, text: "Un oggetto emette luce intensa per 6 m e fioca per altri 6 m, per 1 ora."}
+  mage_hand: {name: Mano Magica, text: "Una mano spettrale manipola oggetti (max 5 kg) entro 9 m per 1 minuto."}
+  mending: {name: Riparare, text: "Ripari una singola rottura o strappo in un oggetto."}
+  message: {name: Messaggio, text: "Sussurri un messaggio a una creatura entro 36 m, che può rispondere."}
+  minor_illusion: {name: Illusione Minore, text: "Crei un suono o un'immagine di un oggetto per 1 minuto."}
+  poison_spray: {name: Spruzzo Velenoso, text: "Una creatura entro 3 m: TS COS o 1d12 danni da veleno."}
+  prestidigitation: {name: Prestidigitazione, text: "Piccoli trucchi magici (accendere/spegnere, pulire, aromatizzare, un piccolo segno)."}
+  ray_of_frost: {name: Raggio di Gelo, text: "Attacco a distanza (18 m): 1d8 danni da freddo e velocità -3 m fino al tuo prossimo turno."}
+  shocking_grasp: {name: Stretta Folgorante, text: "Attacco in mischia (vantaggio contro armature di metallo): 1d8 danni da fulmine, niente reazioni."}
+  true_strike: {name: Colpo Accurato, text: "Vantaggio al primo tiro per colpire contro il bersaglio nel tuo prossimo turno (concentrazione)."}
