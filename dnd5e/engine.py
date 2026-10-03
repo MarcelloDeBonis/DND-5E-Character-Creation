@@ -684,6 +684,7 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
         # incantesimi fuori lista permessi: lista ampliata del patrono, Segreti Magici del bardo
         expanded = {k for lvl, keys in (sub.get("expanded_spells") or {}).items() for k in keys}
         secrets_left = sum(int(f.get("magical_secrets", 0)) for f in cls["features"])
+        arcanum_left = {int(f["arcanum_level"]) for f in cls["features"] if f.get("arcanum_level")}  # Arcanum Mistico del warlock
         for key in _as_list(char.get("spells")):
             sp = lookup(key, cls["name"])
             if sp["level"] is None:
@@ -695,7 +696,10 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
                     secrets_left -= 1
                     sp["source"] = "Segreti Magici"
                 if sp["level"] > max_level:
-                    raise RulesError(f"{sp['name']} è di {sp['level']}° livello ma hai slot solo fino al {max_level}°")
+                    if sp["level"] not in arcanum_left:
+                        raise RulesError(f"{sp['name']} è di {sp['level']}° livello ma hai slot solo fino al {max_level}°")
+                    arcanum_left.discard(sp["level"])
+                    sp["arcanum"] = True
             prepared.append(sp)
         if caster.get("prepared") == "ability_plus_level" and slots:
             prepared_max = max(1, mods[spell_ability] + (level if caster["type"] == "full" else level // 2))
@@ -775,6 +779,7 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
         "prepared": prepared,
         "max_level": max(slots) if slots else 0,
         "mod": mods[spell_ability],
+        "pact": bool(caster and caster.get("type") == "pact"),
     }
 
 

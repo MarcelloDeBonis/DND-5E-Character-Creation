@@ -481,7 +481,8 @@ def how_to_play(s: dict) -> list:
     if sp and sp["slots"]:
         slots = ", ".join(f"{n} di {lvl}° livello" for lvl, n in sp["slots"].items())
         lines.append(f"<b>Magie.</b> I trucchetti sono gratis: li usi quando vuoi. Le altre magie consumano uno <i>slot</i>: ne hai {slots}. "
-                     "Annerisci un cerchietto a pagina 3 quando lo usi; tornano tutti dopo un riposo lungo.")
+                     "Annerisci un cerchietto a pagina 3 quando lo usi; tornano tutti dopo un riposo "
+                     + ("breve o lungo." if sp.get("pact") else "lungo."))
         lines.append("<b>Concentrazione (C).</b> Puoi tenere attiva una sola magia con la C alla volta. Se ti fanno male tira d20 + il tuo "
                      "tiro salvezza su Costituzione: con 10 o più la magia continua.")
         if sp.get("spellbook"):

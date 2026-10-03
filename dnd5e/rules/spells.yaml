@@ -4454,6 +4454,307 @@ spells:
       c''è 1 possibilità su 3 di non poterla usare mai più.'
     tip: Copiare un incantesimo è sicuro; il desiderio libero solo in emergenza.
 
+  # ---- da spells_L5b1.yaml ----
+  insect_plague:
+    name: Piaga di Insetti
+    level: 5
+    lists:
+    - cleric
+    - druid
+    - sorcerer
+    school: evocazione
+    range: 90
+    conc: true
+    ritual: false
+    cast: 1 azione
+    duration: fino a 10 minuti
+    save: con
+    damage: 4d10
+    damage_type: perforante
+    text: 'Riempi di locuste una sfera di 6 m di raggio entro gittata: l''area è leggermente oscurata e terreno difficile. Chi è nell''area quando appare, chi vi entra per la prima volta in un turno o vi
+      termina il turno fa un TS su COS e subisce 4d10 danni perforanti (metà se lo supera); +1d10 per slot superiore.'
+    kid: 'Crei una nuvola di locuste di 6 m di raggio entro 90 m, per 10 minuti. Chi è lì quando appare, ci entra o ci finisce il turno tira Costituzione contro {cd}: 4d10 danni, metà se riesce. Dentro si
+      cammina piano.'
+    tip: Per bloccare un passaggio o tenere lontano un gruppo di nemici.
+  legend_lore:
+    name: Conoscenza delle Leggende
+    level: 5
+    lists:
+    - bard
+    - cleric
+    - wizard
+    school: divinazione
+    range: personale
+    conc: false
+    ritual: false
+    cast: 10 minuti
+    duration: istantanea
+    text: Nomini o descrivi una persona, un luogo o un oggetto famoso e ne apprendi le storie e i segreti più importanti; se non ha fama leggendaria non scopri nulla, e più informazioni hai già, più la risposta
+      è chiara. Consuma incenso da 250 mo e richiede 4 strisce d'avorio da 50 mo ciascuna.
+    kid: 'Ci metti 10 minuti e bruci un incenso da 250 mo. Pensi a una persona, un posto o un oggetto famoso: la magia ti racconta le sue leggende. Più cose sai già, più la risposta è chiara.'
+    tip: Prima di affrontare un artefatto, un mostro o un luogo misterioso.
+  mass_cure_wounds:
+    name: Cura Ferite di Massa
+    level: 5
+    lists:
+    - bard
+    - cleric
+    - druid
+    school: evocazione
+    range: 18
+    conc: false
+    ritual: false
+    cast: 1 azione
+    duration: istantanea
+    text: 'Scegli un punto entro gittata: fino a 6 creature in una sfera di 9 m di raggio attorno a quel punto recuperano ciascuna 3d8 + il tuo modificatore da incantatore punti ferita. Non funziona su non
+      morti e costrutti; +1d8 per slot superiore.'
+    kid: 'Scegli un punto entro 18 m: fino a 6 amici entro 9 m da quel punto recuperano ciascuno 3d8{mod} punti ferita.'
+    tip: Dopo una battaglia dura, quando tutto il gruppo è ferito.
+  mislead:
+    name: Fuorviare
+    level: 5
+    lists:
+    - bard
+    - wizard
+    school: illusione
+    range: personale
+    conc: true
+    ritual: false
+    cast: 1 azione
+    duration: fino a 1 ora
+    text: Diventi invisibile e al tuo posto compare un tuo doppio illusorio; l'invisibilità finisce se attacchi o lanci un incantesimo. Con un'azione muovi il doppio fino al doppio della tua velocità e lo
+      fai parlare o gesticolare; con un'azione bonus passi ai suoi sensi o torni ai tuoi (mentre usi i suoi sei cieco e sordo dove sei tu).
+    kid: Diventi invisibile e lasci al tuo posto una copia finta di te, per 1 ora. Con la tua azione muovi la copia e la fai parlare. Se attacchi o lanci magie torni visibile, ma la copia resta.
+    tip: Per scappare o distrarre i nemici mentre ti sposti di nascosto.
+  modify_memory:
+    name: Modificare Memoria
+    level: 5
+    lists:
+    - bard
+    - wizard
+    school: ammaliamento
+    range: 9
+    conc: true
+    ritual: false
+    cast: 1 azione
+    duration: fino a 1 minuto
+    save: wis
+    text: 'Una creatura fa un TS su SAG (vantaggio se la stai combattendo): se fallisce è affascinata e incapacitata e, parlandole in una lingua che capisce, cambi, cancelli o inventi un suo ricordo di un
+      evento delle ultime 24 ore (max 10 minuti); danni o un altro incantesimo su di lei lo interrompono, e se non avevi finito di descrivere il ricordo non cambia nulla. Con slot di 6°/7°/8°/9° arrivi a
+      7 giorni, 30 giorni, 1 anno o qualsiasi momento passato.'
+    kid: Una creatura entro 9 m tira per resistere (Saggezza contro {cd}). Se fallisce, resta ferma ad ascoltarti per 1 minuto e tu puoi cambiare o cancellare un suo ricordo delle ultime 24 ore.
+    tip: Per far dimenticare a una guardia di averti visto.
+  passwall:
+    name: Passapareti
+    level: 5
+    lists:
+    - wizard
+    school: trasmutazione
+    range: 9
+    conc: false
+    ritual: false
+    cast: 1 azione
+    duration: 1 ora
+    text: In un muro, soffitto o pavimento di legno, gesso o pietra si apre un passaggio largo fino a 1,5 m, alto 2,4 m e profondo 6 m, senza rendere instabile la struttura. Quando sparisce, chi è ancora
+      dentro viene spinto fuori illeso nello spazio libero più vicino all'ingresso.
+    kid: 'Per 1 ora apri un buco in un muro di pietra, legno o gesso entro 9 m: largo 1,5 m, alto 2,4 m e profondo fino a 6 m. Ci passate tutti senza rompere niente!'
+    tip: Per entrare dove le porte sono chiuse o sorvegliate.
+
+  # ---- da spells_L5b2.yaml ----
+  planar_binding:
+    name: Legame Planare
+    level: 5
+    lists:
+    - bard
+    - cleric
+    - druid
+    - wizard
+    school: abiurazione
+    range: 18
+    cast: 1 ora
+    duration: 24 ore
+    save: cha
+    text: 'Per tutta l''ora di lancio un celestiale, un elementale, un folletto o un immondo deve restare entro 18 m (di solito chiuso in un cerchio magico): se fallisce un TS su CAR, per 24 ore esegue i
+      tuoi ordini come meglio può. Consuma un gioiello da 1.000 mo; con slot superiori dura 10 giorni (6°), 30 giorni (7°), 180 giorni (8°) o 1 anno e 1 giorno (9°).'
+    kid: 'Ci vuole 1 ora e una gemma da 1.000 mo. Una creatura di un altro mondo entro 18 m tira per resistere (Carisma contro {cd}): se fallisce, per 24 ore ti obbedisce.'
+    tip: Dopo aver chiuso un elementale o un immondo in un cerchio magico.
+  raise_dead:
+    name: Rianimare Morti
+    level: 5
+    lists:
+    - bard
+    - cleric
+    - paladin
+    school: necromanzia
+    range: contatto
+    cast: 1 ora
+    duration: istantanea
+    text: Una creatura morta da non più di 10 giorni, se la sua anima è libera e lo vuole, torna in vita con 1 PF; elimina veleni e malattie non magici, ma non ridà parti del corpo mancanti (se erano vitali
+      fallisce) e non funziona sui non morti. Consuma un diamante da 500 mo; chi torna ha -4 a tiri per colpire, TS e prove, e la penalità cala di 1 a ogni riposo lungo.
+    kid: 'Ci vuole 1 ora e un diamante da 500 mo. Tocchi un amico morto da meno di 10 giorni: torna in vita con 1 punto ferita. All''inizio è debole (-4 ai tiri), poi migliora di 1 a ogni riposo lungo.'
+    tip: Quando un compagno è caduto da pochi giorni e avete un diamante.
+  rarys_telepathic_bond:
+    name: Legame Telepatico di Rary
+    level: 5
+    lists:
+    - wizard
+    school: divinazione
+    range: 9
+    ritual: true
+    cast: 1 azione
+    duration: 1 ora
+    text: 'Colleghi mentalmente fino a 8 creature consenzienti entro 9 m (non funziona su chi ha Intelligenza 2 o meno): per 1 ora possono parlarsi col pensiero a qualunque distanza, anche senza una lingua
+      comune. Il collegamento vale solo tra chi si trova sullo stesso piano di esistenza.'
+    kid: Colleghi la tua mente a quella di altri 7 amici entro 9 m. Per 1 ora potete parlarvi col pensiero, anche lontanissimi, senza fare nessun rumore.
+    tip: Prima di dividervi in una missione segreta o un'infiltrazione.
+  reincarnate:
+    name: Reincarnazione
+    level: 5
+    lists:
+    - druid
+    school: trasmutazione
+    range: contatto
+    cast: 1 ora
+    duration: istantanea
+    text: Un umanoide morto da non più di 10 giorni (basta anche un suo pezzo), se l'anima è libera e lo vuole, rinasce in un corpo adulto nuovo la cui razza il Master tira a caso con un d100. Conserva ricordi
+      e capacità ma prende i tratti della nuova razza; consuma oli e unguenti rari da 1.000 mo.
+    kid: 'Ci vuole 1 ora e 1.000 mo di oli speciali. Un amico morto da meno di 10 giorni torna in vita in un corpo nuovo: un dado decide se sarà elfo, nano, umano o altro. Ricorda tutto.'
+    tip: Quando il corpo dell'amico è perduto o troppo rovinato.
+  scrying:
+    name: Scrutare
+    level: 5
+    lists:
+    - bard
+    - cleric
+    - druid
+    - warlock
+    - wizard
+    school: divinazione
+    range: personale
+    conc: true
+    cast: 10 minuti
+    duration: fino a 10 minuti
+    save: wis
+    text: 'Vedi e senti attraverso un sensore invisibile che segue una creatura del tuo piano restandole entro 3 m: lei fa un TS su SAG modificato da +5 (la conosci per sentito dire) fino a -15 (la conosci
+      bene e hai un suo capello o unghia) e, se lo supera, per 24 ore non puoi riprovarci. In alternativa scegli un luogo che hai già visto, dove il sensore resta fermo; serve un focus da 1.000 mo come una
+      sfera di cristallo.'
+    kid: Ci metti 10 minuti e poi, per altri 10, vedi e senti una persona lontana. Lei tira per resistere (Saggezza contro {cd}); se la conosci bene o hai un suo capello, le è più difficile.
+    tip: Per spiare il cattivo prima di entrare nel suo covo.
+  seeming:
+    name: Sembianza
+    level: 5
+    lists:
+    - bard
+    - sorcerer
+    - wizard
+    school: illusione
+    range: 9
+    cast: 1 azione
+    duration: 8 ore
+    save: cha
+    text: 'Dai a quante creature vuoi che puoi vedere entro 9 m un aspetto illusorio diverso, equipaggiamento compreso: fino a 30 cm più alte o più basse, più magre o più robuste, ma con la stessa forma del
+      corpo; chi non vuole può evitarlo con un TS su CAR. L''illusione non regge al tatto, una prova di Intelligenza (Indagare) contro la tua CD la svela e puoi scioglierla con un''azione.'
+    kid: 'Per 8 ore tu e i tuoi amici entro 9 m sembrate altre persone: altri vestiti, altre facce, fino a 30 cm più alti o più bassi. Ma se qualcuno vi tocca, capisce il trucco.'
+    tip: Per entrare in un castello travestiti da guardie o servitori.
+
+  # ---- da spells_L5b3.yaml ----
+  swift_quiver:
+    name: Faretra Rapida
+    level: 5
+    lists:
+    - ranger
+    school: trasmutazione
+    range: contatto
+    conc: true
+    cast: 1 azione bonus
+    duration: fino a 1 minuto
+    text: 'Tocchi la tua faretra (con almeno un proiettile dentro): per la durata ogni munizione che ne prendi si rigenera e, in ognuno dei tuoi turni, con un''azione bonus puoi fare 2 attacchi con un''arma
+      che usa quelle munizioni. Le munizioni create si dissolvono alla fine e l''incantesimo termina se la faretra non è più in tuo possesso.'
+    kid: Per 1 minuto la tua faretra non si svuota mai. Dal turno dopo, ogni turno con l'azione bonus tiri 2 frecce in più, oltre al tuo attacco normale!
+    tip: 'Lancialo all''inizio di una lotta lunga: poi 2 frecce extra ogni turno.'
+  telekinesis:
+    name: Telecinesi
+    level: 5
+    lists:
+    - sorcerer
+    - wizard
+    school: trasmutazione
+    range: 18
+    conc: true
+    cast: 1 azione
+    duration: fino a 10 minuti
+    text: 'Quando lo lanci e poi con un''azione a ogni turno sposti fino a 9 m (sempre entro 18 m) un oggetto fino a circa 500 kg, oppure una creatura Enorme o più piccola se vinci una prova con la tua caratteristica
+      da incantatore contro la sua prova di FOR: la creatura resta trattenuta (sospesa, se l''hai sollevata) fino alla fine del tuo turno successivo. Per strappare un oggetto indossato o tenuto da qualcuno
+      serve la stessa prova contrapposta, e un oggetto libero puoi anche manovrarlo con precisione come se lo tenessi in mano.'
+    kid: 'Per 10 minuti muovi le cose con la mente, entro 18 m. Ogni turno sposti di 9 m un oggetto fino a 500 kg, oppure una creatura: tiri d20{mod} contro la sua Forza e, se vinci, la tieni bloccata.'
+    tip: Per sollevare in aria un nemico o spostare massi e porte pesanti.
+  teleportation_circle:
+    name: Cerchio di Teletrasporto
+    level: 5
+    lists:
+    - bard
+    - sorcerer
+    - wizard
+    school: evocazione
+    range: 3
+    cast: 1 minuto
+    duration: 1 round
+    text: 'Con gessi e inchiostri da 50 mo (consumati) tracci a terra un cerchio di 3 m di diametro collegato a un cerchio di teletrasporto permanente dello stesso piano di cui conosci la sequenza di sigilli:
+      fino alla fine del tuo turno successivo, chi entra nel portale ricompare entro 1,5 m dal cerchio di arrivo. Quando impari l''incantesimo conosci 2 sequenze, e lanciandolo nello stesso punto ogni giorno
+      per un anno rendi permanente il cerchio.'
+    kid: 'In 1 minuto disegni per terra un cerchio magico largo 3 m (con gessi da 50 mo). Si apre un portale: chi ci entra prima del tuo prossimo turno arriva subito a un altro cerchio magico che conosci,
+      anche lontanissimo.'
+    tip: Per tornare in un istante a casa o in una grande città.
+  tree_stride:
+    name: Traslazione Arborea
+    level: 5
+    lists:
+    - druid
+    - ranger
+    school: evocazione
+    range: personale
+    conc: true
+    cast: 1 azione
+    duration: fino a 1 minuto
+    text: Una volta per round, spendendo 1,5 m di movimento entri in un albero vivo grande almeno quanto te ed esci da un altro albero vivo della stessa specie entro 150 m (sai dove sono tutti), comparendo
+      entro 1,5 m da esso con altri 1,5 m di movimento. Devi finire ogni turno fuori da un albero; se non hai più movimento, ricompari accanto all'albero in cui sei entrato.
+    kid: Per 1 minuto puoi entrare in un albero e uscire da un altro albero dello stesso tipo, fino a 150 m più in là! Una volta per turno, ma alla fine del turno devi essere fuori.
+    tip: Nei boschi, per fuggire, inseguire o sbucare alle spalle dei nemici.
+  wall_of_force:
+    name: Muro di Forza
+    level: 5
+    lists:
+    - wizard
+    school: invocazione
+    range: 36
+    conc: true
+    cast: 1 azione
+    duration: fino a 10 minuti
+    text: 'Crei un muro invisibile di forza, sospeso o appoggiato, a forma di cupola o sfera fino a 3 m di raggio oppure di 10 pannelli contigui da 3 x 3 m in qualsiasi orientamento: niente può attraversarlo
+      fisicamente e chi si trova nel suo spazio viene spinto da un lato a tua scelta. È immune a tutti i danni e a Dissolvi Magie, blocca anche chi viaggia nel Piano Etereo e solo Disintegrazione lo distrugge
+      all''istante.'
+    kid: 'Per 10 minuti crei un muro invisibile entro 36 m: niente lo attraversa e non si rompe. Può essere dritto o una bolla larga fino a 6 m, anche per chiuderci dentro un nemico!'
+    tip: Per dividere i nemici o chiudere il più pericoloso in una bolla.
+  wall_of_stone:
+    name: Muro di Pietra
+    level: 5
+    lists:
+    - druid
+    - sorcerer
+    - wizard
+    school: invocazione
+    range: 36
+    conc: true
+    cast: 1 azione
+    duration: fino a 10 minuti
+    save: dex
+    text: Fai comparire, saldato a roccia esistente, un muro di pietra non magica di 10 pannelli contigui da 3 x 3 m spessi 15 cm (o da 3 x 6 m spessi 7,5 cm), di forma libera anche come ponte o scala; ogni
+      pannello ha CA 15 e 30 PF ogni 2,5 cm di spessore. Chi è nel suo spazio viene spinto di lato e, se resterebbe chiuso da ogni parte, con un TS su DES riuscito esce usando la reazione; se mantieni la
+      concentrazione per tutti i 10 minuti il muro diventa permanente.
+    kid: Fai apparire un muro di pietra vera entro 36 m, lungo fino a 30 m. Chi rischia di restarci chiuso dentro tira un d20 per scappare (tiro salvezza su Destrezza contro {cd}). Dopo 10 minuti di concentrazione
+      resta per sempre!
+    tip: Per bloccare un passaggio, intrappolare nemici o costruire un ponte.
+
   # ---- da spells_L5a.yaml ----
   animate_objects:
     name: Animare Oggetti
@@ -4470,8 +4771,8 @@ spells:
     text: 'Animi fino a 10 oggetti non magici non indossati né trasportati entro gittata (un oggetto Medio conta 2, Grande 4, Enorme 8): diventano costrutti alleati con velocità 9 m e statistiche in base
       alla taglia (Minuscolo: 20 PF, CA 18, +8 per colpire, 1d4+4 danni; Piccolo: 25 PF, CA 16, +6, 1d8+2; Medio: 40 PF, CA 13, +5, 2d6+1; Grande: 50 PF, CA 10, +6, 2d10+2; Enorme: 80 PF, CA 10, +8, 2d12+4).
       Con un''azione bonus dai lo stesso ordine mentale a quelli entro 150 m; a 0 PF tornano oggetti e i danni in eccesso passano all''oggetto. +2 oggetti per slot superiore.'
-    kid: 'Fino a 10 oggetti piccoli entro 36 m prendono vita per 1 minuto e combattono per te. Ogni turno, con un''azione bonus, dai loro un ordine: ognuno tira d20+8 e, se arriva alla CA del nemico, fa 1d4+4
-      danni.'
+    kid: 'Fino a 10 oggetti minuscoli entro 36 m prendono vita per 1 minuto e combattono per te. Ogni turno, con un''azione bonus, dai loro un ordine: ognuno tira d20+8 e, se arriva alla CA del nemico, fa
+      1d4+4 danni.'
     tip: 'Nelle lotte lunghe, se intorno ci sono tanti oggetti: sassi, sedie, pugnali.'
   antilife_shell:
     name: Guscio Anti-Vita
@@ -4485,7 +4786,7 @@ spells:
     duration: fino a 1 ora
     text: 'Una barriera scintillante di 3 m di raggio centrata su di te si muove con te: le creature che non sono non morti o costrutti non possono attraversarla né allungarsi attraverso di essa, ma possono
       lanciare incantesimi e fare attacchi a distanza o con armi con portata attraverso la barriera. Se ti muovi in modo da costringere una di queste creature ad attraversarla, l''incantesimo termina.'
-    kid: 'Una barriera invisibile ti circonda per 3 m, per 1 ora: le creature viventi (non i non morti e i costrutti) non possono entrare né colpirti da vicino. Frecce e magie però passano. Se spingi la barriera
+    kid: 'Una barriera luccicante ti circonda per 3 m, per 1 ora: le creature viventi (non i non morti e i costrutti) non possono entrare né colpirti da vicino. Frecce e magie però passano. Se spingi la barriera
       contro un nemico, sparisce.'
     tip: Quando tanti nemici in carne e ossa vogliono colpirti da vicino.
   awaken:
@@ -4945,8 +5246,8 @@ spells:
     save: con
     damage: 8d6
     damage_type: necrotico
-    text: 'Una sfera di energia negativa di 18 m di raggio si espande da un punto entro 45 m: ogni creatura nell''area fa un TS su COS e subisce 8d6 danni necrotici (metà se supera). +2d6 per slot superiore.
-      Componente: polvere di una perla nera frantumata da almeno 500 mo.'
+    text: 'Ogni creatura in una sfera di 18 m di raggio centrata su un punto entro 45 m fa un TS su COS e subisce 8d6 danni necrotici (metà se supera). +2d6 per slot superiore. Componente: polvere di una
+      perla nera frantumata da almeno 500 mo.'
     kid: 'Un''onda di energia oscura riempie un cerchio enorme (18 m di raggio) entro 45 m. Ognuno lì dentro tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): 8d6 danni, metà se riesce.
       Attenzione agli amici!'
     tip: Contro tanti nemici lontani dagli amici. Serve una perla nera da 500 mo.
@@ -5008,8 +5309,8 @@ spells:
     save: dex
     damage: 10d6+40
     damage_type: forza
-    text: 'Un sottile raggio verde colpisce una creatura, un oggetto o una creazione di forza magica entro 18 m. Una creatura fa un TS su DES: se fallisce subisce 10d6+40 danni da forza (nessun danno se supera)
-      e, se scende a 0 PF, è ridotta in polvere (solo resurrezione pura o desiderio la riportano in vita). Un oggetto non magico Grande o più piccolo, o una creazione di forza (come un muro di forza), è disintegrato
+    text: 'Colpisci con un raggio una creatura, un oggetto o una creazione di forza magica entro 18 m. Una creatura fa un TS su DES: se fallisce subisce 10d6+40 danni da forza (nessun danno se supera) e,
+      se scende a 0 PF, è ridotta in polvere (solo resurrezione pura o desiderio la riportano in vita). Un oggetto non magico Grande o più piccolo, o una creazione di forza (come un muro di forza), è disintegrato
       senza TS; se è Enorme o più grande, solo una porzione cubica di 3 m. +3d6 per slot superiore.'
     kid: 'Un raggio verde colpisce un nemico entro 18 m. Lui tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): se fallisce subisce 10d6+40 danni, se riesce niente. A 0 punti ferita diventa
       polvere!'
@@ -5043,9 +5344,9 @@ spells:
     cast: 1 azione
     duration: fino a 1 minuto
     save: wis
-    text: 'I tuoi occhi diventano pozzi neri. Una creatura che vedi entro 18 m fa un TS su SAG; se fallisce subisce un effetto a tua scelta: Addormentato (privo di sensi finché non subisce danni o qualcuno
-      usa un''azione per svegliarlo); Panico (spaventato da te, a ogni suo turno deve Scattare e allontanarsi; finisce se arriva ad almeno 18 m da te e non ti vede); Nauseato (svantaggio ai tiri per colpire
-      e alle prove di caratteristica; ripete il TS alla fine di ogni suo turno). A ogni tuo turno puoi usare l''azione per bersagliare un''altra creatura, ma non una che ha già superato il TS.'
+    text: 'Per la durata, una creatura che vedi entro 18 m fa un TS su SAG e, se fallisce, subisce un effetto a tua scelta: Addormentato (privo di sensi finché non subisce danni o qualcuno usa un''azione
+      per svegliarlo), Panico (spaventato da te, a ogni suo turno deve Scattare e allontanarsi; finisce se arriva ad almeno 18 m da te e non ti vede) o Nauseato (svantaggio ai tiri per colpire e alle prove
+      di caratteristica; ripete il TS alla fine di ogni suo turno). A ogni tuo turno puoi usare l''azione per bersagliare un''altra creatura, ma non una che ha già superato il TS.'
     kid: 'Per 1 minuto, a ogni turno fissi un nemico entro 18 m: tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}). Se fallisce scegli tu: si addormenta, scappa via spaventato, oppure si sente
       male e sbaglia di più.'
     tip: 'Contro più nemici, uno per turno: addormentali o falli scappare.'

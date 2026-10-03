@@ -38,6 +38,11 @@ def merge_class(src: Path, data: dict) -> str:
 def merge_spells(src: Path, data: dict) -> str:
     target = RULES / "spells.yaml"
     text = target.read_text(encoding="utf-8")
+    marker = f"\n\n  # ---- da {src.name} ----\n"
+    if marker in text:  # file già unito: sostituisco il suo blocco con la versione nuova (es. dopo una verifica)
+        start = text.index(marker)
+        nxt = text.find("\n\n  # ---- da ", start + len(marker))
+        text = text[:start] + (text[nxt:] if nxt != -1 else "\n")
     existing = yaml.safe_load(text)["spells"]
     new = {k: v for k, v in data.items() if k not in existing}
     if not new:
