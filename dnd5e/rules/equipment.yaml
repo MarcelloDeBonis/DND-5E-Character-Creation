@@ -49,14 +49,14 @@ armor:
   leather:         {name: Cuoio,              category: light,  base: 11, dex: full, stealth_disadvantage: false, weight: 5,  cost: "10 mo"}
   studded_leather: {name: Cuoio Borchiato,    category: light,  base: 12, dex: full, stealth_disadvantage: false, weight: 6.5, cost: "45 mo"}
   hide:            {name: Pelle,              category: medium, base: 12, dex: max2, stealth_disadvantage: false, weight: 6,  cost: "10 mo"}
-  chain_shirt:     {name: Giaco di Maglia,    category: medium, base: 13, dex: max2, stealth_disadvantage: false, weight: 10, cost: "50 mo"}
-  scale_mail:      {name: Corazza di Scaglie, category: medium, base: 14, dex: max2, stealth_disadvantage: true,  weight: 22.5, cost: "50 mo"}
-  breastplate:     {name: Corazza di Piastre, category: medium, base: 14, dex: max2, stealth_disadvantage: false, weight: 10, cost: "400 mo"}
-  half_plate:      {name: Mezza Armatura,     category: medium, base: 15, dex: max2, stealth_disadvantage: true,  weight: 20, cost: "750 mo"}
-  ring_mail:       {name: Cotta di Anelli,    category: heavy,  base: 14, dex: none, stealth_disadvantage: true,  weight: 20, cost: "30 mo"}
-  chain_mail:      {name: Cotta di Maglia,    category: heavy,  base: 16, dex: none, stealth_disadvantage: true,  str_req: 13, weight: 27.5, cost: "75 mo"}
-  splint:          {name: Corazza a Strisce,  category: heavy,  base: 17, dex: none, stealth_disadvantage: true,  str_req: 15, weight: 30, cost: "200 mo"}
-  plate:           {name: Armatura Completa,  category: heavy,  base: 18, dex: none, stealth_disadvantage: true,  str_req: 15, weight: 32.5, cost: "1.500 mo"}
+  chain_shirt:     {name: Giaco di Maglia,    category: medium, base: 13, dex: max2, stealth_disadvantage: false, weight: 10, cost: "50 mo", metal: true}
+  scale_mail:      {name: Corazza di Scaglie, category: medium, base: 14, dex: max2, stealth_disadvantage: true,  weight: 22.5, cost: "50 mo", metal: true}
+  breastplate:     {name: Corazza di Piastre, category: medium, base: 14, dex: max2, stealth_disadvantage: false, weight: 10, cost: "400 mo", metal: true}
+  half_plate:      {name: Mezza Armatura,     category: medium, base: 15, dex: max2, stealth_disadvantage: true,  weight: 20, cost: "750 mo", metal: true}
+  ring_mail:       {name: Cotta di Anelli,    category: heavy,  base: 14, dex: none, stealth_disadvantage: true,  weight: 20, cost: "30 mo", metal: true}
+  chain_mail:      {name: Cotta di Maglia,    category: heavy,  base: 16, dex: none, stealth_disadvantage: true,  str_req: 13, weight: 27.5, cost: "75 mo", metal: true}
+  splint:          {name: Corazza a Strisce,  category: heavy,  base: 17, dex: none, stealth_disadvantage: true,  str_req: 15, weight: 30, cost: "200 mo", metal: true}
+  plate:           {name: Armatura Completa,  category: heavy,  base: 18, dex: none, stealth_disadvantage: true,  str_req: 15, weight: 32.5, cost: "1.500 mo", metal: true}
   shield:          {name: Scudo,              category: shield, bonus: 2, weight: 3, cost: "10 mo"}
 
 packs:
@@ -104,21 +104,3 @@ fighting_styles:
   two_weapon_fighting:
     name: Combattere con Due Armi
     text: "Aggiungi il modificatore di caratteristica ai danni del secondo attacco quando combatti con due armi."
-
-wizard_cantrips:
-  acid_splash: {name: Spruzzo Acido, text: "Fino a 2 creature entro 1,5 m l'una dall'altra, a 18 m: TS DES o 1d6 danni da acido."}
-  blade_ward: {name: Barriera di Lame, text: "Resistenza ai danni contundenti, perforanti e taglienti da attacchi con armi fino alla fine del tuo prossimo turno."}
-  chill_touch: {name: Tocco Gelido, text: "Attacco a distanza (36 m): 1d8 danni necrotici, il bersaglio non recupera PF fino al tuo prossimo turno."}
-  dancing_lights: {name: Luci Danzanti, text: "Crei fino a 4 luci fluttuanti (concentrazione, 1 minuto)."}
-  fire_bolt: {name: Dardo di Fuoco, text: "Attacco a distanza (36 m): 1d10 danni da fuoco."}
-  friends: {name: Amici, text: "Vantaggio alle prove di Carisma contro una creatura non ostile per 1 minuto (concentrazione)."}
-  light: {name: Luce, text: "Un oggetto emette luce intensa per 6 m e fioca per altri 6 m, per 1 ora."}
-  mage_hand: {name: Mano Magica, text: "Una mano spettrale manipola oggetti (max 5 kg) entro 9 m per 1 minuto."}
-  mending: {name: Riparare, text: "Ripari una singola rottura o strappo in un oggetto."}
-  message: {name: Messaggio, text: "Sussurri un messaggio a una creatura entro 36 m, che può rispondere."}
-  minor_illusion: {name: Illusione Minore, text: "Crei un suono o un'immagine di un oggetto per 1 minuto."}
-  poison_spray: {name: Spruzzo Velenoso, text: "Una creatura entro 3 m: TS COS o 1d12 danni da veleno."}
-  prestidigitation: {name: Prestidigitazione, text: "Piccoli trucchi magici (accendere/spegnere, pulire, aromatizzare, un piccolo segno)."}
-  ray_of_frost: {name: Raggio di Gelo, text: "Attacco a distanza (18 m): 1d8 danni da freddo e velocità -3 m fino al tuo prossimo turno."}
-  shocking_grasp: {name: Stretta Folgorante, text: "Attacco in mischia (vantaggio contro armature di metallo): 1d8 danni da fulmine, niente reazioni."}
-  true_strike: {name: Colpo Accurato, text: "Vantaggio al primo tiro per colpire contro il bersaglio nel tuo prossimo turno (concentrazione)."}

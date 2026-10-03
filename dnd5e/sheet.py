@@ -19,7 +19,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
 from reportlab.platypus import Frame, KeepInFrame, Paragraph
 
-from .engine import ABILITIES, fmt_mod
+from .engine import ABILITIES, fmt_cr, fmt_mod
 
 TEMPLATES_DIR = Path(__file__).resolve().parent.parent / "templates"
 
@@ -187,8 +187,17 @@ class SheetRenderer:
                 atk.append(f"<i>{esc(w['name'])}</i>: {esc(det)}")
         if s["maneuvers"]:
             atk.append("<b>Manovre</b> (dadi di superiorità): " + esc(", ".join(m["name"] for m in s["maneuvers"])))
-        for cn in s["cantrips"]:
-            atk.append(f"<b>{esc(cn['name'])}</b> (trucchetto): {esc(cn.get('text', ''))}")
+        sp = s["spellcasting"]
+        if sp:
+            for at in sp["spell_attacks"]:
+                atk.append(f"<b>{esc(at['name'])}</b> {esc(at['attack_str'])}, {esc(at['damage'])}" + (f" (gittata {esc(at['range'])} m)" if at.get("range") else ""))
+            atk.append(f"<b>Incantesimi:</b> {esc(sp['ability_name'])}, CD {sp['save_dc']}, attacco {esc(fmt_mod(sp['attack_bonus']))}"
+                       + (", slot " + ", ".join(f"{n}×{lvl}°" for lvl, n in sp["slots"].items()) if sp["slots"] else "") + ". Vedi pagina 3.")
+        ws = s["wild_shape"]
+        if ws:
+            top = [b["name"] for b in ws["forms"] if b["cr"] == ws["max_cr"]][:6]
+            atk.append(f"<b>Forma Selvatica</b> (GS max {esc(ws['max_cr_str'])}, {ws['uses']} usi, {ws['duration_hours']} h): "
+                       + esc(", ".join(top)) + "... (tabella completa in appendice)")
         if s["attacks_notes"]:
             atk += [esc(x) for x in s["attacks_notes"].split("\n")]
         self.box(c, "attacks_spellcasting", atk, size=7.5)
@@ -233,10 +242,14 @@ class SheetRenderer:
         for m in s["maneuvers"]:
             feats.append(f"<b>Manovra: {esc(m['name'])}.</b> {esc(m['text'])}")
         for cn in s["cantrips"]:
-            feats.append(f"<b>Trucchetto: {esc(cn['name'])}.</b> {esc(cn.get('text', ''))}")
+            feats.append(f"<b>Trucchetto: {esc(cn['name'])}</b> ({esc(cn['source'])}). {esc(cn.get('text', ''))}")
+        ws = s["wild_shape"]
+        if ws:
+            feats.append(f"<b>Forma Selvatica.</b> GS massimo {esc(ws['max_cr_str'])}, volo {'sì' if ws['fly'] else 'no'}, nuoto {'sì' if ws['swim'] else 'no'}; "
+                         f"{ws['uses']} usi per riposo breve o lungo, durata {ws['duration_hours']} ora/e. Forme: " + esc(", ".join(b["name"] for b in ws["forms"])) + ".")
         if s["extra_features"]:
             feats += [esc(x) for x in s["extra_features"].split("\n")]
-        feats.append("<i>Le descrizioni complete di tutti i tratti razziali e dei privilegi di classe sono nella pagina di appendice.</i>")
+        feats.append("<i>Le descrizioni complete di tratti, privilegi, incantesimi e forme animali sono nelle pagine di appendice.</i>")
         self.box(c, "additional_features", feats, size=8)
         self.box(c, "treasure", esc(s["treasure"]), size=8.5)
 
@@ -244,12 +257,27 @@ class SheetRenderer:
         sp = s["spellcasting"]
         if not sp:
             return
-        self.text(c, "spellcasting_class", f"{s['race']['name']} / {s['class']['name']}", size=12, font="Serif-Bold")
+        title = s["class"]["name"] if sp["class_caster"] else s["race"]["name"]
+        self.text(c, "spellcasting_class", title, size=12, font="Serif-Bold")
         self.text(c, "spellcasting_ability", sp["ability_name"], size=9)
         self.text(c, "spell_save_dc", str(sp["save_dc"]), size=14, font="Sans-Bold")
         self.text(c, "spell_attack_bonus", fmt_mod(sp["attack_bonus"]), size=14, font="Sans-Bold")
-        for i, cn in enumerate(s["cantrips"][:8], start=1):
-            self.text(c, f"cantrip_{i}", cn["name"], size=9)
+        for i, cn in enumerate(sp["cantrips"][:8], start=1):
+            self.text(c, f"cantrip_{i}", cn["name"] + ("" if cn["source"] == s["class"]["name"] else f" ({cn['source']})"), size=8.5)
+        for lvl in range(1, 10):
+            n = sp["slots"].get(lvl)
+            if n:
+                self.text(c, f"slots_total_{lvl}", str(n), size=12, font="Sans-Bold")
+            spells = sp["spells_by_level"].get(lvl, [])
+            for i, spell in enumerate(spells, start=1):
+                if f"spell_{lvl}_{i}" not in self.fields:
+                    break
+                label = spell["name"] + (" (C)" if spell.get("conc") else "") + (" (R)" if spell.get("ritual") else "")
+                if spell.get("always_prepared"):
+                    label += " [circolo]"
+                self.text(c, f"spell_{lvl}_{i}", label, size=8)
+                if f"spell_{lvl}_{i}_prep" in self.fields and (sp["prepares"] or spell.get("always_prepared")):
+                    self.check(c, f"spell_{lvl}_{i}_prep", True)
 
     # ------------------------------------------------------------------ appendix
     def appendix_pdf(self, s: dict) -> bytes:
@@ -268,7 +296,7 @@ class SheetRenderer:
             c.setFont(FONTS["Serif-Bold"], 15)
             c.drawString(margin, H - 50, title)
             c.setFont(FONTS["Sans"], 8)
-            c.drawString(margin, H - 62, "Appendice: descrizioni complete di tratti razziali, privilegi di classe, manovre e trucchetti")
+            c.drawString(margin, H - 62, "Appendice: descrizioni complete di tratti razziali, privilegi di classe, manovre, incantesimi e forme animali")
             c.setLineWidth(0.8)
             c.line(margin, H - 68, W - margin, H - 68)
             c.setFont(FONTS["Sans"], 7)
@@ -294,11 +322,56 @@ class SheetRenderer:
         section(f"Privilegi di classe: {s['class_level']}" + (f", {s['subclass_name']}" if s["subclass_name"] else ""), class_items)
         section("Stile di combattimento", [(f["name"].split(": ", 1)[-1], f["text"]) for f in s["fighting_styles"]])
         section("Manovre", [(m["name"], m["text"]) for m in s["maneuvers"]])
-        section("Trucchetti", [(cn["name"], cn.get("text", "")) for cn in s["cantrips"]])
         if s["background_feature"]:
             section(f"Privilegio del background: {s['background']['name']}", [(s["background_feature"]["name"].replace(" (background)", ""), s["background_feature"]["text"])])
+        sp = s["spellcasting"]
+        if sp:
+            head = f"Incantesimi ({sp['ability_name']}, CD {sp['save_dc']}, attacco {fmt_mod(sp['attack_bonus'])}"
+            if sp["slots"]:
+                head += "; slot: " + ", ".join(f"{n} di {lvl}°" for lvl, n in sp["slots"].items())
+            head += ")"
+            items = [(f"{c['name']} (trucchetto, {c['source']})", c.get("text", "")) for c in sp["cantrips"]]
+            for lvl in sorted(sp["spells_by_level"]):
+                for spell in sp["spells_by_level"][lvl]:
+                    tags = [f"{lvl}° livello"]
+                    if spell.get("conc"):
+                        tags.append("concentrazione")
+                    if spell.get("ritual"):
+                        tags.append("rituale")
+                    if spell.get("range"):
+                        tags.append(f"gittata {spell['range']}" + (" m" if str(spell["range"])[0].isdigit() else ""))
+                    if spell.get("always_prepared"):
+                        tags.append(f"sempre preparato, {spell['source']}")
+                    items.append((f"{spell['name']} ({', '.join(tags)})", spell.get("text", "")))
+            section(head, items)
         if s["extra_features"]:
             section("Altro", [("Note", s["extra_features"])])
+        ws = s["wild_shape"]
+        if ws:
+            from reportlab.platypus import FrameBreak, NextPageTemplate, PageBreak, Table, TableStyle
+            from reportlab.lib import colors
+            one = PageTemplate(id="one", frames=[Frame(margin, 40, W - 2 * margin, H - 110, id="f", leftPadding=0, rightPadding=0, topPadding=0, bottomPadding=0)], onPage=header)
+            doc.addPageTemplates([one])
+            story += [NextPageTemplate("one"), PageBreak()]
+            story.append(Paragraph(esc(f"Forma Selvatica: forme disponibili al livello {s['level']} (GS massimo {ws['max_cr_str']}, volo {'sì' if ws['fly'] else 'no'}, nuoto {'sì' if ws['swim'] else 'no'})"), h_style))
+            story.append(Paragraph(esc(f"{ws['uses']} usi per riposo breve o lungo; durata {ws['duration_hours']} ora/e. In forma di bestia usi le statistiche della bestia (CA, PF, velocità, attacchi, sensi), mantieni INT, SAG, CAR, allineamento e competenze nei TS e nelle abilità (usando il bonus migliore)."), b_style))
+            cell = ParagraphStyle("cell", fontName=FONTS["Serif"], fontSize=6.4, leading=7.4)
+            cellb = ParagraphStyle("cellb", fontName=FONTS["Serif-Bold"], fontSize=6.4, leading=7.4)
+            rows = [[Paragraph(h, cellb) for h in ["Bestia", "GS", "Taglia", "CA", "PF", "Velocità", "Attacchi", "Tratti"]]]
+            for b in ws["forms"]:
+                spd = ", ".join(f"{v:g} m" if k == "walk" else f"{ {'climb': 'scalata', 'burrow': 'scavo', 'fly': 'volo', 'swim': 'nuoto'}.get(k, k)} {v:g} m" for k, v in b["speed"].items())
+                rows.append([Paragraph(esc(b["name"]), cellb), Paragraph(fmt_cr(b["cr"]), cell), Paragraph(esc(b["size"]), cell), Paragraph(str(b["ac"]), cell), Paragraph(str(b["hp"]), cell),
+                             Paragraph(esc(spd), cell), Paragraph(esc(b["attacks"]), cell), Paragraph(esc(b.get("traits", "")), cell)])
+            tw = W - 2 * margin
+            table = Table(rows, colWidths=[tw * 0.14, tw * 0.05, tw * 0.08, tw * 0.05, tw * 0.05, tw * 0.13, tw * 0.28, tw * 0.22], repeatRows=1)
+            table.setStyle(TableStyle([
+                ("GRID", (0, 0), (-1, -1), 0.3, colors.grey),
+                ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#e6e6e6")),
+                ("VALIGN", (0, 0), (-1, -1), "TOP"),
+                ("LEFTPADDING", (0, 0), (-1, -1), 2), ("RIGHTPADDING", (0, 0), (-1, -1), 2),
+                ("TOPPADDING", (0, 0), (-1, -1), 1), ("BOTTOMPADDING", (0, 0), (-1, -1), 1),
+            ]))
+            story.append(table)
         doc.build(story)
         return buf.getvalue()
 

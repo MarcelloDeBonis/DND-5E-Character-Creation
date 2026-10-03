@@ -243,22 +243,142 @@ druid:
   hit_die: 8
   saves: [int, wis]
   armor: [light, medium, shields]
-  armor_note: "non di metallo"
+  no_metal_armor: true
   weapons: [club, dagger, dart, javelin, mace, quarterstaff, scimitar, sickle, sling, spear]
   tools: ["Borsa da erborista"]
   skill_choices: {count: 2, from: [arcana, animal_handling, insight, medicine, nature, perception, religion, survival]}
-  spellcasting: {ability: wis, type: full}
+  starting_equipment:
+    - choice: ["Uno scudo di legno", "Un'arma semplice qualsiasi"]
+    - choice: ["Una scimitarra", "Un'arma semplice da mischia qualsiasi"]
+    - fixed: ["Armatura di cuoio", "Dotazione da esploratore", "Focus druidico"]
+  spellcasting: {ability: wis, type: full, prepared: ability_plus_level, list: druid, ritual: true, focus: "focus druidico"}
   subclass_level: 2
   subclass_label: Circolo Druidico
   asi_levels: [4, 8, 12, 16, 19]
+  # Forma Selvatica: limiti per livello (GS massimo, volo, nuoto). Il Circolo della Luna li sostituisce (vedi sotto).
+  wild_shape:
+    2: {cr: 0.25, fly: false, swim: false, uses: 2}
+    4: {cr: 0.5, fly: false, swim: true, uses: 2}
+    8: {cr: 1, fly: true, swim: true, uses: 2}
   features:
     1:
-      - {name: Druidico, short: "Conosci il linguaggio segreto dei druidi.", text: "Il druido conosce il Druidico, il linguaggio segreto dei druidi."}
-      - {name: Incantesimi, short: "Incantatore completo (Saggezza), prepara gli incantesimi.", text: "Il druido lancia incantesimi usando la Saggezza come caratteristica da incantatore."}
+      - name: Druidico
+        short: "Conosci il Druidico, linguaggio segreto dei druidi; messaggi nascosti riconoscibili solo da chi lo conosce."
+        text: "Il druido conosce il Druidico, il linguaggio segreto dei druidi. Può parlarlo e usarlo per lasciare messaggi nascosti: chi conosce il Druidico li individua automaticamente, gli altri devono superare una prova di Saggezza (Percezione) con CD 15 per notarli, senza poterli decifrare senza magia."
+      - name: Incantesimi
+        short: "Incantatrice completa (Saggezza). Prepari un numero di incantesimi pari a mod. SAG + livello da druido; puoi lanciare i rituali; usi un focus druidico."
+        text: "Attingendo all'essenza divina della natura, il druido lancia incantesimi. Conosce tutti i trucchetti scelti e prepara ogni giorno, dalla lista del druido, un numero di incantesimi pari al suo modificatore di Saggezza + il suo livello da druido (minimo 1), di livello per cui ha slot. Caratteristica da incantatore: Saggezza (CD = 8 + bonus di competenza + mod. SAG; attacco = bonus di competenza + mod. SAG). Può lanciare come rituale gli incantesimi preparati con il descrittore rituale e usare un focus druidico come focus."
     2:
-      - {name: Forma Selvatica, short: "Azione: ti trasformi in una bestia (GS max 1/4, no volo/nuoto) per metà livello ore. 2 usi/riposo breve o lungo.", text: "Il druido può usare la sua azione per assumere magicamente la forma di una bestia che ha già visto."}
-      - {name: Circolo Druidico, short: "Scegli un circolo (Terra o Luna).", text: "Il druido sceglie un circolo druidico."}
-
+      - name: Forma Selvatica
+        short: "Azione: ti trasformi in una bestia già vista (vedi tabella in appendice). 2 usi per riposo breve o lungo; dura metà livello ore."
+        text: "Il druido può usare la sua azione per assumere magicamente la forma di una bestia che ha già visto, due volte per riposo breve o lungo, per un numero di ore pari alla metà del suo livello da druido (arrotondato per difetto). Può tornare alla forma normale con un'azione bonus; torna automaticamente se scende a 0 PF o se scade la durata. In forma di bestia usa le statistiche della bestia (tranne allineamento, personalità, INT, SAG e CAR, competenze nei TS e nelle abilità), non può lanciare incantesimi né parlare, ma mantiene la concentrazione; quando torna normale riprende i PF che aveva prima, e i danni in eccesso si riversano sulla forma normale. Al 2° livello: GS massimo 1/4, senza velocità di volo o nuoto; al 4°: GS 1/2, senza volo; all'8°: GS 1."
+      - name: Circolo Druidico
+        short: "Scegli un circolo: Terra o Luna."
+        text: "Al 2° livello il druido sceglie di identificarsi con un circolo di druidi: il Circolo della Terra o il Circolo della Luna. La scelta conferisce privilegi al 2°, 6°, 10° e 14° livello."
+    4:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Il druido può aumentare un punteggio di caratteristica di 2 o due punteggi di 1 (massimo 20), oppure scegliere un talento."
+      - name: Forma Selvatica Migliorata
+        short: "Forma Selvatica: GS massimo 1/2, senza velocità di volo."
+        text: "Dal 4° livello la Forma Selvatica permette bestie di GS massimo 1/2, senza velocità di volo."
+    8:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+      - name: Forma Selvatica Migliorata
+        short: "Forma Selvatica: GS massimo 1, senza restrizioni."
+        text: "Dall'8° livello la Forma Selvatica permette bestie di GS massimo 1, anche con velocità di volo o nuoto."
+    12:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+    16:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+    18:
+      - name: Corpo Senza Tempo
+        short: "Invecchi 1 anno ogni 10."
+        text: "La magia primordiale rallenta l'invecchiamento del druido: per ogni 10 anni trascorsi, il suo corpo invecchia di 1 solo anno."
+      - name: Incantesimi Bestiali
+        short: "Puoi lanciare molti incantesimi da druido anche in Forma Selvatica (senza componenti materiali)."
+        text: "Il druido può lanciare molti dei suoi incantesimi da druido in qualsiasi forma assunta con Forma Selvatica, eseguendo le componenti somatiche e verbali, ma non può fornire componenti materiali."
+    19:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+    20:
+      - name: Arcidruido
+        short: "Forma Selvatica illimitata; ignori le componenti verbali, somatiche e materiali degli incantesimi da druido."
+        text: "Il druido può usare Forma Selvatica un numero illimitato di volte e può ignorare le componenti verbali e somatiche dei suoi incantesimi da druido, nonché le componenti materiali prive di costo che non vengono consumate."
+  subclasses:
+    land:
+      name: Circolo della Terra
+      name_en: Circle of the Land
+      choice_label: "Terreno (circle_terrain): arctic, coast, desert, forest, grassland, mountain, swamp, underdark"
+      circle_spells:
+        arctic:    {3: ["Blocca Persone", "Crescita di Spine"], 5: ["Tempesta di Nevischio", "Lentezza"], 7: ["Libertà di Movimento", "Tempesta di Ghiaccio"], 9: ["Comunione con la Natura", "Cono di Freddo"]}
+        coast:     {3: ["Immagine Speculare", "Passo Velato"], 5: ["Respirare Sott'acqua", "Camminare sull'Acqua"], 7: ["Controllare Acqua", "Libertà di Movimento"], 9: ["Evoca Elementale", "Scrutare"]}
+        desert:    {3: ["Sfocatura", "Silenzio"], 5: ["Creare Cibo e Acqua", "Protezione dall'Energia"], 7: ["Deperimento", "Terreno Allucinatorio"], 9: ["Piaga degli Insetti", "Muro di Pietra"]}
+        forest:    {3: ["Pelle Coriacea", "Scalare come un Ragno"], 5: ["Evoca Fulmini", "Crescita Vegetale"], 7: ["Divinazione", "Libertà di Movimento"], 9: ["Comunione con la Natura", "Passaggio Arboreo"]}
+        grassland: {3: ["Invisibilità", "Passare senza Tracce"], 5: ["Luce Diurna", "Velocità"], 7: ["Divinazione", "Libertà di Movimento"], 9: ["Sogno", "Piaga degli Insetti"]}
+        mountain:  {3: ["Scalare come un Ragno", "Crescita di Spine"], 5: ["Palla di Fuoco Esplosiva", "Fondersi nella Pietra"], 7: ["Modellare la Pietra", "Pelle di Pietra"], 9: ["Passapareti", "Muro di Pietra"]}
+        swamp:     {3: ["Dardo Acido di Melf", "Oscurità"], 5: ["Respirare Sott'acqua", "Nube Maleodorante"], 7: ["Libertà di Movimento", "Individuazione di Creature"], 9: ["Piaga degli Insetti", "Scrutare"]}
+        underdark: {3: ["Nube di Gas Tossico", "Ragnatela"], 5: ["Nube Maleodorante", "Forma Gassosa"], 7: ["Invisibilità Superiore", "Modellare la Pietra"], 9: ["Nube Mortale", "Piaga degli Insetti"]}
+      features:
+        2:
+          - name: Trucchetto Bonus
+            short: "Conosci un trucchetto da druido in più."
+            text: "Il druido apprende un trucchetto aggiuntivo a sua scelta dalla lista del druido."
+            cantrip_bonus: 1
+          - name: Recupero Naturale
+            short: "1/giorno, dopo un riposo breve, recuperi slot per un totale di livelli pari a metà del livello da druido (per eccesso), nessuno di 6° o superiore."
+            text: "Una volta al giorno, durante un riposo breve, il druido può recuperare parte della sua energia magica: slot incantesimo spesi per un totale di livelli pari o inferiore alla metà del suo livello da druido (arrotondato per eccesso), nessuno di 6° livello o superiore."
+        3:
+          - name: Incantesimi del Circolo
+            short: "Incantesimi aggiuntivi sempre preparati, legati al terreno scelto (vedi appendice)."
+            text: "Il legame mistico del druido con la terra gli conferisce incantesimi aggiuntivi in base al terreno scelto (artico, costa, deserto, foresta, pascolo, montagna, palude o Sottosuolo). Al 3°, 5°, 7° e 9° livello ottiene accesso a incantesimi del circolo che sono sempre considerati preparati e non contano nel numero di incantesimi preparabili."
+        6:
+          - name: Passo della Terra
+            short: "Terreno difficile naturale non ti costa movimento extra; attraversi piante non magiche senza danni; vantaggio ai TS contro piante magiche."
+            text: "Muoversi attraverso terreno difficile non magico non costa al druido movimento extra. Può anche attraversare piante non magiche senza esserne rallentato e senza subire danni da spine o simili. Ha vantaggio ai tiri salvezza contro piante create o manipolate magicamente per impedire il movimento."
+        10:
+          - name: Egida della Natura
+            short: "Immune all'essere affascinato o spaventato da elementali e fate; immune a veleno e malattie."
+            text: "Il druido non può essere affascinato o spaventato da elementali o fate, ed è immune al veleno e alle malattie."
+        14:
+          - name: Santuario della Natura
+            short: "Bestie e vegetali che ti attaccano devono superare un TS su SAG (CD incantesimi) o scegliere un altro bersaglio."
+            text: "Quando una bestia o una creatura vegetale attacca il druido, deve superare un tiro salvezza su Saggezza contro la CD degli incantesimi del druido; se fallisce, deve scegliere un altro bersaglio o l'attacco manca automaticamente."
+    moon:
+      name: Circolo della Luna
+      name_en: Circle of the Moon
+      wild_shape:
+        2: {cr: 1, fly: false, swim: false, uses: 2}
+        4: {cr: 1, fly: false, swim: true, uses: 2}
+        6: {cr: "level/3", fly: false, swim: true, uses: 2}
+        8: {cr: "level/3", fly: true, swim: true, uses: 2}
+      features:
+        2:
+          - name: Forma Selvatica da Combattimento
+            short: "Forma Selvatica come azione bonus. In forma di bestia, azione bonus: spendi uno slot per recuperare 1d8 PF per livello dello slot."
+            text: "Il druido può usare Forma Selvatica come azione bonus anziché come azione. Inoltre, mentre è trasformato, può usare un'azione bonus per spendere uno slot incantesimo e recuperare 1d8 punti ferita per ogni livello dello slot speso."
+          - name: Forme del Circolo
+            short: "Forma Selvatica fino a GS 1 (dal 6°: GS pari a un terzo del livello da druido). Restano i limiti di volo e nuoto per livello."
+            text: "I riti del circolo concedono al druido forme animali più potenti: può trasformarsi in una bestia di GS fino a 1 (ignorando la colonna GS massimo della tabella, ma rispettando le altre restrizioni). Dal 6° livello può trasformarsi in bestie di GS pari a un terzo del suo livello da druido (arrotondato per difetto)."
+        6:
+          - name: Colpo Primordiale
+            short: "Gli attacchi in forma di bestia contano come magici."
+            text: "Gli attacchi del druido in forma di bestia contano come magici per superare resistenze e immunità ad attacchi e danni non magici."
+        10:
+          - name: Forma Selvatica Elementale
+            short: "Spendendo due usi di Forma Selvatica ti trasformi in un elementale dell'aria, dell'acqua, della terra o del fuoco."
+            text: "Il druido può spendere due usi di Forma Selvatica contemporaneamente per trasformarsi in un elementale dell'aria, dell'acqua, della terra o del fuoco."
+        14:
+          - name: Mille Forme
+            short: "Puoi lanciare alterare se stesso a volontà."
+            text: "Il druido ha imparato a usare la magia per alterare la sua forma fisica in modi più sottili: può lanciare alterare se stesso a volontà."
 monk:
   name: Monaco
   name_en: Monk

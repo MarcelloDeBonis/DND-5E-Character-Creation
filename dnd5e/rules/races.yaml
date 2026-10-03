@@ -65,13 +65,15 @@ elf:
         - name: Scurovisione Superiore
           short: "La tua scurovisione arriva a 36 m."
           text: "La scurovisione del drow ha un raggio di 36 metri."
-        - name: Sensibilità alla Luce Solare
+        - name: Sensibilità alla Luce del Sole
           short: "Svantaggio ai tiri per colpire e alle prove di Percezione (vista) alla luce diretta del sole."
           text: "Il drow subisce svantaggio ai tiri per colpire e alle prove di Saggezza (Percezione) basate sulla vista quando lui, il bersaglio o l'oggetto che cerca di percepire si trova alla luce diretta del sole."
-        - name: Magia Drow
-          short: "Conosci il trucchetto luci danzanti; dal 3° livello fuoco fatuo e dal 5° oscurità (1/riposo lungo). Caratteristica: Carisma."
-          text: "Il drow conosce il trucchetto luci danzanti. Al 3° livello può lanciare fuoco fatuo una volta per riposo lungo; al 5° livello può lanciare oscurità una volta per riposo lungo. La caratteristica da incantatore è il Carisma."
-        - name: Addestramento nelle Armi Drow
+        - name: Magia dei Drow
+          short: "Conosci il trucchetto luci danzanti; dal 3° livello luminescenza e dal 5° oscurità (1/riposo lungo). Caratteristica: Carisma."
+          fixed_cantrips: [dancing_lights]
+          innate_ability: cha
+          text: "Il drow conosce il trucchetto luci danzanti. Al 3° livello può lanciare luminescenza una volta per riposo lungo; al 5° livello può lanciare oscurità una volta per riposo lungo. La caratteristica da incantatore è il Carisma."
+        - name: Addestramento nelle Armi dei Drow
           short: "Competenza in stocco, spada corta e balestra a mano."
           text: "Il drow ha competenza nello stocco, nella spada corta e nella balestra a mano."
           weapon_proficiencies: [rapier, shortsword, hand_crossbow]
@@ -91,8 +93,10 @@ human:
   variants:
     variant_human:
       name: Umano (Variante)
+      replaces_base_bonus: true          # sostituisce il +1 a tutte le caratteristiche
       ability_bonus: {}
       ability_choice: {count: 2, bonus: 1}
+      replaces_traits: true              # niente Linguaggio Extra: solo abilità e talento
       traits:
         - name: Abilità
           short: "Competenza in un'abilità a scelta."
@@ -108,9 +112,13 @@ dwarf:
   name_en: Dwarf
   size: Medio
   speed: 25
+  heavy_armor_no_speed_penalty: true
   ability_bonus: {con: 2}
   languages: [common, dwarvish]
   traits:
+    - name: Velocità
+      short: "Velocità base 7,5 m; non viene ridotta dalle armature pesanti."
+      text: "La velocità base sul terreno del nano è 7,5 metri e non viene ridotta quando indossa un'armatura pesante."
     - name: Scurovisione
       short: "Vedi a 18 m nella luce fioca come se fosse luce intensa, e nell'oscurità come se fosse luce fioca."
       text: "Il nano vede a 18 metri nella luce fioca come se fosse luce intensa e nell'oscurità come se fosse luce fioca. Nell'oscurità non distingue i colori."
@@ -124,7 +132,8 @@ dwarf:
     - name: Competenza negli Strumenti
       short: "Competenza in strumenti da fabbro, da birraio o da muratore (a scelta)."
       text: "Il nano ha competenza in uno strumento da artigiano a sua scelta tra strumenti da fabbro, da birraio o da muratore."
-    - name: Esperto di Pietra
+      tool_choice: 1
+    - name: Scalpellino
       short: "Doppio bonus di competenza alle prove di Storia relative alla lavorazione della pietra."
       text: "Quando effettua una prova di Intelligenza (Storia) relativa all'origine di una lavorazione in pietra, il nano è considerato competente e aggiunge il doppio del bonus di competenza."
   subraces:
@@ -237,6 +246,8 @@ tiefling:
       text: "Il tiefling ha resistenza ai danni da fuoco."
     - name: Retaggio Infernale
       short: "Conosci taumaturgia; dal 3° livello rimprovero infernale (2° liv.) e dal 5° oscurità, 1/riposo lungo. Caratteristica: Carisma."
+      fixed_cantrips: [thaumaturgy]
+      innate_ability: cha
       text: "Il tiefling conosce il trucchetto taumaturgia. Al 3° livello può lanciare rimprovero infernale come incantesimo di 2° livello una volta per riposo lungo; al 5° livello può lanciare oscurità una volta per riposo lungo. La caratteristica da incantatore è il Carisma."
 
 dragonborn:
@@ -279,6 +290,8 @@ gnome:
         - name: Illusionista Nato
           short: "Conosci il trucchetto illusione minore (caratteristica: Intelligenza)."
           text: "Lo gnomo delle foreste conosce il trucchetto illusione minore. La caratteristica da incantatore è l'Intelligenza."
+          fixed_cantrips: [minor_illusion]
+          innate_ability: int
         - name: Parlare con le Piccole Bestie
           short: "Puoi comunicare idee semplici a bestie di taglia Piccola o inferiore."
           text: "Attraverso suoni e gesti lo gnomo delle foreste può comunicare idee semplici alle bestie di taglia Piccola o inferiore."

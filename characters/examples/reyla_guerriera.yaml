@@ -1,0 +1,68 @@
+# ESEMPIO: Reyla nella versione Guerriera (Maestro di Battaglia) di 3° livello — la scheda ufficiale è characters/reyla.yaml (Druida)
+# Le chiavi (race, class, skills, weapons...) usano gli identificatori dei file in dnd5e/rules/.
+# Genera la scheda con:  python -m dnd5e build characters/examples/reyla_guerriera.yaml
+
+name: Reyla
+player: ""                 # nome del giocatore da scrivere sulla scheda
+race: elf
+subrace: high_elf
+class: fighter
+subclass: battle_master    # champion | battle_master | eldritch_knight
+level: 3
+xp: 900
+background: outlander      # Forestiero (vedi dnd5e/rules/backgrounds.yaml)
+alignment: CG              # Caotico Buono
+
+abilities:
+  method: point_buy        # point_buy | standard_array | manual | rolled
+  base: {str: 13, dex: 15, con: 14, int: 10, wis: 12, cha: 8}   # prima dei bonus razziali (+2 DES, +1 INT)
+
+hp:
+  method: average          # average | rolled (hp.rolled: [tiri dal 2° livello]) | manual (hp.value)
+
+skills: [acrobatics, insight]   # 2 abilità di classe; Atletica e Sopravvivenza arrivano dal background, Percezione dalla razza
+fighting_style: archery         # Tiro: +2 ai tiri per colpire a distanza
+maneuvers: [precision_attack, trip_attack, menacing_attack]   # 3 manovre del Maestro di Battaglia
+racial_cantrips: [minor_illusion]   # trucchetto dell'Elfo Alto (lista del mago)
+languages_extra: [sylvan, dwarvish]   # 1 dalla razza + 1 dal background (Comune ed Elfico sono automatici)
+background_tools: ["Flauto (strumento musicale del Forestiero)"]   # sostituisce la scelta generica del background
+tools: ["Strumenti da intagliatore (Studioso di Guerra)"]
+
+armor: leather
+shield: false
+weapons: [longbow, rapier, shortsword, handaxe]
+equipment:
+  - "20 frecce (faretra)"
+  - "2 asce"
+  - pack: explorers_pack
+money: {gp: 10}
+
+personality:
+  traits: "Osservo e ascolto molto più di quanto parli. Non mi fido facilmente di nessuno, ma la mia curiosità è sempre più forte della paura."
+  ideals: "Libertà. Nessun confine, nessuna legge e nessuna famiglia mi terranno lontana dalla verità. (Caotico)"
+  bonds: "Devo scoprire chi erano davvero i miei genitori, quale fosse la loro missione e perché mi hanno abbandonata."
+  flaws: "Tengo tutti a distanza e nascondo ciò che provo. Sono ricercata a Dados per aver lasciato il regno senza permesso."
+
+appearance:
+  age: "19"
+  height: "1,72 m"
+  weight: "58 kg"
+  eyes: "Verdi"
+  skin: "Chiara, con lentiggini"
+  hair: "Ramati, lunghi"
+portrait: ../reyla/portrait.jpg   # percorso relativo alla cartella characters/
+
+allies: |
+  Famiglia adottiva di Dados (benestante): le ha dato una casa, ma lei è fuggita senza permesso.
+  I druidi di Dados, custodi delle tradizioni del regno di Gravion.
+  Genitori biologici: sconosciuti, partiti per una missione segreta; non sa se siano ancora vivi.
+
+treasure: ""
+
+backstory: |
+  Reyla è nata a Dados, il regno boscoso di Gravion, un luogo antico e incontaminato dove le foreste si estendono a perdita d'occhio e la natura è parte integrante della vita di chi vi abita. In questo regno vivono principalmente druidi, custodi delle antiche tradizioni e dell'equilibrio naturale.
+  I suoi genitori biologici erano coinvolti in una missione segreta di estrema importanza. Per proteggerla e portare a termine il loro compito furono costretti ad abbandonarla quando era ancora molto piccola. Reyla non ha mai saputo quale fosse la vera natura della missione, né cosa sia successo ai suoi genitori dopo la partenza.
+  Fu accolta da una famiglia benestante di Dados, che la adottò e le offrì una vita sicura e agiata. Nonostante l'affetto, Reyla non riuscì mai a sentirsi davvero parte di quel mondo: dentro di lei rimase sempre una domanda a cui nessuno voleva rispondere. "Perché i miei genitori mi hanno abbandonata?"
+  Crescendo sviluppò un carattere indipendente: silenziosa, riservata, difficile da comprendere, ma incredibilmente curiosa. Osservava il mondo più di quanto ne parlasse e non si fidava facilmente degli altri. Come elfa guerriera imparò a combattere e a muoversi tra le foreste affrontando i pericoli.
+  A diciannove anni, senza chiedere il permesso alla famiglia adottiva, lasciò la sua casa e oltrepassò i confini di Dados, pur sapendo che lasciare il regno senza autorizzazione significava infrangere la legge. Voleva vedere cosa ci fosse oltre le foreste di Gravion e, soprattutto, trovare i suoi veri genitori.
+  Da quel giorno è una fuggitiva. Viaggia di luogo in luogo cercando ogni traccia che possa condurla alla verità. Non sa se i suoi genitori siano vivi, quale fosse la loro missione, né se il motivo dell'abbandono sia davvero quello che le è stato fatto credere. Parla poco del proprio passato e nasconde i suoi sentimenti, ma qualunque sia la verità che troverà, è pronta ad affrontarla.
