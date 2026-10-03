@@ -96,7 +96,6 @@ human:
       replaces_base_bonus: true          # sostituisce il +1 a tutte le caratteristiche
       ability_bonus: {}
       ability_choice: {count: 2, bonus: 1}
-      replaces_traits: true              # niente Linguaggio Extra: solo abilità e talento
       traits:
         - name: Abilità
           short: "Competenza in un'abilità a scelta."

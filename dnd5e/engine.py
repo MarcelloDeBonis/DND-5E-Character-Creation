@@ -496,7 +496,7 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
     innate_ability = None
     for t in race["traits"]:
         for key in t.get("fixed_cantrips", []):
-            cantrips.append(lookup(key, t["name"]))
+            cantrips.append({**lookup(key, t["name"]), "ability": t.get("innate_ability")})
         if t.get("innate_ability"):
             innate_ability = t["innate_ability"]
         if t.get("cantrip_choice"):
@@ -508,7 +508,7 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
                 sp = lookup(key, race["name"])
                 if sp["level"] is None or t["cantrip_choice"]["list"] not in sp["lists"] or sp["level"] != 0:
                     raise RulesError(f"{key} non è un trucchetto della lista {t['cantrip_choice']['list']}")
-                cantrips.append(sp)
+                cantrips.append({**sp, "ability": innate_ability})
     racial_cantrips = list(cantrips)
 
     caster = cls.get("spellcasting")
@@ -521,7 +521,7 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
     if caster:
         spell_ability = caster["ability"]
         list_key = caster.get("list", cls["key"])
-        known_table = spells_rules["cantrips_known"].get(list_key)
+        known_table = spells_rules["cantrips_known"].get(cls["key"]) or spells_rules["cantrips_known"].get(caster["type"])
         bonus = sum(int(f.get("cantrip_bonus", 0)) for f in cls["features"])
         expected = (known_table[level - 1] if known_table else None)
         picks = _as_list(char.get("cantrips"))
@@ -531,7 +531,7 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
                 warnings.append(f"Trucchetto {key} non presente nei dati: aggiungilo a dnd5e/rules/spells.yaml")
             elif sp["level"] != 0 or list_key not in sp["lists"]:
                 raise RulesError(f"{sp['name']} non è un trucchetto della lista del {cls['name']}")
-            class_cantrips.append(sp)
+            class_cantrips.append({**sp, "ability": spell_ability})
         if expected is not None and len(picks) != expected + bonus:
             warnings.append(f"Trucchetti di classe: scelti {len(picks)}, al livello {level} ne conosci {expected + bonus}")
         slot_row = spells_rules["slots"][caster["type"]].get(level, [])
@@ -559,17 +559,28 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
             for lvl in sorted(sub["circle_spells"][terrain]):
                 if lvl <= level:
                     circle_spells += [{"name": n, "level": (lvl + 1) // 2, "text": "", "source": f"{sub['name']} ({terrain})", "always_prepared": True} for n in sub["circle_spells"][terrain][lvl]]
+            circle_names = {c["name"] for c in circle_spells}
+            for sp in prepared:
+                if sp["name"] in circle_names:
+                    warnings.append(f"{sp['name']} è già un incantesimo del circolo (sempre preparato): scegline un altro in 'spells'")
     if not spell_ability:
         return None
     all_cantrips = racial_cantrips + class_cantrips
     if not (all_cantrips or prepared or circle_spells):
         return None
     attack_bonus = prof + mods[spell_ability]
+    # ogni trucchetto/incantesimo porta la propria caratteristica (razziale o di classe)
+    for sp in all_cantrips + prepared:
+        ab = sp.get("ability") or spell_ability
+        sp["ability"] = ab
+        sp["attack_bonus"] = prof + mods[ab]
+        sp["save_dc"] = 8 + prof + mods[ab]
+        sp["other_ability"] = ab != spell_ability
     spell_attacks = []
     for sp in all_cantrips + prepared:
         if sp.get("attack") and sp.get("damage"):
             dmg = _scale_cantrip(sp["damage"], level) if sp["level"] == 0 else sp["damage"]
-            spell_attacks.append({"name": sp["name"], "attack_str": fmt_mod(attack_bonus), "damage": f"{dmg} {sp.get('damage_type', '')}".strip(), "range": sp.get("range")})
+            spell_attacks.append({"name": sp["name"], "attack_str": fmt_mod(sp["attack_bonus"]), "damage": f"{dmg} {sp.get('damage_type', '')}".strip(), "range": sp.get("range")})
     by_level: dict[int, list] = {}
     for sp in prepared + circle_spells:
         by_level.setdefault(sp["level"] or 1, []).append(sp)
@@ -615,8 +626,9 @@ def resolve_wild_shape(cls: dict, rules: dict) -> dict | None:
             continue
         forms.append({"key": key, **b})
     forms.sort(key=lambda b: (-b["cr"], b["name"]))
+    uses = row.get("uses", 2)
     return {"max_cr": max_cr, "max_cr_str": fmt_cr(max_cr), "fly": row.get("fly", False), "swim": row.get("swim", False),
-            "uses": row.get("uses", 2), "duration_hours": max(1, level // 2), "forms": forms}
+            "uses": "illimitati" if uses is None else uses, "duration_hours": max(1, level // 2), "forms": forms}
 
 
 # ---------------------------------------------------------------------------
@@ -825,7 +837,7 @@ def sheet_markdown(sheet: dict) -> str:
             lines.append("- Slot: " + ", ".join(f"{n} di {lvl}°" for lvl, n in sp["slots"].items()))
         if sp["prepared_max"]:
             lines.append(f"- Incantesimi preparabili: {sp['prepared_max']}")
-        lines.append("- Trucchetti: " + ", ".join(f"{c['name']} ({c['source']})" for c in sp["cantrips"]))
+        lines.append("- Trucchetti: " + ", ".join(f"{c['name']} ({c['source']}" + (f", {c['ability'].upper()}: CD {c['save_dc']}, attacco {fmt_mod(c['attack_bonus'])}" if c.get("other_ability") else "") + ")" for c in sp["cantrips"]))
         for lvl in sorted(sp["spells_by_level"]):
             lines.append(f"- {lvl}° livello: " + ", ".join(s["name"] + (" (C)" if s.get("conc") else "") + (" (R)" if s.get("ritual") else "") for s in sp["spells_by_level"][lvl]))
     ws = sheet["wild_shape"]

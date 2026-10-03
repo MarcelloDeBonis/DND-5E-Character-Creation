@@ -102,7 +102,7 @@ fighter:
             text: "Gli attacchi con le armi del guerriero mettono a segno un colpo critico quando il tiro del d20 è 19 o 20."
         7:
           - name: Atleta Straordinario
-            short: "Aggiungi metà del bonus di competenza (arrotondato per eccesso) alle prove di FOR, DES e COS senza competenza. Salto in lungo con rincorsa +30 cm."
+            short: "Aggiungi metà del bonus di competenza (arrotondato per eccesso) alle prove di FOR, DES e COS senza competenza. Salto in lungo con rincorsa: +30 cm per ogni punto di mod. FOR."
             text: "Il guerriero aggiunge la metà del suo bonus di competenza (arrotondato per eccesso) a qualsiasi prova di Forza, Destrezza o Costituzione che non usi già il bonus di competenza. Inoltre, quando effettua un salto in lungo con rincorsa, la distanza aumenta di un numero di centimetri pari a 30 x il suo modificatore di Forza."
         10:
           - name: Stile di Combattimento Aggiuntivo
@@ -114,7 +114,7 @@ fighter:
             text: "Gli attacchi con le armi del guerriero mettono a segno un colpo critico quando il tiro del d20 è 18, 19 o 20."
         18:
           - name: Sopravvissuto
-            short: "All'inizio del tuo turno, se hai meno di metà PF e almeno 1, recuperi 5 + mod. COS PF."
+            short: "All'inizio del tuo turno, se ti resta non più della metà dei PF (e almeno 1), recuperi 5 + mod. COS PF."
             text: "All'inizio di ogni suo turno, il guerriero recupera punti ferita pari a 5 + il suo modificatore di Costituzione se gli rimane non più della metà dei suoi punti ferita (e almeno 1)."
     battle_master:
       name: Maestro di Battaglia
@@ -260,6 +260,7 @@ druid:
     2: {cr: 0.25, fly: false, swim: false, uses: 2}
     4: {cr: 0.5, fly: false, swim: true, uses: 2}
     8: {cr: 1, fly: true, swim: true, uses: 2}
+    20: {cr: 1, fly: true, swim: true, uses: null}   # Arcidruido: usi illimitati
   features:
     1:
       - name: Druidico
@@ -323,9 +324,9 @@ druid:
         desert:    {3: ["Sfocatura", "Silenzio"], 5: ["Creare Cibo e Acqua", "Protezione dall'Energia"], 7: ["Deperimento", "Terreno Allucinatorio"], 9: ["Piaga degli Insetti", "Muro di Pietra"]}
         forest:    {3: ["Pelle Coriacea", "Scalare come un Ragno"], 5: ["Evoca Fulmini", "Crescita Vegetale"], 7: ["Divinazione", "Libertà di Movimento"], 9: ["Comunione con la Natura", "Passaggio Arboreo"]}
         grassland: {3: ["Invisibilità", "Passare senza Tracce"], 5: ["Luce Diurna", "Velocità"], 7: ["Divinazione", "Libertà di Movimento"], 9: ["Sogno", "Piaga degli Insetti"]}
-        mountain:  {3: ["Scalare come un Ragno", "Crescita di Spine"], 5: ["Palla di Fuoco Esplosiva", "Fondersi nella Pietra"], 7: ["Modellare la Pietra", "Pelle di Pietra"], 9: ["Passapareti", "Muro di Pietra"]}
-        swamp:     {3: ["Dardo Acido di Melf", "Oscurità"], 5: ["Respirare Sott'acqua", "Nube Maleodorante"], 7: ["Libertà di Movimento", "Individuazione di Creature"], 9: ["Piaga degli Insetti", "Scrutare"]}
-        underdark: {3: ["Nube di Gas Tossico", "Ragnatela"], 5: ["Nube Maleodorante", "Forma Gassosa"], 7: ["Invisibilità Superiore", "Modellare la Pietra"], 9: ["Nube Mortale", "Piaga degli Insetti"]}
+        mountain:  {3: ["Scalare come un Ragno", "Crescita di Spine"], 5: ["Fulmine", "Fondersi nella Pietra"], 7: ["Modellare la Pietra", "Pelle di Pietra"], 9: ["Passapareti", "Muro di Pietra"]}
+        swamp:     {3: ["Dardo Acido di Melf", "Oscurità"], 5: ["Camminare sull'Acqua", "Nube Maleodorante"], 7: ["Libertà di Movimento", "Individuazione di Creature"], 9: ["Piaga degli Insetti", "Scrutare"]}
+        underdark: {3: ["Scalare come un Ragno", "Ragnatela"], 5: ["Nube Maleodorante", "Forma Gassosa"], 7: ["Invisibilità Superiore", "Modellare la Pietra"], 9: ["Nube Mortale", "Piaga degli Insetti"]}
       features:
         2:
           - name: Trucchetto Bonus
@@ -350,7 +351,7 @@ druid:
         14:
           - name: Santuario della Natura
             short: "Bestie e vegetali che ti attaccano devono superare un TS su SAG (CD incantesimi) o scegliere un altro bersaglio."
-            text: "Quando una bestia o una creatura vegetale attacca il druido, deve superare un tiro salvezza su Saggezza contro la CD degli incantesimi del druido; se fallisce, deve scegliere un altro bersaglio o l'attacco manca automaticamente."
+            text: "Quando una bestia o una creatura vegetale attacca il druido, deve superare un tiro salvezza su Saggezza contro la CD degli incantesimi del druido; se fallisce, deve scegliere un altro bersaglio o l'attacco manca automaticamente. Se supera il tiro salvezza, la creatura è immune a questo effetto per 24 ore."
     moon:
       name: Circolo della Luna
       name_en: Circle of the Moon
@@ -359,6 +360,7 @@ druid:
         4: {cr: 1, fly: false, swim: true, uses: 2}
         6: {cr: "level/3", fly: false, swim: true, uses: 2}
         8: {cr: "level/3", fly: true, swim: true, uses: 2}
+        20: {cr: "level/3", fly: true, swim: true, uses: null}   # Arcidruido: usi illimitati
       features:
         2:
           - name: Forma Selvatica da Combattimento

@@ -263,7 +263,10 @@ class SheetRenderer:
         self.text(c, "spell_save_dc", str(sp["save_dc"]), size=14, font="Sans-Bold")
         self.text(c, "spell_attack_bonus", fmt_mod(sp["attack_bonus"]), size=14, font="Sans-Bold")
         for i, cn in enumerate(sp["cantrips"][:8], start=1):
-            self.text(c, f"cantrip_{i}", cn["name"] + ("" if cn["source"] == s["class"]["name"] else f" ({cn['source']})"), size=8.5)
+            label = cn["name"] + ("" if cn["source"] == s["class"]["name"] else f" ({cn['source']})")
+            if cn.get("other_ability"):
+                label += f" {cn['ability'].upper()}: CD {cn['save_dc']}, att. {fmt_mod(cn['attack_bonus'])}"
+            self.text(c, f"cantrip_{i}", label, size=8.5)
         for lvl in range(1, 10):
             n = sp["slots"].get(lvl)
             if n:
@@ -330,7 +333,7 @@ class SheetRenderer:
             if sp["slots"]:
                 head += "; slot: " + ", ".join(f"{n} di {lvl}°" for lvl, n in sp["slots"].items())
             head += ")"
-            items = [(f"{c['name']} (trucchetto, {c['source']})", c.get("text", "")) for c in sp["cantrips"]]
+            items = [(f"{c['name']} (trucchetto, {c['source']}" + (f", {c['ability'].upper()}: CD {c['save_dc']}, attacco {fmt_mod(c['attack_bonus'])}" if c.get("other_ability") else "") + ")", c.get("text", "")) for c in sp["cantrips"]]
             for lvl in sorted(sp["spells_by_level"]):
                 for spell in sp["spells_by_level"][lvl]:
                     tags = [f"{lvl}° livello"]

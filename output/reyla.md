@@ -48,7 +48,7 @@
 - Caratteristica: Saggezza · CD tiro salvezza 12 · attacco con incantesimo +4
 - Slot: 4 di 1°, 2 di 2°
 - Incantesimi preparabili: 5
-- Trucchetti: Illusione Minore (Elfo Alto), Guida (Druido), Produrre Fiamma (Druido)
+- Trucchetti: Illusione Minore (Elfo Alto, INT: CD 10, attacco +2), Guida (Druido), Produrre Fiamma (Druido)
 - 1° livello: Cura Ferite, Intralciare (C), Luminescenza (C), Bacche Benefiche
 - 2° livello: Raggio di Luna (C)
 

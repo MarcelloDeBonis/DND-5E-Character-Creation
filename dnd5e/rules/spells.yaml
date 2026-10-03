@@ -70,6 +70,7 @@ slots:
 
 # Trucchetti conosciuti per livello (indice = livello di classe 1..20)
 cantrips_known:
+  third:    [0, 0, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]   # Cavaliere Mistico / Mistificatore Arcano
   druid:    [2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
   cleric:   [3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
   wizard:   [3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
@@ -141,7 +142,7 @@ spells:
   # ---------------- 3° livello (druido) ----------------
   call_lightning: {name: Evoca Fulmini,       level: 3, lists: [druid], school: evocazione, range: 36, conc: true, text: "Nuvola tempestosa per 10 minuti: ogni turno (azione) un fulmine colpisce un punto: TS su DES o 3d10 danni da fulmine (metà se supera). +1d10 per slot superiore, 4d10 all'aperto sotto una tempesta.", save: dex, damage: 3d10, damage_type: fulmine}
   conjure_animals: {name: Evoca Animali,      level: 3, lists: [druid, ranger], school: evocazione, range: 18, conc: true, text: "Evochi bestie fatate per 1 ora: 1 di GS 2, 2 di GS 1, 4 di GS 1/2 o 8 di GS 1/4. Obbediscono ai tuoi comandi."}
-  daylight:       {name: Luce Diurna,         level: 3, lists: [cleric, druid, paladin, ranger, sorcerer], school: invocazione, range: 18, text: "Sfera di luce intensa di raggio 18 m (più 18 m di luce fioca) per 1 ora; dissolve l'oscurità magica di livello inferiore."}
+  daylight:       {name: Luce Diurna,         level: 3, lists: [cleric, druid, paladin, ranger, sorcerer], school: invocazione, range: 18, text: "Sfera di luce intensa di raggio 18 m (più 18 m di luce fioca) per 1 ora; dissolve l'oscurità creata da incantesimi di 3° livello o inferiore."}
   dispel_magic:   {name: Dissolvi Magie,      level: 3, lists: [bard, cleric, druid, paladin, sorcerer, warlock, wizard], school: abiurazione, range: 36, text: "Termina gli incantesimi di 3° livello o inferiore su una creatura, un oggetto o un effetto; per quelli superiori, prova di caratteristica CD 10 + livello."}
   meld_into_stone: {name: Fondersi nella Pietra, level: 3, lists: [cleric, druid], school: trasmutazione, range: contatto, ritual: true, text: "Entri in una superficie di pietra per 8 ore; puoi uscirne come azione."}
   plant_growth:   {name: Crescita Vegetale,   level: 3, lists: [bard, druid, ranger], school: trasmutazione, range: 45, text: "In 1 azione: raggio 30 m di vegetazione intricata (movimento ridotto a 1/4). In 8 ore: le piante entro 800 m raddoppiano il raccolto per 1 anno."}
@@ -150,4 +151,4 @@ spells:
   speak_with_plants: {name: Parlare con i Vegetali, level: 3, lists: [bard, druid, ranger], school: trasmutazione, range: personale, text: "Per 10 minuti comunichi con le piante entro 9 m, che possono rivelare eventi e liberare il passaggio."}
   water_breathing: {name: Respirare Sott'acqua, level: 3, lists: [druid, ranger, sorcerer, wizard], school: trasmutazione, range: 9, ritual: true, text: "Fino a 10 creature consenzienti respirano sott'acqua per 24 ore."}
   water_walk:     {name: Camminare sull'Acqua, level: 3, lists: [cleric, druid, ranger, sorcerer], school: trasmutazione, range: 9, ritual: true, text: "Fino a 10 creature consenzienti camminano su liquidi (acqua, acido, lava, neve) per 1 ora."}
-  wind_wall:      {name: Muro di Vento,       level: 3, lists: [druid, ranger], school: invocazione, range: 36, conc: true, text: "Muro di vento lungo 15 m, alto 4,5 m, spesso 30 cm per 1 minuto: TS su FOR o 3d8 danni contundenti; devia frecce e gas, impedisce il volo a creature Minuscole.", save: str, damage: 3d8, damage_type: contundente}
+  wind_wall:      {name: Muro di Vento,       level: 3, lists: [druid, ranger], school: invocazione, range: 36, conc: true, text: "Muro di vento lungo 15 m, alto 4,5 m, spesso 30 cm per 1 minuto: TS su FOR o 3d8 danni contundenti; devia frecce e gas, impedisce il passaggio alle creature volanti Minuscole o Piccole.", save: str, damage: 3d8, damage_type: contundente}
