@@ -911,15 +911,19 @@ def build_sheet(char: dict, rules: dict | None = None) -> dict:
     # --- privilegi e tratti ---
     features = []
     for t in race["traits"]:
-        features.append({"name": t["name"], "short": t.get("short", ""), "text": t.get("text", ""), "source": race["name"],
+        features.append({"name": t["name"], "short": kid_fmt(t.get("short", ""), placeholders), "text": kid_fmt(t.get("text", ""), placeholders), "source": race["name"],
                          "kid": kid_fmt(t.get("kid", ""), placeholders), "kid_hide": t.get("kid_hide", False)})
     for f in cls["features"]:
-        features.append({"name": f["name"], "short": f.get("short", ""), "text": f.get("text", ""), "source": f["source"], "level": f["level"],
+        features.append({"name": f["name"], "short": kid_fmt(f.get("short", ""), placeholders), "text": kid_fmt(f.get("text", ""), placeholders), "source": f["source"], "level": f["level"],
                          "kid": kid_fmt(f.get("kid", ""), placeholders), "kid_hide": f.get("kid_hide", False)})
     # opzioni di classe scelte (suppliche, metamagia, nemico prescelto, discipline...)
     picked = char.get("class_options") or {}
     for list_key, opt in cls["option_lists"].items():
         chosen = _as_list(picked.get(list_key))
+        if opt.get("level") and level < opt["level"]:
+            if chosen:
+                warnings.append(f"{opt.get('label', list_key)} si sceglie al {opt['level']}° livello: per ora non conta")
+            continue
         want = cls["table"].get(opt.get("count_table")) if opt.get("count_table") else opt.get("count")
         if isinstance(want, int) and want and len(chosen) != want:
             warnings.append(f"{opt.get('label', list_key)}: scelte {len(chosen)}, al livello {level} ne servono {want} ('class_options: {list_key}')")
@@ -927,7 +931,7 @@ def build_sheet(char: dict, rules: dict | None = None) -> dict:
             item = (opt.get("items") or {}).get(k)
             if not item:
                 raise RulesError(f"Opzione sconosciuta in {list_key}: {k}")
-            features.append({"name": item["name"], "short": item.get("short", ""), "text": item.get("text", ""), "source": opt.get("label", list_key),
+            features.append({"name": item["name"], "short": kid_fmt(item.get("short", ""), placeholders), "text": kid_fmt(item.get("text", ""), placeholders), "source": opt.get("label", list_key),
                              "kid": kid_fmt(item.get("kid", ""), placeholders), "kid_hide": False})
     for k in picked:
         if k not in cls["option_lists"]:

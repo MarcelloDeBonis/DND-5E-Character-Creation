@@ -4453,3 +4453,960 @@ spells:
     kid: 'La magia più potente di tutte: copi gratis qualsiasi incantesimo fino all''8° livello. Oppure esprimi un vero desiderio (curare 20 amici, far ritirare un dado...), ma poi stai male per giorni e
       c''è 1 possibilità su 3 di non poterla usare mai più.'
     tip: Copiare un incantesimo è sicuro; il desiderio libero solo in emergenza.
+
+  # ---- da spells_L5a.yaml ----
+  animate_objects:
+    name: Animare Oggetti
+    level: 5
+    lists:
+    - bard
+    - sorcerer
+    - wizard
+    school: trasmutazione
+    range: 36
+    conc: true
+    cast: 1 azione
+    duration: fino a 1 minuto
+    text: 'Animi fino a 10 oggetti non magici non indossati né trasportati entro gittata (un oggetto Medio conta 2, Grande 4, Enorme 8): diventano costrutti alleati con velocità 9 m e statistiche in base
+      alla taglia (Minuscolo: 20 PF, CA 18, +8 per colpire, 1d4+4 danni; Piccolo: 25 PF, CA 16, +6, 1d8+2; Medio: 40 PF, CA 13, +5, 2d6+1; Grande: 50 PF, CA 10, +6, 2d10+2; Enorme: 80 PF, CA 10, +8, 2d12+4).
+      Con un''azione bonus dai lo stesso ordine mentale a quelli entro 150 m; a 0 PF tornano oggetti e i danni in eccesso passano all''oggetto. +2 oggetti per slot superiore.'
+    kid: 'Fino a 10 oggetti piccoli entro 36 m prendono vita per 1 minuto e combattono per te. Ogni turno, con un''azione bonus, dai loro un ordine: ognuno tira d20+8 e, se arriva alla CA del nemico, fa 1d4+4
+      danni.'
+    tip: 'Nelle lotte lunghe, se intorno ci sono tanti oggetti: sassi, sedie, pugnali.'
+  antilife_shell:
+    name: Guscio Anti-Vita
+    level: 5
+    lists:
+    - druid
+    school: abiurazione
+    range: personale (raggio di 3 m)
+    conc: true
+    cast: 1 azione
+    duration: fino a 1 ora
+    text: 'Una barriera scintillante di 3 m di raggio centrata su di te si muove con te: le creature che non sono non morti o costrutti non possono attraversarla né allungarsi attraverso di essa, ma possono
+      lanciare incantesimi e fare attacchi a distanza o con armi con portata attraverso la barriera. Se ti muovi in modo da costringere una di queste creature ad attraversarla, l''incantesimo termina.'
+    kid: 'Una barriera invisibile ti circonda per 3 m, per 1 ora: le creature viventi (non i non morti e i costrutti) non possono entrare né colpirti da vicino. Frecce e magie però passano. Se spingi la barriera
+      contro un nemico, sparisce.'
+    tip: Quando tanti nemici in carne e ossa vogliono colpirti da vicino.
+  awaken:
+    name: Risveglio
+    level: 5
+    lists:
+    - bard
+    - druid
+    school: trasmutazione
+    range: contatto
+    cast: 8 ore
+    duration: istantanea
+    text: 'Una bestia o un vegetale di taglia Enorme o inferiore con Intelligenza 3 o meno (o una pianta naturale che non è una creatura) ottiene Intelligenza 10 e la capacità di parlare una lingua che conosci;
+      una pianta può anche muovere rami e radici e ottiene sensi simili a quelli umani (il Master ne sceglie le statistiche). Resta affascinata da te per 30 giorni o finché tu o i tuoi compagni non le fate
+      del male, poi sceglie se restarti amica. Componente materiale: un''agata da almeno 1.000 mo (consumata).'
+    kid: 'Ci vogliono 8 ore e un''agata da 1.000 mo. Tocchi un animale o una pianta: diventa intelligente come una persona e parla la tua lingua. Per 30 giorni è tuo amico, se non gli fate del male.'
+    tip: Per trasformare il tuo animale o un albero in un amico parlante.
+  banishing_smite:
+    name: Punizione Esiliante
+    level: 5
+    lists:
+    - paladin
+    school: abiurazione
+    range: personale
+    conc: true
+    cast: 1 azione bonus
+    duration: fino a 1 minuto
+    damage: 5d10
+    damage_type: forza
+    text: 'La prossima volta che colpisci una creatura con un attacco con arma prima che l''incantesimo termini, l''attacco infligge 5d10 danni da forza extra. Se l''attacco riduce il bersaglio a 50 PF o
+      meno, lo esili: se viene da un altro piano torna al suo piano d''origine, altrimenti finisce in un semipiano innocuo, incapacitato, finché l''incantesimo non termina e poi riappare nello spazio che
+      aveva lasciato (o in quello libero più vicino).'
+    kid: 'Con un''azione bonus carichi l''arma di magia. Il prossimo colpo (entro 1 minuto) fa 5d10 danni in più. Se al nemico restano 50 punti ferita o meno, sparisce: torna nel suo mondo o resta via finché
+      la magia dura.'
+    tip: Contro un mostro grosso già ferito, o una creatura di un altro mondo.
+  bigbys_hand:
+    name: Mano di Bigby
+    level: 5
+    lists:
+    - wizard
+    school: invocazione
+    range: 36
+    conc: true
+    cast: 1 azione
+    duration: fino a 1 minuto
+    attack: true
+    damage: 4d8
+    damage_type: forza
+    text: 'Crei una mano Grande di forza (CA 20, PF pari ai tuoi PF massimi, FOR 26, DES 10). Quando la crei e poi con un''azione bonus nei turni seguenti la muovi fino a 18 m e scegli un effetto su una creatura
+      entro 1,5 m: Pugno Serrato (attacco con incantesimo in mischia, 4d8 danni da forza); Mano Possente (prova di FOR della mano contro FOR (Atletica), con vantaggio se il bersaglio è Medio o più piccolo:
+      lo spinge di 1,5 m + 1,5 m per punto del tuo modificatore da incantatore); Mano Stringente (afferra una creatura Enorme o più piccola, poi con un''azione bonus la stritola per 2d6 + modificatore danni
+      contundenti); Mano Interposta (ti dà mezza copertura contro una creatura e le blocca il passaggio se non ha FOR superiore a 26). +2d8 al pugno e +2d6 alla stretta per slot superiore.'
+    kid: 'Una mano gigante di magia appare entro 36 m per 1 minuto. Ogni turno, con un''azione bonus, la muovi di 18 m: tira d20{att} e se arrivi alla CA del nemico gli dai un pugno da 4d8 danni. Può anche
+      spingere, afferrare o proteggerti.'
+    tip: 'Contro un nemico solo e forte: un pugno a ogni turno con l''azione bonus.'
+  circle_of_power:
+    name: Cerchio di Potere
+    level: 5
+    lists:
+    - paladin
+    school: abiurazione
+    range: personale (raggio di 9 m)
+    conc: true
+    cast: 1 azione
+    duration: fino a 10 minuti
+    text: 'Un''aura di energia divina di 9 m di raggio centrata su di te si muove con te: tu e le creature amiche al suo interno avete vantaggio ai tiri salvezza contro incantesimi e altri effetti magici.
+      Quando una di queste creature supera un tiro salvezza contro un incantesimo o un effetto magico che con il successo dimezza i danni, invece non subisce alcun danno.'
+    kid: Per 10 minuti, tu e gli amici entro 9 m da te, quando dovete resistere a una magia, tirate 2 d20 e tenete il più alto (vantaggio). E se una magia fa metà danni a chi resiste, voi resistendo non prendete
+      niente.
+    tip: Contro maghi, draghi e mostri che lanciano magie su tutto il gruppo.
+  cloudkill:
+    name: Nube Mortale
+    level: 5
+    lists:
+    - sorcerer
+    - wizard
+    school: evocazione
+    range: 36
+    conc: true
+    cast: 1 azione
+    duration: fino a 10 minuti
+    save: con
+    damage: 5d8
+    damage_type: veleno
+    text: 'Crei una sfera di nebbia velenosa giallo-verde di 6 m di raggio, pesantemente oscurata, che aggira gli angoli: chi vi entra per la prima volta in un turno o vi inizia il turno deve fare un TS su
+      COS o subisce 5d8 danni da veleno (metà se supera), anche se trattiene il respiro. All''inizio di ogni tuo turno la nebbia si sposta di 3 m lontano da te scorrendo sul terreno e scende verso il basso;
+      un vento forte la disperde. +1d8 per slot superiore.'
+    kid: 'Nube velenosa di 6 m di raggio entro 36 m; a ogni tuo turno si allontana da te di 3 m. Chi ci entra o inizia il turno lì tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): 5d8
+      danni, metà se riesce.'
+    tip: Contro gruppi di nemici in corridoi o stanze chiuse.
+  commune:
+    name: Comunione
+    level: 5
+    lists:
+    - cleric
+    school: divinazione
+    range: personale
+    ritual: true
+    cast: 1 minuto
+    duration: 1 minuto
+    text: 'Contatti la tua divinità o un suo emissario e poni fino a tre domande a cui si può rispondere sì o no: ricevi una risposta corretta per ciascuna (o ''non chiaro'' se va oltre ciò che la divinità
+      sa; il Master può usare una breve frase). Ogni lancio dopo il primo prima del tuo prossimo riposo lungo ha una probabilità cumulativa del 25% di non ottenere risposta. Componenti materiali: incenso
+      e una fiala di acqua santa o sacrilega.'
+    kid: 'Ci metti 1 minuto e parli con il tuo dio: puoi fargli 3 domande a cui si risponde sì o no, e ti dice la verità (se la sa). Se lo rifai prima di un riposo lungo, potrebbe non risponderti.'
+    tip: Prima di una scelta importante, quando non sapete cosa fare.
+  commune_with_nature:
+    name: Comunione con la Natura
+    level: 5
+    lists:
+    - druid
+    - ranger
+    school: divinazione
+    range: personale
+    ritual: true
+    cast: 1 minuto
+    duration: istantanea
+    text: 'Diventi per un momento tutt''uno con la natura e apprendi fino a tre fatti a scelta sul territorio entro 4,5 km all''aperto (90 m in grotte e sotterranei naturali): terreno e corsi d''acqua; piante,
+      minerali, animali o popoli prevalenti; celestiali, folletti, immondi, elementali o non morti potenti; influenze di altri piani; edifici. Non funziona dove la natura è stata sostituita da costruzioni,
+      come dungeon e città.'
+    kid: 'Ci metti 1 minuto e la natura ti racconta 3 cose a tua scelta su quello che c''è intorno fino a 4,5 km (90 m nelle grotte): fiumi, animali, mostri, persone, edifici. Non funziona in città o nei
+      sotterranei costruiti.'
+    tip: Quando esplorate un bosco o una montagna e volete sapere cosa c'è.
+  cone_of_cold:
+    name: Cono di Freddo
+    level: 5
+    lists:
+    - sorcerer
+    - wizard
+    school: invocazione
+    range: personale (cono di 18 m)
+    cast: 1 azione
+    duration: istantanea
+    save: con
+    damage: 8d8
+    damage_type: freddo
+    text: 'Un getto di aria gelida esplode dalle tue mani in un cono di 18 m: ogni creatura nell''area deve fare un TS su COS o subisce 8d8 danni da freddo (metà se supera). Una creatura uccisa da questo
+      incantesimo diventa una statua congelata finché non si scongela. +1d8 per slot superiore.'
+    kid: 'Un soffio di gelo esce dalle tue mani in un cono lungo 18 m. Ogni creatura lì tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): 8d8 danni da freddo, metà se riesce. Attenta
+      agli amici!'
+    tip: Contro tanti nemici davanti a te, quando gli amici non sono in mezzo.
+  conjure_elemental:
+    name: Evoca Elementale
+    level: 5
+    lists:
+    - druid
+    - wizard
+    school: evocazione
+    range: 27
+    conc: true
+    cast: 1 minuto
+    duration: fino a 1 ora
+    text: 'Scegli un''area di aria, terra, fuoco o acqua che riempia un cubo di 3 m entro gittata: un elementale adatto di GS 5 o inferiore appare entro 3 m da essa, amichevole verso di te e i tuoi compagni;
+      tira la sua iniziativa, obbedisce ai tuoi comandi verbali e sparisce a 0 PF o quando l''incantesimo termina. Se perdi la concentrazione l''elementale non sparisce ma diventa ostile, non puoi congedarlo
+      e svanisce 1 ora dopo essere stato evocato. Il GS aumenta di 1 per slot superiore.'
+    kid: 'Ci metti 1 minuto: da un fuoco, una roccia, dell''acqua o dell''aria entro 27 m esce un elementale (GS 5) che ti obbedisce per 1 ora. Attenta: se perdi la concentrazione diventa tuo nemico!'
+    tip: Prima di una battaglia difficile, quando c'è fuoco, acqua o roccia vicino.
+  conjure_volley:
+    name: Evoca Raffica
+    level: 5
+    lists:
+    - ranger
+    school: evocazione
+    range: 45
+    cast: 1 azione
+    duration: istantanea
+    save: dex
+    damage: 8d8
+    damage_type: come l'arma
+    text: 'Spari in aria una munizione non magica con un''arma a distanza (o lanci un''arma non magica) e scegli un punto entro gittata: centinaia di copie piovono dall''alto in un cilindro di 12 m di raggio
+      e 6 m di altezza, poi spariscono. Ogni creatura nell''area deve fare un TS su DES o subisce 8d8 danni dello stesso tipo dell''arma o della munizione (metà se supera).'
+    kid: 'Spari una freccia (o lanci un''arma) in aria e ne piovono centinaia in un cerchio di 12 m di raggio, entro 45 m. Chi è lì tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): 8d8
+      danni, metà se riesce.'
+    tip: Contro un gruppo grande di nemici lontani.
+  contact_other_plane:
+    name: Contattare Altri Piani
+    level: 5
+    lists:
+    - warlock
+    - wizard
+    school: divinazione
+    range: personale
+    ritual: true
+    cast: 1 minuto
+    duration: 1 minuto
+    text: Contatti mentalmente un semidio, lo spirito di un saggio morto da tempo o un'altra entità misteriosa di un altro piano, e fai un TS su INT con CD 15. Se fallisci subisci 6d6 danni psichici e sei
+      folle fino al termine di un riposo lungo (non puoi compiere azioni, capire gli altri o leggere, e parli in modo incomprensibile; Ristorare Superiore pone fine all'effetto). Se lo superi puoi porre fino
+      a cinque domande, a cui il Master risponde con una parola come 'sì', 'no', 'forse', 'mai', 'irrilevante' o 'non chiaro'.
+    kid: 'Ci metti 1 minuto e parli con un essere misterioso di un altro mondo. Prima tiri un d20 per resistere (tiro salvezza su Intelligenza): con 15 o più puoi fargli 5 domande. Se fallisci, 6d6 danni
+      e resti confusa fino al riposo lungo.'
+    tip: Solo se hai Intelligenza alta e vi serve un segreto importante.
+  contagion:
+    name: Contagio
+    level: 5
+    lists:
+    - cleric
+    - druid
+    school: necromanzia
+    range: contatto
+    cast: 1 azione
+    duration: 7 giorni
+    attack: true
+    save: con
+    text: 'Fai un attacco con incantesimo in mischia contro una creatura a portata: se colpisci è avvelenata e, alla fine di ogni suo turno, fa un TS su COS. Con tre successi non è più avvelenata e l''incantesimo
+      termina; con tre fallimenti non è più avvelenata ma subisce per 7 giorni una malattia a tua scelta: svantaggio a prove e TS di SAG e accecata; svantaggio a prove, TS e attacchi di FOR; svantaggio a
+      prove di CAR e vulnerabilità a tutti i danni; svantaggio a prove e TS di INT e in combattimento agisce come sotto Confusione; svantaggio a prove, TS e attacchi di DES; oppure svantaggio a prove e TS
+      di COS e stordita fino alla fine del suo turno successivo ogni volta che subisce danni.'
+    kid: 'Tocchi un nemico: tira d20{att}, se arrivi alla sua CA è avvelenato. Alla fine di ogni suo turno tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): con 3 successi guarisce, con
+      3 fallimenti prende una brutta malattia per 7 giorni.'
+    tip: Contro un nemico forte che deve restare debole a lungo.
+  creation:
+    name: Creazione
+    level: 5
+    lists:
+    - sorcerer
+    - wizard
+    school: illusione
+    range: 9
+    cast: 1 minuto
+    duration: speciale
+    text: 'Con materia d''ombra della Coltre Oscura crei entro gittata un oggetto non vivente di materia vegetale (stoffa, corda, legno...) o minerale (pietra, cristallo, metallo), non più grande di un cubo
+      di 1,5 m e di forma e materiale che hai già visto. Dura in base al materiale: vegetale 1 giorno, pietra o cristallo 12 ore, metalli preziosi 1 ora, gemme 10 minuti, adamantio o mithral 1 minuto; se
+      usato come componente materiale di un altro incantesimo, lo fa fallire. Il cubo aumenta di 1,5 m per slot superiore.'
+    kid: 'In 1 minuto crei entro 9 m un oggetto che hai già visto, grande al massimo come un cubo di 1,5 m: corda, legno, pietra, metallo... Non dura per sempre: 1 giorno se è di legno o stoffa, 12 ore se
+      è di pietra.'
+    tip: Quando vi serve un attrezzo, un ponte o una scala che non avete.
+  destructive_wave:
+    name: Onda Distruttiva
+    level: 5
+    lists:
+    - paladin
+    school: invocazione
+    range: personale (raggio di 9 m)
+    cast: 1 azione
+    duration: istantanea
+    save: con
+    damage: 5d6 + 5d6
+    damage_type: tuono + radiosi o necrotici
+    text: 'Colpisci il terreno e un''onda di energia divina si propaga da te: ogni creatura a tua scelta entro 9 m deve fare un TS su COS o subisce 5d6 danni da tuono più 5d6 danni radiosi o necrotici (a
+      tua scelta) e cade prona; se supera subisce metà danni e non cade prona.'
+    kid: 'Colpisci il terreno e un''onda di energia parte da te. I nemici che scegli entro 9 m tirano un d20 per resistere (tiro salvezza su Costituzione contro {cd}): 5d6 + 5d6 danni e cadono a terra; se
+      riescono, metà danni e restano in piedi.'
+    tip: 'Quando sei circondato da nemici: gli amici vicini non vengono colpiti.'
+  dispel_evil_and_good:
+    name: Dissolvi il Bene e il Male
+    level: 5
+    lists:
+    - cleric
+    - paladin
+    school: abiurazione
+    range: personale
+    conc: true
+    cast: 1 azione
+    duration: fino a 1 minuto
+    attack: true
+    save: cha
+    text: 'Per la durata celestiali, elementali, folletti, immondi e non morti hanno svantaggio ai tiri per colpire contro di te. Puoi terminare l''incantesimo prima con un''azione per: Spezzare Ammaliamento
+      (tocchi una creatura affascinata, spaventata o posseduta da una di queste creature e la liberi) oppure Congedo (attacco con incantesimo in mischia contro una di queste creature: se colpisci, deve superare
+      un TS su CAR o torna al suo piano d''origine; se non sono già lì, i non morti vanno nella Coltre Oscura e i folletti nella Selva Fatata). Componente materiale: acqua santa o polvere d''argento e di
+      ferro.'
+    kid: Per 1 minuto angeli, demoni, folletti, elementali e non morti ti attaccano tirando 2 d20 e tenendo il più basso. Puoi chiudere la magia per liberare un amico stregato da loro, o per rispedirne uno
+      a casa (tira d20{att}, poi lui resiste con Carisma contro {cd}).
+    tip: Contro demoni, non morti o folletti, o per salvare un amico posseduto.
+  dominate_person:
+    name: Dominare Persone
+    level: 5
+    lists:
+    - bard
+    - sorcerer
+    - wizard
+    school: ammaliamento
+    range: 18
+    conc: true
+    cast: 1 azione
+    duration: fino a 1 minuto
+    save: wis
+    text: 'Un umanoide che puoi vedere deve superare un TS su SAG (con vantaggio se tu o i tuoi alleati lo state combattendo) o è affascinato da te per la durata: grazie a un legame telepatico gli dai ordini
+      (senza usare azioni) che cerca di eseguire, e con un''azione puoi controllarlo del tutto fino alla fine del tuo turno successivo. Ogni volta che subisce danni ripete il TS e, se lo supera, l''incantesimo
+      termina. Con slot di 6° livello dura fino a 10 minuti, di 7° fino a 1 ora, di 8° o superiore fino a 8 ore.'
+    kid: Una persona entro 18 m tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}); se la state combattendo tira 2 d20 e tiene il più alto. Se fallisce, per 1 minuto fa quello che le ordini
+      col pensiero. Se viene ferita ritenta.
+    tip: Per trasformare un nemico pericoloso in un alleato, prima di ferirlo.
+  dream:
+    name: Sogno
+    level: 5
+    lists:
+    - bard
+    - warlock
+    - wizard
+    school: illusione
+    range: speciale
+    cast: 1 minuto
+    duration: 8 ore
+    save: wis
+    damage: 3d6
+    damage_type: psichico
+    text: 'Tu o una creatura consenziente che tocchi entrate in trance come messaggero e comparite nei sogni di una creatura che conosci sullo stesso piano (non funziona su chi non dorme, come gli elfi):
+      potete parlarle e plasmare il sogno finché dorme, e al risveglio lo ricorderà perfettamente. In alternativa il messaggero appare mostruoso, consegna un messaggio di al massimo dieci parole e il bersaglio
+      deve superare un TS su SAG o ha un incubo che gli toglie i benefici del riposo e al risveglio subisce 3d6 danni psichici. Se hai una parte del suo corpo (capelli, unghie...) ha svantaggio al TS.'
+    kid: 'Ci metti 1 minuto ed entri nei sogni di qualcuno che conosci, anche lontanissimo, per parlargli mentre dorme. Oppure gli mandi un incubo: tira un d20 per resistere (tiro salvezza su Saggezza contro
+      {cd}), se fallisce non riposa e al risveglio subisce 3d6 danni.'
+    tip: Per mandare un messaggio a un amico lontano o spaventare un cattivo.
+  flame_strike:
+    name: Colpo Infuocato
+    level: 5
+    lists:
+    - cleric
+    school: invocazione
+    range: 18
+    cast: 1 azione
+    duration: istantanea
+    save: dex
+    damage: 4d6 + 4d6
+    damage_type: fuoco + radiosi
+    text: 'Una colonna verticale di fuoco divino scende dal cielo in un cilindro di 3 m di raggio e 12 m di altezza centrato su un punto entro gittata: ogni creatura nell''area deve fare un TS su DES o subisce
+      4d6 danni da fuoco e 4d6 danni radiosi (metà se supera). +1d6 ai danni da fuoco o radiosi (a scelta) per slot superiore.'
+    kid: 'Una colonna di fuoco sacro scende dal cielo in un cerchio di 3 m di raggio, entro 18 m. Chi è lì tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): 4d6 danni da fuoco + 4d6 radiosi,
+      metà se riesce.'
+    tip: Contro un gruppetto di nemici vicini tra loro, lontani dagli amici.
+  geas:
+    name: Costrizione
+    level: 5
+    lists:
+    - bard
+    - cleric
+    - druid
+    - paladin
+    - wizard
+    school: ammaliamento
+    range: 18
+    cast: 1 minuto
+    duration: 30 giorni
+    save: wis
+    damage: 5d10
+    damage_type: psichico
+    text: 'Dai un comando magico a una creatura che puoi vedere e che ti capisce, obbligandola a compiere un servizio o ad astenersi da un''azione: se fallisce un TS su SAG è affascinata da te per la durata
+      e subisce 5d10 danni psichici ogni volta che agisce direttamente contro le tue istruzioni (al massimo una volta al giorno). Un comando che la porterebbe a morte certa termina l''incantesimo; lo terminano
+      anche Rimuovi Maledizione, Ristorare Superiore o Desiderio, oppure tu con un''azione. Con slot di 7° o 8° livello dura 1 anno, con slot di 9° livello finché non viene terminato da uno di quegli incantesimi.'
+    kid: 'Ci metti 1 minuto e dai un ordine a una creatura entro 18 m che ti capisce. Tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}): se fallisce, per 30 giorni subisce 5d10 danni ogni
+      volta che disobbedisce (massimo una volta al giorno).'
+    tip: Per costringere un prigioniero a mantenere una promessa.
+  greater_restoration:
+    name: Ristorare Superiore
+    level: 5
+    lists:
+    - bard
+    - cleric
+    - druid
+    school: abiurazione
+    range: contatto
+    cast: 1 azione
+    duration: istantanea
+    text: 'Infondi energia positiva in una creatura che tocchi: riduci di uno il suo livello di indebolimento oppure termini uno di questi effetti: un effetto che la affascina o la pietrifica; una maledizione
+      (inclusa la sintonia con un oggetto magico maledetto); una riduzione di un suo punteggio di caratteristica; un effetto che riduce i suoi punti ferita massimi. Componente materiale: polvere di diamante
+      da almeno 100 mo (consumata).'
+    kid: 'Tocchi un''amica e usi polvere di diamante da 100 mo. Le togli una di queste cose: un livello di stanchezza (indebolimento), una magia che la stregava o la pietrificava, una maledizione, o una magia
+      che le aveva tolto forza o punti ferita massimi.'
+    tip: Quando un'amica è pietrificata, maledetta o stregata.
+  hallow:
+    name: Santificare
+    level: 5
+    lists:
+    - cleric
+    school: invocazione
+    range: contatto
+    cast: 24 ore
+    duration: finché non viene dissolto
+    save: cha
+    text: 'Tocchi un punto e infondi potere sacro (o sacrilego) in un''area fino a 18 m di raggio (fallisce se include un''area già santificata): celestiali, elementali, folletti, immondi e non morti non
+      possono entrarvi né affascinare, spaventare o possedere chi è dentro (puoi escludere alcuni di questi tipi). Puoi legare all''area un effetto extra (coraggio, oscurità, luce diurna, protezione o vulnerabilità
+      a un tipo di energia, riposo eterno dei morti, blocco del teletrasporto, paura, silenzio, linguaggi) su tutte le creature o su un gruppo a scelta; chi ne è colpito, entrando o iniziando il turno nell''area,
+      può fare un TS su CAR per ignorarlo finché non esce. Componenti materiali: erbe, oli e incensi da almeno 1.000 mo (consumati).'
+    kid: 'Ci vogliono 24 ore e incensi da 1.000 mo. Rendi sacro un luogo fino a 18 m di raggio, per sempre: angeli, demoni, folletti, elementali e non morti non possono entrare. Puoi aggiungere un effetto,
+      per esempio silenzio, luce o coraggio.'
+    tip: Per proteggere per sempre un tempio, una casa o un villaggio.
+  hold_monster:
+    name: Blocca Mostri
+    level: 5
+    lists:
+    - bard
+    - sorcerer
+    - warlock
+    - wizard
+    school: ammaliamento
+    range: 27
+    conc: true
+    cast: 1 azione
+    duration: fino a 1 minuto
+    save: wis
+    text: Una creatura che puoi vedere entro gittata deve superare un TS su SAG o è paralizzata per la durata; non ha effetto sui non morti. Alla fine di ogni suo turno ripete il TS e, se lo supera, l'incantesimo
+      termina. +1 bersaglio per slot superiore (i bersagli devono essere entro 9 m l'uno dall'altro).
+    kid: 'Una creatura entro 27 m (non un non morto) tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}): se fallisce resta paralizzata, ferma come una statua. Alla fine di ogni suo turno ritenta.
+      Chi la colpisce da vicino fa un colpo critico!'
+    tip: Contro un mostro pericoloso, se gli amici sono vicini a lui.
+
+  # ---- da spells_L6.yaml ----
+  arcane_gate:
+    name: Portale Arcano
+    level: 6
+    lists:
+    - sorcerer
+    - warlock
+    - wizard
+    school: evocazione
+    range: 150
+    conc: true
+    cast: 1 azione
+    duration: fino a 10 minuti
+    text: 'Due portali circolari collegati, di 3 m di diametro, si aprono su due punti del terreno che vedi: uno entro 3 m da te, l''altro entro 150 m. Chi entra dal lato attivo di un portale esce dall''altro
+      come se fossero adiacenti; la nebbia nei portali blocca la vista. Con un''azione bonus puoi ruotarli.'
+    kid: 'Apri due porte magiche rotonde larghe 3 m: una vicino a te, l''altra in un punto che vedi fino a 150 m. Per 10 minuti chi entra in una esce subito dall''altra.'
+    tip: Per superare un burrone o un muro, o per scappare in fretta.
+  blade_barrier:
+    name: Barriera di Lame
+    level: 6
+    lists:
+    - cleric
+    school: invocazione
+    range: 27
+    conc: true
+    cast: 1 azione
+    duration: fino a 10 minuti
+    save: dex
+    damage: 6d10
+    damage_type: tagliente
+    text: 'Crei un muro verticale di lame vorticanti lungo fino a 30 m, alto 6 m e spesso 1,5 m, oppure un anello di 18 m di diametro alto 6 m e spesso 1,5 m. Dà copertura tre quarti ed è terreno difficile.
+      Chi vi entra per la prima volta in un turno o vi inizia il turno fa un TS su DES: 6d10 danni taglienti (metà se supera).'
+    kid: 'Crei entro 27 m un muro di lame che girano, lungo fino a 30 m e alto 6 m. Chi ci entra tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): 6d10 danni, metà se riesce.'
+    tip: Per bloccare un corridoio o proteggere il gruppo da un'orda.
+  chain_lightning:
+    name: Catena di Fulmini
+    level: 6
+    lists:
+    - sorcerer
+    - wizard
+    school: invocazione
+    range: 45
+    cast: 1 azione
+    duration: istantanea
+    save: dex
+    damage: 10d8
+    damage_type: fulmine
+    text: 'Un fulmine colpisce un bersaglio (creatura o oggetto) entro 45 m, poi tre fulmini saltano verso un massimo di altri tre bersagli entro 9 m dal primo. Ogni bersaglio fa un TS su DES: 10d8 danni
+      da fulmine (metà se supera). +1 fulmine aggiuntivo per slot superiore. Componenti: un po'' di pelliccia, un pezzo d''ambra, vetro o una bacchetta di cristallo e tre spilli d''argento.'
+    kid: 'Un fulmine colpisce un nemico entro 45 m e salta su altri 3 nemici vicini a lui (entro 9 m). Ognuno tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): 10d8 danni, metà se riesce.'
+    tip: Contro 2-4 nemici forti, anche se sono sparsi.
+  circle_of_death:
+    name: Cerchio di Morte
+    level: 6
+    lists:
+    - sorcerer
+    - warlock
+    - wizard
+    school: necromanzia
+    range: 45
+    cast: 1 azione
+    duration: istantanea
+    save: con
+    damage: 8d6
+    damage_type: necrotico
+    text: 'Una sfera di energia negativa di 18 m di raggio si espande da un punto entro 45 m: ogni creatura nell''area fa un TS su COS e subisce 8d6 danni necrotici (metà se supera). +2d6 per slot superiore.
+      Componente: polvere di una perla nera frantumata da almeno 500 mo.'
+    kid: 'Un''onda di energia oscura riempie un cerchio enorme (18 m di raggio) entro 45 m. Ognuno lì dentro tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): 8d6 danni, metà se riesce.
+      Attenzione agli amici!'
+    tip: Contro tanti nemici lontani dagli amici. Serve una perla nera da 500 mo.
+  conjure_fey:
+    name: Evoca Folletto
+    level: 6
+    lists:
+    - druid
+    - warlock
+    school: evocazione
+    range: 27
+    conc: true
+    cast: 1 minuto
+    duration: fino a 1 ora
+    text: 'Evochi un folletto di GS 6 o inferiore, o uno spirito fatato in forma di bestia di GS 6 o inferiore, in uno spazio libero che vedi entro 27 m. È amichevole, tira l''iniziativa e obbedisce ai tuoi
+      comandi verbali; scompare a 0 PF o a fine incantesimo. Se perdi la concentrazione non scompare: diventa ostile, non puoi congedarlo e sparisce 1 ora dopo l''evocazione. GS +1 per slot superiore.'
+    kid: In 1 minuto chiami una creatura fatata forte (fino a GS 6) che appare entro 27 m e combatte per te fino a 1 ora. Se perdi la concentrazione diventa tua nemica!
+    tip: Prima di una battaglia grande, se puoi restare concentrata.
+  contingency:
+    name: Contingenza
+    level: 6
+    lists:
+    - wizard
+    school: invocazione
+    range: personale
+    cast: 10 minuti
+    duration: 10 giorni
+    text: 'Scegli un incantesimo di 5° livello o inferiore che puoi lanciare, con tempo di lancio di 1 azione e che può bersagliarti: lo lanci insieme a questo (spendendo entrambi gli slot) e stabilisci la
+      circostanza che lo attiverà. Quando avviene, entro 10 giorni, l''incantesimo si attiva subito ma solo su di te. Una sola contingenza alla volta; finisce se non porti con te la componente: una statuetta
+      d''avorio di te stesso decorata con gemme da 1.500 mo.'
+    kid: Prepari una magia di riserva (fino al 5° livello) che parte da sola su di te quando succede una cosa che scegli, per esempio «se cado nell'acqua, respiro sott'acqua». Funziona per 10 giorni.
+    tip: 'Come salvavita: una magia che parte da sola quando sei nei guai.'
+  create_undead:
+    name: Creare Non Morti
+    level: 6
+    lists:
+    - cleric
+    - warlock
+    - wizard
+    school: necromanzia
+    range: 3
+    cast: 1 minuto
+    duration: istantanea
+    text: 'Lanciabile solo di notte. Fino a tre cadaveri di umanoidi Medi o Piccoli entro 3 m diventano ghoul sotto il tuo controllo per 24 ore; con un''azione bonus li comandi mentalmente se sono entro 36
+      m. Per mantenerne il controllo rilanci l''incantesimo su di loro prima che finiscano le 24 ore. Slot di 7°: 4 ghoul; 8°: 5 ghoul, o 2 ghast o wight; 9°: 6 ghoul, o 3 ghast o wight, o 2 mummie. Componenti:
+      un vaso di terra di tomba, un vaso d''acqua salmastra e un onice nero da 150 mo per cadavere.'
+    kid: Di notte, fino a 3 corpi vicini a te (entro 3 m) si rialzano come ghoul, mostri che ti obbediscono per 24 ore. Li comandi con un'azione bonus.
+    tip: Per avere 3 servitori mostruosi; molti la considerano una magia malvagia.
+  disintegrate:
+    name: Disintegrazione
+    level: 6
+    lists:
+    - sorcerer
+    - wizard
+    school: trasmutazione
+    range: 18
+    cast: 1 azione
+    duration: istantanea
+    save: dex
+    damage: 10d6+40
+    damage_type: forza
+    text: 'Un sottile raggio verde colpisce una creatura, un oggetto o una creazione di forza magica entro 18 m. Una creatura fa un TS su DES: se fallisce subisce 10d6+40 danni da forza (nessun danno se supera)
+      e, se scende a 0 PF, è ridotta in polvere (solo resurrezione pura o desiderio la riportano in vita). Un oggetto non magico Grande o più piccolo, o una creazione di forza (come un muro di forza), è disintegrato
+      senza TS; se è Enorme o più grande, solo una porzione cubica di 3 m. +3d6 per slot superiore.'
+    kid: 'Un raggio verde colpisce un nemico entro 18 m. Lui tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): se fallisce subisce 10d6+40 danni, se riesce niente. A 0 punti ferita diventa
+      polvere!'
+    tip: Contro un nemico fortissimo, o per distruggere un muro di forza.
+  drawmijs_instant_summons:
+    name: Evocazione Istantanea di Drawmij
+    level: 6
+    lists:
+    - wizard
+    school: evocazione
+    range: contatto
+    ritual: true
+    cast: 1 minuto
+    duration: finché non viene dissolto
+    text: 'Tocchi un oggetto di massimo 4,5 kg e lungo al massimo 1,8 m: vi lasci un marchio invisibile e ne scrivi il nome su uno zaffiro da 1.000 mo (uno diverso per ogni lancio). In seguito, con un''azione,
+      pronunci il nome e frantumi lo zaffiro: l''oggetto ti appare all''istante in mano, a qualunque distanza, anche da un altro piano. Se lo tiene un''altra creatura non arriva, ma scopri chi è e dove si
+      trova all''incirca.'
+    kid: Metti un segno magico su un oggetto (massimo 4,5 kg) e uno zaffiro da 1.000 mo. Quando vuoi, rompi lo zaffiro e l'oggetto ti salta in mano, anche da lontanissimo!
+    tip: Sul tuo oggetto più prezioso, per non perderlo mai.
+  eyebite:
+    name: Malocchio
+    level: 6
+    lists:
+    - bard
+    - sorcerer
+    - warlock
+    - wizard
+    school: necromanzia
+    range: personale
+    conc: true
+    cast: 1 azione
+    duration: fino a 1 minuto
+    save: wis
+    text: 'I tuoi occhi diventano pozzi neri. Una creatura che vedi entro 18 m fa un TS su SAG; se fallisce subisce un effetto a tua scelta: Addormentato (privo di sensi finché non subisce danni o qualcuno
+      usa un''azione per svegliarlo); Panico (spaventato da te, a ogni suo turno deve Scattare e allontanarsi; finisce se arriva ad almeno 18 m da te e non ti vede); Nauseato (svantaggio ai tiri per colpire
+      e alle prove di caratteristica; ripete il TS alla fine di ogni suo turno). A ogni tuo turno puoi usare l''azione per bersagliare un''altra creatura, ma non una che ha già superato il TS.'
+    kid: 'Per 1 minuto, a ogni turno fissi un nemico entro 18 m: tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}). Se fallisce scegli tu: si addormenta, scappa via spaventato, oppure si sente
+      male e sbaglia di più.'
+    tip: 'Contro più nemici, uno per turno: addormentali o falli scappare.'
+  find_the_path:
+    name: Trova la Via
+    level: 6
+    lists:
+    - bard
+    - cleric
+    - druid
+    school: divinazione
+    range: personale
+    conc: true
+    cast: 1 minuto
+    duration: fino a 1 giorno
+    text: 'Scopri il percorso fisico più breve e diretto verso un luogo fisso e specifico che conosci, sullo stesso piano. Per la durata sai a che distanza e in che direzione si trova e, a ogni bivio, quale
+      strada è la più breve (non per forza la più sicura). Fallisce se la meta è su un altro piano, si sposta o non è specifica. Componenti: strumenti divinatori da 100 mo e un oggetto proveniente dal luogo.'
+    kid: 'Per un giorno intero conosci la strada più corta per un posto che conosci: sai quanto è lontano, da che parte è e quale via prendere a ogni incrocio.'
+    tip: Quando vi siete persi o cercate un posto in un labirinto.
+  flesh_to_stone:
+    name: Carne in Pietra
+    level: 6
+    lists:
+    - warlock
+    - wizard
+    school: trasmutazione
+    range: 18
+    conc: true
+    cast: 1 azione
+    duration: fino a 1 minuto
+    save: con
+    text: 'Una creatura fatta di carne che vedi entro 18 m fa un TS su COS: se fallisce è trattenuta mentre la sua carne si indurisce. Poi ripete il TS alla fine di ogni suo turno: con 3 successi l''incantesimo
+      finisce, con 3 fallimenti (anche non consecutivi) è pietrificata. Se mantieni la concentrazione per tutta la durata, resta di pietra finché l''effetto non viene rimosso. Componenti: un pizzico di calce,
+      acqua e terra.'
+    kid: 'Un nemico entro 18 m tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): se fallisce resta bloccato e si irrigidisce. Poi ritira a ogni suo turno: se fallisce 3 volte diventa
+      una statua di pietra!'
+    tip: Contro un mostro fortissimo e solitario.
+  forbiddance:
+    name: Proibizione
+    level: 6
+    lists:
+    - cleric
+    school: abiurazione
+    range: contatto
+    ritual: true
+    cast: 10 minuti
+    duration: 1 giorno
+    damage: 5d10
+    damage_type: radiosi o necrotici
+    text: 'Proteggi un''area di terreno fino a un quadrato di 60 m di lato, alta fino a 9 m: nessuno può entrarvi con il teletrasporto, i portali o i viaggi planari. Scegli tra celestiali, elementali, folletti,
+      immondi e non morti: i tipi scelti subiscono 5d10 danni radiosi o necrotici (a tua scelta) quando entrano nell''area per la prima volta in un turno o vi iniziano il turno; puoi fissare una parola d''ordine
+      che li protegge. Se lo lanci nello stesso luogo ogni giorno per 30 giorni, dura finché non viene dissolto. Componenti: acqua santa, incenso raro e polvere di rubino da almeno 1.000 mo.'
+    kid: 'Proteggi un posto grande (60 m per lato) per un giorno: nessuno ci entra con il teletrasporto. I mostri che scegli (non morti, demoni...) subiscono 5d10 danni quando entrano o restano dentro.'
+    tip: Per proteggere un tempio o la base del gruppo.
+  globe_of_invulnerability:
+    name: Globo di Invulnerabilità
+    level: 6
+    lists:
+    - sorcerer
+    - wizard
+    school: abiurazione
+    range: personale (raggio di 3 m)
+    conc: true
+    cast: 1 azione
+    duration: fino a 1 minuto
+    text: 'Una barriera immobile e scintillante di 3 m di raggio si forma intorno a te: gli incantesimi di 5° livello o inferiore lanciati dall''esterno non hanno effetto su creature e oggetti all''interno,
+      anche se lanciati con slot di livello superiore. +1 livello di incantesimo bloccato per slot superiore. Componente: una perla di vetro o cristallo che si frantuma quando l''incantesimo termina.'
+    kid: Crei intorno a te una bolla luccicante di 3 m che non si muove. Per 1 minuto le magie fino al 5° livello lanciate da fuori non toccano chi è dentro.
+    tip: Contro maghi nemici che lanciano tante magie.
+  guards_and_wards:
+    name: Guardie e Interdizioni
+    level: 6
+    lists:
+    - bard
+    - wizard
+    school: abiurazione
+    range: contatto
+    cast: 10 minuti
+    duration: 24 ore
+    text: 'Proteggi fino a 225 m² di pavimento (per esempio un quadrato di 15 m di lato), alti fino a 6 m, per 24 ore: nebbia fitta nei corridoi (50% di sbagliare direzione a ogni bivio), porte chiuse come
+      con serratura arcana (fino a 10 nascoste da un''illusione di muro), ragnatele sulle scale e un effetto a scelta tra luci danzanti in 4 corridoi, bocca magica in 2 punti, nube maleodorante in 2 punti,
+      folata di vento continua o suggestione in un punto. Puoi escludere delle persone e fissare una parola d''ordine. Lanciato ogni giorno per un anno diventa permanente. Componenti: incenso, zolfo e olio,
+      una corda annodata, sangue di umber hulk e una verghetta d''argento da 10 mo.'
+    kid: 'Proteggi la tua casa o il tuo castello per 24 ore: nebbia nei corridoi che fa perdere la strada, porte chiuse a chiave, ragnatele sulle scale e un''altra trappola magica a tua scelta.'
+    tip: Per difendere la base del gruppo durante la notte.
+  harm:
+    name: Ferire
+    level: 6
+    lists:
+    - cleric
+    school: necromanzia
+    range: 18
+    cast: 1 azione
+    duration: istantanea
+    save: con
+    damage: 14d6
+    damage_type: necrotico
+    text: 'Scateni una malattia virulenta su una creatura che vedi entro 18 m: fa un TS su COS e subisce 14d6 danni necrotici (metà se supera), ma i danni non possono portarla sotto 1 PF. Se fallisce, i suoi
+      PF massimi diminuiscono per 1 ora di quanto ha subito; un effetto che cura le malattie li ripristina prima.'
+    kid: 'Un nemico entro 18 m tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): 14d6 danni, metà se riesce. Non scende sotto 1 punto ferita, ma se fallisce per 1 ora non può curarsi
+      del tutto.'
+    tip: Contro un nemico con tantissimi punti ferita.
+  heal:
+    name: Guarigione
+    level: 6
+    lists:
+    - cleric
+    - druid
+    school: invocazione
+    range: 18
+    cast: 1 azione
+    duration: istantanea
+    text: Una creatura che vedi entro 18 m recupera 70 punti ferita; l'incantesimo pone fine anche a cecità, sordità e a qualsiasi malattia che la affligge. Non ha effetto su costrutti e non morti. +10 PF
+      per slot superiore.
+    kid: Un amico entro 18 m recupera 70 punti ferita! Guarisce anche se è cieco, sordo o malato. Non funziona su non morti e costrutti.
+    tip: 'Quando un amico è quasi sconfitto: la cura più forte.'
+  heroes_feast:
+    name: Banchetto degli Eroi
+    level: 6
+    lists:
+    - cleric
+    - druid
+    school: evocazione
+    range: 9
+    cast: 10 minuti
+    duration: istantanea
+    text: 'Fai apparire un grande banchetto per un massimo di 12 creature, che richiede 1 ora per essere consumato. Al termine chi ha mangiato è curato da malattie e veleni e per 24 ore è immune al veleno
+      e alla condizione spaventato, ha vantaggio ai TS su SAG e i suoi PF massimi aumentano di 2d10 (e ottiene altrettanti PF). Componente: una coppa incrostata di gemme da 1.000 mo, consumata.'
+    kid: Fai apparire un banchetto per 12 persone. Dopo 1 ora di pranzo, per 24 ore nessuno ha paura né si avvelena, tutti hanno 2d10 punti ferita in più e vantaggio (2 d20, tieni il più alto) sui tiri salvezza
+      su Saggezza.
+    tip: Il giorno di una battaglia molto difficile, prima di partire.
+  magic_jar:
+    name: Giara Magica
+    level: 6
+    lists:
+    - wizard
+    school: necromanzia
+    range: personale
+    cast: 1 minuto
+    duration: finché non viene dissolto
+    save: cha
+    text: 'La tua anima lascia il corpo (che resta inerte) ed entra in un contenitore da almeno 500 mo. Da lì puoi tornare nel corpo o tentare di possedere un umanoide che vedi entro 30 m: se fallisce un
+      TS su CAR, la sua anima finisce nel contenitore e tu controlli il suo corpo (usi le sue statistiche ma tieni allineamento, INT, SAG, CAR e i tuoi privilegi di classe); se lo supera non puoi riprovare
+      su di lui per 24 ore. Se il corpo ospite muore fai un TS su CAR contro la tua CD: se lo superi torni nel contenitore (se è entro 30 m), altrimenti muori. Se il contenitore viene distrutto o l''incantesimo
+      finisce, torni nel tuo corpo; se è a più di 30 m o è morto, muori.'
+    kid: 'La tua anima esce dal corpo ed entra in una gemma. Da lì puoi entrare nel corpo di una persona entro 30 m: lei tira un d20 per resistere (tiro salvezza su Carisma contro {cd}); se fallisce, la comandi
+      tu.'
+    tip: Per comandare un nemico dall'interno. Molto rischiosa!
+  mass_suggestion:
+    name: Suggestione di Massa
+    level: 6
+    lists:
+    - bard
+    - sorcerer
+    - warlock
+    - wizard
+    school: ammaliamento
+    range: 18
+    cast: 1 azione
+    duration: 24 ore
+    save: wis
+    text: 'Suggerisci un''azione che sembri ragionevole (una o due frasi) a un massimo di 12 creature che vedi entro 18 m e che possono sentirti e capirti: chi fallisce un TS su SAG la segue al meglio per
+      24 ore o finché non la completa. Un ordine palesemente dannoso annulla l''effetto; finisce per chi viene ferito da te o dai tuoi compagni; chi non può essere affascinato è immune. Slot di 7°: 10 giorni;
+      8°: 30 giorni; 9°: un anno e un giorno. Componenti: una lingua di serpente e un po'' di favo di miele o una goccia d''olio dolce.'
+    kid: 'Dai un consiglio magico che sembri ragionevole a fino a 12 persone entro 18 m. Ognuna tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}): se fallisce lo segue per 24 ore.'
+    tip: Per mandare via un gruppo di guardie senza combattere.
+  move_earth:
+    name: Muovere il Terreno
+    level: 6
+    lists:
+    - druid
+    - sorcerer
+    - wizard
+    school: trasmutazione
+    range: 36
+    conc: true
+    cast: 1 azione
+    duration: fino a 2 ore
+    text: 'Scegli un''area di terreno fino a 12 m di lato entro 36 m e rimodelli terra, sabbia o argilla: alzi o abbassi il suolo, scavi o riempi fossati, alzi o abbatti muri, crei colonne, fino a metà della
+      dimensione maggiore dell''area (6 m per un quadrato di 12 m). Ogni modifica richiede 10 minuti, poi puoi scegliere una nuova area. Non agisce sulla pietra naturale o lavorata e non ferisce le creature;
+      le strutture rese instabili possono crollare. Componenti: una lama di ferro e un sacchetto di argilla, terriccio e sabbia.'
+    kid: 'Per fino a 2 ore muovi la terra come plastilina: in un quadrato di 12 m entro 36 m scavi fossati o alzi muri e colline alti fino a 6 m. Ogni cambiamento richiede 10 minuti. Non funziona sulla roccia.'
+    tip: Per costruire difese prima di un attacco o scavare un passaggio.
+  otilukes_freezing_sphere:
+    name: Sfera Congelante di Otiluke
+    level: 6
+    lists:
+    - wizard
+    school: invocazione
+    range: 90
+    cast: 1 azione
+    duration: istantanea
+    save: con
+    damage: 10d6
+    damage_type: freddo
+    text: 'Un globo gelido esplode in una sfera di 18 m di raggio in un punto entro 90 m: ogni creatura nell''area fa un TS su COS e subisce 10d6 danni da freddo (metà se supera). Se colpisce l''acqua la
+      congela per 15 cm di spessore su un quadrato di 9 m di lato per 1 minuto (chi nuota in superficie resta intrappolato: con un''azione, prova di FOR contro la tua CD per liberarsi). Puoi invece tenere
+      il globo, grande come una pietra da fionda: tu o altri potete lanciarlo (fino a 12 m, o con una fionda); se non è stato lanciato, esplode dopo 1 minuto. +1d6 per slot superiore. Componente: una piccola
+      sfera di cristallo.'
+    kid: 'Lanci una palla di ghiaccio che esplode in un cerchio di 18 m di raggio, fino a 90 m da te. Chi è dentro tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): 10d6 danni, metà se
+      riesce.'
+    tip: Contro un gruppo di nemici lontani, o per gelare un lago.
+  ottos_irresistible_dance:
+    name: Danza Irresistibile di Otto
+    level: 6
+    lists:
+    - bard
+    - wizard
+    school: ammaliamento
+    range: 9
+    conc: true
+    cast: 1 azione
+    duration: fino a 1 minuto
+    save: wis
+    text: 'Una creatura che vedi entro 9 m comincia a ballare sul posto, senza TS iniziale (chi non può essere affascinato è immune): usa tutto il movimento per danzare senza lasciare il suo spazio, ha svantaggio
+      ai TS su DES e ai tiri per colpire, e gli altri hanno vantaggio ai tiri per colpire contro di lei. Con un''azione può fare un TS su SAG: se lo supera, l''incantesimo finisce.'
+    kid: 'Un nemico entro 9 m balla e non può evitarlo: non si sposta, sbaglia di più e voi avete vantaggio a colpirlo (tirate 2 d20 e tenete il più alto). Per smettere usa un''azione e un tiro salvezza su
+      Saggezza contro {cd}.'
+    tip: 'Contro un nemico forte: all''inizio non può resistere.'
+  planar_ally:
+    name: Alleato Planare
+    level: 6
+    lists:
+    - cleric
+    school: evocazione
+    range: 18
+    cast: 10 minuti
+    duration: istantanea
+    text: 'Chiedi aiuto a un''entità potente che conosci (un dio, un primordiale, un principe dei demoni...), che ti manda un celestiale, un elementale o un immondo in uno spazio libero entro 18 m. La creatura
+      non è obbligata ad aiutarti: dovete accordarvi su un compito e un compenso, indicativamente 100 mo al minuto, 1.000 mo all''ora o 10.000 mo al giorno (fino a 10 giorni), meno se il compito è facile
+      o in linea con i suoi scopi. Se non vi accordate torna subito al suo piano.'
+    kid: 'Chiedi aiuto al tuo dio, che ti manda una creatura potente (un angelo, un elementale...). Non deve per forza obbedire: dovete mettervi d''accordo su un compito e un pagamento.'
+    tip: Per un compito difficile, se avete abbastanza monete d'oro.
+  programmed_illusion:
+    name: Illusione Programmata
+    level: 6
+    lists:
+    - bard
+    - wizard
+    school: illusione
+    range: 36
+    cast: 1 azione
+    duration: finché non viene dissolto
+    text: 'Crei entro 36 m l''illusione di un oggetto, una creatura o un fenomeno visibile, al massimo in un cubo di 9 m, con suoni e una scena lunga fino a 5 minuti, che si attiva quando avviene una condizione
+      visiva o sonora stabilita da te entro 9 m dall''area. Dopo la scena resta inattiva per 10 minuti, poi può riattivarsi. Toccarla rivela che è finta; con un''azione si può esaminarla con una prova di
+      INT (Indagare) contro la tua CD. Componenti: un po'' di vello e polvere di giada da 25 mo.'
+    kid: Prepari un'illusione (fino a un cubo di 9 m) che si accende da sola quando succede una cosa che scegli, per esempio quando qualcuno apre la porta. Recita fino a 5 minuti, con suoni.
+    tip: Per spaventare i ladri o preparare un trucco per i nemici.
+  sunbeam:
+    name: Raggio Solare
+    level: 6
+    lists:
+    - druid
+    - sorcerer
+    - wizard
+    school: invocazione
+    range: personale (linea di 18 m)
+    conc: true
+    cast: 1 azione
+    duration: fino a 1 minuto
+    save: con
+    damage: 6d8
+    damage_type: radiosi
+    text: 'Un raggio di luce largo 1,5 m e lungo 18 m parte dalla tua mano: ogni creatura nella linea fa un TS su COS; se fallisce subisce 6d8 danni radiosi ed è accecata fino al tuo turno successivo, se
+      supera subisce metà danni e non è accecata. Non morti e melme hanno svantaggio al TS. A ogni turno puoi creare una nuova linea con la tua azione; intanto nella mano hai una luce solare intensa di 9
+      m di raggio (più 9 m di luce fioca). Componente: una lente d''ingrandimento.'
+    kid: 'Per 1 minuto, ogni turno, dalla tua mano parte un raggio di sole lungo 18 m. Chi colpisce tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): 6d8 danni e resta accecato, se riesce
+      metà danni.'
+    tip: 'Contro non morti e vampiri: odiano la luce del sole.'
+  transport_via_plants:
+    name: Trasporto Vegetale
+    level: 6
+    lists:
+    - druid
+    school: evocazione
+    range: 3
+    cast: 1 azione
+    duration: 1 round
+    text: Colleghi una pianta inanimata Grande o più grande entro 3 m a un'altra pianta sullo stesso piano, a qualsiasi distanza, che hai già visto o toccato almeno una volta. Per la durata, qualsiasi creatura
+      può entrare nella prima pianta e uscire dalla seconda spendendo 1,5 m di movimento.
+    kid: Entri in un grande albero vicino a te (entro 3 m) ed esci da un altro albero che hai già visto, anche lontanissimo! Il passaggio resta aperto solo 1 round, anche per i tuoi amici.
+    tip: Per tornare a casa o raggiungere un bosco lontano in un attimo.
+  true_seeing:
+    name: Visione del Vero
+    level: 6
+    lists:
+    - bard
+    - cleric
+    - sorcerer
+    - warlock
+    - wizard
+    school: divinazione
+    range: contatto
+    cast: 1 azione
+    duration: 1 ora
+    text: 'Una creatura consenziente che tocchi ottiene vista pura entro 36 m per 1 ora: vede nell''oscurità normale e magica, vede creature e oggetti invisibili, riconosce le illusioni visive e la vera forma
+      di mutaforma e creature trasformate, nota le porte segrete nascoste dalla magia e vede nel Piano Etereo. Componente: un unguento per gli occhi da 25 mo (polvere di funghi, zafferano e grasso), consumato.'
+    kid: 'Tocchi un amico (o te stessa): per 1 ora vede le cose come sono davvero, fino a 36 m. Vede al buio e chi è invisibile, e scopre illusioni, travestimenti magici e porte segrete magiche.'
+    tip: Contro nemici invisibili, illusioni o mutaforma.
+  wall_of_ice:
+    name: Muro di Ghiaccio
+    level: 6
+    lists:
+    - wizard
+    school: invocazione
+    range: 36
+    conc: true
+    cast: 1 azione
+    duration: fino a 10 minuti
+    save: dex
+    damage: 10d6
+    damage_type: freddo
+    text: 'Crei su una superficie solida entro 36 m un muro di ghiaccio spesso 30 cm: una cupola o una sfera di raggio fino a 3 m, oppure dieci pannelli contigui di 3 m x 3 m. Chi si trova nello spazio del
+      muro quando appare viene spinto da un lato e fa un TS su DES: 10d6 danni da freddo (metà se supera). Ogni sezione di 3 m ha CA 12 e 30 PF ed è vulnerabile al fuoco; se distrutta lascia una cortina d''aria
+      gelida: chi la attraversa per la prima volta in un turno fa un TS su COS, 5d6 danni da freddo (metà se supera). +2d6 ai danni iniziali e +1d6 a quelli dell''aria gelida per slot superiore. Componente:
+      un pezzetto di quarzo.'
+    kid: 'Crei entro 36 m un muro di ghiaccio (fino a 10 pezzi da 3 m) o una cupola. Chi è dove appare il muro tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): 10d6 danni, metà se riesce.'
+    tip: Per dividere i nemici o chiudere un passaggio.
+  wall_of_thorns:
+    name: Muro di Spine
+    level: 6
+    lists:
+    - druid
+    school: evocazione
+    range: 36
+    conc: true
+    cast: 1 azione
+    duration: fino a 10 minuti
+    save: dex
+    damage: 7d8
+    damage_type: perforante
+    text: 'Crei su una superficie solida entro 36 m un muro di rovi spinosi lungo fino a 18 m, alto 3 m e spesso 1,5 m, oppure un cerchio di 6 m di diametro, alto fino a 6 m e spesso 1,5 m; blocca la linea
+      di vista. Quando appare, chi è nell''area fa un TS su DES: 7d8 danni perforanti (metà se supera). Attraversarlo costa 4 m di movimento per ogni metro; la prima volta che una creatura entra nel muro
+      in un turno o vi termina il turno fa un TS su DES: 7d8 danni taglienti (metà se supera). +1d8 a entrambi i danni per slot superiore. Componente: una manciata di spine.'
+    kid: 'Crei entro 36 m un muro di rovi lungo 18 m e alto 3 m. Chi è lì quando appare tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): 7d8 danni, metà se riesce. Attraversarlo è lento
+      e fa male.'
+    tip: Per bloccare i nemici e ferirli se provano a passare.
+  wind_walk:
+    name: Camminare nel Vento
+    level: 6
+    lists:
+    - druid
+    school: trasmutazione
+    range: 9
+    cast: 1 minuto
+    duration: 8 ore
+    text: 'Tu e fino a dieci creature consenzienti che vedi entro 9 m assumete forma di nuvola per 8 ore: velocità di volare 90 m e resistenza ai danni delle armi non magiche. In questa forma potete solo
+      Scattare o tornare normali; trasformarsi (in un senso o nell''altro) richiede 1 minuto, durante il quale si è incapacitati e non ci si può muovere. Se l''incantesimo finisce mentre volate, scendete
+      di 18 m per round per 1 minuto e atterrate al sicuro; se dopo 1 minuto non siete a terra, cadete per la distanza rimanente. Componenti: fuoco e acqua santa.'
+    kid: 'Tu e fino a 10 amici entro 9 m diventate nuvolette per 8 ore e volate velocissimi (90 m a turno). Da nuvola potete solo volare: per tornare normali serve 1 minuto.'
+    tip: 'Per viaggi lunghi: fate tanti chilometri in poco tempo.'
+  word_of_recall:
+    name: Parola del Richiamo
+    level: 6
+    lists:
+    - cleric
+    school: evocazione
+    range: 1,5
+    cast: 1 azione
+    duration: istantanea
+    text: Tu e fino a cinque creature consenzienti entro 1,5 m da te vi teletrasportate all'istante in un santuario designato in precedenza, comparendo negli spazi liberi più vicini al punto scelto. Il santuario
+      si designa lanciando l'incantesimo in un luogo (come un tempio) dedicato o fortemente legato alla tua divinità; senza santuario non ha effetto.
+    kid: Tu e fino a 5 amici vicini a te (entro 1,5 m) tornate in un istante al tempio del tuo dio che avete scelto prima come rifugio.
+    tip: Per scappare da un pericolo e tornare a casa al sicuro.
