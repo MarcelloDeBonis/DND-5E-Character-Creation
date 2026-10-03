@@ -1,0 +1,240 @@
+fighter:
+  name: Guerriero
+  name_f: Guerriera
+  name_en: Fighter
+  hit_die: 10
+  saves: [str, con]
+  armor: [light, medium, heavy, shields]
+  weapons: [simple, martial]
+  tools: []
+  skill_choices:
+    count: 2
+    from: [acrobatics, animal_handling, athletics, history, insight, intimidation, perception, survival]
+  starting_equipment:
+    - choice: ["Cotta di maglia", "Armatura di cuoio, arco lungo e 20 frecce"]
+    - choice: ["Un'arma da guerra e uno scudo", "Due armi da guerra"]
+    - choice: ["Una balestra leggera e 20 quadrelli", "Due asce"]
+    - choice: ["Dotazione da esploratore di sotterranei", "Dotazione da esploratore"]
+  subclass_level: 3
+  subclass_label: Archetipo Marziale
+  asi_levels: [4, 6, 8, 12, 14, 16, 19]
+  features:
+    1:
+      - name: Stile di Combattimento
+        short: "Adotti uno stile di combattimento come specialità (vedi sotto)."
+        text: "Il guerriero adotta uno stile di combattimento particolare come sua specialità. Non può scegliere lo stesso stile più di una volta, anche se in seguito può sceglierne un altro."
+        kid_hide: true
+      - name: Recupero Energie
+        short: "Azione bonus: recuperi 1d10 + livello da guerriero PF. 1/riposo breve o lungo."
+        text: "Il guerriero dispone di una riserva limitata di resistenza a cui attingere per proteggersi. Nel suo turno può usare un'azione bonus per recuperare un numero di punti ferita pari a 1d10 + il suo livello da guerriero. Una volta usato, deve completare un riposo breve o lungo prima di poterlo usare di nuovo."
+        kid: "Con un'azione bonus riprendi fiato e recuperi 1d10 + {livello} PF. Poi devi riposare (anche un riposo breve) per rifarlo."
+    2:
+      - name: Azione Impetuosa
+        short: "Nel tuo turno effettui un'azione aggiuntiva. 1/riposo breve o lungo (2 usi dal 17°)."
+        text: "Il guerriero può spingersi oltre i suoi normali limiti per un momento. Nel suo turno può effettuare un'azione aggiuntiva oltre alla sua azione normale e a un'eventuale azione bonus. Una volta usato, deve completare un riposo breve o lungo prima di poterlo usare di nuovo. Dal 17° livello può usarlo due volte prima di un riposo, ma solo una volta nello stesso turno."
+        kid: "Una volta per riposo, nel tuo turno puoi fare un'azione in più: per esempio attaccare ancora."
+    3:
+      - name: Archetipo Marziale
+        short: "Scegli un archetipo (Campione, Maestro di Battaglia o Cavaliere Mistico)."
+        text: "Al 3° livello il guerriero sceglie un archetipo che si impegna a emulare nei suoi stili e tecniche di combattimento. L'archetipo scelto conferisce privilegi al 3°, 7°, 10°, 15° e 18° livello."
+        kid_hide: true
+    4:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Il guerriero può aumentare un punteggio di caratteristica di 2 o due punteggi di 1 (massimo 20), oppure scegliere un talento."
+        kid_hide: true
+    5:
+      - name: Attacco Extra
+        short: "Quando effettui l'azione di Attacco, attacchi due volte."
+        text: "Il guerriero può attaccare due volte, anziché una, ogni volta che effettua l'azione di Attacco nel suo turno. Il numero di attacchi aumenta a tre all'11° livello e a quattro al 20°."
+        kid: "Quando scegli di attaccare, colpisci due volte invece di una."
+    6:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid_hide: true
+    8:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid_hide: true
+    9:
+      - name: Indomito
+        name_f: Indomita
+        short: "Puoi ripetere un TS fallito. 1/riposo lungo (2 al 13°, 3 al 17°)."
+        text: "Il guerriero può ripetere un tiro salvezza fallito, ma deve usare il nuovo risultato. Può usarlo una volta per riposo lungo; due volte dal 13° livello e tre dal 17°."
+        kid: "Se fallisci un tiro salvezza puoi ritirarlo, ma tieni il nuovo risultato. Una volta per riposo lungo."
+    11:
+      - name: Attacco Extra (2)
+        short: "Attacchi tre volte con l'azione di Attacco."
+        text: "Il guerriero attacca tre volte quando effettua l'azione di Attacco."
+        kid: "Quando scegli di attaccare, colpisci tre volte."
+    12:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid_hide: true
+    13:
+      - name: Indomito (2 usi)
+        name_f: Indomita (2 usi)
+        short: "Due usi di Indomito per riposo lungo."
+        text: "Vedi 9° livello."
+        kid: "Puoi ritirare un tiro salvezza fallito 2 volte per riposo lungo."
+    14:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid_hide: true
+    16:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid_hide: true
+    17:
+      - name: Azione Impetuosa (2 usi)
+        short: "Due usi di Azione Impetuosa per riposo."
+        text: "Vedi 2° livello."
+        kid: "Puoi fare l'azione in più 2 volte per riposo, ma solo una volta per turno."
+      - name: Indomito (3 usi)
+        name_f: Indomita (3 usi)
+        short: "Tre usi di Indomito per riposo lungo."
+        text: "Vedi 9° livello."
+        kid: "Puoi ritirare un tiro salvezza fallito 3 volte per riposo lungo."
+    19:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid_hide: true
+    20:
+      - name: Attacco Extra (3)
+        short: "Attacchi quattro volte con l'azione di Attacco."
+        text: "Il guerriero attacca quattro volte quando effettua l'azione di Attacco."
+        kid: "Quando scegli di attaccare, colpisci quattro volte."
+  subclasses:
+    champion:
+      name: Campione
+      name_f: Campionessa
+      name_en: Champion
+      features:
+        3:
+          - name: Critico Migliorato
+            short: "I tuoi attacchi con le armi ottengono un colpo critico con 19 o 20."
+            text: "Gli attacchi con le armi del guerriero mettono a segno un colpo critico quando il tiro del d20 è 19 o 20."
+            kid: "Fai un colpo critico anche quando esce 19 sul dado, non solo con 20."
+        7:
+          - name: Atleta Straordinario
+            short: "Aggiungi metà del bonus di competenza (arrotondato per eccesso) alle prove di FOR, DES e COS senza competenza. Salto in lungo con rincorsa: +30 cm per ogni punto di mod. FOR."
+            text: "Il guerriero aggiunge la metà del suo bonus di competenza (arrotondato per eccesso) a qualsiasi prova di Forza, Destrezza o Costituzione che non usi già il bonus di competenza. Inoltre, quando effettua un salto in lungo con rincorsa, la distanza aumenta di un numero di centimetri pari a 30 x il suo modificatore di Forza."
+            kid: "Sei più brava nelle prove di Forza, Destrezza e Costituzione, e salti più lontano."
+        10:
+          - name: Stile di Combattimento Aggiuntivo
+            short: "Scegli un secondo stile di combattimento."
+            text: "Il guerriero sceglie una seconda opzione dal privilegio Stile di Combattimento."
+            kid_hide: true
+        15:
+          - name: Critico Superiore
+            short: "Colpo critico con 18, 19 o 20."
+            text: "Gli attacchi con le armi del guerriero mettono a segno un colpo critico quando il tiro del d20 è 18, 19 o 20."
+            kid: "Fai un colpo critico quando esce 18, 19 o 20 sul dado."
+        18:
+          - name: Sopravvissuto
+            name_f: Sopravvissuta
+            short: "All'inizio del tuo turno, se ti resta non più della metà dei PF (e almeno 1), recuperi 5 + mod. COS PF."
+            text: "All'inizio di ogni suo turno, il guerriero recupera punti ferita pari a 5 + il suo modificatore di Costituzione se gli rimane non più della metà dei suoi punti ferita (e almeno 1)."
+            kid: "Se hai metà dei PF o meno (ma almeno 1), all'inizio di ogni tuo turno recuperi 5 + Costituzione PF."
+    battle_master:
+      name: Maestro di Battaglia
+      name_f: Maestra di Battaglia
+      name_en: Battle Master
+      features:
+        3:
+          - name: Superiorità in Combattimento
+            short: "Conosci 3 manovre e hai 4 dadi di superiorità (d8), recuperati con un riposo breve o lungo. CD manovre = 8 + comp. + mod. FOR o DES."
+            text: "Il guerriero apprende tre manovre a sua scelta e dispone di quattro dadi di superiorità (d8), che recupera al termine di un riposo breve o lungo. Alcune manovre richiedono un tiro salvezza: CD = 8 + bonus di competenza + modificatore di Forza o Destrezza (a scelta). Apprende altre due manovre al 7°, 10° e 15° livello; ottiene un dado in più al 7° e al 15°; i dadi diventano d10 al 10° e d12 al 18°."
+            kid: "Hai 4 dadi speciali (d8) per fare le tue mosse da combattimento, le manovre (vedi sotto). Li riprendi dopo un riposo breve o lungo."
+          - name: Studioso di Guerra
+            name_f: Studiosa di Guerra
+            short: "Competenza in uno strumento da artigiano a scelta."
+            text: "Il guerriero ottiene competenza in uno strumento da artigiano a sua scelta."
+            kid_hide: true
+        7:
+          - name: Conosci il Tuo Nemico
+            short: "Osservando una creatura per 1 minuto, scopri alcune delle sue capacità rispetto alle tue."
+            text: "Se il guerriero trascorre almeno 1 minuto a osservare o interagire con un'altra creatura fuori dal combattimento, può apprendere alcune informazioni sulle capacità di quella creatura rispetto alle sue (Forza, Destrezza, Costituzione, Classe Armatura, punti ferita attuali, livelli di classe totali, livelli da guerriero): due a scelta."
+            kid: "Se osservi qualcuno per 1 minuto, scopri se è più forte o più debole di te in due cose a scelta."
+        10:
+          - name: Superiorità Migliorata
+            short: "I dadi di superiorità diventano d10."
+            text: "I dadi di superiorità diventano d10."
+            kid: "I tuoi dadi di superiorità diventano d10."
+        15:
+          - name: Implacabile
+            short: "Quando tiri iniziativa senza dadi di superiorità, ne recuperi 1."
+            text: "Quando il guerriero tira per l'iniziativa e non ha più dadi di superiorità, ne recupera uno."
+            kid: "Se all'inizio di un combattimento non hai più dadi di superiorità, ne recuperi 1."
+        18:
+          - name: Superiorità Migliorata (d12)
+            short: "I dadi di superiorità diventano d12."
+            text: "I dadi di superiorità diventano d12."
+            kid: "I tuoi dadi di superiorità diventano d12."
+    eldritch_knight:
+      name: Cavaliere Mistico
+      name_f: Cavaliera Mistica
+      name_en: Eldritch Knight
+      spellcasting: {ability: int, list: wizard, type: third}
+      features:
+        3:
+          - name: Incantesimi
+            short: "Conosci 2 trucchetti e 3 incantesimi da mago (abiurazione/invocazione). Caratteristica: Intelligenza."
+            text: "Il guerriero apprende a lanciare incantesimi da mago: 2 trucchetti e 3 incantesimi di 1° livello (due dalle scuole di abiurazione o invocazione, uno qualsiasi). Caratteristica da incantatore: Intelligenza. CD tiro salvezza = 8 + bonus di competenza + modificatore di Intelligenza; bonus di attacco = bonus di competenza + modificatore di Intelligenza."
+            kid_hide: true
+          - name: Legame con l'Arma
+            short: "Rituale di 1 ora: leghi un'arma (max 2). Non puoi essere disarmato e puoi evocarla come azione bonus."
+            text: "Il guerriero può eseguire un rituale di 1 ora per creare un legame magico con un'arma. Non può essere disarmato di quell'arma a meno che non sia incapacitato, e se l'arma si trova sullo stesso piano può evocarla nella sua mano come azione bonus. Può avere fino a due armi legate."
+            kid: "Leghi con la magia fino a 2 armi: nessuno può strappartele di mano, e con un'azione bonus l'arma torna nella tua mano."
+        7:
+          - name: Magia da Guerra
+            short: "Quando usi l'azione per lanciare un trucchetto, puoi fare un attacco con un'arma come azione bonus."
+            text: "Quando il guerriero usa la sua azione per lanciare un trucchetto, può effettuare un attacco con un'arma come azione bonus."
+            kid: "Quando lanci un trucchetto con la tua azione, puoi anche attaccare con l'arma come azione bonus."
+        10:
+          - name: Colpo Mistico
+            short: "Se colpisci una creatura con un'arma, ha svantaggio al prossimo TS contro un tuo incantesimo entro la fine del tuo turno successivo."
+            text: "Quando il guerriero colpisce una creatura con un attacco con un'arma, quella creatura ha svantaggio al prossimo tiro salvezza che effettua contro un incantesimo lanciato dal guerriero prima della fine del suo turno successivo."
+            kid: "Se colpisci un nemico con l'arma, ha svantaggio contro il tuo prossimo incantesimo (fino alla fine del tuo prossimo turno)."
+        15:
+          - name: Carica Arcana
+            short: "Quando usi Azione Impetuosa puoi teletrasportarti di 9 m."
+            text: "Quando usa Azione Impetuosa, il guerriero può teletrasportarsi fino a 9 metri in uno spazio libero che può vedere, prima o dopo l'azione aggiuntiva."
+            kid: "Quando usi Azione Impetuosa puoi anche teletrasportarti fino a 9 m."
+        18:
+          - name: Magia da Guerra Migliorata
+            short: "Quando usi l'azione per lanciare un incantesimo, puoi fare un attacco con un'arma come azione bonus."
+            text: "Quando il guerriero usa la sua azione per lanciare un incantesimo, può effettuare un attacco con un'arma come azione bonus."
+            kid: "Quando lanci un incantesimo con la tua azione, puoi anche attaccare con l'arma come azione bonus."
+
+# ---- Altre classi: dati strutturali + privilegi iniziali (da estendere quando servono) ----
+# Barbaro (PHB 2014, cap. 3): privilegi 1-20 e i due Cammini Primordiali del Manuale del Giocatore
+# (Cammino del Berserker; Cammino del Combattente Totemico con gli animali totem orso, aquila e lupo).
+# Stesso schema di bard/sorcerer. Distanze in metri (1,5 m = 5 piedi, 3 m = 10 piedi, 9 m = 30 piedi,
+# 18 m = 60 piedi, 30 m = 100 piedi, 1,5 km = 1 miglio). Testi riassunti con parole nostre.
+# Nomi italiani: privilegi base come nell'SRD 5.1 in italiano; Cammino del Berserker e Combattente Totemico dal
+# Manuale del Giocatore (alcuni nomi delle sottoclassi da ricontrollare sul manuale cartaceo).
+# table: valori per livello (indice 0 = 1° livello), usabili nei testi come {t_<colonna>}.
+#   rages = usi di Ira per riposo lungo (99 = illimitati, 20° livello); rages_text = lo stesso valore come frase
+#     per i testi ("2 volte per riposo lungo" ... "quante volte vuoi");
+#   rage_damage = bonus ai danni in ira (numero: nei testi si scrive "+{t_rage_damage}");
+#   brutal_critical = dadi extra di Critico Brutale (0 prima del 9°); brutal_critical_dice = lo stesso come testo.
+# Il barbaro non ha 'spellcasting': {att} e {mod} non servono. {cd} serve solo al Cammino del Berserker
+#   (Presenza Intimidatoria) e si calcola con save_dc della sottoclasse: 8 + bonus di competenza + mod. CAR.
+# Campi macchina (oltre a quelli comuni):
+#   speed_bonus: 3 (metri) + requires_no_heavy_armor: true -> Movimento Veloce (solo senza armatura pesante)
+#   unarmored_ac: {base, abilities, shield_allowed}       -> Difesa senza Armatura (oggi il motore la calcola
+#                                                            già per la chiave 'barbarian')
+#   uses_table / damage_bonus_table                       -> Ira: colonne con usi e bonus ai danni
+#   initiative_advantage: true                            -> Istinto Ferino
+#   ability_bonus / ability_max                           -> Campione Primordiale (+4 FOR e COS, massimo 24)
+#   ritual_only_spells: [chiavi incantesimo]              -> incantesimi lanciabili solo come rituali
+#   save_dc: {ability, placeholder} (nella sottoclasse)   -> come calcolare {cd}
+# Nelle option_lists della sottoclasse, "level" = livello da barbaro a cui si sceglie l'opzione; a ogni livello
+#   si può scegliere lo stesso animale dei livelli precedenti o uno diverso.

@@ -25,9 +25,8 @@ dnd5e/
   rules/
     skills.yaml        caratteristiche, abilità, bonus di competenza, PE, point buy, linguaggi, allineamenti
     races.yaml         razze e sottorazze del PHB con i tratti (testo breve + completo)
-    classes.yaml       12 classi: Guerriero (Campione, Maestro di Battaglia, Cavaliere Mistico) e Druido
-                       (Circolo della Terra, Circolo della Luna) completi 1-20; le altre con dati strutturali
-                       e privilegi dei primi livelli
+    classes/           un file per classe (12 classi del PHB complete dal 1° al 20° livello con tutte le sottoclassi)
+    feats.yaml         i 42 talenti del PHB
     backgrounds.yaml   i 13 background del PHB
     equipment.yaml     armi, armature, dotazioni, stili di combattimento
     maneuvers.yaml     manovre del Maestro di Battaglia

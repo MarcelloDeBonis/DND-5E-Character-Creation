@@ -1,0 +1,242 @@
+bard:
+  name: Bardo
+  name_f: Barda
+  name_en: Bard
+  hit_die: 8
+  saves: [dex, cha]
+  armor: [light]
+  weapons: [simple, hand_crossbow, longsword, rapier, shortsword]
+  tools: ["Tre strumenti musicali a scelta"]
+  skill_choices:
+    count: 3
+    from: [acrobatics, animal_handling, arcana, athletics, deception, history, insight, intimidation, investigation, medicine, nature, perception, performance, persuasion, religion, sleight_of_hand, stealth, survival]
+  starting_equipment:
+    - choice: ["Uno stocco", "Una spada lunga", "Un'arma semplice qualsiasi"]
+    - choice: ["Dotazione da diplomatico", "Dotazione da intrattenitore"]
+    - choice: ["Un liuto", "Un altro strumento musicale qualsiasi"]
+    - fixed: ["Armatura di cuoio", "Pugnale"]
+  spellcasting:
+    ability: cha
+    type: full
+    prepared: known
+    list: bard
+    ritual: true
+    focus: "strumento musicale"
+  subclass_level: 3
+  subclass_label: Collegio Bardico
+  asi_levels: [4, 8, 12, 16, 19]
+  table:
+    bardic_inspiration_die: [d6, d6, d6, d6, d8, d8, d8, d8, d8, d10, d10, d10, d10, d10, d12, d12, d12, d12, d12, d12]
+    song_of_rest: ["—", 1d6, 1d6, 1d6, 1d6, 1d6, 1d6, 1d6, 1d8, 1d8, 1d8, 1d8, 1d10, 1d10, 1d10, 1d10, 1d12, 1d12, 1d12, 1d12]
+    cantrips_known: [2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+    spells_known: [4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 15, 16, 18, 19, 19, 20, 22, 22, 22]
+    magical_secrets: [0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 4, 4, 4, 4, 6, 6, 6]
+    jack_of_all_trades: [0, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3]
+  features:
+    1:
+      - name: Incantesimi
+        short: "Incantatore completo (Carisma). Conosci {t_cantrips_known} trucchetti e {t_spells_known} incantesimi da bardo; CD {cd}, attacco {att}. Rituali degli incantesimi conosciuti; focus: strumento musicale."
+        text: "Il bardo conosce due trucchetti a sua scelta dalla lista del bardo e ne apprende altri ai livelli successivi (colonna Trucchetti Conosciuti). Conosce quattro incantesimi di 1° livello e ne impara altri secondo la colonna Incantesimi Conosciuti, sempre di un livello per cui possiede slot. Per lanciarli spende uno slot di livello pari o superiore, e recupera tutti gli slot spesi al termine di un riposo lungo. Ogni volta che sale di livello può sostituire un incantesimo da bardo conosciuto con un altro della lista, di un livello per cui ha slot. Caratteristica da incantatore: Carisma (CD del tiro salvezza = 8 + bonus di competenza + mod. CAR; modificatore di attacco = bonus di competenza + mod. CAR). Può lanciare come rituale qualsiasi incantesimo da bardo che conosce se ha il descrittore rituale, e può usare uno strumento musicale come focus da incantatore."
+        kid: "Conosci {t_cantrips_known} trucchetti (magie che usi quando vuoi) e {t_spells_known} incantesimi che costano uno slot; gli slot tornano dopo un riposo lungo. Per colpire con una magia tira d20{att}. Se il nemico deve resistere, tira lui un d20 contro {cd}."
+        kid_hide: true
+      - name: Ispirazione Bardica
+        short: "Azione bonus: una creatura (non tu) entro 18 m che ti sente ottiene un {t_bardic_inspiration_die} da aggiungere, entro 10 minuti, a una prova, un tiro per colpire o un TS. Usi = mod. CAR (min. 1) per riposo lungo (anche breve dal 5°)."
+        text: "Il bardo può ispirare gli altri con le parole o la musica. Come azione bonus nel suo turno sceglie una creatura diversa da se stesso, entro 18 metri e in grado di sentirlo: quella creatura ottiene un dado di Ispirazione Bardica (d6). Una volta entro i 10 minuti successivi, la creatura può tirare il dado e aggiungere il risultato a una prova di caratteristica, un tiro per colpire o un tiro salvezza; può decidere dopo aver tirato il d20, ma prima che il GM dichiari se il tiro riesce o fallisce. Una volta tirato, il dado è perduto, e una creatura può avere un solo dado di Ispirazione Bardica alla volta. Il bardo può usare questo privilegio un numero di volte pari al suo modificatore di Carisma (minimo 1) e recupera gli usi spesi al termine di un riposo lungo. Il dado diventa un d8 al 5° livello, un d10 al 10° e un d12 al 15°."
+        kid: "Azione bonus: un amico entro 18 m che ti sente riceve un dado {t_bardic_inspiration_die}. Entro 10 minuti può tirarlo e sommarlo a un suo tiro d20. Lo fai tante volte quanto il tuo Carisma ({mod}, almeno 1), poi devi riposare."
+    2:
+      - name: Factotum
+        short: "+{t_jack_of_all_trades} (metà bonus di competenza, per difetto) alle prove di caratteristica che non usano già il bonus di competenza, iniziativa inclusa."
+        text: "A partire dal 2° livello il bardo può aggiungere metà del suo bonus di competenza, arrotondato per difetto, a ogni prova di caratteristica che effettua e che non includa già il suo bonus di competenza."
+        kid: "Quando fai una prova in un'abilità che non hai imparato, aggiungi comunque +{t_jack_of_all_trades} al tiro. Vale anche per l'iniziativa, il tiro che decide chi agisce per primo."
+        half_proficiency_checks: true
+      - name: Canto di Riposo
+        short: "Durante un riposo breve, tu e le creature amiche che ti sentono e recuperano PF spendendo Dadi Vita recuperate {t_song_of_rest} PF extra."
+        text: "Dal 2° livello il bardo può usare musica o parole lenitive per aiutare i suoi alleati feriti a riprendersi durante un riposo breve. Se il bardo o qualsiasi creatura amica in grado di udire la sua esibizione recupera punti ferita alla fine del riposo breve spendendo uno o più Dadi Vita, ognuna di quelle creature recupera 1d6 punti ferita extra. I punti ferita extra diventano 1d8 al 9° livello, 1d10 al 13° e 1d12 al 17°."
+        kid: "Durante un riposo breve suoni o canti: tu e gli amici che si curano tirando i Dadi Vita (i dadi per curarsi nel riposo) recuperate {t_song_of_rest} punti ferita in più."
+    3:
+      - name: Collegio Bardico
+        short: "Scegli un collegio: Collegio della Sapienza o Collegio del Valore."
+        text: "Al 3° livello il bardo apprende le tecniche avanzate di un collegio bardico a sua scelta: il Collegio della Sapienza o il Collegio del Valore. La scelta gli conferisce privilegi al 3°, al 6° e al 14° livello."
+        kid: "Scegli la tua scuola di bardi: Sapienza o Valore. Ti dà poteri speciali al 3°, al 6° e al 14° livello."
+        kid_hide: true
+      - name: Maestria
+        short: "Scegli 2 abilità in cui hai competenza: il bonus di competenza raddoppia nelle prove con quelle abilità (altre 2 al 10°)."
+        text: "Al 3° livello il bardo sceglie due abilità in cui ha competenza. Il suo bonus di competenza raddoppia in ogni prova di caratteristica che usa una di quelle abilità. Al 10° livello sceglie altre due abilità in cui ha competenza per ottenere lo stesso beneficio."
+        kid: "Scegli 2 abilità che conosci già: in quelle sei bravissimo e aggiungi due volte il bonus di competenza. Sulla scheda è già contato."
+        expertise_count: 2
+    4:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Il bardo può aumentare un punteggio di caratteristica di 2 o due punteggi di 1 (massimo 20), oppure scegliere un talento."
+        kid: "Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sono già sulla scheda."
+        kid_hide: true
+    5:
+      - name: Ispirazione Bardica (d8)
+        short: "Il dado di Ispirazione Bardica diventa un d8."
+        text: "Dal 5° livello il dado di Ispirazione Bardica del bardo diventa un d8 (d10 al 10° livello, d12 al 15°)."
+        kid: "Il tuo dado di ispirazione ora è un d8."
+        kid_hide: true
+      - name: Fonte di Ispirazione
+        short: "Recuperi tutti gli usi spesi di Ispirazione Bardica al termine di un riposo breve o lungo."
+        text: "A partire dal 5° livello il bardo recupera tutti gli utilizzi spesi di Ispirazione Bardica quando completa un riposo breve o lungo."
+        kid: "Le tue ispirazioni tornano tutte anche dopo un riposo breve (una pausa di 1 ora), non solo dopo una notte di sonno."
+    6:
+      - name: Controfascino
+        short: "Azione: fino alla fine del tuo turno successivo tu e le creature amiche entro 9 m che ti sentono avete vantaggio ai TS contro affascinato e spaventato."
+        text: "Al 6° livello il bardo può usare note musicali o parole del potere per interferire con gli effetti di influenza mentale. Come azione inizia un'esibizione che dura fino alla fine del suo turno successivo. Durante quel periodo il bardo e ogni creatura amica entro 9 metri da lui hanno vantaggio ai tiri salvezza per non essere affascinati o spaventati; una creatura deve poter sentire il bardo per ottenere il beneficio. L'esibizione termina prima se il bardo è incapacitato o ridotto al silenzio, o se vi pone fine volontariamente (nessuna azione richiesta)."
+        kid: "Azione: suoni una musica speciale. Fino al tuo prossimo turno tu e gli amici entro 9 m che ti sentono, se dovete resistere a paura o a magie che incantano, tirate 2 d20 e tenete il più alto."
+    8:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sono già sulla scheda."
+        kid_hide: true
+    9:
+      - name: Canto di Riposo (d8)
+        short: "Canto di Riposo: i PF extra diventano 1d8."
+        text: "Dal 9° livello i punti ferita extra di Canto di Riposo diventano 1d8 (1d10 al 13°, 1d12 al 17°)."
+        kid: "Il tuo Canto di Riposo ora cura 1d8 punti ferita in più."
+        kid_hide: true
+    10:
+      - name: Ispirazione Bardica (d10)
+        short: "Il dado di Ispirazione Bardica diventa un d10."
+        text: "Dal 10° livello il dado di Ispirazione Bardica diventa un d10 (d12 al 15°)."
+        kid: "Il tuo dado di ispirazione ora è un d10."
+        kid_hide: true
+      - name: Maestria (altre due abilità)
+        short: "Scegli altre 2 abilità in cui hai competenza: il bonus di competenza raddoppia."
+        text: "Al 10° livello il bardo sceglie altre due abilità in cui ha competenza: il suo bonus di competenza raddoppia in ogni prova di caratteristica che usa una di quelle abilità."
+        kid: "Scegli altre 2 abilità in cui diventi bravissimo: anche lì aggiungi due volte il bonus di competenza. È già sulla scheda."
+        kid_hide: true
+        expertise_count: 2
+      - name: Segreti Magici
+        short: "Impari 2 incantesimi da qualsiasi classe (di un livello che puoi lanciare, o trucchetti): contano come incantesimi da bardo e rientrano negli incantesimi conosciuti. Altri 2 al 14° e al 18°."
+        text: "Al 10° livello il bardo ha attinto a conoscenze magiche di molte discipline. Sceglie due incantesimi di qualsiasi classe, inclusa la propria; ognuno deve essere di un livello che il bardo può lanciare, come indicato dalla tabella del bardo, oppure un trucchetto. Gli incantesimi scelti contano come incantesimi da bardo e sono inclusi nel numero della colonna Incantesimi Conosciuti. Il bardo impara altri due incantesimi di qualsiasi classe al 14° livello e di nuovo al 18°."
+        kid: "Puoi imparare magie di altre classi (maghi, chierici, druidi...): {t_magical_secrets} dei tuoi incantesimi possono venire da qualsiasi lista, se sono di un livello che sai già lanciare."
+        magical_secrets: 2
+    12:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sono già sulla scheda."
+        kid_hide: true
+    13:
+      - name: Canto di Riposo (d10)
+        short: "Canto di Riposo: i PF extra diventano 1d10."
+        text: "Dal 13° livello i punti ferita extra di Canto di Riposo diventano 1d10 (1d12 al 17°)."
+        kid: "Il tuo Canto di Riposo ora cura 1d10 punti ferita in più."
+        kid_hide: true
+    14:
+      - name: Segreti Magici (altri due incantesimi)
+        short: "Impari altri 2 incantesimi da qualsiasi classe (contano tra gli incantesimi conosciuti)."
+        text: "Al 14° livello il bardo impara altri due incantesimi di qualsiasi classe, con le stesse regole del privilegio Segreti Magici del 10° livello."
+        kid: "Impari altri 2 incantesimi presi da qualsiasi classe."
+        kid_hide: true
+        magical_secrets: 2
+    15:
+      - name: Ispirazione Bardica (d12)
+        short: "Il dado di Ispirazione Bardica diventa un d12."
+        text: "Dal 15° livello il dado di Ispirazione Bardica diventa un d12."
+        kid: "Il tuo dado di ispirazione ora è un d12."
+        kid_hide: true
+    16:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sono già sulla scheda."
+        kid_hide: true
+    17:
+      - name: Canto di Riposo (d12)
+        short: "Canto di Riposo: i PF extra diventano 1d12."
+        text: "Dal 17° livello i punti ferita extra di Canto di Riposo diventano 1d12."
+        kid: "Il tuo Canto di Riposo ora cura 1d12 punti ferita in più."
+        kid_hide: true
+    18:
+      - name: Segreti Magici (altri due incantesimi)
+        short: "Impari altri 2 incantesimi da qualsiasi classe (contano tra gli incantesimi conosciuti)."
+        text: "Al 18° livello il bardo impara altri due incantesimi di qualsiasi classe, con le stesse regole del privilegio Segreti Magici del 10° livello."
+        kid: "Impari altri 2 incantesimi presi da qualsiasi classe."
+        kid_hide: true
+        magical_secrets: 2
+    19:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sono già sulla scheda."
+        kid_hide: true
+    20:
+      - name: Ispirazione Superiore
+        short: "Quando tiri l'iniziativa e non hai usi di Ispirazione Bardica rimasti, ne recuperi 1."
+        text: "Al 20° livello, quando il bardo tira per l'iniziativa e non gli rimane alcun utilizzo di Ispirazione Bardica, ne recupera un utilizzo."
+        kid: "Se all'inizio di una battaglia, quando tirate l'iniziativa, hai finito le ispirazioni, ne recuperi subito 1."
+  subclasses:
+    lore:
+      name: Collegio della Sapienza
+      name_en: College of Lore
+      features:
+        3:
+          - name: Competenze Bonus
+            short: "Ottieni competenza in tre abilità a tua scelta."
+            text: "Quando si unisce al Collegio della Sapienza al 3° livello, il bardo ottiene competenza in tre abilità a sua scelta."
+            kid: "Impari 3 abilità in più a tua scelta: sono già segnate sulla scheda."
+            kid_hide: true
+            bonus_proficiencies:
+              skill_choice:
+                count: 3
+                from: [acrobatics, animal_handling, arcana, athletics, deception, history, insight, intimidation, investigation, medicine, nature, perception, performance, persuasion, religion, sleight_of_hand, stealth, survival]
+          - name: Parole Taglienti
+            short: "Reazione: quando una creatura che vedi entro 18 m fa un tiro per colpire, una prova o un tiro per i danni, spendi un uso di Ispirazione Bardica e sottrai {t_bardic_inspiration_die} al suo tiro. Immune se non ti sente o non può essere affascinata."
+            text: "Al 3° livello il bardo impara a usare il suo ingegno per distrarre, confondere e fiaccare la sicurezza altrui. Quando una creatura che può vedere, entro 18 metri da lui, effettua un tiro per colpire, una prova di caratteristica o un tiro per i danni, il bardo può usare la sua reazione per spendere un utilizzo di Ispirazione Bardica, tirare il dado di Ispirazione Bardica e sottrarre il risultato dal tiro della creatura. Può farlo dopo che la creatura ha tirato, ma prima che il GM dichiari se il tiro per colpire o la prova riesce o fallisce, o prima che la creatura infligga i danni. La creatura è immune se non può sentire il bardo o se è immune all'essere affascinata."
+            kid: "Quando un nemico entro 18 m che vedi attacca, fa una prova o tira i danni, usa la reazione (una mossa fuori turno) e spendi un'ispirazione: tira il tuo {t_bardic_inspiration_die} e togli il risultato dal suo tiro. Deve poterti sentire."
+        6:
+          - name: Segreti Magici Aggiuntivi
+            short: "Impari 2 incantesimi da qualsiasi classe (di un livello che puoi lanciare, o trucchetti): contano come incantesimi da bardo ma non rientrano negli incantesimi conosciuti."
+            text: "Al 6° livello il bardo impara due incantesimi a sua scelta di qualsiasi classe. Ognuno deve essere di un livello che il bardo può lanciare, come indicato dalla tabella del bardo, oppure un trucchetto. Gli incantesimi scelti contano come incantesimi da bardo, ma non vengono conteggiati nel numero di incantesimi da bardo conosciuti."
+            kid: "Impari 2 magie in più prese da qualsiasi classe (trucchetti o di un livello che sai già lanciare). Si aggiungono a quelle che conosci, senza toglierne nessuna."
+            magical_secrets: 2
+            bonus_spells_known: 2
+        14:
+          - name: Abilità Impareggiabile
+            short: "Quando fai una prova di caratteristica puoi spendere un uso di Ispirazione Bardica e aggiungere {t_bardic_inspiration_die}, anche dopo aver tirato (prima dell'esito)."
+            text: "A partire dal 14° livello, quando effettua una prova di caratteristica, il bardo può spendere un utilizzo di Ispirazione Bardica: tira un dado di Ispirazione Bardica e aggiunge il risultato alla prova. Può decidere di farlo dopo aver tirato il dado della prova, ma prima che il GM dichiari se la prova riesce o fallisce."
+            kid: "Quando fai una prova di abilità puoi spendere un'ispirazione e aggiungere al tiro il tuo {t_bardic_inspiration_die}, anche dopo aver visto il d20, purché il Master non abbia ancora detto com'è andata."
+    valor:
+      name: Collegio del Valore
+      name_en: College of Valor
+      features:
+        3:
+          - name: Competenze Bonus
+            short: "Ottieni competenza nelle armature medie, negli scudi e nelle armi da guerra."
+            text: "Quando si unisce al Collegio del Valore al 3° livello, il bardo ottiene competenza nelle armature medie, negli scudi e nelle armi da guerra."
+            kid: "Ora sai usare armature medie, scudi e tutte le armi da guerra."
+            kid_hide: true
+            bonus_proficiencies:
+              armor: [medium, shields]
+              weapons: [martial]
+          - name: Ispirazione in Combattimento
+            short: "Chi ha un tuo dado di Ispirazione Bardica può aggiungerlo a un tiro per i danni con un'arma appena effettuato, oppure, con la reazione, alla CA contro un attacco appena tirato contro di lui."
+            text: "Al 3° livello il bardo impara a ispirare gli altri in battaglia. Una creatura che possiede un dado di Ispirazione Bardica conferito dal bardo può tirarlo e aggiungere il risultato a un tiro per i danni con un'arma appena effettuato. In alternativa, quando viene effettuato un tiro per colpire contro di essa, la creatura può usare la sua reazione per tirare il dado di Ispirazione Bardica e aggiungere il risultato alla sua CA contro quell'attacco, dopo aver visto il tiro ma prima di sapere se colpisce o manca."
+            kid: "Un amico con il tuo dado di ispirazione può anche aggiungerlo ai danni della sua arma, oppure, quando qualcuno lo attacca, usare la sua reazione per aggiungerlo alla sua CA (la difesa) contro quell'attacco."
+        6:
+          - name: Attacco Extra
+            short: "Quando effettui l'azione di Attacco, attacchi due volte."
+            text: "A partire dal 6° livello il bardo può attaccare due volte, anziché una, ogni volta che effettua l'azione di Attacco nel suo turno."
+            kid: "Quando nel tuo turno scegli di attaccare, fai 2 attacchi invece di 1: tira il d20 per ognuno dei due."
+        14:
+          - name: Magia da Battaglia
+            short: "Quando usi l'azione per lanciare un incantesimo da bardo, puoi fare un attacco con un'arma come azione bonus."
+            text: "Al 14° livello il bardo padroneggia l'arte di intrecciare incantesimi e uso delle armi in un unico atto armonioso. Quando usa la sua azione per lanciare un incantesimo da bardo, può effettuare un attacco con un'arma come azione bonus."
+            kid: "Quando usi la tua azione per lanciare un incantesimo da bardo, nello stesso turno puoi anche fare un attacco con l'arma come azione bonus."
+
+# Chierico (PHB 2014, cap. 3), livelli 1-20, con tutti i sette Domini Divini del Manuale del Giocatore.
+# Stesso schema di 'fighter' e 'druid' in dnd5e/rules/classes.yaml.
+# table: colonne che cambiano con il livello (indice 0 = 1° livello), usabili nei testi come {t_<colonna>}.
+#   divine_strike e preserve_life servono ai domini (Colpo Divino, Preservare Vita).
+# Campi macchina nei privilegi: bonus_proficiencies, extra_languages, expertise_count, grants_cantrip.
+#   Campi aggiuntivi (non ancora nello schema comune):
+#   - expertise_from: le abilità tra cui scegliere la Maestria (Benedizioni della Conoscenza raddoppia il bonus
+#     solo nelle due abilità scelte con lo stesso privilegio).
+#   - cantrip_choice: {list, count, ability} = trucchetto a scelta da un'altra lista (Accolito della Natura:
+#     un trucchetto da druido), stesso formato del tratto razziale.
+# always_prepared: {livello da chierico: [chiavi incantesimo]} = incantesimi di dominio, sempre preparati e fuori
+#   dal conteggio degli incantesimi preparati.

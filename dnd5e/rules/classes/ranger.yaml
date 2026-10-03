@@ -1,0 +1,416 @@
+ranger:
+  name: Ranger
+  name_f: Ranger
+  name_en: Ranger
+  hit_die: 10
+  saves: [str, dex]
+  armor: [light, medium, shields]
+  weapons: [simple, martial]
+  tools: []
+  skill_choices:
+    count: 3
+    from: [animal_handling, athletics, insight, investigation, nature, perception, stealth, survival]
+  starting_equipment:
+    - choice: ["Corazza di scaglie", "Armatura di cuoio"]
+    - choice: ["Due spade corte", "Due armi semplici da mischia"]
+    - choice: ["Dotazione da esploratore di sotterranei", "Dotazione da esploratore"]
+    - fixed: ["Arco lungo", "Faretra con 20 frecce"]
+  spellcasting:
+    ability: wis
+    type: half
+    prepared: known
+    list: ranger
+    ritual: false
+    focus: null
+  subclass_level: 3
+  subclass_label: Archetipo Ranger
+  asi_levels: [4, 8, 12, 16, 19]
+  table:
+    spells_known: [0, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11]
+    favored_enemies: [1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3]
+    favored_terrains: [1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+  features:
+    1:
+      - name: Nemico Prescelto
+        short: "Nemici prescelti: {t_favored_enemies} (uno in più al 6° e al 14° livello). Vantaggio alle prove di SAG (Sopravvivenza) per seguirne le tracce e alle prove di INT per ricordare informazioni su di loro. Impari una lingua parlata da loro, se ne hanno una."
+        text: "Il ranger sceglie come nemico prescelto un tipo di creatura oppure due razze di umanoidi. Contro i nemici prescelti tira con vantaggio le prove di Saggezza (Sopravvivenza) per seguirne le tracce e le prove di Intelligenza per ricordare cosa sa di loro, e impara una lingua che parlano, se ne hanno una. Ne aggiunge un altro, con la relativa lingua, al 6° e al 14° livello."
+        kid: "Conosci benissimo un tipo di nemico. Per seguire le sue tracce o ricordare cosa sai di lui tiri 2 d20 e tieni il più alto (vantaggio). Parli anche la sua lingua, se ne ha una."
+        extra_languages: 1
+      - name: Esploratore Nato
+        name_f: Esploratrice Nata
+        short: "Terreni prescelti: {t_favored_terrains} (uno in più al 6° e al 10° livello). Bonus di competenza raddoppiato alle prove di INT e SAG legate al terreno prescelto, se usi un'abilità in cui sei competente. Dopo almeno 1 ora di viaggio lì: il terreno difficile non rallenta il gruppo, non vi perdete (salvo magia), resti all'erta anche facendo altro, da solo ti muovi furtivamente a passo normale, foraggiando trovi il doppio del cibo, dalle tracce scopri numero esatto, taglia e da quanto tempo sono passate le creature."
+        text: "Il ranger sceglie un terreno prescelto (artico, costa, deserto, foresta, montagna, palude, prateria o Sottosuolo) e raddoppia il bonus di competenza nelle prove di Intelligenza o Saggezza che lo riguardano, se usa un'abilità in cui è competente. Dopo almeno 1 ora di viaggio in quel terreno il gruppo non è rallentato dal terreno difficile e non si perde (salvo magia), il ranger resta vigile anche mentre foraggia, si orienta o segue tracce, da solo si muove furtivamente a passo normale, trova il doppio del cibo e dalle tracce capisce numero esatto, taglia e da quanto tempo sono passate le creature. Aggiunge altri terreni prescelti al 6° e al 10° livello."
+        kid: "Quando viaggi per almeno 1 ora nel tuo ambiente preferito, il gruppo non si perde e non rallenta, trovi il doppio del cibo e dalle tracce capisci quante creature sono passate, quanto sono grandi e quando."
+    2:
+      - name: Stile di Combattimento
+        short: "Scegli uno stile: Combattere con Due Armi, Difesa, Duello o Tiro."
+        text: "Al 2° livello il ranger si specializza in uno di questi stili: Combattere con Due Armi (somma il modificatore di caratteristica ai danni dell'attacco con la seconda arma), Difesa (+1 alla CA se indossa un'armatura), Duello (+2 ai danni con un'arma da mischia impugnata in una mano, senza altre armi) o Tiro (+2 ai tiri per colpire con le armi a distanza)."
+        kid: "Hai scelto un modo speciale di combattere: lo trovi spiegato sulla scheda, sotto i tuoi poteri."
+        kid_hide: true
+        fighting_style: true
+        fighting_style_options: [archery, defense, dueling, two_weapon_fighting]
+      - name: Incantesimi
+        short: "Mezzo incantatore (Saggezza) dal 2° livello. Conosci {t_spells_known} incantesimi da ranger, ognuno di un livello per cui hai slot; a ogni nuovo livello puoi sostituirne uno. Gli slot tornano con un riposo lungo. CD {cd}, attacco con incantesimo {att}. Niente focus e niente rituali."
+        text: "Il ranger lancia incantesimi grazie alla natura, con la Saggezza come caratteristica (CD = 8 + bonus di competenza + modificatore di Saggezza; attacco = bonus di competenza + modificatore di Saggezza). Parte con due incantesimi di 1° livello della lista del ranger e ne impara altri secondo la colonna Incantesimi Conosciuti, sempre di livelli per cui ha slot; a ogni nuovo livello da ranger può scambiarne uno con un altro della lista. Ogni incantesimo consuma uno slot di livello pari o superiore e gli slot tornano tutti con un riposo lungo; non ha un focus da incantatore (per le componenti materiali senza costo usa una borsa per componenti) e non lancia rituali."
+        kid: "Conosci {t_spells_known} magie da ranger. Per lanciarne una spendi uno slot (un gettone di magia); li recuperi tutti con un riposo lungo. Per resistere alle tue magie il nemico tira un d20 e deve fare almeno {cd}."
+        kid_hide: true
+    3:
+      - name: Archetipo Ranger
+        short: "Scegli un archetipo: Cacciatore o Signore delle Bestie. Ti dà privilegi al 3°, 7°, 11° e 15° livello."
+        text: "Al 3° livello il ranger sceglie il proprio archetipo, Cacciatore o Signore delle Bestie, che gli concede privilegi al 3°, 7°, 11° e 15° livello."
+        kid: "Hai scelto che tipo di ranger essere: i tuoi poteri speciali sono scritti qui sotto."
+        kid_hide: true
+      - name: Consapevolezza Primordiale
+        short: "Azione + 1 slot da ranger: per 1 minuto per livello dello slot percepisci se entro 1,5 km (9 km nel terreno prescelto) ci sono aberrazioni, celestiali, draghi, elementali, folletti, immondi o non morti. Non ne scopri posizione né numero."
+        text: "Spendendo la sua azione e uno slot incantesimo da ranger, il ranger affina i sensi per 1 minuto per ogni livello dello slot. In quel tempo sa se entro 1,5 km (9 km se è nel suo terreno prescelto) ci sono aberrazioni, celestiali, draghi, elementali, folletti, immondi o non morti, ma non dove siano né quanti."
+        kid: "Con un'azione spendi uno slot di magia: per 1 minuto per livello dello slot senti se entro 1,5 km (9 km nel tuo ambiente preferito) ci sono draghi, non morti, demoni, angeli, folletti, elementali o mostri alieni, ma non dove."
+    4:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Il ranger aumenta di 2 un punteggio di caratteristica, o di 1 due punteggi, senza superare 20; in alternativa può prendere un talento. Lo stesso accade all'8°, 12°, 16° e 19° livello."
+        kid: "Le tue caratteristiche sono migliorate: i numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    5:
+      - name: Attacco Extra
+        short: "Quando effettui l'azione di Attacco nel tuo turno, attacchi due volte."
+        text: "Dal 5° livello il ranger effettua due attacchi, invece di uno, ogni volta che sceglie l'azione di Attacco nel suo turno."
+        kid: "Quando usi l'azione di Attacco nel tuo turno, attacchi 2 volte invece di 1: tira il d20 per ogni attacco. Puoi anche colpire due nemici diversi."
+    6:
+      - name: Nemico Prescelto Migliorato
+        short: "Scegli un altro nemico prescelto e impari una lingua parlata da lui, se ne ha una."
+        text: "Il ranger aggiunge un secondo nemico prescelto, con tutti i benefici di Nemico Prescelto, e impara una lingua che quel nemico parla, se ne ha una."
+        kid: "Conosci benissimo un nuovo tipo di nemico: anche con lui hai il vantaggio per seguire le tracce e ricordare cosa sai, e ne parli la lingua."
+        kid_hide: true
+        extra_languages: 1
+      - name: Esploratore Nato Migliorato
+        name_f: Esploratrice Nata Migliorata
+        short: "Scegli un secondo terreno prescelto."
+        text: "Il ranger aggiunge un secondo terreno prescelto, in cui ottiene tutti i benefici di Esploratore Nato."
+        kid: "Hai un secondo ambiente preferito dove sei di casa, con tutti i vantaggi di prima."
+        kid_hide: true
+    8:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Le tue caratteristiche sono migliorate: i numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+      - name: Andatura sul Territorio
+        short: "Il terreno difficile non magico non ti costa movimento extra; attraversi i vegetali non magici senza rallentare e senza danni da spine o simili; vantaggio ai TS contro i vegetali creati o manipolati dalla magia per ostacolare il movimento (per esempio intralciare)."
+        text: "Dall'8° livello il terreno difficile non magico non costa movimento extra al ranger, che passa anche tra piante non magiche senza essere rallentato né ferito da spine, rovi o simili. Ha inoltre vantaggio ai tiri salvezza contro piante create o controllate dalla magia per bloccare i movimenti, come quelle di intralciare."
+        kid: "Rovi, fango e cespugli non ti rallentano e le spine non ti graffiano. Se una magia fa crescere piante per bloccarti, per resistere tiri 2 d20 e tieni il più alto (vantaggio)."
+    10:
+      - name: Esploratore Nato Migliorato
+        name_f: Esploratrice Nata Migliorata
+        short: "Scegli un terzo terreno prescelto."
+        text: "Il ranger aggiunge un terzo terreno prescelto, in cui ottiene tutti i benefici di Esploratore Nato."
+        kid: "Hai un terzo ambiente preferito dove sei di casa, con tutti i vantaggi di prima."
+        kid_hide: true
+      - name: Nascondersi in Piena Vista
+        short: "1 minuto per mimetizzarti con materiale naturale (fango fresco, terra, piante, fuliggine). Poi, appiattito contro una superficie solida alta e larga almeno quanto te (albero, muro), hai +10 alle prove di DES (Furtività) finché resti fermo senza agire; se ti muovi o usi un'azione o una reazione devi mimetizzarti di nuovo."
+        text: "Dal 10° livello il ranger può passare 1 minuto a camuffarsi con materiale naturale come fango fresco, terra, piante o fuliggine. Se poi si nasconde premuto contro una superficie solida alta e larga almeno quanto lui, come un tronco o un muro, ha +10 alle prove di Destrezza (Furtività) finché resta immobile senza agire; muoversi o usare un'azione o una reazione annulla il camuffamento."
+        kid: "Ti copri di fango e foglie per 1 minuto, poi ti appoggi a un albero o a un muro grande almeno come te. Finché non ti muovi e non fai nulla, aggiungi +10 alle prove di Furtività."
+    12:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Le tue caratteristiche sono migliorate: i numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    14:
+      - name: Nemico Prescelto Migliorato
+        short: "Scegli un terzo nemico prescelto e impari una lingua parlata da lui, se ne ha una."
+        text: "Il ranger aggiunge un terzo nemico prescelto, con tutti i benefici di Nemico Prescelto, e impara una lingua che quel nemico parla, se ne ha una."
+        kid: "Conosci benissimo un altro tipo di nemico: anche con lui hai il vantaggio per seguire le tracce e ricordare cosa sai, e ne parli la lingua."
+        kid_hide: true
+        extra_languages: 1
+      - name: Svanire
+        short: "Puoi effettuare l'azione di Nascondersi come azione bonus. Nessuno può seguire le tue tracce senza magia, a meno che tu non voglia lasciarle."
+        text: "Dal 14° livello il ranger può usare l'azione di Nascondersi come azione bonus nel suo turno. Senza magia nessuno riesce a seguirne le tracce, a meno che lui non scelga di lasciarle."
+        kid: "Puoi nasconderti con l'azione bonus (una piccola azione in più nel tuo turno), così ti resta l'azione per attaccare. E nessuno segue le tue tracce, se non con la magia."
+    16:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Le tue caratteristiche sono migliorate: i numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    18:
+      - name: Sensi Ferini
+        short: "Attaccare una creatura che non vedi non ti dà svantaggio. Sai dove si trova ogni creatura invisibile entro 9 m, se non si è nascosta a te e tu non sei accecato o assordato."
+        text: "Dal 18° livello il ranger non subisce svantaggio ai tiri per colpire contro le creature che non riesce a vedere. Conosce inoltre la posizione di ogni creatura invisibile entro 9 m, a meno che non si sia nascosta a lui o che il ranger sia accecato o assordato."
+        kid: "Puoi attaccare un nemico che non vedi (al buio o invisibile) senza tirare 2 d20 tenendo il più basso. Sai anche dove sono le creature invisibili entro 9 m, se non si nascondono e tu ci vedi e ci senti."
+    19:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Le tue caratteristiche sono migliorate: i numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    20:
+      - name: Sterminatore di Nemici
+        name_f: Sterminatrice di Nemici
+        short: "Una volta per turno aggiungi il mod. SAG ({mod}) al tiro per colpire o al tiro per i danni di un tuo attacco contro un nemico prescelto, prima o dopo il tiro (ma prima che se ne applichino gli effetti)."
+        text: "Al 20° livello, una volta per turno, il ranger può sommare il modificatore di Saggezza al tiro per colpire oppure al tiro per i danni di un suo attacco contro un nemico prescelto. Può deciderlo prima o dopo aver tirato, purché gli effetti del tiro non siano ancora stati applicati."
+        kid: "Una volta nel tuo turno, quando attacchi un tuo nemico prescelto, aggiungi {mod} al tiro per colpire oppure ai danni. Puoi deciderlo anche dopo aver visto il dado."
+  option_lists:
+    favored_enemy:
+      label: Nemico Prescelto
+      count_table: favored_enemies
+      items:
+        aberrations:
+          name: Aberrazioni
+          short: "Creature aliene e innaturali, come beholder e mind flayer."
+          text: "Esseri alieni, estranei al mondo naturale e spesso dotati di poteri mentali; esempi: beholder, mind flayer, aboleth."
+          kid: "Mostri stranissimi venuti da altri mondi, come il beholder, un grande occhio volante."
+        beasts:
+          name: Bestie
+          short: "Animali normali e animali giganti, come lupi, orsi e ragni giganti."
+          text: "Animali del mondo naturale, comprese le loro versioni giganti e i dinosauri; esempi: lupi, orsi, ragni giganti."
+          kid: "Gli animali, anche quelli giganti: lupi, orsi, ragni giganti e così via."
+        celestials:
+          name: Celestiali
+          short: "Creature dei Piani Superiori, come angeli, couatl, pegasi e unicorni."
+          text: "Esseri che vengono dai Piani Superiori, quasi sempre buoni; esempi: angeli, couatl, pegasi, unicorni."
+          kid: "Creature buone dei mondi celesti, come gli angeli e gli unicorni."
+        constructs:
+          name: Costrutti
+          short: "Creature costruite e animate dalla magia, come golem e armature animate."
+          text: "Esseri artificiali, fabbricati e messi in moto dalla magia; esempi: golem, armature animate, modron."
+          kid: "Creature costruite e fatte muovere con la magia, come i golem e le armature che camminano da sole."
+        dragons:
+          name: Draghi
+          short: "Draghi veri e creature affini, come viverne e pseudodraghi."
+          text: "I draghi veri, rettili antichissimi e potenti, e i loro parenti minori; esempi: draghi cromatici e metallici, viverne, pseudodraghi."
+          kid: "I draghi e i loro parenti più piccoli, come le viverne."
+        elementals:
+          name: Elementali
+          short: "Creature dei Piani Elementali (aria, acqua, fuoco, terra), come elementali, geni e mephit."
+          text: "Esseri nati dai Piani Elementali e fatti di aria, acqua, fuoco o terra; esempi: elementali, geni, mephit."
+          kid: "Creature fatte di fuoco, acqua, aria o terra, come gli elementali e i geni."
+        fey:
+          name: Folletti
+          short: "Creature magiche legate alla natura e alla Selva Fatata, come driadi, satiri, pixie e megere."
+          text: "Esseri magici legati alla natura, spesso originari della Selva Fatata; esempi: driadi, satiri, pixie, megere."
+          kid: "Creature magiche dei boschi incantati, come le driadi, i satiri e i piccoli folletti alati."
+        fiends:
+          name: Immondi
+          short: "Creature malvagie dei Piani Inferiori, come demoni, diavoli e yugoloth."
+          text: "Esseri malvagi che vengono dai Piani Inferiori; esempi: demoni, diavoli, yugoloth."
+          kid: "Creature malvagie di mondi oscuri, come i demoni e i diavoli."
+        giants:
+          name: Giganti
+          short: "Giganti e creature imparentate, come ogre, troll ed ettin."
+          text: "Umanoidi enormi e le creature della loro stirpe; esempi: giganti delle colline, del gelo e del fuoco, ogre, troll, ettin."
+          kid: "I giganti e i loro parenti, come gli ogre e i troll."
+        monstrosities:
+          name: Mostruosità
+          short: "Mostri non naturali, come orsogufi, manticore, mimic e idre."
+          text: "Mostri pericolosi e innaturali che non rientrano negli altri tipi, a volte nati da magie andate storte; esempi: orsogufi, manticore, mimic, idre."
+          kid: "Mostri di ogni genere, come l'orsogufo (metà orso e metà gufo) o il mimic, che si traveste da baule."
+        oozes:
+          name: Melme
+          short: "Creature gelatinose senza forma fissa, come cubi gelatinosi e budini neri."
+          text: "Esseri gelatinosi e informi, frequenti nei dungeon; esempi: cubi gelatinosi, budini neri, melme grigie."
+          kid: "Mostri molli e appiccicosi come gelatina, come il cubo gelatinoso."
+        plants:
+          name: Vegetali
+          short: "Piante e funghi viventi, come cumuli striscianti, treant e miconidi."
+          text: "Piante e funghi capaci di muoversi e combattere, a volte intelligenti; esempi: cumuli striscianti, treant, miconidi."
+          kid: "Piante e funghi che si muovono e combattono, come gli alberi viventi."
+        undead:
+          name: Non morti
+          short: "Creature morte riportate in vita dalla magia, come zombi, scheletri, fantasmi e vampiri."
+          text: "Creature che erano vive e sono state rianimate da magia necromantica o da maledizioni; esempi: zombi, scheletri, fantasmi, vampiri."
+          kid: "Creature che dovrebbero essere morte ma si muovono, come zombi, scheletri e fantasmi."
+        humanoids:
+          name: Umanoidi (due razze)
+          short: "Due razze di umanoidi a scelta (per esempio gnoll e orchi), che contano come un solo nemico prescelto."
+          text: "Invece di un tipo di creatura, il ranger può scegliere due razze di umanoidi, per esempio gnoll e orchi, che insieme valgono come un solo nemico prescelto. Annota le due razze sulla scheda."
+          kid: "Due popoli a tua scelta, per esempio gli gnoll e gli orchi."
+    favored_terrain:
+      label: Terreno Prescelto
+      count_table: favored_terrains
+      items:
+        arctic:
+          name: Artico
+          short: "Distese di ghiaccio e di neve, tundra."
+          text: "Terre gelide del nord o delle grandi altezze: ghiacciai, distese innevate e tundra."
+          kid: "Tra neve e ghiaccio sei di casa: lì sai muoverti e sopravvivere meglio di chiunque."
+        coast:
+          name: Costa
+          short: "Spiagge, scogliere e coste marine."
+          text: "Le terre in riva al mare: spiagge, scogliere, dune e insenature."
+          kid: "Su spiagge e scogliere in riva al mare sei di casa."
+        desert:
+          name: Deserto
+          short: "Deserti di sabbia o di roccia, terre aride."
+          text: "Regioni aride, calde o fredde: deserti di sabbia, distese rocciose e terre senz'acqua."
+          kid: "Nel deserto, tra sabbia e rocce bollenti, sei di casa."
+        forest:
+          name: Foresta
+          short: "Boschi e foreste."
+          text: "Boschi e foreste di ogni tipo, dalle foreste di conifere alle giungle."
+          kid: "Nei boschi e nelle foreste sei di casa: conosci ogni sentiero e ogni albero."
+        grassland:
+          name: Prateria
+          short: "Pianure erbose, savane e steppe."
+          text: "Grandi pianure coperte d'erba: praterie, savane e steppe."
+          kid: "Nelle grandi pianure d'erba sei di casa."
+        mountain:
+          name: Montagna
+          short: "Montagne, colline rocciose e altopiani."
+          text: "Montagne, picchi, passi rocciosi, colline aspre e altopiani."
+          kid: "In montagna, tra rocce e sentieri ripidi, sei di casa."
+        swamp:
+          name: Palude
+          short: "Paludi, acquitrini e foreste allagate."
+          text: "Terre allagate e fangose: paludi, acquitrini, torbiere e foreste allagate."
+          kid: "Nelle paludi piene di fango e acqua sei di casa."
+        underdark:
+          name: Sottosuolo
+          short: "Il mondo di caverne e gallerie sotto la superficie."
+          text: "L'immenso mondo sotterraneo di caverne, gallerie e laghi senza luce che si estende sotto la superficie."
+          kid: "Nelle grotte e nelle gallerie sotto terra sei di casa."
+  subclasses:
+    hunter:
+      name: Cacciatore
+      name_f: Cacciatrice
+      name_en: Hunter
+      features:
+        3:
+          - name: Preda del Cacciatore
+            short: "Scegli una tecnica: Devastatore dell'Orda, Sterminatore di Colossi o Uccisore di Giganti."
+            text: "Al 3° livello il ranger impara una tecnica di caccia a scelta tra Devastatore dell'Orda, Sterminatore di Colossi e Uccisore di Giganti."
+            kid: "Hai imparato una tecnica da cacciatore: la trovi spiegata tra le tue scelte."
+            kid_hide: true
+        7:
+          - name: Tattiche Difensive
+            short: "Scegli una tecnica: Difesa dal Multiattacco, Sfuggire all'Orda o Volontà d'Acciaio."
+            text: "Al 7° livello il ranger impara una tecnica difensiva a scelta tra Difesa dal Multiattacco, Sfuggire all'Orda e Volontà d'Acciaio."
+            kid: "Hai imparato una tecnica per difenderti: la trovi spiegata tra le tue scelte."
+            kid_hide: true
+        11:
+          - name: Multiattacco
+            short: "Scegli una tecnica: Attacco Turbinante o Raffica."
+            text: "All'11° livello il ranger impara a colpire molti nemici insieme, a scelta con Attacco Turbinante o con Raffica."
+            kid: "Hai imparato ad attaccare tanti nemici insieme: la tecnica è spiegata tra le tue scelte."
+            kid_hide: true
+        15:
+          - name: Difesa del Cacciatore Superiore
+            short: "Scegli una tecnica: Elusione, Opporsi alla Marea o Schivata Prodigiosa."
+            text: "Al 15° livello il ranger impara una difesa a scelta tra Elusione, Opporsi alla Marea e Schivata Prodigiosa."
+            kid: "Hai imparato una difesa da grande cacciatore: la trovi spiegata tra le tue scelte."
+            kid_hide: true
+      option_lists:
+        hunters_prey:
+          label: Preda del Cacciatore
+          level: 3
+          count_table: null
+          count: 1
+          items:
+            colossus_slayer:
+              name: Sterminatore di Colossi
+              name_f: Sterminatrice di Colossi
+              short: "Una volta per turno, quando colpisci con un attacco con arma una creatura sotto i suoi PF massimi, infliggi 1d8 danni extra."
+              text: "Quando il ranger colpisce con un attacco con arma una creatura che non è al massimo dei suoi punti ferita, le infligge 1d8 danni extra. Può ottenere questo bonus solo una volta per turno."
+              kid: "Una volta nel tuo turno, se colpisci con un'arma un nemico che è già ferito, gli fai 1d8 danni in più."
+            giant_killer:
+              name: Uccisore di Giganti
+              name_f: Uccisora di Giganti
+              short: "Quando una creatura Grande o più grande entro 1,5 m ti colpisce o ti manca con un attacco, puoi usare la reazione per attaccarla subito dopo, se puoi vederla."
+              text: "Se una creatura di taglia Grande o superiore entro 1,5 m attacca il ranger, che lo colpisca o no, lui può usare la reazione per attaccarla subito dopo, purché la veda."
+              kid: "Quando un nemico grosso (taglia Grande o più) accanto a te ti attacca, colpisca o no, puoi subito attaccarlo con la reazione (una mossa in più, 1 volta per round, anche nel turno di altri)."
+            horde_breaker:
+              name: Devastatore dell'Orda
+              name_f: Devastatrice dell'Orda
+              short: "Una volta per turno, quando effettui un attacco con arma, puoi fare un altro attacco con la stessa arma contro una creatura diversa entro 1,5 m dal primo bersaglio (ed entro la gittata dell'arma)."
+              text: "Una volta per turno, quando effettua un attacco con un'arma, il ranger può farne un secondo con la stessa arma contro un'altra creatura che si trovi entro 1,5 m dal primo bersaglio e che l'arma possa raggiungere."
+              kid: "Una volta nel tuo turno, dopo un attacco con l'arma puoi farne uno in più, con la stessa arma, contro un altro nemico che sta entro 1,5 m dal primo."
+        defensive_tactics:
+          label: Tattiche Difensive
+          level: 7
+          count_table: null
+          count: 1
+          items:
+            escape_the_horde:
+              name: Sfuggire all'Orda
+              short: "Gli attacchi di opportunità contro di te hanno svantaggio."
+              text: "Chi effettua un attacco di opportunità contro il ranger lo tira con svantaggio."
+              kid: "Quando ti allontani da un nemico e lui prova a colpirti mentre te ne vai, tira 2 d20 e tiene il più basso (svantaggio): ti colpisce molto più difficilmente."
+            multiattack_defense:
+              name: Difesa dal Multiattacco
+              short: "Quando una creatura ti colpisce con un attacco, hai +4 alla CA contro tutti gli attacchi successivi di quella creatura per il resto del turno."
+              text: "Dopo che una creatura colpisce il ranger con un attacco, lui ha +4 alla CA contro tutti gli altri attacchi di quella creatura fino alla fine del turno."
+              kid: "Quando un nemico ti colpisce, per il resto del suo turno hai +4 alla CA (quanto è difficile colpirti) contro i suoi altri attacchi."
+            steel_will:
+              name: Volontà d'Acciaio
+              short: "Vantaggio ai tiri salvezza contro l'essere spaventato."
+              text: "Il ranger tira con vantaggio i tiri salvezza per non essere spaventato."
+              kid: "Quando qualcosa prova a spaventarti, per resistere tiri 2 d20 e tieni il più alto (vantaggio)."
+        multiattack:
+          label: Multiattacco
+          level: 11
+          count_table: null
+          count: 1
+          items:
+            volley:
+              name: Raffica
+              short: "Azione: un attacco a distanza contro un qualsiasi numero di creature entro 3 m da un punto che vedi entro la gittata dell'arma. Serve una munizione per bersaglio; tiro per colpire separato per ognuno."
+              text: "Con un'azione il ranger attacca a distanza tutte le creature che vuole entro 3 m da un punto che vede, entro la gittata dell'arma. Fa un tiro per colpire separato per ognuna e consuma una munizione per bersaglio."
+              kid: "Con la tua azione scocchi una pioggia di frecce: attacchi tutti i nemici che vuoi entro 3 m da un punto che vedi. Tira un d20 per ogni nemico e usa una freccia per ognuno."
+            whirlwind_attack:
+              name: Attacco Turbinante
+              short: "Azione: un attacco in mischia contro un qualsiasi numero di creature entro 1,5 m da te, con un tiro per colpire separato per ognuna."
+              text: "Con un'azione il ranger attacca in mischia tutte le creature che vuole entro 1,5 m da lui, con un tiro per colpire separato per ciascuna."
+              kid: "Con la tua azione fai roteare l'arma e attacchi tutti i nemici attorno a te (entro 1,5 m). Tira un d20 per ogni nemico."
+        superior_hunters_defense:
+          label: Difesa del Cacciatore Superiore
+          level: 15
+          count_table: null
+          count: 1
+          items:
+            evasion:
+              name: Elusione
+              short: "Quando un effetto ti permette un TS su DES per dimezzare i danni, non subisci danni se lo superi e solo la metà se lo fallisci."
+              text: "Se un effetto concede al ranger un tiro salvezza su Destrezza per dimezzare i danni (per esempio il soffio di un drago o l'incantesimo fulmine), lui non subisce danni se lo supera e solo metà se lo fallisce."
+              kid: "Quando un soffio di drago o una magia ti fa tirare un d20 per schivare (tiro salvezza su Destrezza): se lo superi non prendi danni, se lo fallisci ne prendi solo metà."
+            stand_against_the_tide:
+              name: Opporsi alla Marea
+              short: "Quando una creatura ostile ti manca con un attacco in mischia, puoi usare la reazione per costringerla a ripetere lo stesso attacco contro un'altra creatura a tua scelta (non sé stessa)."
+              text: "Quando una creatura ostile manca il ranger con un attacco in mischia, lui può usare la reazione per farle ripetere lo stesso attacco contro un'altra creatura a sua scelta, diversa dall'attaccante."
+              kid: "Quando un nemico ti attacca da vicino e ti manca, con la reazione (una mossa in più, 1 volta per round) gli fai ripetere l'attacco contro un'altra creatura che scegli tu."
+            uncanny_dodge:
+              name: Schivata Prodigiosa
+              short: "Quando un attaccante che puoi vedere ti colpisce con un attacco, puoi usare la reazione per dimezzare i danni che subisci."
+              text: "Quando un attaccante che il ranger vede lo colpisce con un attacco, il ranger può usare la reazione per dimezzare i danni di quell'attacco."
+              kid: "Quando un nemico che vedi ti colpisce, puoi usare la reazione (una mossa in più, 1 volta per round) per prendere solo metà dei danni."
+    beast_master:
+      name: Signore delle Bestie
+      name_f: Signora delle Bestie
+      name_en: Beast Master
+      # Dati per il compagno animale: bestia di beasts.yaml con cr <= max_cr e taglia non oltre max_size;
+      # PF massimi = i suoi normali o hp_per_ranger_level x livello da ranger, se più alti.
+      companion:
+        max_cr: 0.25
+        max_size: Media
+        hp_per_ranger_level: 4
+        add_proficiency: [ac, attack, damage, saves, skills]
+        examples: [hawk, mastiff, panther]
+      features:
+        3:
+          - name: Compagno del Ranger
+            short: "Ottieni una bestia compagna di taglia Media o inferiore e GS 1/4 o meno (es. falco, mastino, pantera). Somma il tuo bonus di competenza a CA, tiri per colpire, danni e a TS e abilità in cui è competente; PF massimi = i suoi normali o 4 x il tuo livello da ranger, se più alti. Agisce alla tua iniziativa: la muovi a voce gratis e con la tua azione le ordini Attacco, Scatto, Disimpegno, Schivata o Aiuto (con Attacco Extra, quando le ordini di attaccare fai anche tu un attacco con arma). Se sei incapacitato agisce da sola; se muore, ti leghi a un'altra bestia non ostile con 8 ore di legame magico."
+            text: "Al 3° livello il ranger ottiene una bestia compagna di taglia Media o inferiore e GS 1/4 o meno (per esempio falco, mastino o pantera), che somma il bonus di competenza del ranger a CA, tiri per colpire e danni e ai tiri salvezza e alle abilità in cui è competente; i suoi PF massimi sono i suoi normali o 4 x il livello da ranger, se più alti, e nei riposi brevi può spendere Dadi Vita. Agisce al turno di iniziativa del ranger, che le indica gratis dove muoversi e con la propria azione le ordina Attacco, Scatto, Disimpegno, Schivata o Aiuto (con Attacco Extra, quando le ordina di attaccare, può fare anche lui un attacco con un'arma); se il ranger è incapacitato o assente la bestia agisce da sola per proteggere entrambi, e la reazione la usa sempre senza bisogno di ordini. Viaggiando nel terreno prescelto con la sola bestia il ranger si muove furtivamente a passo normale; se la bestia muore, può sostituirla legandosi magicamente per 8 ore a una bestia non ostile."
+            kid: "Hai un animale compagno (per esempio un falco, un mastino o una pantera). Nel tuo turno gli dici dove andare. Se usi la tua azione per dargli un ordine, attacca, corre, schiva, si allontana o aiuta."
+        7:
+          - name: Addestramento Eccezionale
+            short: "Nei tuoi turni in cui la bestia non attacca, con un'azione bonus le ordini Scatto, Disimpegno, Schivata o Aiuto. I suoi attacchi contano come magici contro resistenze e immunità ai danni non magici."
+            text: "Dal 7° livello, in ogni turno in cui la bestia compagna non attacca, il ranger può usare un'azione bonus per ordinarle Scatto, Disimpegno, Schivata o Aiuto. Inoltre gli attacchi della bestia contano come magici per superare resistenze e immunità ad attacchi e danni non magici."
+            kid: "Se nel tuo turno il tuo animale non attacca, con l'azione bonus (una piccola azione in più) puoi farlo correre, allontanarsi, schivare o aiutare. E i suoi morsi e graffi ora sono magici."
+        11:
+          - name: Furia Bestiale
+            short: "Quando ordini alla bestia l'azione di Attacco, effettua due attacchi (o usa il suo Multiattacco, se ce l'ha)."
+            text: "Dall'11° livello, quando il ranger le ordina l'azione di Attacco, la bestia compagna può attaccare due volte oppure usare il suo Multiattacco, se lo possiede."
+            kid: "Quando ordini al tuo animale di attaccare, fa 2 attacchi invece di 1."
+        15:
+          - name: Condividere Incantesimi
+            short: "Quando lanci un incantesimo che ha come bersaglio te stesso, puoi farlo agire anche sulla bestia compagna, se è entro 9 m da te."
+            text: "Dal 15° livello, quando il ranger lancia un incantesimo che ha come bersaglio sé stesso, può farlo agire anche sulla bestia compagna, purché si trovi entro 9 m da lui."
+            kid: "Quando lanci una magia che ha come bersaglio te stesso, se il tuo animale è entro 9 m la magia funziona anche su di lui, senza spendere niente in più."

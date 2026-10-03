@@ -47,8 +47,9 @@ def app_zip(dest: Path) -> str:
         for p in sorted((ROOT / "dnd5e").glob("*.py")):
             if p.name not in SKIP_PY:
                 z.write(p, f"dnd5e/{p.name}")
-        for p in sorted((ROOT / "dnd5e" / "rules").glob("*.yaml")):
-            z.write(p, f"dnd5e/rules/{p.name}")
+        rules = ROOT / "dnd5e" / "rules"
+        for p in sorted(rules.rglob("*.yaml")):
+            z.write(p, f"dnd5e/rules/{p.relative_to(rules).as_posix()}")
         for tpl in ("official_it", "official"):
             for p in sorted((ROOT / "templates" / tpl).iterdir()):
                 if p.suffix in (".pdf", ".yaml"):

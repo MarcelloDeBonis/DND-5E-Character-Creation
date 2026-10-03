@@ -1,0 +1,333 @@
+sorcerer:
+  name: Stregone
+  name_f: Stregona
+  name_en: Sorcerer
+  hit_die: 6
+  saves: [con, cha]
+  armor: []
+  weapons: [dagger, dart, sling, quarterstaff, light_crossbow]
+  tools: []
+  skill_choices:
+    count: 2
+    from: [arcana, deception, insight, intimidation, persuasion, religion]
+  starting_equipment:
+    - choice: ["Una balestra leggera e 20 quadrelli", "Un'arma semplice qualsiasi"]
+    - choice: ["Una borsa per componenti", "Un focus arcano"]
+    - choice: ["Dotazione da esploratore di sotterranei", "Dotazione da esploratore"]
+    - fixed: ["Due pugnali"]
+  spellcasting:
+    ability: cha
+    type: full
+    prepared: known
+    list: sorcerer
+    ritual: false
+    focus: "focus arcano"
+  subclass_level: 1
+  subclass_label: Origine Stregonesca
+  asi_levels: [4, 8, 12, 16, 19]
+  table:
+    sorcery_points: [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    cantrips: [4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+    spells_known: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12, 13, 13, 14, 14, 15, 15, 15, 15]
+    metamagic_known: [0, 0, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4]
+  features:
+    1:
+      - name: Incantesimi
+        short: "Incantatore completo (Carisma): conosci {t_cantrips} trucchetti e {t_spells_known} incantesimi dalla lista dello stregone; CD {cd}, attacco {att}; slot recuperati con un riposo lungo; niente rituali; focus arcano."
+        text: "Un evento nel passato dello stregone, o nella vita di un suo parente o antenato, gli ha infuso magia arcana. Trucchetti: ne conosce 4 al 1° livello (5 dal 4°, 6 dal 10°), scelti dalla lista dello stregone. Incantesimi conosciuti: 2 di 1° livello al 1° livello, poi altri come indicato dalla tabella dello stregone (fino a 15), ognuno di un livello per cui possiede slot; ogni volta che sale di livello può sostituire un incantesimo conosciuto con un altro della lista, sempre di un livello per cui ha slot. Per lanciare un incantesimo di 1° livello o superiore spende uno slot di livello pari o superiore; recupera tutti gli slot spesi con un riposo lungo. Caratteristica da incantatore: Carisma (CD del tiro salvezza = 8 + bonus di competenza + mod. CAR; attacco con incantesimo = bonus di competenza + mod. CAR). Può usare un focus arcano come focus da incantatore. Lo stregone non lancia incantesimi come rituali."
+        kid: "Conosci {t_cantrips} trucchetti (magie che puoi fare quando vuoi) e {t_spells_known} incantesimi. Per lanciare un incantesimo usi uno slot: gli slot tornano dopo un riposo lungo."
+        kid_hide: true
+      - name: Origine Stregonesca
+        short: "Scegli l'origine del tuo potere innato: Discendenza Draconica o Magia Selvaggia (privilegi al 1°, 6°, 14° e 18° livello)."
+        text: "Lo stregone sceglie un'origine stregonesca che definisce la fonte dei suoi poteri magici innati: Discendenza Draconica o Magia Selvaggia. Questa scelta gli conferisce privilegi al 1° livello e poi di nuovo al 6°, al 14° e al 18° livello."
+        kid: "La tua magia è nata con te: viene da un antenato drago oppure da una magia selvaggia e imprevedibile. Leggi i poteri della tua origine."
+        kid_hide: true
+    2:
+      - name: Fonte di Magia
+        short: "{t_sorcery_points} punti stregoneria (recuperati con un riposo lungo). Azione bonus: crei uno slot spendendo punti (1° = 2, 2° = 3, 3° = 5, 4° = 6, 5° = 7; svanisce con il riposo lungo) oppure converti uno slot in punti pari al suo livello."
+        text: "Lo stregone attinge a una profonda sorgente di magia interiore, rappresentata dai punti stregoneria: ne ha 2 al 2° livello e poi tanti quanti il suo livello da stregone (vedi tabella), e non può mai averne più di quelli indicati per il suo livello. Recupera tutti i punti stregoneria spesi quando completa un riposo lungo. Incantesimi Flessibili. Creare slot incantesimo: come azione bonus nel suo turno trasforma punti stregoneria non spesi in uno slot incantesimo (costo: slot di 1° livello 2 punti, di 2° livello 3, di 3° livello 5, di 4° livello 6, di 5° livello 7); non può creare slot di livello superiore al 5° e ogni slot creato così svanisce quando completa un riposo lungo. Convertire uno slot in punti stregoneria: come azione bonus nel suo turno spende uno slot incantesimo e ottiene un numero di punti stregoneria pari al livello dello slot."
+        kid: "Hai {t_sorcery_points} punti stregoneria (tornano col riposo lungo). Con un'azione bonus li trasformi in uno slot (2 punti = slot di 1° livello, 3 punti = di 2°) o trasformi uno slot in punti (slot di 2° = 2 punti)."
+        slot_costs: {1: 2, 2: 3, 3: 5, 4: 6, 5: 7}
+    3:
+      - name: Metamagia
+        short: "Conosci {t_metamagic_known} opzioni di Metamagia (2 al 3°, 3 al 10°, 4 al 17°): spendi punti stregoneria per modificare un incantesimo mentre lo lanci. Una sola opzione per incantesimo (salvo Incantesimo Potenziato)."
+        text: "Al 3° livello lo stregone sviluppa la capacità di plasmare i suoi incantesimi per adattarli ai suoi bisogni: ottiene due opzioni di Metamagia a sua scelta (vedi elenco), un'altra al 10° livello e un'altra al 17° livello. Può usare una sola opzione di Metamagia su un incantesimo quando lo lancia, a meno che non sia specificato diversamente."
+        kid: "Conosci {t_metamagic_known} trucchi di Metamagia: spendendo punti stregoneria cambi un incantesimo mentre lo lanci (più lontano, più lungo, su due nemici...). Ne usi uno solo per incantesimo."
+    4:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Lo stregone può aumentare un punteggio di caratteristica a sua scelta di 2, oppure due punteggi di caratteristica di 1 (massimo 20), oppure scegliere un talento."
+        kid: "Hai aumentato le tue caratteristiche (o preso un talento): i numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    8:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Hai aumentato le tue caratteristiche (o preso un talento): i numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    10:
+      - name: Metamagia (terza opzione)
+        short: "Impari un'altra opzione di Metamagia (3 in tutto)."
+        text: "Vedi 3° livello: lo stregone ottiene un'altra opzione di Metamagia a sua scelta."
+        kid: "Impari un nuovo trucco di Metamagia: ora ne conosci 3."
+        kid_hide: true
+    12:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Hai aumentato le tue caratteristiche (o preso un talento): i numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    16:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Hai aumentato le tue caratteristiche (o preso un talento): i numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    17:
+      - name: Metamagia (quarta opzione)
+        short: "Impari un'altra opzione di Metamagia (4 in tutto)."
+        text: "Vedi 3° livello: lo stregone ottiene un'altra opzione di Metamagia a sua scelta."
+        kid: "Impari un nuovo trucco di Metamagia: ora ne conosci 4."
+        kid_hide: true
+    19:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Hai aumentato le tue caratteristiche (o preso un talento): i numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    20:
+      - name: Ripristino Stregonesco
+        short: "Quando completi un riposo breve, recuperi 4 punti stregoneria spesi."
+        text: "Al 20° livello lo stregone recupera 4 punti stregoneria spesi ogni volta che completa un riposo breve."
+        kid: "Dopo ogni riposo breve recuperi 4 punti stregoneria che avevi già usato."
+  option_lists:
+    metamagic:
+      label: Metamagia
+      count_table: metamagic_known
+      items:
+        careful_spell:
+          name: Incantesimo Preciso
+          cost: 1
+          short: "1 punto stregoneria: quando un tuo incantesimo impone un TS, scegli fino a mod. CAR creature (minimo 1) che lo superano automaticamente."
+          text: "Quando lo stregone lancia un incantesimo che obbliga altre creature a effettuare un tiro salvezza, può proteggere alcune di esse dalla piena forza dell'incantesimo: spende 1 punto stregoneria e sceglie un numero di creature pari al massimo al suo modificatore di Carisma (minimo una). Ogni creatura scelta supera automaticamente il suo tiro salvezza contro l'incantesimo."
+          kid: "Spendi 1 punto stregoneria quando lanci un incantesimo che fa fare un tiro salvezza: scegli tanti amici quanto il tuo bonus di Carisma ({mod}, almeno 1). Loro superano il tiro salvezza senza tirare il dado."
+        distant_spell:
+          name: Incantesimo Distante
+          cost: 1
+          short: "1 punto stregoneria: raddoppi la gittata di un incantesimo (gittata di almeno 1,5 m); se la gittata è a contatto diventa 9 m."
+          text: "Quando lo stregone lancia un incantesimo che ha una gittata pari o superiore a 1,5 metri, può spendere 1 punto stregoneria per raddoppiarne la gittata. Quando lancia un incantesimo con gittata a contatto, può spendere 1 punto stregoneria per portare la gittata a 9 metri."
+          kid: "Spendi 1 punto stregoneria: il tuo incantesimo arriva al doppio della distanza. Se di solito devi toccare il bersaglio, invece arriva fino a 9 m."
+        empowered_spell:
+          name: Incantesimo Potenziato
+          cost: 1
+          short: "1 punto stregoneria: quando tiri i danni di un incantesimo, ritiri fino a mod. CAR dadi (minimo 1) e usi i nuovi risultati. Si può combinare con un'altra Metamagia."
+          text: "Quando lo stregone tira i danni di un incantesimo, può spendere 1 punto stregoneria per ripetere il tiro di un numero di dadi dei danni pari al massimo al suo modificatore di Carisma (minimo uno). Deve usare i nuovi risultati. Può usare Incantesimo Potenziato anche se ha già usato un'opzione di Metamagia diversa durante il lancio dell'incantesimo."
+          kid: "Quando tiri i danni di un incantesimo, spendi 1 punto stregoneria: ritira i dadi andati male (quanti il tuo bonus di Carisma {mod}, almeno 1) e tieni i nuovi numeri."
+        extended_spell:
+          name: Incantesimo Esteso
+          cost: 1
+          short: "1 punto stregoneria: raddoppi la durata di un incantesimo che dura almeno 1 minuto (massimo 24 ore)."
+          text: "Quando lo stregone lancia un incantesimo che ha una durata pari o superiore a 1 minuto, può spendere 1 punto stregoneria per raddoppiarne la durata, fino a un massimo di 24 ore."
+          kid: "Spendi 1 punto stregoneria: un incantesimo che dura almeno 1 minuto dura il doppio (al massimo 24 ore)."
+        heightened_spell:
+          name: Incantesimo Intensificato
+          cost: 3
+          short: "3 punti stregoneria: un bersaglio dell'incantesimo ha svantaggio al primo TS contro di esso."
+          text: "Quando lo stregone lancia un incantesimo che obbliga una creatura a effettuare un tiro salvezza per resistere ai suoi effetti, può spendere 3 punti stregoneria per infliggere svantaggio a un bersaglio dell'incantesimo al primo tiro salvezza che effettua contro di esso."
+          kid: "Spendi 3 punti stregoneria: un nemico colpito dal tuo incantesimo, per resistere la prima volta, tira 2 d20 e tiene il più basso (svantaggio)."
+        quickened_spell:
+          name: Incantesimo Rapido
+          cost: 2
+          short: "2 punti stregoneria: un incantesimo con tempo di lancio di 1 azione si lancia con 1 azione bonus. Nello stesso turno puoi lanciare solo un altro trucchetto da 1 azione."
+          text: "Quando lo stregone lancia un incantesimo che ha un tempo di lancio di 1 azione, può spendere 2 punti stregoneria per cambiare il tempo di lancio in 1 azione bonus per quel lancio. Regola generale: se lancia un incantesimo come azione bonus, nello stesso turno può lanciare solo un altro incantesimo, che deve essere un trucchetto con tempo di lancio di 1 azione."
+          kid: "Spendi 2 punti stregoneria: un incantesimo che di solito richiede 1 azione lo lanci con l'azione bonus. Ricorda: in quel turno, come altra magia, puoi lanciare solo un trucchetto."
+        subtle_spell:
+          name: Incantesimo Celato
+          cost: 1
+          short: "1 punto stregoneria: lanci un incantesimo senza componenti verbali né somatiche."
+          text: "Quando lo stregone lancia un incantesimo, può spendere 1 punto stregoneria per lanciarlo senza alcuna componente somatica o verbale."
+          kid: "Spendi 1 punto stregoneria: lanci l'incantesimo senza parlare e senza muovere le mani, così nessuno si accorge che stai facendo una magia."
+        twinned_spell:
+          name: Incantesimo Raddoppiato
+          cost: "livello dell'incantesimo (1 per un trucchetto)"
+          short: "Punti stregoneria pari al livello dell'incantesimo (1 per un trucchetto): un incantesimo che bersaglia una sola creatura (gittata non incantatore) ne bersaglia una seconda entro gittata."
+          text: "Quando lo stregone lancia un incantesimo che bersaglia una sola creatura e non ha gittata «incantatore», può spendere un numero di punti stregoneria pari al livello dell'incantesimo (1 se è un trucchetto) per bersagliare con lo stesso incantesimo una seconda creatura entro gittata. L'incantesimo non deve poter bersagliare più di una creatura al livello a cui viene lanciato: per esempio dardo incantato e raggio rovente non sono idonei, raggio di gelo sì."
+          kid: "Un incantesimo che può colpire una sola creatura (e non solo te stesso) ne colpisce due, se sono entrambe a gittata! Costa tanti punti stregoneria quanto il livello dell'incantesimo (1 per un trucchetto)."
+  subclasses:
+    draconic_bloodline:
+      name: Discendenza Draconica
+      name_en: Draconic Bloodline
+      option_lists:
+        dragon_ancestor:
+          label: Antenato Draconico
+          level: 1
+          count_table: null
+          count: 1
+          items:
+            black:
+              name: Nero
+              damage_type: acido
+              short: "Drago nero: danni da acido."
+              text: "Antenato draconico: drago nero. Tipo di danno associato: acido."
+              kid: "Il tuo antenato è un drago nero: la tua magia draconica è legata all'acido."
+            blue:
+              name: Blu
+              damage_type: fulmine
+              short: "Drago blu: danni da fulmine."
+              text: "Antenato draconico: drago blu. Tipo di danno associato: fulmine."
+              kid: "Il tuo antenato è un drago blu: la tua magia draconica è legata al fulmine."
+            brass:
+              name: Ottone
+              damage_type: fuoco
+              short: "Drago d'ottone: danni da fuoco."
+              text: "Antenato draconico: drago d'ottone. Tipo di danno associato: fuoco."
+              kid: "Il tuo antenato è un drago d'ottone: la tua magia draconica è legata al fuoco."
+            bronze:
+              name: Bronzo
+              damage_type: fulmine
+              short: "Drago di bronzo: danni da fulmine."
+              text: "Antenato draconico: drago di bronzo. Tipo di danno associato: fulmine."
+              kid: "Il tuo antenato è un drago di bronzo: la tua magia draconica è legata al fulmine."
+            copper:
+              name: Rame
+              damage_type: acido
+              short: "Drago di rame: danni da acido."
+              text: "Antenato draconico: drago di rame. Tipo di danno associato: acido."
+              kid: "Il tuo antenato è un drago di rame: la tua magia draconica è legata all'acido."
+            gold:
+              name: Oro
+              damage_type: fuoco
+              short: "Drago d'oro: danni da fuoco."
+              text: "Antenato draconico: drago d'oro. Tipo di danno associato: fuoco."
+              kid: "Il tuo antenato è un drago d'oro: la tua magia draconica è legata al fuoco."
+            green:
+              name: Verde
+              damage_type: veleno
+              short: "Drago verde: danni da veleno."
+              text: "Antenato draconico: drago verde. Tipo di danno associato: veleno."
+              kid: "Il tuo antenato è un drago verde: la tua magia draconica è legata al veleno."
+            red:
+              name: Rosso
+              damage_type: fuoco
+              short: "Drago rosso: danni da fuoco."
+              text: "Antenato draconico: drago rosso. Tipo di danno associato: fuoco."
+              kid: "Il tuo antenato è un drago rosso: la tua magia draconica è legata al fuoco."
+            silver:
+              name: Argento
+              damage_type: freddo
+              short: "Drago d'argento: danni da freddo."
+              text: "Antenato draconico: drago d'argento. Tipo di danno associato: freddo."
+              kid: "Il tuo antenato è un drago d'argento: la tua magia draconica è legata al freddo."
+            white:
+              name: Bianco
+              damage_type: freddo
+              short: "Drago bianco: danni da freddo."
+              text: "Antenato draconico: drago bianco. Tipo di danno associato: freddo."
+              kid: "Il tuo antenato è un drago bianco: la tua magia draconica è legata al freddo."
+      features:
+        1:
+          - name: Antenato Draconico
+            short: "Scegli un tipo di drago come antenato (vedi elenco): il suo tipo di danno serve ai privilegi successivi. Parli, leggi e scrivi il Draconico; bonus di competenza raddoppiato alle prove di CAR per interagire con i draghi (se applicabile)."
+            text: "Al 1° livello lo stregone sceglie un tipo di drago come suo antenato: il tipo di danno associato a quel drago (argento e bianco: freddo; blu e bronzo: fulmine; nero e rame: acido; oro, ottone e rosso: fuoco; verde: veleno) sarà usato dai privilegi che otterrà in seguito. Lo stregone sa parlare, leggere e scrivere in Draconico. Inoltre, ogni volta che effettua una prova di Carisma per interagire con i draghi, il suo bonus di competenza raddoppia se è applicabile alla prova."
+            kid: "Un tuo antenato era un drago! Parli e scrivi il Draconico, la lingua dei draghi. Quando provi a convincere o ingannare un drago, se hai l'abilità giusta il tuo bonus di competenza conta doppio."
+            languages: [draconic]
+          - name: Resilienza Draconica
+            short: "+1 PF massimo al 1° livello e +1 per ogni livello da stregone successivo. Senza armatura, CA = 13 + mod. DES."
+            text: "La magia che scorre nel corpo dello stregone fa emergere alcuni tratti fisici dei draghi suoi antenati. Al 1° livello il suo massimo dei punti ferita aumenta di 1, e aumenta di nuovo di 1 ogni volta che acquisisce un livello in questa classe. Inoltre, alcune parti della sua pelle si ricoprono di un sottile strato di scaglie simili a quelle di un drago: quando non indossa armature, la sua CA è pari a 13 + il suo modificatore di Destrezza."
+            kid: "Hai scaglie da drago sulla pelle: senza armatura la tua Classe Armatura (CA) è 13 + la tua Destrezza. Hai anche 1 punto ferita in più per ogni livello ({livello} in tutto)."
+            hp_per_level: 1
+            unarmored_ac: {base: 13, ability: dex}
+        6:
+          - name: Affinità Elementale
+            short: "Quando lanci un incantesimo che infligge il tipo di danno del tuo antenato, aggiungi il mod. CAR a un tiro per i danni. Puoi anche spendere 1 punto stregoneria per avere resistenza a quel tipo di danno per 1 ora."
+            text: "A partire dal 6° livello, quando lo stregone lancia un incantesimo che infligge danni del tipo associato al suo antenato draconico, può aggiungere il suo modificatore di Carisma a un tiro per i danni di quell'incantesimo. Allo stesso tempo, può spendere 1 punto stregoneria per ottenere resistenza a quel tipo di danno per 1 ora."
+            kid: "Quando un tuo incantesimo fa danni del tipo del tuo drago, aggiungi {mod} ai danni (una volta per incantesimo). In quel momento puoi anche spendere 1 punto stregoneria: per 1 ora quel tipo di danni ti fa solo metà."
+        14:
+          - name: Ali di Drago
+            short: "Azione bonus: ti spuntano ali di drago e ottieni una velocità di volare pari alla tua velocità attuale, finché non le congedi con un'azione bonus. Non con un'armatura non fatta per accoglierle."
+            text: "Al 14° livello lo stregone sviluppa la capacità di far spuntare un paio di ali di drago dalla schiena, ottenendo una velocità di volare pari alla sua velocità attuale. Può creare le ali come azione bonus nel suo turno; durano finché non le congeda con un'azione bonus nel suo turno. Non può manifestarle mentre indossa un'armatura, a meno che l'armatura non sia fatta per accoglierle; i vestiti non adatti possono essere distrutti quando le ali spuntano."
+            kid: "Con un'azione bonus ti spuntano ali da drago e puoi volare veloce quanto cammini. Restano finché non le fai sparire (un'altra azione bonus). Non funzionano se indossi un'armatura."
+        18:
+          - name: Presenza Draconica
+            short: "Azione, 5 punti stregoneria: aura di soggezione o di paura di 18 m per 1 minuto (concentrazione). Ogni creatura ostile che inizia il turno nell'aura: TS su SAG (CD {cd}) o è affascinata o spaventata finché l'aura dura; se lo supera è immune per 24 ore."
+            text: "A partire dal 18° livello lo stregone può incanalare la presenza terrificante del suo antenato draconico. Con un'azione spende 5 punti stregoneria ed emana un'aura di soggezione o di paura (a sua scelta) entro 18 metri. Per 1 minuto o finché non perde la concentrazione (come se si concentrasse su un incantesimo), ogni creatura ostile che inizia il suo turno nell'aura deve superare un tiro salvezza su Saggezza o è affascinata (se lo stregone ha scelto soggezione) o spaventata (se ha scelto paura) finché l'aura non termina. Una creatura che supera il tiro salvezza è immune all'aura dello stregone per 24 ore. Il PHB non specifica la CD: di norma si usa la CD del tiro salvezza degli incantesimi dello stregone."
+            kid: "Azione + 5 punti stregoneria: per 1 minuto (con concentrazione) emani paura o meraviglia, scegli tu. Ogni nemico che inizia il turno entro 18 m tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}): se fallisce è spaventato o affascinato."
+    wild_magic:
+      name: Magia Selvaggia
+      name_en: Wild Magic
+      features:
+        1:
+          - name: Impulso di Magia Selvaggia
+            short: "Subito dopo che lanci un incantesimo da stregone di 1° livello o superiore, il DM può farti tirare un d20: con 1 tiri d100 sulla tabella degli impulsi di magia selvaggia."
+            text: "La magia dello stregone può scatenarsi in impulsi di magia incontrollata. Subito dopo che lo stregone ha lanciato un incantesimo da stregone di 1° livello o superiore, il DM può fargli tirare un d20: se ottiene 1, tira sulla tabella Impulso di Magia Selvaggia per creare un effetto magico casuale. Se l'effetto è un incantesimo, è troppo selvaggio per essere modificato dalla Metamagia e, se normalmente richiede concentrazione, in questo caso non la richiede e dura per tutta la sua durata."
+            kid: "La tua magia è imprevedibile! Dopo che lanci un incantesimo (non un trucchetto), il DM può farti tirare un d20: se esce 1, tiri d100 sulla tabella della magia selvaggia e succede qualcosa di strano."
+          - name: Maree del Caos
+            short: "Ottieni vantaggio a un tiro per colpire, una prova di caratteristica o un TS. Torna con un riposo lungo, oppure quando il DM ti fa tirare sulla tabella degli impulsi dopo un tuo incantesimo di 1° livello o superiore."
+            text: "Lo stregone può manipolare le forze del caso e del caos per ottenere vantaggio a un tiro per colpire, una prova di caratteristica o un tiro salvezza. Una volta usato questo privilegio, deve completare un riposo lungo prima di poterlo usare di nuovo. In qualsiasi momento prima di recuperarne l'uso, il DM può fargli tirare sulla tabella Impulso di Magia Selvaggia subito dopo che ha lanciato un incantesimo da stregone di 1° livello o superiore: in quel caso recupera l'uso del privilegio."
+            kid: "Una volta, quando vuoi tu, tira 2 d20 e tieni il più alto (vantaggio) su un attacco, una prova o un tiro salvezza. Torna dopo un riposo lungo, o prima se il DM ti fa tirare sulla tabella della magia selvaggia."
+        6:
+          - name: Piegare la Fortuna
+            short: "Reazione, 2 punti stregoneria: quando un'altra creatura che vedi effettua un tiro per colpire, una prova o un TS, tiri 1d4 e lo aggiungi o lo sottrai al suo tiro (anche dopo il tiro, prima che abbia effetto)."
+            text: "A partire dal 6° livello lo stregone può alterare il destino con la sua magia selvaggia. Quando un'altra creatura che può vedere effettua un tiro per colpire, una prova di caratteristica o un tiro salvezza, può usare la sua reazione e spendere 2 punti stregoneria per tirare 1d4 e applicare il risultato come bonus o penalità (a sua scelta) al tiro della creatura. Può farlo dopo che la creatura ha tirato, ma prima che si applichino gli effetti del tiro."
+            kid: "Quando un'altra creatura che vedi tira il d20 (attacco, prova o tiro salvezza), usi la reazione (una mossa anche fuori dal tuo turno) e 2 punti stregoneria: tira 1d4 e aggiungilo o toglilo dal suo risultato, anche dopo aver visto il dado."
+        14:
+          - name: Caos Controllato
+            short: "Quando tiri sulla tabella degli impulsi di magia selvaggia, tiri due volte e scegli quale risultato usare."
+            text: "Al 14° livello lo stregone ottiene un certo controllo sugli impulsi della sua magia selvaggia: ogni volta che tira sulla tabella Impulso di Magia Selvaggia, può tirare due volte e usare uno qualsiasi dei due risultati."
+            kid: "Quando tiri sulla tabella della magia selvaggia, tiri due volte e scegli tu quale dei due risultati usare."
+        18:
+          - name: Bombardamento di Incantesimi
+            short: "Quando tiri i danni di un incantesimo e un dado ottiene il massimo, ne scegli uno, lo ritiri e aggiungi il risultato ai danni. 1 volta per turno."
+            text: "A partire dal 18° livello l'energia dannosa degli incantesimi dello stregone si intensifica. Quando tira i danni di un incantesimo e ottiene il numero più alto possibile su uno qualsiasi dei dadi, sceglie uno di quei dadi, lo tira di nuovo e aggiunge il risultato ai danni. Può usare questo privilegio una sola volta per turno."
+            kid: "Quando tiri i danni di un incantesimo e un dado fa il numero più alto (per esempio 8 su un d8), tiri di nuovo quel dado e aggiungi anche il nuovo numero. Una volta per turno."
+      surge_table:
+        - {min: 1, max: 2, roll: "01-02", text: "Per il prossimo minuto tiri su questa tabella all'inizio di ogni tuo turno, ignorando questo risultato nei tiri successivi."}
+        - {min: 3, max: 4, roll: "03-04", text: "Per il prossimo minuto puoi vedere qualsiasi creatura invisibile, se hai una linea di vista verso di essa."}
+        - {min: 5, max: 6, roll: "05-06", text: "Un modron scelto e controllato dal DM appare in uno spazio libero entro 1,5 m da te e scompare dopo 1 minuto."}
+        - {min: 7, max: 8, roll: "07-08", text: "Lanci palla di fuoco come incantesimo di 3° livello centrato su di te."}
+        - {min: 9, max: 10, roll: "09-10", text: "Lanci dardo incantato come incantesimo di 5° livello."}
+        - {min: 11, max: 12, roll: "11-12", text: "Tira un d10: la tua altezza cambia di 2,5 cm per ogni punto del risultato. Se il risultato è dispari rimpicciolisci, se è pari cresci."}
+        - {min: 13, max: 14, roll: "13-14", text: "Lanci confusione centrato su di te."}
+        - {min: 15, max: 16, roll: "15-16", text: "Per il prossimo minuto recuperi 5 punti ferita all'inizio di ogni tuo turno."}
+        - {min: 17, max: 18, roll: "17-18", text: "Ti cresce una lunga barba di piume che resta finché non starnutisci: allora le piume esplodono via dalla tua faccia."}
+        - {min: 19, max: 20, roll: "19-20", text: "Lanci unto centrato su di te."}
+        - {min: 21, max: 22, roll: "21-22", text: "Le creature hanno svantaggio ai tiri salvezza contro il prossimo incantesimo che lanci entro 1 minuto e che richiede un tiro salvezza."}
+        - {min: 23, max: 24, roll: "23-24", text: "La tua pelle diventa di un blu acceso. Un incantesimo rimuovi maledizione può porre fine all'effetto."}
+        - {min: 25, max: 26, roll: "25-26", text: "Per il prossimo minuto ti appare un occhio sulla fronte: hai vantaggio alle prove di Saggezza (Percezione) basate sulla vista."}
+        - {min: 27, max: 28, roll: "27-28", text: "Per il prossimo minuto tutti i tuoi incantesimi con tempo di lancio di 1 azione hanno tempo di lancio di 1 azione bonus."}
+        - {min: 29, max: 30, roll: "29-30", text: "Ti teletrasporti fino a 18 m in uno spazio libero a tua scelta che puoi vedere."}
+        - {min: 31, max: 32, roll: "31-32", text: "Vieni trasportato sul Piano Astrale fino alla fine del tuo prossimo turno; poi torni nello spazio che occupavi o, se è occupato, in quello libero più vicino."}
+        - {min: 33, max: 34, roll: "33-34", text: "Il prossimo incantesimo che infligge danni lanciato da te entro 1 minuto infligge il massimo dei danni."}
+        - {min: 35, max: 36, roll: "35-36", text: "Tira un d10: la tua età cambia di tanti anni quanto il risultato. Se è dispari ringiovanisci (minimo 1 anno di età), se è pari invecchi."}
+        - {min: 37, max: 38, roll: "37-38", text: "Appaiono 1d6 flumph controllati dal DM in spazi liberi entro 18 m da te: sono spaventati da te e svaniscono dopo 1 minuto."}
+        - {min: 39, max: 40, roll: "39-40", text: "Recuperi 2d10 punti ferita."}
+        - {min: 41, max: 42, roll: "41-42", text: "Ti trasformi in una pianta in vaso fino all'inizio del tuo prossimo turno. Come pianta sei incapacitato e hai vulnerabilità a tutti i danni; se scendi a 0 punti ferita il vaso si rompe e torni alla tua forma."}
+        - {min: 43, max: 44, roll: "43-44", text: "Per il prossimo minuto, in ognuno dei tuoi turni puoi teletrasportarti fino a 6 m come azione bonus."}
+        - {min: 45, max: 46, roll: "45-46", text: "Lanci levitazione su di te."}
+        - {min: 47, max: 48, roll: "47-48", text: "Un unicorno controllato dal DM appare in uno spazio entro 1,5 m da te e scompare dopo 1 minuto."}
+        - {min: 49, max: 50, roll: "49-50", text: "Per il prossimo minuto non puoi parlare: ogni volta che ci provi, dalla tua bocca escono bolle rosa."}
+        - {min: 51, max: 52, roll: "51-52", text: "Per il prossimo minuto uno scudo spettrale fluttua vicino a te: ottieni +2 alla CA e immunità a dardo incantato."}
+        - {min: 53, max: 54, roll: "53-54", text: "Per i prossimi 5d6 giorni l'alcol non può ubriacarti."}
+        - {min: 55, max: 56, roll: "55-56", text: "Ti cadono i capelli, ma ricrescono entro 24 ore."}
+        - {min: 57, max: 58, roll: "57-58", text: "Per il prossimo minuto ogni oggetto infiammabile che tocchi, se non è indossato o trasportato da un'altra creatura, prende fuoco."}
+        - {min: 59, max: 60, roll: "59-60", text: "Recuperi lo slot incantesimo speso di livello più basso."}
+        - {min: 61, max: 62, roll: "61-62", text: "Per il prossimo minuto devi urlare quando parli."}
+        - {min: 63, max: 64, roll: "63-64", text: "Lanci nube di nebbia centrata su di te."}
+        - {min: 65, max: 66, roll: "65-66", text: "Fino a tre creature a tua scelta entro 9 m da te subiscono 4d10 danni da fulmine."}
+        - {min: 67, max: 68, roll: "67-68", text: "Sei spaventato dalla creatura più vicina fino alla fine del tuo prossimo turno."}
+        - {min: 69, max: 70, roll: "69-70", text: "Ogni creatura entro 9 m da te diventa invisibile per il prossimo minuto. L'invisibilità di una creatura termina quando attacca o lancia un incantesimo."}
+        - {min: 71, max: 72, roll: "71-72", text: "Per il prossimo minuto ottieni resistenza a tutti i danni."}
+        - {min: 73, max: 74, roll: "73-74", text: "Una creatura casuale entro 18 m da te è avvelenata per 1d4 ore."}
+        - {min: 75, max: 76, roll: "75-76", text: "Per il prossimo minuto emani luce intensa in un raggio di 9 m. Ogni creatura che termina il suo turno entro 1,5 m da te è accecata fino alla fine del suo turno successivo."}
+        - {min: 77, max: 78, roll: "77-78", text: "Lanci metamorfosi su di te. Se fallisci il tiro salvezza, diventi una pecora per la durata dell'incantesimo."}
+        - {min: 79, max: 80, roll: "79-80", text: "Per il prossimo minuto farfalle e petali di fiori illusori svolazzano nell'aria entro 3 m da te."}
+        - {min: 81, max: 82, roll: "81-82", text: "Puoi effettuare subito un'azione aggiuntiva."}
+        - {min: 83, max: 84, roll: "83-84", text: "Ogni creatura entro 9 m da te subisce 1d10 danni necrotici. Recuperi punti ferita pari al totale dei danni necrotici inflitti."}
+        - {min: 85, max: 86, roll: "85-86", text: "Lanci immagine speculare."}
+        - {min: 87, max: 88, roll: "87-88", text: "Lanci volare su una creatura casuale entro 18 m da te."}
+        - {min: 89, max: 90, roll: "89-90", text: "Per il prossimo minuto diventi invisibile e le altre creature non possono sentirti. L'invisibilità termina se attacchi o lanci un incantesimo."}
+        - {min: 91, max: 92, roll: "91-92", text: "Se muori entro il prossimo minuto, torni subito in vita come con l'incantesimo reincarnazione."}
+        - {min: 93, max: 94, roll: "93-94", text: "Per il prossimo minuto la tua taglia aumenta di una categoria."}
+        - {min: 95, max: 96, roll: "95-96", text: "Per il prossimo minuto tu e tutte le creature entro 9 m da te ottenete vulnerabilità ai danni perforanti."}
+        - {min: 97, max: 98, roll: "97-98", text: "Per il prossimo minuto sei circondato da una leggera musica eterea."}
+        - {min: 99, max: 100, roll: "99-00", text: "Recuperi tutti i punti stregoneria spesi."}

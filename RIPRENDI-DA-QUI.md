@@ -39,6 +39,6 @@ Scelte per Rebecca (3/10/2026): background Artigiana di Gilda, drago rosso, Scuo
 - [x] Incantesimi: tutta la lista del druido fino al 3° livello e del mago fino al 2°, con i testi per bambini.
 - [x] Bestie della Forma Selvatica con i testi per bambini e le statistiche verificate.
 - [x] Versione semplice, nomi al femminile, guida separata, riepilogo `.md` in italiano.
-- [ ] Le altre classi complete, quando servono (stesso schema del Mago in `classes.yaml`).
+- [ ] Le altre classi complete, quando servono (un file per classe in `dnd5e/rules/classes/`).
 - [ ] Incantesimi di 3° livello e oltre per il mago, quando un personaggio arriva al 5° livello.
 - [ ] Nomi italiani incerti di alcuni incantesimi da mago (es. Trucco della Corda, Aura Magica di Nystul): da controllare sul manuale.

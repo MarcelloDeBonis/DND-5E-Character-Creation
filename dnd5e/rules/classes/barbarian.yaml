@@ -1,0 +1,453 @@
+barbarian:
+  name: Barbaro
+  name_f: Barbara
+  name_en: Barbarian
+  hit_die: 12
+  saves:
+  - str
+  - con
+  armor:
+  - light
+  - medium
+  - shields
+  weapons:
+  - simple
+  - martial
+  tools: []
+  skill_choices:
+    count: 2
+    from:
+    - animal_handling
+    - athletics
+    - intimidation
+    - nature
+    - perception
+    - survival
+  starting_equipment:
+  - choice:
+    - Un'ascia bipenne
+    - Un'arma da guerra da mischia qualsiasi
+  - choice:
+    - Due asce
+    - Un'arma semplice qualsiasi
+  - fixed:
+    - Dotazione da esploratore
+    - Quattro giavellotti
+  subclass_level: 3
+  subclass_label: Cammino Primordiale
+  asi_levels:
+  - 4
+  - 8
+  - 12
+  - 16
+  - 19
+  table:
+    rages:
+    - 2
+    - 2
+    - 3
+    - 3
+    - 3
+    - 4
+    - 4
+    - 4
+    - 4
+    - 4
+    - 4
+    - 5
+    - 5
+    - 5
+    - 5
+    - 5
+    - 6
+    - 6
+    - 6
+    - 99
+    rages_text:
+    - 2 volte per riposo lungo
+    - 2 volte per riposo lungo
+    - 3 volte per riposo lungo
+    - 3 volte per riposo lungo
+    - 3 volte per riposo lungo
+    - 4 volte per riposo lungo
+    - 4 volte per riposo lungo
+    - 4 volte per riposo lungo
+    - 4 volte per riposo lungo
+    - 4 volte per riposo lungo
+    - 4 volte per riposo lungo
+    - 5 volte per riposo lungo
+    - 5 volte per riposo lungo
+    - 5 volte per riposo lungo
+    - 5 volte per riposo lungo
+    - 5 volte per riposo lungo
+    - 6 volte per riposo lungo
+    - 6 volte per riposo lungo
+    - 6 volte per riposo lungo
+    - quante volte vuoi
+    rage_damage:
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 3
+    - 3
+    - 3
+    - 3
+    - 3
+    - 3
+    - 3
+    - 4
+    - 4
+    - 4
+    - 4
+    - 4
+    brutal_critical:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 1
+    - 1
+    - 1
+    - 1
+    - 2
+    - 2
+    - 2
+    - 2
+    - 3
+    - 3
+    - 3
+    - 3
+    brutal_critical_dice:
+    - —
+    - —
+    - —
+    - —
+    - —
+    - —
+    - —
+    - —
+    - 1 dado
+    - 1 dado
+    - 1 dado
+    - 1 dado
+    - 2 dadi
+    - 2 dadi
+    - 2 dadi
+    - 2 dadi
+    - 3 dadi
+    - 3 dadi
+    - 3 dadi
+    - 3 dadi
+  features:
+    1:
+    - name: Ira
+      short: 'Azione bonus, senza armatura pesante: per 1 minuto hai vantaggio a prove e TS di FOR, +{t_rage_damage} ai danni degli attacchi con armi da mischia basati su FOR e resistenza ai danni contundenti,
+        perforanti e taglienti. Niente incantesimi né concentrazione. Finisce prima se perdi i sensi o se chiudi un turno senza aver attaccato un nemico né subito danni. Puoi entrare in ira {t_rages_text}.'
+      text: 'Con un''azione bonus il barbaro entra in ira per 1 minuto, purché non indossi un''armatura pesante: ottiene vantaggio alle prove e ai tiri salvezza di Forza, somma il bonus d''ira (+2, +3 dal
+        9° livello, +4 dal 16°) ai danni degli attacchi con armi da mischia che usano la Forza e ha resistenza ai danni contundenti, perforanti e taglienti, ma non può lanciare incantesimi né concentrarsi
+        su di essi. L''ira termina in anticipo se il barbaro perde i sensi, se finisce un suo turno senza aver attaccato una creatura ostile né subito danni dal turno precedente, oppure quando la interrompe
+        con un''azione bonus. Gli usi (2 al 1° livello, poi come da tabella, illimitati al 20°) si recuperano con un riposo lungo.'
+      kid: 'Azione bonus: ti arrabbi tantissimo per 1 minuto. Le tue armi da mischia fanno +{t_rage_damage} danni; armi, morsi e artigli ti fanno solo metà danni; nelle prove di Forza tiri 2 d20 e tieni
+        il più alto. Puoi farlo {t_rages_text}.'
+      uses_table: rages
+      damage_bonus_table: rage_damage
+    - name: Difesa senza Armatura
+      short: 'Senza armatura: CA = 10 + mod. DES + mod. COS. Puoi usare lo scudo.'
+      text: Quando non indossa alcuna armatura, il barbaro ha Classe Armatura pari a 10 + modificatore di Destrezza + modificatore di Costituzione. Può comunque imbracciare uno scudo e aggiungerne il bonus.
+      kid: 'Se non indossi armature, la tua pelle dura ti protegge: la tua CA (quanto è difficile colpirti) è 10 + Destrezza + Costituzione. Con lo scudo hai +2. È già calcolata sulla scheda.'
+      unarmored_ac:
+        base: 10
+        abilities:
+        - dex
+        - con
+        shield_allowed: true
+    2:
+    - name: Attacco Irruento
+      short: 'Al primo attacco del tuo turno puoi scegliere di attaccare senza difenderti: vantaggio ai tiri per colpire con armi da mischia basati su FOR per tutto il turno, ma fino al tuo turno successivo
+        chi ti attacca ha vantaggio.'
+      text: Quando effettua il primo attacco del proprio turno, il barbaro può decidere di gettarsi nella mischia senza curarsi della difesa. Per quel turno ha vantaggio ai tiri per colpire con armi da
+        mischia che usano la Forza, ma fino all'inizio del suo turno successivo anche i tiri per colpire contro di lui hanno vantaggio.
+      kid: 'Al primo attacco del turno puoi buttarti all''attacco: per tutto il turno, quando colpisci da vicino, tiri 2 d20 e tieni il più alto. Però fino al tuo prossimo turno anche i nemici tirano 2
+        d20 per colpire te.'
+    - name: Percepire il Pericolo
+      short: Vantaggio ai TS su DES contro effetti che puoi vedere (trappole, incantesimi...), se non sei accecato, assordato o incapacitato.
+      text: Il barbaro ha vantaggio ai tiri salvezza su Destrezza contro gli effetti che riesce a vedere, come trappole e incantesimi. Il beneficio non si applica se è accecato, assordato o incapacitato.
+      kid: 'Senti arrivare il pericolo: per schivare una trappola o una magia che vedi (tiro salvezza su Destrezza) tiri 2 d20 e tieni il più alto. Non vale se non vedi, non senti o non puoi agire.'
+    3:
+    - name: Cammino Primordiale
+      short: 'Scegli un cammino: Cammino del Berserker o Cammino del Combattente Totemico (privilegi al 3°, 6°, 10° e 14° livello).'
+      text: 'Al 3° livello il barbaro sceglie il cammino che dà forma alla sua ira: il Cammino del Berserker o il Cammino del Combattente Totemico. Il cammino scelto conferisce privilegi al 3°, al 6°, al
+        10° e al 14° livello.'
+      kid: 'Scegli il tuo tipo di furia: Berserker (furia scatenata) o Combattente Totemico (lo spirito di un animale ti aiuta). Ti dà poteri al 3°, 6°, 10° e 14° livello.'
+      kid_hide: true
+    4:
+    - name: Aumento dei Punteggi di Caratteristica
+      short: +2 a una caratteristica o +1 a due (max 20), oppure un talento.
+      text: Il barbaro aumenta di 2 un punteggio di caratteristica, oppure di 1 due punteggi diversi, senza superare 20; in alternativa, se il DM usa i talenti, ne sceglie uno. Il privilegio torna all'8°,
+        12°, 16° e 19° livello.
+      kid: Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sono già sulla scheda.
+      kid_hide: true
+    5:
+    - name: Attacco Extra
+      short: Quando effettui l'azione di Attacco nel tuo turno, attacchi due volte.
+      text: Dal 5° livello il barbaro effettua due attacchi, anziché uno, ogni volta che sceglie l'azione di Attacco nel proprio turno.
+      kid: 'Quando nel tuo turno scegli di attaccare, fai 2 attacchi invece di 1: tira il d20 per ognuno.'
+    - name: Movimento Veloce
+      short: La tua velocità aumenta di 3 m finché non indossi un'armatura pesante.
+      text: Dal 5° livello la velocità del barbaro aumenta di 3 metri, a patto che non indossi un'armatura pesante.
+      kid: 'Corri più veloce: a ogni turno ti muovi di 3 m in più. È già sulla scheda.'
+      kid_hide: true
+      speed_bonus: 3
+      requires_no_heavy_armor: true
+    7:
+    - name: Istinto Ferino
+      short: Vantaggio ai tiri per l'iniziativa. Se sei sorpreso e non incapacitato, nel primo turno puoi agire normalmente, purché la prima cosa che fai sia entrare in ira.
+      text: Dal 7° livello il barbaro ha vantaggio ai tiri per l'iniziativa. Se viene colto di sorpresa all'inizio di uno scontro e non è incapacitato, può agire normalmente nel primo turno, ma solo se
+        entra in ira prima di fare qualsiasi altra cosa in quel turno.
+      kid: Per l'iniziativa (il tiro che decide chi agisce prima) tiri 2 d20 e tieni il più alto. Se i nemici ti sorprendono puoi agire lo stesso, ma come prima cosa devi entrare in ira.
+      initiative_advantage: true
+    8:
+    - name: Aumento dei Punteggi di Caratteristica
+      short: +2 a una caratteristica o +1 a due (max 20), oppure un talento.
+      text: Vedi 4° livello.
+      kid: Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sono già sulla scheda.
+      kid_hide: true
+    9:
+    - name: Critico Brutale
+      short: Quando fai un colpo critico con un attacco in mischia, tiri {t_brutal_critical_dice} di danno dell'arma in più (1 dal 9°, 2 dal 13°, 3 dal 17°).
+      text: Dal 9° livello, quando il barbaro mette a segno un colpo critico con un attacco in mischia, aggiunge un dado di danno dell'arma ai dadi extra del critico. I dadi aggiunti diventano due al 13°
+        livello e tre al 17°.
+      kid: Quando esce 20 sul d20 in un attacco da vicino (colpo critico), tiri due volte i dadi di danno dell'arma come sempre, e in più ancora {t_brutal_critical_dice} dell'arma.
+    - name: Ira (+3 ai danni)
+      short: Il bonus ai danni dell'ira diventa +3.
+      text: Dal 9° livello il bonus ai danni dell'ira sale a +3 (+4 dal 16°).
+      kid: In ira le tue armi da mischia ora fanno +3 danni.
+      kid_hide: true
+    11:
+    - name: Ira Implacabile
+      short: 'Se scendi a 0 PF mentre sei in ira e non muori sul colpo, TS su COS con CD 10: se lo superi resti a 1 PF. Ogni uso successivo aumenta la CD di 5; torna a 10 dopo un riposo breve o lungo.'
+      text: Dall'11° livello, se il barbaro in ira scende a 0 punti ferita senza morire all'istante, può effettuare un tiro salvezza su Costituzione con CD 10 e, se lo supera, rimane invece a 1 punto ferita.
+        Ogni nuovo utilizzo dopo il primo aumenta la CD di 5; la CD torna a 10 quando completa un riposo breve o lungo.
+      kid: 'Se sei in ira e i tuoi PF arrivano a 0, tira un d20 per resistere (tiro salvezza su Costituzione contro 10): se riesci resti a 1 PF. Ogni volta dopo serve 5 in più; un riposo riporta a 10.'
+    12:
+    - name: Aumento dei Punteggi di Caratteristica
+      short: +2 a una caratteristica o +1 a due (max 20), oppure un talento.
+      text: Vedi 4° livello.
+      kid: Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sono già sulla scheda.
+      kid_hide: true
+    13:
+    - name: Critico Brutale (2 dadi)
+      short: 'Critico Brutale: 2 dadi di danno dell''arma in più sui colpi critici in mischia.'
+      text: Dal 13° livello Critico Brutale aggiunge due dadi di danno dell'arma (tre dal 17°).
+      kid: Nei colpi critici da vicino ora tiri 2 dadi dell'arma in più.
+      kid_hide: true
+    15:
+    - name: Ira Persistente
+      short: La tua ira finisce prima del minuto solo se perdi i sensi o se decidi tu di terminarla.
+      text: Dal 15° livello l'ira del barbaro termina in anticipo soltanto se perde i sensi o se sceglie di interromperla. Non conta più se in un turno non ha attaccato né subito danni.
+      kid: 'La tua ira non si spegne più da sola: dura tutto il minuto anche se non attacchi, a meno che tu non svenga o non decida di smettere.'
+    16:
+    - name: Aumento dei Punteggi di Caratteristica
+      short: +2 a una caratteristica o +1 a due (max 20), oppure un talento.
+      text: Vedi 4° livello.
+      kid: Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sono già sulla scheda.
+      kid_hide: true
+    - name: Ira (+4 ai danni)
+      short: Il bonus ai danni dell'ira diventa +4.
+      text: Dal 16° livello il bonus ai danni dell'ira sale a +4.
+      kid: In ira le tue armi da mischia ora fanno +4 danni.
+      kid_hide: true
+    17:
+    - name: Critico Brutale (3 dadi)
+      short: 'Critico Brutale: 3 dadi di danno dell''arma in più sui colpi critici in mischia.'
+      text: Dal 17° livello Critico Brutale aggiunge tre dadi di danno dell'arma.
+      kid: Nei colpi critici da vicino ora tiri 3 dadi dell'arma in più.
+      kid_hide: true
+    18:
+    - name: Forza Indomabile
+      short: Se il totale di una tua prova di Forza è inferiore al tuo punteggio di Forza, usi il punteggio al posto del totale.
+      text: Dal 18° livello, quando il risultato totale di una prova di Forza del barbaro è più basso del suo punteggio di Forza, può usare il punteggio al posto di quel totale.
+      kid: 'Nelle prove di Forza non fai mai meno del tuo punteggio di Forza (il numero grande sulla scheda): se il tiro totale è più basso, usi quel numero.'
+    19:
+    - name: Aumento dei Punteggi di Caratteristica
+      short: +2 a una caratteristica o +1 a due (max 20), oppure un talento.
+      text: Vedi 4° livello.
+      kid: Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sono già sulla scheda.
+      kid_hide: true
+    20:
+    - name: Campione Primordiale
+      name_f: Campionessa Primordiale
+      short: Forza e Costituzione aumentano di 4; il loro massimo diventa 24.
+      text: Al 20° livello i punteggi di Forza e Costituzione del barbaro aumentano di 4 ciascuno, e il valore massimo per questi due punteggi passa da 20 a 24.
+      kid: 'Diventi fortissimo: Forza e Costituzione salgono di 4 (al massimo fino a 24). I numeri sulla scheda sono già aggiornati.'
+      ability_bonus:
+        str: 4
+        con: 4
+      ability_max:
+        str: 24
+        con: 24
+    - name: Ira (usi illimitati)
+      short: Puoi entrare in ira tutte le volte che vuoi.
+      text: Al 20° livello il numero di usi di Ira diventa illimitato.
+      kid: Puoi entrare in ira quante volte vuoi.
+      kid_hide: true
+  subclasses:
+    berserker:
+      name: Cammino del Berserker
+      name_en: Path of the Berserker
+      save_dc:
+        ability: cha
+        placeholder: cd
+      features:
+        3:
+        - name: Frenesia
+          short: 'Quando entri in ira puoi andare in frenesia: per tutta quell''ira, in ognuno dei turni seguenti puoi fare un attacco con arma da mischia come azione bonus. Quando l''ira finisce subisci
+            1 livello di indebolimento.'
+          text: Dal 3° livello, quando entra in ira, il barbaro può scegliere di andare in frenesia. Per la durata di quell'ira, in ciascuno dei turni successivi può effettuare un singolo attacco con un'arma
+            da mischia come azione bonus; al termine dell'ira subisce un livello di indebolimento.
+          kid: 'Entrando in ira puoi scatenarti: nei turni dopo fai un attacco in più con l''arma (azione bonus). Alla fine sei sfinito: 1 livello di indebolimento (nelle prove tiri 2 d20 e tieni il più
+            basso) fino al riposo lungo.'
+        6:
+        - name: Ira Cieca
+          short: Mentre sei in ira non puoi essere affascinato né spaventato; se lo eri quando sei entrato in ira, l'effetto resta sospeso finché l'ira dura.
+          text: Dal 6° livello il barbaro in ira non può essere affascinato né spaventato. Se era già sotto uno di questi effetti quando è entrato in ira, l'effetto rimane sospeso per tutta la durata dell'ira.
+          kid: Quando sei in ira niente può spaventarti o incantarti. Se eri già spaventato o incantato, l'effetto si ferma finché resti in ira.
+        10:
+        - name: Presenza Intimidatoria
+          short: 'Azione: una creatura che vedi entro 9 m e che può vederti o sentirti fa un TS su SAG (CD {cd} = 8 + comp. + mod. CAR) o è spaventata fino alla fine del tuo turno successivo; nei turni
+            seguenti puoi prolungarlo con l''azione. Finisce se chiude il turno fuori dalla tua vista o a più di 18 m. Se supera il TS, non puoi riprovarci su di lei per 24 ore.'
+          text: 'Dal 10° livello il barbaro può usare l''azione per terrorizzare una creatura che vede entro 9 metri e che è in grado di vederlo o sentirlo: se fallisce un tiro salvezza su Saggezza (CD
+            8 + bonus di competenza + modificatore di Carisma) resta spaventata fino alla fine del turno successivo del barbaro, che nei turni seguenti può spendere di nuovo l''azione per prolungare l''effetto.
+            L''effetto cessa se la creatura termina il proprio turno fuori dalla linea di vista del barbaro o a più di 18 metri da lui. Se la creatura supera il tiro salvezza, il barbaro non può usare di
+            nuovo questo privilegio su di essa per 24 ore.'
+          kid: 'Azione: fai paura a un nemico entro 9 m. Lui tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}): se fallisce è spaventato fino alla fine del tuo prossimo turno. Con altre
+            azioni puoi tenerlo spaventato più a lungo.'
+        14:
+        - name: Ritorsione
+          short: Quando una creatura entro 1,5 m ti infligge danni, puoi usare la reazione per fare un attacco con arma da mischia contro di lei.
+          text: Dal 14° livello, quando subisce danni da una creatura che si trova entro 1,5 metri da lui, il barbaro può usare la reazione per effettuare un attacco con un'arma da mischia contro quella
+            creatura.
+          kid: Quando un nemico accanto a te (entro 1,5 m) ti fa male, usa la reazione (una mossa fuori dal tuo turno, 1 volta per round) e colpiscilo subito con la tua arma.
+    totem_warrior:
+      name: Cammino del Combattente Totemico
+      name_en: Path of the Totem Warrior
+      option_lists:
+        totem_spirit:
+          label: Spirito Totemico
+          level: 3
+          count_table: null
+          count: 1
+          items:
+            bear:
+              name: Orso
+              short: In ira hai resistenza a tutti i danni tranne quelli psichici.
+              text: 'Spirito dell''orso: mentre è in ira, il barbaro ha resistenza a ogni tipo di danno tranne quello psichico.'
+              kid: Quando sei in ira prendi solo metà danni da tutto (armi, fuoco, veleno, magie...), tranne i danni psichici, quelli che colpiscono la mente.
+            eagle:
+              name: Aquila
+              short: 'In ira e senza armatura pesante: gli attacchi di opportunità contro di te hanno svantaggio e puoi usare Scatto come azione bonus.'
+              text: 'Spirito dell''aquila: mentre è in ira e non indossa un''armatura pesante, le altre creature hanno svantaggio ai tiri per gli attacchi di opportunità contro il barbaro, che può anche
+                effettuare l''azione di Scatto come azione bonus nel proprio turno.'
+              kid: 'In ira corri come il vento: con l''azione bonus fai Scatto (ti muovi il doppio). Se ti allontani da un nemico e lui prova a colpirti, tira 2 d20 e tiene il più basso.'
+            wolf:
+              name: Lupo
+              short: In ira, i tuoi alleati hanno vantaggio ai tiri per colpire in mischia contro le creature ostili entro 1,5 m da te.
+              text: 'Spirito del lupo: mentre il barbaro è in ira, i suoi amici hanno vantaggio ai tiri per colpire in mischia contro qualsiasi creatura a lui ostile che si trovi entro 1,5 metri da lui.'
+              kid: Quando sei in ira, i tuoi amici che attaccano da vicino un nemico accanto a te (entro 1,5 m) tirano 2 d20 e tengono il più alto. Cacciate in branco!
+        aspect_of_the_beast:
+          label: Aspetto della Bestia
+          level: 6
+          count_table: null
+          count: 1
+          items:
+            bear:
+              name: Orso
+              short: La tua capacità di trasporto (e il peso che puoi spingere, trascinare o sollevare) raddoppia; vantaggio alle prove di FOR per spingere, tirare, sollevare o rompere oggetti.
+              text: 'Aspetto dell''orso: la capacità di trasporto del barbaro raddoppia, compreso il peso che può spingere, trascinare o sollevare. Ha inoltre vantaggio alle prove di Forza per spingere,
+                tirare, sollevare o spezzare oggetti.'
+              kid: 'Sei forte come un orso: puoi portare il doppio del peso. Per spingere, tirare, sollevare o rompere oggetti tiri 2 d20 e tieni il più alto.'
+            eagle:
+              name: Aquila
+              short: Vedi nitidamente fino a 1,5 km, distinguendo i dettagli come se fossero a 30 m; la luce fioca non ti dà svantaggio alle prove di SAG (Percezione).
+              text: 'Aspetto dell''aquila: il barbaro vede senza difficoltà fino a 1,5 km di distanza e distingue i particolari come se guardasse qualcosa a non più di 30 metri. La luce fioca non gli impone
+                svantaggio alle prove di Saggezza (Percezione).'
+              kid: 'Hai occhi d''aquila: vedi bene fino a 1,5 km, con i dettagli come se fossero a 30 m. Anche con poca luce, quando cerchi qualcosa (Percezione) non tiri peggio.'
+            wolf:
+              name: Lupo
+              short: Puoi seguire tracce mentre viaggi a passo veloce e muoverti furtivamente mentre viaggi a passo normale.
+              text: 'Aspetto del lupo: il barbaro può seguire le tracce di altre creature anche quando viaggia a passo veloce, e può muoversi furtivamente anche quando viaggia a passo normale.'
+              kid: 'Sei un cacciatore come il lupo: segui le tracce anche quando viaggi in fretta, e ti muovi di nascosto anche camminando a passo normale.'
+        totemic_attunement:
+          label: Sintonia Totemica
+          level: 14
+          count_table: null
+          count: 1
+          items:
+            bear:
+              name: Orso
+              short: In ira, le creature ostili entro 1,5 m da te hanno svantaggio ai tiri per colpire contro bersagli diversi da te (o da un altro con questo privilegio). Non vale per chi non può vederti
+                o sentirti o non può essere spaventato.
+              text: 'Sintonia con l''orso: mentre il barbaro è in ira, ogni creatura a lui ostile entro 1,5 metri ha svantaggio ai tiri per colpire contro bersagli che non siano il barbaro o un altro personaggio
+                con lo stesso privilegio. Ne è immune la creatura che non può vederlo o sentirlo, o che non può essere spaventata.'
+              kid: Quando sei in ira, i nemici accanto a te (entro 1,5 m) che attaccano i tuoi amici invece di te tirano 2 d20 e tengono il più basso. Devono vedersela con te!
+            eagle:
+              name: Aquila
+              short: 'In ira hai una velocità di volare pari alla tua velocità a piedi, ma solo a balzi: se finisci il turno in aria senza nulla che ti sostenga, cadi.'
+              text: 'Sintonia con l''aquila: mentre è in ira, il barbaro ha una velocità di volare pari alla sua velocità a piedi attuale. Può volare solo a brevi balzi: se termina il turno in aria e nient''altro
+                lo tiene sospeso, cade.'
+              kid: 'Quando sei in ira puoi volare veloce quanto cammini! Ma solo a balzi: se alla fine del tuo turno sei ancora in aria, cadi.'
+            wolf:
+              name: Lupo
+              short: In ira, quando colpisci con un attacco con arma da mischia una creatura di taglia Grande o inferiore, puoi usare l'azione bonus per farla cadere prona.
+              text: 'Sintonia con il lupo: mentre è in ira, quando il barbaro colpisce con un attacco con un''arma da mischia una creatura di taglia Grande o inferiore, può usare un''azione bonus nel proprio
+                turno per buttarla a terra prona.'
+              kid: 'Quando sei in ira e colpisci da vicino un nemico grande al massimo come un cavallo, con l''azione bonus lo butti a terra: chi lo attacca da vicino tira 2 d20 e tiene il più alto.'
+      features:
+        3:
+        - name: Cercatore di Spiriti
+          name_f: Cercatrice di Spiriti
+          short: Puoi lanciare sensi della bestia e parlare con gli animali, ma solo come rituali (10 minuti in più del normale, senza slot).
+          text: Dal 3° livello il barbaro può lanciare gli incantesimi sensi della bestia e parlare con gli animali, ma esclusivamente come rituali. Un rituale richiede 10 minuti in più del normale tempo
+            di lancio e non consuma slot incantesimo.
+          kid: 'Puoi parlare con gli animali, oppure vedere e sentire con i sensi di un animale amico che tocchi. Sono magie lente: ci vogliono 10 minuti in più, ma non ti costano niente.'
+          ritual_only_spells:
+          - beast_sense
+          - speak_with_animals
+        - name: Spirito Totemico
+          short: Scegli un animale totem (Orso, Aquila o Lupo, vedi elenco) e ottieni il suo beneficio. Devi procurarti un oggetto totem fatto con parti dell'animale (pelliccia, piume, artigli, denti o
+            ossa).
+          text: Al 3° livello il barbaro sceglie uno spirito totemico tra orso, aquila e lupo e ne ottiene il beneficio (vedi elenco). Deve procurarsi o costruire un oggetto totem, come un amuleto o un
+            ornamento, che contenga pelliccia, piume, artigli, denti o ossa dell'animale.
+          kid: 'Scegli il tuo animale guida: orso, aquila o lupo. Quando sei in ira ti dà un potere speciale, che trovi tra le tue scelte.'
+          kid_hide: true
+        6:
+        - name: Aspetto della Bestia
+          short: Scegli un animale (Orso, Aquila o Lupo, anche diverso da quello del 3° livello) e ottieni il suo beneficio permanente (vedi elenco).
+          text: Al 6° livello il barbaro ottiene un beneficio magico legato a un animale totem a sua scelta tra orso, aquila e lupo (vedi elenco). Può scegliere lo stesso animale del 3° livello o uno diverso.
+          kid: 'Il tuo animale guida ti dà un nuovo potere che hai sempre, anche senza ira: lo trovi tra le tue scelte.'
+          kid_hide: true
+        10:
+        - name: Camminatore Spirituale
+          name_f: Camminatrice Spirituale
+          short: 'Puoi lanciare comunione con la natura, solo come rituale: le informazioni ti arrivano da uno spirito di uno dei tuoi animali totem.'
+          text: Dal 10° livello il barbaro può lanciare l'incantesimo comunione con la natura, ma soltanto come rituale. In questo caso le informazioni gli vengono portate da una forma spirituale di uno
+            degli animali scelti come totem.
+          kid: 'Con una magia lenta (11 minuti) lo spirito del tuo animale ti racconta 3 cose su quello che c''è intorno fino a 4,5 km: fiumi, animali, mostri, persone, edifici.'
+          ritual_only_spells:
+          - commune_with_nature
+        14:
+        - name: Sintonia Totemica
+          short: Scegli un animale (Orso, Aquila o Lupo, anche diverso dai precedenti) e ottieni il suo beneficio in ira (vedi elenco).
+          text: Al 14° livello il barbaro ottiene un beneficio magico legato a un animale totem a sua scelta tra orso, aquila e lupo (vedi elenco). Può scegliere un animale già scelto in precedenza o uno
+            diverso.
+          kid: 'Il tuo animale guida ti dà il suo potere più forte quando sei in ira: lo trovi tra le tue scelte.'
+          kid_hide: true

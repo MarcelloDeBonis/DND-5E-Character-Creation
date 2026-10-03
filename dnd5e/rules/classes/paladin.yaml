@@ -1,0 +1,278 @@
+paladin:
+  name: Paladino
+  name_f: Paladina
+  name_en: Paladin
+  hit_die: 10
+  saves: [wis, cha]
+  armor: [light, medium, heavy, shields]
+  weapons: [simple, martial]
+  tools: []
+  skill_choices:
+    count: 2
+    from: [athletics, insight, intimidation, medicine, persuasion, religion]
+  starting_equipment:
+    - choice: ["Un'arma da guerra e uno scudo", "Due armi da guerra"]
+    - choice: ["Cinque giavellotti", "Un'arma semplice da mischia qualsiasi"]
+    - choice: ["Dotazione da sacerdote", "Dotazione da esploratore"]
+    - fixed: ["Cotta di maglia", "Simbolo sacro"]
+  spellcasting:
+    ability: cha
+    type: half
+    prepared: ability_plus_level
+    list: paladin
+    ritual: false
+    focus: "simbolo sacro"
+  subclass_level: 3
+  subclass_label: Giuramento Sacro
+  asi_levels: [4, 8, 12, 16, 19]
+  table:
+    lay_on_hands: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100]
+    aura_range: [0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 9, 9, 9]
+    smite_max: ["—", "2d8", "2d8", "2d8", "3d8", "3d8", "3d8", "3d8", "4d8", "4d8", "4d8", "4d8", "5d8", "5d8", "5d8", "5d8", "5d8", "5d8", "5d8", "5d8"]
+  features:
+    1:
+      - name: Percezione del Divino
+        short: "Azione: fino alla fine del tuo turno successivo sai dove si trovano celestiali, immondi e non morti entro 18 m (non dietro copertura totale) e percepisci luoghi e oggetti consacrati o profanati. Usi: 1 + mod. CAR per riposo lungo."
+        text: "La presenza di un male potente colpisce i sensi del paladino come un odore nauseabondo, mentre un bene potente risuona come una musica celestiale. Come azione, fino alla fine del suo turno successivo, il paladino conosce la posizione di ogni celestiale, immondo o non morto entro 18 metri che non si trovi dietro copertura totale; ne conosce il tipo (celestiale, immondo o non morto) ma non l'identità. Entro lo stesso raggio individua anche luoghi o oggetti consacrati o profanati, come con l'incantesimo santificare. Può usare questo privilegio un numero di volte pari a 1 + il suo modificatore di Carisma; recupera tutti gli usi spesi al termine di un riposo lungo."
+        kid: "Con un'azione, fino al tuo prossimo turno senti dove sono celestiali (come gli angeli), immondi (come i demoni) e non morti entro 18 m. Usi: 1 + il tuo bonus di Carisma, poi serve un riposo lungo."
+      - name: Imposizione delle Mani
+        short: "Riserva di {t_lay_on_hands} PF (5 x livello), ricaricata con un riposo lungo. Azione: tocchi una creatura e le fai recuperare PF dalla riserva, oppure spendi 5 punti per curare una malattia o neutralizzare un veleno. Nessun effetto su non morti e costrutti."
+        text: "Il tocco benedetto del paladino può guarire le ferite. Dispone di una riserva di potere curativo che si ricarica al termine di un riposo lungo, con cui può ripristinare un numero totale di punti ferita pari a 5 x il suo livello da paladino. Come azione può toccare una creatura e attingere alla riserva per farle recuperare un numero di punti ferita a sua scelta, fino al massimo rimasto nella riserva. In alternativa può spendere 5 punti ferita dalla riserva per curare il bersaglio da una malattia o neutralizzare un veleno che lo affligge; può curare più malattie e veleni con un solo uso, spendendo 5 punti separatamente per ciascuno. Questo privilegio non ha effetto sui non morti e sui costrutti."
+        kid: "Hai {t_lay_on_hands} punti di cura, che tornano dopo un riposo lungo. Con un'azione tocchi qualcuno e gli ridai i punti ferita che vuoi, togliendoli dalla riserva. Con 5 punti guarisci una malattia o un veleno."
+    2:
+      - name: Stile di Combattimento
+        short: "Scegli uno stile: Difesa, Duello, Combattere con Armi Possenti o Protezione."
+        text: "Al 2° livello il paladino adotta uno stile di combattimento come sua specialità, scegliendo tra: Difesa (+1 alla CA quando indossa un'armatura); Duello (+2 ai danni quando impugna un'arma da mischia in una mano e nessun'altra arma); Combattere con Armi Possenti (quando ottiene 1 o 2 a un dado di danno di un'arma da mischia a due mani o versatile impugnata a due mani, può ripetere il tiro e deve usare il nuovo risultato); Protezione (quando una creatura che può vedere attacca un bersaglio diverso da lui entro 1,5 metri, può usare la reazione per imporre svantaggio al tiro per colpire; deve impugnare uno scudo). Non può scegliere lo stesso stile più di una volta, anche se in seguito ottiene un'altra scelta."
+        kid: "Hai scelto un modo speciale di combattere: lo trovi spiegato sulla scheda, sotto i tuoi poteri."
+        kid_hide: true
+        fighting_style: true
+        fighting_style_options: [defense, dueling, great_weapon_fighting, protection]
+      - name: Incantesimi
+        short: "Mezzo incantatore (Carisma). Prepari mod. CAR + metà del livello da paladino (min 1) incantesimi dalla lista del paladino; cambi la lista dopo un riposo lungo. Focus: simbolo sacro. Non lanci rituali."
+        text: "Dal 2° livello il paladino ha imparato ad attingere alla magia divina attraverso la meditazione e la preghiera, lanciando incantesimi come un chierico. Prepara ogni giorno, dalla lista del paladino, un numero di incantesimi pari al suo modificatore di Carisma + la metà del suo livello da paladino (arrotondata per difetto, minimo 1), di livello per cui ha slot incantesimo. Lanciare un incantesimo spende uno slot del suo livello o superiore; gli slot spesi si recuperano con un riposo lungo. Al termine di un riposo lungo può cambiare la lista degli incantesimi preparati: servono 1 minuto per livello di incantesimo per ogni incantesimo della lista. Caratteristica da incantatore: Carisma (CD tiro salvezza = 8 + bonus di competenza + mod. CAR; attacco con incantesimo = bonus di competenza + mod. CAR). Può usare un simbolo sacro come focus da incantatore."
+        kid: "Puoi lanciare incantesimi da paladino spendendo i tuoi slot. Chi resiste ai tuoi incantesimi deve fare almeno {cd}; quando attacchi con un incantesimo tira d20{att}."
+        kid_hide: true
+      - name: Punizione Divina
+        short: "Quando colpisci con un attacco con arma da mischia puoi spendere uno slot: +2d8 danni radiosi con uno slot di 1° livello, +1d8 per ogni livello di slot oltre il 1° (max 5d8); +1d8 contro non morti e immondi."
+        text: "Quando il paladino colpisce una creatura con un attacco con arma da mischia, può spendere uno slot incantesimo per infliggere al bersaglio danni radiosi in aggiunta ai danni dell'arma. I danni extra sono 2d8 per uno slot di 1° livello, più 1d8 per ogni livello dello slot superiore al 1°, fino a un massimo di 5d8. I danni aumentano di 1d8 se il bersaglio è un non morto o un immondo."
+        kid: "Quando colpisci con un'arma da mischia, puoi spendere uno slot incantesimo: il nemico subisce 2d8 danni di luce sacra in più (fino a {t_smite_max} con lo slot più alto). Contro non morti e demoni, 1d8 in più."
+    3:
+      - name: Salute Divina
+        short: "Sei immune alle malattie."
+        text: "La magia divina che scorre nel paladino lo rende immune alle malattie."
+        kid: "La magia divina ti protegge: nessuna malattia può farti ammalare."
+      - name: Giuramento Sacro
+        short: "Scegli un giuramento: Devozione, Antichi o Vendetta. Privilegi al 3°, 7°, 15° e 20° livello."
+        text: "Al 3° livello il paladino presta il giuramento che lo vincola per sempre come paladino: il Giuramento di Devozione, il Giuramento degli Antichi o il Giuramento di Vendetta. La scelta conferisce privilegi al 3° livello e poi al 7°, 15° e 20°, inclusi gli incantesimi di giuramento e le opzioni di Incanalare Divinità. Un paladino che infrange volontariamente il giuramento di solito cerca l'assoluzione presso un chierico o un altro paladino; se non si pente, il DM può decidere che abbandoni la classe."
+        kid: "Hai fatto un giuramento sacro: trovi i suoi poteri qui sotto."
+        kid_hide: true
+      - name: Incanalare Divinità
+        short: "1 uso per riposo breve o lungo: scegli una delle opzioni del tuo giuramento. CD dei TS = CD dei tuoi incantesimi da paladino."
+        text: "Il giuramento permette al paladino di incanalare energia divina per alimentare effetti magici. Ogni opzione di Incanalare Divinità conferita dal giuramento spiega come usarla. Quando usa Incanalare Divinità sceglie quale opzione usare; poi deve completare un riposo breve o lungo prima di poterlo usare di nuovo. Se un effetto richiede un tiro salvezza, la CD è pari alla CD dei tiri salvezza degli incantesimi del paladino."
+        kid: "Puoi usare uno dei poteri sacri del tuo giuramento (li trovi qui sotto) 1 volta, poi serve un riposo breve o lungo. Se il nemico deve resistere, tira un d20 contro {cd}."
+    4:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Il paladino può aumentare un punteggio di caratteristica di 2 o due punteggi di 1 (massimo 20), oppure scegliere un talento. Lo stesso accade all'8°, 12°, 16° e 19° livello."
+        kid: "Le tue caratteristiche sono migliorate (o hai preso un talento): è già tutto aggiornato sulla scheda."
+        kid_hide: true
+    5:
+      - name: Attacco Extra
+        short: "Quando effettui l'azione di Attacco, attacchi due volte."
+        text: "Il paladino può attaccare due volte, anziché una, ogni volta che effettua l'azione di Attacco nel suo turno."
+        kid: "Quando usi l'azione di Attacco nel tuo turno, attacchi 2 volte invece di 1."
+    6:
+      - name: Aura di Protezione
+        short: "Tu e le creature amiche entro {t_aura_range} m aggiungete il tuo mod. CAR (min +1) ai tiri salvezza, se sei cosciente. Raggio 3 m (9 m dal 18°)."
+        text: "Ogni volta che il paladino o una creatura amica entro 3 metri da lui deve effettuare un tiro salvezza, la creatura ottiene un bonus al tiro salvezza pari al modificatore di Carisma del paladino (minimo +1). Il paladino deve essere cosciente per conferire il bonus. Al 18° livello il raggio dell'aura sale a 9 metri."
+        kid: "Finché non perdi i sensi, tu e i tuoi amici entro {t_aura_range} m da te aggiungete {mod} (almeno +1) a ogni tiro salvezza."
+    8:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Le tue caratteristiche sono migliorate (o hai preso un talento): è già tutto aggiornato sulla scheda."
+        kid_hide: true
+    10:
+      - name: Aura di Coraggio
+        short: "Tu e le creature amiche entro {t_aura_range} m non potete essere spaventati, se sei cosciente. Raggio 3 m (9 m dal 18°)."
+        text: "Il paladino e le creature amiche entro 3 metri da lui non possono essere spaventati finché il paladino è cosciente. Al 18° livello il raggio dell'aura sale a 9 metri."
+        kid: "Finché non perdi i sensi, né tu né i tuoi amici entro {t_aura_range} m da te potete essere spaventati."
+    11:
+      - name: Punizione Divina Migliorata
+        short: "Ogni tuo colpo con un'arma da mischia infligge 1d8 danni radiosi extra (si somma a Punizione Divina)."
+        text: "Il paladino è così colmo di potere virtuoso che tutti i suoi colpi con armi da mischia portano con sé la potenza divina. Ogni volta che colpisce una creatura con un'arma da mischia, la creatura subisce 1d8 danni radiosi extra. Se usa anche Punizione Divina con quell'attacco, questi danni si aggiungono a quelli di Punizione Divina."
+        kid: "Ogni volta che colpisci con un'arma da mischia fai 1d8 danni di luce sacra in più, senza spendere niente. Si sommano anche alla Punizione Divina."
+    12:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Le tue caratteristiche sono migliorate (o hai preso un talento): è già tutto aggiornato sulla scheda."
+        kid_hide: true
+    14:
+      - name: Tocco Purificatore
+        short: "Azione: poni fine a un incantesimo su di te o su una creatura consenziente che tocchi. Usi = mod. CAR (min 1) per riposo lungo."
+        text: "Il paladino può usare la sua azione per porre fine a un incantesimo su se stesso o su una creatura consenziente che tocca. Può usare questo privilegio un numero di volte pari al suo modificatore di Carisma (minimo una volta); recupera gli usi spesi al termine di un riposo lungo."
+        kid: "Con un'azione tocchi te o un amico e cancelli un incantesimo che ha addosso. Puoi farlo tante volte quanto il tuo bonus di Carisma (almeno 1), poi serve un riposo lungo."
+    16:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Le tue caratteristiche sono migliorate (o hai preso un talento): è già tutto aggiornato sulla scheda."
+        kid_hide: true
+    18:
+      - name: Miglioramento delle Aure
+        short: "Il raggio delle tue aure (Protezione, Coraggio e quella del giuramento) sale a 9 m."
+        text: "Al 18° livello il raggio dell'Aura di Protezione, dell'Aura di Coraggio e dell'aura conferita dal giuramento (Devozione o Interdizione) aumenta a 9 metri."
+        kid: "Le tue aure ora arrivano fino a 9 m da te."
+        kid_hide: true
+    19:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Le tue caratteristiche sono migliorate (o hai preso un talento): è già tutto aggiornato sulla scheda."
+        kid_hide: true
+  subclasses:
+    devotion:
+      name: Giuramento di Devozione
+      name_en: Oath of Devotion
+      always_prepared:
+        3: [protection_from_evil_and_good, sanctuary]
+        5: [lesser_restoration, zone_of_truth]
+        9: [beacon_of_hope, dispel_magic]
+        13: [freedom_of_movement, guardian_of_faith]
+        17: [commune, flame_strike]
+      features:
+        3:
+          - name: Dettami della Devozione
+            short: "Onestà, Coraggio, Compassione, Onore, Dovere."
+            text: "Il Giuramento di Devozione lega il paladino ai più alti ideali di giustizia, virtù e ordine, come i cavalieri delle leggende. Dettami: Onestà (non mentire e non ingannare, la tua parola è una promessa); Coraggio (non temere di agire, anche se la prudenza è saggia); Compassione (aiuta gli altri, proteggi i deboli e punisci chi li minaccia, mostra pietà ai nemici ma con saggezza); Onore (tratta gli altri con equità e fai quanto più bene possibile causando il minor danno); Dovere (rispondi delle tue azioni e delle loro conseguenze, proteggi chi ti è affidato e obbedisci a chi ha un'autorità giusta)."
+            kid: "Hai promesso cinque cose: dire sempre la verità, avere coraggio, aiutare e proteggere i più deboli, comportarti in modo giusto e leale, e fare sempre il tuo dovere."
+          - name: Incantesimi di Giuramento
+            short: "Sempre preparati (non contano nel limite): 3° Protezione dal Bene e dal Male, Santuario; 5° Ristorare Inferiore, Zona di Verità; 9° Faro di Speranza, Dissolvi Magie; 13° Libertà di Movimento, Guardiano della Fede; 17° Comunione, Colpo Infuocato."
+            text: "Il paladino ottiene incantesimi di giuramento ai livelli da paladino indicati: 3° protezione dal bene e dal male, santuario; 5° ristorare inferiore, zona di verità; 9° faro di speranza, dissolvi magie; 13° libertà di movimento, guardiano della fede; 17° comunione, colpo infuocato. Sono sempre preparati e non contano nel numero di incantesimi che può preparare ogni giorno. Se un incantesimo di giuramento non è nella lista del paladino, per lui conta comunque come incantesimo da paladino."
+            kid: "Alcuni incantesimi del tuo giuramento sono sempre pronti e non contano tra quelli che prepari."
+            kid_hide: true
+          - name: "Incanalare Divinità: Arma Sacra"
+            short: "Azione: per 1 minuto un'arma che impugni aggiunge il tuo mod. CAR (min +1) ai tiri per colpire, emette luce intensa in un raggio di 6 m (fioca per altri 6 m) e diventa magica."
+            text: "Come azione, il paladino infonde energia positiva in un'arma che impugna, usando Incanalare Divinità. Per 1 minuto aggiunge il suo modificatore di Carisma ai tiri per colpire effettuati con quell'arma (bonus minimo +1). L'arma emette luce intensa in un raggio di 6 metri e luce fioca per altri 6 metri. Se l'arma non è già magica, diventa magica per la durata. Il paladino può porre fine all'effetto nel suo turno come parte di qualsiasi altra azione; l'effetto termina anche se non impugna o trasporta più l'arma o se cade privo di sensi."
+            kid: "Con un'azione la tua arma brilla di luce sacra per 1 minuto e fa luce forte fino a 6 m: aggiungi {mod} (almeno +1) ai tiri per colpire e la tua arma conta come magica."
+          - name: "Incanalare Divinità: Scacciare gli Empi"
+            short: "Azione: ogni immondo o non morto entro 9 m che può vederti o sentirti effettua un TS su SAG; se fallisce è scacciato per 1 minuto o finché subisce danni."
+            text: "Come azione, il paladino brandisce il simbolo sacro e pronuncia una preghiera di condanna contro immondi e non morti, usando Incanalare Divinità. Ogni immondo o non morto che può vederlo o sentirlo entro 9 metri deve effettuare un tiro salvezza su Saggezza. Se lo fallisce, è scacciato per 1 minuto o finché non subisce danni. Una creatura scacciata deve passare i suoi turni cercando di allontanarsi il più possibile dal paladino e non può muoversi volontariamente in uno spazio entro 9 metri da lui; non può effettuare reazioni e come azione può solo usare Scatto o cercare di liberarsi da un effetto che le impedisce di muoversi. Se non ha un posto dove andare, può usare l'azione di Schivata."
+            kid: "Con un'azione mostri il simbolo sacro: ogni demone o non morto entro 9 m tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}). Se fallisce, scappa da te per 1 minuto o finché qualcuno lo ferisce."
+        7:
+          - name: Aura di Devozione
+            short: "Tu e le creature amiche entro {t_aura_range} m non potete essere affascinati, se sei cosciente. Raggio 3 m (9 m dal 18°)."
+            text: "Il paladino e le creature amiche entro 3 metri da lui non possono essere affascinati finché il paladino è cosciente. Al 18° livello il raggio dell'aura sale a 9 metri."
+            kid: "Finché non perdi i sensi, nessuno può incantare (affascinare) te o i tuoi amici entro {t_aura_range} m da te."
+        15:
+          - name: Purezza di Spirito
+            short: "Sei sempre sotto l'effetto dell'incantesimo protezione dal bene e dal male."
+            text: "Il paladino è sempre sotto l'effetto dell'incantesimo protezione dal bene e dal male: aberrazioni, celestiali, elementali, folletti, immondi e non morti hanno svantaggio ai tiri per colpire contro di lui e non possono affascinarlo, spaventarlo o possederlo."
+            kid: "Aberrazioni, celestiali, elementali, fate, immondi e non morti ti attaccano con svantaggio (tirano 2 d20 e tengono il più basso) e non possono incantarti, spaventarti o possederti."
+        20:
+          - name: Nimbo Sacro
+            short: "Azione, 1 minuto: luce solare intensa in un raggio di 9 m (fioca per altri 9 m); ogni nemico che inizia il turno nella luce intensa subisce 10 danni radiosi; vantaggio ai TS contro incantesimi di immondi e non morti. 1/riposo lungo."
+            text: "Come azione, il paladino emana un'aura di luce solare. Per 1 minuto, una luce intensa risplende in un raggio di 9 metri attorno a lui, e una luce fioca per altri 9 metri. Ogni volta che una creatura nemica inizia il suo turno nella luce intensa, subisce 10 danni radiosi. Inoltre, per la durata, il paladino ha vantaggio ai tiri salvezza contro gli incantesimi lanciati da immondi o non morti. Una volta usato, deve completare un riposo lungo prima di poterlo usare di nuovo."
+            kid: "Con un'azione brilli come il sole per 1 minuto: ogni nemico che inizia il turno entro 9 m subisce 10 danni di luce. Contro le magie di demoni e non morti hai vantaggio (tira 2 d20 e tieni il più alto). Poi riposo lungo."
+    ancients:
+      name: Giuramento degli Antichi
+      name_en: Oath of the Ancients
+      always_prepared:
+        3: [ensnaring_strike, speak_with_animals]
+        5: [moonbeam, misty_step]
+        9: [plant_growth, protection_from_energy]
+        13: [ice_storm, stoneskin]
+        17: [commune_with_nature, tree_stride]
+      features:
+        3:
+          - name: Dettami degli Antichi
+            short: "Accendi la Luce, Proteggi la Luce, Preserva la Tua Luce, Sii la Luce."
+            text: "Il Giuramento degli Antichi è antico quanto gli elfi e i riti druidici: chi lo presta si schiera con la luce nella lotta cosmica contro l'oscurità perché ama le cose belle e vitali del mondo, non necessariamente perché crede nei principi di onore, coraggio e giustizia. Dettami: Accendi la Luce (con misericordia, gentilezza e perdono accendi la speranza nel mondo); Proteggi la Luce (dove c'è bene, bellezza, amore e allegria, opponiti a ciò che vorrebbe distruggerli; dove la vita fiorisce, difendila); Preserva la Tua Luce (gioisci della musica, delle risate, della bellezza e dell'arte: se la luce si spegne nel tuo cuore, non puoi difenderla nel mondo); Sii la Luce (sii un faro per chi vive nella disperazione)."
+            kid: "Hai promesso di proteggere la luce del mondo: gentilezza, bellezza, natura e allegria. Perdona, aiuta chi è triste e non smettere mai di cantare, ridere e divertirti."
+          - name: Incantesimi di Giuramento
+            short: "Sempre preparati (non contano nel limite): 3° Colpo Intrappolante, Parlare con gli Animali; 5° Raggio di Luna, Passo Velato; 9° Crescita Vegetale, Protezione dall'Energia; 13° Tempesta di Ghiaccio, Pelle di Pietra; 17° Comunione con la Natura, Passaggio Arboreo."
+            text: "Il paladino ottiene incantesimi di giuramento ai livelli da paladino indicati: 3° colpo intrappolante, parlare con gli animali; 5° raggio di luna, passo velato; 9° crescita vegetale, protezione dall'energia; 13° tempesta di ghiaccio, pelle di pietra; 17° comunione con la natura, passaggio arboreo. Sono sempre preparati e non contano nel numero di incantesimi che può preparare ogni giorno. Se un incantesimo di giuramento non è nella lista del paladino, per lui conta comunque come incantesimo da paladino."
+            kid: "Alcuni incantesimi del tuo giuramento sono sempre pronti e non contano tra quelli che prepari."
+            kid_hide: true
+          - name: "Incanalare Divinità: Ira della Natura"
+            short: "Azione: liane spettrali avvolgono una creatura entro 3 m che puoi vedere; TS su FOR o DES (a sua scelta) o è trattenuta. Ripete il TS alla fine di ogni suo turno."
+            text: "Il paladino può usare Incanalare Divinità per invocare le forze primordiali e intrappolare un nemico. Come azione, fa spuntare liane spettrali che si allungano verso una creatura entro 3 metri che può vedere. La creatura deve superare un tiro salvezza su Forza o su Destrezza (a sua scelta) o diventa trattenuta. Finché è trattenuta dalle liane, ripete il tiro salvezza alla fine di ogni suo turno; se lo supera, si libera e le liane svaniscono."
+            kid: "Con un'azione fai spuntare liane magiche su un nemico entro 3 m: tira un d20 per resistere (tiro salvezza su Forza o Destrezza, sceglie lui, contro {cd}). Se fallisce resta bloccato; alla fine di ogni suo turno può riprovare."
+          - name: "Incanalare Divinità: Scacciare gli Infedeli"
+            short: "Azione: ogni folletto o immondo entro 9 m che può sentirti effettua un TS su SAG; se fallisce è scacciato per 1 minuto o finché subisce danni, e se la sua vera forma è nascosta viene rivelata."
+            text: "Come azione, il paladino brandisce il simbolo sacro e pronuncia antiche parole dolorose da udire per folletti e immondi, usando Incanalare Divinità. Ogni folletto o immondo entro 9 metri che può sentirlo deve effettuare un tiro salvezza su Saggezza. Se lo fallisce, è scacciato per 1 minuto o finché non subisce danni. Una creatura scacciata deve passare i suoi turni cercando di allontanarsi il più possibile dal paladino e non può muoversi volontariamente in uno spazio entro 9 metri da lui; non può effettuare reazioni e come azione può solo usare Scatto o cercare di liberarsi da un effetto che le impedisce di muoversi. Se non ha un posto dove andare, può usare l'azione di Schivata. Se la vera forma della creatura è nascosta da un'illusione, da un cambio di forma o da un altro effetto, viene rivelata finché la creatura è scacciata."
+            kid: "Con un'azione, ogni fata o demone entro 9 m che ti sente tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}). Se fallisce scappa da te per 1 minuto o finché viene ferito, e si vede com'è davvero."
+        7:
+          - name: Aura di Interdizione
+            short: "Tu e le creature amiche entro {t_aura_range} m avete resistenza ai danni degli incantesimi. Raggio 3 m (9 m dal 18°)."
+            text: "La magia antica è così radicata nel paladino da formare una protezione mistica. Il paladino e le creature amiche entro 3 metri da lui hanno resistenza ai danni degli incantesimi. Al 18° livello il raggio dell'aura sale a 9 metri."
+            kid: "Tu e i tuoi amici entro {t_aura_range} m da te subite solo metà dei danni degli incantesimi."
+        15:
+          - name: Sentinella Imperitura
+            short: "Quando scendi a 0 PF senza morire sul colpo, puoi restare a 1 PF (1/riposo lungo). Non subisci gli svantaggi della vecchiaia e la magia non può farti invecchiare."
+            text: "Quando il paladino scende a 0 punti ferita e non viene ucciso sul colpo, può scegliere di scendere invece a 1 punto ferita. Una volta usato, deve completare un riposo lungo prima di poterlo usare di nuovo. Inoltre non subisce nessuno degli svantaggi della vecchiaia e non può essere fatto invecchiare con la magia."
+            kid: "Quando scendi a 0 punti ferita (e non muori subito), puoi restare in piedi con 1 punto ferita: 1 volta, poi serve un riposo lungo. La vecchiaia non ti indebolisce e nessuna magia può farti invecchiare."
+        20:
+          - name: Campione Antico
+            short: "Azione, 1 minuto: all'inizio di ogni tuo turno recuperi 10 PF; lanci gli incantesimi da paladino da 1 azione come azione bonus; i nemici entro 3 m hanno svantaggio ai TS contro i tuoi incantesimi da paladino e Incanalare Divinità. 1/riposo lungo."
+            text: "Come azione, il paladino assume la forma di un'antica forza della natura, con un aspetto a sua scelta (la pelle può diventare verde o di corteccia, i capelli frondosi o di muschio, può spuntargli un palco di corna o una criniera leonina). Per 1 minuto: all'inizio di ogni suo turno recupera 10 punti ferita; ogni volta che lancia un incantesimo da paladino con tempo di lancio di 1 azione, può lanciarlo invece come azione bonus; le creature nemiche entro 3 metri da lui hanno svantaggio ai tiri salvezza contro i suoi incantesimi da paladino e le sue opzioni di Incanalare Divinità. Una volta usato, deve completare un riposo lungo prima di poterlo usare di nuovo."
+            kid: "Con un'azione, per 1 minuto: all'inizio di ogni tuo turno recuperi 10 PF, lanci gli incantesimi da 1 azione con un'azione bonus, e i nemici entro 3 m resistono alle tue magie con 2 d20 tenendo il più basso. Poi riposo lungo."
+    vengeance:
+      name: Giuramento di Vendetta
+      name_en: Oath of Vengeance
+      always_prepared:
+        3: [bane, hunters_mark]
+        5: [hold_person, misty_step]
+        9: [haste, protection_from_energy]
+        13: [banishment, dimension_door]
+        17: [hold_monster, scrying]
+      features:
+        3:
+          - name: Dettami della Vendetta
+            short: "Combattere il Male Peggiore, Nessuna Pietà per i Malvagi, Con Ogni Mezzo Necessario, Riparazione."
+            text: "Il Giuramento di Vendetta è il solenne impegno a punire chi ha commesso un peccato gravissimo; per questi paladini, a volte chiamati vendicatori o cavalieri neri, la propria purezza conta meno del fare giustizia. Dettami: Combattere il Male Peggiore (tra i nemici giurati e un male minore, si sceglie il male peggiore); Nessuna Pietà per i Malvagi (i nemici comuni possono meritare pietà, quelli giurati no); Con Ogni Mezzo Necessario (gli scrupoli non devono impedire di sconfiggere i nemici); Riparazione (se i nemici devastano il mondo è perché non sono stati fermati: bisogna aiutare chi ha subito le loro malefatte)."
+            kid: "Hai promesso di fermare i cattivi più pericolosi: combatti prima il male peggiore, non avere pietà per i tuoi nemici giurati e aiuta sempre chi loro hanno ferito."
+          - name: Incantesimi di Giuramento
+            short: "Sempre preparati (non contano nel limite): 3° Anatema, Marchio del Cacciatore; 5° Blocca Persone, Passo Velato; 9° Velocità, Protezione dall'Energia; 13° Esilio, Porta Dimensionale; 17° Blocca Mostri, Scrutare."
+            text: "Il paladino ottiene incantesimi di giuramento ai livelli da paladino indicati: 3° anatema, marchio del cacciatore; 5° blocca persone, passo velato; 9° velocità, protezione dall'energia; 13° esilio, porta dimensionale; 17° blocca mostri, scrutare. Sono sempre preparati e non contano nel numero di incantesimi che può preparare ogni giorno. Se un incantesimo di giuramento non è nella lista del paladino, per lui conta comunque come incantesimo da paladino."
+            kid: "Alcuni incantesimi del tuo giuramento sono sempre pronti e non contano tra quelli che prepari."
+            kid_hide: true
+          - name: "Incanalare Divinità: Abiurare Nemico"
+            short: "Azione: una creatura entro 18 m che puoi vedere effettua un TS su SAG (immondi e non morti con svantaggio; nessun effetto se immune alla paura). Se fallisce è spaventata e ha velocità 0 per 1 minuto o finché subisce danni; se riesce, velocità dimezzata per 1 minuto o finché subisce danni."
+            text: "Come azione, il paladino brandisce il simbolo sacro e pronuncia una preghiera di condanna, usando Incanalare Divinità. Sceglie una creatura entro 18 metri che può vedere: la creatura deve effettuare un tiro salvezza su Saggezza, a meno che non sia immune alla condizione spaventato. Immondi e non morti hanno svantaggio a questo tiro salvezza. Se lo fallisce, la creatura è spaventata per 1 minuto o finché non subisce danni; finché è spaventata, la sua velocità è 0 e non può beneficiare di bonus alla velocità. Se lo supera, la sua velocità è dimezzata per 1 minuto o finché non subisce danni."
+            kid: "Con un'azione scegli un nemico entro 18 m: tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}). Se fallisce è spaventato e non può muoversi per 1 minuto o finché viene ferito; se riesce, va a metà velocità."
+          - name: "Incanalare Divinità: Voto di Inimicizia"
+            short: "Azione bonus: scegli una creatura entro 3 m che puoi vedere; hai vantaggio ai tiri per colpire contro di essa per 1 minuto o finché scende a 0 PF o cade priva di sensi."
+            text: "Come azione bonus, il paladino pronuncia un voto di inimicizia contro una creatura entro 3 metri che può vedere, usando Incanalare Divinità. Ottiene vantaggio ai tiri per colpire contro quella creatura per 1 minuto o finché essa non scende a 0 punti ferita o cade priva di sensi."
+            kid: "Con un'azione bonus scegli un nemico entro 3 m: per 1 minuto, quando lo attacchi hai vantaggio (tira 2 d20 e tieni il più alto)."
+        7:
+          - name: Vendicatore Implacabile
+            short: "Quando colpisci una creatura con un attacco di opportunità, puoi muoverti fino a metà della tua velocità subito dopo, come parte della stessa reazione, senza provocare attacchi di opportunità."
+            text: "La capacità soprannaturale del paladino di concentrarsi sul nemico lo aiuta a impedirgli la fuga. Quando colpisce una creatura con un attacco di opportunità, può muoversi fino a metà della sua velocità immediatamente dopo l'attacco, come parte della stessa reazione. Questo movimento non provoca attacchi di opportunità."
+            kid: "Quando colpisci un nemico che prova a scappare da te (attacco di opportunità), subito dopo puoi inseguirlo per metà della tua velocità, e mentre ti sposti così i nemici non possono colpirti al volo (niente attacchi di opportunità)."
+        15:
+          - name: Anima della Vendetta
+            short: "Quando la creatura del tuo Voto di Inimicizia effettua un attacco, puoi usare la reazione per fare un attacco con arma da mischia contro di essa, se è a portata."
+            text: "L'autorità con cui il paladino pronuncia il Voto di Inimicizia gli conferisce un potere maggiore sul nemico. Quando una creatura sotto l'effetto del suo Voto di Inimicizia effettua un attacco, il paladino può usare la sua reazione per effettuare un attacco con arma da mischia contro quella creatura, se si trova entro la sua portata."
+            kid: "Quando il nemico del tuo Voto di Inimicizia attacca qualcuno, puoi usare la tua reazione per colpirlo subito con la tua arma da mischia, se è abbastanza vicino."
+        20:
+          - name: Angelo Vendicatore
+            short: "Azione, 1 ora: ali con velocità di volo 18 m; aura di minaccia di 9 m: un nemico che vi entra o vi inizia il turno per la prima volta in una battaglia fa un TS su SAG o è spaventato per 1 minuto o finché subisce danni, e gli attacchi contro di lui hanno vantaggio. 1/riposo lungo."
+            text: "Come azione, il paladino si trasforma per 1 ora: gli spuntano ali dalla schiena che gli conferiscono una velocità di volo di 18 metri, ed emana un'aura di minaccia con un raggio di 9 metri. La prima volta che una creatura nemica entra nell'aura o vi inizia il suo turno durante una battaglia, deve superare un tiro salvezza su Saggezza o diventa spaventata dal paladino per 1 minuto o finché non subisce danni. I tiri per colpire contro la creatura spaventata hanno vantaggio. Una volta usato, deve completare un riposo lungo prima di poterlo usare di nuovo."
+            kid: "Con un'azione ti spuntano le ali per 1 ora (voli a 18 m). Un nemico che arriva entro 9 m tira un d20 per resistere (Saggezza contro {cd}): se fallisce ha paura e chi lo attacca ha vantaggio, finché non viene ferito. Riposo lungo."
+
+# Ranger (PHB 2014), privilegi 1-20 e i due Archetipi Ranger del Manuale del Giocatore (Cacciatore, Signore delle Bestie).
+# Nomi italiani: privilegi base e Cacciatore come nell'SRD 5.1 in italiano; Signore delle Bestie dal Manuale del Giocatore.
+# Testi riassunti con parole nostre (meccaniche del PHB 2014 con l'errata ufficiale: Compagno del Ranger,
+# Addestramento Eccezionale, Furia Bestiale). Il PHB include anche il Sottosuolo tra i terreni prescelti (l'SRD no).
+# Distanze in metri (1,5 m = 5 piedi, 3 m = 10 piedi, 9 m = 30 piedi, 1,5 km = 1 miglio, 9 km = 6 miglia).
+# table: valori per livello (indice 0 = 1° livello), usabili nei testi come {t_<colonna>}.
+#   spells_known = colonna "Incantesimi conosciuti" del PHB (0 al 1° livello: il ranger lancia incantesimi dal 2°).
+#   favored_enemies / favored_terrains = quanti nemici e terreni prescelti si hanno (servono come count_table).
+# Gli slot incantesimo sono quelli standard da mezzo incantatore (spells.yaml > half).
+# Il ranger del PHB 2014 non ha un focus da incantatore e non lancia rituali (focus: null, ritual: false).
+# fighting_style_options: stili che il ranger può scegliere (chiavi di equipment.yaml > fighting_styles).
+# Nelle option_lists dell'archetipo, "level" = livello da ranger a cui si sceglie l'opzione.
+# name_f: forma al femminile dei privilegi che descrivono il personaggio (Esploratrice Nata, Sterminatrice...).
+# Equipaggiamento: nomi allineati a equipment.yaml (nel PHB italiano: "corazza a scaglie", "dotazione da avventuriero").

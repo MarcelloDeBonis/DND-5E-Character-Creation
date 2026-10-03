@@ -40,6 +40,11 @@ def load_rules() -> dict:
     rules = {}
     for path in sorted(RULES_DIR.glob("*.yaml")):
         rules[path.stem] = yaml.safe_load(path.read_text(encoding="utf-8"))
+    # cartelle con un file per voce (es. rules/classes/wizard.yaml): unite in rules["classes"]
+    for folder in sorted(p for p in RULES_DIR.iterdir() if p.is_dir()):
+        merged = rules.setdefault(folder.name, {})
+        for path in sorted(folder.glob("*.yaml")):
+            merged.update(yaml.safe_load(path.read_text(encoding="utf-8")) or {})
     return rules
 
 

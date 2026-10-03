@@ -1,0 +1,241 @@
+rogue:
+  name: Ladro
+  name_f: Ladra
+  name_en: Rogue
+  hit_die: 8
+  saves: [dex, int]
+  armor: [light]
+  weapons: [simple, hand_crossbow, longsword, rapier, shortsword]
+  tools: ["Arnesi da scasso"]
+  skill_choices:
+    count: 4
+    from: [acrobatics, athletics, deception, insight, intimidation, investigation, perception, performance, persuasion, sleight_of_hand, stealth]
+  starting_equipment:
+    - choice: ["Uno stocco", "Una spada corta"]
+    - choice: ["Un arco corto e una faretra con 20 frecce", "Una spada corta"]
+    - choice: ["Dotazione da scassinatore", "Dotazione da esploratore di sotterranei", "Dotazione da esploratore"]
+    - fixed: ["Armatura di cuoio", "Due pugnali", "Arnesi da scasso"]
+  subclass_level: 3
+  subclass_label: Archetipo Ladresco
+  asi_levels: [4, 8, 10, 12, 16, 19]
+  table:
+    sneak_attack: ["1d6", "1d6", "2d6", "2d6", "3d6", "3d6", "4d6", "4d6", "5d6", "5d6", "6d6", "6d6", "7d6", "7d6", "8d6", "8d6", "9d6", "9d6", "10d6", "10d6"]
+  features:
+    1:
+      - name: Maestria
+        short: "Scegli 2 tue competenze in abilità (oppure 1 abilità e gli arnesi da scasso): nelle prove che le usano il bonus di competenza raddoppia. Altre 2 al 6° livello."
+        text: "Il ladro sceglie due competenze fra le sue abilità e gli arnesi da scasso: nelle prove che le usano somma il doppio del bonus di competenza. Al 6° livello ne sceglie altre due."
+        kid: "Scegli 2 cose in cui sei bravissimo (abilità o arnesi da scasso): quando le usi aggiungi il doppio del bonus di competenza. Sulla scheda il numero è già calcolato."
+        kid_hide: true
+        expertise_count: 2
+      - name: Attacco Furtivo
+        short: "1 volta per turno: danni extra di Attacco Furtivo (1d6 al 1° livello, poi +1d6 al 3°, 5°, 7°… fino a 10d6 al 19°) a una creatura che colpisci con un'arma accurata o a distanza, se hai vantaggio, oppure se un altro nemico del bersaglio (non incapacitato) è entro 1,5 m da esso e tu non hai svantaggio."
+        text: "Una volta per turno, quando colpisce una creatura con un'arma accurata o a distanza, il ladro aggiunge ai danni i dadi di Attacco Furtivo (1d6 al 1° livello, +1d6 ogni due livelli, fino a 10d6 al 19°). Gli serve vantaggio al tiro per colpire, oppure un altro nemico del bersaglio, non incapacitato, entro 1,5 m da esso, sempre che il ladro non abbia svantaggio."
+        kid: "Una volta per turno, se colpisci con un'arma accurata (come il pugnale) o a distanza, fai {t_sneak_attack} danni in più. Serve vantaggio (tiri 2 d20 e tieni il più alto) o un amico entro 1,5 m dal nemico, senza svantaggio."
+      - name: Gergo Ladresco
+        short: "Conosci il gergo ladresco: nascondi messaggi in una conversazione normale (ci vuole il quadruplo del tempo) e capisci i segni segreti dei ladri."
+        text: "Il ladro conosce il gergo segreto dei ladri: può infilare un messaggio nascosto in una chiacchierata qualunque, comprensibile solo da chi conosce il gergo, impiegando quattro volte il tempo normale. Sa anche leggere i simboli che i ladri lasciano per segnalare pericoli, bottini, prede facili o rifugi."
+        kid: "Conosci la lingua segreta dei ladri: puoi nascondere un messaggio dentro una chiacchierata normale (ci metti 4 volte di più). Capisci anche i segni segreti che i ladri disegnano sui muri."
+    2:
+      - name: Azione Scaltra
+        short: "In ogni tuo turno in combattimento puoi usare un'azione bonus per Scatto, Disimpegno o Nascondersi."
+        text: "In ogni suo turno di combattimento il ladro può compiere un'azione bonus, da usare solo per Scatto, Disimpegno o Nascondersi."
+        kid: "In ogni tuo turno hai un'azione in più (azione bonus) per: correre il doppio (Scatto), allontanarti senza che i nemici vicini ti colpiscano (Disimpegno) oppure nasconderti."
+    3:
+      - name: Archetipo Ladresco
+        short: "Scegli un archetipo: Furfante, Assassino o Mistificatore Arcano."
+        text: "Il ladro sceglie un archetipo tra Furfante, Assassino e Mistificatore Arcano, che gli dà privilegi al 3°, 9°, 13° e 17° livello."
+        kid: "Scegli che tipo di ladro sei: Furfante, Assassino o Mistificatore Arcano."
+        kid_hide: true
+    4:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Il ladro aumenta di 2 un punteggio di caratteristica, o di 1 due punteggi (massimo 20); con la regola opzionale dei talenti può prendere un talento al loro posto. Lo ottiene anche all'8°, 10°, 12°, 16° e 19° livello."
+        kid: "Le tue caratteristiche crescono: +2 a una oppure +1 a due (massimo 20). I numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    5:
+      - name: Schivata Prodigiosa
+        short: "Reazione: quando un attaccante che puoi vedere ti colpisce con un attacco, dimezzi i danni che subisci da quell'attacco."
+        text: "Quando un attaccante che il ladro vede lo colpisce con un attacco, il ladro può spendere la reazione per subire solo metà dei danni di quell'attacco."
+        kid: "Quando un nemico che vedi ti colpisce, usa la tua reazione (una mossa fuori dal tuo turno, 1 per round): prendi solo metà dei danni."
+    6:
+      - name: Maestria
+        short: "Scegli altre 2 competenze (abilità o arnesi da scasso): il tuo bonus di competenza raddoppia per quelle prove."
+        text: "Il ladro sceglie altre due competenze fra le sue abilità e gli arnesi da scasso, che ricevono anch'esse il bonus di competenza raddoppiato."
+        kid: "Scegli altre 2 cose in cui diventi bravissimo: quando le usi aggiungi il doppio del bonus di competenza. Sulla scheda il numero è già calcolato."
+        kid_hide: true
+        expertise_count: 2
+    7:
+      - name: Elusione
+        short: "Contro effetti che permettono un TS su DES per dimezzare i danni: nessun danno se superi il TS, metà dei danni se lo fallisci."
+        text: "Quando un effetto, per esempio un soffio o un'esplosione ad area, gli concede un tiro salvezza su Destrezza per dimezzare i danni, il ladro non subisce danni se lo supera e ne subisce solo metà se lo fallisce."
+        kid: "Contro esplosioni e soffi di drago tiri un d20 per schivare (tiro salvezza su Destrezza): se ci riesci non prendi nessun danno, se fallisci ne prendi solo metà."
+    8:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Come al 4° livello: +2 a un punteggio di caratteristica o +1 a due (massimo 20), oppure un talento se si usa la regola opzionale."
+        kid: "Le tue caratteristiche crescono: +2 a una oppure +1 a due (massimo 20). I numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    10:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Come al 4° livello: +2 a un punteggio di caratteristica o +1 a due (massimo 20), oppure un talento se si usa la regola opzionale."
+        kid: "Le tue caratteristiche crescono: +2 a una oppure +1 a due (massimo 20). I numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    11:
+      - name: Talento Affidabile
+        short: "Nelle prove di caratteristica in cui aggiungi il bonus di competenza, un risultato del d20 pari a 9 o meno conta come 10."
+        text: "Nelle prove di caratteristica in cui aggiunge il bonus di competenza, il ladro tratta ogni risultato del d20 pari a 9 o meno come un 10."
+        kid: "Quando fai una prova in un'abilità in cui sei competente, se il d20 fa 9 o meno lo conti come 10."
+    12:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Come al 4° livello: +2 a un punteggio di caratteristica o +1 a due (massimo 20), oppure un talento se si usa la regola opzionale."
+        kid: "Le tue caratteristiche crescono: +2 a una oppure +1 a due (massimo 20). I numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    14:
+      - name: Percezione Cieca
+        short: "Se puoi sentire, conosci la posizione di ogni creatura nascosta o invisibile entro 3 m da te."
+        text: "Finché è in grado di sentire, il ladro sa dove si trova ogni creatura nascosta o invisibile entro 3 m da lui."
+        kid: "Se riesci a sentire, sai sempre dove sono le creature nascoste o invisibili entro 3 m da te."
+    15:
+      - name: Mente Sfuggente
+        short: "Ottieni competenza nei tiri salvezza su Saggezza."
+        text: "Il ladro diventa competente nei tiri salvezza su Saggezza."
+        kid: "La tua mente è difficile da ingannare: il tuo tiro salvezza su Saggezza (il d20 che tiri per resistere a magie sulla mente) diventa più alto. Sulla scheda è già calcolato."
+        kid_hide: true
+        save_proficiencies: [wis]
+    16:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Come al 4° livello: +2 a un punteggio di caratteristica o +1 a due (massimo 20), oppure un talento se si usa la regola opzionale."
+        kid: "Le tue caratteristiche crescono: +2 a una oppure +1 a due (massimo 20). I numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    18:
+      - name: Inafferrabile
+        short: "Finché non sei incapacitato, nessun tiro per colpire contro di te può avere vantaggio."
+        text: "Finché il ladro non è incapacitato, nessun tiro per colpire contro di lui può avere vantaggio."
+        kid: "Sei così sfuggente che nessun nemico può avere vantaggio quando ti attacca (cioè tirare 2 d20 e tenere il più alto), a meno che tu non sia incapacitato."
+    19:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Come al 4° livello: +2 a un punteggio di caratteristica o +1 a due (massimo 20), oppure un talento se si usa la regola opzionale."
+        kid: "Le tue caratteristiche crescono: +2 a una oppure +1 a due (massimo 20). I numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    20:
+      - name: Colpo di Fortuna
+        short: "Se manchi un bersaglio entro gittata, trasformi il mancato colpo in un colpo a segno; oppure, se fallisci una prova di caratteristica, il d20 conta come 20. 1/riposo breve o lungo."
+        text: "Se il ladro manca con un attacco un bersaglio entro gittata, può trasformare l'attacco in un colpo a segno; in alternativa, se fallisce una prova di caratteristica, può contare il d20 come un 20. Dopo l'uso deve completare un riposo breve o lungo per riaverlo."
+        kid: "Una volta, poi devi riposare (riposo breve o lungo): se manchi un attacco lo trasformi in un colpo a segno, oppure se fallisci una prova il tuo d20 conta come 20."
+  subclasses:
+    thief:
+      name: Furfante
+      name_en: Thief
+      features:
+        3:
+          - name: Mani Veloci
+            short: "Con l'azione bonus di Azione Scaltra puoi anche fare una prova di Destrezza (Rapidità di Mano), usare gli arnesi da scasso per disattivare una trappola o aprire una serratura, oppure effettuare l'azione di Usare un Oggetto."
+            text: "L'azione bonus di Azione Scaltra può servire anche per una prova di Destrezza (Rapidità di Mano), per usare gli arnesi da scasso su una serratura o una trappola, oppure per l'azione di Usare un Oggetto."
+            kid: "Con la tua azione bonus puoi anche: rubare o fare giochi di mano (Rapidità di Mano), aprire una serratura o disattivare una trappola con gli arnesi da scasso, oppure usare un oggetto non magico (es. accendere una torcia)."
+          - name: Lavoro al Secondo Piano
+            short: "Scalare non ti costa movimento extra. Nei salti con rincorsa la distanza aumenta di 30 cm per ogni punto di mod. DES."
+            text: "Arrampicarsi non costa più movimento extra al ladro. Nei salti con rincorsa copre 30 cm in più per ogni punto del suo modificatore di Destrezza."
+            kid: "Ti arrampichi veloce come cammini: scalare non ti rallenta. Quando salti con la rincorsa arrivi più lontano: 30 cm in più per ogni punto del tuo modificatore di Destrezza."
+        9:
+          - name: Furtività Suprema
+            short: "Vantaggio alle prove di Destrezza (Furtività) se in quel turno ti muovi al massimo di metà della tua velocità."
+            text: "Il ladro ha vantaggio alle prove di Destrezza (Furtività) se in quel turno non si muove per più di metà della sua velocità."
+            kid: "Quando provi a muoverti senza farti scoprire (Furtività) hai vantaggio, cioè tiri 2 d20 e tieni il più alto, se in quel turno ti muovi al massimo di metà della tua velocità."
+        13:
+          - name: Usare Oggetti Magici
+            short: "Ignori tutti i requisiti di classe, razza e livello per usare gli oggetti magici."
+            text: "Il ladro non tiene conto di nessun requisito di classe, razza o livello quando usa un oggetto magico."
+            kid: "Puoi usare qualsiasi oggetto magico, anche quelli fatti solo per maghi, per chierici, per gli elfi o per eroi di livello alto: per te quei limiti non valgono."
+        17:
+          - name: Riflessi del Furfante
+            short: "Nel primo round di ogni combattimento effettui due turni: il primo alla tua iniziativa, il secondo alla tua iniziativa meno 10. Non funziona se sei sorpreso."
+            text: "Nel primo round di ogni combattimento il ladro gioca due turni: uno al suo punteggio di iniziativa e uno all'iniziativa meno 10. Se è sorpreso non può usare questo privilegio."
+            kid: "Nel primo round di ogni combattimento giochi due turni: uno al tuo posto normale e uno quando l'iniziativa arriva al tuo numero meno 10. Non vale se vieni sorpreso."
+    assassin:
+      name: Assassino
+      name_f: Assassina
+      name_en: Assassin
+      features:
+        3:
+          - name: Competenze Bonus
+            short: "Competenza nei trucchi per il camuffamento e nella borsa da avvelenatore."
+            text: "Il ladro diventa competente nei trucchi per il camuffamento e nella borsa da avvelenatore."
+            kid: "Sai travestirti con i trucchi per il camuffamento e preparare veleni con la borsa da avvelenatore."
+            kid_hide: true
+            bonus_proficiencies:
+              tools: ["Trucchi per il camuffamento", "Borsa da avvelenatore"]
+          - name: Assassinare
+            short: "Vantaggio ai tiri per colpire contro le creature che non hanno ancora effettuato un turno nel combattimento; ogni colpo contro una creatura sorpresa è un colpo critico."
+            text: "Il ladro ha vantaggio ai tiri per colpire contro le creature che in questo combattimento non hanno ancora svolto un turno. Ogni suo colpo a segno contro una creatura sorpresa è un colpo critico."
+            kid: "Hai vantaggio (tiri 2 d20 e tieni il più alto) contro chi non ha ancora giocato il suo turno nel combattimento. Se colpisci un nemico sorpreso è un colpo critico: tiri il doppio dei dadi di danno."
+        9:
+          - name: Maestria nell'Infiltrazione
+            short: "Spendendo 7 giorni e 25 mo crei un'identità falsa (storia, professione, affiliazioni) che gli altri credono vera finché non hanno una ragione evidente per dubitarne."
+            text: "Con 7 giorni di preparativi e 25 mo il ladro costruisce una falsa identità completa (storia, professione, affiliazioni, documenti), che non può essere quella di una persona già esistente. Quando la usa come travestimento, gli altri la credono vera finché non hanno un motivo evidente per sospettare."
+            kid: "Spendendo 7 giorni e 25 monete d'oro ti inventi una nuova identità, con vestiti, lettere e documenti. Chi ti incontra crede che tu sia davvero quella persona, finché non trova un indizio evidente."
+        13:
+          - name: Impostore
+            short: "Dopo almeno 3 ore di studio imiti alla perfezione voce, scrittura e modi di un'altra persona; se qualcuno sospetta, hai vantaggio alle prove di Carisma (Inganno) per non farti scoprire."
+            text: "Dopo almeno 3 ore passate a studiare come parla, scrive e si comporta una persona, il ladro la imita così bene che un osservatore qualunque non si accorge di nulla. Se una creatura sospetta qualcosa, il ladro ha vantaggio alle prove di Carisma (Inganno) per non farsi smascherare."
+            kid: "Se studi una persona per 3 ore (come parla, come scrive, come si muove), poi la imiti alla perfezione. Se qualcuno sospetta, nelle prove di Inganno hai vantaggio (tiri 2 d20 e tieni il più alto)."
+        17:
+          - name: Colpo Mortale
+            short: "Quando colpisci una creatura sorpresa, deve superare un TS su COS (CD 8 + mod. DES + bonus di competenza) o subisce il doppio dei danni del tuo attacco."
+            text: "Quando il ladro colpisce una creatura sorpresa, questa fa un tiro salvezza su Costituzione (CD 8 + mod. DES del ladro + suo bonus di competenza); se lo fallisce, l'attacco le infligge danni doppi."
+            kid: "Se colpisci un nemico sorpreso, lui tira un d20 per resistere (tiro salvezza su Costituzione contro 8 + il tuo modificatore di Destrezza + il tuo bonus di competenza). Se fallisce, i danni raddoppiano."
+    arcane_trickster:
+      name: Mistificatore Arcano
+      name_f: Mistificatrice Arcana
+      name_en: Arcane Trickster
+      spellcasting:
+        ability: int
+        type: third
+        list: wizard
+        prepared: known
+        ritual: false
+        focus: null
+        schools: [ammaliamento, illusione]
+        any_school_levels: [3, 8, 14, 20]
+      # Tabella del Mistificatore Arcano (indice 0 = 1° livello da ladro).
+      # cantrips_known = trucchetti da mago A SCELTA (2, poi 3 al 10°): è il numero che il motore confronta con
+      #   'cantrips' del personaggio; Mano Magica arriva a parte da grants_cantrip, fuori dal conteggio.
+      # cantrips_total = colonna "Trucchetti Conosciuti" del manuale (Mano Magica compresa), solo per i testi.
+      # Gli slot sono quelli di slots.third in spells.yaml (3°: 2 di 1°; 7°: 4+2; 13°: 4+3+2; 19°: 4+3+3+1).
+      table:
+        cantrips_known: [0, 0, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+        cantrips_total: [0, 0, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+        spells_known: [0, 0, 3, 4, 4, 4, 5, 6, 6, 7, 8, 8, 9, 10, 10, 11, 11, 11, 12, 13]
+      features:
+        3:
+          - name: Incantesimi
+            short: "Lanci incantesimi da mago con l'Intelligenza. Trucchetti: mano magica + altri 2 (3 dal 10°). Incantesimi conosciuti: 3 di 1° livello, di cui 2 di ammaliamento o illusione; i successivi devono essere di ammaliamento o illusione, tranne quelli appresi all'8°, 14° e 20° (scuola qualsiasi). Slot: tabella del Mistificatore Arcano, recuperati con un riposo lungo. Niente rituali."
+            text: "Il ladro lancia incantesimi della lista del mago con l'Intelligenza (CD = 8 + bonus di competenza + mod. INT; attacco = bonus di competenza + mod. INT), usando gli slot della tabella del Mistificatore Arcano, che recupera con un riposo lungo. Conosce mano magica più 2 trucchetti da mago (un altro al 10°) e 3 incantesimi di 1° livello, 2 dei quali di ammaliamento o illusione; quelli appresi dopo devono essere di ammaliamento o illusione e di un livello per cui ha slot, salvo quelli dell'8°, 14° e 20° livello, di scuola libera. A ogni nuovo livello da ladro può scambiare un incantesimo conosciuto con un altro valido secondo le stesse regole (uno di scuola libera si sostituisce con uno di scuola qualsiasi)."
+            kid: "Conosci alcune magie da mago, soprattutto illusioni e magie che confondono la mente, più il trucchetto Mano Magica. Le trovi nella pagina delle magie."
+            kid_hide: true
+            grants_cantrip: mage_hand
+          - name: Mano Magica Lesta
+            short: "Quando lanci mano magica puoi renderla invisibile e usarla per mettere un oggetto in un contenitore indossato o trasportato da un'altra creatura, prenderne uno o usare gli arnesi da scasso a distanza. Per non farti notare: DES (Rapidità di Mano) contrapposta a SAG (Percezione). La controlli con l'azione bonus di Azione Scaltra."
+            text: "Quando lancia mano magica, il ladro può rendere invisibile la mano e usarla anche per infilare o sfilare un oggetto da un contenitore indossato o portato da un'altra creatura, oppure per usare gli arnesi da scasso a distanza. Lo fa senza essere notato se vince una prova di Destrezza (Rapidità di Mano) contro la Saggezza (Percezione) della creatura; può comandare la mano con l'azione bonus di Azione Scaltra."
+            kid: "La tua Mano Magica può diventare invisibile: prende o infila oggetti nelle borse degli altri e apre serrature da lontano. La muovi con l'azione bonus. Per non farti scoprire: tua Rapidità di Mano contro la sua Percezione."
+        9:
+          - name: Imboscata Magica
+            short: "Se sei nascosto a una creatura quando le lanci un incantesimo, ha svantaggio a ogni TS contro quell'incantesimo in questo turno."
+            text: "Se il ladro è nascosto a una creatura quando le lancia un incantesimo, quella creatura ha svantaggio a tutti i tiri salvezza contro l'incantesimo per il resto del turno."
+            kid: "Se lanci una magia su un nemico mentre sei nascosto, quando lui prova a resistere (tiro salvezza contro {cd}) tira 2 d20 e tiene il più basso: è lo svantaggio."
+        13:
+          - name: Mistificatore Versatile
+            name_f: Mistificatrice Versatile
+            short: "Azione bonus: designi una creatura entro 1,5 m dalla tua mano magica; hai vantaggio ai tiri per colpire contro di essa fino alla fine del turno."
+            text: "Con un'azione bonus il ladro sceglie una creatura entro 1,5 m dalla mano spettrale di mano magica e ha vantaggio ai tiri per colpire contro di essa fino alla fine del turno."
+            kid: "Con l'azione bonus la tua Mano Magica distrae un nemico vicino a lei (entro 1,5 m): fino alla fine del turno hai vantaggio quando lo attacchi (tiri 2 d20 e tieni il più alto). Perfetto per l'Attacco Furtivo!"
+        17:
+          - name: Ladro di Incantesimi
+            name_f: Ladra di Incantesimi
+            short: "Reazione, subito dopo che una creatura lancia un incantesimo che ti prende di mira o ti include nell'area: TS con la sua caratteristica da incantatore contro la tua CD. Se fallisce, l'incantesimo non ha effetto su di te e lo rubi per 8 ore (se è di 1° livello o più e di un livello che puoi lanciare). 1/riposo lungo."
+            text: "Subito dopo che una creatura lancia un incantesimo che bersaglia il ladro o lo comprende nell'area, il ladro può usare la reazione: la creatura fa un tiro salvezza con il suo modificatore da incantatore contro la CD degli incantesimi del ladro. Se fallisce, l'incantesimo non ha effetto sul ladro e, se è di 1° livello o più e di un livello che il ladro sa lanciare (anche non da mago), per 8 ore il ladro lo conosce e può lanciarlo con i propri slot, mentre la creatura non può lanciarlo. Una volta per riposo lungo."
+            kid: "Se un nemico ti lancia una magia, usa la reazione: lui tira un d20 per resistere contro {cd}. Se fallisce, la magia non ti tocca e per 8 ore puoi lanciarla tu (lui no). 1 volta per riposo lungo."

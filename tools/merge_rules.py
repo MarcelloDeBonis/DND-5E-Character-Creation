@@ -2,7 +2,7 @@
 
     python tools/merge_rules.py class_bard.yaml spells_L4.yaml feats.yaml ...
 
-- un file con una sola chiave che è una classe (ha `hit_die`) sostituisce quella classe in classes.yaml;
+- un file con una sola chiave che è una classe (ha `hit_die`) diventa dnd5e/rules/classes/<classe>.yaml;
 - un file di incantesimi (voci con `level` e `school`) aggiunge in coda a spells.yaml le chiavi nuove;
 - un file di talenti (voci con `prerequisite`) diventa / aggiorna dnd5e/rules/feats.yaml.
 Ogni file viene controllato con yaml.safe_load prima e dopo l'unione.
@@ -20,19 +20,11 @@ RULES = Path(__file__).resolve().parent.parent / "dnd5e" / "rules"
 
 def merge_class(src: Path, data: dict) -> str:
     key = next(iter(data))
-    target = RULES / "classes.yaml"
-    text = target.read_text(encoding="utf-8")
-    block = src.read_text(encoding="utf-8").rstrip() + "\n\n"
-    m = re.search(rf"^{re.escape(key)}:\s*$", text, flags=re.M)
-    if m:
-        nxt = re.search(r"^[a-z_]+:\s*$", text[m.end():], flags=re.M)
-        end = m.end() + nxt.start() if nxt else len(text)
-        text = text[:m.start()] + block + text[end:]
-    else:
-        text = text.rstrip() + "\n\n" + block
+    target = RULES / "classes" / f"{key}.yaml"
+    text = src.read_text(encoding="utf-8").rstrip() + "\n"
     yaml.safe_load(text)
     target.write_text(text, encoding="utf-8")
-    return f"classe {key} sostituita"
+    return f"classe {key} scritta in {target.relative_to(RULES.parent.parent)}"
 
 
 def merge_spells(src: Path, data: dict) -> str:

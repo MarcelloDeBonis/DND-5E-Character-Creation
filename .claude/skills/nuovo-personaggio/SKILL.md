@@ -25,7 +25,7 @@ Nome, giocatore o giocatrice (con l'età, se è un bambino), razza, classe, live
 Usa AskUserQuestion: massimo 4 domande per blocco e 4 opzioni per domanda. La prima opzione è quella "(Consigliato)" e l'anteprima mostra i dettagli. Una scelta di poco conto si decide da soli e si dice in una riga. Cosa chiedere, in base al personaggio:
 
 - razza e sottorazza; per il dragonide il colore del drago (`draconic_ancestry`);
-- classe e sottoclasse, se il livello la prevede (`subclass_level` in `dnd5e/rules/classes.yaml`);
+- classe e sottoclasse, se il livello la prevede (`subclass_level` in `dnd5e/rules/classes/<classe>.yaml`);
 - background, che si deduce dalla storia (`dnd5e/rules/backgrounds.yaml`);
 - caratteristiche: proponi 2-3 build già calcolate col point buy (27 punti, valori da 8 a 15 prima dei bonus razziali);
 - abilità di classe, che non devono doppiare quelle di razza e background;
