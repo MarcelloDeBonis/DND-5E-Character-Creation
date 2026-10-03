@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forgia degli Eroi</title>
+  <meta name="description" content="Crea il tuo personaggio di Dungeons &amp; Dragons 5ª edizione passo dopo passo e stampa la scheda in PDF.">
+  <meta name="theme-color" content="#090c17">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='%23e2b254' stroke-width='3' stroke-linejoin='round'%3E%3Cpath d='M24 4l17 10v20L24 44 7 34V14z'/%3E%3Cpath d='M24 4l-9 16h18zM15 20l9 24 9-24'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@1,400;1,500&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Cinzel:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="is-loading">
+  <a class="skip" href="#step">Vai al passo attuale</a>
+  <div class="sky" aria-hidden="true"></div>
+
+  <div id="app">
+    <header class="top">
+      <div class="brand">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M24 4l17 10v20L24 44 7 34V14z"/><path d="M24 4l-9 16h18zM15 20l9 24 9-24M7 14l8 6M41 14l-8 6M7 34l8-14M41 34l-8-14"/>
+        </svg>
+        <div>
+          <h1>Forgia degli Eroi</h1>
+          <p>Il tuo personaggio di D&amp;D 5ª edizione, passo dopo passo, fino alla scheda in PDF</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button type="button" id="hero-toggle" class="btn ghost small hero-toggle" data-act="hero-toggle" aria-controls="hero">Il tuo eroe <span id="hero-toggle-count" class="badge-count"></span></button>
+        <button type="button" class="btn ghost small" data-act="reset" data-k="reset">Ricomincia</button>
+      </div>
+    </header>
+
+    <nav class="stepper-wrap" aria-label="Passi per creare il personaggio">
+      <ol id="stepper" class="constellation"></ol>
+    </nav>
+
+    <div id="offline-banner" class="offline" role="alert" hidden>
+      <span>Il programma non risponde: le ultime scelte sono salvate in questa pagina, ma i numeri non si aggiornano.</span>
+      <button type="button" class="btn ghost small" data-act="retry">Riprova</button>
+    </div>
+
+    <div class="layout">
+      <main id="step" class="step" tabindex="-1">
+        <p class="loading">Apro il libro delle regole…</p>
+      </main>
+      <aside id="hero" class="hero" aria-label="Il tuo eroe">
+        <div class="scroll">
+          <button type="button" id="hero-close" class="hero-close" data-act="hero-toggle" aria-label="Chiudi la pergamena">&times;</button>
+          <div id="hero-body"></div>
+        </div>
+      </aside>
+    </div>
+
+    <footer id="footer" class="bar"></footer>
+  </div>
+
+  <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+  <dialog id="dlg" aria-label="Conferma"></dialog>
+
+  <noscript><p>Questa pagina ha bisogno di JavaScript: attivalo nel browser e ricarica.</p></noscript>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>

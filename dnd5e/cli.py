@@ -4,6 +4,7 @@
     python -m dnd5e build characters/reyla.yaml -o x.pdf   # percorso di uscita personalizzato
     python -m dnd5e summary characters/reyla.yaml          # stampa il riepilogo senza generare il PDF
     python -m dnd5e list races|classes|backgrounds|weapons|armor|maneuvers|cantrips
+    python -m dnd5e web [--port 8765] [--no-browser]       # pagina web per creare i personaggi
 """
 from __future__ import annotations
 
@@ -43,13 +44,15 @@ def cmd_summary(args):
 
 def cmd_list(args):
     rules = load_rules()
+    # tabelle costruite solo quando servono: una chiave mancante non blocca gli altri elenchi
     tables = {
-        "races": rules["races"], "classes": rules["classes"], "backgrounds": rules["backgrounds"],
-        "weapons": rules["equipment"]["weapons"], "armor": rules["equipment"]["armor"],
-        "maneuvers": rules["maneuvers"], "cantrips": rules["equipment"]["wizard_cantrips"],
-        "fighting_styles": rules["equipment"]["fighting_styles"], "packs": rules["equipment"]["packs"],
+        "races": lambda: rules["races"], "classes": lambda: rules["classes"], "backgrounds": lambda: rules["backgrounds"],
+        "weapons": lambda: rules["equipment"]["weapons"], "armor": lambda: rules["equipment"]["armor"],
+        "maneuvers": lambda: rules["maneuvers"],
+        "cantrips": lambda: {k: v for k, v in rules["spells"]["spells"].items() if v.get("level") == 0},
+        "fighting_styles": lambda: rules["equipment"]["fighting_styles"], "packs": lambda: rules["equipment"]["packs"],
     }
-    table = tables[args.what]
+    table = tables[args.what]()
     for key, val in table.items():
         name = val.get("name", "") if isinstance(val, dict) else ""
         extra = ""
@@ -59,6 +62,11 @@ def cmd_list(args):
         if args.what == "classes" and isinstance(val, dict):
             extra = f"  archetipi: {', '.join((val.get('subclasses') or {}).keys()) or '—'}"
         print(f"{key:20s} {name}{extra}")
+
+
+def cmd_web(args):
+    from .web import serve
+    serve(port=args.port, open_browser=not args.no_browser)
 
 
 def main(argv=None):
@@ -80,6 +88,10 @@ def main(argv=None):
     l = sub.add_parser("list", help="elenca le opzioni disponibili")
     l.add_argument("what", choices=["races", "classes", "backgrounds", "weapons", "armor", "maneuvers", "cantrips", "fighting_styles", "packs"])
     l.set_defaults(func=cmd_list)
+    w = sub.add_parser("web", help="apre nel browser la pagina per creare i personaggi passo per passo")
+    w.add_argument("--port", type=int, default=8765, help="porta locale (default 8765)")
+    w.add_argument("--no-browser", action="store_true", help="non aprire il browser")
+    w.set_defaults(func=cmd_web)
     args = parser.parse_args(argv)
     try:
         args.func(args)

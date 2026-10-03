@@ -2,13 +2,16 @@
 
     python tools/test_web.py
 
-Usa il test_client di Flask (nessun server vero). I file di prova (_test_kate, _test_reyla,
-_test_ritratto) vengono creati e poi cancellati. Esce con codice 1 se qualcosa non va.
+Usa il test_client di Flask (nessun server vero) e chiama anche webcore.api(), la strada usata dal sito
+pubblicato con Pyodide. I file di prova (_test_kate, _test_reyla, _test_core, _test_ritratto, _test_talento) vengono creati
+e poi cancellati. Esce con codice 1 se qualcosa non va.
 """
 from __future__ import annotations
 
 import io
+import json
 import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -17,7 +20,7 @@ sys.path.insert(0, str(ROOT))
 
 import yaml  # noqa: E402
 
-from dnd5e import web  # noqa: E402
+from dnd5e import web, webcore  # noqa: E402
 from dnd5e.choices import requirements  # noqa: E402
 from dnd5e.engine import load_rules  # noqa: E402
 
@@ -51,7 +54,7 @@ def main():
         if hasattr(stream, "reconfigure"):
             stream.reconfigure(encoding="utf-8")
     client = web.app.test_client()
-    test_stems = ["_test_kate", "_test_reyla", "_test_ritratto"]
+    test_stems = ["_test_kate", "_test_reyla", "_test_core", "_test_ritratto", "_test_talento"]
     cleanup(test_stems)
     kate, reyla = load("kate"), load("reyla")
     kate_yaml_before = (ROOT / "characters" / "kate.yaml").read_bytes()
@@ -147,6 +150,18 @@ def main():
               "Chierico della Vita 1 con SAG 16: 4 preparati + Benedizione sempre preparato")
         land = req({"race": "human", "class": "druid", "subclass": "land", "level": 2})
         check(land.get("circle_terrain") is True and land["cantrips"]["count"] == 3, "Druido della Terra 2: terreno e 3 trucchetti")
+        bard = req({"race": "dwarf", "subrace": "hill_dwarf", "class": "bard", "level": 1, "background": "outlander"})
+        check(bard.get("tools", {}).get("count") == 4 and len(bard["tools"].get("slots", [])) == 4,
+              f"Bardo nano: 3 strumenti di classe + 1 del nano, una casella per ognuno (avuto {bard.get('tools', {}).get('count')})")
+        bgt = req({"race": "human", "class": "fighter", "level": 1, "background": "soldier"}).get("background_tools", {})
+        check(len(bgt.get("choices", [])) == 1 and bgt.get("count") == len(bgt.get("fixed", [])) + 1,
+              "Soldato: strumenti fissi + 1 gioco a scelta in 'background_tools'")
+        bm = req({"race": "human", "class": "ranger", "subclass": "beast_master", "level": 3})
+        check(any(o["key"] == "wolf" for o in bm.get("companion", {}).get("options", [])), "Signore delle Bestie: si sceglie il compagno (lupo)")
+        w18 = req({"race": "human", "class": "wizard", "subclass": "evocation", "level": 18})
+        w20 = req({"race": "human", "class": "wizard", "subclass": "evocation", "level": 20})
+        check(w18.get("spell_mastery") and not w18.get("signature_spells") and w20.get("signature_spells"),
+              "Mago 18: Maestria negli Incantesimi; 20: Incantesimi Personali")
 
         print("POST /api/preview")
         for name, ch in (("Kate", kate), ("Reyla", reyla)):
@@ -159,6 +174,8 @@ def main():
         check(data["hp"]["max"] > 0 and data["spellcasting"]["save_dc"] == 12 and data["breath"]["dc"] == 12,
               "Kate: PF, CD incantesimi 12 e soffio CD 12")
         check(data["portrait"] == "kate/portrait.jpg", "Kate: ritratto trovato")
+        check(isinstance(data.get("placeholders"), dict) and data["placeholders"].get("cd") == 12,
+              "anteprima: i numeri per i testi semplici ({cd}...) arrivano alla pagina")
         bad = client.post("/api/preview", json={"character": {**kate, "cantrips": ["cure_wounds", "fire_bolt", "mage_hand"]}}).get_json()
         check(bad["ok"] is False and bad["error"], f"scelta illegale -> errore regole ({bad['error']})")
         miss = client.post("/api/preview", json={"character": {"name": "Solo nome"}}).get_json()
@@ -207,10 +224,15 @@ def main():
                       and "attachment" not in r.headers.get("Content-Disposition", ""), f"{stem}: PDF servito inline")
             with client.get(data["md_url"]) as r:
                 check(r.status_code == 200 and data["md_url"] and "Incantesimi" in r.get_data(as_text=True), f"{stem}: riepilogo servito")
+        # versione completa (con appendice) e un talento: il talento non ha un livello e l'appendice non deve rompersi
+        full = {**kate, "simple": False, "feats": ["alert"]}
+        data = client.post("/api/build", json={"character": full, "stem": "_test_talento"}).get_json()
+        check(data.get("ok") is True and (ROOT / "output" / "_test_talento.pdf").is_file() and not data.get("guide_url"),
+              f"versione completa con un talento: PDF con appendice ({data.get('error')})")
         check((ROOT / "characters" / "kate.yaml").read_bytes() == kate_yaml_before, "kate.yaml non è stato toccato")
-        check(web.choose_stem("Pippo", "kate") == "pippo" and web.choose_stem("Kate") == "kate"
-              and web.choose_stem("Kate!", "reyla") == "kate" and web.choose_stem("Àlì Bàbà") == "ali_baba"
-              and web.choose_stem("Con") != "con", "nomi dei file: Kate e Reyla protette, accenti e nomi riservati")
+        check(webcore.choose_stem("Pippo", "kate") == "pippo" and webcore.choose_stem("Kate") == "kate"
+              and webcore.choose_stem("Kate!", "reyla") == "kate" and webcore.choose_stem("Àlì Bàbà") == "ali_baba"
+              and webcore.choose_stem("Con") != "con", "nomi dei file: Kate e Reyla protette, accenti e nomi riservati")
         bad = client.post("/api/build", json={"character": {**kate, "spells": ["fireball"]}, "stem": "_test_kate"}).get_json()
         check(bad["ok"] is False and bad["error"], f"build con scelta illegale -> errore ({bad['error']})")
 
@@ -226,6 +248,25 @@ def main():
         check(one.get("name") == "Reyla" and one.get("subrace") == "high_elf", "carica Reyla per modificarla")
         check(client.get("/api/characters/..%2Fkate").status_code == 404 and client.get("/api/characters/nonesiste").status_code == 404,
               "personaggio inesistente o percorso strano -> 404")
+
+        print("webcore.api (sito con Pyodide)")
+        probe = subprocess.run([sys.executable, "-c", "import sys, dnd5e.webcore; print('flask' in sys.modules)"],
+                               cwd=ROOT, capture_output=True, text=True)
+        check(probe.stdout.strip() == "False", "webcore non usa Flask (gira anche nel browser)")
+        check(json.loads(webcore.api("GET", "rules")).get("races"), "api: regole")
+        req = json.loads(webcore.api("POST", "requirements", json.dumps({"character": reyla})))["requirements"]
+        check(req.get("racial_cantrip", {}).get("count") == 1 and req["spells"]["count"] == 5, "api: requirements di Reyla")
+        prev = json.loads(webcore.api("POST", "preview", json.dumps({"character": kate})))
+        check(prev.get("ok") is True and prev["sheet"]["spellcasting"]["save_dc"] == 12, "api: anteprima di Kate")
+        res = json.loads(webcore.api("POST", "build", json.dumps({"character": kate, "stem": "_test_core"})))
+        check(res.get("ok") is True and res["pdf_url"] == "/output/_test_core.pdf" and res["guide_url"] == "/output/_test_core_guida.pdf"
+              and (ROOT / "output" / "_test_core.pdf").is_file(), "api: build con indirizzi semplici (senza ?v=)")
+        lst = json.loads(webcore.api("GET", "characters"))
+        check(any(c["stem"] == "kate" for c in lst), "api: elenco personaggi")
+        check(json.loads(webcore.api("GET", "characters/kate")).get("name") == "Kate", "api: carica Kate")
+        check(json.loads(webcore.api("GET", "characters/..%2Fkate")).get("ok") is False, "api: percorso strano rifiutato")
+        check(json.loads(webcore.api("DELETE", "boh")).get("ok") is False, "api: richiesta sconosciuta -> errore, non eccezione")
+        check(json.loads(webcore.api("POST", "preview", "non è json")).get("ok") is False, "api: corpo non valido -> errore")
     finally:
         cleanup(test_stems)
     left = [p.name for p in list((ROOT / "characters").glob("_test_*")) + list((ROOT / "output").glob("_test_*"))]

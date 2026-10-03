@@ -37,7 +37,7 @@ EN_LABELS = {"acrobatics": "Acrobatics (Dex)", "animal_handling": "Animal Handli
 ABBR = {"str": "For", "dex": "Des", "con": "Cos", "int": "Int", "wis": "Sag", "cha": "Car"}
 
 # (testo inglese, testo italiano, opzioni): x = x0 per disambiguare, align = left|center|right, maxw = larghezza max,
-# rotate = 90, size = dimensione fissa
+# rotate = 90, size = dimensione fissa, dy = spostamento verticale (punti, negativo = più in alto)
 LABELS = {
     0: [
         ("CLASS & LEVEL", "CLASSE & LIVELLO", {"align": "left"}), ("BACKGROUND", "BACKGROUND", {"align": "left"}),
@@ -46,7 +46,8 @@ LABELS = {
         ("EXPERIENCE POINTS", "PUNTI ESPERIENZA", {"align": "left"}), ("INSPIRATION", "ISPIRAZIONE", {}),
         ("STRENGTH", "FORZA", {}), ("DEXTERITY", "DESTREZZA", {"maxw": 42}), ("CONSTITUTION", "COSTITUZIONE", {"maxw": 42}),
         ("INTELLIGENCE", "INTELLIGENZA", {"maxw": 42}), ("WISDOM", "SAGGEZZA", {}), ("CHARISMA", "CARISMA", {}),
-        ("ARMOR", "CLASSE", {"size": 5.2}), ("CLASS", "ARMATURA", {"x": 238, "size": 4.6}),
+        # dentro lo scudo della CA: due righe centrate, un po' più in alto e più piccole, così non toccano il bordo
+        ("ARMOR", "CLASSE", {"size": 4.8, "dy": -2.2}), ("CLASS", "ARMATURA", {"x": 238, "size": 4.0, "dy": -2.6}),
         ("PROFICIENCY BONUS", "BONUS DI COMPETENZA", {}), ("INITIATIVE", "INIZIATIVA", {}), ("SPEED", "VELOCITÀ", {}),
         ("PERSONALITY TRAITS", "TRATTI CARATTERIALI", {}),
         ("Hit Point Maximum", "Massimo dei Punti Ferita", {"align": "left", "maxw": 59}),
@@ -122,7 +123,7 @@ def place(page, rect, text, opts):
         cx, cy = (rect.x0 + rect.x1) / 2, (rect.y0 + rect.y1) / 2
         page.insert_text((cx + size * 0.35, cy + tw / 2), text, fontsize=size, fontname=FONTNAME, fontfile=FONT, rotate=90)
         return
-    baseline = rect.y0 + (rect.height + size * 0.72) / 2
+    baseline = rect.y0 + (rect.height + size * 0.72) / 2 + opts.get("dy", 0)
     x = rect.x0 if align == "left" else rect.x1 - tw if align == "right" else (rect.x0 + rect.x1) / 2 - tw / 2
     page.insert_text((x, baseline), text, fontsize=size, fontname=FONTNAME, fontfile=FONT)
 

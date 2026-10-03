@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "forgia-sito",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8790", "--bind", "127.0.0.1", "--directory", "dist/creatore-personaggi"],
+      "port": 8790
+    },
+    {
+      "name": "forgia-locale",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "dnd5e", "web", "--no-browser", "--port", "8765"],
+      "port": 8765
+    }
+  ]
+}

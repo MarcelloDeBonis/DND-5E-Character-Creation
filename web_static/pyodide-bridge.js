@@ -129,7 +129,9 @@
       var all = loadChars();
       return json(Object.keys(all).sort().map(function (stem) {
         var c = all[stem] || {};
-        return { stem: stem, name: c.name || stem, player: c.player || "", race: c.race || "", "class": c["class"] || "", level: c.level || 1 };
+        var pic = c.portrait ? localStorage.getItem(KEY_PORTRAIT + c.portrait.split("/")[0]) : null;
+        return { stem: stem, name: c.name || stem, player: c.player || "", race: c.race || "", "class": c["class"] || "", level: c.level || 1,
+                 portrait: c.portrait || null, portrait_url: pic };
       }));
     }
     var m = route.match(/^characters\/([a-z0-9_\-]+)$/);
