@@ -2,3 +2,4 @@ PyYAML>=6.0
 reportlab>=4.0
 pypdf>=4.0
 Pillow>=10.0
+PyMuPDF>=1.24   # solo per tools/make_italian_template.py

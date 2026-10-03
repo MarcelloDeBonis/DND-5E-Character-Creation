@@ -1,0 +1,2480 @@
+# Mappa dei campi del template ITALIANO, generata da tools/make_italian_template.py a partire da
+# templates/official/fieldmap.yaml: le righe delle abilità sono in ordine alfabetico italiano.
+page_size:
+- 612
+- 792
+fields:
+  character_name:
+    page: 0
+    rect:
+    - 47.6
+    - 709.8
+    - 220.7
+    - 730.7
+  class_level:
+    page: 0
+    rect:
+    - 270.0
+    - 728.2
+    - 375.9
+    - 743.8
+  background:
+    page: 0
+    rect:
+    - 384.1
+    - 728.2
+    - 470.2
+    - 743.8
+  player_name:
+    page: 0
+    rect:
+    - 480.3
+    - 728.2
+    - 570.3
+    - 743.8
+  race:
+    page: 0
+    rect:
+    - 269.0
+    - 702.1
+    - 375.9
+    - 717.8
+  alignment:
+    page: 0
+    rect:
+    - 383.5
+    - 702.1
+    - 473.5
+    - 717.8
+  xp:
+    page: 0
+    rect:
+    - 480.3
+    - 702.1
+    - 570.3
+    - 717.8
+  str_score:
+    page: 0
+    rect:
+    - 36.8
+    - 612.3
+    - 77.8
+    - 637.8
+  str_mod:
+    page: 0
+    rect:
+    - 46.5
+    - 592.5
+    - 67.7
+    - 605.3
+  dex_score:
+    page: 0
+    rect:
+    - 36.8
+    - 540.3
+    - 77.8
+    - 565.8
+  dex_mod:
+    page: 0
+    rect:
+    - 46.5
+    - 520.5
+    - 67.7
+    - 533.3
+  con_score:
+    page: 0
+    rect:
+    - 36.8
+    - 469.0
+    - 77.8
+    - 494.5
+  con_mod:
+    page: 0
+    rect:
+    - 46.5
+    - 449.2
+    - 67.7
+    - 462.0
+  int_score:
+    page: 0
+    rect:
+    - 36.8
+    - 397.0
+    - 77.8
+    - 422.5
+  int_mod:
+    page: 0
+    rect:
+    - 46.5
+    - 377.2
+    - 67.7
+    - 390.0
+  wis_score:
+    page: 0
+    rect:
+    - 36.8
+    - 325.7
+    - 77.8
+    - 351.2
+  wis_mod:
+    page: 0
+    rect:
+    - 46.5
+    - 305.9
+    - 67.7
+    - 318.7
+  cha_score:
+    page: 0
+    rect:
+    - 36.8
+    - 254.4
+    - 77.8
+    - 280.0
+  cha_mod:
+    page: 0
+    rect:
+    - 46.5
+    - 234.6
+    - 67.7
+    - 247.4
+  inspiration:
+    page: 0
+    rect:
+    - 96.9
+    - 644.0
+    - 118.1
+    - 660.5
+  prof_bonus:
+    page: 0
+    rect:
+    - 96.8
+    - 606.3
+    - 118.1
+    - 622.9
+  save_str:
+    page: 0
+    rect:
+    - 112.7
+    - 576.8
+    - 127.1
+    - 585.4
+  save_str_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 576.2
+    - 107.4
+    - 584.9
+    kind: check
+  save_dex:
+    page: 0
+    rect:
+    - 112.7
+    - 563.3
+    - 127.1
+    - 571.9
+  save_dex_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 562.9
+    - 107.4
+    - 571.6
+    kind: check
+  save_con:
+    page: 0
+    rect:
+    - 112.7
+    - 549.8
+    - 127.1
+    - 558.5
+  save_con_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 549.2
+    - 107.4
+    - 557.9
+    kind: check
+  save_int:
+    page: 0
+    rect:
+    - 112.7
+    - 536.3
+    - 127.1
+    - 544.9
+  save_int_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 535.7
+    - 107.4
+    - 544.4
+    kind: check
+  save_wis:
+    page: 0
+    rect:
+    - 112.7
+    - 522.8
+    - 127.1
+    - 531.4
+  save_wis_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 522.3
+    - 107.4
+    - 531.0
+    kind: check
+  save_cha:
+    page: 0
+    rect:
+    - 112.7
+    - 509.4
+    - 127.1
+    - 518.0
+  save_cha_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 508.8
+    - 107.4
+    - 517.4
+    kind: check
+  skill_acrobatics:
+    page: 0
+    rect:
+    - 112.0
+    - 461.7
+    - 126.4
+    - 470.3
+  skill_acrobatics_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 461.1
+    - 107.4
+    - 469.8
+    kind: check
+  skill_animal_handling:
+    page: 0
+    rect:
+    - 112.0
+    - 448.1
+    - 126.4
+    - 456.8
+  skill_animal_handling_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 447.5
+    - 107.4
+    - 456.2
+    kind: check
+  skill_arcana:
+    page: 0
+    rect:
+    - 112.0
+    - 434.6
+    - 126.4
+    - 443.2
+  skill_arcana_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 434.0
+    - 107.4
+    - 442.7
+    kind: check
+  skill_athletics:
+    page: 0
+    rect:
+    - 112.0
+    - 421.1
+    - 126.4
+    - 429.8
+  skill_athletics_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 420.6
+    - 107.4
+    - 429.3
+    kind: check
+  skill_deception:
+    page: 0
+    rect:
+    - 112.0
+    - 380.6
+    - 126.4
+    - 389.2
+  skill_deception_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 380.0
+    - 107.4
+    - 388.7
+    kind: check
+  skill_history:
+    page: 0
+    rect:
+    - 112.0
+    - 232.1
+    - 126.4
+    - 240.7
+  skill_history_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 231.5
+    - 107.4
+    - 240.2
+    kind: check
+  skill_insight:
+    page: 0
+    rect:
+    - 112.0
+    - 340.1
+    - 126.4
+    - 348.8
+  skill_insight_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 339.8
+    - 107.4
+    - 348.5
+    kind: check
+  skill_intimidation:
+    page: 0
+    rect:
+    - 112.0
+    - 367.1
+    - 126.4
+    - 375.8
+  skill_intimidation_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 366.8
+    - 107.4
+    - 375.5
+    kind: check
+  skill_investigation:
+    page: 0
+    rect:
+    - 112.0
+    - 394.1
+    - 126.4
+    - 402.7
+  skill_investigation_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 393.8
+    - 107.4
+    - 402.5
+    kind: check
+  skill_medicine:
+    page: 0
+    rect:
+    - 112.0
+    - 326.5
+    - 126.4
+    - 335.2
+  skill_medicine_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 326.1
+    - 107.4
+    - 334.8
+    kind: check
+  skill_nature:
+    page: 0
+    rect:
+    - 112.0
+    - 313.1
+    - 126.4
+    - 321.7
+  skill_nature_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 312.6
+    - 107.4
+    - 321.2
+    kind: check
+  skill_perception:
+    page: 0
+    rect:
+    - 112.0
+    - 299.6
+    - 126.4
+    - 308.2
+  skill_perception_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 299.0
+    - 107.4
+    - 307.7
+    kind: check
+  skill_performance:
+    page: 0
+    rect:
+    - 112.0
+    - 353.5
+    - 126.4
+    - 362.2
+  skill_performance_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 353.3
+    - 107.4
+    - 362.0
+    kind: check
+  skill_persuasion:
+    page: 0
+    rect:
+    - 112.0
+    - 286.1
+    - 126.4
+    - 294.7
+  skill_persuasion_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 285.5
+    - 107.4
+    - 294.2
+    kind: check
+  skill_religion:
+    page: 0
+    rect:
+    - 112.0
+    - 259.1
+    - 126.4
+    - 267.8
+  skill_religion_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 258.5
+    - 107.4
+    - 267.2
+    kind: check
+  skill_sleight_of_hand:
+    page: 0
+    rect:
+    - 112.0
+    - 272.6
+    - 126.4
+    - 281.2
+  skill_sleight_of_hand_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 272.0
+    - 107.4
+    - 280.7
+    kind: check
+  skill_stealth:
+    page: 0
+    rect:
+    - 112.0
+    - 407.6
+    - 126.4
+    - 416.2
+  skill_stealth_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 407.3
+    - 107.4
+    - 416.0
+    kind: check
+  skill_survival:
+    page: 0
+    rect:
+    - 112.0
+    - 245.5
+    - 126.4
+    - 254.2
+  skill_survival_prof:
+    page: 0
+    rect:
+    - 101.3
+    - 245.0
+    - 107.4
+    - 253.7
+    kind: check
+  passive_perception:
+    page: 0
+    rect:
+    - 32.3
+    - 184.3
+    - 53.5
+    - 200.8
+  proficiencies_languages:
+    page: 0
+    rect:
+    - 34.2
+    - 35.9
+    - 199.8
+    - 164.8
+    kind: box
+  ac:
+    page: 0
+    rect:
+    - 234.0
+    - 625.6
+    - 261.4
+    - 651.5
+  initiative:
+    page: 0
+    rect:
+    - 285.9
+    - 618.4
+    - 321.9
+    - 651.5
+  speed:
+    page: 0
+    rect:
+    - 344.2
+    - 618.4
+    - 380.2
+    - 651.5
+  hp_max:
+    page: 0
+    rect:
+    - 290.9
+    - 584.5
+    - 380.2
+    - 595.3
+  hp_current:
+    page: 0
+    rect:
+    - 231.2
+    - 549.2
+    - 380.2
+    - 579.5
+  hp_temp:
+    page: 0
+    rect:
+    - 231.2
+    - 497.4
+    - 380.2
+    - 527.6
+  hd_total:
+    page: 0
+    rect:
+    - 247.0
+    - 464.5
+    - 295.2
+    - 473.6
+  hd:
+    page: 0
+    rect:
+    - 231.9
+    - 439.8
+    - 295.2
+    - 460.7
+  death_success_1:
+    page: 0
+    rect:
+    - 345.9
+    - 459.0
+    - 355.2
+    - 471.2
+    kind: check
+  death_success_2:
+    page: 0
+    rect:
+    - 358.7
+    - 459.0
+    - 368.0
+    - 471.2
+    kind: check
+  death_success_3:
+    page: 0
+    rect:
+    - 371.7
+    - 459.0
+    - 381.0
+    - 471.2
+    kind: check
+  death_fail_1:
+    page: 0
+    rect:
+    - 345.9
+    - 443.9
+    - 355.1
+    - 456.1
+    kind: check
+  death_fail_2:
+    page: 0
+    rect:
+    - 358.8
+    - 443.9
+    - 368.0
+    - 456.1
+    kind: check
+  death_fail_3:
+    page: 0
+    rect:
+    - 371.7
+    - 443.9
+    - 380.9
+    - 456.1
+    kind: check
+  weapon_1_name:
+    page: 0
+    rect:
+    - 224.0
+    - 384.7
+    - 285.5
+    - 398.8
+  weapon_1_atk:
+    page: 0
+    rect:
+    - 292.0
+    - 384.7
+    - 321.9
+    - 398.8
+  weapon_1_dmg:
+    page: 0
+    rect:
+    - 328.0
+    - 384.7
+    - 388.8
+    - 398.8
+  weapon_2_name:
+    page: 0
+    rect:
+    - 224.0
+    - 364.6
+    - 285.5
+    - 378.6
+  weapon_2_atk:
+    page: 0
+    rect:
+    - 292.0
+    - 364.6
+    - 321.9
+    - 378.6
+  weapon_2_dmg:
+    page: 0
+    rect:
+    - 328.0
+    - 364.6
+    - 388.8
+    - 378.6
+  weapon_3_name:
+    page: 0
+    rect:
+    - 224.0
+    - 343.7
+    - 285.5
+    - 357.7
+  weapon_3_atk:
+    page: 0
+    rect:
+    - 292.0
+    - 343.7
+    - 321.9
+    - 357.7
+  weapon_3_dmg:
+    page: 0
+    rect:
+    - 328.0
+    - 343.7
+    - 388.8
+    - 357.7
+  attacks_spellcasting:
+    page: 0
+    rect:
+    - 223.2
+    - 224.5
+    - 388.8
+    - 338.3
+    kind: box
+  equipment:
+    page: 0
+    rect:
+    - 269.0
+    - 35.9
+    - 388.8
+    - 198.6
+    kind: box
+  cp:
+    page: 0
+    rect:
+    - 229.7
+    - 175.4
+    - 258.9
+    - 193.0
+  sp:
+    page: 0
+    rect:
+    - 229.7
+    - 149.4
+    - 258.9
+    - 167.0
+  ep:
+    page: 0
+    rect:
+    - 229.7
+    - 123.5
+    - 258.9
+    - 141.1
+  gp:
+    page: 0
+    rect:
+    - 229.7
+    - 97.5
+    - 258.9
+    - 115.1
+  pp:
+    page: 0
+    rect:
+    - 229.7
+    - 71.6
+    - 258.9
+    - 89.2
+  personality_traits:
+    page: 0
+    rect:
+    - 418.7
+    - 602.9
+    - 571.5
+    - 651.5
+    kind: box
+  ideals:
+    page: 0
+    rect:
+    - 418.7
+    - 547.8
+    - 571.5
+    - 582.4
+    kind: box
+  bonds:
+    page: 0
+    rect:
+    - 418.7
+    - 492.4
+    - 571.5
+    - 526.9
+    kind: box
+  flaws:
+    page: 0
+    rect:
+    - 418.7
+    - 437.6
+    - 571.5
+    - 472.2
+    kind: box
+  features_traits:
+    page: 0
+    rect:
+    - 412.4
+    - 35.9
+    - 577.5
+    - 405.5
+    kind: box
+  character_name_2:
+    page: 1
+    rect:
+    - 47.5
+    - 705.9
+    - 256.0
+    - 726.8
+  age:
+    page: 1
+    rect:
+    - 266.0
+    - 725.3
+    - 371.8
+    - 741.0
+  height:
+    page: 1
+    rect:
+    - 379.2
+    - 725.3
+    - 465.2
+    - 741.0
+  weight:
+    page: 1
+    rect:
+    - 475.2
+    - 725.3
+    - 572.8
+    - 741.0
+  eyes:
+    page: 1
+    rect:
+    - 265.0
+    - 699.2
+    - 371.8
+    - 714.9
+  skin:
+    page: 1
+    rect:
+    - 378.5
+    - 699.2
+    - 468.5
+    - 714.9
+  hair:
+    page: 1
+    rect:
+    - 475.2
+    - 699.2
+    - 572.8
+    - 714.9
+  portrait:
+    page: 1
+    rect:
+    - 36.5
+    - 443.4
+    - 199.2
+    - 661.5
+    kind: image
+  allies:
+    page: 1
+    rect:
+    - 225.0
+    - 442.1
+    - 400.6
+    - 660.8
+    kind: box
+  faction_name:
+    page: 1
+    rect:
+    - 423.2
+    - 622.7
+    - 561.2
+    - 638.5
+  faction_symbol:
+    page: 1
+    rect:
+    - 424.0
+    - 508.5
+    - 561.1
+    - 618.0
+    kind: image
+  additional_features:
+    page: 1
+    rect:
+    - 223.8
+    - 212.4
+    - 577.4
+    - 416.9
+    kind: box
+  backstory:
+    page: 1
+    rect:
+    - 34.8
+    - 36.7
+    - 199.2
+    - 406.8
+    kind: box
+  treasure:
+    page: 1
+    rect:
+    - 223.8
+    - 36.7
+    - 577.4
+    - 189.0
+    kind: box
+  spellcasting_class:
+    page: 2
+    rect:
+    - 47.5
+    - 705.9
+    - 256.0
+    - 726.8
+  spellcasting_ability:
+    page: 2
+    rect:
+    - 283.8
+    - 711.4
+    - 348.6
+    - 735.8
+  spell_save_dc:
+    page: 2
+    rect:
+    - 384.5
+    - 711.4
+    - 449.3
+    - 735.8
+  spell_attack_bonus:
+    page: 2
+    rect:
+    - 488.3
+    - 711.4
+    - 553.1
+    - 735.8
+  slots_total_1:
+    page: 2
+    rect:
+    - 51.9
+    - 457.5
+    - 91.1
+    - 478.3
+  slots_remaining_1:
+    page: 2
+    rect:
+    - 103.0
+    - 457.5
+    - 195.8
+    - 478.3
+  slots_total_2:
+    page: 2
+    rect:
+    - 51.9
+    - 228.9
+    - 91.1
+    - 249.8
+  slots_remaining_2:
+    page: 2
+    rect:
+    - 103.0
+    - 228.9
+    - 195.8
+    - 249.8
+  slots_total_3:
+    page: 2
+    rect:
+    - 240.8
+    - 625.2
+    - 280.1
+    - 646.1
+  slots_remaining_3:
+    page: 2
+    rect:
+    - 292.0
+    - 625.2
+    - 384.8
+    - 646.1
+  slots_total_4:
+    page: 2
+    rect:
+    - 240.8
+    - 399.6
+    - 280.1
+    - 420.5
+  slots_remaining_4:
+    page: 2
+    rect:
+    - 292.0
+    - 399.6
+    - 384.8
+    - 420.5
+  slots_total_5:
+    page: 2
+    rect:
+    - 240.8
+    - 173.0
+    - 280.1
+    - 193.9
+  slots_remaining_5:
+    page: 2
+    rect:
+    - 292.0
+    - 173.0
+    - 384.8
+    - 193.9
+  slots_total_6:
+    page: 2
+    rect:
+    - 428.0
+    - 625.2
+    - 467.2
+    - 646.1
+  slots_remaining_6:
+    page: 2
+    rect:
+    - 479.1
+    - 625.2
+    - 572.0
+    - 646.1
+  slots_total_7:
+    page: 2
+    rect:
+    - 428.0
+    - 455.4
+    - 467.2
+    - 476.3
+  slots_remaining_7:
+    page: 2
+    rect:
+    - 479.1
+    - 455.4
+    - 572.0
+    - 476.3
+  slots_total_8:
+    page: 2
+    rect:
+    - 428.0
+    - 285.6
+    - 467.2
+    - 306.5
+  slots_remaining_8:
+    page: 2
+    rect:
+    - 479.1
+    - 285.6
+    - 572.0
+    - 306.5
+  slots_total_9:
+    page: 2
+    rect:
+    - 428.0
+    - 144.9
+    - 467.2
+    - 165.7
+  slots_remaining_9:
+    page: 2
+    rect:
+    - 479.1
+    - 144.9
+    - 572.0
+    - 165.7
+  cantrip_1:
+    page: 2
+    rect:
+    - 40.3
+    - 607.5
+    - 198.7
+    - 619.6
+  cantrip_2:
+    page: 2
+    rect:
+    - 40.3
+    - 593.5
+    - 198.7
+    - 605.6
+  cantrip_3:
+    page: 2
+    rect:
+    - 40.3
+    - 579.6
+    - 198.7
+    - 591.7
+  cantrip_4:
+    page: 2
+    rect:
+    - 40.3
+    - 565.6
+    - 198.7
+    - 577.7
+  cantrip_5:
+    page: 2
+    rect:
+    - 40.3
+    - 551.7
+    - 198.7
+    - 563.8
+  cantrip_6:
+    page: 2
+    rect:
+    - 40.3
+    - 537.6
+    - 198.7
+    - 549.7
+  cantrip_7:
+    page: 2
+    rect:
+    - 40.3
+    - 523.5
+    - 198.7
+    - 535.6
+  cantrip_8:
+    page: 2
+    rect:
+    - 40.3
+    - 509.5
+    - 198.7
+    - 521.6
+  spell_1_1:
+    page: 2
+    rect:
+    - 40.8
+    - 422.4
+    - 198.7
+    - 432.3
+  spell_1_1_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 421.3
+    - 38.3
+    - 429.8
+    kind: check
+  spell_1_2:
+    page: 2
+    rect:
+    - 40.8
+    - 408.4
+    - 198.7
+    - 418.3
+  spell_1_2_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 407.3
+    - 38.3
+    - 415.8
+    kind: check
+  spell_1_3:
+    page: 2
+    rect:
+    - 40.8
+    - 394.4
+    - 198.7
+    - 404.4
+  spell_1_3_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 393.3
+    - 38.3
+    - 401.8
+    kind: check
+  spell_1_4:
+    page: 2
+    rect:
+    - 40.8
+    - 380.4
+    - 198.7
+    - 390.3
+  spell_1_4_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 379.3
+    - 38.3
+    - 387.8
+    kind: check
+  spell_1_5:
+    page: 2
+    rect:
+    - 40.8
+    - 366.4
+    - 198.7
+    - 376.3
+  spell_1_5_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 365.4
+    - 38.3
+    - 373.8
+    kind: check
+  spell_1_6:
+    page: 2
+    rect:
+    - 40.8
+    - 352.4
+    - 198.7
+    - 362.3
+  spell_1_6_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 351.4
+    - 38.3
+    - 359.8
+    kind: check
+  spell_1_7:
+    page: 2
+    rect:
+    - 40.8
+    - 338.4
+    - 198.7
+    - 348.3
+  spell_1_7_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 337.4
+    - 38.3
+    - 345.9
+    kind: check
+  spell_1_8:
+    page: 2
+    rect:
+    - 40.8
+    - 324.4
+    - 198.7
+    - 334.3
+  spell_1_8_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 323.4
+    - 38.3
+    - 331.9
+    kind: check
+  spell_1_9:
+    page: 2
+    rect:
+    - 40.8
+    - 310.4
+    - 198.7
+    - 320.3
+  spell_1_9_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 309.4
+    - 38.3
+    - 317.9
+    kind: check
+  spell_1_10:
+    page: 2
+    rect:
+    - 40.8
+    - 296.4
+    - 198.7
+    - 306.4
+  spell_1_10_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 295.4
+    - 38.3
+    - 303.9
+    kind: check
+  spell_1_11:
+    page: 2
+    rect:
+    - 40.8
+    - 282.4
+    - 198.7
+    - 292.3
+  spell_1_11_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 281.4
+    - 38.3
+    - 289.9
+    kind: check
+  spell_1_12:
+    page: 2
+    rect:
+    - 40.8
+    - 268.4
+    - 198.7
+    - 278.4
+  spell_1_12_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 267.5
+    - 38.3
+    - 275.9
+    kind: check
+  spell_2_1:
+    page: 2
+    rect:
+    - 40.8
+    - 209.8
+    - 198.7
+    - 219.7
+  spell_2_1_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 208.7
+    - 38.3
+    - 217.2
+    kind: check
+  spell_2_2:
+    page: 2
+    rect:
+    - 40.8
+    - 195.7
+    - 198.7
+    - 205.7
+  spell_2_2_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 194.7
+    - 38.3
+    - 203.2
+    kind: check
+  spell_2_3:
+    page: 2
+    rect:
+    - 40.8
+    - 181.8
+    - 198.7
+    - 191.7
+  spell_2_3_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 180.8
+    - 38.3
+    - 189.2
+    kind: check
+  spell_2_4:
+    page: 2
+    rect:
+    - 40.8
+    - 167.8
+    - 198.7
+    - 177.7
+  spell_2_4_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 166.8
+    - 38.3
+    - 175.2
+    kind: check
+  spell_2_5:
+    page: 2
+    rect:
+    - 40.8
+    - 153.8
+    - 198.7
+    - 163.7
+  spell_2_5_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 152.8
+    - 38.3
+    - 161.2
+    kind: check
+  spell_2_6:
+    page: 2
+    rect:
+    - 40.8
+    - 139.8
+    - 198.7
+    - 149.8
+  spell_2_6_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 138.8
+    - 38.3
+    - 147.2
+    kind: check
+  spell_2_7:
+    page: 2
+    rect:
+    - 40.8
+    - 125.9
+    - 198.7
+    - 135.8
+  spell_2_7_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 124.8
+    - 38.3
+    - 133.2
+    kind: check
+  spell_2_8:
+    page: 2
+    rect:
+    - 40.8
+    - 111.8
+    - 198.7
+    - 121.8
+  spell_2_8_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 110.8
+    - 38.3
+    - 119.2
+    kind: check
+  spell_2_9:
+    page: 2
+    rect:
+    - 40.8
+    - 97.8
+    - 198.7
+    - 107.8
+  spell_2_9_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 96.8
+    - 38.3
+    - 105.2
+    kind: check
+  spell_2_10:
+    page: 2
+    rect:
+    - 40.8
+    - 83.8
+    - 198.7
+    - 93.7
+  spell_2_10_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 82.8
+    - 38.3
+    - 91.2
+    kind: check
+  spell_2_11:
+    page: 2
+    rect:
+    - 40.8
+    - 69.8
+    - 198.7
+    - 79.7
+  spell_2_11_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 68.8
+    - 38.3
+    - 77.2
+    kind: check
+  spell_2_12:
+    page: 2
+    rect:
+    - 40.8
+    - 55.8
+    - 198.7
+    - 65.8
+  spell_2_12_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 54.8
+    - 38.3
+    - 63.2
+    kind: check
+  spell_2_13:
+    page: 2
+    rect:
+    - 40.8
+    - 41.8
+    - 198.7
+    - 51.8
+  spell_2_13_prep:
+    page: 2
+    rect:
+    - 32.4
+    - 40.8
+    - 38.3
+    - 49.2
+    kind: check
+  spell_3_1:
+    page: 2
+    rect:
+    - 229.8
+    - 606.1
+    - 387.7
+    - 616.0
+  spell_3_1_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 605.1
+    - 227.3
+    - 613.5
+    kind: check
+  spell_3_2:
+    page: 2
+    rect:
+    - 229.8
+    - 592.0
+    - 387.7
+    - 602.0
+  spell_3_2_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 591.1
+    - 227.3
+    - 599.5
+    kind: check
+  spell_3_3:
+    page: 2
+    rect:
+    - 229.8
+    - 578.1
+    - 387.7
+    - 588.0
+  spell_3_3_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 577.1
+    - 227.3
+    - 585.5
+    kind: check
+  spell_3_4:
+    page: 2
+    rect:
+    - 229.8
+    - 564.1
+    - 387.7
+    - 574.0
+  spell_3_4_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 563.1
+    - 227.3
+    - 571.5
+    kind: check
+  spell_3_5:
+    page: 2
+    rect:
+    - 229.8
+    - 550.1
+    - 387.7
+    - 560.0
+  spell_3_5_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 549.1
+    - 227.3
+    - 557.5
+    kind: check
+  spell_3_6:
+    page: 2
+    rect:
+    - 229.8
+    - 536.1
+    - 387.7
+    - 546.1
+  spell_3_6_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 535.1
+    - 227.3
+    - 543.5
+    kind: check
+  spell_3_7:
+    page: 2
+    rect:
+    - 229.8
+    - 522.2
+    - 387.7
+    - 532.1
+  spell_3_7_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 521.1
+    - 227.3
+    - 529.5
+    kind: check
+  spell_3_8:
+    page: 2
+    rect:
+    - 229.8
+    - 508.1
+    - 387.7
+    - 518.1
+  spell_3_8_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 507.1
+    - 227.3
+    - 515.5
+    kind: check
+  spell_3_9:
+    page: 2
+    rect:
+    - 229.8
+    - 494.2
+    - 387.7
+    - 504.1
+  spell_3_9_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 493.1
+    - 227.3
+    - 501.5
+    kind: check
+  spell_3_10:
+    page: 2
+    rect:
+    - 229.8
+    - 480.1
+    - 387.7
+    - 490.1
+  spell_3_10_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 479.1
+    - 227.3
+    - 487.5
+    kind: check
+  spell_3_11:
+    page: 2
+    rect:
+    - 229.8
+    - 466.1
+    - 387.7
+    - 476.0
+  spell_3_11_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 465.1
+    - 227.3
+    - 473.5
+    kind: check
+  spell_3_12:
+    page: 2
+    rect:
+    - 229.8
+    - 452.1
+    - 387.7
+    - 462.1
+  spell_3_12_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 451.1
+    - 227.3
+    - 459.5
+    kind: check
+  spell_3_13:
+    page: 2
+    rect:
+    - 229.8
+    - 438.1
+    - 387.7
+    - 448.1
+  spell_3_13_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 437.1
+    - 227.3
+    - 445.6
+    kind: check
+  spell_4_1:
+    page: 2
+    rect:
+    - 229.8
+    - 380.5
+    - 387.7
+    - 390.5
+  spell_4_1_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 379.5
+    - 227.3
+    - 388.0
+    kind: check
+  spell_4_2:
+    page: 2
+    rect:
+    - 229.8
+    - 366.5
+    - 387.7
+    - 376.4
+  spell_4_2_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 365.5
+    - 227.3
+    - 374.0
+    kind: check
+  spell_4_3:
+    page: 2
+    rect:
+    - 229.8
+    - 352.5
+    - 387.7
+    - 362.4
+  spell_4_3_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 351.5
+    - 227.3
+    - 360.0
+    kind: check
+  spell_4_4:
+    page: 2
+    rect:
+    - 229.8
+    - 338.5
+    - 387.7
+    - 348.5
+  spell_4_4_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 337.5
+    - 227.3
+    - 346.0
+    kind: check
+  spell_4_5:
+    page: 2
+    rect:
+    - 229.8
+    - 324.5
+    - 387.7
+    - 334.5
+  spell_4_5_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 323.5
+    - 227.3
+    - 332.0
+    kind: check
+  spell_4_6:
+    page: 2
+    rect:
+    - 229.8
+    - 310.6
+    - 387.7
+    - 320.5
+  spell_4_6_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 309.5
+    - 227.3
+    - 318.0
+    kind: check
+  spell_4_7:
+    page: 2
+    rect:
+    - 229.8
+    - 296.6
+    - 387.7
+    - 306.5
+  spell_4_7_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 295.5
+    - 227.3
+    - 304.0
+    kind: check
+  spell_4_8:
+    page: 2
+    rect:
+    - 229.8
+    - 282.5
+    - 387.7
+    - 292.5
+  spell_4_8_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 281.5
+    - 227.3
+    - 290.0
+    kind: check
+  spell_4_9:
+    page: 2
+    rect:
+    - 229.8
+    - 268.6
+    - 387.7
+    - 278.5
+  spell_4_9_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 267.5
+    - 227.3
+    - 276.0
+    kind: check
+  spell_4_10:
+    page: 2
+    rect:
+    - 229.8
+    - 254.5
+    - 387.7
+    - 264.5
+  spell_4_10_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 253.5
+    - 227.3
+    - 262.0
+    kind: check
+  spell_4_11:
+    page: 2
+    rect:
+    - 229.8
+    - 240.5
+    - 387.7
+    - 250.5
+  spell_4_11_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 239.5
+    - 227.3
+    - 248.0
+    kind: check
+  spell_4_12:
+    page: 2
+    rect:
+    - 229.8
+    - 226.5
+    - 387.7
+    - 236.5
+  spell_4_12_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 225.5
+    - 227.3
+    - 234.0
+    kind: check
+  spell_4_13:
+    page: 2
+    rect:
+    - 229.8
+    - 212.6
+    - 387.7
+    - 222.5
+  spell_4_13_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 211.5
+    - 227.3
+    - 220.0
+    kind: check
+  spell_5_1:
+    page: 2
+    rect:
+    - 229.8
+    - 154.0
+    - 387.7
+    - 163.9
+  spell_5_1_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 152.9
+    - 227.3
+    - 161.4
+    kind: check
+  spell_5_2:
+    page: 2
+    rect:
+    - 229.8
+    - 139.9
+    - 387.7
+    - 149.8
+  spell_5_2_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 138.9
+    - 227.3
+    - 147.4
+    kind: check
+  spell_5_3:
+    page: 2
+    rect:
+    - 229.8
+    - 125.9
+    - 387.7
+    - 135.8
+  spell_5_3_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 124.9
+    - 227.3
+    - 133.4
+    kind: check
+  spell_5_4:
+    page: 2
+    rect:
+    - 229.8
+    - 111.9
+    - 387.7
+    - 121.9
+  spell_5_4_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 110.9
+    - 227.3
+    - 119.4
+    kind: check
+  spell_5_5:
+    page: 2
+    rect:
+    - 229.8
+    - 97.9
+    - 387.7
+    - 107.9
+  spell_5_5_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 96.9
+    - 227.3
+    - 105.4
+    kind: check
+  spell_5_6:
+    page: 2
+    rect:
+    - 229.8
+    - 84.0
+    - 387.7
+    - 93.9
+  spell_5_6_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 82.9
+    - 227.3
+    - 91.4
+    kind: check
+  spell_5_7:
+    page: 2
+    rect:
+    - 229.8
+    - 70.0
+    - 387.7
+    - 79.9
+  spell_5_7_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 68.9
+    - 227.3
+    - 77.4
+    kind: check
+  spell_5_8:
+    page: 2
+    rect:
+    - 229.8
+    - 56.0
+    - 387.7
+    - 65.9
+  spell_5_8_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 54.9
+    - 227.3
+    - 63.4
+    kind: check
+  spell_5_9:
+    page: 2
+    rect:
+    - 229.8
+    - 41.8
+    - 387.7
+    - 51.8
+  spell_5_9_prep:
+    page: 2
+    rect:
+    - 221.4
+    - 40.9
+    - 227.3
+    - 49.4
+    kind: check
+  spell_6_1:
+    page: 2
+    rect:
+    - 416.9
+    - 606.1
+    - 574.8
+    - 616.0
+  spell_6_1_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 605.2
+    - 414.4
+    - 613.6
+    kind: check
+  spell_6_2:
+    page: 2
+    rect:
+    - 416.9
+    - 592.1
+    - 574.8
+    - 602.1
+  spell_6_2_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 591.2
+    - 414.4
+    - 599.6
+    kind: check
+  spell_6_3:
+    page: 2
+    rect:
+    - 416.9
+    - 578.1
+    - 574.8
+    - 588.0
+  spell_6_3_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 577.1
+    - 414.4
+    - 585.6
+    kind: check
+  spell_6_4:
+    page: 2
+    rect:
+    - 416.9
+    - 564.1
+    - 574.8
+    - 574.0
+  spell_6_4_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 563.1
+    - 414.4
+    - 571.6
+    kind: check
+  spell_6_5:
+    page: 2
+    rect:
+    - 416.9
+    - 550.1
+    - 574.8
+    - 560.0
+  spell_6_5_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 549.1
+    - 414.4
+    - 557.6
+    kind: check
+  spell_6_6:
+    page: 2
+    rect:
+    - 416.9
+    - 536.1
+    - 574.8
+    - 546.1
+  spell_6_6_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 535.1
+    - 414.4
+    - 543.5
+    kind: check
+  spell_6_7:
+    page: 2
+    rect:
+    - 416.9
+    - 522.1
+    - 574.8
+    - 532.1
+  spell_6_7_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 521.1
+    - 414.4
+    - 529.6
+    kind: check
+  spell_6_8:
+    page: 2
+    rect:
+    - 416.9
+    - 508.1
+    - 574.8
+    - 518.1
+  spell_6_8_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 507.1
+    - 414.4
+    - 515.6
+    kind: check
+  spell_6_9:
+    page: 2
+    rect:
+    - 416.9
+    - 494.1
+    - 574.8
+    - 504.1
+  spell_6_9_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 493.1
+    - 414.4
+    - 501.6
+    kind: check
+  spell_7_1:
+    page: 2
+    rect:
+    - 416.9
+    - 436.3
+    - 574.8
+    - 446.3
+  spell_7_1_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 435.4
+    - 414.4
+    - 443.9
+    kind: check
+  spell_7_2:
+    page: 2
+    rect:
+    - 416.9
+    - 422.4
+    - 574.8
+    - 432.3
+  spell_7_2_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 421.4
+    - 414.4
+    - 429.9
+    kind: check
+  spell_7_3:
+    page: 2
+    rect:
+    - 416.9
+    - 408.3
+    - 574.8
+    - 418.2
+  spell_7_3_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 407.4
+    - 414.4
+    - 415.9
+    kind: check
+  spell_7_4:
+    page: 2
+    rect:
+    - 416.9
+    - 394.3
+    - 574.8
+    - 404.3
+  spell_7_4_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 393.4
+    - 414.4
+    - 401.9
+    kind: check
+  spell_7_5:
+    page: 2
+    rect:
+    - 416.9
+    - 380.3
+    - 574.8
+    - 390.3
+  spell_7_5_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 379.4
+    - 414.4
+    - 387.9
+    kind: check
+  spell_7_6:
+    page: 2
+    rect:
+    - 416.9
+    - 366.4
+    - 574.8
+    - 376.3
+  spell_7_6_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 365.4
+    - 414.4
+    - 373.9
+    kind: check
+  spell_7_7:
+    page: 2
+    rect:
+    - 416.9
+    - 352.4
+    - 574.8
+    - 362.3
+  spell_7_7_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 351.4
+    - 414.4
+    - 359.9
+    kind: check
+  spell_7_8:
+    page: 2
+    rect:
+    - 416.9
+    - 338.3
+    - 574.8
+    - 348.3
+  spell_7_8_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 337.4
+    - 414.4
+    - 345.9
+    kind: check
+  spell_7_9:
+    page: 2
+    rect:
+    - 416.9
+    - 324.4
+    - 574.8
+    - 334.3
+  spell_7_9_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 323.4
+    - 414.4
+    - 331.9
+    kind: check
+  spell_8_1:
+    page: 2
+    rect:
+    - 416.9
+    - 266.6
+    - 574.8
+    - 276.5
+  spell_8_1_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 265.6
+    - 414.4
+    - 274.1
+    kind: check
+  spell_8_2:
+    page: 2
+    rect:
+    - 416.9
+    - 252.6
+    - 574.8
+    - 262.5
+  spell_8_2_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 251.6
+    - 414.4
+    - 260.1
+    kind: check
+  spell_8_3:
+    page: 2
+    rect:
+    - 416.9
+    - 238.5
+    - 574.8
+    - 248.5
+  spell_8_3_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 237.6
+    - 414.4
+    - 246.1
+    kind: check
+  spell_8_4:
+    page: 2
+    rect:
+    - 416.9
+    - 224.6
+    - 574.8
+    - 234.5
+  spell_8_4_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 223.6
+    - 414.4
+    - 232.0
+    kind: check
+  spell_8_5:
+    page: 2
+    rect:
+    - 416.9
+    - 210.5
+    - 574.8
+    - 220.5
+  spell_8_5_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 209.6
+    - 414.4
+    - 218.0
+    kind: check
+  spell_8_6:
+    page: 2
+    rect:
+    - 416.9
+    - 196.6
+    - 574.8
+    - 206.5
+  spell_8_6_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 195.5
+    - 414.4
+    - 204.0
+    kind: check
+  spell_8_7:
+    page: 2
+    rect:
+    - 416.9
+    - 182.6
+    - 574.8
+    - 192.5
+  spell_8_7_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 181.5
+    - 414.4
+    - 190.0
+    kind: check
+  spell_9_1:
+    page: 2
+    rect:
+    - 416.9
+    - 125.8
+    - 574.8
+    - 135.7
+  spell_9_1_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 124.9
+    - 414.4
+    - 133.4
+    kind: check
+  spell_9_2:
+    page: 2
+    rect:
+    - 416.9
+    - 111.8
+    - 574.8
+    - 121.8
+  spell_9_2_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 110.9
+    - 414.4
+    - 119.4
+    kind: check
+  spell_9_3:
+    page: 2
+    rect:
+    - 416.9
+    - 97.8
+    - 574.8
+    - 107.7
+  spell_9_3_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 96.9
+    - 414.4
+    - 105.3
+    kind: check
+  spell_9_4:
+    page: 2
+    rect:
+    - 416.9
+    - 83.8
+    - 574.8
+    - 93.7
+  spell_9_4_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 82.8
+    - 414.4
+    - 91.3
+    kind: check
+  spell_9_5:
+    page: 2
+    rect:
+    - 416.9
+    - 69.8
+    - 574.8
+    - 79.7
+  spell_9_5_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 68.8
+    - 414.4
+    - 77.3
+    kind: check
+  spell_9_6:
+    page: 2
+    rect:
+    - 416.9
+    - 55.8
+    - 574.8
+    - 65.8
+  spell_9_6_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 54.8
+    - 414.4
+    - 63.3
+    kind: check
+  spell_9_7:
+    page: 2
+    rect:
+    - 416.9
+    - 41.8
+    - 574.8
+    - 51.8
+  spell_9_7_prep:
+    page: 2
+    rect:
+    - 408.5
+    - 40.8
+    - 414.4
+    - 49.2
+    kind: check

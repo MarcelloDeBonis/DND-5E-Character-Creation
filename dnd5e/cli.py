@@ -22,7 +22,7 @@ def cmd_build(args):
     char = load_character(args.character)
     sheet = build_sheet(char, rules)
     out = Path(args.output) if args.output else ROOT / "output" / f"{char['_stem']}.pdf"
-    renderer = SheetRenderer(args.template)
+    renderer = SheetRenderer(args.template or char.get("template", "official"))
     renderer.render(sheet, out, appendix=not args.no_appendix)
     md = out.with_suffix(".md")
     md.write_text(sheet_markdown(sheet), encoding="utf-8")
@@ -63,7 +63,7 @@ def main(argv=None):
     b = sub.add_parser("build", help="genera il PDF della scheda")
     b.add_argument("character")
     b.add_argument("-o", "--output")
-    b.add_argument("-t", "--template", default="official")
+    b.add_argument("-t", "--template", default=None, help="official | official_it (default: campo template del personaggio)")
     b.add_argument("--no-appendix", action="store_true", help="non aggiungere la pagina di appendice")
     b.set_defaults(func=cmd_build)
     s = sub.add_parser("summary", help="stampa il riepilogo calcolato")

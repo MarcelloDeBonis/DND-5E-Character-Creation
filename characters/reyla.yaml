@@ -3,7 +3,8 @@
 # Genera la scheda con:  python -m dnd5e build characters/reyla.yaml
 
 name: Reyla
-player: "Marcello"
+template: official_it         # official (etichette inglesi) | official_it (etichette italiane)
+player: "Arianna"
 race: elf
 subrace: high_elf
 class: druid
