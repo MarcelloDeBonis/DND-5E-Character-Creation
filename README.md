@@ -50,7 +50,12 @@ Campi liberi utili nel YAML del personaggio: `extra_skills`, `expertise`, `tools
 
 ## Personaggi
 
-- **Reyla** — Elfa Alta, Druida (Circolo della Luna) di 3° livello, Forestiero. `characters/reyla.yaml` → `output/reyla.pdf`.
+- **Reyla** (giocatrice Arianna) — Elfa Alta, Druida (Circolo della Luna) di 3° livello, Forestiera. `characters/reyla.yaml` → `output/reyla.pdf` + `output/reyla_guida.pdf`.
+- **Kate** (giocatrice Rebecca) — Dragonide (drago rosso), Maga (Scuola di Ammaliamento) di 3° livello, Artigiana di Gilda. `characters/kate.yaml` → `output/kate.pdf` + `output/kate_guida.pdf`.
+
+## Versione per bambini e guida
+
+Con `simple: true` nel personaggio la scheda usa testi facili (campi `kid` nei file di regole), mette sulla pagina 2 un riquadro "Come si gioca" e non aggiunge l'appendice. Il comando `build` genera anche `<nome>_guida.pdf`: regole base, una carta per ogni magia (quelle del personaggio evidenziate, poi tutte le altre che può scegliere) e una carta per ogni animale della Forma Selvatica. Con `gender: f` razza, classe e background sono al femminile (`name_f`). `python -m dnd5e build x.yaml --guide` genera la guida anche senza `simple`.
 - `characters/examples/reyla_guerriera.yaml` — la stessa Reyla come Guerriera (Maestro di Battaglia), usata come esempio e test della classe.
 
-Chiavi utili per gli incantatori: `cantrips` (trucchetti di classe), `spells` (incantesimi preparati o conosciuti), `racial_cantrips` (trucchetto razziale, es. Elfo Alto), `circle_terrain` (Circolo della Terra).
+Chiavi utili per gli incantatori: `cantrips` (trucchetti di classe), `spells` (incantesimi preparati o conosciuti), `spellbook` (libro del mago: `spells` deve esserne un sottoinsieme), `racial_cantrips` (trucchetto razziale, es. Elfo Alto), `circle_terrain` (Circolo della Terra). Dragonide: `draconic_ancestry` (red, black, green...).
