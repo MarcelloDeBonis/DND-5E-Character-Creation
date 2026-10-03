@@ -1,0 +1,611 @@
+# Talenti del Manuale del Giocatore (PHB 2014). Il personaggio li sceglie con
+# feats: [alert, {key: resilient, ability: con}, ...]; campi di calcolo: ability_bonus, ability_choice,
+# initiative_bonus, speed_bonus (m), hp_per_level, passive_bonus, armor_proficiencies, weapon_proficiencies,
+# skill_choice, languages, save_proficiency_choice.
+alert:
+  name: Allerta
+  name_en: Alert
+  prerequisite: null
+  initiative_bonus: 5
+  short: +5 all'iniziativa; finché sei cosciente nessuno può sorprenderti; le creature che non vedi non ottengono vantaggio ai tiri per colpire contro di te per il fatto di non essere viste.
+  text: 'Sempre all''erta e pronto ad affrontare il pericolo, il personaggio ottiene i seguenti benefici: ottiene un bonus di +5 all''iniziativa; non può essere sorpreso finché è cosciente; le altre creature
+    non ottengono vantaggio ai tiri per colpire contro di lui per il solo fatto di non essere viste da lui.'
+  kid: 'Hai +5 all''iniziativa (già sulla scheda): agisci quasi sempre prima degli altri. Finché sei cosciente nessuno ti coglie di sorpresa, e un nemico che tu non vedi non tira 2 d20 (tenendo il più alto)
+    per colpirti.'
+athlete:
+  name: Atleta
+  name_en: Athlete
+  prerequisite: null
+  ability_choice:
+    count: 1
+    bonus: 1
+    from:
+    - str
+    - dex
+  short: +1 FOR o DES; rialzarti da prono ti costa solo 1,5 m di movimento; scalare non ti costa movimento extra; salto in lungo o in alto con rincorsa dopo appena 1,5 m.
+  text: 'Il personaggio si è sottoposto a un intenso addestramento fisico e ottiene i seguenti benefici: aumenta il punteggio di Forza o di Destrezza di 1, fino a un massimo di 20; quando è prono, rialzarsi
+    gli costa soltanto 1,5 metri di movimento; scalare non gli costa movimento extra; può effettuare un salto in lungo o un salto in alto con rincorsa dopo essersi mosso di soli 1,5 metri a piedi, anziché
+    3 metri.'
+  kid: +1 a Forza o Destrezza. Se cadi a terra ti rialzi usando solo 1,5 m di movimento, arrampicarti non ti rallenta e per saltare con la rincorsa ti basta correre 1,5 m.
+actor:
+  name: Attore
+  name_en: Actor
+  prerequisite: null
+  ability_bonus:
+    cha: 1
+  short: +1 CAR; vantaggio a Inganno e Intrattenere quando ti spacci per un'altra persona; imiti la voce di una persona o i versi di una creatura sentiti per almeno 1 minuto.
+  text: 'Abile nella mimica e nella recitazione, il personaggio ottiene i seguenti benefici: aumenta il punteggio di Carisma di 1, fino a un massimo di 20; dispone di vantaggio alle prove di Carisma (Inganno)
+    e di Carisma (Intrattenere) quando cerca di spacciarsi per una persona diversa; può imitare il modo di parlare di un''altra persona o i suoni prodotti da altre creature, a patto di avere sentito quella
+    persona parlare, o quella creatura emettere quel suono, per almeno 1 minuto. Chi ascolta capisce che si tratta di un''imitazione se supera una prova di Saggezza (Intuizione) contrapposta alla prova
+    di Carisma (Inganno) del personaggio.'
+  kid: +1 a Carisma. Quando fingi di essere un'altra persona, per Inganno e Intrattenere tiri 2 d20 e tieni il più alto. Se ascolti qualcuno per 1 minuto, sai imitare la sua voce o il verso di un animale.
+charger:
+  name: Carica
+  name_en: Charger
+  prerequisite: null
+  short: Quando usi l'azione di Scatto, con un'azione bonus fai un attacco con un'arma da mischia o spingi una creatura; se subito prima hai percorso almeno 3 m in linea retta, +5 ai danni dell'attacco
+    oppure spingi il bersaglio fino a 3 m.
+  text: Quando il personaggio usa la sua azione per effettuare l'azione di Scatto, può usare un'azione bonus per effettuare un attacco con un'arma da mischia o per spingere una creatura. Se si muove di
+    almeno 3 metri in linea retta subito prima di effettuare questa azione bonus, ottiene un bonus di +5 al tiro per i danni dell'attacco (se ha scelto di attaccare e colpisce) oppure spinge il bersaglio
+    fino a 3 metri lontano da sé (se ha scelto di spingere e ci riesce).
+  kid: 'Se nel tuo turno usi lo Scatto (corri il doppio), con l''azione bonus puoi anche attaccare in mischia o spingere un nemico. Se prima hai corso almeno 3 m dritto: +5 danni, oppure lo spingi via di
+    3 m.'
+crossbow_expert:
+  name: Esperto di Balestre
+  name_en: Crossbow Expert
+  prerequisite: null
+  short: Ignori la proprietà ricarica delle balestre in cui hai competenza; avere un nemico entro 1,5 m non ti dà svantaggio agli attacchi a distanza; dopo un attacco con un'arma a una mano (azione di Attacco),
+    azione bonus per attaccare con una balestra a mano carica.
+  text: 'Grazie a un lungo addestramento con la balestra, il personaggio ottiene i seguenti benefici: ignora la proprietà ricarica delle balestre con cui ha competenza; trovarsi entro 1,5 metri da una creatura
+    ostile non gli impone svantaggio ai tiri per colpire a distanza; quando usa l''azione di Attacco e attacca con un''arma a una mano, può usare un''azione bonus per attaccare con una balestra a mano carica
+    che impugna.'
+  kid: Con le balestre puoi tirare più dardi nello stesso turno. Con un nemico a 1,5 m spari senza svantaggio (2 d20, tieni il più basso). Dopo un attacco con un'arma a una mano, con l'azione bonus spari
+    con la balestra a mano.
+defensive_duelist:
+  name: Duellante Difensivo
+  name_en: Defensive Duelist
+  prerequisite: Destrezza 13 o superiore
+  prereq_ability:
+    dex: 13
+  short: Se impugni un'arma accurata in cui hai competenza e una creatura ti colpisce con un attacco in mischia, con la reazione aggiungi il tuo bonus di competenza alla CA contro quell'attacco (può farlo
+    mancare).
+  text: Quando il personaggio impugna un'arma accurata con cui ha competenza e un'altra creatura lo colpisce con un attacco in mischia, può usare la sua reazione per aggiungere il proprio bonus di competenza
+    alla sua CA contro quell'attacco, il che potrebbe far mancare il colpo.
+  kid: 'Se impugni un''arma accurata (stocco, pugnale...) e un nemico ti colpisce da vicino, usa la reazione (la tua mossa extra fuori turno): aggiungi il bonus di competenza alla tua CA e magari ti manca.'
+dual_wielder:
+  name: Combattere a Due Armi
+  name_en: Dual Wielder
+  prerequisite: null
+  short: +1 alla CA mentre impugni un'arma da mischia in ogni mano; combatti con due armi anche se le armi da mischia a una mano non sono leggere; estrai o riponi due armi a una mano nel tempo in cui ne
+    estrarresti una.
+  text: 'Il personaggio padroneggia il combattimento con due armi e ottiene i seguenti benefici: ottiene un bonus di +1 alla CA finché impugna un''arma da mischia separata in ciascuna mano; può combattere
+    con due armi anche se le armi da mischia a una mano che impugna non sono leggere; può estrarre o riporre due armi a una mano quando normalmente potrebbe estrarne o riporne soltanto una.'
+  kid: Con un'arma da mischia in ogni mano hai +1 alla CA. Puoi combattere con due armi anche se non sono leggere (per esempio due spade lunghe) e tirarle fuori o metterle via tutte e due insieme.
+dungeon_delver:
+  name: Esperto di Dungeon
+  name_en: Dungeon Delver
+  prerequisite: null
+  short: Vantaggio a Percezione e Indagare per scoprire porte segrete e ai TS per evitare o resistere alle trappole; resistenza ai danni delle trappole; cerchi trappole anche viaggiando a passo normale.
+  text: 'Attento alle trappole e alle porte segrete che si trovano in molti dungeon, il personaggio ottiene i seguenti benefici: dispone di vantaggio alle prove di Saggezza (Percezione) e di Intelligenza
+    (Indagare) effettuate per individuare la presenza di porte segrete; dispone di vantaggio ai tiri salvezza effettuati per evitare le trappole o resistere ai loro effetti; ha resistenza ai danni inflitti
+    dalle trappole; può cercare trappole mentre viaggia a passo normale, anziché soltanto a passo lento.'
+  kid: Per trovare porte segrete e per salvarti dalle trappole tiri 2 d20 e tieni il più alto, e le trappole ti fanno metà danni. Puoi cercare trappole anche camminando a passo normale.
+durable:
+  name: Tenace
+  name_en: Durable
+  prerequisite: null
+  ability_bonus:
+    con: 1
+  short: +1 COS; quando tiri un Dado Vita per recuperare punti ferita, recuperi almeno il doppio del tuo modificatore di Costituzione (minimo 2).
+  text: 'Duro e resistente, il personaggio ottiene i seguenti benefici: aumenta il punteggio di Costituzione di 1, fino a un massimo di 20; quando tira un Dado Vita per recuperare punti ferita, il numero
+    minimo di punti ferita che recupera con quel tiro è pari al doppio del suo modificatore di Costituzione (minimo 2).'
+  kid: +1 a Costituzione. Quando ti riposi e tiri un Dado Vita per curarti, recuperi sempre almeno il doppio del tuo modificatore di Costituzione (minimo 2 punti ferita).
+elemental_adept:
+  name: Adepto Elementale
+  name_en: Elemental Adept
+  prerequisite: Capacità di lanciare almeno un incantesimo
+  prereq_spellcaster: true
+  damage_type_choice:
+  - acido
+  - freddo
+  - fuoco
+  - fulmine
+  - tuono
+  repeatable: true
+  short: 'Scegli acido, freddo, fuoco, fulmine o tuono: i tuoi incantesimi ignorano la resistenza a quel tipo di danni e ogni 1 sui loro dadi dei danni di quel tipo conta come 2. Puoi prenderlo più volte,
+    con un tipo diverso.'
+  text: 'Quando acquisisce questo talento, il personaggio sceglie uno dei seguenti tipi di danno: acido, freddo, fuoco, fulmine o tuono. Gli incantesimi che lancia ignorano la resistenza ai danni del tipo
+    scelto. Inoltre, quando tira i danni di un incantesimo che lancia e che infligge danni di quel tipo, può considerare ogni 1 ottenuto su un dado dei danni come un 2. Il personaggio può selezionare questo
+    talento più volte; ogni volta deve scegliere un tipo di danno diverso.'
+  kid: 'Scegli un elemento: acido, freddo, fuoco, fulmine o tuono. Con le tue magie di quel tipo, chi di solito subisce metà danni li subisce tutti, e ogni 1 sui dadi dei danni vale 2.'
+grappler:
+  name: Lottatore
+  name_en: Grappler
+  prerequisite: Forza 13 o superiore
+  prereq_ability:
+    str: 13
+  short: 'Vantaggio ai tiri per colpire contro una creatura con cui stai lottando; con un''azione puoi tentare di immobilizzarla con un''altra prova di lotta: se riesci, tu e lei siete trattenuti finché
+    la lotta non finisce.'
+  text: 'Il personaggio ha sviluppato le abilità necessarie per farsi valere nella lotta corpo a corpo e ottiene i seguenti benefici: dispone di vantaggio ai tiri per colpire contro una creatura con cui
+    sta lottando; può usare la sua azione per tentare di immobilizzare una creatura da lui afferrata, effettuando un''altra prova di lotta. Se la supera, il personaggio e la creatura sono entrambi trattenuti
+    fino alla fine della lotta.'
+  kid: 'Contro chi stai tenendo stretto tiri 2 d20 e tieni il più alto per colpirlo. Con un''azione puoi provare a bloccarlo: se vinci un''altra prova di lotta, siete trattenuti tutti e due (fermi e più
+    facili da colpire) finché la presa dura.'
+great_weapon_master:
+  name: Maestro d'Armi Possenti
+  name_en: Great Weapon Master
+  prerequisite: null
+  short: 'Nel tuo turno, se fai un colpo critico o porti una creatura a 0 PF con un''arma da mischia, fai un attacco con un''arma da mischia come azione bonus. Prima di attaccare con un''arma pesante in
+    cui hai competenza puoi scegliere -5 al tiro per colpire: se colpisci, +10 ai danni.'
+  text: 'Il personaggio ha imparato a sfruttare il peso di un''arma a proprio vantaggio, lasciando che lo slancio renda più potenti i suoi colpi. Ottiene i seguenti benefici: nel suo turno, quando mette
+    a segno un colpo critico con un''arma da mischia o riduce una creatura a 0 punti ferita con un''arma da mischia, può effettuare un attacco con un''arma da mischia come azione bonus; prima di effettuare
+    un attacco in mischia con un''arma pesante con cui ha competenza, può scegliere di subire penalità di -5 al tiro per colpire. Se l''attacco colpisce, aggiunge +10 ai danni dell''attacco.'
+  kid: 'Nel tuo turno, se con un''arma da mischia fai 20 sul dado (colpo critico) o mandi un nemico a 0 punti ferita, attacchi ancora con l''azione bonus. Con un''arma pesante, prima di tirare puoi scegliere
+    -5 per colpire: se colpisci, +10 danni.'
+healer:
+  name: Guaritore
+  name_en: Healer
+  prerequisite: null
+  short: Se stabilizzi una creatura morente con una borsa del guaritore, recupera anche 1 PF. Con un'azione e un utilizzo della borsa le fai recuperare 1d6 + 4 PF + 1 PF per ogni suo Dado Vita massimo (poi
+    deve fare un riposo breve o lungo prima di riceverlo di nuovo).
+  text: 'Il personaggio è un medico capace, in grado di prestare rapidamente le prime cure e di rimettere in piedi i suoi alleati. Ottiene i seguenti benefici: quando usa una borsa del guaritore per stabilizzare
+    una creatura morente, quella creatura recupera anche 1 punto ferita; come azione, può spendere un utilizzo di una borsa del guaritore per curare una creatura e farle recuperare 1d6 + 4 punti ferita,
+    più un numero di punti ferita aggiuntivi pari al numero massimo di Dadi Vita della creatura. La creatura non può più recuperare punti ferita grazie a questo talento finché non completa un riposo breve
+    o lungo.'
+  kid: Con la borsa del guaritore, un'amica a 0 punti ferita si rialza subito con 1 punto ferita. Con un'azione puoi anche ridarle 1d6 + 4 punti ferita, più 1 per ogni suo livello (poi deve riposare prima
+    di riprovare).
+heavily_armored:
+  name: Corazze Pesanti
+  name_en: Heavily Armored
+  prerequisite: Competenza nelle armature medie
+  prereq_armor: medium
+  ability_bonus:
+    str: 1
+  armor_proficiencies:
+  - heavy
+  short: +1 FOR; competenza nelle armature pesanti.
+  text: 'Il personaggio si è addestrato a padroneggiare l''uso delle armature pesanti e ottiene i seguenti benefici: aumenta il punteggio di Forza di 1, fino a un massimo di 20; ottiene competenza nelle
+    armature pesanti.'
+  kid: +1 a Forza. Ora sai indossare le armature pesanti, come la cotta di maglia (CA 16) o l'armatura completa (CA 18).
+heavy_armor_master:
+  name: Maestro delle Armature Pesanti
+  name_en: Heavy Armor Master
+  prerequisite: Competenza nelle armature pesanti
+  prereq_armor: heavy
+  ability_bonus:
+    str: 1
+  damage_reduction:
+    amount: 3
+    types:
+    - contundente
+    - perforante
+    - tagliente
+    condition: indossi un'armatura pesante; solo danni da armi non magiche
+  short: +1 FOR; mentre indossi un'armatura pesante, i danni contundenti, perforanti e taglienti che subisci dalle armi non magiche sono ridotti di 3.
+  text: 'Il personaggio sa usare l''armatura per deviare i colpi che ucciderebbero altri. Ottiene i seguenti benefici: aumenta il punteggio di Forza di 1, fino a un massimo di 20; finché indossa un''armatura
+    pesante, i danni contundenti, perforanti e taglienti che subisce dalle armi non magiche sono ridotti di 3.'
+  kid: +1 a Forza. Quando indossi un'armatura pesante, i colpi di armi normali (non magiche) ti fanno 3 danni in meno.
+inspiring_leader:
+  name: Condottiero Ispiratore
+  name_en: Inspiring Leader
+  prerequisite: Carisma 13 o superiore
+  prereq_ability:
+    cha: 13
+  short: Con 10 minuti di discorso, fino a 6 creature amiche (anche tu) entro 9 m che ti vedono o ti sentono e ti capiscono ottengono PF temporanei pari al tuo livello + mod. CAR; ognuna una volta tra un
+    riposo breve o lungo e l'altro.
+  text: Il personaggio può spendere 10 minuti a ispirare i suoi compagni, rafforzando la loro determinazione a combattere. Quando lo fa, sceglie fino a sei creature amiche (può includere se stesso) entro
+    9 metri da lui che possano vederlo o sentirlo e che possano capirlo. Ognuna di quelle creature ottiene un numero di punti ferita temporanei pari al livello del personaggio + il suo modificatore di Carisma.
+    Una creatura non può ottenere di nuovo punti ferita temporanei da questo talento finché non completa un riposo breve o lungo.
+  kid: 'Con 10 minuti di discorso incoraggiante dai fino a 6 persone entro 9 m (anche a te) punti ferita extra, che si perdono per primi: {livello} + il tuo modificatore di Carisma. Si rifà dopo un riposo.'
+keen_mind:
+  name: Mente Acuta
+  name_en: Keen Mind
+  prerequisite: null
+  ability_bonus:
+    int: 1
+  short: +1 INT; sai sempre dov'è il nord e quante ore mancano alla prossima alba o al prossimo tramonto; ricordi con precisione qualsiasi cosa hai visto o sentito nell'ultimo mese.
+  text: 'Il personaggio ha una mente capace di tenere traccia del tempo, della direzione e dei dettagli con incredibile precisione. Ottiene i seguenti benefici: aumenta il punteggio di Intelligenza di 1,
+    fino a un massimo di 20; sa sempre dove si trova il nord; sa sempre quante ore mancano alla prossima alba o al prossimo tramonto; può ricordare con precisione qualsiasi cosa abbia visto o sentito nell''ultimo
+    mese.'
+  kid: +1 a Intelligenza. Sai sempre dov'è il nord e quante ore mancano all'alba o al tramonto, e ricordi esattamente tutto quello che hai visto o sentito nell'ultimo mese.
+lightly_armored:
+  name: Corazze Leggere
+  name_en: Lightly Armored
+  prerequisite: null
+  ability_choice:
+    count: 1
+    bonus: 1
+    from:
+    - str
+    - dex
+  armor_proficiencies:
+  - light
+  short: +1 FOR o DES; competenza nelle armature leggere.
+  text: 'Il personaggio si è addestrato a padroneggiare l''uso delle armature leggere e ottiene i seguenti benefici: aumenta il punteggio di Forza o di Destrezza di 1, fino a un massimo di 20; ottiene competenza
+    nelle armature leggere.'
+  kid: +1 a Forza o Destrezza. Ora sai indossare le armature leggere, come l'armatura di cuoio (CA 11 + il tuo modificatore di Destrezza).
+linguist:
+  name: Linguista
+  name_en: Linguist
+  prerequisite: null
+  ability_bonus:
+    int: 1
+  languages: 3
+  short: +1 INT; impari 3 linguaggi a scelta; crei cifrari scritti che nessuno decifra, a meno che tu non glielo insegni, che non usi la magia o che non superi una prova di Intelligenza (CD = tuo punteggio
+    di Intelligenza + bonus di competenza).
+  text: 'Il personaggio ha studiato linguaggi e codici e ottiene i seguenti benefici: aumenta il punteggio di Intelligenza di 1, fino a un massimo di 20; impara tre linguaggi a sua scelta; sa creare abilmente
+    cifrari scritti. Gli altri non possono decifrare un codice creato da lui a meno che non sia lui a insegnarglielo, che non superino una prova di Intelligenza (CD pari al punteggio di Intelligenza del
+    personaggio + il suo bonus di competenza) o che non usino la magia per decifrarlo.'
+  kid: '+1 a Intelligenza e impari 3 lingue nuove. Sai scrivere in codice segreto: nessuno lo capisce, a meno che tu glielo insegni, che usi la magia o che superi una prova di Intelligenza difficilissima.'
+lucky:
+  name: Fortunato
+  name_en: Lucky
+  prerequisite: null
+  luck_points: 3
+  short: '3 punti fortuna (tornano con un riposo lungo): spendine 1 dopo aver tirato per colpire, una prova di caratteristica o un TS per tirare un altro d20 e scegliere quale usare; oppure quando qualcuno
+    ti attacca, tira un d20 e scegli se l''attacco usa il suo dado o il tuo.'
+  text: 'Il personaggio ha una fortuna inspiegabile che sembra intervenire al momento giusto. Dispone di 3 punti fortuna. Ogni volta che effettua un tiro per colpire, una prova di caratteristica o un tiro
+    salvezza, può spendere un punto fortuna per tirare un d20 aggiuntivo; può decidere di farlo dopo avere tirato il dado, ma prima che l''esito sia determinato, e sceglie quale dei d20 usare. Può anche
+    spendere un punto fortuna quando viene effettuato un tiro per colpire contro di lui: tira un d20 e sceglie se l''attacco usa il tiro dell''attaccante o il suo. Se più creature spendono un punto fortuna
+    per influenzare l''esito di uno stesso tiro, i punti si annullano a vicenda e non si tirano dadi aggiuntivi. Il personaggio recupera i punti fortuna spesi quando completa un riposo lungo.'
+  kid: Hai 3 punti fortuna, che tornano dopo una notte di riposo. Spendine 1 per tirare un altro d20 quando attacchi, fai una prova o un tiro salvezza (scegli tu quale tenere), oppure quando un nemico attacca
+    te.
+mage_slayer:
+  name: Sterminatore di Maghi
+  name_en: Mage Slayer
+  prerequisite: null
+  short: Quando una creatura entro 1,5 m da te lancia un incantesimo, con la reazione fai un attacco con un'arma da mischia contro di lei; chi danneggi mentre è concentrato ha svantaggio al TS per mantenere
+    la concentrazione; vantaggio ai TS contro gli incantesimi lanciati da creature entro 1,5 m.
+  text: 'Il personaggio si è esercitato in tecniche utili per affrontare in mischia gli incantatori e ottiene i seguenti benefici: quando una creatura entro 1,5 metri da lui lancia un incantesimo, può usare
+    la sua reazione per effettuare un attacco con un''arma da mischia contro quella creatura; quando danneggia una creatura che sta mantenendo la concentrazione su un incantesimo, quella creatura ha svantaggio
+    al tiro salvezza per mantenere la concentrazione; dispone di vantaggio ai tiri salvezza contro gli incantesimi lanciati da creature entro 1,5 metri da lui.'
+  kid: Se un nemico a 1,5 m lancia una magia, con la reazione lo colpisci con l'arma. Contro le sue magie tiri 2 d20 e tieni il più alto, e se lo ferisci fatica a tenere attiva la sua magia.
+magic_initiate:
+  name: Iniziato alla Magia
+  name_en: Magic Initiate
+  prerequisite: null
+  cantrip_choice:
+    count: 2
+    lists:
+    - bard
+    - cleric
+    - druid
+    - sorcerer
+    - warlock
+    - wizard
+    same_list: true
+    ability_by_list:
+      bard: cha
+      cleric: wis
+      druid: wis
+      sorcerer: cha
+      warlock: cha
+      wizard: int
+    description: 2 trucchetti dalla lista della classe scelta (bardo, chierico, druido, mago, stregone o warlock).
+  spell_choice:
+    count: 1
+    level: 1
+    same_list: true
+    cast_at_lowest_level: true
+    uses: 1
+    recharge: long_rest
+    description: 1 incantesimo di 1° livello dalla stessa lista dei trucchetti, lanciato al livello più basso 1 volta per riposo lungo (senza slot).
+  short: 'Scegli bardo, chierico, druido, mago, stregone o warlock: impari 2 trucchetti e 1 incantesimo di 1° livello della sua lista; l''incantesimo lo lanci al livello più basso 1 volta per riposo lungo.
+    Caratteristica: CAR (bardo, stregone, warlock), SAG (chierico, druido), INT (mago).'
+  text: 'Il personaggio sceglie una classe tra bardo, chierico, druido, mago, stregone e warlock. Impara due trucchetti a sua scelta dalla lista degli incantesimi di quella classe. Inoltre sceglie un incantesimo
+    di 1° livello dalla stessa lista: impara quell''incantesimo e può lanciarlo al suo livello più basso. Una volta lanciato, deve completare un riposo lungo prima di poterlo lanciare di nuovo tramite questo
+    talento. La caratteristica da incantatore per questi incantesimi dipende dalla classe scelta: Carisma per bardo, stregone o warlock; Saggezza per chierico o druido; Intelligenza per mago.'
+  kid: Impari 2 trucchetti (magie che puoi usare quando vuoi) e 1 incantesimo di 1° livello di una classe magica a tua scelta. L'incantesimo lo lanci 1 volta, poi torna dopo una notte di riposo.
+martial_adept:
+  name: Adepto Marziale
+  name_en: Martial Adept
+  prerequisite: null
+  maneuver_choice:
+    count: 2
+    source: maneuvers.yaml
+  superiority_dice:
+    count: 1
+    die: d6
+    recharge: short_rest
+  short: Impari 2 manovre del Maestro di Battaglia e ottieni 1 dado di superiorità (d6, si somma a quelli di altre fonti) che recuperi con un riposo breve o lungo. CD dei TS delle manovre = 8 + bonus di
+    competenza + mod. FOR o DES (a scelta).
+  text: 'Il personaggio ha un addestramento marziale che gli permette di eseguire speciali manovre di combattimento. Ottiene i seguenti benefici: impara due manovre a sua scelta tra quelle disponibili per
+    l''archetipo Maestro di Battaglia del guerriero; se una manovra che usa richiede al bersaglio di effettuare un tiro salvezza, la CD del tiro salvezza è pari a 8 + il suo bonus di competenza + il suo
+    modificatore di Forza o di Destrezza (a sua scelta); ottiene un dado di superiorità, un d6 (che si aggiunge agli eventuali dadi di superiorità che possiede da un''altra fonte), con cui alimenta le sue
+    manovre. Un dado di superiorità viene speso quando viene usato; il personaggio recupera i dadi di superiorità spesi quando completa un riposo breve o lungo.'
+  kid: Impari 2 mosse speciali di combattimento (manovre) e hai 1 dado d6 da spendere per usarne una. Il dado torna dopo un riposo, anche breve.
+medium_armor_master:
+  name: Maestro delle Armature Medie
+  name_en: Medium Armor Master
+  prerequisite: Competenza nelle armature medie
+  prereq_armor: medium
+  medium_armor_no_stealth_penalty: true
+  medium_armor_dex_cap: 3
+  short: Le armature medie non ti danno svantaggio alle prove di Destrezza (Furtività); con un'armatura media aggiungi fino a +3 di DES alla CA, anziché +2, se hai Destrezza 16 o più.
+  text: 'Il personaggio si è esercitato a muoversi indossando un''armatura media e ottiene i seguenti benefici: indossare un''armatura media non gli impone svantaggio alle prove di Destrezza (Furtività);
+    quando indossa un''armatura media, può aggiungere 3, anziché 2, alla sua CA se ha una Destrezza pari o superiore a 16.'
+  kid: 'Con un''armatura media ti muovi senza fare rumore: per nasconderti (Furtività) non tiri 2 d20 tenendo il più basso. Se la tua Destrezza è 16 o più, con un''armatura media aggiungi +3 alla CA invece
+    di +2.'
+mobile:
+  name: Mobilità
+  name_en: Mobile
+  prerequisite: null
+  speed_bonus: 3
+  short: Velocità +3 m; quando usi lo Scatto, in quel turno il terreno difficile non ti costa movimento extra; quando attacchi in mischia una creatura, per il resto del turno non provochi attacchi di opportunità
+    da lei, che tu colpisca o no.
+  text: 'Il personaggio è eccezionalmente rapido e agile e ottiene i seguenti benefici: la sua velocità aumenta di 3 metri; quando usa l''azione di Scatto, in quel turno il terreno difficile non gli costa
+    movimento extra; quando effettua un attacco in mischia contro una creatura, non provoca attacchi di opportunità da parte di quella creatura per il resto del turno, sia che colpisca sia che manchi.'
+  kid: Ti muovi 3 m in più a ogni turno. Quando usi lo Scatto il terreno difficile non ti rallenta, e dopo aver attaccato un nemico da vicino puoi allontanarti senza che lui ti colpisca mentre scappi.
+moderately_armored:
+  name: Corazze Medie
+  name_en: Moderately Armored
+  prerequisite: Competenza nelle armature leggere
+  prereq_armor: light
+  ability_choice:
+    count: 1
+    bonus: 1
+    from:
+    - str
+    - dex
+  armor_proficiencies:
+  - medium
+  - shields
+  short: +1 FOR o DES; competenza nelle armature medie e negli scudi.
+  text: 'Il personaggio si è addestrato a padroneggiare l''uso delle armature medie e degli scudi e ottiene i seguenti benefici: aumenta il punteggio di Forza o di Destrezza di 1, fino a un massimo di 20;
+    ottiene competenza nelle armature medie e negli scudi.'
+  kid: '+1 a Forza o Destrezza. Ora sai usare le armature medie (per esempio la corazza di scaglie: CA 14 + Destrezza, massimo +2) e lo scudo (+2 alla CA).'
+mounted_combatant:
+  name: Combattere in Sella
+  name_en: Mounted Combatant
+  prerequisite: null
+  short: 'In sella e non incapacitato: vantaggio ai tiri per colpire in mischia contro le creature non in sella più piccole della tua cavalcatura; puoi far bersagliare te al posto della cavalcatura; se
+    la cavalcatura fa un TS su DES per dimezzare i danni, non subisce danni se lo supera e solo metà se lo fallisce.'
+  text: 'Il personaggio è un avversario temibile quando combatte in sella. Finché cavalca e non è incapacitato, ottiene i seguenti benefici: dispone di vantaggio ai tiri per colpire in mischia contro qualsiasi
+    creatura non in sella che sia più piccola della sua cavalcatura; può costringere un attacco che bersaglia la sua cavalcatura a bersagliare lui invece; se la sua cavalcatura è soggetta a un effetto che
+    le permette di effettuare un tiro salvezza su Destrezza per subire soltanto metà dei danni, la cavalcatura non subisce alcun danno se supera il tiro salvezza e soltanto metà dei danni se lo fallisce.'
+  kid: In sella, contro chi è a piedi ed è più piccolo del tuo animale tiri 2 d20 e tieni il più alto. Puoi farti colpire al posto suo, e se lui schiva un'esplosione non subisce danni (metà se non ci riesce).
+observant:
+  name: Osservatore
+  name_en: Observant
+  prerequisite: null
+  ability_choice:
+    count: 1
+    bonus: 1
+    from:
+    - int
+    - wis
+  passive_bonus: 5
+  short: +1 INT o SAG; leggi le labbra di chi parla un linguaggio che capisci, se gli vedi la bocca; +5 a Saggezza (Percezione) passiva e a Intelligenza (Indagare) passiva.
+  text: 'Rapido nel notare i dettagli di ciò che lo circonda, il personaggio ottiene i seguenti benefici: aumenta il punteggio di Intelligenza o di Saggezza di 1, fino a un massimo di 20; se può vedere
+    la bocca di una creatura mentre questa parla un linguaggio che lui comprende, può interpretare ciò che dice leggendole le labbra; ottiene un bonus di +5 ai suoi punteggi passivi di Saggezza (Percezione)
+    e di Intelligenza (Indagare).'
+  kid: +1 a Intelligenza o Saggezza. Capisci cosa dice qualcuno guardandogli le labbra, e hai +5 per notare le cose senza cercarle (Percezione e Indagare passive, già sulla scheda).
+polearm_master:
+  name: Maestro delle Armi su Asta
+  name_en: Polearm Master
+  prerequisite: null
+  short: Se con l'azione di Attacco attacchi solo con falcione, alabarda, bastone ferrato o lancia, con un'azione bonus attacchi con l'altra estremità (d4 contundente, stesso modificatore). Con falcione,
+    alabarda, picca, bastone ferrato o lancia, chi entra nella tua portata provoca un tuo attacco di opportunità.
+  text: 'Il personaggio sa tenere a bada i nemici con le armi su asta e ottiene i seguenti benefici: quando effettua l''azione di Attacco e attacca soltanto con un falcione, un''alabarda, un bastone ferrato
+    o una lancia, può usare un''azione bonus per effettuare un attacco in mischia con l''estremità opposta dell''arma; questo attacco usa lo stesso modificatore di caratteristica dell''attacco principale,
+    il dado dei danni dell''arma per questo attacco è un d4 e l''attacco infligge danni contundenti; finché impugna un falcione, un''alabarda, una picca, un bastone ferrato o una lancia, le altre creature
+    provocano un attacco di opportunità da parte sua quando entrano nella portata che ha con quell''arma.'
+  kid: Se attacchi con falcione, alabarda, bastone ferrato o lancia, con l'azione bonus colpisci anche con l'altra punta (1d4 + lo stesso modificatore). Con queste armi o la picca, con la reazione colpisci
+    chi entra a portata della tua arma.
+resilient:
+  name: Resiliente
+  name_en: Resilient
+  prerequisite: null
+  ability_choice:
+    count: 1
+    bonus: 1
+    from:
+    - str
+    - dex
+    - con
+    - int
+    - wis
+    - cha
+  save_proficiency_choice: true
+  short: +1 alla caratteristica scelta (massimo 20) e competenza nei tiri salvezza su quella caratteristica.
+  text: 'Il personaggio sceglie un punteggio di caratteristica e ottiene i seguenti benefici: aumenta il punteggio scelto di 1, fino a un massimo di 20; ottiene competenza nei tiri salvezza che usano la
+    caratteristica scelta.'
+  kid: 'Scegli una caratteristica: ha +1 e ai suoi tiri salvezza (quando tiri un d20 per resistere) aggiungi il tuo bonus di competenza. I numeri sulla scheda sono già aggiornati.'
+ritual_caster:
+  name: Incantatore Rituale
+  name_en: Ritual Caster
+  prerequisite: Intelligenza o Saggezza 13 o superiore
+  prereq_ability_any:
+    int: 13
+    wis: 13
+  spell_choice:
+    count: 2
+    level: 1
+    ritual_only: true
+    ritual_book: true
+    lists:
+    - bard
+    - cleric
+    - druid
+    - sorcerer
+    - warlock
+    - wizard
+    same_list: true
+    ability_by_list:
+      bard: cha
+      cleric: wis
+      druid: wis
+      sorcerer: cha
+      warlock: cha
+      wizard: int
+    copy_more:
+      max_level: metà del livello del personaggio, arrotondato per eccesso
+      hours_per_level: 2
+      gold_per_level: 50
+    description: Libro dei rituali con 2 incantesimi di 1° livello con il descrittore rituale, dalla lista della classe scelta; si lanciano solo come rituali.
+  short: 'Scegli bardo, chierico, druido, mago, stregone o warlock: hai un libro dei rituali con 2 incantesimi rituali di 1° livello di quella lista, che lanci solo come rituali; puoi copiarvi altri rituali
+    trovati scritti (livello massimo metà del tuo livello, per eccesso) spendendo 2 ore e 50 mo per livello.'
+  text: 'Il personaggio ha imparato alcuni incantesimi che può lanciare come rituali. Questi incantesimi sono trascritti in un libro dei rituali, che deve tenere in mano mentre ne lancia uno. Quando sceglie
+    questo talento, sceglie una classe tra bardo, chierico, druido, mago, stregone e warlock e ottiene un libro dei rituali che contiene due incantesimi di 1° livello a sua scelta, presi dalla lista degli
+    incantesimi di quella classe e dotati del descrittore rituale. La caratteristica da incantatore per questi incantesimi dipende dalla classe scelta: Carisma per bardo, stregone o warlock; Saggezza per
+    chierico o druido; Intelligenza per mago. Grazie a questo talento li lancia soltanto come rituali (10 minuti in più del normale, senza spendere slot). Se trova un incantesimo in forma scritta (per esempio
+    una pergamena magica o il libro degli incantesimi di un mago) può aggiungerlo al suo libro, purché sia nella lista della classe scelta, abbia il descrittore rituale e sia di livello non superiore alla
+    metà del livello del personaggio (arrotondata per eccesso). Copiarlo richiede 2 ore e costa 50 mo per ogni livello dell''incantesimo, per le componenti consumate negli esperimenti e per gli inchiostri
+    pregiati.'
+  kid: 'Hai un libro con 2 magie rituali di 1° livello: le lanci leggendole dal libro, con 10 minuti in più, senza consumare slot. Se trovi altre magie rituali scritte puoi copiarle (2 ore e 50 monete d''oro
+    per livello).'
+savage_attacker:
+  name: Aggressore Selvaggio
+  name_en: Savage Attacker
+  prerequisite: null
+  short: Una volta per turno, quando tiri i danni di un attacco con un'arma da mischia, puoi ritirare i dadi dei danni dell'arma e usare uno dei due totali.
+  text: Una volta per turno, quando tira i danni di un attacco con un'arma da mischia, il personaggio può tirare di nuovo i dadi dei danni dell'arma e usare uno qualsiasi dei due totali.
+  kid: Una volta per turno, quando colpisci con un'arma da mischia, puoi ritirare i dadi dei danni dell'arma e tenere il risultato migliore.
+sentinel:
+  name: Sentinella
+  name_en: Sentinel
+  prerequisite: null
+  short: Se colpisci una creatura con un attacco di opportunità, la sua velocità diventa 0 per il resto del turno; le creature provocano tuoi attacchi di opportunità anche se usano Disimpegno; quando una
+    creatura entro 1,5 m attacca un bersaglio diverso da te (che non ha questo talento), con la reazione la attacchi con un'arma da mischia.
+  text: 'Il personaggio ha padroneggiato le tecniche per sfruttare ogni calo di guardia dei nemici e ottiene i seguenti benefici: quando colpisce una creatura con un attacco di opportunità, la velocità
+    della creatura diventa 0 per il resto del turno; le creature provocano attacchi di opportunità da parte sua anche se effettuano l''azione di Disimpegno prima di uscire dalla sua portata; quando una
+    creatura entro 1,5 metri da lui effettua un attacco contro un bersaglio diverso da lui (e quel bersaglio non possiede questo talento), può usare la sua reazione per effettuare un attacco con un''arma
+    da mischia contro la creatura attaccante.'
+  kid: Se colpisci un nemico che scappa da te (attacco di opportunità), lui si blocca lì. Non ti sfugge nemmeno col Disimpegno, e se un nemico a 1,5 m attacca un tuo amico, con la reazione colpisci lui.
+sharpshooter:
+  name: Tiratore Scelto
+  name_en: Sharpshooter
+  prerequisite: null
+  short: 'Attaccare a gittata lunga non ti dà svantaggio con le armi a distanza; i tuoi attacchi con armi a distanza ignorano mezza copertura e tre quarti di copertura; prima di attaccare con un''arma a
+    distanza in cui hai competenza puoi scegliere -5 al tiro per colpire: se colpisci, +10 ai danni.'
+  text: 'Il personaggio ha padroneggiato le armi a distanza e sa colpire bersagli che altri non riuscirebbero a raggiungere. Ottiene i seguenti benefici: attaccare a gittata lunga non impone svantaggio
+    ai suoi tiri per colpire con armi a distanza; i suoi attacchi con armi a distanza ignorano la mezza copertura e i tre quarti di copertura; prima di effettuare un attacco con un''arma a distanza con
+    cui ha competenza, può scegliere di subire penalità di -5 al tiro per colpire. Se l''attacco colpisce, aggiunge +10 ai danni dell''attacco.'
+  kid: 'Con le armi a distanza tiri fino alla gittata lunga senza svantaggio (2 d20, tieni il più basso), e muretti o alberi non proteggono il nemico. Prima di tirare puoi scegliere -5 per colpire: se colpisci,
+    +10 danni.'
+shield_master:
+  name: Maestro degli Scudi
+  name_en: Shield Master
+  prerequisite: null
+  short: 'Con uno scudo: dopo l''azione di Attacco, azione bonus per spingere con lo scudo una creatura entro 1,5 m; se non sei incapacitato, aggiungi il bonus alla CA dello scudo ai TS su DES contro incantesimi
+    o effetti dannosi che bersagliano solo te; se superi un TS su DES per dimezzare i danni, con la reazione non subisci danni.'
+  text: 'Il personaggio usa lo scudo non solo per proteggersi ma anche per attaccare. Finché impugna uno scudo, ottiene i seguenti benefici: se effettua l''azione di Attacco nel suo turno, può usare un''azione
+    bonus per tentare di spingere con lo scudo una creatura entro 1,5 metri da lui; se non è incapacitato, può aggiungere il bonus alla CA del suo scudo a qualsiasi tiro salvezza su Destrezza che effettua
+    contro un incantesimo o un altro effetto dannoso che bersaglia soltanto lui; se è soggetto a un effetto che gli permette di effettuare un tiro salvezza su Destrezza per subire soltanto metà dei danni,
+    può usare la sua reazione per non subire alcun danno se supera il tiro salvezza, interponendo lo scudo tra sé e la fonte dell''effetto.'
+  kid: Dopo l'azione di Attacco, con l'azione bonus spingi con lo scudo un nemico a 1,5 m. Quando tiri un d20 per schivare (tiro salvezza su Destrezza) una magia che colpisce solo te aggiungi +2; se schivi
+    un'esplosione, con la reazione non subisci danni.
+skilled:
+  name: Abile
+  name_en: Skilled
+  prerequisite: null
+  skill_choice:
+    count: 3
+    tools_allowed: true
+  short: Competenza in una combinazione qualsiasi di 3 abilità o strumenti a tua scelta.
+  text: Il personaggio ottiene competenza in una qualsiasi combinazione di tre abilità o strumenti a sua scelta.
+  kid: 'Scegli 3 abilità o strumenti: quando li usi aggiungi il tuo bonus di competenza (i numeri sono già sulla scheda).'
+skulker:
+  name: Appostato
+  name_en: Skulker
+  prerequisite: Destrezza 13 o superiore
+  prereq_ability:
+    dex: 13
+  short: Puoi tentare di nasconderti anche se sei solo leggermente oscurato alla vista di chi ti cerca; se sei nascosto e manchi una creatura con un attacco con un'arma a distanza, non riveli la tua posizione;
+    la luce fioca non ti dà svantaggio alle prove di Saggezza (Percezione) basate sulla vista.
+  text: 'Il personaggio è esperto nel restare nell''ombra e ottiene i seguenti benefici: può tentare di nascondersi quando è soltanto leggermente oscurato alla vista della creatura da cui si nasconde; quando
+    è nascosto a una creatura e la manca con un attacco con un''arma a distanza, effettuare l''attacco non rivela la sua posizione; la luce fioca non gli impone svantaggio alle prove di Saggezza (Percezione)
+    basate sulla vista.'
+  kid: Puoi nasconderti anche nella penombra, nella nebbia leggera o tra le foglie. Se mentre ti nascondi spari e manchi, il nemico non scopre dove sei. Nella luce fioca, quando cerchi con gli occhi (Percezione),
+    non tiri 2 d20 tenendo il più basso.
+spell_sniper:
+  name: Cecchino Magico
+  name_en: Spell Sniper
+  prerequisite: Capacità di lanciare almeno un incantesimo
+  prereq_spellcaster: true
+  cantrip_choice:
+    count: 1
+    attack_roll_required: true
+    lists:
+    - bard
+    - cleric
+    - druid
+    - sorcerer
+    - warlock
+    - wizard
+    ability_by_list:
+      bard: cha
+      cleric: wis
+      druid: wis
+      sorcerer: cha
+      warlock: cha
+      wizard: int
+    description: 1 trucchetto che richiede un tiro per colpire, dalla lista di bardo, chierico, druido, mago, stregone o warlock.
+  short: La gittata degli incantesimi che richiedono un tiro per colpire raddoppia; i tuoi attacchi a distanza con incantesimo ignorano mezza copertura e tre quarti di copertura; impari 1 trucchetto con
+    tiro per colpire (lista di bardo, chierico, druido, mago, stregone o warlock).
+  text: 'Il personaggio ha imparato tecniche per migliorare i suoi attacchi con certi tipi di incantesimi e ottiene i seguenti benefici: quando lancia un incantesimo che richiede di effettuare un tiro per
+    colpire, la gittata dell''incantesimo raddoppia; i suoi attacchi a distanza con incantesimo ignorano la mezza copertura e i tre quarti di copertura; impara un trucchetto che richiede un tiro per colpire,
+    scelto dalla lista degli incantesimi del bardo, del chierico, del druido, del mago, dello stregone o del warlock. La caratteristica da incantatore per questo trucchetto dipende dalla lista scelta: Carisma
+    per bardo, stregone o warlock; Saggezza per chierico o druido; Intelligenza per mago.'
+  kid: Le tue magie con tiro per colpire arrivano al doppio della distanza e muretti o alberi non proteggono il nemico. Impari anche un trucchetto d'attacco, per esempio Dardo di Fuoco (fino a 72 m).
+tavern_brawler:
+  name: Lottatore da Taverna
+  name_en: Tavern Brawler
+  prerequisite: null
+  ability_choice:
+    count: 1
+    bonus: 1
+    from:
+    - str
+    - con
+  weapon_proficiencies:
+  - improvised
+  unarmed_damage: 1d4
+  short: +1 FOR o COS; competenza nelle armi improvvisate; il tuo colpo senz'armi infligge 1d4 danni; quando nel tuo turno colpisci una creatura con un colpo senz'armi o un'arma improvvisata, con un'azione
+    bonus puoi tentare di afferrarla (lottare).
+  text: 'Abituato alle risse e a combattere con qualsiasi cosa gli capiti sotto mano, il personaggio ottiene i seguenti benefici: aumenta il punteggio di Forza o di Costituzione di 1, fino a un massimo
+    di 20; ha competenza nelle armi improvvisate; il suo colpo senz''armi usa un d4 per i danni; quando colpisce una creatura con un colpo senz''armi o con un''arma improvvisata nel suo turno, può usare
+    un''azione bonus per tentare di lottare con il bersaglio.'
+  kid: +1 a Forza o Costituzione. Sai combattere con qualsiasi oggetto (sedie, boccali...), i tuoi pugni fanno 1d4 + Forza danni e, quando colpisci così, con l'azione bonus puoi provare ad afferrare il
+    nemico.
+tough:
+  name: Robusto
+  name_en: Tough
+  prerequisite: null
+  hp_per_level: 2
+  short: I tuoi punti ferita massimi aumentano di 2 per ogni tuo livello, e di altri 2 a ogni livello successivo.
+  text: Quando il personaggio acquisisce questo talento, il suo massimo dei punti ferita aumenta di un ammontare pari al doppio del suo livello. Ogni volta che in seguito sale di livello, il suo massimo
+    dei punti ferita aumenta di altri 2 punti ferita.
+  kid: 'Hai 2 punti ferita in più per ogni tuo livello: al livello {livello} sono già sommati sulla scheda. Ogni volta che sali di livello ne guadagni altri 2.'
+war_caster:
+  name: Incantatore da Guerra
+  name_en: War Caster
+  prerequisite: Capacità di lanciare almeno un incantesimo
+  prereq_spellcaster: true
+  short: Vantaggio ai TS su COS per mantenere la concentrazione quando subisci danni; esegui le componenti somatiche anche con armi o scudo in mano; quando una creatura ostile provoca un tuo attacco di
+    opportunità, con la reazione puoi invece lanciarle contro un incantesimo da 1 azione che bersagli solo lei.
+  text: 'Il personaggio si è esercitato a lanciare incantesimi nel mezzo del combattimento, apprendendo tecniche che gli conferiscono i seguenti benefici: dispone di vantaggio ai tiri salvezza su Costituzione
+    effettuati per mantenere la concentrazione su un incantesimo quando subisce danni; può eseguire le componenti somatiche degli incantesimi anche quando impugna armi o uno scudo in una o entrambe le mani;
+    quando il movimento di una creatura ostile provoca un attacco di opportunità da parte sua, può usare la sua reazione per lanciare un incantesimo contro quella creatura anziché effettuare l''attacco
+    di opportunità. L''incantesimo deve avere un tempo di lancio di 1 azione e deve bersagliare soltanto quella creatura.'
+  kid: Se ti feriscono mentre tieni attiva una magia, tiri 2 d20 e tieni il più alto per non perderla. Lanci magie anche con armi o scudo in mano, e con la reazione puoi lanciarne una (da 1 azione) a un
+    nemico che scappa.
+weapon_master:
+  name: Maestro d'Armi
+  name_en: Weapon Master
+  prerequisite: null
+  ability_choice:
+    count: 1
+    bonus: 1
+    from:
+    - str
+    - dex
+  weapon_proficiencies:
+    count: 4
+    from:
+    - simple
+    - martial
+  short: +1 FOR o DES; competenza in 4 armi a tua scelta, ognuna semplice o da guerra.
+  text: 'Il personaggio si è addestrato a fondo con una gamma di armi diverse e ottiene i seguenti benefici: aumenta il punteggio di Forza o di Destrezza di 1, fino a un massimo di 20; ottiene competenza
+    in quattro armi a sua scelta, ognuna delle quali deve essere un''arma semplice o un''arma da guerra.'
+  kid: '+1 a Forza o Destrezza. Impari a usare bene 4 armi a tua scelta: con quelle aggiungi il bonus di competenza al tiro per colpire (già sulla scheda).'

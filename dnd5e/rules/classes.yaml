@@ -244,6 +244,13 @@ barbarian:
     3:
       - {name: Cammino Primordiale, short: "Scegli un cammino (Berserker o Combattente Totemico).", text: "Il barbaro sceglie un cammino che plasma la natura della sua ira."}
 
+# Bardo (PHB 2014, cap. 3) - privilegi 1-20 e collegi bardici del Manuale del Giocatore.
+# Nomi italiani dalla traduzione ufficiale (SRD 5.1 italiano per i privilegi base e il Collegio della Sapienza).
+# Segnaposto nei testi short/kid: {cd} {att} {mod} {livello} e {t_<colonna>} = valore della colonna di 'table' al livello attuale.
+# Campi macchina extra usati qui:
+#   half_proficiency_checks: true  -> Factotum: +meta' bonus di competenza (per difetto) alle prove senza competenza (iniziativa inclusa)
+#   magical_secrets: N             -> N incantesimi scelti da qualsiasi lista di classe (Segreti Magici)
+#   bonus_spells_known: N          -> N incantesimi conosciuti in piu', fuori dal conteggio di spells_known
 bard:
   name: Bardo
   name_f: Barda
@@ -253,22 +260,239 @@ bard:
   armor: [light]
   weapons: [simple, hand_crossbow, longsword, rapier, shortsword]
   tools: ["Tre strumenti musicali a scelta"]
-  skill_choices: {count: 3, from: [acrobatics, animal_handling, arcana, athletics, deception, history, insight, intimidation, investigation, medicine, nature, perception, performance, persuasion, religion, sleight_of_hand, stealth, survival]}
-  spellcasting: {ability: cha, type: full}
+  skill_choices:
+    count: 3
+    from: [acrobatics, animal_handling, arcana, athletics, deception, history, insight, intimidation, investigation, medicine, nature, perception, performance, persuasion, religion, sleight_of_hand, stealth, survival]
+  starting_equipment:
+    - choice: ["Uno stocco", "Una spada lunga", "Un'arma semplice qualsiasi"]
+    - choice: ["Dotazione da diplomatico", "Dotazione da intrattenitore"]
+    - choice: ["Un liuto", "Un altro strumento musicale qualsiasi"]
+    - fixed: ["Armatura di cuoio", "Pugnale"]
+  spellcasting:
+    ability: cha
+    type: full
+    prepared: known
+    list: bard
+    ritual: true
+    focus: "strumento musicale"
   subclass_level: 3
   subclass_label: Collegio Bardico
   asi_levels: [4, 8, 12, 16, 19]
+  table:
+    bardic_inspiration_die: [d6, d6, d6, d6, d8, d8, d8, d8, d8, d10, d10, d10, d10, d10, d12, d12, d12, d12, d12, d12]
+    song_of_rest: ["—", 1d6, 1d6, 1d6, 1d6, 1d6, 1d6, 1d6, 1d8, 1d8, 1d8, 1d8, 1d10, 1d10, 1d10, 1d10, 1d12, 1d12, 1d12, 1d12]
+    cantrips_known: [2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+    spells_known: [4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 15, 16, 18, 19, 19, 20, 22, 22, 22]
+    magical_secrets: [0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 4, 4, 4, 4, 6, 6, 6]
+    jack_of_all_trades: [0, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3]
   features:
     1:
-      - {name: Incantesimi, short: "Incantatore completo (Carisma).", text: "Il bardo lancia incantesimi usando il Carisma come caratteristica da incantatore."}
-      - {name: Ispirazione Bardica, short: "Azione bonus: una creatura entro 18 m ottiene un d6 da aggiungere a una prova, attacco o TS. Usi = mod. CAR per riposo lungo.", text: "Il bardo può ispirare gli altri con parole o musica. Come azione bonus concede a una creatura entro 18 metri un dado di Ispirazione Bardica (d6) da aggiungere a una prova, un tiro per colpire o un tiro salvezza entro 10 minuti."}
+      - name: Incantesimi
+        short: "Incantatore completo (Carisma). Conosci {t_cantrips_known} trucchetti e {t_spells_known} incantesimi da bardo; CD {cd}, attacco {att}. Rituali degli incantesimi conosciuti; focus: strumento musicale."
+        text: "Il bardo conosce due trucchetti a sua scelta dalla lista del bardo e ne apprende altri ai livelli successivi (colonna Trucchetti Conosciuti). Conosce quattro incantesimi di 1° livello e ne impara altri secondo la colonna Incantesimi Conosciuti, sempre di un livello per cui possiede slot. Per lanciarli spende uno slot di livello pari o superiore, e recupera tutti gli slot spesi al termine di un riposo lungo. Ogni volta che sale di livello può sostituire un incantesimo da bardo conosciuto con un altro della lista, di un livello per cui ha slot. Caratteristica da incantatore: Carisma (CD del tiro salvezza = 8 + bonus di competenza + mod. CAR; modificatore di attacco = bonus di competenza + mod. CAR). Può lanciare come rituale qualsiasi incantesimo da bardo che conosce se ha il descrittore rituale, e può usare uno strumento musicale come focus da incantatore."
+        kid: "Conosci {t_cantrips_known} trucchetti (magie che usi quando vuoi) e {t_spells_known} incantesimi che costano uno slot; gli slot tornano dopo un riposo lungo. Per colpire con una magia tira d20{att}. Se il nemico deve resistere, tira lui un d20 contro {cd}."
+        kid_hide: true
+      - name: Ispirazione Bardica
+        short: "Azione bonus: una creatura (non tu) entro 18 m che ti sente ottiene un {t_bardic_inspiration_die} da aggiungere, entro 10 minuti, a una prova, un tiro per colpire o un TS. Usi = mod. CAR (min. 1) per riposo lungo (anche breve dal 5°)."
+        text: "Il bardo può ispirare gli altri con le parole o la musica. Come azione bonus nel suo turno sceglie una creatura diversa da se stesso, entro 18 metri e in grado di sentirlo: quella creatura ottiene un dado di Ispirazione Bardica (d6). Una volta entro i 10 minuti successivi, la creatura può tirare il dado e aggiungere il risultato a una prova di caratteristica, un tiro per colpire o un tiro salvezza; può decidere dopo aver tirato il d20, ma prima che il GM dichiari se il tiro riesce o fallisce. Una volta tirato, il dado è perduto, e una creatura può avere un solo dado di Ispirazione Bardica alla volta. Il bardo può usare questo privilegio un numero di volte pari al suo modificatore di Carisma (minimo 1) e recupera gli usi spesi al termine di un riposo lungo. Il dado diventa un d8 al 5° livello, un d10 al 10° e un d12 al 15°."
+        kid: "Azione bonus: un amico entro 18 m che ti sente riceve un dado {t_bardic_inspiration_die}. Entro 10 minuti può tirarlo e sommarlo a un suo tiro d20. Lo fai tante volte quanto il tuo Carisma ({mod}, almeno 1), poi devi riposare."
     2:
-      - {name: Tuttofare, short: "Metà bonus di competenza alle prove senza competenza.", text: "Il bardo aggiunge metà del suo bonus di competenza (per difetto) a ogni prova di caratteristica che non ne beneficia già."}
-      - {name: Canto di Riposo, short: "Durante un riposo breve, chi recupera PF con i Dadi Vita ne recupera 1d6 in più.", text: "Durante un riposo breve il bardo può usare musica o oratoria per aiutare i suoi alleati a recuperare: ogni creatura che spende Dadi Vita recupera 1d6 punti ferita aggiuntivi."}
+      - name: Factotum
+        short: "+{t_jack_of_all_trades} (metà bonus di competenza, per difetto) alle prove di caratteristica che non usano già il bonus di competenza, iniziativa inclusa."
+        text: "A partire dal 2° livello il bardo può aggiungere metà del suo bonus di competenza, arrotondato per difetto, a ogni prova di caratteristica che effettua e che non includa già il suo bonus di competenza."
+        kid: "Quando fai una prova in un'abilità che non hai imparato, aggiungi comunque +{t_jack_of_all_trades} al tiro. Vale anche per l'iniziativa, il tiro che decide chi agisce per primo."
+        half_proficiency_checks: true
+      - name: Canto di Riposo
+        short: "Durante un riposo breve, tu e le creature amiche che ti sentono e recuperano PF spendendo Dadi Vita recuperate {t_song_of_rest} PF extra."
+        text: "Dal 2° livello il bardo può usare musica o parole lenitive per aiutare i suoi alleati feriti a riprendersi durante un riposo breve. Se il bardo o qualsiasi creatura amica in grado di udire la sua esibizione recupera punti ferita alla fine del riposo breve spendendo uno o più Dadi Vita, ognuna di quelle creature recupera 1d6 punti ferita extra. I punti ferita extra diventano 1d8 al 9° livello, 1d10 al 13° e 1d12 al 17°."
+        kid: "Durante un riposo breve suoni o canti: tu e gli amici che si curano tirando i Dadi Vita (i dadi per curarsi nel riposo) recuperate {t_song_of_rest} punti ferita in più."
     3:
-      - {name: Collegio Bardico, short: "Scegli un collegio (Sapienza o Valore).", text: "Il bardo si unisce a un collegio bardico."}
-      - {name: Maestria, short: "Raddoppia il bonus di competenza in due abilità.", text: "Il bardo sceglie due abilità in cui ha competenza: il bonus di competenza è raddoppiato per quelle abilità."}
+      - name: Collegio Bardico
+        short: "Scegli un collegio: Collegio della Sapienza o Collegio del Valore."
+        text: "Al 3° livello il bardo apprende le tecniche avanzate di un collegio bardico a sua scelta: il Collegio della Sapienza o il Collegio del Valore. La scelta gli conferisce privilegi al 3°, al 6° e al 14° livello."
+        kid: "Scegli la tua scuola di bardi: Sapienza o Valore. Ti dà poteri speciali al 3°, al 6° e al 14° livello."
+        kid_hide: true
+      - name: Maestria
+        short: "Scegli 2 abilità in cui hai competenza: il bonus di competenza raddoppia nelle prove con quelle abilità (altre 2 al 10°)."
+        text: "Al 3° livello il bardo sceglie due abilità in cui ha competenza. Il suo bonus di competenza raddoppia in ogni prova di caratteristica che usa una di quelle abilità. Al 10° livello sceglie altre due abilità in cui ha competenza per ottenere lo stesso beneficio."
+        kid: "Scegli 2 abilità che conosci già: in quelle sei bravissimo e aggiungi due volte il bonus di competenza. Sulla scheda è già contato."
+        expertise_count: 2
+    4:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Il bardo può aumentare un punteggio di caratteristica di 2 o due punteggi di 1 (massimo 20), oppure scegliere un talento."
+        kid: "Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sono già sulla scheda."
+        kid_hide: true
+    5:
+      - name: Ispirazione Bardica (d8)
+        short: "Il dado di Ispirazione Bardica diventa un d8."
+        text: "Dal 5° livello il dado di Ispirazione Bardica del bardo diventa un d8 (d10 al 10° livello, d12 al 15°)."
+        kid: "Il tuo dado di ispirazione ora è un d8."
+        kid_hide: true
+      - name: Fonte di Ispirazione
+        short: "Recuperi tutti gli usi spesi di Ispirazione Bardica al termine di un riposo breve o lungo."
+        text: "A partire dal 5° livello il bardo recupera tutti gli utilizzi spesi di Ispirazione Bardica quando completa un riposo breve o lungo."
+        kid: "Le tue ispirazioni tornano tutte anche dopo un riposo breve (una pausa di 1 ora), non solo dopo una notte di sonno."
+    6:
+      - name: Controfascino
+        short: "Azione: fino alla fine del tuo turno successivo tu e le creature amiche entro 9 m che ti sentono avete vantaggio ai TS contro affascinato e spaventato."
+        text: "Al 6° livello il bardo può usare note musicali o parole del potere per interferire con gli effetti di influenza mentale. Come azione inizia un'esibizione che dura fino alla fine del suo turno successivo. Durante quel periodo il bardo e ogni creatura amica entro 9 metri da lui hanno vantaggio ai tiri salvezza per non essere affascinati o spaventati; una creatura deve poter sentire il bardo per ottenere il beneficio. L'esibizione termina prima se il bardo è incapacitato o ridotto al silenzio, o se vi pone fine volontariamente (nessuna azione richiesta)."
+        kid: "Azione: suoni una musica speciale. Fino al tuo prossimo turno tu e gli amici entro 9 m che ti sentono, se dovete resistere a paura o a magie che incantano, tirate 2 d20 e tenete il più alto."
+    8:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sono già sulla scheda."
+        kid_hide: true
+    9:
+      - name: Canto di Riposo (d8)
+        short: "Canto di Riposo: i PF extra diventano 1d8."
+        text: "Dal 9° livello i punti ferita extra di Canto di Riposo diventano 1d8 (1d10 al 13°, 1d12 al 17°)."
+        kid: "Il tuo Canto di Riposo ora cura 1d8 punti ferita in più."
+        kid_hide: true
+    10:
+      - name: Ispirazione Bardica (d10)
+        short: "Il dado di Ispirazione Bardica diventa un d10."
+        text: "Dal 10° livello il dado di Ispirazione Bardica diventa un d10 (d12 al 15°)."
+        kid: "Il tuo dado di ispirazione ora è un d10."
+        kid_hide: true
+      - name: Maestria (altre due abilità)
+        short: "Scegli altre 2 abilità in cui hai competenza: il bonus di competenza raddoppia."
+        text: "Al 10° livello il bardo sceglie altre due abilità in cui ha competenza: il suo bonus di competenza raddoppia in ogni prova di caratteristica che usa una di quelle abilità."
+        kid: "Scegli altre 2 abilità in cui diventi bravissimo: anche lì aggiungi due volte il bonus di competenza. È già sulla scheda."
+        kid_hide: true
+        expertise_count: 2
+      - name: Segreti Magici
+        short: "Impari 2 incantesimi da qualsiasi classe (di un livello che puoi lanciare, o trucchetti): contano come incantesimi da bardo e rientrano negli incantesimi conosciuti. Altri 2 al 14° e al 18°."
+        text: "Al 10° livello il bardo ha attinto a conoscenze magiche di molte discipline. Sceglie due incantesimi di qualsiasi classe, inclusa la propria; ognuno deve essere di un livello che il bardo può lanciare, come indicato dalla tabella del bardo, oppure un trucchetto. Gli incantesimi scelti contano come incantesimi da bardo e sono inclusi nel numero della colonna Incantesimi Conosciuti. Il bardo impara altri due incantesimi di qualsiasi classe al 14° livello e di nuovo al 18°."
+        kid: "Puoi imparare magie di altre classi (maghi, chierici, druidi...): {t_magical_secrets} dei tuoi incantesimi possono venire da qualsiasi lista, se sono di un livello che sai già lanciare."
+        magical_secrets: 2
+    12:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sono già sulla scheda."
+        kid_hide: true
+    13:
+      - name: Canto di Riposo (d10)
+        short: "Canto di Riposo: i PF extra diventano 1d10."
+        text: "Dal 13° livello i punti ferita extra di Canto di Riposo diventano 1d10 (1d12 al 17°)."
+        kid: "Il tuo Canto di Riposo ora cura 1d10 punti ferita in più."
+        kid_hide: true
+    14:
+      - name: Segreti Magici (altri due incantesimi)
+        short: "Impari altri 2 incantesimi da qualsiasi classe (contano tra gli incantesimi conosciuti)."
+        text: "Al 14° livello il bardo impara altri due incantesimi di qualsiasi classe, con le stesse regole del privilegio Segreti Magici del 10° livello."
+        kid: "Impari altri 2 incantesimi presi da qualsiasi classe."
+        kid_hide: true
+        magical_secrets: 2
+    15:
+      - name: Ispirazione Bardica (d12)
+        short: "Il dado di Ispirazione Bardica diventa un d12."
+        text: "Dal 15° livello il dado di Ispirazione Bardica diventa un d12."
+        kid: "Il tuo dado di ispirazione ora è un d12."
+        kid_hide: true
+    16:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sono già sulla scheda."
+        kid_hide: true
+    17:
+      - name: Canto di Riposo (d12)
+        short: "Canto di Riposo: i PF extra diventano 1d12."
+        text: "Dal 17° livello i punti ferita extra di Canto di Riposo diventano 1d12."
+        kid: "Il tuo Canto di Riposo ora cura 1d12 punti ferita in più."
+        kid_hide: true
+    18:
+      - name: Segreti Magici (altri due incantesimi)
+        short: "Impari altri 2 incantesimi da qualsiasi classe (contano tra gli incantesimi conosciuti)."
+        text: "Al 18° livello il bardo impara altri due incantesimi di qualsiasi classe, con le stesse regole del privilegio Segreti Magici del 10° livello."
+        kid: "Impari altri 2 incantesimi presi da qualsiasi classe."
+        kid_hide: true
+        magical_secrets: 2
+    19:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Aumenti una caratteristica di 2 (o due caratteristiche di 1), oppure scegli un talento. I numeri sono già sulla scheda."
+        kid_hide: true
+    20:
+      - name: Ispirazione Superiore
+        short: "Quando tiri l'iniziativa e non hai usi di Ispirazione Bardica rimasti, ne recuperi 1."
+        text: "Al 20° livello, quando il bardo tira per l'iniziativa e non gli rimane alcun utilizzo di Ispirazione Bardica, ne recupera un utilizzo."
+        kid: "Se all'inizio di una battaglia, quando tirate l'iniziativa, hai finito le ispirazioni, ne recuperi subito 1."
+  subclasses:
+    lore:
+      name: Collegio della Sapienza
+      name_en: College of Lore
+      features:
+        3:
+          - name: Competenze Bonus
+            short: "Ottieni competenza in tre abilità a tua scelta."
+            text: "Quando si unisce al Collegio della Sapienza al 3° livello, il bardo ottiene competenza in tre abilità a sua scelta."
+            kid: "Impari 3 abilità in più a tua scelta: sono già segnate sulla scheda."
+            kid_hide: true
+            bonus_proficiencies:
+              skill_choice:
+                count: 3
+                from: [acrobatics, animal_handling, arcana, athletics, deception, history, insight, intimidation, investigation, medicine, nature, perception, performance, persuasion, religion, sleight_of_hand, stealth, survival]
+          - name: Parole Taglienti
+            short: "Reazione: quando una creatura che vedi entro 18 m fa un tiro per colpire, una prova o un tiro per i danni, spendi un uso di Ispirazione Bardica e sottrai {t_bardic_inspiration_die} al suo tiro. Immune se non ti sente o non può essere affascinata."
+            text: "Al 3° livello il bardo impara a usare il suo ingegno per distrarre, confondere e fiaccare la sicurezza altrui. Quando una creatura che può vedere, entro 18 metri da lui, effettua un tiro per colpire, una prova di caratteristica o un tiro per i danni, il bardo può usare la sua reazione per spendere un utilizzo di Ispirazione Bardica, tirare il dado di Ispirazione Bardica e sottrarre il risultato dal tiro della creatura. Può farlo dopo che la creatura ha tirato, ma prima che il GM dichiari se il tiro per colpire o la prova riesce o fallisce, o prima che la creatura infligga i danni. La creatura è immune se non può sentire il bardo o se è immune all'essere affascinata."
+            kid: "Quando un nemico entro 18 m che vedi attacca, fa una prova o tira i danni, usa la reazione (una mossa fuori turno) e spendi un'ispirazione: tira il tuo {t_bardic_inspiration_die} e togli il risultato dal suo tiro. Deve poterti sentire."
+        6:
+          - name: Segreti Magici Aggiuntivi
+            short: "Impari 2 incantesimi da qualsiasi classe (di un livello che puoi lanciare, o trucchetti): contano come incantesimi da bardo ma non rientrano negli incantesimi conosciuti."
+            text: "Al 6° livello il bardo impara due incantesimi a sua scelta di qualsiasi classe. Ognuno deve essere di un livello che il bardo può lanciare, come indicato dalla tabella del bardo, oppure un trucchetto. Gli incantesimi scelti contano come incantesimi da bardo, ma non vengono conteggiati nel numero di incantesimi da bardo conosciuti."
+            kid: "Impari 2 magie in più prese da qualsiasi classe (trucchetti o di un livello che sai già lanciare). Si aggiungono a quelle che conosci, senza toglierne nessuna."
+            magical_secrets: 2
+            bonus_spells_known: 2
+        14:
+          - name: Abilità Impareggiabile
+            short: "Quando fai una prova di caratteristica puoi spendere un uso di Ispirazione Bardica e aggiungere {t_bardic_inspiration_die}, anche dopo aver tirato (prima dell'esito)."
+            text: "A partire dal 14° livello, quando effettua una prova di caratteristica, il bardo può spendere un utilizzo di Ispirazione Bardica: tira un dado di Ispirazione Bardica e aggiunge il risultato alla prova. Può decidere di farlo dopo aver tirato il dado della prova, ma prima che il GM dichiari se la prova riesce o fallisce."
+            kid: "Quando fai una prova di abilità puoi spendere un'ispirazione e aggiungere al tiro il tuo {t_bardic_inspiration_die}, anche dopo aver visto il d20, purché il Master non abbia ancora detto com'è andata."
+    valor:
+      name: Collegio del Valore
+      name_en: College of Valor
+      features:
+        3:
+          - name: Competenze Bonus
+            short: "Ottieni competenza nelle armature medie, negli scudi e nelle armi da guerra."
+            text: "Quando si unisce al Collegio del Valore al 3° livello, il bardo ottiene competenza nelle armature medie, negli scudi e nelle armi da guerra."
+            kid: "Ora sai usare armature medie, scudi e tutte le armi da guerra."
+            kid_hide: true
+            bonus_proficiencies:
+              armor: [medium, shields]
+              weapons: [martial]
+          - name: Ispirazione in Combattimento
+            short: "Chi ha un tuo dado di Ispirazione Bardica può aggiungerlo a un tiro per i danni con un'arma appena effettuato, oppure, con la reazione, alla CA contro un attacco appena tirato contro di lui."
+            text: "Al 3° livello il bardo impara a ispirare gli altri in battaglia. Una creatura che possiede un dado di Ispirazione Bardica conferito dal bardo può tirarlo e aggiungere il risultato a un tiro per i danni con un'arma appena effettuato. In alternativa, quando viene effettuato un tiro per colpire contro di essa, la creatura può usare la sua reazione per tirare il dado di Ispirazione Bardica e aggiungere il risultato alla sua CA contro quell'attacco, dopo aver visto il tiro ma prima di sapere se colpisce o manca."
+            kid: "Un amico con il tuo dado di ispirazione può anche aggiungerlo ai danni della sua arma, oppure, quando qualcuno lo attacca, usare la sua reazione per aggiungerlo alla sua CA (la difesa) contro quell'attacco."
+        6:
+          - name: Attacco Extra
+            short: "Quando effettui l'azione di Attacco, attacchi due volte."
+            text: "A partire dal 6° livello il bardo può attaccare due volte, anziché una, ogni volta che effettua l'azione di Attacco nel suo turno."
+            kid: "Quando nel tuo turno scegli di attaccare, fai 2 attacchi invece di 1: tira il d20 per ognuno dei due."
+        14:
+          - name: Magia da Battaglia
+            short: "Quando usi l'azione per lanciare un incantesimo da bardo, puoi fare un attacco con un'arma come azione bonus."
+            text: "Al 14° livello il bardo padroneggia l'arte di intrecciare incantesimi e uso delle armi in un unico atto armonioso. Quando usa la sua azione per lanciare un incantesimo da bardo, può effettuare un attacco con un'arma come azione bonus."
+            kid: "Quando usi la tua azione per lanciare un incantesimo da bardo, nello stesso turno puoi anche fare un attacco con l'arma come azione bonus."
 
+# Chierico (PHB 2014, cap. 3), livelli 1-20, con tutti i sette Domini Divini del Manuale del Giocatore.
+# Stesso schema di 'fighter' e 'druid' in dnd5e/rules/classes.yaml.
+# table: colonne che cambiano con il livello (indice 0 = 1° livello), usabili nei testi come {t_<colonna>}.
+#   divine_strike e preserve_life servono ai domini (Colpo Divino, Preservare Vita).
+# Campi macchina nei privilegi: bonus_proficiencies, extra_languages, expertise_count, grants_cantrip.
+#   Campi aggiuntivi (non ancora nello schema comune):
+#   - expertise_from: le abilità tra cui scegliere la Maestria (Benedizioni della Conoscenza raddoppia il bonus
+#     solo nelle due abilità scelte con lo stesso privilegio).
+#   - cantrip_choice: {list, count, ability} = trucchetto a scelta da un'altra lista (Accolito della Natura:
+#     un trucchetto da druido), stesso formato del tratto razziale.
+# always_prepared: {livello da chierico: [chiavi incantesimo]} = incantesimi di dominio, sempre preparati e fuori
+#   dal conteggio degli incantesimi preparati.
 cleric:
   name: Chierico
   name_f: Chierica
@@ -277,17 +501,453 @@ cleric:
   saves: [wis, cha]
   armor: [light, medium, shields]
   weapons: [simple]
-  skill_choices: {count: 2, from: [history, insight, medicine, persuasion, religion]}
-  spellcasting: {ability: wis, type: full, prepared: ability_plus_level, list: cleric}
+  tools: []
+  skill_choices:
+    count: 2
+    from: [history, insight, medicine, persuasion, religion]
+  starting_equipment:
+    - choice: ["Una mazza", "Un martello da guerra (se hai competenza)"]
+    - choice: ["Una corazza di scaglie", "Un'armatura di cuoio", "Una cotta di maglia (se hai competenza)"]
+    - choice: ["Una balestra leggera e 20 quadrelli", "Un'arma semplice qualsiasi"]
+    - choice: ["Dotazione da sacerdote", "Dotazione da esploratore"]
+    - fixed: ["Uno scudo", "Un simbolo sacro"]
+  spellcasting:
+    ability: wis
+    type: full
+    prepared: ability_plus_level
+    list: cleric
+    ritual: true
+    focus: "simbolo sacro"
   subclass_level: 1
   subclass_label: Dominio Divino
   asi_levels: [4, 8, 12, 16, 19]
+  table:
+    cantrips: [3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+    channel_divinity: [0, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3]
+    destroy_undead: ["—", "—", "—", "—", "1/2", "1/2", "1/2", "1", "1", "1", "2", "2", "2", "3", "3", "3", "4", "4", "4", "4"]
+    divine_strike: ["—", "—", "—", "—", "—", "—", "—", "1d8", "1d8", "1d8", "1d8", "1d8", "1d8", "2d8", "2d8", "2d8", "2d8", "2d8", "2d8", "2d8"]
+    preserve_life: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100]
   features:
     1:
-      - {name: Incantesimi, short: "Incantatore completo (Saggezza), prepara gli incantesimi.", text: "Il chierico lancia incantesimi usando la Saggezza come caratteristica da incantatore."}
-      - {name: Dominio Divino, short: "Scegli un dominio legato alla tua divinità.", text: "Il chierico sceglie un dominio legato alla sua divinità, che conferisce privilegi e incantesimi di dominio."}
+      - name: Incantesimi
+        short: "Incantatore completo (Saggezza). Conosci {t_cantrips} trucchetti; ogni giorno prepari mod. SAG + livello da chierico incantesimi (min 1); rituali preparati; simbolo sacro come focus. CD {cd}, attacco {att}."
+        text: "Il chierico è un tramite del potere divino e lancia incantesimi da chierico. Conosce tre trucchetti a scelta dalla lista del chierico (quattro dal 4° livello, cinque dal 10°). Per lanciare un incantesimo di 1° livello o superiore spende uno slot di livello pari o superiore; recupera tutti gli slot spesi con un riposo lungo. Ogni giorno prepara dalla lista del chierico un numero di incantesimi pari al suo modificatore di Saggezza + il suo livello da chierico (minimo 1), di livello per cui ha slot; lanciare un incantesimo non lo toglie dalla lista dei preparati. Può cambiare la lista dopo un riposo lungo, dedicando almeno 1 minuto di preghiera e meditazione per livello di ogni incantesimo. Caratteristica da incantatore: Saggezza (CD del tiro salvezza = 8 + bonus di competenza + mod. SAG; attacco con incantesimo = bonus di competenza + mod. SAG). Può lanciare come rituale un incantesimo da chierico preparato che abbia il descrittore rituale e può usare un simbolo sacro come focus da incantatore."
+        kid_hide: true
+      - name: Dominio Divino
+        short: "Scegli un dominio legato alla tua divinità: Conoscenza, Vita, Luce, Natura, Tempesta, Inganno o Guerra."
+        text: "Il chierico sceglie un dominio legato alla sua divinità: Conoscenza, Vita, Luce, Natura, Tempesta, Inganno o Guerra. Il dominio conferisce incantesimi di dominio e privilegi al 1° livello, altri modi di usare Incanalare Divinità dal 2° livello e ulteriori benefici al 6°, all'8° e al 17° livello. Gli incantesimi di dominio, ottenuti ai livelli da chierico indicati nel dominio, sono sempre considerati preparati e non contano nel numero di incantesimi che il chierico può preparare ogni giorno; se uno di essi non compare nella lista del chierico, per lui è comunque un incantesimo da chierico."
+        kid_hide: true
     2:
-      - {name: Incanalare Divinità, short: "Scacciare Non Morti + opzione del dominio. 1/riposo breve o lungo.", text: "Il chierico può incanalare energia divina direttamente dalla sua divinità per alimentare effetti magici (Scacciare Non Morti e l'effetto del dominio)."}
+      - name: Incanalare Divinità
+        short: "Usi per riposo breve o lungo: {t_channel_divinity}. Ogni uso: Scacciare Non Morti o un effetto del tuo dominio. Gli effetti con tiro salvezza usano la CD dei tuoi incantesimi ({cd})."
+        text: "Il chierico ottiene la capacità di incanalare energia divina direttamente dalla sua divinità per alimentare effetti magici. Parte con due effetti: Scacciare Non Morti e un effetto determinato dal suo dominio; alcuni domini ne aggiungono altri ai livelli successivi. Quando usa Incanalare Divinità sceglie quale effetto creare, poi deve completare un riposo breve o lungo per usarlo di nuovo. Se un effetto richiede un tiro salvezza, la CD è quella dei suoi incantesimi da chierico. Dal 6° livello può usare Incanalare Divinità due volte tra un riposo e l'altro, dal 18° tre volte; recupera gli utilizzi spesi al termine di un riposo breve o lungo."
+        kid: "Cariche di potere divino (Incanalare Divinità): {t_channel_divinity}. Ognuna fa un miracolo a scelta tra Scacciare Non Morti e quelli del tuo dominio. Le riprendi tutte dopo un riposo, anche breve (1 ora)."
+      - name: "Incanalare Divinità: Scacciare Non Morti"
+        short: "Azione: ogni non morto entro 9 m che ti vede o sente fa un TS su SAG (CD {cd}); se fallisce è scacciato per 1 minuto o finché non subisce danni."
+        text: "Con un'azione il chierico brandisce il suo simbolo sacro e pronuncia una preghiera di condanna contro i non morti. Ogni non morto entro 9 metri che può vederlo o sentirlo deve effettuare un tiro salvezza su Saggezza: se lo fallisce, è scacciato per 1 minuto o finché non subisce danni. Una creatura scacciata deve spendere i suoi turni cercando di allontanarsi il più possibile dal chierico e non può muoversi volontariamente in uno spazio entro 9 metri da lui; non può effettuare reazioni e, come azione, può solo usare Scatto o tentare di liberarsi da un effetto che le impedisce di muoversi. Se non ha nessun posto dove andare, può usare l'azione di Schivata."
+        kid: "Con un'azione alzi il simbolo sacro: ogni non morto entro 9 m che ti vede o sente tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}). Se fallisce, scappa da te per 1 minuto o finché è ferito."
+    4:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Il chierico può aumentare un punteggio di caratteristica di 2 o due punteggi di 1 (massimo 20), oppure scegliere un talento."
+        kid_hide: true
+    5:
+      - name: Distruggere Non Morti
+        short: "Un non morto di GS {t_destroy_undead} o inferiore che fallisce il TS contro Scacciare Non Morti è distrutto all'istante."
+        text: "Dal 5° livello, quando un non morto fallisce il tiro salvezza contro Scacciare Non Morti, è distrutto istantaneamente se il suo grado di sfida è pari o inferiore alla soglia indicata: GS 1/2 al 5° livello, GS 1 all'8°, GS 2 all'11°, GS 3 al 14° e GS 4 al 17°."
+        kid: "Quando usi Scacciare Non Morti, i non morti deboli che falliscono il tiro salvezza vanno in polvere invece di scappare: quelli con grado di sfida (GS, la forza del mostro) {t_destroy_undead} o meno."
+    6:
+      - name: Incanalare Divinità (2/riposo)
+        short: "Puoi usare Incanalare Divinità due volte tra un riposo e l'altro."
+        text: "Dal 6° livello il chierico può usare Incanalare Divinità due volte prima di dover completare un riposo breve o lungo."
+        kid_hide: true
+    8:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid_hide: true
+      - name: Distruggere Non Morti (GS 1)
+        short: "Distruggere Non Morti ora distrugge i non morti di GS 1 o inferiore."
+        text: "Vedi 5° livello: la soglia sale a GS 1."
+        kid_hide: true
+    10:
+      - name: Intervento Divino
+        short: "Azione: descrivi l'aiuto che chiedi e tira d100; con {livello} o meno la divinità interviene (sceglie il DM). Se interviene, non puoi riusarlo per 7 giorni; altrimenti dopo un riposo lungo."
+        text: "Dal 10° livello il chierico può invocare l'intervento della sua divinità nel momento del bisogno. Con un'azione descrive l'assistenza che desidera e tira un dado percentuale: se ottiene un numero pari o inferiore al suo livello da chierico, la divinità interviene. È il DM a scegliere la natura dell'intervento; l'effetto di qualsiasi incantesimo da chierico o di dominio è appropriato. Se la divinità interviene, il chierico non può usare di nuovo questo privilegio per 7 giorni; altrimenti può riprovare dopo aver completato un riposo lungo. Al 20° livello la richiesta ha successo automaticamente."
+        kid: "Con un'azione preghi il tuo dio e dici che aiuto ti serve. Tira un d100 (due d10: decine e unità): con {livello} o meno il dio ti aiuta! Se funziona aspetti 7 giorni, se no riprovi dopo un riposo lungo."
+    11:
+      - name: Distruggere Non Morti (GS 2)
+        short: "Distruggere Non Morti ora distrugge i non morti di GS 2 o inferiore."
+        text: "Vedi 5° livello: la soglia sale a GS 2."
+        kid_hide: true
+    12:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid_hide: true
+    14:
+      - name: Distruggere Non Morti (GS 3)
+        short: "Distruggere Non Morti ora distrugge i non morti di GS 3 o inferiore."
+        text: "Vedi 5° livello: la soglia sale a GS 3."
+        kid_hide: true
+    16:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid_hide: true
+    17:
+      - name: Distruggere Non Morti (GS 4)
+        short: "Distruggere Non Morti ora distrugge i non morti di GS 4 o inferiore."
+        text: "Vedi 5° livello: la soglia sale a GS 4."
+        kid_hide: true
+    18:
+      - name: Incanalare Divinità (3/riposo)
+        short: "Puoi usare Incanalare Divinità tre volte tra un riposo e l'altro."
+        text: "Dal 18° livello il chierico può usare Incanalare Divinità tre volte prima di dover completare un riposo breve o lungo."
+        kid_hide: true
+    19:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid_hide: true
+    20:
+      - name: Intervento Divino Migliorato
+        short: "La tua richiesta di Intervento Divino ha successo automaticamente, senza tiro."
+        text: "Al 20° livello la richiesta di intervento divino del chierico ha successo automaticamente, senza bisogno di tirare il dado percentuale. Se la divinità interviene, il chierico non può usare di nuovo il privilegio per 7 giorni."
+        kid: "Quando chiedi aiuto al tuo dio con Intervento Divino, lui risponde sempre: non serve tirare i dadi. Poi aspetti 7 giorni prima di chiederlo di nuovo."
+  subclasses:
+    # ------------------------------------------------------------------ Conoscenza
+    knowledge:
+      name: Dominio della Conoscenza
+      name_en: Knowledge Domain
+      always_prepared:
+        1: [command, identify]
+        3: [augury, suggestion]
+        5: [nondetection, speak_with_dead]
+        7: [arcane_eye, confusion]
+        9: [legend_lore, scrying]
+      features:
+        1:
+          - name: Incantesimi del Dominio della Conoscenza
+            short: "Sempre preparati: 1° comando, identificare; 3° presagio, suggestione; 5° anti-individuazione, parlare con i morti; 7° occhio arcano, confusione; 9° conoscenza delle leggende, scrutare."
+            text: "Il chierico ottiene questi incantesimi di dominio ai livelli da chierico indicati: 1° comando e identificare; 3° presagio e suggestione; 5° anti-individuazione e parlare con i morti; 7° occhio arcano e confusione; 9° conoscenza delle leggende e scrutare. Sono sempre preparati e non contano nel numero di incantesimi preparabili."
+            kid_hide: true
+          - name: Benedizioni della Conoscenza
+            short: "Impari 2 linguaggi a scelta. Competenza in 2 abilità a scelta tra Arcano, Natura, Religione e Storia, con bonus di competenza raddoppiato nelle prove con quelle abilità."
+            text: "Al 1° livello il chierico impara due linguaggi a sua scelta. Inoltre ottiene competenza in due abilità a sua scelta tra Arcano, Natura, Religione e Storia, e il suo bonus di competenza è raddoppiato per qualsiasi prova di caratteristica che usi una di queste due abilità."
+            kid: "Parli 2 lingue in più. In 2 materie da studioso (scelte tra Arcano, Natura, Religione e Storia) hai una preparazione speciale: nelle prove aggiungi il doppio del bonus di competenza (è già scritto sulla scheda)."
+            extra_languages: 2
+            bonus_proficiencies:
+              skill_choice:
+                count: 2
+                from: [arcana, history, nature, religion]
+            expertise_count: 2
+            expertise_from: [arcana, history, nature, religion]
+        2:
+          - name: "Incanalare Divinità: Conoscenza dei Secoli"
+            short: "Azione: scegli un'abilità o uno strumento; per 10 minuti ne hai competenza."
+            text: "Il chierico può usare Incanalare Divinità per attingere a una fonte divina di conoscenza. Con un'azione sceglie un'abilità o uno strumento: per 10 minuti ha competenza in quell'abilità o strumento."
+            kid: "Usi una carica di potere divino: con un'azione scegli un'abilità o un attrezzo e per 10 minuti lo sai usare come un esperto (aggiungi il bonus di competenza)."
+        6:
+          - name: "Incanalare Divinità: Leggere i Pensieri"
+            short: "Azione: una creatura che vedi entro 18 m fa un TS su SAG (CD {cd}). Se fallisce, per 1 minuto leggi i suoi pensieri superficiali e puoi lanciarle suggestione senza slot (fallisce il TS in automatico)."
+            text: "Il chierico può usare Incanalare Divinità per leggere i pensieri di una creatura. Con un'azione sceglie una creatura che può vedere entro 18 metri, che deve effettuare un tiro salvezza su Saggezza. Se lo supera, il chierico non può usare di nuovo questo privilegio su di lei finché non completa un riposo lungo. Se lo fallisce, per 1 minuto il chierico può leggerne i pensieri superficiali (ciò che ha in mente, le emozioni del momento e ciò a cui sta pensando attivamente) finché si trova entro 18 metri da lei. Durante quel minuto può usare la sua azione per terminare l'effetto e lanciare suggestione sulla creatura senza spendere uno slot incantesimo: il bersaglio fallisce automaticamente il tiro salvezza contro l'incantesimo."
+            kid: "Con una carica di potere divino scegli una creatura entro 18 m: lei tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}). Se fallisce, per 1 minuto senti i suoi pensieri; con un'azione puoi lanciarle suggestione senza scampo."
+        8:
+          - name: Incantesimi Potenziati
+            short: "Aggiungi il mod. SAG ({mod}) ai danni dei trucchetti da chierico."
+            text: "Il chierico aggiunge il suo modificatore di Saggezza ai danni che infligge con qualsiasi trucchetto da chierico."
+            kid: "Ai danni dei tuoi trucchetti da chierico (come fiamma sacra) aggiungi {mod}."
+        17:
+          - name: Visioni del Passato
+            short: "Meditando almeno 1 minuto (con concentrazione, al massimo tanti minuti quanto il punteggio di SAG) hai visioni del passato di un oggetto che tieni o del luogo intorno a te. 1/riposo breve o lungo."
+            text: "Il chierico può evocare visioni del passato legate a un oggetto che tiene in mano o all'ambiente circostante. Medita e prega per almeno 1 minuto, poi riceve brevi immagini oniriche e indistinte di eventi recenti. Può meditare per un numero di minuti pari al suo punteggio di Saggezza e deve mantenere la concentrazione come se lanciasse un incantesimo. Lettura di un oggetto: tenendo un oggetto, dopo 1 minuto apprende come il suo precedente proprietario lo ha ottenuto e perso e l'evento significativo più recente che li riguarda; se l'oggetto ha avuto altri proprietari di recente (entro un numero di giorni pari al punteggio di Saggezza), può spendere 1 minuto in più per ciascuno per avere le stesse informazioni. Lettura di un'area: vede eventi recenti avvenuti nelle immediate vicinanze (una stanza, una strada, una galleria, una radura, fino a un cubo di 15 metri), risalendo indietro di un numero di giorni pari al punteggio di Saggezza; per ogni minuto di meditazione apprende un evento significativo, partendo dal più recente (battaglie, tradimenti, matrimoni, omicidi, nascite, funerali, ma anche fatti comuni importanti per la situazione). Dopo averlo usato, deve completare un riposo breve o lungo per usarlo di nuovo."
+            kid: "Tieni in mano un oggetto, o ti fermi in un luogo, e preghi almeno 1 minuto: vedi come in sogno chi possedeva l'oggetto o cosa è successo lì nei giorni passati. Poi ti serve un riposo, anche breve, per rifarlo."
+    # ------------------------------------------------------------------ Vita
+    life:
+      name: Dominio della Vita
+      name_en: Life Domain
+      always_prepared:
+        1: [bless, cure_wounds]
+        3: [lesser_restoration, spiritual_weapon]
+        5: [beacon_of_hope, revivify]
+        7: [death_ward, guardian_of_faith]
+        9: [mass_cure_wounds, raise_dead]
+      features:
+        1:
+          - name: Incantesimi del Dominio della Vita
+            short: "Sempre preparati: 1° benedizione, cura ferite; 3° arma spirituale, ristorare inferiore; 5° faro di speranza, revivificare; 7° guardiano della fede, interdizione alla morte; 9° cura ferite di massa, rianimare morti."
+            text: "Il chierico ottiene questi incantesimi di dominio ai livelli da chierico indicati: 1° benedizione e cura ferite; 3° arma spirituale e ristorare inferiore; 5° faro di speranza e revivificare; 7° guardiano della fede e interdizione alla morte; 9° cura ferite di massa e rianimare morti. Sono sempre preparati e non contano nel numero di incantesimi preparabili."
+            kid_hide: true
+          - name: Competenza Bonus
+            short: "Competenza nelle armature pesanti."
+            text: "Quando sceglie questo dominio al 1° livello, il chierico ottiene competenza nelle armature pesanti."
+            kid_hide: true
+            bonus_proficiencies:
+              armor: [heavy]
+          - name: Discepolo della Vita
+            name_f: Discepola della Vita
+            short: "Quando un tuo incantesimo di 1° livello o superiore fa recuperare PF, la creatura recupera in più 2 + il livello dell'incantesimo."
+            text: "Gli incantesimi di guarigione del chierico sono più efficaci. Ogni volta che usa un incantesimo di 1° livello o superiore per ripristinare punti ferita a una creatura, quella creatura recupera punti ferita aggiuntivi pari a 2 + il livello dell'incantesimo."
+            kid: "Le tue magie di cura sono più forti: chi curi con un incantesimo (non un trucchetto) recupera in più 2 PF + il livello dell'incantesimo. Per esempio, cura ferite lanciato con uno slot di 1° livello: +3 PF."
+        2:
+          - name: "Incanalare Divinità: Preservare Vita"
+            short: "Azione: dividi {t_preserve_life} PF (5 x livello da chierico) tra creature a scelta entro 9 m, ognuna fino a metà del suo massimo di PF. Non su costrutti e non morti."
+            text: "Il chierico può usare Incanalare Divinità per curare chi è gravemente ferito. Con un'azione brandisce il simbolo sacro ed evoca un flusso di energia curativa che ripristina un numero di punti ferita pari a cinque volte il suo livello da chierico, suddivisi a sua scelta tra creature entro 9 metri. Questo privilegio non può riportare una creatura a più della metà del suo massimo dei punti ferita e non funziona su costrutti e non morti."
+            kid: "Con una carica di potere divino alzi il simbolo sacro e dividi {t_preserve_life} punti ferita tra gli amici entro 9 m che vuoi. Ognuno però può tornare al massimo a metà dei suoi PF."
+        6:
+          - name: Guaritore Benedetto
+            name_f: Guaritrice Benedetta
+            short: "Quando un tuo incantesimo di 1° livello o superiore cura un'altra creatura, recuperi anche tu 2 + il livello dell'incantesimo PF."
+            text: "Gli incantesimi curativi che il chierico lancia sugli altri guariscono anche lui. Quando lancia un incantesimo di 1° livello o superiore che ripristina punti ferita a una creatura diversa da lui, il chierico recupera punti ferita pari a 2 + il livello dell'incantesimo."
+            kid: "Quando curi qualcun altro con un incantesimo (non un trucchetto), guarisci un po' anche tu: recuperi 2 PF + il livello dell'incantesimo."
+        8:
+          - name: Colpo Divino
+            short: "Una volta per turno, quando colpisci con un attacco con arma, infliggi {t_divine_strike} danni radiosi extra (1d8, 2d8 dal 14°)."
+            text: "Il chierico ottiene la capacità di infondere energia divina nei colpi della sua arma. Una volta in ciascuno dei suoi turni, quando colpisce una creatura con un attacco con arma, può infliggerle 1d8 danni radiosi extra. Al 14° livello i danni extra salgono a 2d8."
+            kid: "Una volta nel tuo turno, quando colpisci un nemico con un'arma, aggiungi {t_divine_strike} danni radiosi (di luce sacra)."
+        17:
+          - name: Guarigione Suprema
+            short: "Quando ripristini PF con un incantesimo, invece di tirare i dadi usi il valore massimo di ogni dado."
+            text: "Quando il chierico dovrebbe tirare uno o più dadi per ripristinare punti ferita con un incantesimo, usa invece il risultato più alto possibile per ogni dado. Per esempio, invece di ripristinare 2d6 punti ferita a una creatura, ne ripristina 12."
+            kid: "Quando curi con un incantesimo non tiri i dadi di cura: ogni dado vale il massimo. Per esempio 2d8 diventa sempre 16."
+    # ------------------------------------------------------------------ Luce
+    light:
+      name: Dominio della Luce
+      name_en: Light Domain
+      always_prepared:
+        1: [burning_hands, faerie_fire]
+        3: [flaming_sphere, scorching_ray]
+        5: [daylight, fireball]
+        7: [guardian_of_faith, wall_of_fire]
+        9: [flame_strike, scrying]
+      features:
+        1:
+          - name: Incantesimi del Dominio della Luce
+            short: "Sempre preparati: 1° mani brucianti, luminescenza; 3° raggio rovente, sfera infuocata; 5° luce diurna, palla di fuoco; 7° guardiano della fede, muro di fuoco; 9° colpo infuocato, scrutare."
+            text: "Il chierico ottiene questi incantesimi di dominio ai livelli da chierico indicati: 1° mani brucianti e luminescenza; 3° raggio rovente e sfera infuocata; 5° luce diurna e palla di fuoco; 7° guardiano della fede e muro di fuoco; 9° colpo infuocato e scrutare. Sono sempre preparati e non contano nel numero di incantesimi preparabili."
+            kid_hide: true
+          - name: Trucchetto Bonus
+            short: "Conosci il trucchetto luce, se non lo conosci già (non conta tra i trucchetti conosciuti)."
+            text: "Quando sceglie questo dominio al 1° livello, il chierico ottiene il trucchetto luce, se non lo conosce già."
+            kid_hide: true
+            grants_cantrip: light
+          - name: Bagliore Protettivo
+            short: "Reazione: quando una creatura che vedi entro 9 m ti attacca, le imponi svantaggio al tiro per colpire (immune chi non può essere accecato). Usi = mod. SAG (min 1) per riposo lungo."
+            text: "Il chierico può interporre una luce divina tra sé e un nemico che lo attacca. Quando viene attaccato da una creatura entro 9 metri che può vedere, può usare la sua reazione per imporre svantaggio al tiro per colpire, facendo balenare una luce davanti all'attaccante prima che colpisca o manchi. Un attaccante che non può essere accecato è immune a questo privilegio. Può usarlo un numero di volte pari al suo modificatore di Saggezza (minimo una volta) e recupera gli utilizzi spesi al termine di un riposo lungo."
+            kid: "Quando un nemico entro 9 m ti attacca, con la reazione (una mossa rapida fuori dal tuo turno) lo abbagli: tira 2 d20 e tiene il più basso. Usi per riposo lungo: il tuo bonus di Saggezza ({mod}, minimo 1)."
+        2:
+          - name: "Incanalare Divinità: Radiosità dell'Alba"
+            short: "Azione: dissolvi l'oscurità magica entro 9 m; ogni nemico entro 9 m fa un TS su COS (CD {cd}): 2d10 + {livello} danni radiosi, metà se lo supera (nessun effetto con copertura totale)."
+            text: "Il chierico può usare Incanalare Divinità per sfruttare la luce del sole e scacciare l'oscurità. Con un'azione presenta il simbolo sacro: qualsiasi oscurità magica entro 9 metri da lui è dissolta. Inoltre ogni creatura ostile entro 9 metri deve effettuare un tiro salvezza su Costituzione: se lo fallisce subisce danni radiosi pari a 2d10 + il livello da chierico, se lo supera la metà. Una creatura che ha copertura totale rispetto al chierico non è influenzata."
+            kid: "Con una carica di potere divino il buio magico entro 9 m sparisce e ogni nemico entro 9 m tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): subisce 2d10 + {livello} danni radiosi, metà se riesce."
+        6:
+          - name: Bagliore Migliorato
+            short: "Puoi usare Bagliore Protettivo anche quando una creatura che vedi entro 9 m attacca qualcun altro."
+            text: "Il chierico può usare il privilegio Bagliore Protettivo anche quando una creatura che può vedere entro 9 metri da lui attacca una creatura diversa da lui."
+            kid: "Puoi abbagliare un nemico anche quando attacca un tuo amico, se lo vedi ed è entro 9 m da te."
+        8:
+          - name: Incantesimi Potenziati
+            short: "Aggiungi il mod. SAG ({mod}) ai danni dei trucchetti da chierico."
+            text: "Il chierico aggiunge il suo modificatore di Saggezza ai danni che infligge con qualsiasi trucchetto da chierico."
+            kid: "Ai danni dei tuoi trucchetti da chierico (come fiamma sacra) aggiungi {mod}."
+        17:
+          - name: Corona di Luce
+            short: "Azione: per 1 minuto (o finché la congedi con un'azione) emani luce intensa in un raggio di 18 m e luce fioca per altri 9 m; i nemici nella luce intensa hanno svantaggio ai TS contro incantesimi che infliggono danni da fuoco o radiosi."
+            text: "Il chierico può usare la sua azione per attivare un'aura di luce solare che dura 1 minuto o finché non la congeda usando un'altra azione. Emana luce intensa in un raggio di 18 metri e luce fioca per ulteriori 9 metri. I suoi nemici che si trovano nella luce intensa hanno svantaggio ai tiri salvezza contro qualsiasi incantesimo che infligga danni da fuoco o radiosi."
+            kid: "Con un'azione diventi un piccolo sole per 1 minuto: luce forte per 18 m intorno a te. I nemici nella luce resistono peggio alle tue magie di fuoco e di luce: tirano 2 d20 e tengono il più basso."
+    # ------------------------------------------------------------------ Natura
+    nature:
+      name: Dominio della Natura
+      name_en: Nature Domain
+      always_prepared:
+        1: [animal_friendship, speak_with_animals]
+        3: [barkskin, spike_growth]
+        5: [plant_growth, wind_wall]
+        7: [dominate_beast, grasping_vine]
+        9: [insect_plague, tree_stride]
+      features:
+        1:
+          - name: Incantesimi del Dominio della Natura
+            short: "Sempre preparati: 1° amicizia con gli animali, parlare con gli animali; 3° crescita di spine, pelle coriacea; 5° crescita vegetale, muro di vento; 7° dominare bestie, rampicante afferrante; 9° passaggio arboreo, piaga degli insetti."
+            text: "Il chierico ottiene questi incantesimi di dominio ai livelli da chierico indicati: 1° amicizia con gli animali e parlare con gli animali; 3° crescita di spine e pelle coriacea; 5° crescita vegetale e muro di vento; 7° dominare bestie e rampicante afferrante; 9° passaggio arboreo e piaga degli insetti. Sono sempre preparati e non contano nel numero di incantesimi preparabili."
+            kid_hide: true
+          - name: Accolito della Natura
+            name_f: Accolita della Natura
+            short: "Impari un trucchetto da druido a scelta e ottieni competenza in un'abilità a scelta tra Addestrare Animali, Natura e Sopravvivenza."
+            text: "Al 1° livello il chierico impara un trucchetto da druido a sua scelta. Ottiene inoltre competenza in una delle seguenti abilità a sua scelta: Addestrare Animali, Natura o Sopravvivenza."
+            kid_hide: true
+            cantrip_choice:
+              list: druid
+              count: 1
+              ability: wis
+            bonus_proficiencies:
+              skill_choice:
+                count: 1
+                from: [animal_handling, nature, survival]
+          - name: Competenza Bonus
+            short: "Competenza nelle armature pesanti."
+            text: "Al 1° livello il chierico ottiene competenza nelle armature pesanti."
+            kid_hide: true
+            bonus_proficiencies:
+              armor: [heavy]
+        2:
+          - name: "Incanalare Divinità: Ammaliare Animali e Vegetali"
+            short: "Azione: ogni bestia o creatura vegetale entro 9 m che ti vede fa un TS su SAG (CD {cd}); se fallisce è affascinata da te per 1 minuto o finché subisce danni, ed è amichevole con te e con chi indichi."
+            text: "Il chierico può usare Incanalare Divinità per ammaliare animali e vegetali. Con un'azione presenta il simbolo sacro e invoca il nome della sua divinità: ogni bestia o creatura vegetale entro 9 metri che può vederlo deve effettuare un tiro salvezza su Saggezza. Se lo fallisce, è affascinata dal chierico per 1 minuto o finché non subisce danni; mentre è affascinata è amichevole nei confronti del chierico e delle altre creature da lui designate."
+            kid: "Con una carica di potere divino, ogni animale o pianta viva entro 9 m che ti vede tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}). Se fallisce, è tuo amico (e di chi scegli) per 1 minuto o finché è ferito."
+        6:
+          - name: Smorzare Elementi
+            short: "Reazione: quando tu o una creatura entro 9 m subite danni da acido, freddo, fuoco, fulmine o tuono, concedi resistenza contro quel danno."
+            text: "Quando il chierico o una creatura entro 9 metri da lui subisce danni da acido, freddo, fuoco, fulmine o tuono, il chierico può usare la sua reazione per conferire a quella creatura resistenza contro quell'istanza di danni."
+            kid: "Quando tu o un amico entro 9 m venite colpiti da acido, freddo, fuoco, fulmine o tuono, con la tua reazione (una mossa rapida fuori dal tuo turno) quel danno si dimezza."
+        8:
+          - name: Colpo Divino
+            short: "Una volta per turno, quando colpisci con un attacco con arma, infliggi {t_divine_strike} danni extra da freddo, fuoco o fulmine, a scelta (1d8, 2d8 dal 14°)."
+            text: "Il chierico ottiene la capacità di infondere energia divina nei colpi della sua arma. Una volta in ciascuno dei suoi turni, quando colpisce una creatura con un attacco con arma, può infliggerle 1d8 danni extra da freddo, fuoco o fulmine (a sua scelta). Al 14° livello i danni extra salgono a 2d8."
+            kid: "Una volta nel tuo turno, quando colpisci un nemico con un'arma, aggiungi {t_divine_strike} danni a scelta: di ghiaccio, di fuoco o di fulmine."
+        17:
+          - name: Signore della Natura
+            name_f: Signora della Natura
+            short: "Mentre delle creature sono affascinate dal tuo Ammaliare Animali e Vegetali, con un'azione bonus ordini a voce cosa farà ciascuna nel suo turno successivo."
+            text: "Il chierico ottiene la capacità di comandare animali e creature vegetali. Mentre delle creature sono affascinate dal suo privilegio Ammaliare Animali e Vegetali, il chierico può usare un'azione bonus nel suo turno per ordinare verbalmente cosa farà ciascuna di quelle creature nel suo turno successivo."
+            kid: "Gli animali e le piante che hai reso amici con il tuo potere divino ti obbediscono: con un'azione bonus dici a ognuno cosa fare nel suo prossimo turno."
+    # ------------------------------------------------------------------ Tempesta
+    tempest:
+      name: Dominio della Tempesta
+      name_en: Tempest Domain
+      always_prepared:
+        1: [fog_cloud, thunderwave]
+        3: [gust_of_wind, shatter]
+        5: [call_lightning, sleet_storm]
+        7: [control_water, ice_storm]
+        9: [destructive_wave, insect_plague]
+      features:
+        1:
+          - name: Incantesimi del Dominio della Tempesta
+            short: "Sempre preparati: 1° nube di nebbia, onda di tuono; 3° folata di vento, frantumare; 5° evoca fulmini, tempesta di nevischio; 7° controllare acqua, tempesta di ghiaccio; 9° onda distruttiva, piaga degli insetti."
+            text: "Il chierico ottiene questi incantesimi di dominio ai livelli da chierico indicati: 1° nube di nebbia e onda di tuono; 3° folata di vento e frantumare; 5° evoca fulmini e tempesta di nevischio; 7° controllare acqua e tempesta di ghiaccio; 9° onda distruttiva e piaga degli insetti. Sono sempre preparati e non contano nel numero di incantesimi preparabili."
+            kid_hide: true
+          - name: Competenze Bonus
+            short: "Competenza nelle armi da guerra e nelle armature pesanti."
+            text: "Al 1° livello il chierico ottiene competenza nelle armi da guerra e nelle armature pesanti."
+            kid_hide: true
+            bonus_proficiencies:
+              armor: [heavy]
+              weapons: [martial]
+          - name: Ira della Tempesta
+            short: "Reazione: quando una creatura che vedi entro 1,5 m ti colpisce con un attacco, fa un TS su DES (CD {cd}): 2d8 danni da fulmine o tuono (a scelta), metà se lo supera. Usi = mod. SAG (min 1) per riposo lungo."
+            text: "Il chierico può rimproverare gli aggressori con la furia della tempesta. Quando una creatura entro 1,5 metri che può vedere lo colpisce con un attacco, può usare la sua reazione per costringerla a effettuare un tiro salvezza su Destrezza: la creatura subisce 2d8 danni da fulmine o da tuono (a scelta del chierico) se lo fallisce, la metà se lo supera. Può usarlo un numero di volte pari al suo modificatore di Saggezza (minimo una volta) e recupera gli utilizzi spesi al termine di un riposo lungo."
+            kid: "Quando un nemico entro 1,5 m ti colpisce, con la reazione lo fulmini: lui tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): 2d8 danni, metà se riesce. Usi per riposo lungo: bonus di Saggezza ({mod}, minimo 1)."
+        2:
+          - name: "Incanalare Divinità: Ira Distruttiva"
+            short: "Quando tiri danni da fulmine o da tuono, puoi usare Incanalare Divinità per infliggere il danno massimo invece di tirare."
+            text: "Il chierico può usare Incanalare Divinità per controllare con potenza la furia della tempesta. Quando tira danni da fulmine o da tuono, può usare Incanalare Divinità per infliggere il danno massimo, invece di tirare i dadi."
+            kid: "Quando fai danni da fulmine o tuono puoi usare una carica di potere divino: non tiri i dadi, ogni dado vale il massimo (per esempio 2d8 diventa 16)."
+        6:
+          - name: Colpo del Fulmine
+            short: "Quando infliggi danni da fulmine a una creatura di taglia Grande o inferiore, puoi spingerla fino a 3 m lontano da te."
+            text: "Quando il chierico infligge danni da fulmine a una creatura di taglia Grande o inferiore, può anche spingerla fino a 3 metri lontano da sé."
+            kid: "Quando colpisci con un fulmine una creatura non più grande di un cavallo, puoi spingerla via fino a 3 m da te."
+        8:
+          - name: Colpo Divino
+            short: "Una volta per turno, quando colpisci con un attacco con arma, infliggi {t_divine_strike} danni da tuono extra (1d8, 2d8 dal 14°)."
+            text: "Il chierico ottiene la capacità di infondere energia divina nei colpi della sua arma. Una volta in ciascuno dei suoi turni, quando colpisce una creatura con un attacco con arma, può infliggerle 1d8 danni da tuono extra. Al 14° livello i danni extra salgono a 2d8."
+            kid: "Una volta nel tuo turno, quando colpisci un nemico con un'arma, aggiungi {t_divine_strike} danni da tuono."
+        17:
+          - name: Nato dalla Tempesta
+            name_f: Nata dalla Tempesta
+            short: "Hai una velocità di volare pari alla tua velocità a piedi, quando non sei sottoterra o al chiuso."
+            text: "Il chierico ha una velocità di volare pari alla sua velocità sul terreno attuale ogni volta che non si trova sottoterra o al chiuso."
+            kid: "Quando sei all'aperto (non sottoterra e non dentro un edificio) puoi volare, veloce quanto cammini."
+    # ------------------------------------------------------------------ Inganno
+    trickery:
+      name: Dominio dell'Inganno
+      name_en: Trickery Domain
+      always_prepared:
+        1: [charm_person, disguise_self]
+        3: [mirror_image, pass_without_trace]
+        5: [blink, dispel_magic]
+        7: [dimension_door, polymorph]
+        9: [dominate_person, modify_memory]
+      features:
+        1:
+          - name: Incantesimi del Dominio dell'Inganno
+            short: "Sempre preparati: 1° camuffare se stesso, charme su persone; 3° immagine speculare, passare senza tracce; 5° dissolvi magie, intermittenza; 7° metamorfosi, porta dimensionale; 9° dominare persone, modificare memoria."
+            text: "Il chierico ottiene questi incantesimi di dominio ai livelli da chierico indicati: 1° camuffare se stesso e charme su persone; 3° immagine speculare e passare senza tracce; 5° dissolvi magie e intermittenza; 7° metamorfosi e porta dimensionale; 9° dominare persone e modificare memoria. Sono sempre preparati e non contano nel numero di incantesimi preparabili."
+            kid_hide: true
+          - name: Benedizione dell'Ingannatore
+            short: "Azione: tocchi una creatura consenziente diversa da te; ha vantaggio alle prove di Destrezza (Furtività) per 1 ora o finché non usi di nuovo questo privilegio."
+            text: "Il chierico può usare la sua azione per toccare una creatura consenziente diversa da sé e conferirle vantaggio alle prove di Destrezza (Furtività). Questa benedizione dura 1 ora o finché il chierico non usa di nuovo questo privilegio."
+            kid: "Con un'azione tocchi un amico (non te stesso): per 1 ora, quando prova a nascondersi o a muoversi in silenzio, ha vantaggio (tira 2 d20 e tiene il più alto)."
+        2:
+          - name: "Incanalare Divinità: Invocare Duplicità"
+            short: "Azione: crei un'illusione perfetta di te entro 9 m per 1 minuto (concentrazione). Azione bonus: la sposti di 9 m (max 36 m da te). Puoi lanciare incantesimi dal suo spazio; vantaggio agli attacchi contro una creatura se tu e l'illusione siete entro 1,5 m da lei."
+            text: "Il chierico può usare Incanalare Divinità per creare un'illusione di se stesso. Con un'azione crea un'illusione perfetta di sé che dura 1 minuto o finché non perde la concentrazione (come se si stesse concentrando su un incantesimo). L'illusione appare in uno spazio libero che il chierico può vedere entro 9 metri. Con un'azione bonus nel suo turno può spostarla fino a 9 metri in uno spazio che può vedere, ma deve restare entro 36 metri da lui. Per la durata, il chierico può lanciare incantesimi come se si trovasse nello spazio dell'illusione, ma usando i propri sensi. Inoltre, quando sia lui sia l'illusione si trovano entro 1,5 metri da una creatura che può vedere l'illusione, il chierico ha vantaggio ai tiri per colpire contro quella creatura, che è distratta dall'illusione."
+            kid: "Con una carica di potere divino crei un tuo doppio finto per 1 minuto; con l'azione bonus lo sposti di 9 m e lanci magie da lì. Se siete entrambi accanto a un nemico, lo attacchi con vantaggio (2 d20, tieni il più alto)."
+        6:
+          - name: "Incanalare Divinità: Mantello d'Ombre"
+            short: "Azione: diventi invisibile fino alla fine del tuo turno successivo, o finché non attacchi o lanci un incantesimo."
+            text: "Il chierico può usare Incanalare Divinità per svanire. Con un'azione diventa invisibile fino alla fine del suo turno successivo. Torna visibile se attacca o lancia un incantesimo."
+            kid: "Con una carica di potere divino diventi invisibile fino alla fine del tuo prossimo turno. Se attacchi o lanci una magia, torni visibile."
+        8:
+          - name: Colpo Divino
+            short: "Una volta per turno, quando colpisci con un attacco con arma, infliggi {t_divine_strike} danni da veleno extra (1d8, 2d8 dal 14°)."
+            text: "Il chierico ottiene la capacità di infondere veleno, dono della sua divinità, nei colpi della sua arma. Una volta in ciascuno dei suoi turni, quando colpisce una creatura con un attacco con arma, può infliggerle 1d8 danni da veleno extra. Al 14° livello i danni extra salgono a 2d8."
+            kid: "Una volta nel tuo turno, quando colpisci un nemico con un'arma, aggiungi {t_divine_strike} danni da veleno."
+        17:
+          - name: Duplicità Migliorata
+            short: "Con Invocare Duplicità crei fino a quattro duplicati invece di uno; con un'azione bonus muovi quanti ne vuoi di 9 m (max 36 m da te)."
+            text: "Quando usa Invocare Duplicità, il chierico può creare fino a quattro duplicati di se stesso invece di uno. Con un'azione bonus nel suo turno può spostarne quanti vuole fino a 9 metri, fino a una distanza massima di 36 metri da lui."
+            kid: "Quando crei il tuo doppio finto, ne fai fino a 4 invece di 1. Con l'azione bonus li sposti tutti di 9 m."
+    # ------------------------------------------------------------------ Guerra
+    war:
+      name: Dominio della Guerra
+      name_en: War Domain
+      always_prepared:
+        1: [divine_favor, shield_of_faith]
+        3: [magic_weapon, spiritual_weapon]
+        5: [crusaders_mantle, spirit_guardians]
+        7: [freedom_of_movement, stoneskin]
+        9: [flame_strike, hold_monster]
+      features:
+        1:
+          - name: Incantesimi del Dominio della Guerra
+            short: "Sempre preparati: 1° favore divino, scudo della fede; 3° arma magica, arma spirituale; 5° guardiani spirituali, manto del crociato; 7° libertà di movimento, pelle di pietra; 9° blocca mostri, colpo infuocato."
+            text: "Il chierico ottiene questi incantesimi di dominio ai livelli da chierico indicati: 1° favore divino e scudo della fede; 3° arma magica e arma spirituale; 5° guardiani spirituali e manto del crociato; 7° libertà di movimento e pelle di pietra; 9° blocca mostri e colpo infuocato. Sono sempre preparati e non contano nel numero di incantesimi preparabili."
+            kid_hide: true
+          - name: Competenze Bonus
+            short: "Competenza nelle armi da guerra e nelle armature pesanti."
+            text: "Al 1° livello il chierico ottiene competenza nelle armi da guerra e nelle armature pesanti."
+            kid_hide: true
+            bonus_proficiencies:
+              armor: [heavy]
+              weapons: [martial]
+          - name: Sacerdote della Guerra
+            name_f: Sacerdotessa della Guerra
+            short: "Quando effettui l'azione di Attacco, puoi fare un attacco con arma come azione bonus. Usi = mod. SAG (min 1) per riposo lungo."
+            text: "Il dio della guerra concede al chierico raffiche di ispirazione durante la battaglia. Quando usa l'azione di Attacco, può effettuare un attacco con un'arma come azione bonus. Può usare questo privilegio un numero di volte pari al suo modificatore di Saggezza (minimo una volta) e recupera gli utilizzi spesi al termine di un riposo lungo."
+            kid: "Quando attacchi con la tua azione, puoi fare subito un altro attacco con l'arma (azione bonus). Puoi farlo tante volte quanto il tuo bonus di Saggezza ({mod}, minimo 1), poi serve un riposo lungo."
+        2:
+          - name: "Incanalare Divinità: Colpo Guidato"
+            short: "Quando effettui un tiro per colpire, puoi usare Incanalare Divinità per ottenere +10 al tiro, dopo aver visto il risultato ma prima di sapere se colpisci."
+            text: "Il chierico può usare Incanalare Divinità per colpire con precisione soprannaturale. Quando effettua un tiro per colpire, può usare Incanalare Divinità per ottenere un bonus di +10 al tiro. Sceglie di farlo dopo aver visto il risultato, ma prima che il DM dica se l'attacco colpisce o manca."
+            kid: "Quando attacchi e vedi il risultato del d20, puoi usare una carica di potere divino per aggiungere +10, prima che il Master dica se hai colpito."
+        6:
+          - name: "Incanalare Divinità: Benedizione del Dio della Guerra"
+            short: "Reazione: quando una creatura entro 9 m effettua un tiro per colpire, usi Incanalare Divinità per darle +10 al tiro (dopo aver visto il tiro, prima dell'esito)."
+            text: "Quando una creatura entro 9 metri dal chierico effettua un tiro per colpire, il chierico può usare la sua reazione per conferirle un bonus di +10 al tiro, usando Incanalare Divinità. Sceglie di farlo dopo aver visto il risultato, ma prima che il DM dica se l'attacco colpisce o manca."
+            kid: "Quando un amico entro 9 m attacca, con la tua reazione e una carica di potere divino gli dai +10 al tiro, dopo aver visto il dado ma prima che il Master dica se ha colpito."
+        8:
+          - name: Colpo Divino
+            short: "Una volta per turno, quando colpisci con un attacco con arma, infliggi {t_divine_strike} danni extra dello stesso tipo dell'arma (1d8, 2d8 dal 14°)."
+            text: "Il chierico ottiene la capacità di infondere energia divina nei colpi della sua arma. Una volta in ciascuno dei suoi turni, quando colpisce una creatura con un attacco con arma, può infliggerle 1d8 danni extra dello stesso tipo inflitto dall'arma. Al 14° livello i danni extra salgono a 2d8."
+            kid: "Una volta nel tuo turno, quando colpisci un nemico con un'arma, aggiungi {t_divine_strike} danni dello stesso tipo dell'arma."
+        17:
+          - name: Avatar della Battaglia
+            short: "Resistenza ai danni contundenti, perforanti e taglienti inflitti da armi non magiche."
+            text: "Il chierico ottiene resistenza ai danni contundenti, perforanti e taglienti inflitti da armi non magiche."
+            kid: "Spade, frecce e mazze normali (non magiche) ti fanno solo metà danni."
 
 druid:
   name: Druido
@@ -461,6 +1121,27 @@ druid:
             text: "Il druido ha imparato a usare la magia per alterare la sua forma fisica in modi più sottili: può lanciare alterare se stesso a volontà."
             kid: "Puoi lanciare alterare se stesso tutte le volte che vuoi, senza usare slot."
 
+# Monaco (PHB 2014, cap. 3): privilegi 1-20 e le tre tradizioni monastiche del Manuale del Giocatore
+# (Via della Mano Aperta, Via dell'Ombra, Via dei Quattro Elementi con tutte le discipline elementali).
+# Stesso schema di fighter/druid in classes.yaml. Distanze in metri (1,5 m = 5 piedi).
+# Nomi italiani dei privilegi base e della Via della Mano Aperta verificati sull'SRD 5.1 in italiano (WotC, CC-BY).
+# table: valori per livello (indice 0 = 1° livello), usabili nei testi come {t_<colonna>}.
+#   martial_arts = dado di Arti Marziali; ki = punti ki; unarmored_movement = bonus di velocità in metri come
+#   testo con la virgola ("4,5"), per i testi; unarmored_movement_ft = lo stesso bonus in piedi (numero), per il
+#   calcolo della velocità nel motore (che lavora in piedi). Colonne di supporto per i testi: slow_fall (Caduta
+#   Lenta, 5 x livello), wholeness_of_body (Integrità del Corpo, 3 x livello), disciplines_known (discipline
+#   elementali a scelta della Via dei Quattro Elementi, Sintonia Elementale esclusa: è sempre conosciuta),
+#   ki_spell_max (tabella "Incantesimi e Punti Ki" della Via dei Quattro Elementi: ki massimi spendibili per un
+#   incantesimo di una disciplina, costo base incluso; 0 = prima del 5° livello non si può potenziare).
+# Segnaposto: {livello}, {t_<colonna>} e {cd} = CD del tiro salvezza ki = 8 + bonus di competenza + mod. SAG.
+#   Il monaco non ha 'spellcasting': il motore deve riempire {cd} usando ki_save (la stessa CD vale per
+#   Tranquillità e per gli incantesimi lanciati con le discipline elementali). {att} e {mod} non servono.
+# Campi extra (informativi, da gestire nel motore):
+#   ki_save: {ability, placeholder}  -> come calcolare {cd} (8 + competenza + mod. della caratteristica)
+#   speed_bonus_table: unarmored_movement_ft (+ requires_unarmored) -> bonus di velocità in piedi,
+#     solo senza armatura né scudo
+#   save_proficiencies: [...]        -> competenza aggiuntiva nei tiri salvezza (Anima Adamantina: tutti)
+#   ki_cost / ki_spells / spell / min_level -> costo in ki, incantesimi lanciati col ki, livello minimo della disciplina
 monk:
   name: Monaco
   name_f: Monaca
@@ -469,22 +1150,397 @@ monk:
   saves: [str, dex]
   armor: []
   weapons: [simple, shortsword]
-  tools: ["Uno strumento da artigiano o musicale a scelta"]
-  skill_choices: {count: 2, from: [acrobatics, athletics, history, insight, religion, stealth]}
+  tools: ["Un tipo di strumenti da artigiano o uno strumento musicale a scelta"]
+  skill_choices:
+    count: 2
+    from: [acrobatics, athletics, history, insight, religion, stealth]
+  starting_equipment:
+    - choice: ["Una spada corta", "Un'arma semplice qualsiasi"]
+    - choice: ["Dotazione da esploratore di sotterranei", "Dotazione da esploratore"]
+    - fixed: ["10 dardi"]
   subclass_level: 3
   subclass_label: Tradizione Monastica
   asi_levels: [4, 8, 12, 16, 19]
+  ki_save:
+    ability: wis
+    placeholder: cd
+  table:
+    martial_arts: ["1d4", "1d4", "1d4", "1d4", "1d6", "1d6", "1d6", "1d6", "1d6", "1d6", "1d8", "1d8", "1d8", "1d8", "1d8", "1d8", "1d10", "1d10", "1d10", "1d10"]
+    ki: [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    unarmored_movement: ["0", "3", "3", "3", "3", "4,5", "4,5", "4,5", "4,5", "6", "6", "6", "6", "7,5", "7,5", "7,5", "7,5", "9", "9", "9"]
+    unarmored_movement_ft: [0, 10, 10, 10, 10, 15, 15, 15, 15, 20, 20, 20, 20, 25, 25, 25, 25, 30, 30, 30]
+    slow_fall: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100]
+    wholeness_of_body: [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60]
+    disciplines_known: [0, 0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4]
+    ki_spell_max: [0, 0, 0, 0, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6]
   features:
     1:
-      - {name: Difesa Senza Armatura, short: "Senza armatura né scudo la CA è 10 + mod. DES + mod. SAG.", text: "Quando non indossa armatura né scudo, la Classe Armatura del monaco è pari a 10 + modificatore di Destrezza + modificatore di Saggezza."}
-      - {name: Arti Marziali, short: "Con colpi senz'armi e armi da monaco usi DES, danno d4 (cresce con il livello) e attacco senz'armi come azione bonus.", text: "Il monaco può usare la Destrezza per i colpi senz'armi e le armi da monaco, usa un d4 per i danni (d6 al 5°, d8 all'11°, d10 al 17°) e, quando attacca con queste armi, può effettuare un colpo senz'armi come azione bonus."}
+      - name: Difesa Senza Armatura
+        short: "Senza armatura e senza scudo: CA = 10 + mod. DES + mod. SAG."
+        text: "Quando non indossa alcuna armatura e non impugna uno scudo, la Classe Armatura del monaco è pari a 10 + il suo modificatore di Destrezza + il suo modificatore di Saggezza."
+        kid: "Non ti serve l'armatura: se non la indossi e non usi lo scudo, agilità e calma ti proteggono. La tua CA è 10 + DES + SAG (è già calcolata sulla scheda)."
+      - name: Arti Marziali
+        short: "Senz'armi o con armi da monaco (spada corta, armi semplici da mischia non a due mani né pesanti), senza armatura né scudo: puoi usare DES per attacco e danni, puoi tirare {t_martial_arts} come dado di danno e, quando fai l'azione di Attacco con queste armi, puoi fare un colpo senz'armi come azione bonus."
+        text: "La pratica delle arti marziali conferisce al monaco la padronanza degli stili di combattimento che usano i colpi senz'armi e le armi da monaco, cioè le spade corte e tutte le armi semplici da mischia che non hanno la proprietà a due mani o pesante. Finché è senz'armi o impugna soltanto armi da monaco, e non indossa armature né impugna uno scudo, ottiene questi benefici: può usare la Destrezza anziché la Forza per i tiri per colpire e per i tiri per i danni dei colpi senz'armi e delle armi da monaco; può tirare un d4 al posto del normale danno del colpo senz'armi o dell'arma da monaco (il dado diventa d6 al 5° livello, d8 all'11° e d10 al 17°, come indicato nella colonna Arti Marziali); quando usa l'azione di Attacco con un colpo senz'armi o con un'arma da monaco nel suo turno, può effettuare un colpo senz'armi come azione bonus. Alcuni monasteri usano forme particolari delle armi da monaco, per esempio un kama (un falcetto) o un nunchaku (un randello)."
+        kid: "Combatti con pugni e calci! Ogni pugno o calcio fa {t_martial_arts} + DES danni. Quando attacchi a mani nude o con un'arma da monaco nel tuo turno, puoi dare subito un pugno in più (azione bonus)."
     2:
-      - {name: Ki, short: "Punti ki = livello da monaco (Raffica di Colpi, Difesa Paziente, Passo del Vento). Recuperati con un riposo breve o lungo.", text: "Il monaco dispone di un numero di punti ki pari al suo livello da monaco, che alimentano Raffica di Colpi, Difesa Paziente e Passo del Vento."}
-      - {name: Movimento Senza Armatura, short: "+3 m di velocità senza armatura né scudo.", text: "La velocità del monaco aumenta di 3 metri quando non indossa armatura né scudo."}
+      - name: Ki
+        short: "{t_ki} punti ki, recuperati con un riposo breve o lungo (meditando almeno 30 minuti). CD del tiro salvezza ki = 8 + comp. + mod. SAG ({cd})."
+        text: "L'addestramento permette al monaco di sfruttare l'energia mistica del ki. Dispone di un numero di punti ki pari al suo livello da monaco (colonna Punti Ki) e li spende per alimentare vari privilegi del ki: all'inizio conosce Raffica di Colpi, Difesa Paziente e Passo del Vento, e ne apprende altri salendo di livello. Quando spende un punto ki, non può più usarlo finché non completa un riposo breve o lungo, al termine del quale recupera tutti i punti ki spesi; deve però trascorrere almeno 30 minuti del riposo meditando. Alcuni privilegi del ki richiedono al bersaglio un tiro salvezza: CD del tiro salvezza ki = 8 + bonus di competenza + modificatore di Saggezza."
+        kid: "Hai {t_ki} punti ki: la tua energia segreta, da spendere per le mosse speciali. Tornano tutti dopo un riposo (meditando almeno 30 minuti). Chi resiste a una tua mossa tira un d20 contro {cd}."
+      - name: Raffica di Colpi
+        short: "Subito dopo l'azione di Attacco nel tuo turno: 1 ki per fare due colpi senz'armi come azione bonus."
+        text: "Subito dopo avere effettuato l'azione di Attacco nel suo turno, il monaco può spendere 1 punto ki per effettuare due colpi senz'armi come azione bonus."
+        kid: "Dopo aver attaccato nel tuo turno, spendi 1 ki: invece di 1 pugno in più ne dai 2 (azione bonus). Ognuno fa {t_martial_arts} + DES danni."
+        ki_cost: 1
+      - name: Difesa Paziente
+        short: "1 ki: azione di Schivata come azione bonus nel tuo turno."
+        text: "Il monaco può spendere 1 punto ki per effettuare l'azione di Schivata come azione bonus nel suo turno."
+        kid: "Spendi 1 ki (azione bonus) e ti metti in difesa: fino al tuo prossimo turno chi ti attacca, se lo vedi, tira 2 d20 e tiene il più basso. Nei tiri salvezza su Destrezza tiri 2 d20 e tieni il più alto."
+        ki_cost: 1
+      - name: Passo del Vento
+        short: "1 ki: azione di Disimpegno o Scatto come azione bonus; la distanza dei tuoi salti raddoppia per il turno."
+        text: "Il monaco può spendere 1 punto ki per effettuare l'azione di Disimpegno o di Scatto come azione bonus nel suo turno; inoltre la sua distanza di salto raddoppia per quel turno."
+        kid: "Spendi 1 ki (azione bonus): corri il doppio (Scatto) oppure ti allontani senza che i nemici vicini ti colpiscano (Disimpegno). In quel turno salti anche il doppio."
+        ki_cost: 1
+      - name: Movimento Senza Armatura
+        short: "Senza armatura né scudo la tua velocità aumenta di {t_unarmored_movement} m."
+        text: "La velocità del monaco aumenta di 3 metri finché non indossa armature e non impugna uno scudo. Il bonus aumenta a determinati livelli da monaco: +4,5 m al 6°, +6 m al 10°, +7,5 m al 14° e +9 m al 18° livello (colonna Movimento Senza Armatura). Al 9° livello ottiene anche la capacità di muoversi lungo le superfici verticali e sui liquidi durante il suo turno senza cadere durante il movimento (vedi 9° livello)."
+        kid: "Senza armatura e senza scudo sei velocissimo: a ogni turno ti muovi di {t_unarmored_movement} m in più."
+        speed_bonus_table: unarmored_movement_ft
+        requires_unarmored: true
     3:
-      - {name: Tradizione Monastica, short: "Scegli una tradizione (Mano Aperta, Ombra, Quattro Elementi).", text: "Il monaco sceglie una tradizione monastica."}
-      - {name: Deviare Proiettili, short: "Reazione: riduci i danni di un attacco a distanza con arma di 1d10 + mod. DES + livello.", text: "Il monaco può usare la sua reazione per deviare o afferrare un proiettile che lo colpisce, riducendone i danni di 1d10 + modificatore di Destrezza + livello da monaco."}
+      - name: Tradizione Monastica
+        short: "Scegli una tradizione: Via della Mano Aperta, Via dell'Ombra o Via dei Quattro Elementi."
+        text: "Al 3° livello il monaco si dedica a una tradizione monastica: la Via della Mano Aperta, la Via dell'Ombra o la Via dei Quattro Elementi. La tradizione scelta conferisce privilegi al 3° livello e poi al 6°, all'11° e al 17° livello."
+        kid: "Hai scelto la tua scuola di monaco: i suoi poteri speciali sono scritti qui sotto."
+        kid_hide: true
+      - name: Deviare Proiettili
+        short: "Reazione quando ti colpisce un attacco con arma a distanza: riduci i danni di 1d10 + mod. DES + {livello}. Se arrivano a 0 e hai una mano libera afferri il proiettile; con 1 ki lo rilanci subito (attacco con competenza, gittata 6/18 m)."
+        text: "Il monaco può usare la sua reazione per deviare o afferrare un proiettile quando è colpito da un attacco con un'arma a distanza: i danni che subisce dall'attacco sono ridotti di 1d10 + il suo modificatore di Destrezza + il suo livello da monaco. Se i danni sono ridotti a 0, il monaco può afferrare il proiettile, purché sia abbastanza piccolo da poter essere tenuto in una mano e il monaco abbia almeno una mano libera. Se afferra un proiettile in questo modo, può spendere 1 punto ki per effettuare un attacco a distanza con l'arma o la munizione appena afferrata, come parte della stessa reazione. Effettua questo attacco con competenza, a prescindere dalle sue competenze nelle armi, e il proiettile conta come un'arma da monaco per l'attacco, con gittata normale di 6 metri e gittata lunga di 18 metri."
+        kid: "Se una freccia o un sasso ti colpisce, usa la reazione: tira 1d10, aggiungi DES + {livello} e togli il risultato dal danno. Se il danno arriva a 0 la afferri al volo, e con 1 ki la rilanci!"
+    4:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Il monaco può aumentare di 2 un punteggio di caratteristica a sua scelta, oppure di 1 due punteggi di caratteristica a sua scelta (massimo 20), oppure scegliere un talento se il DM usa questa regola opzionale. Ottiene di nuovo questo privilegio all'8°, 12°, 16° e 19° livello."
+        kid: "Le tue caratteristiche crescono: +2 a una oppure +1 a due (massimo 20). I numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+      - name: Caduta Lenta
+        short: "Reazione quando cadi: riduci i danni da caduta di {t_slow_fall} (5 x livello da monaco)."
+        text: "Il monaco può usare la sua reazione quando cade per ridurre i danni da caduta che subisce di un ammontare pari a cinque volte il suo livello da monaco."
+        kid: "Se cadi dall'alto, usa la reazione: atterri leggero come un gatto e togli {t_slow_fall} punti dal danno della caduta."
+    5:
+      - name: Attacco Extra
+        short: "Quando effettui l'azione di Attacco nel tuo turno, attacchi due volte."
+        text: "Il monaco può attaccare due volte, anziché una, ogni volta che effettua l'azione di Attacco nel suo turno."
+        kid: "Quando fai l'azione di Attacco nel tuo turno attacchi 2 volte invece di 1. Con il pugno in più delle Arti Marziali arrivi a 3 colpi (4 con la Raffica di Colpi)!"
+      - name: Colpo Stordente
+        short: "Quando colpisci una creatura con un attacco con arma da mischia: 1 ki, TS su COS ({cd}) o è stordita fino alla fine del tuo prossimo turno."
+        text: "Il monaco può interferire con il flusso del ki nel corpo di un avversario. Quando colpisce un'altra creatura con un attacco con arma da mischia, può spendere 1 punto ki per tentare un colpo stordente: il bersaglio deve superare un tiro salvezza su Costituzione, altrimenti è stordito fino alla fine del turno successivo del monaco."
+        kid: "Colpisci da vicino e spendi 1 ki: il nemico tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}). Se fallisce, fino alla fine del tuo prossimo turno resta stordito: fermo, senza azioni e più facile da colpire."
+        ki_cost: 1
+    6:
+      - name: Colpi Ki Potenziati
+        short: "I tuoi colpi senz'armi contano come magici per superare resistenze e immunità ad attacchi e danni non magici."
+        text: "I colpi senz'armi del monaco contano come magici al fine di superare la resistenza e l'immunità agli attacchi e ai danni non magici."
+        kid: "I tuoi pugni e calci sono magici: fanno male anche ai mostri (come i fantasmi) che le armi normali quasi non feriscono."
+    7:
+      - name: Elusione
+        short: "Contro effetti che permettono un TS su DES per dimezzare i danni: nessun danno se superi il TS, metà dei danni se lo fallisci."
+        text: "L'agilità istintiva del monaco gli permette di schivare certi effetti ad area, come il soffio fulminante di un drago blu o un incantesimo palla di fuoco. Quando è soggetto a un effetto che gli consente di effettuare un tiro salvezza su Destrezza per subire solo la metà dei danni, non subisce alcun danno se supera il tiro salvezza e subisce solo la metà dei danni se lo fallisce."
+        kid: "Contro esplosioni e soffi di drago tiri un d20 per schivare (tiro salvezza su Destrezza): se ci riesci non prendi nessun danno, se fallisci ne prendi solo metà."
+      - name: Mente Lucida
+        short: "Azione: poni fine a un effetto su di te che ti rende affascinato o spaventato."
+        text: "Il monaco può usare la sua azione per porre fine a un effetto su se stesso che lo rende affascinato o spaventato."
+        kid: "Se una magia ti fa paura o ti incanta, usa la tua azione: fai un respiro profondo e l'effetto sparisce."
+    8:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Le tue caratteristiche crescono: +2 a una oppure +1 a due (massimo 20). I numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    9:
+      - name: Movimento Senza Armatura Migliorato
+        short: "Senza armatura né scudo, nel tuo turno puoi muoverti lungo superfici verticali e sui liquidi senza cadere durante il movimento."
+        text: "Al 9° livello il monaco ottiene la capacità di muoversi lungo superfici verticali e attraverso i liquidi durante il suo turno, senza cadere durante il movimento."
+        kid: "Senza armatura e senza scudo, nel tuo turno puoi correre sui muri e sull'acqua! Ma alla fine del movimento devi fermarti dove si può stare in piedi, se no cadi."
+    10:
+      - name: Purezza del Corpo
+        short: "Sei immune alle malattie e al veleno."
+        text: "La padronanza del ki che scorre nel corpo del monaco lo rende immune alle malattie e al veleno."
+        kid: "Non ti ammali mai e il veleno non ti fa niente: niente danni da veleno e non puoi essere avvelenato."
+    12:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Le tue caratteristiche crescono: +2 a una oppure +1 a due (massimo 20). I numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    13:
+      - name: Lingua del Sole e della Luna
+        short: "Capisci tutti i linguaggi parlati, e ogni creatura che capisce un linguaggio capisce ciò che dici."
+        text: "Il monaco impara a toccare il ki delle altre menti e comprende tutti i linguaggi parlati. Inoltre, qualsiasi creatura in grado di comprendere un linguaggio può capire ciò che il monaco dice."
+        kid: "Capisci tutte le lingue parlate del mondo, e chiunque sappia parlare capisce quello che dici tu."
+    14:
+      - name: Anima Adamantina
+        short: "Competenza in tutti i tiri salvezza. Se fallisci un TS, puoi spendere 1 ki per ripeterlo (vale il secondo risultato)."
+        text: "La padronanza del ki conferisce al monaco competenza in tutti i tiri salvezza. Inoltre, ogni volta che effettua un tiro salvezza e lo fallisce, può spendere 1 punto ki per ripeterlo, ma deve usare il secondo risultato."
+        kid: "Aggiungi la competenza a tutti i tuoi tiri salvezza (è già sulla scheda). Se ne sbagli uno, spendi 1 ki e ritira il d20: vale il nuovo tiro."
+        save_proficiencies: [str, dex, con, int, wis, cha]
+        ki_cost: 1
+    15:
+      - name: Corpo Senza Tempo
+        short: "Non subisci gli acciacchi della vecchiaia, la magia non può farti invecchiare e non hai più bisogno di cibo né di acqua."
+        text: "Il ki sostiene il monaco, che non subisce più alcun acciacco della vecchiaia e non può essere invecchiato magicamente. Può comunque morire di vecchiaia. Inoltre non ha più bisogno di cibo né di acqua."
+        kid: "Il ki ti nutre: non hai più bisogno di mangiare né di bere, e nessuna magia può farti invecchiare."
+    16:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Le tue caratteristiche crescono: +2 a una oppure +1 a due (massimo 20). I numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    18:
+      - name: Corpo Vuoto
+        short: "Azione, 4 ki: sei invisibile per 1 minuto e hai resistenza a tutti i danni tranne quelli da forza. 8 ki: lanci proiezione astrale senza componenti materiali (solo su di te)."
+        text: "Il monaco può usare la sua azione per spendere 4 punti ki e diventare invisibile per 1 minuto. Durante quel periodo ha anche resistenza a tutti i danni tranne quelli da forza. Inoltre può spendere 8 punti ki per lanciare l'incantesimo proiezione astrale senza bisogno di componenti materiali; in questo caso non può portare con sé altre creature."
+        kid: "Spendi 4 ki (azione): per 1 minuto sei invisibile e ogni danno ti fa solo metà (tranne quello da forza). Con 8 ki il tuo spirito viaggia nel Piano Astrale, da solo."
+        ki_cost: 4
+        ki_spells: [astral_projection]
+    19:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Le tue caratteristiche crescono: +2 a una oppure +1 a due (massimo 20). I numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    20:
+      - name: Perfezione Interiore
+        short: "Quando tiri l'iniziativa e non hai più punti ki, ne recuperi 4."
+        text: "Quando il monaco tira per l'iniziativa e non ha più punti ki rimanenti, recupera 4 punti ki."
+        kid: "Se comincia una battaglia e hai finito i punti ki, ne recuperi subito 4."
+  subclasses:
+    open_hand:
+      name: Via della Mano Aperta
+      name_en: Way of the Open Hand
+      features:
+        3:
+          - name: Tecnica della Mano Aperta
+            short: "Quando colpisci con un attacco di Raffica di Colpi scegli: TS su DES ({cd}) o cade prono; TS su FOR o lo spingi fino a 4,5 m; oppure non può usare reazioni fino alla fine del tuo prossimo turno."
+            text: "Il monaco può manipolare il ki del suo nemico quando incanala il proprio. Ogni volta che colpisce una creatura con uno degli attacchi concessi da Raffica di Colpi, può imporle uno degli effetti seguenti: la creatura deve superare un tiro salvezza su Destrezza, altrimenti cade prona; la creatura deve superare un tiro salvezza su Forza, altrimenti il monaco può spingerla fino a 4,5 metri da sé; la creatura non può effettuare reazioni fino alla fine del turno successivo del monaco."
+            kid: "Quando colpisci con un pugno della Raffica di Colpi, scegli: lo butti a terra o lo spingi via di 4,5 m (lui tira un d20 per resistere: tiro salvezza contro {cd}), oppure non può reagire fino al tuo prossimo turno."
+        6:
+          - name: Integrità del Corpo
+            short: "Azione: recuperi {t_wholeness_of_body} PF (3 x livello da monaco). 1 volta per riposo lungo."
+            text: "Il monaco ottiene la capacità di guarire se stesso. Come azione, può recuperare un numero di punti ferita pari al triplo del suo livello da monaco. Una volta usato questo privilegio, deve completare un riposo lungo prima di poterlo usare di nuovo."
+            kid: "Con la tua azione ti concentri e ti curi: recuperi {t_wholeness_of_body} punti ferita. Si può fare 1 volta, poi serve un riposo lungo."
+        11:
+          - name: Tranquillità
+            short: "Alla fine di ogni riposo lungo ottieni l'effetto di santuario fino all'inizio del riposo lungo successivo (CD = 8 + mod. SAG + comp. = {cd})."
+            text: "Il monaco può entrare in uno speciale stato di meditazione che lo circonda di un'aura di pace. Al termine di un riposo lungo ottiene l'effetto dell'incantesimo santuario, che dura fino all'inizio del suo riposo lungo successivo (l'incantesimo può terminare prima come di consueto). La CD del tiro salvezza dell'incantesimo è pari a 8 + il modificatore di Saggezza + il bonus di competenza del monaco."
+            kid: "Dopo ogni riposo lungo ti avvolge un'aura di pace: chi vuole attaccarti tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}) e, se fallisce, deve scegliere un altro bersaglio. L'aura finisce se attacchi qualcuno."
+        17:
+          - name: Palmo Tremante
+            short: "Quando colpisci con un colpo senz'armi, 3 ki: vibrazioni per {livello} giorni. Con un'azione le fermi: TS su COS ({cd}); se fallisce scende a 0 PF, se lo supera subisce 10d10 danni necrotici."
+            text: "Il monaco apprende a creare vibrazioni letali nel corpo di un altro. Quando colpisce una creatura con un colpo senz'armi, può spendere 3 punti ki per avviare vibrazioni impercettibili che durano un numero di giorni pari al suo livello da monaco. Le vibrazioni sono innocue, a meno che il monaco non usi la sua azione per porvi fine; per farlo, lui e il bersaglio devono trovarsi sullo stesso piano di esistenza. Quando il monaco usa questa azione, la creatura deve effettuare un tiro salvezza su Costituzione: se lo fallisce scende a 0 punti ferita, se lo supera subisce 10d10 danni necrotici. Il monaco può avere una sola creatura alla volta sotto l'effetto di questo privilegio e può scegliere di porre fine alle vibrazioni in modo innocuo senza usare un'azione."
+            kid: "Colpisci con un pugno e spendi 3 ki: parte una vibrazione che dura {livello} giorni. Con un'azione la fai esplodere: il nemico tira un d20 (tiro salvezza su Costituzione contro {cd}). Se fallisce va a 0 PF, se no subisce 10d10 danni."
+            ki_cost: 3
+    shadow:
+      name: Via dell'Ombra
+      name_en: Way of Shadow
+      features:
+        3:
+          - name: Arti dell'Ombra
+            short: "Azione, 2 ki: lanci oscurità, scurovisione, passare senza tracce o silenzio, senza componenti materiali. Conosci il trucchetto illusione minore."
+            text: "Il monaco può usare il suo ki per duplicare gli effetti di certi incantesimi. Come azione, può spendere 2 punti ki per lanciare oscurità, scurovisione, passare senza tracce o silenzio, senza fornire componenti materiali. Inoltre ottiene il trucchetto illusione minore, se non lo conosce già."
+            kid: "Spendi 2 ki (azione) per una magia d'ombra: Oscurità (buio magico di 4,5 m di raggio), Scurovisione (vedi al buio), Passare senza Tracce (+10 a Furtività per te e gli amici vicini) o Silenzio. Sai anche fare Illusione Minore."
+            grants_cantrip: minor_illusion
+            ki_cost: 2
+            ki_spells: [darkness, darkvision, pass_without_trace, silence]
+        6:
+          - name: Passo d'Ombra
+            short: "Azione bonus, se sei in luce fioca o oscurità: ti teletrasporti fino a 18 m in uno spazio libero che vedi, anch'esso in luce fioca o oscurità. Vantaggio al primo attacco in mischia prima della fine del turno."
+            text: "Il monaco ottiene la capacità di passare da un'ombra all'altra. Quando si trova in un'area di luce fioca o di oscurità, come azione bonus può teletrasportarsi fino a 18 metri in uno spazio libero che è in grado di vedere e che si trova anch'esso in luce fioca o nell'oscurità. Ha poi vantaggio al primo attacco in mischia che effettua prima della fine del turno."
+            kid: "Se sei nell'ombra o al buio, con un'azione bonus salti magicamente fino a 18 m in un'altra ombra che vedi. Poi il primo attacco da vicino di quel turno ha vantaggio (tira 2 d20 e tieni il più alto)."
+        11:
+          - name: Manto d'Ombre
+            short: "Azione, se sei in luce fioca o oscurità: diventi invisibile finché non attacchi, non lanci un incantesimo o non entri in luce intensa."
+            text: "Il monaco impara a diventare un tutt'uno con le ombre. Quando si trova in un'area di luce fioca o di oscurità, può usare la sua azione per diventare invisibile. Rimane invisibile finché non effettua un attacco, non lancia un incantesimo o non si trova in un'area di luce intensa."
+            kid: "Quando sei nell'ombra o al buio, usa l'azione: diventi invisibile! Torni visibile se attacchi, se fai una magia o se entri in un posto ben illuminato."
+        17:
+          - name: Opportunista
+            short: "Reazione: quando una creatura entro 1,5 m da te è colpita dall'attacco di qualcun altro, effettui un attacco in mischia contro di lei."
+            text: "Il monaco sa sfruttare la distrazione momentanea di una creatura quando viene colpita da un attacco. Ogni volta che una creatura entro 1,5 metri da lui viene colpita da un attacco effettuato da una creatura diversa dal monaco, il monaco può usare la sua reazione per effettuare un attacco in mischia contro quella creatura."
+            kid: "Quando un amico colpisce un nemico che ti sta vicino (entro 1,5 m), usa la reazione: lo attacchi subito anche tu, approfittando della sua distrazione."
+    four_elements:
+      name: Via dei Quattro Elementi
+      name_en: Way of the Four Elements
+      features:
+        3:
+          - name: Discepolo degli Elementi
+            short: "Conosci Sintonia Elementale e {t_disciplines_known} discipline elementali a scelta (una in più al 6°, 11° e 17°). TS delle discipline: CD ki ({cd}). Incantesimi senza componenti materiali; dal 5° livello ki extra per alzarne il livello (max per incantesimo, costo base incluso: 3 ki dal 5°, 4 dal 9°, 5 dal 13°, 6 dal 17°)."
+            text: "Il monaco apprende discipline magiche che sfruttano il potere dei quattro elementi. Una disciplina richiede di spendere punti ki ogni volta che viene usata. Il monaco conosce la disciplina Sintonia Elementale e un'altra disciplina elementale a sua scelta; ne apprende una aggiuntiva a sua scelta al 6°, all'11° e al 17° livello. Ogni volta che apprende una nuova disciplina, può anche sostituire una disciplina che già conosce con un'altra. Alcune discipline richiedono un livello minimo da monaco. Le discipline sono privilegi del ki: quando richiedono un tiro salvezza usano la CD del tiro salvezza ki. Lanciare incantesimi elementali: alcune discipline permettono di lanciare incantesimi; il monaco ne usa il tempo di lancio e le altre regole, ma non deve fornire componenti materiali. Dal 5° livello può spendere punti ki aggiuntivi per aumentare il livello di un incantesimo lanciato con una disciplina, se l'incantesimo ha un effetto potenziato ai livelli superiori (come mani brucianti): il livello aumenta di 1 per ogni punto ki aggiuntivo (per esempio, al 5° livello può spendere 3 ki con Colpo Spazzante di Cenere per lanciare mani brucianti di 2° livello). Il massimo di punti ki spendibili per un incantesimo, costo base incluso, è 3 dal 5° all'8° livello, 4 dal 9° al 12°, 5 dal 13° al 16° e 6 dal 17° al 20°."
+            kid: "Comandi aria, acqua, terra e fuoco! Conosci Sintonia Elementale e {t_disciplines_known} mosse elementali scelte da te (sono qui sotto), che costano ki. Chi deve resistere tira un d20 contro {cd}."
+          - name: Sintonia Elementale
+            short: "Azione, 0 ki: controlli brevemente gli elementi entro 9 m (effetto sensoriale innocuo; accendi o spegni una candela, una torcia o un piccolo fuoco; scaldi o raffreddi fino a 0,5 kg di materiale non vivente per 1 ora; dai una forma grezza per 1 minuto a terra, fuoco, acqua o nebbia in un cubo di 30 cm)."
+            text: "Il monaco può usare la sua azione per controllare brevemente le forze elementali entro 9 metri da sé, ottenendo uno degli effetti seguenti a sua scelta: creare un effetto sensoriale innocuo e istantaneo legato all'aria, alla terra, al fuoco o all'acqua, come una pioggia di scintille, uno sbuffo di vento, uno spruzzo di nebbiolina o un leggero brontolio della pietra; accendere o spegnere istantaneamente una candela, una torcia o un piccolo fuoco da campo; raffreddare o riscaldare fino a 0,5 kg di materiale non vivente per un massimo di 1 ora; far sì che terra, fuoco, acqua o nebbia che possano essere contenuti in un cubo di 30 cm di lato assumano per 1 minuto una forma grezza da lui scelta."
+            kid: "Senza spendere ki (azione), entro 9 m: fai scintille, un soffio di vento o un po' di nebbia; accendi o spegni una candela o una torcia; scaldi o raffreddi un piccolo oggetto; dai una forma a un po' d'acqua, terra o fuoco."
+        6:
+          - name: Discepolo degli Elementi (nuova disciplina)
+            short: "Impari una nuova disciplina elementale a scelta (puoi anche sostituirne una che conosci)."
+            text: "Al 6° livello il monaco apprende una disciplina elementale aggiuntiva a sua scelta e può sostituire una disciplina che già conosce con un'altra."
+            kid: "Impari una nuova mossa elementale: la trovi nell'elenco delle discipline."
+            kid_hide: true
+        11:
+          - name: Discepolo degli Elementi (nuova disciplina)
+            short: "Impari una nuova disciplina elementale a scelta (puoi anche sostituirne una che conosci)."
+            text: "All'11° livello il monaco apprende una disciplina elementale aggiuntiva a sua scelta e può sostituire una disciplina che già conosce con un'altra."
+            kid: "Impari una nuova mossa elementale: la trovi nell'elenco delle discipline."
+            kid_hide: true
+        17:
+          - name: Discepolo degli Elementi (nuova disciplina)
+            short: "Impari una nuova disciplina elementale a scelta (puoi anche sostituirne una che conosci)."
+            text: "Al 17° livello il monaco apprende una disciplina elementale aggiuntiva a sua scelta e può sostituire una disciplina che già conosce con un'altra."
+            kid: "Impari una nuova mossa elementale: la trovi nell'elenco delle discipline."
+            kid_hide: true
+      option_lists:
+        elemental_disciplines:
+          label: Discipline Elementali
+          count_table: disciplines_known
+          items:
+            breath_of_winter:
+              name: Soffio dell'Inverno
+              prerequisite: "17° livello"
+              min_level: 17
+              ki_cost: 6
+              spell: cone_of_cold
+              short: "6 ki: lanci cono di freddo (cono di 18 m, TS su COS, 8d8 danni da freddo, metà se lo supera)."
+              text: "Il monaco può spendere 6 punti ki per lanciare cono di freddo."
+              kid: "Spendi 6 ki (azione): soffi un cono di gelo lungo 18 m. Chi è lì tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): se fallisce subisce 8d8 danni da freddo, se riesce metà."
+            clench_of_the_north_wind:
+              name: Stretta del Vento del Nord
+              prerequisite: "6° livello"
+              min_level: 6
+              ki_cost: 3
+              spell: hold_person
+              short: "3 ki: lanci blocca persone (un umanoide entro 18 m, TS su SAG o paralizzato; ripete il TS alla fine di ogni suo turno; concentrazione, fino a 1 minuto). Dal 9° livello: +1 ki = +1 bersaglio."
+              text: "Il monaco può spendere 3 punti ki per lanciare blocca persone."
+              kid: "Spendi 3 ki (azione): una persona entro 18 m tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}). Se fallisce resta paralizzata come una statua fino a 1 minuto; ritenta alla fine di ogni suo turno. Devi mantenere la concentrazione."
+            eternal_mountain_defense:
+              name: Difesa della Montagna Eterna
+              prerequisite: "17° livello"
+              min_level: 17
+              ki_cost: 5
+              spell: stoneskin
+              short: "5 ki: lanci pelle di pietra su di te, senza polvere di diamante (resistenza ai danni contundenti, perforanti e taglienti non magici; concentrazione, fino a 1 ora)."
+              text: "Il monaco può spendere 5 punti ki per lanciare pelle di pietra, prendendo se stesso come bersaglio."
+              kid: "Spendi 5 ki (azione): la tua pelle diventa dura come la roccia fino a 1 ora. Spade, frecce e mazze normali (non magiche) ti fanno solo metà danni. Devi mantenere la concentrazione."
+            fangs_of_the_fire_snake:
+              name: Zanne del Serpente di Fuoco
+              ki_cost: 1
+              short: "Durante l'azione di Attacco, 1 ki: la portata dei tuoi colpi senz'armi aumenta di 3 m per il resto del turno e infliggono danni da fuoco; spendi 1 ki quando colpisci per +1d10 danni da fuoco."
+              text: "Quando usa l'azione di Attacco nel suo turno, il monaco può spendere 1 punto ki per far sì che dai suoi pugni e dai suoi piedi si allunghino viticci di fiamme. La portata dei suoi colpi senz'armi aumenta di 3 metri per quell'azione e per il resto del turno. Un attacco di questo tipo che colpisce infligge danni da fuoco anziché contundenti e, se il monaco spende 1 punto ki quando l'attacco colpisce, infligge anche 1d10 danni da fuoco extra."
+              kid: "Quando attacchi, spendi 1 ki: dai tuoi pugni escono lingue di fuoco e per tutto il turno colpisci fino a 4,5 m. I danni sono da fuoco, e con 1 ki in più quando colpisci fai +1d10."
+            fist_of_four_thunders:
+              name: Pugno dei Quattro Tuoni
+              ki_cost: 2
+              spell: thunderwave
+              short: "2 ki: lanci onda tonante (cubo di 4,5 m che parte da te, TS su COS, 2d8 danni da tuono e spinta di 3 m; metà danni e niente spinta se lo supera). Dal 5° livello: +1 ki = +1d8."
+              text: "Il monaco può spendere 2 punti ki per lanciare onda tonante."
+              kid: "Spendi 2 ki (azione): un'onda di tuono esce da te (cubo di 4,5 m). Chi è lì tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): se fallisce 2d8 danni e vola via di 3 m; se riesce, metà."
+            fist_of_unbroken_air:
+              name: Pugno dell'Aria Inviolabile
+              ki_cost: 2
+              short: "Azione, 2 ki: una creatura entro 9 m fa un TS su FOR; se fallisce subisce 3d10 danni contundenti (+1d10 per ogni ki extra) e puoi spingerla fino a 6 m e buttarla prona; se lo supera, metà danni."
+              text: "Il monaco può creare una raffica di aria compressa che colpisce come un pugno possente. Come azione, può spendere 2 punti ki e scegliere una creatura entro 9 metri da sé, che deve effettuare un tiro salvezza su Forza. Se lo fallisce, subisce 3d10 danni contundenti più 1d10 danni contundenti extra per ogni punto ki aggiuntivo speso dal monaco, e il monaco può spingerla fino a 6 metri lontano da sé e farla cadere prona. Se lo supera, subisce la metà dei danni e non viene spinta né buttata a terra."
+              kid: "Spendi 2 ki (azione): un pugno d'aria colpisce un nemico entro 9 m. Tira un d20 per resistere (tiro salvezza su Forza contro {cd}): se fallisce 3d10 danni, vola via fino a 6 m e cade; se riesce, metà. Ki in più: +1d10."
+            flames_of_the_phoenix:
+              name: Fiamme della Fenice
+              prerequisite: "11° livello"
+              min_level: 11
+              ki_cost: 4
+              spell: fireball
+              short: "4 ki: lanci palla di fuoco (gittata 45 m, sfera di 6 m di raggio, TS su DES, 8d6 danni da fuoco, metà se lo supera). Dal 13° livello: +1 ki = +1d6."
+              text: "Il monaco può spendere 4 punti ki per lanciare palla di fuoco."
+              kid: "Spendi 4 ki (azione): una palla di fuoco vola fino a 45 m ed esplode (6 m di raggio). Chi è lì tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): se fallisce 8d6 danni da fuoco, se riesce metà."
+            gong_of_the_summit:
+              name: Gong della Vetta
+              prerequisite: "6° livello"
+              min_level: 6
+              ki_cost: 3
+              spell: shatter
+              short: "3 ki: lanci frantumare (gittata 18 m, sfera di 3 m di raggio, TS su COS, 3d8 danni da tuono, metà se lo supera). Dal 9° livello: +1 ki = +1d8."
+              text: "Il monaco può spendere 3 punti ki per lanciare frantumare."
+              kid: "Spendi 3 ki (azione): un suono fortissimo esplode in un punto entro 18 m (3 m di raggio). Chi è lì tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): se fallisce 3d8 danni da tuono, se riesce metà."
+            mist_stance:
+              name: Posizione della Nebbia
+              prerequisite: "11° livello"
+              min_level: 11
+              ki_cost: 4
+              spell: gaseous_form
+              short: "4 ki: lanci forma gassosa su di te (concentrazione, fino a 1 ora)."
+              text: "Il monaco può spendere 4 punti ki per lanciare forma gassosa, prendendo se stesso come bersaglio."
+              kid: "Spendi 4 ki (azione): diventi una nuvola di nebbia fino a 1 ora. Voli piano (3 m), passi dalle fessure e i danni normali ti fanno metà, ma non puoi attaccare. Devi mantenere la concentrazione."
+            ride_the_wind:
+              name: Cavalcare il Vento
+              prerequisite: "11° livello"
+              min_level: 11
+              ki_cost: 4
+              spell: fly
+              short: "4 ki: lanci volare su di te (velocità di volo 18 m; concentrazione, fino a 10 minuti)."
+              text: "Il monaco può spendere 4 punti ki per lanciare volare, prendendo se stesso come bersaglio."
+              kid: "Spendi 4 ki (azione): voli! Fino a 10 minuti ti muovi in aria di 18 m a turno. Devi mantenere la concentrazione: se la perdi, cadi."
+            river_of_hungry_flame:
+              name: Fiume di Fiamme Fameliche
+              prerequisite: "17° livello"
+              min_level: 17
+              ki_cost: 5
+              spell: wall_of_fire
+              short: "5 ki: lanci muro di fuoco (gittata 36 m; muro lungo fino a 18 m, alto 6 m e spesso 30 cm, oppure anello di 6 m di diametro; TS su DES, 5d8 danni da fuoco, metà se lo supera; concentrazione, fino a 1 minuto). +1 ki = +1d8."
+              text: "Il monaco può spendere 5 punti ki per lanciare muro di fuoco."
+              kid: "Spendi 5 ki (azione): un muro di fuoco lungo fino a 18 m appare entro 36 m. Chi è lì tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): 5d8 danni da fuoco, metà se riesce. Dura fino a 1 minuto (concentrazione)."
+            rush_of_the_gale_spirits:
+              name: Impeto degli Spiriti della Burrasca
+              ki_cost: 2
+              spell: gust_of_wind
+              short: "2 ki: lanci folata di vento (linea lunga 18 m e larga 3 m; TS su FOR o spinta di 4,5 m; concentrazione, fino a 1 minuto)."
+              text: "Il monaco può spendere 2 punti ki per lanciare folata di vento."
+              kid: "Spendi 2 ki (azione): un vento fortissimo soffia da te in linea per 18 m, fino a 1 minuto (concentrazione). Chi è lì tira un d20 per resistere (tiro salvezza su Forza contro {cd}): se fallisce viene spinto via di 4,5 m."
+            shape_the_flowing_river:
+              name: Plasmare il Fiume Scorrevole
+              ki_cost: 1
+              short: "Azione, 1 ki: in un'area di acqua o ghiaccio fino a 9 m di lato, entro 36 m, trasformi l'acqua in ghiaccio e viceversa e modelli il ghiaccio (alzi o abbassi, scavi, crei muri o colonne fino a metà della dimensione maggiore). Non puoi intrappolare o ferire creature."
+              text: "Come azione, il monaco può spendere 1 punto ki per scegliere un'area di ghiaccio o di acqua di non più di 9 metri di lato entro 36 metri da sé. Può trasformare l'acqua in ghiaccio nell'area e viceversa, e può rimodellare il ghiaccio nell'area come preferisce: alzarne o abbassarne il livello, creare o riempire una trincea, erigere o spianare un muro o formare una colonna. Nessuna di queste modifiche può superare la metà della dimensione maggiore dell'area: per esempio, in un'area quadrata di 9 metri di lato può creare una colonna alta fino a 4,5 metri, alzare o abbassare il livello fino a 4,5 metri, scavare una trincea profonda fino a 4,5 metri e così via. Non può modellare il ghiaccio per intrappolare o ferire una creatura nell'area."
+              kid: "Spendi 1 ki (azione): entro 36 m comandi acqua e ghiaccio in una zona larga fino a 9 m. Trasformi l'acqua in ghiaccio (o il contrario) e fai muri, colonne, fossi o rampe alti fino a 4,5 m. Non serve per ferire."
+            sweeping_cinder_strike:
+              name: Colpo Spazzante di Cenere
+              ki_cost: 2
+              spell: burning_hands
+              short: "2 ki: lanci mani brucianti (cono di 4,5 m, TS su DES, 3d6 danni da fuoco, metà se lo supera). Dal 5° livello: +1 ki = +1d6."
+              text: "Il monaco può spendere 2 punti ki per lanciare mani brucianti."
+              kid: "Spendi 2 ki (azione): dalle mani esce un ventaglio di fiamme lungo 4,5 m. Chi è lì tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): se fallisce 3d6 danni da fuoco, se riesce metà."
+            water_whip:
+              name: Frusta d'Acqua
+              ki_cost: 2
+              short: "Azione, 2 ki: una creatura che vedi entro 9 m fa un TS su DES; se fallisce subisce 3d10 danni contundenti (+1d10 per ogni ki extra) e puoi buttarla prona o tirarla fino a 7,5 m verso di te; se lo supera, metà danni."
+              text: "Il monaco può spendere 2 punti ki come azione per creare una frusta d'acqua che spinge e tira una creatura per sbilanciarla. Una creatura che il monaco può vedere entro 9 metri da lui deve effettuare un tiro salvezza su Destrezza. Se lo fallisce, subisce 3d10 danni contundenti più 1d10 danni contundenti extra per ogni punto ki aggiuntivo speso dal monaco, e il monaco può farla cadere prona oppure tirarla fino a 7,5 metri più vicino a sé. Se lo supera, subisce la metà dei danni e il monaco non la tira né la butta a terra."
+              kid: "Spendi 2 ki (azione): una frusta d'acqua colpisce un nemico entro 9 m. Tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): se fallisce 3d10 danni e cade, o lo tiri a te di 7,5 m; se riesce, metà. Ki in più: +1d10."
+            wave_of_rolling_earth:
+              name: Onda di Terra Rotolante
+              prerequisite: "17° livello"
+              min_level: 17
+              ki_cost: 6
+              spell: wall_of_stone
+              short: "6 ki: lanci muro di pietra (gittata 36 m; 10 pannelli di 3 x 3 m spessi 15 cm; concentrazione, fino a 10 minuti: se la mantieni per tutta la durata, il muro diventa permanente)."
+              text: "Il monaco può spendere 6 punti ki per lanciare muro di pietra."
+              kid: "Spendi 6 ki (azione): fai spuntare un muro di pietra entro 36 m, fatto di 10 blocchi di 3 x 3 m, per bloccare i nemici o ripararvi. Se mantieni la concentrazione per 10 minuti, resta per sempre."
 
+# Paladino (PHB 2014), privilegi 1-20 e i tre Giuramenti Sacri del Manuale del Giocatore.
+# Testi in italiano (traduzione ufficiale Asmodee dove nota). Distanze in metri (1,5 m = 5 piedi).
+# table: valori per livello (indice 0 = 1° livello), usabili nei testi come {t_<colonna>}.
+#   lay_on_hands = riserva di Imposizione delle Mani (5 x livello); aura_range = raggio delle aure in metri
+#   (0 prima del 6°, 3 dal 6°, 9 dal 18°); smite_max = danni massimi di Punizione Divina con lo slot più alto
+#   (senza il +1d8 contro non morti e immondi, che può portarli a 6d8).
+# fighting_style_options: stili che il paladino può scegliere (chiavi di equipment.yaml > fighting_styles).
+# always_prepared: {livello da paladino: [chiavi incantesimo]} = incantesimi di giuramento, sempre preparati e fuori
+#   dal conteggio degli incantesimi preparati.
 paladin:
   name: Paladino
   name_f: Paladina
@@ -493,22 +1549,261 @@ paladin:
   saves: [wis, cha]
   armor: [light, medium, heavy, shields]
   weapons: [simple, martial]
-  skill_choices: {count: 2, from: [athletics, insight, intimidation, medicine, persuasion, religion]}
-  spellcasting: {ability: cha, type: half, prepared: ability_plus_level, list: paladin}   # preparati: mod. CAR + metà livello da paladino
+  tools: []
+  skill_choices:
+    count: 2
+    from: [athletics, insight, intimidation, medicine, persuasion, religion]
+  starting_equipment:
+    - choice: ["Un'arma da guerra e uno scudo", "Due armi da guerra"]
+    - choice: ["Cinque giavellotti", "Un'arma semplice da mischia qualsiasi"]
+    - choice: ["Dotazione da sacerdote", "Dotazione da esploratore"]
+    - fixed: ["Cotta di maglia", "Simbolo sacro"]
+  spellcasting:
+    ability: cha
+    type: half
+    prepared: ability_plus_level
+    list: paladin
+    ritual: false
+    focus: "simbolo sacro"
   subclass_level: 3
   subclass_label: Giuramento Sacro
   asi_levels: [4, 8, 12, 16, 19]
+  table:
+    lay_on_hands: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100]
+    aura_range: [0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 9, 9, 9]
+    smite_max: ["—", "2d8", "2d8", "2d8", "3d8", "3d8", "3d8", "3d8", "4d8", "4d8", "4d8", "4d8", "5d8", "5d8", "5d8", "5d8", "5d8", "5d8", "5d8", "5d8"]
   features:
     1:
-      - {name: Percezione del Divino, short: "Azione: percepisci celestiali, immondi e non morti entro 18 m. Usi = 1 + mod. CAR per riposo lungo.", text: "Il paladino può usare la sua azione per percepire la presenza di celestiali, immondi e non morti entro 18 metri."}
-      - {name: Imposizione delle Mani, short: "Riserva di PF curativi = 5 x livello; 5 PF per curare una malattia o neutralizzare un veleno.", text: "Il paladino dispone di una riserva di potere curativo pari a 5 x il suo livello da paladino, che si ricarica con un riposo lungo."}
+      - name: Percezione del Divino
+        short: "Azione: fino alla fine del tuo turno successivo sai dove si trovano celestiali, immondi e non morti entro 18 m (non dietro copertura totale) e percepisci luoghi e oggetti consacrati o profanati. Usi: 1 + mod. CAR per riposo lungo."
+        text: "La presenza di un male potente colpisce i sensi del paladino come un odore nauseabondo, mentre un bene potente risuona come una musica celestiale. Come azione, fino alla fine del suo turno successivo, il paladino conosce la posizione di ogni celestiale, immondo o non morto entro 18 metri che non si trovi dietro copertura totale; ne conosce il tipo (celestiale, immondo o non morto) ma non l'identità. Entro lo stesso raggio individua anche luoghi o oggetti consacrati o profanati, come con l'incantesimo santificare. Può usare questo privilegio un numero di volte pari a 1 + il suo modificatore di Carisma; recupera tutti gli usi spesi al termine di un riposo lungo."
+        kid: "Con un'azione, fino al tuo prossimo turno senti dove sono celestiali (come gli angeli), immondi (come i demoni) e non morti entro 18 m. Usi: 1 + il tuo bonus di Carisma, poi serve un riposo lungo."
+      - name: Imposizione delle Mani
+        short: "Riserva di {t_lay_on_hands} PF (5 x livello), ricaricata con un riposo lungo. Azione: tocchi una creatura e le fai recuperare PF dalla riserva, oppure spendi 5 punti per curare una malattia o neutralizzare un veleno. Nessun effetto su non morti e costrutti."
+        text: "Il tocco benedetto del paladino può guarire le ferite. Dispone di una riserva di potere curativo che si ricarica al termine di un riposo lungo, con cui può ripristinare un numero totale di punti ferita pari a 5 x il suo livello da paladino. Come azione può toccare una creatura e attingere alla riserva per farle recuperare un numero di punti ferita a sua scelta, fino al massimo rimasto nella riserva. In alternativa può spendere 5 punti ferita dalla riserva per curare il bersaglio da una malattia o neutralizzare un veleno che lo affligge; può curare più malattie e veleni con un solo uso, spendendo 5 punti separatamente per ciascuno. Questo privilegio non ha effetto sui non morti e sui costrutti."
+        kid: "Hai {t_lay_on_hands} punti di cura, che tornano dopo un riposo lungo. Con un'azione tocchi qualcuno e gli ridai i punti ferita che vuoi, togliendoli dalla riserva. Con 5 punti guarisci una malattia o un veleno."
     2:
-      - {name: Stile di Combattimento, short: "Scegli uno stile (Difesa, Duello, Armi Possenti, Protezione).", text: "Il paladino adotta uno stile di combattimento come sua specialità."}
-      - {name: Incantesimi, short: "Mezzo incantatore (Carisma), prepara gli incantesimi.", text: "Il paladino lancia incantesimi usando il Carisma."}
-      - {name: Punizione Divina, short: "Quando colpisci in mischia puoi spendere uno slot per infliggere 2d8 danni radiosi extra (+1d8 per livello di slot oltre il 1°).", text: "Quando il paladino colpisce una creatura con un attacco con arma da mischia, può spendere uno slot incantesimo per infliggere danni radiosi aggiuntivi: 2d8 per uno slot di 1° livello, +1d8 per ogni livello superiore (max 5d8), +1d8 contro non morti o immondi."}
+      - name: Stile di Combattimento
+        short: "Scegli uno stile: Difesa, Duello, Combattere con Armi Possenti o Protezione."
+        text: "Al 2° livello il paladino adotta uno stile di combattimento come sua specialità, scegliendo tra: Difesa (+1 alla CA quando indossa un'armatura); Duello (+2 ai danni quando impugna un'arma da mischia in una mano e nessun'altra arma); Combattere con Armi Possenti (quando ottiene 1 o 2 a un dado di danno di un'arma da mischia a due mani o versatile impugnata a due mani, può ripetere il tiro e deve usare il nuovo risultato); Protezione (quando una creatura che può vedere attacca un bersaglio diverso da lui entro 1,5 metri, può usare la reazione per imporre svantaggio al tiro per colpire; deve impugnare uno scudo). Non può scegliere lo stesso stile più di una volta, anche se in seguito ottiene un'altra scelta."
+        kid: "Hai scelto un modo speciale di combattere: lo trovi spiegato sulla scheda, sotto i tuoi poteri."
+        kid_hide: true
+        fighting_style: true
+        fighting_style_options: [defense, dueling, great_weapon_fighting, protection]
+      - name: Incantesimi
+        short: "Mezzo incantatore (Carisma). Prepari mod. CAR + metà del livello da paladino (min 1) incantesimi dalla lista del paladino; cambi la lista dopo un riposo lungo. Focus: simbolo sacro. Non lanci rituali."
+        text: "Dal 2° livello il paladino ha imparato ad attingere alla magia divina attraverso la meditazione e la preghiera, lanciando incantesimi come un chierico. Prepara ogni giorno, dalla lista del paladino, un numero di incantesimi pari al suo modificatore di Carisma + la metà del suo livello da paladino (arrotondata per difetto, minimo 1), di livello per cui ha slot incantesimo. Lanciare un incantesimo spende uno slot del suo livello o superiore; gli slot spesi si recuperano con un riposo lungo. Al termine di un riposo lungo può cambiare la lista degli incantesimi preparati: servono 1 minuto per livello di incantesimo per ogni incantesimo della lista. Caratteristica da incantatore: Carisma (CD tiro salvezza = 8 + bonus di competenza + mod. CAR; attacco con incantesimo = bonus di competenza + mod. CAR). Può usare un simbolo sacro come focus da incantatore."
+        kid: "Puoi lanciare incantesimi da paladino spendendo i tuoi slot. Chi resiste ai tuoi incantesimi deve fare almeno {cd}; quando attacchi con un incantesimo tira d20{att}."
+        kid_hide: true
+      - name: Punizione Divina
+        short: "Quando colpisci con un attacco con arma da mischia puoi spendere uno slot: +2d8 danni radiosi con uno slot di 1° livello, +1d8 per ogni livello di slot oltre il 1° (max 5d8); +1d8 contro non morti e immondi."
+        text: "Quando il paladino colpisce una creatura con un attacco con arma da mischia, può spendere uno slot incantesimo per infliggere al bersaglio danni radiosi in aggiunta ai danni dell'arma. I danni extra sono 2d8 per uno slot di 1° livello, più 1d8 per ogni livello dello slot superiore al 1°, fino a un massimo di 5d8. I danni aumentano di 1d8 se il bersaglio è un non morto o un immondo."
+        kid: "Quando colpisci con un'arma da mischia, puoi spendere uno slot incantesimo: il nemico subisce 2d8 danni di luce sacra in più (fino a {t_smite_max} con lo slot più alto). Contro non morti e demoni, 1d8 in più."
     3:
-      - {name: Salute Divina, short: "Immune alle malattie.", text: "La magia divina che scorre nel paladino lo rende immune alle malattie."}
-      - {name: Giuramento Sacro, short: "Scegli un giuramento (Devozione, Antichi, Vendetta).", text: "Il paladino pronuncia il giuramento che lo lega per sempre alla causa della rettitudine."}
+      - name: Salute Divina
+        short: "Sei immune alle malattie."
+        text: "La magia divina che scorre nel paladino lo rende immune alle malattie."
+        kid: "La magia divina ti protegge: nessuna malattia può farti ammalare."
+      - name: Giuramento Sacro
+        short: "Scegli un giuramento: Devozione, Antichi o Vendetta. Privilegi al 3°, 7°, 15° e 20° livello."
+        text: "Al 3° livello il paladino presta il giuramento che lo vincola per sempre come paladino: il Giuramento di Devozione, il Giuramento degli Antichi o il Giuramento di Vendetta. La scelta conferisce privilegi al 3° livello e poi al 7°, 15° e 20°, inclusi gli incantesimi di giuramento e le opzioni di Incanalare Divinità. Un paladino che infrange volontariamente il giuramento di solito cerca l'assoluzione presso un chierico o un altro paladino; se non si pente, il DM può decidere che abbandoni la classe."
+        kid: "Hai fatto un giuramento sacro: trovi i suoi poteri qui sotto."
+        kid_hide: true
+      - name: Incanalare Divinità
+        short: "1 uso per riposo breve o lungo: scegli una delle opzioni del tuo giuramento. CD dei TS = CD dei tuoi incantesimi da paladino."
+        text: "Il giuramento permette al paladino di incanalare energia divina per alimentare effetti magici. Ogni opzione di Incanalare Divinità conferita dal giuramento spiega come usarla. Quando usa Incanalare Divinità sceglie quale opzione usare; poi deve completare un riposo breve o lungo prima di poterlo usare di nuovo. Se un effetto richiede un tiro salvezza, la CD è pari alla CD dei tiri salvezza degli incantesimi del paladino."
+        kid: "Puoi usare uno dei poteri sacri del tuo giuramento (li trovi qui sotto) 1 volta, poi serve un riposo breve o lungo. Se il nemico deve resistere, tira un d20 contro {cd}."
+    4:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Il paladino può aumentare un punteggio di caratteristica di 2 o due punteggi di 1 (massimo 20), oppure scegliere un talento. Lo stesso accade all'8°, 12°, 16° e 19° livello."
+        kid: "Le tue caratteristiche sono migliorate (o hai preso un talento): è già tutto aggiornato sulla scheda."
+        kid_hide: true
+    5:
+      - name: Attacco Extra
+        short: "Quando effettui l'azione di Attacco, attacchi due volte."
+        text: "Il paladino può attaccare due volte, anziché una, ogni volta che effettua l'azione di Attacco nel suo turno."
+        kid: "Quando usi l'azione di Attacco nel tuo turno, attacchi 2 volte invece di 1."
+    6:
+      - name: Aura di Protezione
+        short: "Tu e le creature amiche entro {t_aura_range} m aggiungete il tuo mod. CAR (min +1) ai tiri salvezza, se sei cosciente. Raggio 3 m (9 m dal 18°)."
+        text: "Ogni volta che il paladino o una creatura amica entro 3 metri da lui deve effettuare un tiro salvezza, la creatura ottiene un bonus al tiro salvezza pari al modificatore di Carisma del paladino (minimo +1). Il paladino deve essere cosciente per conferire il bonus. Al 18° livello il raggio dell'aura sale a 9 metri."
+        kid: "Finché non perdi i sensi, tu e i tuoi amici entro {t_aura_range} m da te aggiungete {mod} (almeno +1) a ogni tiro salvezza."
+    8:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Le tue caratteristiche sono migliorate (o hai preso un talento): è già tutto aggiornato sulla scheda."
+        kid_hide: true
+    10:
+      - name: Aura di Coraggio
+        short: "Tu e le creature amiche entro {t_aura_range} m non potete essere spaventati, se sei cosciente. Raggio 3 m (9 m dal 18°)."
+        text: "Il paladino e le creature amiche entro 3 metri da lui non possono essere spaventati finché il paladino è cosciente. Al 18° livello il raggio dell'aura sale a 9 metri."
+        kid: "Finché non perdi i sensi, né tu né i tuoi amici entro {t_aura_range} m da te potete essere spaventati."
+    11:
+      - name: Punizione Divina Migliorata
+        short: "Ogni tuo colpo con un'arma da mischia infligge 1d8 danni radiosi extra (si somma a Punizione Divina)."
+        text: "Il paladino è così colmo di potere virtuoso che tutti i suoi colpi con armi da mischia portano con sé la potenza divina. Ogni volta che colpisce una creatura con un'arma da mischia, la creatura subisce 1d8 danni radiosi extra. Se usa anche Punizione Divina con quell'attacco, questi danni si aggiungono a quelli di Punizione Divina."
+        kid: "Ogni volta che colpisci con un'arma da mischia fai 1d8 danni di luce sacra in più, senza spendere niente. Si sommano anche alla Punizione Divina."
+    12:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Le tue caratteristiche sono migliorate (o hai preso un talento): è già tutto aggiornato sulla scheda."
+        kid_hide: true
+    14:
+      - name: Tocco Purificatore
+        short: "Azione: poni fine a un incantesimo su di te o su una creatura consenziente che tocchi. Usi = mod. CAR (min 1) per riposo lungo."
+        text: "Il paladino può usare la sua azione per porre fine a un incantesimo su se stesso o su una creatura consenziente che tocca. Può usare questo privilegio un numero di volte pari al suo modificatore di Carisma (minimo una volta); recupera gli usi spesi al termine di un riposo lungo."
+        kid: "Con un'azione tocchi te o un amico e cancelli un incantesimo che ha addosso. Puoi farlo tante volte quanto il tuo bonus di Carisma (almeno 1), poi serve un riposo lungo."
+    16:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Le tue caratteristiche sono migliorate (o hai preso un talento): è già tutto aggiornato sulla scheda."
+        kid_hide: true
+    18:
+      - name: Miglioramento delle Aure
+        short: "Il raggio delle tue aure (Protezione, Coraggio e quella del giuramento) sale a 9 m."
+        text: "Al 18° livello il raggio dell'Aura di Protezione, dell'Aura di Coraggio e dell'aura conferita dal giuramento (Devozione o Interdizione) aumenta a 9 metri."
+        kid: "Le tue aure ora arrivano fino a 9 m da te."
+        kid_hide: true
+    19:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Le tue caratteristiche sono migliorate (o hai preso un talento): è già tutto aggiornato sulla scheda."
+        kid_hide: true
+  subclasses:
+    devotion:
+      name: Giuramento di Devozione
+      name_en: Oath of Devotion
+      always_prepared:
+        3: [protection_from_evil_and_good, sanctuary]
+        5: [lesser_restoration, zone_of_truth]
+        9: [beacon_of_hope, dispel_magic]
+        13: [freedom_of_movement, guardian_of_faith]
+        17: [commune, flame_strike]
+      features:
+        3:
+          - name: Dettami della Devozione
+            short: "Onestà, Coraggio, Compassione, Onore, Dovere."
+            text: "Il Giuramento di Devozione lega il paladino ai più alti ideali di giustizia, virtù e ordine, come i cavalieri delle leggende. Dettami: Onestà (non mentire e non ingannare, la tua parola è una promessa); Coraggio (non temere di agire, anche se la prudenza è saggia); Compassione (aiuta gli altri, proteggi i deboli e punisci chi li minaccia, mostra pietà ai nemici ma con saggezza); Onore (tratta gli altri con equità e fai quanto più bene possibile causando il minor danno); Dovere (rispondi delle tue azioni e delle loro conseguenze, proteggi chi ti è affidato e obbedisci a chi ha un'autorità giusta)."
+            kid: "Hai promesso cinque cose: dire sempre la verità, avere coraggio, aiutare e proteggere i più deboli, comportarti in modo giusto e leale, e fare sempre il tuo dovere."
+          - name: Incantesimi di Giuramento
+            short: "Sempre preparati (non contano nel limite): 3° Protezione dal Bene e dal Male, Santuario; 5° Ristorare Inferiore, Zona di Verità; 9° Faro di Speranza, Dissolvi Magie; 13° Libertà di Movimento, Guardiano della Fede; 17° Comunione, Colpo Infuocato."
+            text: "Il paladino ottiene incantesimi di giuramento ai livelli da paladino indicati: 3° protezione dal bene e dal male, santuario; 5° ristorare inferiore, zona di verità; 9° faro di speranza, dissolvi magie; 13° libertà di movimento, guardiano della fede; 17° comunione, colpo infuocato. Sono sempre preparati e non contano nel numero di incantesimi che può preparare ogni giorno. Se un incantesimo di giuramento non è nella lista del paladino, per lui conta comunque come incantesimo da paladino."
+            kid: "Alcuni incantesimi del tuo giuramento sono sempre pronti e non contano tra quelli che prepari."
+            kid_hide: true
+          - name: "Incanalare Divinità: Arma Sacra"
+            short: "Azione: per 1 minuto un'arma che impugni aggiunge il tuo mod. CAR (min +1) ai tiri per colpire, emette luce intensa in un raggio di 6 m (fioca per altri 6 m) e diventa magica."
+            text: "Come azione, il paladino infonde energia positiva in un'arma che impugna, usando Incanalare Divinità. Per 1 minuto aggiunge il suo modificatore di Carisma ai tiri per colpire effettuati con quell'arma (bonus minimo +1). L'arma emette luce intensa in un raggio di 6 metri e luce fioca per altri 6 metri. Se l'arma non è già magica, diventa magica per la durata. Il paladino può porre fine all'effetto nel suo turno come parte di qualsiasi altra azione; l'effetto termina anche se non impugna o trasporta più l'arma o se cade privo di sensi."
+            kid: "Con un'azione la tua arma brilla di luce sacra per 1 minuto e fa luce forte fino a 6 m: aggiungi {mod} (almeno +1) ai tiri per colpire e la tua arma conta come magica."
+          - name: "Incanalare Divinità: Scacciare gli Empi"
+            short: "Azione: ogni immondo o non morto entro 9 m che può vederti o sentirti effettua un TS su SAG; se fallisce è scacciato per 1 minuto o finché subisce danni."
+            text: "Come azione, il paladino brandisce il simbolo sacro e pronuncia una preghiera di condanna contro immondi e non morti, usando Incanalare Divinità. Ogni immondo o non morto che può vederlo o sentirlo entro 9 metri deve effettuare un tiro salvezza su Saggezza. Se lo fallisce, è scacciato per 1 minuto o finché non subisce danni. Una creatura scacciata deve passare i suoi turni cercando di allontanarsi il più possibile dal paladino e non può muoversi volontariamente in uno spazio entro 9 metri da lui; non può effettuare reazioni e come azione può solo usare Scatto o cercare di liberarsi da un effetto che le impedisce di muoversi. Se non ha un posto dove andare, può usare l'azione di Schivata."
+            kid: "Con un'azione mostri il simbolo sacro: ogni demone o non morto entro 9 m tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}). Se fallisce, scappa da te per 1 minuto o finché qualcuno lo ferisce."
+        7:
+          - name: Aura di Devozione
+            short: "Tu e le creature amiche entro {t_aura_range} m non potete essere affascinati, se sei cosciente. Raggio 3 m (9 m dal 18°)."
+            text: "Il paladino e le creature amiche entro 3 metri da lui non possono essere affascinati finché il paladino è cosciente. Al 18° livello il raggio dell'aura sale a 9 metri."
+            kid: "Finché non perdi i sensi, nessuno può incantare (affascinare) te o i tuoi amici entro {t_aura_range} m da te."
+        15:
+          - name: Purezza di Spirito
+            short: "Sei sempre sotto l'effetto dell'incantesimo protezione dal bene e dal male."
+            text: "Il paladino è sempre sotto l'effetto dell'incantesimo protezione dal bene e dal male: aberrazioni, celestiali, elementali, folletti, immondi e non morti hanno svantaggio ai tiri per colpire contro di lui e non possono affascinarlo, spaventarlo o possederlo."
+            kid: "Aberrazioni, celestiali, elementali, fate, immondi e non morti ti attaccano con svantaggio (tirano 2 d20 e tengono il più basso) e non possono incantarti, spaventarti o possederti."
+        20:
+          - name: Nimbo Sacro
+            short: "Azione, 1 minuto: luce solare intensa in un raggio di 9 m (fioca per altri 9 m); ogni nemico che inizia il turno nella luce intensa subisce 10 danni radiosi; vantaggio ai TS contro incantesimi di immondi e non morti. 1/riposo lungo."
+            text: "Come azione, il paladino emana un'aura di luce solare. Per 1 minuto, una luce intensa risplende in un raggio di 9 metri attorno a lui, e una luce fioca per altri 9 metri. Ogni volta che una creatura nemica inizia il suo turno nella luce intensa, subisce 10 danni radiosi. Inoltre, per la durata, il paladino ha vantaggio ai tiri salvezza contro gli incantesimi lanciati da immondi o non morti. Una volta usato, deve completare un riposo lungo prima di poterlo usare di nuovo."
+            kid: "Con un'azione brilli come il sole per 1 minuto: ogni nemico che inizia il turno entro 9 m subisce 10 danni di luce. Contro le magie di demoni e non morti hai vantaggio (tira 2 d20 e tieni il più alto). Poi riposo lungo."
+    ancients:
+      name: Giuramento degli Antichi
+      name_en: Oath of the Ancients
+      always_prepared:
+        3: [ensnaring_strike, speak_with_animals]
+        5: [moonbeam, misty_step]
+        9: [plant_growth, protection_from_energy]
+        13: [ice_storm, stoneskin]
+        17: [commune_with_nature, tree_stride]
+      features:
+        3:
+          - name: Dettami degli Antichi
+            short: "Accendi la Luce, Proteggi la Luce, Preserva la Tua Luce, Sii la Luce."
+            text: "Il Giuramento degli Antichi è antico quanto gli elfi e i riti druidici: chi lo presta si schiera con la luce nella lotta cosmica contro l'oscurità perché ama le cose belle e vitali del mondo, non necessariamente perché crede nei principi di onore, coraggio e giustizia. Dettami: Accendi la Luce (con misericordia, gentilezza e perdono accendi la speranza nel mondo); Proteggi la Luce (dove c'è bene, bellezza, amore e allegria, opponiti a ciò che vorrebbe distruggerli; dove la vita fiorisce, difendila); Preserva la Tua Luce (gioisci della musica, delle risate, della bellezza e dell'arte: se la luce si spegne nel tuo cuore, non puoi difenderla nel mondo); Sii la Luce (sii un faro per chi vive nella disperazione)."
+            kid: "Hai promesso di proteggere la luce del mondo: gentilezza, bellezza, natura e allegria. Perdona, aiuta chi è triste e non smettere mai di cantare, ridere e divertirti."
+          - name: Incantesimi di Giuramento
+            short: "Sempre preparati (non contano nel limite): 3° Colpo Intrappolante, Parlare con gli Animali; 5° Raggio di Luna, Passo Velato; 9° Crescita Vegetale, Protezione dall'Energia; 13° Tempesta di Ghiaccio, Pelle di Pietra; 17° Comunione con la Natura, Passaggio Arboreo."
+            text: "Il paladino ottiene incantesimi di giuramento ai livelli da paladino indicati: 3° colpo intrappolante, parlare con gli animali; 5° raggio di luna, passo velato; 9° crescita vegetale, protezione dall'energia; 13° tempesta di ghiaccio, pelle di pietra; 17° comunione con la natura, passaggio arboreo. Sono sempre preparati e non contano nel numero di incantesimi che può preparare ogni giorno. Se un incantesimo di giuramento non è nella lista del paladino, per lui conta comunque come incantesimo da paladino."
+            kid: "Alcuni incantesimi del tuo giuramento sono sempre pronti e non contano tra quelli che prepari."
+            kid_hide: true
+          - name: "Incanalare Divinità: Ira della Natura"
+            short: "Azione: liane spettrali avvolgono una creatura entro 3 m che puoi vedere; TS su FOR o DES (a sua scelta) o è trattenuta. Ripete il TS alla fine di ogni suo turno."
+            text: "Il paladino può usare Incanalare Divinità per invocare le forze primordiali e intrappolare un nemico. Come azione, fa spuntare liane spettrali che si allungano verso una creatura entro 3 metri che può vedere. La creatura deve superare un tiro salvezza su Forza o su Destrezza (a sua scelta) o diventa trattenuta. Finché è trattenuta dalle liane, ripete il tiro salvezza alla fine di ogni suo turno; se lo supera, si libera e le liane svaniscono."
+            kid: "Con un'azione fai spuntare liane magiche su un nemico entro 3 m: tira un d20 per resistere (tiro salvezza su Forza o Destrezza, sceglie lui, contro {cd}). Se fallisce resta bloccato; alla fine di ogni suo turno può riprovare."
+          - name: "Incanalare Divinità: Scacciare gli Infedeli"
+            short: "Azione: ogni folletto o immondo entro 9 m che può sentirti effettua un TS su SAG; se fallisce è scacciato per 1 minuto o finché subisce danni, e se la sua vera forma è nascosta viene rivelata."
+            text: "Come azione, il paladino brandisce il simbolo sacro e pronuncia antiche parole dolorose da udire per folletti e immondi, usando Incanalare Divinità. Ogni folletto o immondo entro 9 metri che può sentirlo deve effettuare un tiro salvezza su Saggezza. Se lo fallisce, è scacciato per 1 minuto o finché non subisce danni. Una creatura scacciata deve passare i suoi turni cercando di allontanarsi il più possibile dal paladino e non può muoversi volontariamente in uno spazio entro 9 metri da lui; non può effettuare reazioni e come azione può solo usare Scatto o cercare di liberarsi da un effetto che le impedisce di muoversi. Se non ha un posto dove andare, può usare l'azione di Schivata. Se la vera forma della creatura è nascosta da un'illusione, da un cambio di forma o da un altro effetto, viene rivelata finché la creatura è scacciata."
+            kid: "Con un'azione, ogni fata o demone entro 9 m che ti sente tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}). Se fallisce scappa da te per 1 minuto o finché viene ferito, e si vede com'è davvero."
+        7:
+          - name: Aura di Interdizione
+            short: "Tu e le creature amiche entro {t_aura_range} m avete resistenza ai danni degli incantesimi. Raggio 3 m (9 m dal 18°)."
+            text: "La magia antica è così radicata nel paladino da formare una protezione mistica. Il paladino e le creature amiche entro 3 metri da lui hanno resistenza ai danni degli incantesimi. Al 18° livello il raggio dell'aura sale a 9 metri."
+            kid: "Tu e i tuoi amici entro {t_aura_range} m da te subite solo metà dei danni degli incantesimi."
+        15:
+          - name: Sentinella Imperitura
+            short: "Quando scendi a 0 PF senza morire sul colpo, puoi restare a 1 PF (1/riposo lungo). Non subisci gli svantaggi della vecchiaia e la magia non può farti invecchiare."
+            text: "Quando il paladino scende a 0 punti ferita e non viene ucciso sul colpo, può scegliere di scendere invece a 1 punto ferita. Una volta usato, deve completare un riposo lungo prima di poterlo usare di nuovo. Inoltre non subisce nessuno degli svantaggi della vecchiaia e non può essere fatto invecchiare con la magia."
+            kid: "Quando scendi a 0 punti ferita (e non muori subito), puoi restare in piedi con 1 punto ferita: 1 volta, poi serve un riposo lungo. La vecchiaia non ti indebolisce e nessuna magia può farti invecchiare."
+        20:
+          - name: Campione Antico
+            short: "Azione, 1 minuto: all'inizio di ogni tuo turno recuperi 10 PF; lanci gli incantesimi da paladino da 1 azione come azione bonus; i nemici entro 3 m hanno svantaggio ai TS contro i tuoi incantesimi da paladino e Incanalare Divinità. 1/riposo lungo."
+            text: "Come azione, il paladino assume la forma di un'antica forza della natura, con un aspetto a sua scelta (la pelle può diventare verde o di corteccia, i capelli frondosi o di muschio, può spuntargli un palco di corna o una criniera leonina). Per 1 minuto: all'inizio di ogni suo turno recupera 10 punti ferita; ogni volta che lancia un incantesimo da paladino con tempo di lancio di 1 azione, può lanciarlo invece come azione bonus; le creature nemiche entro 3 metri da lui hanno svantaggio ai tiri salvezza contro i suoi incantesimi da paladino e le sue opzioni di Incanalare Divinità. Una volta usato, deve completare un riposo lungo prima di poterlo usare di nuovo."
+            kid: "Con un'azione, per 1 minuto: all'inizio di ogni tuo turno recuperi 10 PF, lanci gli incantesimi da 1 azione con un'azione bonus, e i nemici entro 3 m resistono alle tue magie con 2 d20 tenendo il più basso. Poi riposo lungo."
+    vengeance:
+      name: Giuramento di Vendetta
+      name_en: Oath of Vengeance
+      always_prepared:
+        3: [bane, hunters_mark]
+        5: [hold_person, misty_step]
+        9: [haste, protection_from_energy]
+        13: [banishment, dimension_door]
+        17: [hold_monster, scrying]
+      features:
+        3:
+          - name: Dettami della Vendetta
+            short: "Combattere il Male Peggiore, Nessuna Pietà per i Malvagi, Con Ogni Mezzo Necessario, Riparazione."
+            text: "Il Giuramento di Vendetta è il solenne impegno a punire chi ha commesso un peccato gravissimo; per questi paladini, a volte chiamati vendicatori o cavalieri neri, la propria purezza conta meno del fare giustizia. Dettami: Combattere il Male Peggiore (tra i nemici giurati e un male minore, si sceglie il male peggiore); Nessuna Pietà per i Malvagi (i nemici comuni possono meritare pietà, quelli giurati no); Con Ogni Mezzo Necessario (gli scrupoli non devono impedire di sconfiggere i nemici); Riparazione (se i nemici devastano il mondo è perché non sono stati fermati: bisogna aiutare chi ha subito le loro malefatte)."
+            kid: "Hai promesso di fermare i cattivi più pericolosi: combatti prima il male peggiore, non avere pietà per i tuoi nemici giurati e aiuta sempre chi loro hanno ferito."
+          - name: Incantesimi di Giuramento
+            short: "Sempre preparati (non contano nel limite): 3° Anatema, Marchio del Cacciatore; 5° Blocca Persone, Passo Velato; 9° Velocità, Protezione dall'Energia; 13° Esilio, Porta Dimensionale; 17° Blocca Mostri, Scrutare."
+            text: "Il paladino ottiene incantesimi di giuramento ai livelli da paladino indicati: 3° anatema, marchio del cacciatore; 5° blocca persone, passo velato; 9° velocità, protezione dall'energia; 13° esilio, porta dimensionale; 17° blocca mostri, scrutare. Sono sempre preparati e non contano nel numero di incantesimi che può preparare ogni giorno. Se un incantesimo di giuramento non è nella lista del paladino, per lui conta comunque come incantesimo da paladino."
+            kid: "Alcuni incantesimi del tuo giuramento sono sempre pronti e non contano tra quelli che prepari."
+            kid_hide: true
+          - name: "Incanalare Divinità: Abiurare Nemico"
+            short: "Azione: una creatura entro 18 m che puoi vedere effettua un TS su SAG (immondi e non morti con svantaggio; nessun effetto se immune alla paura). Se fallisce è spaventata e ha velocità 0 per 1 minuto o finché subisce danni; se riesce, velocità dimezzata per 1 minuto o finché subisce danni."
+            text: "Come azione, il paladino brandisce il simbolo sacro e pronuncia una preghiera di condanna, usando Incanalare Divinità. Sceglie una creatura entro 18 metri che può vedere: la creatura deve effettuare un tiro salvezza su Saggezza, a meno che non sia immune alla condizione spaventato. Immondi e non morti hanno svantaggio a questo tiro salvezza. Se lo fallisce, la creatura è spaventata per 1 minuto o finché non subisce danni; finché è spaventata, la sua velocità è 0 e non può beneficiare di bonus alla velocità. Se lo supera, la sua velocità è dimezzata per 1 minuto o finché non subisce danni."
+            kid: "Con un'azione scegli un nemico entro 18 m: tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}). Se fallisce è spaventato e non può muoversi per 1 minuto o finché viene ferito; se riesce, va a metà velocità."
+          - name: "Incanalare Divinità: Voto di Inimicizia"
+            short: "Azione bonus: scegli una creatura entro 3 m che puoi vedere; hai vantaggio ai tiri per colpire contro di essa per 1 minuto o finché scende a 0 PF o cade priva di sensi."
+            text: "Come azione bonus, il paladino pronuncia un voto di inimicizia contro una creatura entro 3 metri che può vedere, usando Incanalare Divinità. Ottiene vantaggio ai tiri per colpire contro quella creatura per 1 minuto o finché essa non scende a 0 punti ferita o cade priva di sensi."
+            kid: "Con un'azione bonus scegli un nemico entro 3 m: per 1 minuto, quando lo attacchi hai vantaggio (tira 2 d20 e tieni il più alto)."
+        7:
+          - name: Vendicatore Implacabile
+            short: "Quando colpisci una creatura con un attacco di opportunità, puoi muoverti fino a metà della tua velocità subito dopo, come parte della stessa reazione, senza provocare attacchi di opportunità."
+            text: "La capacità soprannaturale del paladino di concentrarsi sul nemico lo aiuta a impedirgli la fuga. Quando colpisce una creatura con un attacco di opportunità, può muoversi fino a metà della sua velocità immediatamente dopo l'attacco, come parte della stessa reazione. Questo movimento non provoca attacchi di opportunità."
+            kid: "Quando colpisci un nemico che prova a scappare da te (attacco di opportunità), subito dopo puoi inseguirlo per metà della tua velocità, e mentre ti sposti così i nemici non possono colpirti al volo (niente attacchi di opportunità)."
+        15:
+          - name: Anima della Vendetta
+            short: "Quando la creatura del tuo Voto di Inimicizia effettua un attacco, puoi usare la reazione per fare un attacco con arma da mischia contro di essa, se è a portata."
+            text: "L'autorità con cui il paladino pronuncia il Voto di Inimicizia gli conferisce un potere maggiore sul nemico. Quando una creatura sotto l'effetto del suo Voto di Inimicizia effettua un attacco, il paladino può usare la sua reazione per effettuare un attacco con arma da mischia contro quella creatura, se si trova entro la sua portata."
+            kid: "Quando il nemico del tuo Voto di Inimicizia attacca qualcuno, puoi usare la tua reazione per colpirlo subito con la tua arma da mischia, se è abbastanza vicino."
+        20:
+          - name: Angelo Vendicatore
+            short: "Azione, 1 ora: ali con velocità di volo 18 m; aura di minaccia di 9 m: un nemico che vi entra o vi inizia il turno per la prima volta in una battaglia fa un TS su SAG o è spaventato per 1 minuto o finché subisce danni, e gli attacchi contro di lui hanno vantaggio. 1/riposo lungo."
+            text: "Come azione, il paladino si trasforma per 1 ora: gli spuntano ali dalla schiena che gli conferiscono una velocità di volo di 18 metri, ed emana un'aura di minaccia con un raggio di 9 metri. La prima volta che una creatura nemica entra nell'aura o vi inizia il suo turno durante una battaglia, deve superare un tiro salvezza su Saggezza o diventa spaventata dal paladino per 1 minuto o finché non subisce danni. I tiri per colpire contro la creatura spaventata hanno vantaggio. Una volta usato, deve completare un riposo lungo prima di poterlo usare di nuovo."
+            kid: "Con un'azione ti spuntano le ali per 1 ora (voli a 18 m). Un nemico che arriva entro 9 m tira un d20 per resistere (Saggezza contro {cd}): se fallisce ha paura e chi lo attacca ha vantaggio, finché non viene ferito. Riposo lungo."
 
 ranger:
   name: Ranger
@@ -557,6 +1852,14 @@ rogue:
     3:
       - {name: Archetipo del Ladro, short: "Scegli un archetipo (Furfante, Assassino, Mistificatore Arcano).", text: "Il ladro sceglie un archetipo che emula nell'esercizio delle sue capacità."}
 
+# Stregone (PHB 2014, cap. 3). Privilegi 1-20 e tutte le origini stregonesche del Manuale del Giocatore:
+# Discendenza Draconica e Magia Selvaggia. Nomi dalla traduzione italiana ufficiale: privilegi base, Metamagia e
+# Discendenza Draconica controllati sull'SRD 5.1 in italiano (WotC 2023); Magia Selvaggia non è nell'SRD (nomi dal PHB IT).
+# Segnaposto nei testi kid/short: {cd} {att} {mod} {livello} e {t_<colonna>} (valore della colonna 'table' al livello attuale).
+# Campi extra non ancora gestiti dal motore (informativi): slot_costs (Fonte di Magia), cost (opzioni di Metamagia),
+# languages (Antenato Draconico), damage_type (opzioni dell'antenato), hp_per_level e unarmored_ac (Resilienza
+# Draconica: il motore oggi legge hp_per_level solo dai tratti razziali), surge_table (Magia Selvaggia).
+# Nelle option_lists dell'origine, "level" = livello da stregone a cui si sceglie l'opzione.
 sorcerer:
   name: Stregone
   name_f: Stregona
@@ -565,19 +1868,331 @@ sorcerer:
   saves: [con, cha]
   armor: []
   weapons: [dagger, dart, sling, quarterstaff, light_crossbow]
-  skill_choices: {count: 2, from: [arcana, deception, insight, intimidation, persuasion, religion]}
-  spellcasting: {ability: cha, type: full}
+  tools: []
+  skill_choices:
+    count: 2
+    from: [arcana, deception, insight, intimidation, persuasion, religion]
+  starting_equipment:
+    - choice: ["Una balestra leggera e 20 quadrelli", "Un'arma semplice qualsiasi"]
+    - choice: ["Una borsa per componenti", "Un focus arcano"]
+    - choice: ["Dotazione da esploratore di sotterranei", "Dotazione da esploratore"]
+    - fixed: ["Due pugnali"]
+  spellcasting:
+    ability: cha
+    type: full
+    prepared: known
+    list: sorcerer
+    ritual: false
+    focus: "focus arcano"
   subclass_level: 1
   subclass_label: Origine Stregonesca
   asi_levels: [4, 8, 12, 16, 19]
+  table:
+    sorcery_points: [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    cantrips: [4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+    spells_known: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12, 13, 13, 14, 14, 15, 15, 15, 15]
+    metamagic_known: [0, 0, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4]
   features:
     1:
-      - {name: Incantesimi, short: "Incantatore completo (Carisma).", text: "Lo stregone lancia incantesimi usando il Carisma."}
-      - {name: Origine Stregonesca, short: "Scegli un'origine (Discendenza Draconica o Magia Selvaggia).", text: "Lo stregone sceglie l'origine del suo potere innato."}
+      - name: Incantesimi
+        short: "Incantatore completo (Carisma): conosci {t_cantrips} trucchetti e {t_spells_known} incantesimi dalla lista dello stregone; CD {cd}, attacco {att}; slot recuperati con un riposo lungo; niente rituali; focus arcano."
+        text: "Un evento nel passato dello stregone, o nella vita di un suo parente o antenato, gli ha infuso magia arcana. Trucchetti: ne conosce 4 al 1° livello (5 dal 4°, 6 dal 10°), scelti dalla lista dello stregone. Incantesimi conosciuti: 2 di 1° livello al 1° livello, poi altri come indicato dalla tabella dello stregone (fino a 15), ognuno di un livello per cui possiede slot; ogni volta che sale di livello può sostituire un incantesimo conosciuto con un altro della lista, sempre di un livello per cui ha slot. Per lanciare un incantesimo di 1° livello o superiore spende uno slot di livello pari o superiore; recupera tutti gli slot spesi con un riposo lungo. Caratteristica da incantatore: Carisma (CD del tiro salvezza = 8 + bonus di competenza + mod. CAR; attacco con incantesimo = bonus di competenza + mod. CAR). Può usare un focus arcano come focus da incantatore. Lo stregone non lancia incantesimi come rituali."
+        kid: "Conosci {t_cantrips} trucchetti (magie che puoi fare quando vuoi) e {t_spells_known} incantesimi. Per lanciare un incantesimo usi uno slot: gli slot tornano dopo un riposo lungo."
+        kid_hide: true
+      - name: Origine Stregonesca
+        short: "Scegli l'origine del tuo potere innato: Discendenza Draconica o Magia Selvaggia (privilegi al 1°, 6°, 14° e 18° livello)."
+        text: "Lo stregone sceglie un'origine stregonesca che definisce la fonte dei suoi poteri magici innati: Discendenza Draconica o Magia Selvaggia. Questa scelta gli conferisce privilegi al 1° livello e poi di nuovo al 6°, al 14° e al 18° livello."
+        kid: "La tua magia è nata con te: viene da un antenato drago oppure da una magia selvaggia e imprevedibile. Leggi i poteri della tua origine."
+        kid_hide: true
     2:
-      - {name: Fonte di Magia, short: "Punti stregoneria = livello; crea slot o converti slot in punti.", text: "Lo stregone dispone di punti stregoneria pari al suo livello, con cui crea slot incantesimo o alimenta la metamagia."}
+      - name: Fonte di Magia
+        short: "{t_sorcery_points} punti stregoneria (recuperati con un riposo lungo). Azione bonus: crei uno slot spendendo punti (1° = 2, 2° = 3, 3° = 5, 4° = 6, 5° = 7; svanisce con il riposo lungo) oppure converti uno slot in punti pari al suo livello."
+        text: "Lo stregone attinge a una profonda sorgente di magia interiore, rappresentata dai punti stregoneria: ne ha 2 al 2° livello e poi tanti quanti il suo livello da stregone (vedi tabella), e non può mai averne più di quelli indicati per il suo livello. Recupera tutti i punti stregoneria spesi quando completa un riposo lungo. Incantesimi Flessibili. Creare slot incantesimo: come azione bonus nel suo turno trasforma punti stregoneria non spesi in uno slot incantesimo (costo: slot di 1° livello 2 punti, di 2° livello 3, di 3° livello 5, di 4° livello 6, di 5° livello 7); non può creare slot di livello superiore al 5° e ogni slot creato così svanisce quando completa un riposo lungo. Convertire uno slot in punti stregoneria: come azione bonus nel suo turno spende uno slot incantesimo e ottiene un numero di punti stregoneria pari al livello dello slot."
+        kid: "Hai {t_sorcery_points} punti stregoneria (tornano col riposo lungo). Con un'azione bonus li trasformi in uno slot (2 punti = slot di 1° livello, 3 punti = di 2°) o trasformi uno slot in punti (slot di 2° = 2 punti)."
+        slot_costs: {1: 2, 2: 3, 3: 5, 4: 6, 5: 7}
     3:
-      - {name: Metamagia, short: "Scegli due opzioni di metamagia.", text: "Lo stregone apprende due opzioni di metamagia per plasmare i suoi incantesimi."}
+      - name: Metamagia
+        short: "Conosci {t_metamagic_known} opzioni di Metamagia (2 al 3°, 3 al 10°, 4 al 17°): spendi punti stregoneria per modificare un incantesimo mentre lo lanci. Una sola opzione per incantesimo (salvo Incantesimo Potenziato)."
+        text: "Al 3° livello lo stregone sviluppa la capacità di plasmare i suoi incantesimi per adattarli ai suoi bisogni: ottiene due opzioni di Metamagia a sua scelta (vedi elenco), un'altra al 10° livello e un'altra al 17° livello. Può usare una sola opzione di Metamagia su un incantesimo quando lo lancia, a meno che non sia specificato diversamente."
+        kid: "Conosci {t_metamagic_known} trucchi di Metamagia: spendendo punti stregoneria cambi un incantesimo mentre lo lanci (più lontano, più lungo, su due nemici...). Ne usi uno solo per incantesimo."
+    4:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Lo stregone può aumentare un punteggio di caratteristica a sua scelta di 2, oppure due punteggi di caratteristica di 1 (massimo 20), oppure scegliere un talento."
+        kid: "Hai aumentato le tue caratteristiche (o preso un talento): i numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    8:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Hai aumentato le tue caratteristiche (o preso un talento): i numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    10:
+      - name: Metamagia (terza opzione)
+        short: "Impari un'altra opzione di Metamagia (3 in tutto)."
+        text: "Vedi 3° livello: lo stregone ottiene un'altra opzione di Metamagia a sua scelta."
+        kid: "Impari un nuovo trucco di Metamagia: ora ne conosci 3."
+        kid_hide: true
+    12:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Hai aumentato le tue caratteristiche (o preso un talento): i numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    16:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Hai aumentato le tue caratteristiche (o preso un talento): i numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    17:
+      - name: Metamagia (quarta opzione)
+        short: "Impari un'altra opzione di Metamagia (4 in tutto)."
+        text: "Vedi 3° livello: lo stregone ottiene un'altra opzione di Metamagia a sua scelta."
+        kid: "Impari un nuovo trucco di Metamagia: ora ne conosci 4."
+        kid_hide: true
+    19:
+      - name: Aumento dei Punteggi di Caratteristica
+        short: "+2 a una caratteristica o +1 a due (max 20), oppure un talento."
+        text: "Vedi 4° livello."
+        kid: "Hai aumentato le tue caratteristiche (o preso un talento): i numeri sulla scheda sono già aggiornati."
+        kid_hide: true
+    20:
+      - name: Ripristino Stregonesco
+        short: "Quando completi un riposo breve, recuperi 4 punti stregoneria spesi."
+        text: "Al 20° livello lo stregone recupera 4 punti stregoneria spesi ogni volta che completa un riposo breve."
+        kid: "Dopo ogni riposo breve recuperi 4 punti stregoneria che avevi già usato."
+  option_lists:
+    metamagic:
+      label: Metamagia
+      count_table: metamagic_known
+      items:
+        careful_spell:
+          name: Incantesimo Preciso
+          cost: 1
+          short: "1 punto stregoneria: quando un tuo incantesimo impone un TS, scegli fino a mod. CAR creature (minimo 1) che lo superano automaticamente."
+          text: "Quando lo stregone lancia un incantesimo che obbliga altre creature a effettuare un tiro salvezza, può proteggere alcune di esse dalla piena forza dell'incantesimo: spende 1 punto stregoneria e sceglie un numero di creature pari al massimo al suo modificatore di Carisma (minimo una). Ogni creatura scelta supera automaticamente il suo tiro salvezza contro l'incantesimo."
+          kid: "Spendi 1 punto stregoneria quando lanci un incantesimo che fa fare un tiro salvezza: scegli tanti amici quanto il tuo bonus di Carisma ({mod}, almeno 1). Loro superano il tiro salvezza senza tirare il dado."
+        distant_spell:
+          name: Incantesimo Distante
+          cost: 1
+          short: "1 punto stregoneria: raddoppi la gittata di un incantesimo (gittata di almeno 1,5 m); se la gittata è a contatto diventa 9 m."
+          text: "Quando lo stregone lancia un incantesimo che ha una gittata pari o superiore a 1,5 metri, può spendere 1 punto stregoneria per raddoppiarne la gittata. Quando lancia un incantesimo con gittata a contatto, può spendere 1 punto stregoneria per portare la gittata a 9 metri."
+          kid: "Spendi 1 punto stregoneria: il tuo incantesimo arriva al doppio della distanza. Se di solito devi toccare il bersaglio, invece arriva fino a 9 m."
+        empowered_spell:
+          name: Incantesimo Potenziato
+          cost: 1
+          short: "1 punto stregoneria: quando tiri i danni di un incantesimo, ritiri fino a mod. CAR dadi (minimo 1) e usi i nuovi risultati. Si può combinare con un'altra Metamagia."
+          text: "Quando lo stregone tira i danni di un incantesimo, può spendere 1 punto stregoneria per ripetere il tiro di un numero di dadi dei danni pari al massimo al suo modificatore di Carisma (minimo uno). Deve usare i nuovi risultati. Può usare Incantesimo Potenziato anche se ha già usato un'opzione di Metamagia diversa durante il lancio dell'incantesimo."
+          kid: "Quando tiri i danni di un incantesimo, spendi 1 punto stregoneria: ritira i dadi andati male (quanti il tuo bonus di Carisma {mod}, almeno 1) e tieni i nuovi numeri."
+        extended_spell:
+          name: Incantesimo Esteso
+          cost: 1
+          short: "1 punto stregoneria: raddoppi la durata di un incantesimo che dura almeno 1 minuto (massimo 24 ore)."
+          text: "Quando lo stregone lancia un incantesimo che ha una durata pari o superiore a 1 minuto, può spendere 1 punto stregoneria per raddoppiarne la durata, fino a un massimo di 24 ore."
+          kid: "Spendi 1 punto stregoneria: un incantesimo che dura almeno 1 minuto dura il doppio (al massimo 24 ore)."
+        heightened_spell:
+          name: Incantesimo Intensificato
+          cost: 3
+          short: "3 punti stregoneria: un bersaglio dell'incantesimo ha svantaggio al primo TS contro di esso."
+          text: "Quando lo stregone lancia un incantesimo che obbliga una creatura a effettuare un tiro salvezza per resistere ai suoi effetti, può spendere 3 punti stregoneria per infliggere svantaggio a un bersaglio dell'incantesimo al primo tiro salvezza che effettua contro di esso."
+          kid: "Spendi 3 punti stregoneria: un nemico colpito dal tuo incantesimo, per resistere la prima volta, tira 2 d20 e tiene il più basso (svantaggio)."
+        quickened_spell:
+          name: Incantesimo Rapido
+          cost: 2
+          short: "2 punti stregoneria: un incantesimo con tempo di lancio di 1 azione si lancia con 1 azione bonus. Nello stesso turno puoi lanciare solo un altro trucchetto da 1 azione."
+          text: "Quando lo stregone lancia un incantesimo che ha un tempo di lancio di 1 azione, può spendere 2 punti stregoneria per cambiare il tempo di lancio in 1 azione bonus per quel lancio. Regola generale: se lancia un incantesimo come azione bonus, nello stesso turno può lanciare solo un altro incantesimo, che deve essere un trucchetto con tempo di lancio di 1 azione."
+          kid: "Spendi 2 punti stregoneria: un incantesimo che di solito richiede 1 azione lo lanci con l'azione bonus. Ricorda: in quel turno, come altra magia, puoi lanciare solo un trucchetto."
+        subtle_spell:
+          name: Incantesimo Celato
+          cost: 1
+          short: "1 punto stregoneria: lanci un incantesimo senza componenti verbali né somatiche."
+          text: "Quando lo stregone lancia un incantesimo, può spendere 1 punto stregoneria per lanciarlo senza alcuna componente somatica o verbale."
+          kid: "Spendi 1 punto stregoneria: lanci l'incantesimo senza parlare e senza muovere le mani, così nessuno si accorge che stai facendo una magia."
+        twinned_spell:
+          name: Incantesimo Raddoppiato
+          cost: "livello dell'incantesimo (1 per un trucchetto)"
+          short: "Punti stregoneria pari al livello dell'incantesimo (1 per un trucchetto): un incantesimo che bersaglia una sola creatura (gittata non incantatore) ne bersaglia una seconda entro gittata."
+          text: "Quando lo stregone lancia un incantesimo che bersaglia una sola creatura e non ha gittata «incantatore», può spendere un numero di punti stregoneria pari al livello dell'incantesimo (1 se è un trucchetto) per bersagliare con lo stesso incantesimo una seconda creatura entro gittata. L'incantesimo non deve poter bersagliare più di una creatura al livello a cui viene lanciato: per esempio dardo incantato e raggio rovente non sono idonei, raggio di gelo sì."
+          kid: "Un incantesimo che può colpire una sola creatura (e non solo te stesso) ne colpisce due, se sono entrambe a gittata! Costa tanti punti stregoneria quanto il livello dell'incantesimo (1 per un trucchetto)."
+  subclasses:
+    draconic_bloodline:
+      name: Discendenza Draconica
+      name_en: Draconic Bloodline
+      option_lists:
+        dragon_ancestor:
+          label: Antenato Draconico
+          level: 1
+          count_table: null
+          count: 1
+          items:
+            black:
+              name: Nero
+              damage_type: acido
+              short: "Drago nero: danni da acido."
+              text: "Antenato draconico: drago nero. Tipo di danno associato: acido."
+              kid: "Il tuo antenato è un drago nero: la tua magia draconica è legata all'acido."
+            blue:
+              name: Blu
+              damage_type: fulmine
+              short: "Drago blu: danni da fulmine."
+              text: "Antenato draconico: drago blu. Tipo di danno associato: fulmine."
+              kid: "Il tuo antenato è un drago blu: la tua magia draconica è legata al fulmine."
+            brass:
+              name: Ottone
+              damage_type: fuoco
+              short: "Drago d'ottone: danni da fuoco."
+              text: "Antenato draconico: drago d'ottone. Tipo di danno associato: fuoco."
+              kid: "Il tuo antenato è un drago d'ottone: la tua magia draconica è legata al fuoco."
+            bronze:
+              name: Bronzo
+              damage_type: fulmine
+              short: "Drago di bronzo: danni da fulmine."
+              text: "Antenato draconico: drago di bronzo. Tipo di danno associato: fulmine."
+              kid: "Il tuo antenato è un drago di bronzo: la tua magia draconica è legata al fulmine."
+            copper:
+              name: Rame
+              damage_type: acido
+              short: "Drago di rame: danni da acido."
+              text: "Antenato draconico: drago di rame. Tipo di danno associato: acido."
+              kid: "Il tuo antenato è un drago di rame: la tua magia draconica è legata all'acido."
+            gold:
+              name: Oro
+              damage_type: fuoco
+              short: "Drago d'oro: danni da fuoco."
+              text: "Antenato draconico: drago d'oro. Tipo di danno associato: fuoco."
+              kid: "Il tuo antenato è un drago d'oro: la tua magia draconica è legata al fuoco."
+            green:
+              name: Verde
+              damage_type: veleno
+              short: "Drago verde: danni da veleno."
+              text: "Antenato draconico: drago verde. Tipo di danno associato: veleno."
+              kid: "Il tuo antenato è un drago verde: la tua magia draconica è legata al veleno."
+            red:
+              name: Rosso
+              damage_type: fuoco
+              short: "Drago rosso: danni da fuoco."
+              text: "Antenato draconico: drago rosso. Tipo di danno associato: fuoco."
+              kid: "Il tuo antenato è un drago rosso: la tua magia draconica è legata al fuoco."
+            silver:
+              name: Argento
+              damage_type: freddo
+              short: "Drago d'argento: danni da freddo."
+              text: "Antenato draconico: drago d'argento. Tipo di danno associato: freddo."
+              kid: "Il tuo antenato è un drago d'argento: la tua magia draconica è legata al freddo."
+            white:
+              name: Bianco
+              damage_type: freddo
+              short: "Drago bianco: danni da freddo."
+              text: "Antenato draconico: drago bianco. Tipo di danno associato: freddo."
+              kid: "Il tuo antenato è un drago bianco: la tua magia draconica è legata al freddo."
+      features:
+        1:
+          - name: Antenato Draconico
+            short: "Scegli un tipo di drago come antenato (vedi elenco): il suo tipo di danno serve ai privilegi successivi. Parli, leggi e scrivi il Draconico; bonus di competenza raddoppiato alle prove di CAR per interagire con i draghi (se applicabile)."
+            text: "Al 1° livello lo stregone sceglie un tipo di drago come suo antenato: il tipo di danno associato a quel drago (argento e bianco: freddo; blu e bronzo: fulmine; nero e rame: acido; oro, ottone e rosso: fuoco; verde: veleno) sarà usato dai privilegi che otterrà in seguito. Lo stregone sa parlare, leggere e scrivere in Draconico. Inoltre, ogni volta che effettua una prova di Carisma per interagire con i draghi, il suo bonus di competenza raddoppia se è applicabile alla prova."
+            kid: "Un tuo antenato era un drago! Parli e scrivi il Draconico, la lingua dei draghi. Quando provi a convincere o ingannare un drago, se hai l'abilità giusta il tuo bonus di competenza conta doppio."
+            languages: [draconic]
+          - name: Resilienza Draconica
+            short: "+1 PF massimo al 1° livello e +1 per ogni livello da stregone successivo. Senza armatura, CA = 13 + mod. DES."
+            text: "La magia che scorre nel corpo dello stregone fa emergere alcuni tratti fisici dei draghi suoi antenati. Al 1° livello il suo massimo dei punti ferita aumenta di 1, e aumenta di nuovo di 1 ogni volta che acquisisce un livello in questa classe. Inoltre, alcune parti della sua pelle si ricoprono di un sottile strato di scaglie simili a quelle di un drago: quando non indossa armature, la sua CA è pari a 13 + il suo modificatore di Destrezza."
+            kid: "Hai scaglie da drago sulla pelle: senza armatura la tua Classe Armatura (CA) è 13 + la tua Destrezza. Hai anche 1 punto ferita in più per ogni livello ({livello} in tutto)."
+            hp_per_level: 1
+            unarmored_ac: {base: 13, ability: dex}
+        6:
+          - name: Affinità Elementale
+            short: "Quando lanci un incantesimo che infligge il tipo di danno del tuo antenato, aggiungi il mod. CAR a un tiro per i danni. Puoi anche spendere 1 punto stregoneria per avere resistenza a quel tipo di danno per 1 ora."
+            text: "A partire dal 6° livello, quando lo stregone lancia un incantesimo che infligge danni del tipo associato al suo antenato draconico, può aggiungere il suo modificatore di Carisma a un tiro per i danni di quell'incantesimo. Allo stesso tempo, può spendere 1 punto stregoneria per ottenere resistenza a quel tipo di danno per 1 ora."
+            kid: "Quando un tuo incantesimo fa danni del tipo del tuo drago, aggiungi {mod} ai danni (una volta per incantesimo). In quel momento puoi anche spendere 1 punto stregoneria: per 1 ora quel tipo di danni ti fa solo metà."
+        14:
+          - name: Ali di Drago
+            short: "Azione bonus: ti spuntano ali di drago e ottieni una velocità di volare pari alla tua velocità attuale, finché non le congedi con un'azione bonus. Non con un'armatura non fatta per accoglierle."
+            text: "Al 14° livello lo stregone sviluppa la capacità di far spuntare un paio di ali di drago dalla schiena, ottenendo una velocità di volare pari alla sua velocità attuale. Può creare le ali come azione bonus nel suo turno; durano finché non le congeda con un'azione bonus nel suo turno. Non può manifestarle mentre indossa un'armatura, a meno che l'armatura non sia fatta per accoglierle; i vestiti non adatti possono essere distrutti quando le ali spuntano."
+            kid: "Con un'azione bonus ti spuntano ali da drago e puoi volare veloce quanto cammini. Restano finché non le fai sparire (un'altra azione bonus). Non funzionano se indossi un'armatura."
+        18:
+          - name: Presenza Draconica
+            short: "Azione, 5 punti stregoneria: aura di soggezione o di paura di 18 m per 1 minuto (concentrazione). Ogni creatura ostile che inizia il turno nell'aura: TS su SAG (CD {cd}) o è affascinata o spaventata finché l'aura dura; se lo supera è immune per 24 ore."
+            text: "A partire dal 18° livello lo stregone può incanalare la presenza terrificante del suo antenato draconico. Con un'azione spende 5 punti stregoneria ed emana un'aura di soggezione o di paura (a sua scelta) entro 18 metri. Per 1 minuto o finché non perde la concentrazione (come se si concentrasse su un incantesimo), ogni creatura ostile che inizia il suo turno nell'aura deve superare un tiro salvezza su Saggezza o è affascinata (se lo stregone ha scelto soggezione) o spaventata (se ha scelto paura) finché l'aura non termina. Una creatura che supera il tiro salvezza è immune all'aura dello stregone per 24 ore. Il PHB non specifica la CD: di norma si usa la CD del tiro salvezza degli incantesimi dello stregone."
+            kid: "Azione + 5 punti stregoneria: per 1 minuto (con concentrazione) emani paura o meraviglia, scegli tu. Ogni nemico che inizia il turno entro 18 m tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}): se fallisce è spaventato o affascinato."
+    wild_magic:
+      name: Magia Selvaggia
+      name_en: Wild Magic
+      features:
+        1:
+          - name: Impulso di Magia Selvaggia
+            short: "Subito dopo che lanci un incantesimo da stregone di 1° livello o superiore, il DM può farti tirare un d20: con 1 tiri d100 sulla tabella degli impulsi di magia selvaggia."
+            text: "La magia dello stregone può scatenarsi in impulsi di magia incontrollata. Subito dopo che lo stregone ha lanciato un incantesimo da stregone di 1° livello o superiore, il DM può fargli tirare un d20: se ottiene 1, tira sulla tabella Impulso di Magia Selvaggia per creare un effetto magico casuale. Se l'effetto è un incantesimo, è troppo selvaggio per essere modificato dalla Metamagia e, se normalmente richiede concentrazione, in questo caso non la richiede e dura per tutta la sua durata."
+            kid: "La tua magia è imprevedibile! Dopo che lanci un incantesimo (non un trucchetto), il DM può farti tirare un d20: se esce 1, tiri d100 sulla tabella della magia selvaggia e succede qualcosa di strano."
+          - name: Maree del Caos
+            short: "Ottieni vantaggio a un tiro per colpire, una prova di caratteristica o un TS. Torna con un riposo lungo, oppure quando il DM ti fa tirare sulla tabella degli impulsi dopo un tuo incantesimo di 1° livello o superiore."
+            text: "Lo stregone può manipolare le forze del caso e del caos per ottenere vantaggio a un tiro per colpire, una prova di caratteristica o un tiro salvezza. Una volta usato questo privilegio, deve completare un riposo lungo prima di poterlo usare di nuovo. In qualsiasi momento prima di recuperarne l'uso, il DM può fargli tirare sulla tabella Impulso di Magia Selvaggia subito dopo che ha lanciato un incantesimo da stregone di 1° livello o superiore: in quel caso recupera l'uso del privilegio."
+            kid: "Una volta, quando vuoi tu, tira 2 d20 e tieni il più alto (vantaggio) su un attacco, una prova o un tiro salvezza. Torna dopo un riposo lungo, o prima se il DM ti fa tirare sulla tabella della magia selvaggia."
+        6:
+          - name: Piegare la Fortuna
+            short: "Reazione, 2 punti stregoneria: quando un'altra creatura che vedi effettua un tiro per colpire, una prova o un TS, tiri 1d4 e lo aggiungi o lo sottrai al suo tiro (anche dopo il tiro, prima che abbia effetto)."
+            text: "A partire dal 6° livello lo stregone può alterare il destino con la sua magia selvaggia. Quando un'altra creatura che può vedere effettua un tiro per colpire, una prova di caratteristica o un tiro salvezza, può usare la sua reazione e spendere 2 punti stregoneria per tirare 1d4 e applicare il risultato come bonus o penalità (a sua scelta) al tiro della creatura. Può farlo dopo che la creatura ha tirato, ma prima che si applichino gli effetti del tiro."
+            kid: "Quando un'altra creatura che vedi tira il d20 (attacco, prova o tiro salvezza), usi la reazione (una mossa anche fuori dal tuo turno) e 2 punti stregoneria: tira 1d4 e aggiungilo o toglilo dal suo risultato, anche dopo aver visto il dado."
+        14:
+          - name: Caos Controllato
+            short: "Quando tiri sulla tabella degli impulsi di magia selvaggia, tiri due volte e scegli quale risultato usare."
+            text: "Al 14° livello lo stregone ottiene un certo controllo sugli impulsi della sua magia selvaggia: ogni volta che tira sulla tabella Impulso di Magia Selvaggia, può tirare due volte e usare uno qualsiasi dei due risultati."
+            kid: "Quando tiri sulla tabella della magia selvaggia, tiri due volte e scegli tu quale dei due risultati usare."
+        18:
+          - name: Bombardamento di Incantesimi
+            short: "Quando tiri i danni di un incantesimo e un dado ottiene il massimo, ne scegli uno, lo ritiri e aggiungi il risultato ai danni. 1 volta per turno."
+            text: "A partire dal 18° livello l'energia dannosa degli incantesimi dello stregone si intensifica. Quando tira i danni di un incantesimo e ottiene il numero più alto possibile su uno qualsiasi dei dadi, sceglie uno di quei dadi, lo tira di nuovo e aggiunge il risultato ai danni. Può usare questo privilegio una sola volta per turno."
+            kid: "Quando tiri i danni di un incantesimo e un dado fa il numero più alto (per esempio 8 su un d8), tiri di nuovo quel dado e aggiungi anche il nuovo numero. Una volta per turno."
+      surge_table:
+        - {min: 1, max: 2, roll: "01-02", text: "Per il prossimo minuto tiri su questa tabella all'inizio di ogni tuo turno, ignorando questo risultato nei tiri successivi."}
+        - {min: 3, max: 4, roll: "03-04", text: "Per il prossimo minuto puoi vedere qualsiasi creatura invisibile, se hai una linea di vista verso di essa."}
+        - {min: 5, max: 6, roll: "05-06", text: "Un modron scelto e controllato dal DM appare in uno spazio libero entro 1,5 m da te e scompare dopo 1 minuto."}
+        - {min: 7, max: 8, roll: "07-08", text: "Lanci palla di fuoco come incantesimo di 3° livello centrato su di te."}
+        - {min: 9, max: 10, roll: "09-10", text: "Lanci dardo incantato come incantesimo di 5° livello."}
+        - {min: 11, max: 12, roll: "11-12", text: "Tira un d10: la tua altezza cambia di 2,5 cm per ogni punto del risultato. Se il risultato è dispari rimpicciolisci, se è pari cresci."}
+        - {min: 13, max: 14, roll: "13-14", text: "Lanci confusione centrato su di te."}
+        - {min: 15, max: 16, roll: "15-16", text: "Per il prossimo minuto recuperi 5 punti ferita all'inizio di ogni tuo turno."}
+        - {min: 17, max: 18, roll: "17-18", text: "Ti cresce una lunga barba di piume che resta finché non starnutisci: allora le piume esplodono via dalla tua faccia."}
+        - {min: 19, max: 20, roll: "19-20", text: "Lanci unto centrato su di te."}
+        - {min: 21, max: 22, roll: "21-22", text: "Le creature hanno svantaggio ai tiri salvezza contro il prossimo incantesimo che lanci entro 1 minuto e che richiede un tiro salvezza."}
+        - {min: 23, max: 24, roll: "23-24", text: "La tua pelle diventa di un blu acceso. Un incantesimo rimuovi maledizione può porre fine all'effetto."}
+        - {min: 25, max: 26, roll: "25-26", text: "Per il prossimo minuto ti appare un occhio sulla fronte: hai vantaggio alle prove di Saggezza (Percezione) basate sulla vista."}
+        - {min: 27, max: 28, roll: "27-28", text: "Per il prossimo minuto tutti i tuoi incantesimi con tempo di lancio di 1 azione hanno tempo di lancio di 1 azione bonus."}
+        - {min: 29, max: 30, roll: "29-30", text: "Ti teletrasporti fino a 18 m in uno spazio libero a tua scelta che puoi vedere."}
+        - {min: 31, max: 32, roll: "31-32", text: "Vieni trasportato sul Piano Astrale fino alla fine del tuo prossimo turno; poi torni nello spazio che occupavi o, se è occupato, in quello libero più vicino."}
+        - {min: 33, max: 34, roll: "33-34", text: "Il prossimo incantesimo che infligge danni lanciato da te entro 1 minuto infligge il massimo dei danni."}
+        - {min: 35, max: 36, roll: "35-36", text: "Tira un d10: la tua età cambia di tanti anni quanto il risultato. Se è dispari ringiovanisci (minimo 1 anno di età), se è pari invecchi."}
+        - {min: 37, max: 38, roll: "37-38", text: "Appaiono 1d6 flumph controllati dal DM in spazi liberi entro 18 m da te: sono spaventati da te e svaniscono dopo 1 minuto."}
+        - {min: 39, max: 40, roll: "39-40", text: "Recuperi 2d10 punti ferita."}
+        - {min: 41, max: 42, roll: "41-42", text: "Ti trasformi in una pianta in vaso fino all'inizio del tuo prossimo turno. Come pianta sei incapacitato e hai vulnerabilità a tutti i danni; se scendi a 0 punti ferita il vaso si rompe e torni alla tua forma."}
+        - {min: 43, max: 44, roll: "43-44", text: "Per il prossimo minuto, in ognuno dei tuoi turni puoi teletrasportarti fino a 6 m come azione bonus."}
+        - {min: 45, max: 46, roll: "45-46", text: "Lanci levitazione su di te."}
+        - {min: 47, max: 48, roll: "47-48", text: "Un unicorno controllato dal DM appare in uno spazio entro 1,5 m da te e scompare dopo 1 minuto."}
+        - {min: 49, max: 50, roll: "49-50", text: "Per il prossimo minuto non puoi parlare: ogni volta che ci provi, dalla tua bocca escono bolle rosa."}
+        - {min: 51, max: 52, roll: "51-52", text: "Per il prossimo minuto uno scudo spettrale fluttua vicino a te: ottieni +2 alla CA e immunità a dardo incantato."}
+        - {min: 53, max: 54, roll: "53-54", text: "Per i prossimi 5d6 giorni l'alcol non può ubriacarti."}
+        - {min: 55, max: 56, roll: "55-56", text: "Ti cadono i capelli, ma ricrescono entro 24 ore."}
+        - {min: 57, max: 58, roll: "57-58", text: "Per il prossimo minuto ogni oggetto infiammabile che tocchi, se non è indossato o trasportato da un'altra creatura, prende fuoco."}
+        - {min: 59, max: 60, roll: "59-60", text: "Recuperi lo slot incantesimo speso di livello più basso."}
+        - {min: 61, max: 62, roll: "61-62", text: "Per il prossimo minuto devi urlare quando parli."}
+        - {min: 63, max: 64, roll: "63-64", text: "Lanci nube di nebbia centrata su di te."}
+        - {min: 65, max: 66, roll: "65-66", text: "Fino a tre creature a tua scelta entro 9 m da te subiscono 4d10 danni da fulmine."}
+        - {min: 67, max: 68, roll: "67-68", text: "Sei spaventato dalla creatura più vicina fino alla fine del tuo prossimo turno."}
+        - {min: 69, max: 70, roll: "69-70", text: "Ogni creatura entro 9 m da te diventa invisibile per il prossimo minuto. L'invisibilità di una creatura termina quando attacca o lancia un incantesimo."}
+        - {min: 71, max: 72, roll: "71-72", text: "Per il prossimo minuto ottieni resistenza a tutti i danni."}
+        - {min: 73, max: 74, roll: "73-74", text: "Una creatura casuale entro 18 m da te è avvelenata per 1d4 ore."}
+        - {min: 75, max: 76, roll: "75-76", text: "Per il prossimo minuto emani luce intensa in un raggio di 9 m. Ogni creatura che termina il suo turno entro 1,5 m da te è accecata fino alla fine del suo turno successivo."}
+        - {min: 77, max: 78, roll: "77-78", text: "Lanci metamorfosi su di te. Se fallisci il tiro salvezza, diventi una pecora per la durata dell'incantesimo."}
+        - {min: 79, max: 80, roll: "79-80", text: "Per il prossimo minuto farfalle e petali di fiori illusori svolazzano nell'aria entro 3 m da te."}
+        - {min: 81, max: 82, roll: "81-82", text: "Puoi effettuare subito un'azione aggiuntiva."}
+        - {min: 83, max: 84, roll: "83-84", text: "Ogni creatura entro 9 m da te subisce 1d10 danni necrotici. Recuperi punti ferita pari al totale dei danni necrotici inflitti."}
+        - {min: 85, max: 86, roll: "85-86", text: "Lanci immagine speculare."}
+        - {min: 87, max: 88, roll: "87-88", text: "Lanci volare su una creatura casuale entro 18 m da te."}
+        - {min: 89, max: 90, roll: "89-90", text: "Per il prossimo minuto diventi invisibile e le altre creature non possono sentirti. L'invisibilità termina se attacchi o lanci un incantesimo."}
+        - {min: 91, max: 92, roll: "91-92", text: "Se muori entro il prossimo minuto, torni subito in vita come con l'incantesimo reincarnazione."}
+        - {min: 93, max: 94, roll: "93-94", text: "Per il prossimo minuto la tua taglia aumenta di una categoria."}
+        - {min: 95, max: 96, roll: "95-96", text: "Per il prossimo minuto tu e tutte le creature entro 9 m da te ottenete vulnerabilità ai danni perforanti."}
+        - {min: 97, max: 98, roll: "97-98", text: "Per il prossimo minuto sei circondato da una leggera musica eterea."}
+        - {min: 99, max: 100, roll: "99-00", text: "Recuperi tutti i punti stregoneria spesi."}
 
 warlock:
   name: Warlock

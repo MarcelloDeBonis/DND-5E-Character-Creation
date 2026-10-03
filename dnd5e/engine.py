@@ -85,6 +85,19 @@ def _nm(entry: dict, female: bool, default: str = "") -> str:
     return entry.get("name", default)
 
 
+def iter_feats(char: dict, rules: dict):
+    """Talenti scelti: `feats: [alert, {key: resilient, ability: con}, ...]` -> (chiave, regola, scelta)."""
+    table = rules.get("feats") or {}
+    out = []
+    for entry in _as_list(char.get("feats")):
+        pick = entry if isinstance(entry, dict) else {"key": entry}
+        key = pick.get("key")
+        if key not in table:
+            raise RulesError(f"Talento sconosciuto: {key} (vedi dnd5e/rules/feats.yaml)")
+        out.append((key, table[key], pick))
+    return out
+
+
 class _SafeDict(dict):
     def __missing__(self, key):
         return "{" + key + "}"
@@ -206,6 +219,14 @@ def resolve_abilities(char: dict, race: dict, rules: dict, warnings: list) -> di
             scores[k] += choice["bonus"]
     for asi in spec.get("asi", []) or []:
         _merge_bonus(scores, asi)
+    for key, feat, pick in iter_feats(char, rules):
+        _merge_bonus(scores, feat.get("ability_bonus"))
+        ch = feat.get("ability_choice")
+        if ch:
+            ab = pick.get("ability")
+            if ab not in ch.get("from", ABILITIES):
+                raise RulesError(f"Il talento {feat['name']} richiede 'ability' tra: {', '.join(ch.get('from', ABILITIES))}")
+            scores[ab] += int(ch.get("bonus", 1))
     for k, v in scores.items():
         if v > 20:
             warnings.append(f"{k.upper()} = {v}: il massimo normale è 20")
@@ -229,11 +250,12 @@ def resolve_class(char: dict, rules: dict) -> dict:
     level = int(char.get("level", 1))
     if not 1 <= level <= 20:
         raise RulesError("Il livello deve essere tra 1 e 20")
+    female = is_female(char)
     features = []
     for lvl in sorted(cls.get("features", {})):
         if lvl <= level:
             for f in cls["features"][lvl]:
-                features.append({**f, "level": lvl, "source": cls["name"]})
+                features.append({**f, "name": _nm(f, female), "level": lvl, "source": _nm(cls, female)})
     subclass = None
     sub_key = char.get("subclass")
     sub_level = cls.get("subclass_level", 99)
@@ -249,10 +271,23 @@ def resolve_class(char: dict, rules: dict) -> dict:
         for lvl in sorted(subclass.get("features", {})):
             if lvl <= level:
                 for f in subclass["features"][lvl]:
-                    features.append({**f, "level": lvl, "source": subclass["name"]})
+                    features.append({**f, "name": _nm(f, female), "level": lvl, "source": _nm(subclass, female)})
     spellcasting = cls.get("spellcasting")
     if subclass and subclass.get("spellcasting"):
         spellcasting = subclass["spellcasting"]
+    # numeri della tabella di classe al livello attuale (Attacco Furtivo, punti ki, incantesimi conosciuti...)
+    columns = dict(cls.get("table") or {})
+    columns.update((subclass or {}).get("table") or {})
+    table = {k: v[level - 1] for k, v in columns.items() if isinstance(v, list) and len(v) >= level}
+    option_lists = dict(cls.get("option_lists") or {})
+    option_lists.update((subclass or {}).get("option_lists") or {})
+    armor, weapons, tools = list(cls.get("armor", [])), list(cls.get("weapons", [])), list(cls.get("tools", []))
+    for f in features:
+        bp = f.get("bonus_proficiencies") or {}
+        armor += [a for a in bp.get("armor", []) if a not in armor]
+        weapons += [w for w in bp.get("weapons", []) if w not in weapons]
+        tools += [t for t in bp.get("tools", []) if t not in tools]
+    cls["armor"], cls["weapons"], cls["tools"] = armor, weapons, tools
     return {
         "key": key,
         "name": _nm(cls, is_female(char)),
@@ -268,6 +303,10 @@ def resolve_class(char: dict, rules: dict) -> dict:
         "spellcasting": spellcasting,
         "subclass_label": cls.get("subclass_label"),
         "subclass": subclass,
+        "subclass_name": _nm(subclass, female) if subclass else None,
+        "table": table,
+        "option_lists": option_lists,
+        "ki_save": cls.get("ki_save"),
         "subclass_key": sub_key,
         "features": features,
         "wild_shape": (subclass or {}).get("wild_shape") or cls.get("wild_shape"),
@@ -340,12 +379,28 @@ def resolve_skills(char: dict, race: dict, cls: dict, background: dict, rules: d
         )
     for s in racial_picks:
         add(s, f"razza ({race['name']})")
-    for s in _as_list(char.get("extra_skills")):
-        add(s, "altro")
+    expected_extra = 0
+    for f in cls["features"]:
+        bp = f.get("bonus_proficiencies") or {}
+        for s in bp.get("skills", []):
+            add(s, f["name"])
+        if bp.get("skill_choice"):
+            expected_extra += int(bp["skill_choice"].get("count", 0))
+    for _, feat, _ in iter_feats(char, rules):
+        if feat.get("skill_choice"):
+            expected_extra += int(feat["skill_choice"].get("count", 0))
+    extra = _as_list(char.get("extra_skills"))
+    if len(extra) < expected_extra:
+        warnings.append(f"Hai {expected_extra} abilità in più da privilegi o talenti: indicale in 'extra_skills' (date: {len(extra)})")
+    for s in extra:
+        add(s, "privilegio o talento")
     expertise = set(_as_list(char.get("expertise")))
     for s in expertise:
         if s not in proficient:
             raise RulesError(f"Maestria in {s} ma nessuna competenza")
+    exp_count = sum(int(f.get("expertise_count", 0)) for f in cls["features"])
+    if exp_count and len(expertise) != exp_count:
+        warnings.append(f"Maestria: scelte {len(expertise)} abilità in 'expertise', al livello attuale ne hai {exp_count}")
     return {"proficient": proficient, "expertise": expertise}
 
 
@@ -463,6 +518,12 @@ def resolve_ac(char: dict, abilities: dict, cls: dict, race: dict, styles: list,
         elif cls["key"] == "monk" and not shield:
             ac += abilities["mods"]["wis"]
             parts.append(f"SAG {fmt_mod(abilities['mods']['wis'])}")
+        else:
+            for f in cls["features"]:
+                ua = f.get("unarmored_ac")
+                if ua and ua["base"] + abilities["mods"][ua.get("ability", "dex")] > ac:
+                    ac = ua["base"] + abilities["mods"][ua.get("ability", "dex")]
+                    parts = [f"{ua['base']} + {ABBR_IT[ua.get('ability', 'dex')]} {fmt_mod(abilities['mods'][ua.get('ability', 'dex')])} ({f['name']})"]
         armor_name = "Nessuna armatura"
         stealth_dis = False
     if shield:
@@ -475,13 +536,15 @@ def resolve_ac(char: dict, abilities: dict, cls: dict, race: dict, styles: list,
     return {"value": ac, "armor": armor_name, "shield": bool(shield), "breakdown": ", ".join(parts), "stealth_disadvantage": stealth_dis}
 
 
-def resolve_hp(char: dict, abilities: dict, cls: dict, race: dict, warnings: list) -> dict:
+def resolve_hp(char: dict, abilities: dict, cls: dict, race: dict, warnings: list, rules: dict | None = None) -> dict:
     spec = char.get("hp", {}) or {}
     method = spec.get("method", "average")
     level = cls["level"]
     con = abilities["mods"]["con"]
     die = cls["hit_die"]
     per_level_bonus = sum(t.get("hp_per_level", 0) for t in race["traits"])
+    per_level_bonus += sum(int(f.get("hp_per_level", 0)) for f in cls["features"])
+    per_level_bonus += sum(int(feat.get("hp_per_level", 0)) for _, feat, _ in iter_feats(char, rules or {}))
     if method == "manual":
         total = int(spec["value"])
         detail = "valore inserito manualmente"
@@ -561,14 +624,31 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
         known_table = spells_rules["cantrips_known"].get(cls["key"]) or spells_rules["cantrips_known"].get(caster["type"])
         bonus = sum(int(f.get("cantrip_bonus", 0)) for f in cls["features"])
         expected = (known_table[level - 1] if known_table else None)
+        for col in ("cantrips_known", "cantrips"):
+            if isinstance(cls["table"].get(col), int):
+                expected = cls["table"][col]
+        # trucchetti da altre liste dati da un privilegio (es. Accolito della Natura: 1 trucchetto da druido)
+        other_lists = {}
+        for f in cls["features"]:
+            ch = f.get("cantrip_choice")
+            if isinstance(ch, dict) and ch.get("list"):
+                other_lists[ch["list"]] = {"left": int(ch.get("count", 1)), "ability": ch.get("ability", spell_ability)}
+                bonus += int(ch.get("count", 1))
         picks = _as_list(char.get("cantrips"))
         for key in picks:
             sp = lookup(key, cls["name"])
+            ability = spell_ability
             if sp["level"] is None:
                 warnings.append(f"Trucchetto {key} non presente nei dati: aggiungilo a dnd5e/rules/spells.yaml")
-            elif sp["level"] != 0 or list_key not in sp["lists"]:
-                raise RulesError(f"{sp['name']} non è un trucchetto della lista del {cls['name']}")
-            class_cantrips.append({**sp, "ability": spell_ability})
+            elif sp["level"] != 0:
+                raise RulesError(f"{sp['name']} non è un trucchetto")
+            elif list_key not in sp["lists"]:
+                extra = next((l for l in sp["lists"] if other_lists.get(l, {}).get("left", 0) > 0), None)
+                if not extra:
+                    raise RulesError(f"{sp['name']} non è un trucchetto della lista del {cls['name']}")
+                other_lists[extra]["left"] -= 1
+                ability = other_lists[extra]["ability"]
+            class_cantrips.append({**sp, "ability": ability})
         if expected is not None and len(picks) != expected + bonus:
             warnings.append(f"Trucchetti di classe: scelti {len(picks)}, al livello {level} ne conosci {expected + bonus}")
         # trucchetti gratuiti dati da un privilegio (es. Illusione Minore Migliorata), fuori dal conteggio
@@ -600,13 +680,20 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
                     raise RulesError(f"{sp['name']} è di {sp['level']}° livello ma hai slot solo fino al {max_level}°")
                 sp["prepared"] = key in _as_list(char.get("spells"))
                 book.append(sp)
+        sub = cls.get("subclass") or {}
+        # incantesimi fuori lista permessi: lista ampliata del patrono, Segreti Magici del bardo
+        expanded = {k for lvl, keys in (sub.get("expanded_spells") or {}).items() for k in keys}
+        secrets_left = sum(int(f.get("magical_secrets", 0)) for f in cls["features"])
         for key in _as_list(char.get("spells")):
             sp = lookup(key, cls["name"])
             if sp["level"] is None:
                 warnings.append(f"Incantesimo {key} non presente nei dati: aggiungilo a dnd5e/rules/spells.yaml")
             else:
-                if list_key not in sp["lists"]:
-                    raise RulesError(f"{sp['name']} non è nella lista del {cls['name']}")
+                if list_key not in sp["lists"] and key not in expanded:
+                    if secrets_left <= 0:
+                        raise RulesError(f"{sp['name']} non è nella lista del {cls['name']}")
+                    secrets_left -= 1
+                    sp["source"] = "Segreti Magici"
                 if sp["level"] > max_level:
                     raise RulesError(f"{sp['name']} è di {sp['level']}° livello ma hai slot solo fino al {max_level}°")
             prepared.append(sp)
@@ -614,7 +701,23 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
             prepared_max = max(1, mods[spell_ability] + (level if caster["type"] == "full" else level // 2))
             if len(prepared) != prepared_max:
                 warnings.append(f"Incantesimi preparati: {len(prepared)} su {prepared_max} possibili")
-        sub = cls.get("subclass") or {}
+        elif caster.get("prepared") == "known" and isinstance(cls["table"].get("spells_known"), int):
+            known = cls["table"]["spells_known"] + sum(int(f.get("bonus_spells_known", 0)) for f in cls["features"])
+            if len(prepared) != known:
+                warnings.append(f"Incantesimi conosciuti: {len(prepared)} su {known} al livello {level}")
+        # incantesimi del dominio / del giuramento: sempre preparati, fuori dal conteggio
+        for lvl in sorted(sub.get("always_prepared") or {}):
+            if lvl <= level:
+                for key in sub["always_prepared"][lvl]:
+                    sp = lookup(key, _nm(sub, False))
+                    if sp["level"] is None:
+                        warnings.append(f"Incantesimo {key} non presente nei dati: aggiungilo a dnd5e/rules/spells.yaml")
+                        sp["level"] = (lvl + 1) // 2
+                    sp["always_prepared"] = True
+                    circle_spells.append(sp)
+        for sp in prepared:
+            if sp.get("key") in {c.get("key") for c in circle_spells}:
+                warnings.append(f"{sp['name']} è già sempre preparato grazie alla sottoclasse: scegline un altro in 'spells'")
         if sub.get("circle_spells"):
             terrain = char.get("circle_terrain")
             if terrain not in sub["circle_spells"]:
@@ -626,6 +729,12 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
             for sp in prepared:
                 if sp["name"] in circle_names:
                     warnings.append(f"{sp['name']} è già un incantesimo del circolo (sempre preparato): scegline un altro in 'spells'")
+    if not caster:  # trucchetti dati da un privilegio a chi non è incantatore (es. Via dell'Ombra)
+        for f in cls["features"]:
+            key = f.get("grants_cantrip")
+            if key and key not in [c["key"] for c in cantrips]:
+                spell_ability = spell_ability or f.get("cantrip_ability", "wis")
+                class_cantrips.append({**lookup(key, f["name"]), "ability": f.get("cantrip_ability", spell_ability)})
     if not spell_ability:
         return None
     all_cantrips = racial_cantrips + class_cantrips
@@ -633,7 +742,7 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
         return None
     attack_bonus = prof + mods[spell_ability]
     # ogni trucchetto/incantesimo porta la propria caratteristica (razziale o di classe)
-    for sp in all_cantrips + prepared + book:
+    for sp in all_cantrips + prepared + book + circle_spells:
         ab = sp.get("ability") or spell_ability
         sp["ability"] = ab
         sp["attack_bonus"] = prof + mods[ab]
@@ -656,7 +765,7 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
         "spells_by_level": by_level,
         "slots": slots,
         "prepared_max": prepared_max,
-        "prepares": bool(caster and caster.get("prepared")),
+        "prepares": bool(caster and (caster.get("prepared") == "ability_plus_level" or caster.get("spellbook"))),
         "ritual": bool(caster and caster.get("ritual")),
         "focus": caster.get("focus") if caster else None,
         "spell_attacks": spell_attacks,
@@ -728,25 +837,39 @@ def build_sheet(char: dict, rules: dict | None = None) -> dict:
             raise RulesError(f"Stile di combattimento sconosciuto: {s}")
 
     mods = abilities["mods"]
+    feats = iter_feats(char, rules)
+    for _, feat, pick in feats:  # competenze dei talenti
+        cls["armor"] += [a for a in feat.get("armor_proficiencies", []) if a not in cls["armor"]]
+        wp = feat.get("weapon_proficiencies")
+        cls["weapons"] += [w for w in (wp if isinstance(wp, list) else _as_list(pick.get("weapons"))) if w not in cls["weapons"]]
+    save_profs = set(cls["saves"])
+    for f in cls["features"]:
+        save_profs.update(f.get("save_proficiencies") or [])
+    for _, feat, pick in feats:
+        if feat.get("save_proficiency_choice"):
+            save_profs.add(pick.get("save") or pick.get("ability"))
     saves = {}
     for a in ABILITIES:
-        is_prof = a in cls["saves"]
+        is_prof = a in save_profs
         saves[a] = {"value": mods[a] + (prof if is_prof else 0), "proficient": is_prof}
 
+    half_prof = any(f.get("half_proficiency_checks") for f in cls["features"])  # Factotum del bardo
     skill_values = {}
     for key, info in skills_rules["skills"].items():
         is_prof = key in skills["proficient"]
         bonus = mods[info["ability"]]
         if is_prof:
             bonus += prof * (2 if key in skills["expertise"] else 1)
+        elif half_prof:
+            bonus += prof // 2
         skill_values[key] = {
             "value": bonus, "proficient": is_prof, "expertise": key in skills["expertise"],
             "name": info["it"], "ability": info["ability"], "source": skills["proficient"].get(key),
         }
-    passive_perception = 10 + skill_values["perception"]["value"]
+    passive_perception = 10 + skill_values["perception"]["value"] + sum(int(feat.get("passive_bonus", 0)) for _, feat, _ in feats)
 
     ac = resolve_ac(char, abilities, cls, race, styles, rules, warnings)
-    hp = resolve_hp(char, abilities, cls, race, warnings)
+    hp = resolve_hp(char, abilities, cls, race, warnings, rules)
     weapons = resolve_weapons(char, abilities, cls, race, prof, styles, rules)
     spellcasting = resolve_spellcasting(char, cls, race, abilities, prof, rules, warnings)
     wild_shape = resolve_wild_shape(cls, rules)
@@ -759,11 +882,28 @@ def build_sheet(char: dict, rules: dict | None = None) -> dict:
         breath = {"dc": 8 + mods["con"] + prof, "dice": dice, "type": anc["damage_type"], "area": anc["area"],
                   "save": anc["save"], "save_name": skills_rules["abilities"][anc["save"]]["it"]}
 
+    # --- velocità e iniziativa con privilegi e talenti ---
+    speed_ft = race["speed"]
+    for f in cls["features"]:
+        speed_ft += float(f.get("speed_bonus", 0)) / 0.3
+        col = f.get("speed_bonus_table")
+        if col and isinstance(cls["table"].get(col), (int, float)):
+            speed_ft += cls["table"][col]
+    speed_ft += sum(float(feat.get("speed_bonus", 0)) / 0.3 for _, feat, _ in feats)
+    initiative = mods["dex"] + int(char.get("initiative_bonus", 0)) + sum(int(feat.get("initiative_bonus", 0)) for _, feat, _ in feats)
+    if half_prof:
+        initiative += prof // 2
+
     # --- segnaposto per i testi semplici ---
     hours = wild_shape["duration_hours"] if wild_shape else 0
     placeholders = {"livello": level, "forma_ore": f"{hours} {'ora' if hours == 1 else 'ore'}" if hours else ""}
     if spellcasting:
         placeholders.update(cd=spellcasting["save_dc"], att=fmt_mod(spellcasting["attack_bonus"]), mod=fmt_mod(spellcasting["mod"]))
+    for col, val in cls["table"].items():
+        placeholders[f"t_{col}"] = "illimitati" if val == 99 else val
+    if cls.get("ki_save") and not spellcasting:
+        ab = cls["ki_save"].get("ability", "wis")
+        placeholders.update(cd=8 + prof + mods[ab], mod=fmt_mod(mods[ab]))
     if breath:
         placeholders.update(soffio_cd=breath["dc"], soffio_danni=breath["dice"], soffio_tipo=breath["type"],
                             soffio_area=breath["area"], soffio_ts=breath["save_name"])
@@ -776,6 +916,25 @@ def build_sheet(char: dict, rules: dict | None = None) -> dict:
     for f in cls["features"]:
         features.append({"name": f["name"], "short": f.get("short", ""), "text": f.get("text", ""), "source": f["source"], "level": f["level"],
                          "kid": kid_fmt(f.get("kid", ""), placeholders), "kid_hide": f.get("kid_hide", False)})
+    # opzioni di classe scelte (suppliche, metamagia, nemico prescelto, discipline...)
+    picked = char.get("class_options") or {}
+    for list_key, opt in cls["option_lists"].items():
+        chosen = _as_list(picked.get(list_key))
+        want = cls["table"].get(opt.get("count_table")) if opt.get("count_table") else opt.get("count")
+        if isinstance(want, int) and want and len(chosen) != want:
+            warnings.append(f"{opt.get('label', list_key)}: scelte {len(chosen)}, al livello {level} ne servono {want} ('class_options: {list_key}')")
+        for k in chosen:
+            item = (opt.get("items") or {}).get(k)
+            if not item:
+                raise RulesError(f"Opzione sconosciuta in {list_key}: {k}")
+            features.append({"name": item["name"], "short": item.get("short", ""), "text": item.get("text", ""), "source": opt.get("label", list_key),
+                             "kid": kid_fmt(item.get("kid", ""), placeholders), "kid_hide": False})
+    for k in picked:
+        if k not in cls["option_lists"]:
+            raise RulesError(f"class_options: '{k}' non esiste per questa classe o sottoclasse ({', '.join(cls['option_lists']) or 'nessuna'})")
+    for key, feat, pick in feats:
+        features.append({"name": feat["name"], "short": feat.get("short", ""), "text": feat.get("text", ""), "source": "Talento",
+                         "kid": kid_fmt(feat.get("kid", ""), placeholders), "kid_hide": False})
     style_descriptions = []
     for s in styles:
         st = rules["equipment"]["fighting_styles"][s]
@@ -812,6 +971,9 @@ def build_sheet(char: dict, rules: dict | None = None) -> dict:
     languages = [lang_names.get(l, l) for l in race["languages"]]
     extra_langs = _as_list(char.get("languages_extra"))
     allowed_extra = race["extra_languages"] + int(background.get("languages", 0))
+    allowed_extra += sum(int(f.get("extra_languages", 0)) for f in cls["features"]) + sum(int(feat.get("languages", 0)) for _, feat, _ in feats)
+    for f in cls["features"]:
+        languages += [lang_names.get(l, l) for l in f.get("languages", []) if lang_names.get(l, l) not in languages]
     if len(extra_langs) > allowed_extra:
         warnings.append(f"Linguaggi extra: scelti {len(extra_langs)}, consentiti {allowed_extra}")
     elif len(extra_langs) < allowed_extra:
@@ -850,7 +1012,7 @@ def build_sheet(char: dict, rules: dict | None = None) -> dict:
         "race": race,
         "class": cls,
         "class_level": f"{cls['name']} {level}",
-        "subclass_name": cls["subclass"]["name"] if cls["subclass"] else None,
+        "subclass_name": cls["subclass_name"],
         "level": level,
         "xp": xp,
         "background": background,
@@ -861,9 +1023,9 @@ def build_sheet(char: dict, rules: dict | None = None) -> dict:
         "skills": skill_values,
         "passive_perception": passive_perception,
         "ac": ac,
-        "initiative": mods["dex"] + int(char.get("initiative_bonus", 0)),
-        "speed": race["speed"],
-        "speed_m": f"{race['speed'] * 0.3:g} m",
+        "initiative": initiative,
+        "speed": speed_ft,
+        "speed_m": f"{round(speed_ft * 0.3, 1):g} m".replace(".", ","),
         "hp": hp,
         "weapons": weapons,
         "features": features,

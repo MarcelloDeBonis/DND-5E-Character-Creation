@@ -59,10 +59,10 @@
 - **Discendenza Draconica** (Dragonide (drago rosso)): Scegli un tipo di drago: determina il tipo di danno del soffio e della resistenza.
 - **Arma a Soffio** (Dragonide (drago rosso)): Azione: esali energia distruttiva (area e danno dalla discendenza). TS con CD 8 + mod. COS + comp.: 2d6 danni, metà se riesce (3d6 al 6°, 4d6 all'11°, 5d6 al 16°). 1/riposo breve o lungo.
 - **Resistenza ai Danni** (Dragonide (drago rosso)): Resistenza al tipo di danno della tua discendenza draconica.
-- **Incantesimi** (Mago): Incantatore completo (Intelligenza). Libro con 6 incantesimi di 1° livello (+2 gratis a ogni livello); prepari mod. INT + livello da mago incantesimi dal libro; rituali dal libro senza prepararli; focus arcano.
-- **Recupero Arcano** (Mago): 1/giorno, dopo un riposo breve, recuperi slot per un totale di livelli pari a metà del livello da mago (per eccesso), nessuno di 6° livello o superiore.
-- **Tradizione Arcana** (Mago): Scegli una scuola di magia (Abiurazione, Ammaliamento, Divinazione, Evocazione, Illusione, Invocazione, Necromanzia o Trasmutazione).
-- **Ammaliatore Esperto** (Scuola di Ammaliamento): Copiare un incantesimo di ammaliamento nel libro costa metà tempo e metà oro.
+- **Incantesimi** (Maga): Incantatore completo (Intelligenza). Libro con 6 incantesimi di 1° livello (+2 gratis a ogni livello); prepari mod. INT + livello da mago incantesimi dal libro; rituali dal libro senza prepararli; focus arcano.
+- **Recupero Arcano** (Maga): 1/giorno, dopo un riposo breve, recuperi slot per un totale di livelli pari a metà del livello da mago (per eccesso), nessuno di 6° livello o superiore.
+- **Tradizione Arcana** (Maga): Scegli una scuola di magia (Abiurazione, Ammaliamento, Divinazione, Evocazione, Illusione, Invocazione, Necromanzia o Trasmutazione).
+- **Ammaliatrice Esperta** (Scuola di Ammaliamento): Copiare un incantesimo di ammaliamento nel libro costa metà tempo e metà oro.
 - **Sguardo Ipnotico** (Scuola di Ammaliamento): Azione: una creatura entro 1,5 m che ti vede o ti sente fa un TS su SAG (CD incantesimi); se fallisce è affascinata fino alla fine del tuo prossimo turno (velocità 0, incapacitata). Puoi mantenerlo con un'azione a ogni turno.
 - **Membro di una Gilda (background)** (Artigiana di Gilda): Come membro stimato di una gilda, l'artigiano riceve dai confratelli vitto e alloggio se necessario, e la gilda paga il suo funerale. Nella sede della gilda può incontrare potenziali clienti, alleati o seguaci. Se è accusato di un crimine, la gilda lo sostiene se c'è una buona ragione per crederlo innocente o se il crimine è giustificabile; tramite la gilda può anche ottenere accesso a figure politiche importanti, a volte in cambio di donazioni. Deve pagare alla gilda una quota di 5 mo al mese: se salta dei pagamenti, deve saldare gli arretrati per restare nelle sue grazie.
 

@@ -66,10 +66,10 @@
 - **Addestramento nelle Armi Elfiche** (Elfa Alta): Competenza in spada lunga, spada corta, arco corto e arco lungo.
 - **Trucchetto** (Elfa Alta): Conosci un trucchetto dalla lista del mago (caratteristica: Intelligenza).
 - **Linguaggio Extra** (Elfa Alta): Parli, leggi e scrivi un linguaggio aggiuntivo a tua scelta.
-- **Druidico** (Druido): Conosci il Druidico, linguaggio segreto dei druidi; messaggi nascosti riconoscibili solo da chi lo conosce.
-- **Incantesimi** (Druido): Incantatrice completa (Saggezza). Prepari un numero di incantesimi pari a mod. SAG + livello da druido; puoi lanciare i rituali; usi un focus druidico.
-- **Forma Selvatica** (Druido): Azione: ti trasformi in una bestia già vista (vedi tabella in appendice). 2 usi per riposo breve o lungo; dura metà livello ore.
-- **Circolo Druidico** (Druido): Scegli un circolo: Terra o Luna.
+- **Druidico** (Druida): Conosci il Druidico, linguaggio segreto dei druidi; messaggi nascosti riconoscibili solo da chi lo conosce.
+- **Incantesimi** (Druida): Incantatrice completa (Saggezza). Prepari un numero di incantesimi pari a mod. SAG + livello da druido; puoi lanciare i rituali; usi un focus druidico.
+- **Forma Selvatica** (Druida): Azione: ti trasformi in una bestia già vista (vedi tabella in appendice). 2 usi per riposo breve o lungo; dura metà livello ore.
+- **Circolo Druidico** (Druida): Scegli un circolo: Terra o Luna.
 - **Forma Selvatica da Combattimento** (Circolo della Luna): Forma Selvatica come azione bonus. In forma di bestia, azione bonus: spendi uno slot per recuperare 1d8 PF per livello dello slot.
 - **Forme del Circolo** (Circolo della Luna): Forma Selvatica fino a GS 1 (dal 6°: GS pari a un terzo del livello da druido). Restano i limiti di volo e nuoto per livello.
 - **Viandante (background)** (Forestiera): Il forestiero ha un'ottima memoria per mappe e geografia e riesce sempre a ricordare la disposizione generale dei terreni, degli insediamenti e degli altri elementi del luogo; se la terra offre bacche, piccola selvaggina e acqua, trova cibo e acqua fresca per sé e fino a cinque persone al giorno.
