@@ -176,7 +176,7 @@ def build_guide(sheet: dict, rules: dict, output: str | Path) -> Path:
             story.append(spell_card(cn, _values(cn, sp), st, theme, mark="sulla tua scheda"))
         by_level = sp["spells_by_level"]
         for lvl in sorted(by_level):
-            label = "nel tuo libro" if sp.get("spellbook") else "preparata"
+            label = "nel tuo libro" if sp.get("spellbook") else "preparata" if sp["prepares"] else "la conosci"
             story.append(Paragraph(f"<b>Magie di {lvl}° livello</b> (usano uno slot di {lvl}° livello o più alto)", st.body))
             for spell in by_level[lvl]:
                 mark = ("preparata" if spell.get("prepared", True) else "nel libro") if sp.get("spellbook") else label
@@ -192,10 +192,14 @@ def build_guide(sheet: dict, rules: dict, output: str | Path) -> Path:
                 head = "Altre magie che puoi copiare nel libro"
                 note = ("Se trovi un rotolo o un libro con una di queste magie puoi copiarla nel tuo libro (2 ore e 50 mo per livello). "
                         "Ogni volta che sali di livello ne aggiungi 2 gratis. I trucchetti nuovi arrivano al 4° livello.")
-            else:
+            elif sp["prepares"]:
                 head = "Tutte le altre magie che puoi scegliere"
                 note = (f"Dopo ogni riposo lungo puoi cambiare le magie preparate: ne tieni pronte {sp['prepared_max']}, scelte da questo elenco. "
                         "I trucchetti invece restano gli stessi: ne impari uno nuovo al 4° livello.")
+            else:
+                head = "Le magie che potrai imparare"
+                note = ("Tu conosci poche magie, ma le usi sempre. Quando sali di livello impari quelle nuove da questo elenco "
+                        "e puoi cambiarne una che conosci con un'altra.")
             others = [{"key": k, **v} for k, v in table.items()
                       if list_key in v.get("lists", []) and v.get("level") is not None and v["level"] <= sp["max_level"] and k not in taken]
             if others:

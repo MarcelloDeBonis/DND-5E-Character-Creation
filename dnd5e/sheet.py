@@ -490,6 +490,9 @@ def how_to_play(s: dict) -> list:
         elif sp["prepares"]:
             lines.append(f"<b>Magie preparate.</b> Dopo ogni riposo lungo puoi cambiare le {sp['prepared_max'] or ''} magie preparate "
                          "scegliendole dalla guida.")
+        else:
+            lines.append("<b>Magie conosciute.</b> Le magie di pagina 3 le sai sempre. Quando sali di livello ne impari di nuove (sono nella guida) "
+                         "e puoi cambiarne una.")
     ws = s["wild_shape"]
     if ws:
         lines.append(f"<b>Forma Selvatica.</b> Con un'azione bonus diventi un animale che hai già visto (sono nella guida). {ws['uses']} volte, poi riposo. "
