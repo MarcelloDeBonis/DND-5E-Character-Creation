@@ -553,6 +553,7 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
     slots = {}
     prepared_max = None
     circle_spells = []
+    book = []
     spell_ability = innate_ability
     if caster:
         spell_ability = caster["ability"]
@@ -576,9 +577,11 @@ def resolve_spellcasting(char: dict, cls: dict, race: dict, abilities: dict, pro
             if key and key not in picks and key not in [c["key"] for c in cantrips]:
                 class_cantrips.append({**lookup(key, f["name"]), "ability": spell_ability})
         slot_row = spells_rules["slots"][caster["type"]].get(level, []) if caster["type"] in spells_rules["slots"] else []
-        slots = {i + 1: n for i, n in enumerate(slot_row) if n}
+        if isinstance(slot_row, dict):  # magia del patto (warlock): tutti gli slot dello stesso livello
+            slots = {slot_row["level"]: slot_row["slots"]}
+        else:
+            slots = {i + 1: n for i, n in enumerate(slot_row) if n}
         max_level = max(slots) if slots else 0
-        book = []
         if caster.get("spellbook"):
             book_keys = _as_list(char.get("spellbook"))
             expected_book = 6 + 2 * (level - 1)
@@ -926,7 +929,7 @@ def sheet_markdown(sheet: dict) -> str:
     sp = sheet["spellcasting"]
     if sp:
         for at in sp["spell_attacks"]:
-            lines.append(f"- {at['name']} (incantesimo): {at['attack_str']} per colpire, {at['damage']}, gittata {at['range']} m")
+            lines.append(f"- {at['name']} (incantesimo): {at['attack_str']} per colpire, {at['damage']}, gittata {at['range']}" + (" m" if str(at['range'])[:1].isdigit() else ""))
         lines += ["", "## Incantesimi", "",
                   f"- Caratteristica: {sp['ability_name']} · CD tiro salvezza {sp['save_dc']} · attacco con incantesimo {fmt_mod(sp['attack_bonus'])}"]
         if sp["slots"]:

@@ -1,6 +1,10 @@
 # Incantesimi (PHB 2014). Nomi italiani della traduzione ufficiale Asmodee.
 # Chiavi: level (0 = trucchetto), lists (classi che li hanno), school, range (m), conc, ritual, text (riassunto),
 # attack (per trucchetti/incantesimi con tiro per colpire: damage, damage_type; i trucchetti scalano al 5°, 11°, 17°).
+# Per le schede delle bambine: cast (tempo di lancio), duration (durata; "fino a ..." = massimo, con conc: true è
+# concentrazione), kid (spiegazione semplice in 2a persona), tip (quando usarla). In kid i segnaposto {att} (bonus
+# di attacco con segno, es. "+4"), {cd} (CD del tiro salvezza, es. "12") e {mod} (mod. di caratteristica da
+# incantatore con segno, es. "+2") vengono sostituiti dal motore; i dadi dei trucchetti sono quelli dei livelli 1-4.
 #
 # Slot incantesimo per livello di classe (PHB): full = incantatori completi; half = paladino/ranger; third = cavaliere mistico / mistificatore arcano.
 slots:
@@ -67,6 +71,30 @@ slots:
     18: [4, 3, 3]
     19: [4, 3, 3, 1]
     20: [4, 3, 3, 1]
+  # Magia del Patto del warlock (PHB): per livello di warlock, quanti slot e di che livello (tutti uguali,
+  # si recuperano con un riposo breve o lungo). ATTENZIONE: il motore NON usa ancora questa tabella
+  # (formato diverso dalle liste qui sopra: serve una gestione apposita in engine.py per type: pact).
+  pact:
+    1:  {slots: 1, level: 1}
+    2:  {slots: 2, level: 1}
+    3:  {slots: 2, level: 2}
+    4:  {slots: 2, level: 2}
+    5:  {slots: 2, level: 3}
+    6:  {slots: 2, level: 3}
+    7:  {slots: 2, level: 4}
+    8:  {slots: 2, level: 4}
+    9:  {slots: 2, level: 5}
+    10: {slots: 2, level: 5}
+    11: {slots: 3, level: 5}
+    12: {slots: 3, level: 5}
+    13: {slots: 3, level: 5}
+    14: {slots: 3, level: 5}
+    15: {slots: 3, level: 5}
+    16: {slots: 3, level: 5}
+    17: {slots: 4, level: 5}
+    18: {slots: 4, level: 5}
+    19: {slots: 4, level: 5}
+    20: {slots: 4, level: 5}
 
 # Trucchetti conosciuti per livello (indice = livello di classe 1..20)
 cantrips_known:
@@ -80,75 +108,1561 @@ cantrips_known:
 
 spells:
   # ---------------- Trucchetti ----------------
-  druidcraft:     {name: Druidismo,           level: 0, lists: [druid], school: trasmutazione, range: 9, text: "Prevedi il tempo per 24 ore, fai sbocciare un fiore, crei un piccolo effetto sensoriale naturale, accendi o spegni una candela o un fuocherello."}
-  guidance:       {name: Guida,               level: 0, lists: [cleric, druid], school: divinazione, range: contatto, conc: true, text: "Il bersaglio aggiunge 1d4 a una prova di caratteristica a sua scelta entro 1 minuto."}
-  mending:        {name: Riparare,            level: 0, lists: [bard, cleric, druid, sorcerer, wizard], school: trasmutazione, range: contatto, text: "Ripari una singola rottura o strappo di un oggetto (max 30 cm)."}
-  poison_spray:   {name: Spruzzo Velenoso,    level: 0, lists: [druid, sorcerer, warlock, wizard], school: evocazione, range: 3, text: "Una creatura entro 3 m deve superare un TS su COS o subisce 1d12 danni da veleno.", save: con, damage: 1d12, damage_type: veleno}
-  produce_flame:  {name: Produrre Fiamma,     level: 0, lists: [druid], school: evocazione, range: 9, text: "Una fiamma nella tua mano fa luce (3 m intensa, 3 m fioca) per 10 minuti. Puoi scagliarla: attacco con incantesimo a distanza, 1d8 danni da fuoco.", attack: true, damage: 1d8, damage_type: fuoco}
-  resistance:     {name: Resistenza,          level: 0, lists: [cleric, druid], school: abiurazione, range: contatto, conc: true, text: "Il bersaglio aggiunge 1d4 a un tiro salvezza a sua scelta entro 1 minuto."}
-  shillelagh:     {name: Shillelagh,          level: 0, lists: [druid], school: trasmutazione, range: contatto, text: "Azione bonus: per 1 minuto un randello o bastone ferrato usa la tua caratteristica da incantatore per attacco e danni e infligge 1d8 danni contundenti."}
-  thorn_whip:     {name: Frusta di Spine,     level: 0, lists: [druid], school: trasmutazione, range: 9, text: "Attacco con incantesimo in mischia a 9 m: 1d6 danni perforanti e, se il bersaglio è Grande o più piccolo, lo trascini di 3 m verso di te.", attack: true, damage: 1d6, damage_type: perforante}
-  minor_illusion: {name: Illusione Minore,    level: 0, lists: [bard, sorcerer, warlock, wizard], school: illusione, range: 9, text: "Crei un suono o l'immagine di un oggetto (cubo di 1,5 m) per 1 minuto."}
-  dancing_lights: {name: Luci Danzanti,       level: 0, lists: [bard, sorcerer, wizard], school: invocazione, range: 36, conc: true, text: "Crei fino a 4 luci fluttuanti per 1 minuto."}
-  thaumaturgy:    {name: Taumaturgia,         level: 0, lists: [cleric], school: trasmutazione, range: 9, text: "Piccoli prodigi: voce potente, fiamme che tremolano, porte che si spalancano, tremori innocui."}
-  mage_hand:      {name: Mano Magica,         level: 0, lists: [bard, sorcerer, warlock, wizard], school: evocazione, range: 9, text: "Una mano spettrale manipola oggetti (max 5 kg) per 1 minuto."}
-  light:          {name: Luce,                level: 0, lists: [bard, cleric, sorcerer, wizard], school: invocazione, range: contatto, text: "Un oggetto emette luce intensa per 6 m e fioca per altri 6 m, per 1 ora."}
-  prestidigitation: {name: Prestidigitazione, level: 0, lists: [bard, sorcerer, warlock, wizard], school: trasmutazione, range: 3, text: "Piccoli trucchi magici: accendere o spegnere, pulire, aromatizzare, un piccolo segno."}
-  fire_bolt:      {name: Dardo di Fuoco,      level: 0, lists: [sorcerer, wizard], school: invocazione, range: 36, text: "Attacco con incantesimo a distanza: 1d10 danni da fuoco.", attack: true, damage: 1d10, damage_type: fuoco}
-  ray_of_frost:   {name: Raggio di Gelo,      level: 0, lists: [sorcerer, wizard], school: invocazione, range: 18, text: "Attacco con incantesimo a distanza: 1d8 danni da freddo e velocità -3 m fino al tuo prossimo turno.", attack: true, damage: 1d8, damage_type: freddo}
-  shocking_grasp: {name: Stretta Folgorante,  level: 0, lists: [sorcerer, wizard], school: invocazione, range: contatto, text: "Attacco con incantesimo in mischia (vantaggio contro armature di metallo): 1d8 danni da fulmine, il bersaglio non può usare reazioni.", attack: true, damage: 1d8, damage_type: fulmine}
-  message:        {name: Messaggio,           level: 0, lists: [bard, sorcerer, wizard], school: trasmutazione, range: 36, text: "Sussurri un messaggio a una creatura entro 36 m, che può rispondere sussurrando."}
-  friends:        {name: Amici,               level: 0, lists: [bard, sorcerer, warlock, wizard], school: ammaliamento, range: personale, conc: true, text: "Vantaggio alle prove di Carisma contro una creatura non ostile per 1 minuto; poi diventa ostile."}
-  true_strike:    {name: Colpo Accurato,      level: 0, lists: [bard, sorcerer, warlock, wizard], school: divinazione, range: 9, conc: true, text: "Vantaggio al primo tiro per colpire contro il bersaglio nel tuo prossimo turno."}
-  blade_ward:     {name: Barriera di Lame,    level: 0, lists: [bard, sorcerer, warlock, wizard], school: abiurazione, range: personale, text: "Resistenza ai danni contundenti, perforanti e taglienti da attacchi con armi fino alla fine del tuo prossimo turno."}
-  chill_touch:    {name: Tocco Gelido,        level: 0, lists: [sorcerer, warlock, wizard], school: necromanzia, range: 36, text: "Attacco con incantesimo a distanza: 1d8 danni necrotici; il bersaglio non recupera PF fino al tuo prossimo turno.", attack: true, damage: 1d8, damage_type: necrotico}
-  acid_splash:    {name: Spruzzo Acido,       level: 0, lists: [sorcerer, wizard], school: evocazione, range: 18, text: "Una o due creature entro 1,5 m l'una dall'altra: TS su DES o 1d6 danni da acido.", save: dex, damage: 1d6, damage_type: acido}
+  druidcraft:
+    name: Druidismo
+    level: 0
+    lists: [druid]
+    school: trasmutazione
+    range: 9
+    cast: "1 azione"
+    duration: "istantanea"
+    text: "Prevedi il tempo per 24 ore, fai sbocciare un fiore, crei un piccolo effetto sensoriale naturale, accendi o spegni una candela o un fuocherello."
+    kid: "Piccole magie della natura entro 9 m: scopri che tempo farà nelle prossime 24 ore, fai sbocciare un fiore, crei un profumo o un fruscio di foglie, accendi o spegni una candela."
+    tip: "Per sapere se pioverà o per stupire qualcuno."
+  guidance:
+    name: Guida
+    level: 0
+    lists: [cleric, druid]
+    school: divinazione
+    range: contatto
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    text: "Il bersaglio aggiunge 1d4 a una prova di caratteristica a sua scelta entro 1 minuto."
+    kid: "Tocchi un'amica o te stessa. Entro 1 minuto, una volta sola, può tirare 1d4 e aggiungerlo a una prova (arrampicarsi, cercare, convincere...). Non vale per attacchi e tiri salvezza."
+    tip: "Subito prima che un'amica provi qualcosa di difficile."
+  mending:
+    name: Riparare
+    level: 0
+    lists: [bard, cleric, druid, sorcerer, wizard]
+    school: trasmutazione
+    range: contatto
+    cast: "1 minuto"
+    duration: "istantanea"
+    text: "Ripari una singola rottura o strappo di un oggetto (max 30 cm)."
+    kid: "Ci metti 1 minuto: tocchi un oggetto rotto e ripari una crepa o uno strappo lungo al massimo 30 cm (una catena, una chiave spezzata, un mantello strappato)."
+    tip: "Quando si rompe qualcosa di piccolo e non c'è fretta."
+  poison_spray:
+    name: Spruzzo Velenoso
+    level: 0
+    lists: [druid, sorcerer, warlock, wizard]
+    school: evocazione
+    range: 3
+    cast: "1 azione"
+    duration: "istantanea"
+    save: con
+    damage: 1d12
+    damage_type: veleno
+    text: "Una creatura entro 3 m deve superare un TS su COS o subisce 1d12 danni da veleno."
+    kid: "Soffi una nuvola velenosa su un nemico che vedi entro 3 m. Lui tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): se fallisce, subisce 1d12 danni da veleno."
+    tip: "Quando un nemico è vicinissimo e vuoi fargli tanti danni."
+  produce_flame:
+    name: Produrre Fiamma
+    level: 0
+    lists: [druid]
+    school: evocazione
+    range: 9
+    cast: "1 azione"
+    duration: "10 minuti"
+    attack: true
+    damage: 1d8
+    damage_type: fuoco
+    text: "Una fiamma nella tua mano fa luce (3 m intensa, 3 m fioca) per 10 minuti. Puoi scagliarla: attacco con incantesimo a distanza, 1d8 danni da fuoco."
+    kid: "Una fiammella magica ti appare in mano e fa luce per 10 minuti. Puoi lanciarla (poi sparisce) a un nemico entro 9 m: tira d20{att}; se arrivi alla CA del nemico, lo colpisci e fa 1d8 danni da fuoco."
+    tip: "Per fare luce al buio o colpire un nemico lontano."
+  resistance:
+    name: Resistenza
+    level: 0
+    lists: [cleric, druid]
+    school: abiurazione
+    range: contatto
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    text: "Il bersaglio aggiunge 1d4 a un tiro salvezza a sua scelta entro 1 minuto."
+    kid: "Tocchi un'amica o te stessa. Entro 1 minuto, una volta sola, può tirare 1d4 e aggiungerlo a un tiro salvezza (il tiro per resistere a veleni, trappole e magie)."
+    tip: "Prima di un pericolo: una trappola, un veleno, una magia nemica."
+  shillelagh:
+    name: Shillelagh
+    level: 0
+    lists: [druid]
+    school: trasmutazione
+    range: contatto
+    cast: "1 azione bonus"
+    duration: "1 minuto"
+    text: "Azione bonus: per 1 minuto un randello o bastone ferrato usa la tua caratteristica da incantatore per attacco e danni e infligge 1d8 danni contundenti."
+    kid: "Il bastone o randello che tieni in mano diventa magico per 1 minuto. Quando attacchi con lui: tira d20{att}; se arrivi alla CA del nemico, lo colpisci e fa 1d8{mod} danni contundenti."
+    tip: "All'inizio di una lotta corpo a corpo, col bastone in mano."
+  thorn_whip:
+    name: Frusta di Spine
+    level: 0
+    lists: [druid]
+    school: trasmutazione
+    range: 9
+    cast: "1 azione"
+    duration: "istantanea"
+    attack: true
+    damage: 1d6
+    damage_type: perforante
+    text: "Attacco con incantesimo in mischia a 9 m: 1d6 danni perforanti e, se il bersaglio è Grande o più piccolo, lo trascini di 3 m verso di te."
+    kid: "Una frusta di spine colpisce un nemico entro 9 m: tira d20{att}; se arrivi alla CA del nemico, lo colpisci e fa 1d6 danni perforanti. Se non è più grosso di un cavallo, lo tiri di 3 m verso di te."
+    tip: "Per strappare un nemico via da un'amica o trascinarlo in una trappola."
+  minor_illusion:
+    name: Illusione Minore
+    level: 0
+    lists: [bard, sorcerer, warlock, wizard]
+    school: illusione
+    range: 9
+    cast: "1 azione"
+    duration: "1 minuto"
+    text: "Crei un suono o l'immagine di un oggetto (cubo di 1,5 m) per 1 minuto."
+    kid: "Per 1 minuto crei entro 9 m un suono (voci, ruggiti, passi) o l'immagine finta di un oggetto grande al massimo 1,5 m. Chi la tocca la attraversa. Chi la studia scopre il trucco con una prova di Indagare da {cd} in su."
+    tip: "Per distrarre i nemici o nasconderti dietro una cassa finta."
+  dancing_lights:
+    name: Luci Danzanti
+    level: 0
+    lists: [bard, sorcerer, wizard]
+    school: invocazione
+    range: 36
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    text: "Crei fino a 4 luci fluttuanti per 1 minuto."
+    kid: "Crei fino a 4 lucine fluttuanti entro 36 m, ognuna come la fiamma di una torcia. Con l'azione bonus le sposti fino a 18 m. Durano fino a 1 minuto."
+    tip: "Per illuminare una grotta da lontano o distrarre i nemici."
+  thaumaturgy:
+    name: Taumaturgia
+    level: 0
+    lists: [cleric]
+    school: trasmutazione
+    range: 9
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    text: "Piccoli prodigi: voce potente, fiamme che tremolano, porte che si spalancano, tremori innocui."
+    kid: "Piccoli prodigi entro 9 m, per 1 minuto: la tua voce tuona fortissima, le fiamme cambiano colore, il terreno trema un po', una porta si spalanca o i tuoi occhi cambiano aspetto."
+    tip: "Per impressionare, spaventare o fare scena."
+  mage_hand:
+    name: Mano Magica
+    level: 0
+    lists: [bard, sorcerer, warlock, wizard]
+    school: evocazione
+    range: 9
+    cast: "1 azione"
+    duration: "1 minuto"
+    text: "Una mano spettrale manipola oggetti (max 5 kg) per 1 minuto."
+    kid: "Una mano fantasma fluttuante appare entro 9 m per 1 minuto. Con la tua azione la muovi fino a 9 m: apre porte, prende e sposta oggetti fino a 5 kg. Non può attaccare."
+    tip: "Per prendere cose lontane o toccare oggetti pericolosi."
+  light:
+    name: Luce
+    level: 0
+    lists: [bard, cleric, sorcerer, wizard]
+    school: invocazione
+    range: contatto
+    cast: "1 azione"
+    duration: "1 ora"
+    text: "Un oggetto emette luce intensa per 6 m e fioca per altri 6 m, per 1 ora."
+    kid: "Tocchi un oggetto e lo fai brillare per 1 ora: luce forte per 6 m intorno e luce debole per altri 6 m. Se copri l'oggetto, la luce non si vede."
+    tip: "Quando entri in un posto buio."
+  prestidigitation:
+    name: Prestidigitazione
+    level: 0
+    lists: [bard, sorcerer, warlock, wizard]
+    school: trasmutazione
+    range: 3
+    cast: "1 azione"
+    duration: "fino a 1 ora"
+    text: "Piccoli trucchi magici: accendere o spegnere, pulire, aromatizzare, un piccolo segno."
+    kid: "Piccoli trucchi magici entro 3 m: scintille o musichette, accendi o spegni una candela, pulisci o sporchi un oggetto, scaldi, rinfreschi o insaporisci il cibo, disegni un segno colorato che dura 1 ora."
+    tip: "Per divertirti, pulirti o rendere buona una cena brutta."
+  fire_bolt:
+    name: Dardo di Fuoco
+    level: 0
+    lists: [sorcerer, wizard]
+    school: invocazione
+    range: 36
+    cast: "1 azione"
+    duration: "istantanea"
+    attack: true
+    damage: 1d10
+    damage_type: fuoco
+    text: "Attacco con incantesimo a distanza: 1d10 danni da fuoco."
+    kid: "Lanci una scintilla di fuoco a un nemico entro 36 m: tira d20{att}; se arrivi alla CA del nemico, lo colpisci e fa 1d10 danni da fuoco. Un oggetto di legno o stoffa colpito, se nessuno lo tiene, prende fuoco."
+    tip: "Il tuo attacco migliore contro nemici lontani."
+  ray_of_frost:
+    name: Raggio di Gelo
+    level: 0
+    lists: [sorcerer, wizard]
+    school: invocazione
+    range: 18
+    cast: "1 azione"
+    duration: "istantanea"
+    attack: true
+    damage: 1d8
+    damage_type: freddo
+    text: "Attacco con incantesimo a distanza: 1d8 danni da freddo e velocità -3 m fino al tuo prossimo turno."
+    kid: "Un raggio di ghiaccio vola verso un nemico entro 18 m: tira d20{att}; se arrivi alla CA del nemico, lo colpisci e fa 1d8 danni da freddo. Fino al tuo prossimo turno si muove 3 m in meno."
+    tip: "Per rallentare un nemico che corre verso di voi."
+  shocking_grasp:
+    name: Stretta Folgorante
+    level: 0
+    lists: [sorcerer, wizard]
+    school: invocazione
+    range: contatto
+    cast: "1 azione"
+    duration: "istantanea"
+    attack: true
+    damage: 1d8
+    damage_type: fulmine
+    text: "Attacco con incantesimo in mischia (vantaggio contro armature di metallo): 1d8 danni da fulmine, il bersaglio non può usare reazioni."
+    kid: "Tocchi un nemico con una scossa: tira d20{att}; se arrivi alla CA del nemico, fa 1d8 danni da fulmine e non può colpirti mentre ti allontani. Contro armature di metallo hai vantaggio (tira 2 d20 e tieni il più alto)."
+    tip: "Quando un nemico ti è addosso e vuoi scappare."
+  message:
+    name: Messaggio
+    level: 0
+    lists: [bard, sorcerer, wizard]
+    school: trasmutazione
+    range: 36
+    cast: "1 azione"
+    duration: "1 round"
+    text: "Sussurri un messaggio a una creatura entro 36 m, che può rispondere sussurrando."
+    kid: "Indichi una creatura entro 36 m e le sussurri un messaggio: lo sente solo lei, e può risponderti sussurrando. Gli altri non sentono niente."
+    tip: "Per parlare in segreto con un'amica lontana."
+  friends:
+    name: Amici
+    level: 0
+    lists: [bard, sorcerer, warlock, wizard]
+    school: ammaliamento
+    range: personale
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    text: "Vantaggio alle prove di Carisma contro una creatura non ostile per 1 minuto; poi diventa ostile."
+    kid: "Per 1 minuto hai vantaggio (tira 2 d20 e tieni il più alto) quando parli, convinci o inganni una creatura non ostile. Alla fine capisce che hai usato la magia e si arrabbia con te."
+    tip: "Per convincere qualcuno che poi non rivedrai."
+  true_strike:
+    name: Colpo Accurato
+    level: 0
+    lists: [bard, sorcerer, warlock, wizard]
+    school: divinazione
+    range: 9
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 round"
+    text: "Vantaggio al primo tiro per colpire contro il bersaglio nel tuo prossimo turno."
+    kid: "Studi un nemico entro 9 m. Nel tuo prossimo turno, il tuo primo attacco contro di lui ha vantaggio: tira 2 d20 e tieni il più alto."
+    tip: "Quando il prossimo colpo è importantissimo e puoi aspettare un turno."
+  blade_ward:
+    name: Barriera di Lame
+    level: 0
+    lists: [bard, sorcerer, warlock, wizard]
+    school: abiurazione
+    range: personale
+    cast: "1 azione"
+    duration: "1 round"
+    text: "Resistenza ai danni contundenti, perforanti e taglienti da attacchi con armi fino alla fine del tuo prossimo turno."
+    kid: "Disegni in aria un segno magico. Fino alla fine del tuo prossimo turno, spade, frecce e mazze ti fanno solo metà danni."
+    tip: "Quando tanti nemici armati ti attaccano e non puoi scappare."
+  chill_touch:
+    name: Tocco Gelido
+    level: 0
+    lists: [sorcerer, warlock, wizard]
+    school: necromanzia
+    range: 36
+    cast: "1 azione"
+    duration: "1 round"
+    attack: true
+    damage: 1d8
+    damage_type: necrotico
+    text: "Attacco con incantesimo a distanza: 1d8 danni necrotici; il bersaglio non recupera PF fino al tuo prossimo turno."
+    kid: "Una mano di scheletro fantasma afferra un nemico entro 36 m: tira d20{att}; se arrivi alla CA del nemico, fa 1d8 danni necrotici e non può curarsi fino al tuo prossimo turno. Un non morto ti colpisce anche peggio."
+    tip: "Contro nemici che si curano o contro i non morti."
+  acid_splash:
+    name: Spruzzo Acido
+    level: 0
+    lists: [sorcerer, wizard]
+    school: evocazione
+    range: 18
+    cast: "1 azione"
+    duration: "istantanea"
+    save: dex
+    damage: 1d6
+    damage_type: acido
+    text: "Una o due creature entro 1,5 m l'una dall'altra: TS su DES o 1d6 danni da acido."
+    kid: "Lanci una bolla di acido su un nemico entro 18 m, o su due nemici vicini tra loro. Ognuno tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): se fallisce, subisce 1d6 danni da acido."
+    tip: "Quando due nemici stanno uno accanto all'altro."
   # ---------------- 1° livello (druido) ----------------
-  animal_friendship: {name: Amicizia con gli Animali, level: 1, lists: [bard, druid, ranger], school: ammaliamento, range: 9, text: "Una bestia con INT 3 o meno deve superare un TS su SAG o è affascinata da te per 24 ore."}
-  charm_person:   {name: Charme su Persone,   level: 1, lists: [bard, druid, sorcerer, warlock, wizard], school: ammaliamento, range: 9, text: "Un umanoide deve superare un TS su SAG (con vantaggio se in combattimento) o è affascinato da te per 1 ora."}
-  create_or_destroy_water: {name: Creare o Distruggere Acqua, level: 1, lists: [cleric, druid], school: trasmutazione, range: 9, text: "Crei fino a 40 litri d'acqua o pioggia in un cubo di 9 m, oppure li distruggi (anche nebbia)."}
-  cure_wounds:    {name: Cura Ferite,         level: 1, lists: [bard, cleric, druid, paladin, ranger], school: invocazione, range: contatto, text: "Una creatura toccata recupera 1d8 + mod. caratteristica da incantatore PF (+1d8 per slot superiore). Non funziona su non morti e costrutti."}
-  detect_magic:   {name: Individuazione del Magico, level: 1, lists: [bard, cleric, druid, paladin, ranger, sorcerer, wizard], school: divinazione, range: personale, conc: true, ritual: true, text: "Per 10 minuti percepisci la magia entro 9 m e vedi un'aura attorno alle creature e agli oggetti magici."}
-  detect_poison_and_disease: {name: Individuazione di Veleni e Malattie, level: 1, lists: [cleric, druid, paladin, ranger], school: divinazione, range: personale, conc: true, ritual: true, text: "Per 10 minuti percepisci veleni, creature velenose e malattie entro 9 m."}
-  entangle:       {name: Intralciare,         level: 1, lists: [druid], school: evocazione, range: 27, conc: true, text: "Piante rampicanti in un quadrato di 6 m (terreno difficile) per 1 minuto: le creature nell'area devono superare un TS su FOR o sono trattenute.", save: str}
-  faerie_fire:    {name: Luminescenza,        level: 1, lists: [bard, druid], school: invocazione, range: 18, conc: true, text: "Oggetti e creature in un cubo di 6 m (TS su DES per evitarlo) sono delineati da luce per 1 minuto: gli attacchi contro di loro hanno vantaggio e non possono diventare invisibili.", save: dex}
-  fog_cloud:      {name: Nube di Nebbia,      level: 1, lists: [druid, ranger, sorcerer, wizard], school: evocazione, range: 36, conc: true, text: "Sfera di nebbia di raggio 6 m per 1 ora: l'area è pesantemente oscurata."}
-  goodberry:      {name: Bacche Benefiche,    level: 1, lists: [druid, ranger], school: trasmutazione, range: contatto, text: "Crei fino a 10 bacche: mangiarne una (azione) ripristina 1 PF e nutre per un giorno. Durano 24 ore."}
-  healing_word:   {name: Parola Guaritrice,   level: 1, lists: [bard, cleric, druid], school: invocazione, range: 18, text: "Azione bonus: una creatura che vedi recupera 1d4 + mod. caratteristica da incantatore PF (+1d4 per slot superiore)."}
-  jump:           {name: Salto,               level: 1, lists: [druid, ranger, sorcerer, wizard], school: trasmutazione, range: contatto, text: "La distanza di salto della creatura toccata triplica per 1 minuto."}
-  longstrider:    {name: Passo Veloce,        level: 1, lists: [bard, druid, ranger, wizard], school: trasmutazione, range: contatto, text: "La velocità della creatura toccata aumenta di 3 m per 1 ora."}
-  purify_food_and_drink: {name: Purificare Cibo e Bevande, level: 1, lists: [cleric, druid, paladin], school: trasmutazione, range: 3, ritual: true, text: "Cibo e bevande in una sfera di raggio 1,5 m vengono purificati da veleni e malattie."}
-  speak_with_animals: {name: Parlare con gli Animali, level: 1, lists: [bard, druid, ranger], school: divinazione, range: personale, ritual: true, text: "Per 10 minuti comprendi le bestie e comunichi con loro verbalmente."}
-  thunderwave:    {name: Onda di Tuono,       level: 1, lists: [bard, druid, sorcerer, wizard], school: invocazione, range: personale, text: "Cubo di 4,5 m da te: ogni creatura deve superare un TS su COS o subisce 2d8 danni da tuono ed è spinta di 3 m (metà danni se supera). +1d8 per slot superiore.", save: con, damage: 2d8, damage_type: tuono}
+  animal_friendship:
+    name: Amicizia con gli Animali
+    level: 1
+    lists: [bard, druid, ranger]
+    school: ammaliamento
+    range: 9
+    cast: "1 azione"
+    duration: "24 ore"
+    text: "Una bestia con INT 3 o meno deve superare un TS su SAG o è affascinata da te per 24 ore."
+    kid: "Convinci un animale entro 9 m che sei sua amica. Lui tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}): se fallisce, ti è amico per 24 ore. Solo animali normali; se lo ferite, finisce."
+    tip: "Quando un animale vi sbarra la strada o sta per attaccare."
+  charm_person:
+    name: Charme su Persone
+    level: 1
+    lists: [bard, druid, sorcerer, warlock, wizard]
+    school: ammaliamento
+    range: 9
+    cast: "1 azione"
+    duration: "1 ora"
+    text: "Un umanoide deve superare un TS su SAG (con vantaggio se in combattimento) o è affascinato da te per 1 ora."
+    kid: "Una persona entro 9 m tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}; le è più facile se state lottando). Se fallisce, per 1 ora ti tratta da amica. Dopo saprà che l'hai stregata."
+    tip: "Per farti aiutare da qualcuno, meglio prima di una lotta."
+  create_or_destroy_water:
+    name: Creare o Distruggere Acqua
+    level: 1
+    lists: [cleric, druid]
+    school: trasmutazione
+    range: 9
+    cast: "1 azione"
+    duration: "istantanea"
+    text: "Crei fino a 40 litri d'acqua o pioggia in un cubo di 9 m, oppure li distruggi (anche nebbia)."
+    kid: "Crei fino a 40 litri d'acqua pulita in un contenitore entro 9 m, oppure fai piovere su un'area di 9 m e spegni i fuochi. Oppure fai sparire acqua o nebbia."
+    tip: "Quando avete sete o c'è un fuoco da spegnere."
+  cure_wounds:
+    name: Cura Ferite
+    level: 1
+    lists: [bard, cleric, druid, paladin, ranger]
+    school: invocazione
+    range: contatto
+    cast: "1 azione"
+    duration: "istantanea"
+    text: "Una creatura toccata recupera 1d8 + mod. caratteristica da incantatore PF (+1d8 per slot superiore). Non funziona su non morti e costrutti."
+    kid: "Tocchi un'amica ferita (o te stessa): recupera 1d8{mod} punti ferita. Non funziona su non morti e costrutti. Con uno slot di 2° livello: +1d8."
+    tip: "Quando un amico è ferito e sei vicina a lui."
+  detect_magic:
+    name: Individuazione del Magico
+    level: 1
+    lists: [bard, cleric, druid, paladin, ranger, sorcerer, wizard]
+    school: divinazione
+    range: personale
+    conc: true
+    ritual: true
+    cast: "1 azione"
+    duration: "fino a 10 minuti"
+    text: "Per 10 minuti percepisci la magia entro 9 m e vedi un'aura attorno alle creature e agli oggetti magici."
+    kid: "Per 10 minuti senti se c'è magia entro 9 m da te. Con un'azione vedi un alone luminoso attorno a oggetti e creature magiche, e capisci che tipo di magia è."
+    tip: "Quando trovate un tesoro, una porta strana o un oggetto misterioso."
+  detect_poison_and_disease:
+    name: Individuazione di Veleni e Malattie
+    level: 1
+    lists: [cleric, druid, paladin, ranger]
+    school: divinazione
+    range: personale
+    conc: true
+    ritual: true
+    cast: "1 azione"
+    duration: "fino a 10 minuti"
+    text: "Per 10 minuti percepisci veleni, creature velenose e malattie entro 9 m."
+    kid: "Per 10 minuti senti dove sono veleni, creature velenose e malattie entro 9 m da te, e capisci di che tipo sono."
+    tip: "Prima di mangiare o bere qualcosa di sospetto."
+  entangle:
+    name: Intralciare
+    level: 1
+    lists: [druid]
+    school: evocazione
+    range: 27
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    save: str
+    text: "Piante rampicanti in un quadrato di 6 m (terreno difficile) per 1 minuto: le creature nell'area quando lo lanci devono superare un TS su FOR o sono trattenute (per liberarsi: azione e prova di FOR contro la CD dell'incantesimo)."
+    kid: "Rampicanti spuntano in un quadrato di 6 m entro 27 m. Chi è lì tira un d20 per resistere (tiro salvezza su Forza contro {cd}): se fallisce resta bloccato e non si muove. Per liberarsi deve usare la sua azione e una prova di Forza."
+    tip: "Quando tanti nemici arrivano insieme verso di voi."
+  faerie_fire:
+    name: Luminescenza
+    level: 1
+    lists: [bard, druid]
+    school: invocazione
+    range: 18
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    save: dex
+    text: "Oggetti e creature in un cubo di 6 m (TS su DES per evitarlo) sono delineati da luce per 1 minuto: gli attacchi contro di loro hanno vantaggio e non possono diventare invisibili."
+    kid: "Una luce colorata avvolge un cubo di 6 m entro 18 m. Chi è lì tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): se fallisce brilla, e chi lo attacca ha vantaggio (tira 2 d20 e tiene il più alto)."
+    tip: "Contro nemici difficili da colpire o invisibili: non possono più nascondersi."
+  fog_cloud:
+    name: Nube di Nebbia
+    level: 1
+    lists: [druid, ranger, sorcerer, wizard]
+    school: evocazione
+    range: 36
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 ora"
+    text: "Sfera di nebbia di raggio 6 m per 1 ora: l'area è pesantemente oscurata."
+    kid: "Crei una grande nuvola di nebbia (raggio 6 m) in un punto entro 36 m. Dentro nessuno vede niente. Dura fino a 1 ora, ma un vento forte la spazza via. Con uno slot di 2° livello è grande il doppio."
+    tip: "Per scappare o nascondervi da nemici con archi."
+  goodberry:
+    name: Bacche Benefiche
+    level: 1
+    lists: [druid, ranger]
+    school: trasmutazione
+    range: contatto
+    cast: "1 azione"
+    duration: "istantanea"
+    text: "Crei fino a 10 bacche: mangiarne una (azione) ripristina 1 PF e nutre per un giorno. Durano 24 ore."
+    kid: "Ti appaiono in mano 10 bacche magiche. Chi ne mangia una (con la sua azione) recupera 1 punto ferita e non ha fame per tutto il giorno. Le bacche durano 24 ore."
+    tip: "Prima di un viaggio, o per curare un po' tutti dopo la lotta."
+  healing_word:
+    name: Parola Guaritrice
+    level: 1
+    lists: [bard, cleric, druid]
+    school: invocazione
+    range: 18
+    cast: "1 azione bonus"
+    duration: "istantanea"
+    text: "Azione bonus: una creatura che vedi recupera 1d4 + mod. caratteristica da incantatore PF (+1d4 per slot superiore)."
+    kid: "Dici una parola magica a un'amica che vedi entro 18 m: recupera 1d4{mod} punti ferita. Usa l'azione bonus: nello stesso turno puoi ancora attaccare o lanciare un trucchetto."
+    tip: "Quando un'amica cade a 0 punti ferita lontano da te."
+  jump:
+    name: Salto
+    level: 1
+    lists: [druid, ranger, sorcerer, wizard]
+    school: trasmutazione
+    range: contatto
+    cast: "1 azione"
+    duration: "1 minuto"
+    text: "La distanza di salto della creatura toccata triplica per 1 minuto."
+    kid: "Tocchi una creatura: per 1 minuto salta tre volte più lontano e più in alto del normale."
+    tip: "Per superare un burrone, un muro alto o un fiume."
+  longstrider:
+    name: Passo Veloce
+    level: 1
+    lists: [bard, druid, ranger, wizard]
+    school: trasmutazione
+    range: contatto
+    cast: "1 azione"
+    duration: "1 ora"
+    text: "La velocità della creatura toccata aumenta di 3 m per 1 ora."
+    kid: "Tocchi una creatura: per 1 ora si muove 3 m in più ogni turno. Con uno slot di 2° livello puoi toccare 2 creature."
+    tip: "Prima di un viaggio lungo o di un inseguimento."
+  purify_food_and_drink:
+    name: Purificare Cibo e Bevande
+    level: 1
+    lists: [cleric, druid, paladin]
+    school: trasmutazione
+    range: 3
+    ritual: true
+    cast: "1 azione"
+    duration: "istantanea"
+    text: "Cibo e bevande in una sfera di raggio 1,5 m vengono purificati da veleni e malattie."
+    kid: "Scegli un punto entro 3 m: il cibo e le bevande lì intorno (1,5 m) diventano puliti, senza più veleni né malattie."
+    tip: "Prima di mangiare cibo trovato o sospetto."
+  speak_with_animals:
+    name: Parlare con gli Animali
+    level: 1
+    lists: [bard, druid, ranger]
+    school: divinazione
+    range: personale
+    ritual: true
+    cast: "1 azione"
+    duration: "10 minuti"
+    text: "Per 10 minuti comprendi le bestie e comunichi con loro verbalmente."
+    kid: "Per 10 minuti capisci gli animali e puoi parlare con loro. Non sono molto furbi, ma possono dirti cosa hanno visto nei dintorni e magari aiutarti."
+    tip: "Per chiedere informazioni agli animali del posto."
+  thunderwave:
+    name: Onda di Tuono
+    level: 1
+    lists: [bard, druid, sorcerer, wizard]
+    school: invocazione
+    range: personale
+    cast: "1 azione"
+    duration: "istantanea"
+    save: con
+    damage: 2d8
+    damage_type: tuono
+    text: "Cubo di 4,5 m da te: ogni creatura deve superare un TS su COS o subisce 2d8 danni da tuono ed è spinta di 3 m (metà danni se supera). +1d8 per slot superiore."
+    kid: "Un'onda di tuono esce da te (cubo di 4,5 m). Chi è lì tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): se fallisce subisce 2d8 danni da tuono e vola via di 3 m; se riesce, metà danni."
+    tip: "Quando sei circondata da nemici vicini (attenta agli amici!)."
   # ---------------- 2° livello (druido) ----------------
-  animal_messenger: {name: Messaggero Animale, level: 2, lists: [bard, druid, ranger], school: ammaliamento, range: 9, ritual: true, text: "Una bestia Minuscola porta un messaggio di 25 parole a un luogo che descrivi, entro 24 ore (80 km volando, 40 a terra)."}
-  barkskin:       {name: Pelle Coriacea,      level: 2, lists: [druid, ranger], school: trasmutazione, range: contatto, conc: true, text: "La CA della creatura toccata non può essere inferiore a 16 per 1 ora."}
-  beast_sense:    {name: Sensi della Bestia,  level: 2, lists: [druid, ranger], school: divinazione, range: contatto, conc: true, ritual: true, text: "Per 1 ora vedi e senti attraverso gli occhi e le orecchie di una bestia consenziente toccata."}
-  darkvision:     {name: Scurovisione,        level: 2, lists: [druid, ranger, sorcerer, wizard], school: trasmutazione, range: contatto, text: "La creatura toccata ottiene scurovisione a 18 m per 8 ore."}
-  enhance_ability: {name: Potenziare Caratteristica, level: 2, lists: [bard, cleric, druid, sorcerer], school: trasmutazione, range: contatto, conc: true, text: "Per 1 ora la creatura toccata ha vantaggio alle prove di una caratteristica a scelta (effetti extra: 2d6 PF temporanei con COS, carico doppio con FOR, nessun danno da caduta entro 6 m con DES)."}
-  find_traps:     {name: Individuazione delle Trappole, level: 2, lists: [cleric, druid, ranger], school: divinazione, range: 36, text: "Percepisci la presenza di trappole in linea di vista entro gittata, senza conoscerne la posizione esatta."}
-  flame_blade:    {name: Lama di Fuoco,       level: 2, lists: [druid], school: invocazione, range: personale, conc: true, text: "Azione bonus: evochi una lama infuocata per 10 minuti. Attacco con incantesimo in mischia: 3d6 danni da fuoco (+1d6 ogni 2 slot superiori). Emette luce.", attack: true, damage: 3d6, damage_type: fuoco}
-  flaming_sphere: {name: Sfera Infuocata,     level: 2, lists: [druid, wizard], school: evocazione, range: 18, conc: true, text: "Sfera di fuoco di 1,5 m per 1 minuto: le creature entro 1,5 m da essa devono superare un TS su DES o subiscono 2d6 danni da fuoco. Azione bonus: la muovi di 9 m e la fai speronare.", save: dex, damage: 2d6, damage_type: fuoco}
-  gust_of_wind:   {name: Folata di Vento,     level: 2, lists: [druid, sorcerer, wizard], school: invocazione, range: personale, conc: true, text: "Linea di vento di 18 x 3 m per 1 minuto: le creature devono superare un TS su FOR o sono spinte di 4,5 m; terreno difficile, spegne fiamme, disperde gas.", save: str}
-  heat_metal:     {name: Riscaldare il Metallo, level: 2, lists: [bard, druid], school: trasmutazione, range: 18, conc: true, text: "Un oggetto di metallo diventa rovente per 1 minuto: chi lo tocca subisce 2d8 danni da fuoco (ripetibile come azione bonus) e deve superare un TS su COS o lo lascia cadere (svantaggio se non può).", save: con, damage: 2d8, damage_type: fuoco}
-  hold_person:    {name: Blocca Persone,      level: 2, lists: [bard, cleric, druid, sorcerer, warlock, wizard], school: ammaliamento, range: 18, conc: true, text: "Un umanoide deve superare un TS su SAG o è paralizzato per 1 minuto (ripete il TS a fine turno). +1 bersaglio per slot superiore.", save: wis}
-  lesser_restoration: {name: Ristorare Inferiore, level: 2, lists: [bard, cleric, druid, paladin, ranger], school: abiurazione, range: contatto, text: "Termina una malattia o una condizione (accecato, assordato, paralizzato, avvelenato) sulla creatura toccata."}
-  locate_animals_or_plants: {name: Individuazione di Animali o Vegetali, level: 2, lists: [bard, druid, ranger], school: divinazione, range: personale, ritual: true, text: "Percepisci direzione e distanza della più vicina creatura o pianta di un tipo specifico entro 8 km."}
-  locate_object:  {name: Individuazione di Oggetti, level: 2, lists: [bard, cleric, druid, paladin, ranger, wizard], school: divinazione, range: personale, conc: true, text: "Per 10 minuti percepisci la direzione di un oggetto che conosci entro 300 m (non se bloccato da piombo)."}
-  moonbeam:       {name: Raggio di Luna,      level: 2, lists: [druid], school: invocazione, range: 36, conc: true, text: "Cilindro di luce (raggio 1,5 m, alto 12 m) per 1 minuto: chi vi entra o vi inizia il turno deve superare un TS su COS o subisce 2d10 danni radiosi (metà se supera); i mutaforma tornano alla forma originale. Azione: lo sposti di 18 m. +1d10 per slot superiore.", save: con, damage: 2d10, damage_type: radiosi}
-  pass_without_trace: {name: Passare senza Tracce, level: 2, lists: [druid, ranger], school: abiurazione, range: personale, conc: true, text: "Per 1 ora tu e le creature entro 9 m avete +10 alle prove di Furtività e non lasciate tracce."}
-  protection_from_poison: {name: Protezione dal Veleno, level: 2, lists: [cleric, druid, paladin, ranger], school: abiurazione, range: contatto, text: "Neutralizzi un veleno sulla creatura toccata; per 1 ora ha vantaggio ai TS contro il veleno e resistenza ai danni da veleno."}
-  spike_growth:   {name: Crescita di Spine,   level: 2, lists: [druid, ranger], school: trasmutazione, range: 45, conc: true, text: "Cerchio di raggio 6 m di terreno difficile e spinoso per 10 minuti: 2d4 danni perforanti ogni 1,5 m di movimento. L'area è camuffata (prova di Percezione CD = CD incantesimi).", damage: 2d4, damage_type: perforante}
+  animal_messenger:
+    name: Messaggero Animale
+    level: 2
+    lists: [bard, druid, ranger]
+    school: ammaliamento
+    range: 9
+    ritual: true
+    cast: "1 azione"
+    duration: "24 ore"
+    text: "Una bestia Minuscola porta un messaggio di 25 parole a un luogo che hai già visitato, entro 24 ore (80 km volando, 40 a terra)."
+    kid: "Un piccolo animale (uccellino, scoiattolo) porta un messaggio di 25 parole a una persona, in un posto dove sei già stata. In 24 ore fa fino a 80 km volando o 40 km a terra."
+    tip: "Per mandare notizie a un amico lontano."
+  barkskin:
+    name: Pelle Coriacea
+    level: 2
+    lists: [druid, ranger]
+    school: trasmutazione
+    range: contatto
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 ora"
+    text: "La CA della creatura toccata non può essere inferiore a 16 per 1 ora."
+    kid: "Tocchi una creatura: la sua pelle diventa dura come corteccia. Per 1 ora la sua CA è almeno 16, quindi è più difficile colpirla."
+    tip: "Su chi ha la CA più bassa di 16, prima della lotta."
+  beast_sense:
+    name: Sensi della Bestia
+    level: 2
+    lists: [druid, ranger]
+    school: divinazione
+    range: contatto
+    conc: true
+    ritual: true
+    cast: "1 azione"
+    duration: "fino a 1 ora"
+    text: "Per 1 ora vedi e senti attraverso gli occhi e le orecchie di una bestia consenziente toccata."
+    kid: "Tocchi un animale amico: per 1 ora, con un'azione, vedi e senti quello che vede e sente lui. Intanto però non vedi né senti cosa succede intorno a te."
+    tip: "Per mandare un animale in esplorazione."
+  darkvision:
+    name: Scurovisione
+    level: 2
+    lists: [druid, ranger, sorcerer, wizard]
+    school: trasmutazione
+    range: contatto
+    cast: "1 azione"
+    duration: "8 ore"
+    text: "La creatura toccata ottiene scurovisione a 18 m per 8 ore."
+    kid: "Tocchi una creatura: per 8 ore vede al buio fino a 18 m, come se ci fosse un po' di luce (ma senza colori)."
+    tip: "Per un'amica che non vede al buio, prima di una grotta."
+  enhance_ability:
+    name: Potenziare Caratteristica
+    level: 2
+    lists: [bard, cleric, druid, sorcerer]
+    school: trasmutazione
+    range: contatto
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 ora"
+    text: "Per 1 ora la creatura toccata ha vantaggio alle prove di una caratteristica a scelta (effetti extra: 2d6 PF temporanei con COS, carico doppio con FOR, nessun danno da caduta entro 6 m con DES)."
+    kid: "Tocchi una creatura: per 1 ora ha vantaggio (tira 2 d20 e tiene il più alto) nelle prove di una caratteristica a scelta. Con Costituzione ha anche 2d6 punti ferita extra; con Destrezza non si fa male cadendo da 6 m."
+    tip: "Prima di una prova difficile o di una lotta."
+  find_traps:
+    name: Individuazione delle Trappole
+    level: 2
+    lists: [cleric, druid, ranger]
+    school: divinazione
+    range: 36
+    cast: "1 azione"
+    duration: "istantanea"
+    text: "Percepisci la presenza di trappole in linea di vista entro gittata, senza conoscerne la posizione esatta ma capendo che tipo di pericolo rappresentano."
+    kid: "Senti se ci sono trappole entro 36 m in posti che riesci a vedere. Non sai dove sono di preciso, ma capisci che tipo di pericolo è."
+    tip: "Prima di attraversare una stanza o un corridoio sospetto."
+  flame_blade:
+    name: Lama di Fuoco
+    level: 2
+    lists: [druid]
+    school: invocazione
+    range: personale
+    conc: true
+    cast: "1 azione bonus"
+    duration: "fino a 10 minuti"
+    attack: true
+    damage: 3d6
+    damage_type: fuoco
+    text: "Azione bonus: evochi una lama infuocata per 10 minuti. Attacco con incantesimo in mischia: 3d6 danni da fuoco (+1d6 ogni 2 slot superiori). Emette luce."
+    kid: "Con l'azione bonus ti appare in mano una spada di fuoco che fa luce, fino a 10 minuti. Ogni turno, con la tua azione, attacchi: tira d20{att}; se arrivi alla CA del nemico, lo colpisci e fa 3d6 danni da fuoco."
+    tip: "Per una lotta lunga corpo a corpo."
+  flaming_sphere:
+    name: Sfera Infuocata
+    level: 2
+    lists: [druid, wizard]
+    school: evocazione
+    range: 18
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    save: dex
+    damage: 2d6
+    damage_type: fuoco
+    text: "Sfera di fuoco di 1,5 m per 1 minuto: chi termina il turno entro 1,5 m da essa deve superare un TS su DES o subisce 2d6 danni da fuoco (metà se supera). Azione bonus: la muovi di 9 m e la fai speronare. +1d6 per slot superiore."
+    kid: "Una palla di fuoco appare entro 18 m. Chi finisce il turno vicino a lei tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): 2d6 danni da fuoco, metà se riesce. Con l'azione bonus la fai rotolare di 9 m contro un nemico."
+    tip: "Per tenere i nemici lontani o inseguirli turno dopo turno."
+  gust_of_wind:
+    name: Folata di Vento
+    level: 2
+    lists: [druid, sorcerer, wizard]
+    school: invocazione
+    range: personale
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    save: str
+    text: "Linea di vento di 18 x 3 m per 1 minuto: chi inizia il turno nella linea deve superare un TS su FOR o è spinto di 4,5 m; avvicinarsi a te costa il doppio del movimento; spegne fiamme, disperde gas. Azione bonus: cambi direzione."
+    kid: "Un vento fortissimo esce da te in linea (lunga 18 m, larga 3 m). Chi inizia il turno lì tira un d20 per resistere (tiro salvezza su Forza contro {cd}): se fallisce viene spinto via di 4,5 m. Spegne candele e torce."
+    tip: "Per tenere lontani i nemici o soffiare via nebbia e gas."
+  heat_metal:
+    name: Riscaldare il Metallo
+    level: 2
+    lists: [bard, druid]
+    school: trasmutazione
+    range: 18
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    save: con
+    damage: 2d8
+    damage_type: fuoco
+    text: "Un oggetto di metallo diventa rovente per 1 minuto: chi lo tocca subisce 2d8 danni da fuoco (ripetibile come azione bonus) e deve superare un TS su COS o lo lascia cadere (svantaggio se non può)."
+    kid: "Fai diventare rovente un oggetto di metallo entro 18 m (spada, armatura): chi lo tocca subisce 2d8 danni da fuoco, anche nei turni dopo (azione bonus). Poi tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): se fallisce, lo lascia cadere."
+    tip: "Contro un nemico con armatura o arma di metallo."
+  hold_person:
+    name: Blocca Persone
+    level: 2
+    lists: [bard, cleric, druid, sorcerer, warlock, wizard]
+    school: ammaliamento
+    range: 18
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    save: wis
+    text: "Un umanoide deve superare un TS su SAG o è paralizzato per 1 minuto (ripete il TS a fine turno). +1 bersaglio per slot superiore."
+    kid: "Una persona entro 18 m tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}): se fallisce resta paralizzata, ferma come una statua. Alla fine di ogni suo turno ritenta. Chi la colpisce da vicino fa un colpo critico!"
+    tip: "Contro un nemico umano pericoloso, se le amiche sono vicine a lui."
+  lesser_restoration:
+    name: Ristorare Inferiore
+    level: 2
+    lists: [bard, cleric, druid, paladin, ranger]
+    school: abiurazione
+    range: contatto
+    cast: "1 azione"
+    duration: "istantanea"
+    text: "Termina una malattia o una condizione (accecato, assordato, paralizzato, avvelenato) sulla creatura toccata."
+    kid: "Tocchi una creatura e la guarisci da una malattia, oppure da uno di questi problemi: accecata, assordata, paralizzata o avvelenata."
+    tip: "Quando un'amica è avvelenata, accecata, assordata o paralizzata."
+  locate_animals_or_plants:
+    name: Individuazione di Animali o Vegetali
+    level: 2
+    lists: [bard, druid, ranger]
+    school: divinazione
+    range: personale
+    ritual: true
+    cast: "1 azione"
+    duration: "istantanea"
+    text: "Percepisci direzione e distanza della più vicina creatura o pianta di un tipo specifico entro 8 km."
+    kid: "Dici il nome di un tipo di animale o di pianta: scopri in che direzione e quanto lontano è il più vicino, se ce n'è uno entro 8 km."
+    tip: "Per trovare un'erba medicinale o un animale scomparso."
+  locate_object:
+    name: Individuazione di Oggetti
+    level: 2
+    lists: [bard, cleric, druid, paladin, ranger, wizard]
+    school: divinazione
+    range: personale
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 10 minuti"
+    text: "Per 10 minuti percepisci la direzione di un oggetto che conosci entro 300 m (non se bloccato da piombo)."
+    kid: "Pensa a un oggetto che conosci: per 10 minuti senti in che direzione si trova, se è entro 300 m. Anche una lastra sottile di piombo blocca la magia."
+    tip: "Quando vi hanno rubato qualcosa o l'avete perso."
+  moonbeam:
+    name: Raggio di Luna
+    level: 2
+    lists: [druid]
+    school: invocazione
+    range: 36
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    save: con
+    damage: 2d10
+    damage_type: radiosi
+    text: "Cilindro di luce (raggio 1,5 m, alto 12 m) per 1 minuto: chi vi entra per la prima volta in un turno o vi inizia il turno deve superare un TS su COS o subisce 2d10 danni radiosi (metà se supera); i mutaforma hanno svantaggio e, se falliscono, tornano alla forma originale. Azione: lo sposti di 18 m. +1d10 per slot superiore."
+    kid: "Un raggio di luna largo 3 m scende entro 36 m. Chi ci entra o inizia il turno lì tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): 2d10 danni radiosi, metà se riesce. Ogni turno, con un'azione, lo sposti di 18 m."
+    tip: "Contro un nemico forte che resta fermo, o contro i mutaforma."
+  pass_without_trace:
+    name: Passare senza Tracce
+    level: 2
+    lists: [druid, ranger]
+    school: abiurazione
+    range: personale
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 ora"
+    text: "Per 1 ora tu e le creature entro 9 m avete +10 alle prove di Furtività e non lasciate tracce."
+    kid: "Per 1 ora tu e le amiche che restano entro 9 m da te aggiungete +10 alle prove di Furtività (muoversi di nascosto) e non lasciate impronte."
+    tip: "Quando il gruppo deve passare senza farsi vedere."
+  protection_from_poison:
+    name: Protezione dal Veleno
+    level: 2
+    lists: [cleric, druid, paladin, ranger]
+    school: abiurazione
+    range: contatto
+    cast: "1 azione"
+    duration: "1 ora"
+    text: "Neutralizzi un veleno sulla creatura toccata; per 1 ora ha vantaggio ai TS contro il veleno e resistenza ai danni da veleno."
+    kid: "Tocchi una creatura: se è avvelenata, guarisce. Per 1 ora i veleni le fanno solo metà danni e ha vantaggio (tira 2 d20 e tiene il più alto) per resistere ai veleni."
+    tip: "Quando un'amica è avvelenata o arrivano mostri velenosi."
+  spike_growth:
+    name: Crescita di Spine
+    level: 2
+    lists: [druid, ranger]
+    school: trasmutazione
+    range: 45
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 10 minuti"
+    damage: 2d4
+    damage_type: perforante
+    text: "Cerchio di raggio 6 m di terreno difficile e spinoso per 10 minuti: 2d4 danni perforanti ogni 1,5 m di movimento. L'area è camuffata (prova di Percezione CD = CD incantesimi)."
+    kid: "Il terreno in un cerchio di 6 m di raggio (entro 45 m) si riempie di spine nascoste. Chi cammina lì dentro va piano e subisce 2d4 danni perforanti ogni 1,5 m."
+    tip: "Per bloccare un passaggio dove i nemici devono camminare."
   # ---------------- 3° livello (druido) ----------------
-  call_lightning: {name: Evoca Fulmini,       level: 3, lists: [druid], school: evocazione, range: 36, conc: true, text: "Nuvola tempestosa per 10 minuti: ogni turno (azione) un fulmine colpisce un punto: TS su DES o 3d10 danni da fulmine (metà se supera). +1d10 per slot superiore, 4d10 all'aperto sotto una tempesta.", save: dex, damage: 3d10, damage_type: fulmine}
-  conjure_animals: {name: Evoca Animali,      level: 3, lists: [druid, ranger], school: evocazione, range: 18, conc: true, text: "Evochi bestie fatate per 1 ora: 1 di GS 2, 2 di GS 1, 4 di GS 1/2 o 8 di GS 1/4. Obbediscono ai tuoi comandi."}
-  daylight:       {name: Luce Diurna,         level: 3, lists: [cleric, druid, paladin, ranger, sorcerer], school: invocazione, range: 18, text: "Sfera di luce intensa di raggio 18 m (più 18 m di luce fioca) per 1 ora; dissolve l'oscurità creata da incantesimi di 3° livello o inferiore."}
-  dispel_magic:   {name: Dissolvi Magie,      level: 3, lists: [bard, cleric, druid, paladin, sorcerer, warlock, wizard], school: abiurazione, range: 36, text: "Termina gli incantesimi di 3° livello o inferiore su una creatura, un oggetto o un effetto; per quelli superiori, prova di caratteristica CD 10 + livello."}
-  meld_into_stone: {name: Fondersi nella Pietra, level: 3, lists: [cleric, druid], school: trasmutazione, range: contatto, ritual: true, text: "Entri in una superficie di pietra per 8 ore; puoi uscirne come azione."}
-  plant_growth:   {name: Crescita Vegetale,   level: 3, lists: [bard, druid, ranger], school: trasmutazione, range: 45, text: "In 1 azione: raggio 30 m di vegetazione intricata (movimento ridotto a 1/4). In 8 ore: le piante entro 800 m raddoppiano il raccolto per 1 anno."}
-  protection_from_energy: {name: Protezione dall'Energia, level: 3, lists: [cleric, druid, ranger, sorcerer, wizard], school: abiurazione, range: contatto, conc: true, text: "Per 1 ora la creatura toccata ha resistenza a un tipo di danno a scelta tra acido, freddo, fulmine, fuoco o tuono."}
-  sleet_storm:    {name: Tempesta di Nevischio, level: 3, lists: [druid, sorcerer, wizard], school: evocazione, range: 45, conc: true, text: "Cilindro di raggio 12 m, alto 6 m, per 1 minuto: area pesantemente oscurata, terreno difficile, spegne fiamme; chi entra deve superare un TS su DES o cade prono; TS su COS per mantenere la concentrazione.", save: dex}
-  speak_with_plants: {name: Parlare con i Vegetali, level: 3, lists: [bard, druid, ranger], school: trasmutazione, range: personale, text: "Per 10 minuti comunichi con le piante entro 9 m, che possono rivelare eventi e liberare il passaggio."}
-  water_breathing: {name: Respirare Sott'acqua, level: 3, lists: [druid, ranger, sorcerer, wizard], school: trasmutazione, range: 9, ritual: true, text: "Fino a 10 creature consenzienti respirano sott'acqua per 24 ore."}
-  water_walk:     {name: Camminare sull'Acqua, level: 3, lists: [cleric, druid, ranger, sorcerer], school: trasmutazione, range: 9, ritual: true, text: "Fino a 10 creature consenzienti camminano su liquidi (acqua, acido, lava, neve) per 1 ora."}
-  wind_wall:      {name: Muro di Vento,       level: 3, lists: [druid, ranger], school: invocazione, range: 36, conc: true, text: "Muro di vento lungo 15 m, alto 4,5 m, spesso 30 cm per 1 minuto: TS su FOR o 3d8 danni contundenti; devia frecce e gas, impedisce il passaggio alle creature volanti Minuscole o Piccole.", save: str, damage: 3d8, damage_type: contundente}
+  call_lightning:
+    name: Evoca Fulmini
+    level: 3
+    lists: [druid]
+    school: evocazione
+    range: 36
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 10 minuti"
+    save: dex
+    damage: 3d10
+    damage_type: fulmine
+    text: "Nuvola tempestosa sopra di te per 10 minuti (serve spazio in alto): ogni turno (azione) un fulmine colpisce un punto e le creature entro 1,5 m da esso fanno un TS su DES o subiscono 3d10 danni da fulmine (metà se supera). +1d10 per slot superiore, +1d10 all'aperto sotto una tempesta."
+    kid: "Una nuvola temporalesca appare sopra di te (serve spazio in alto). Ogni turno, con un'azione, fai cadere un fulmine entro 36 m: chi è a 1,5 m dal punto tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): 3d10 danni, metà se riesce."
+    tip: "All'aperto, nelle lotte lunghe: un fulmine a ogni turno."
+  conjure_animals:
+    name: Evoca Animali
+    level: 3
+    lists: [druid, ranger]
+    school: evocazione
+    range: 18
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 ora"
+    text: "Evochi bestie fatate per 1 ora: 1 di GS 2 o inferiore, 2 di GS 1 o inferiore, 4 di GS 1/2 o inferiore o 8 di GS 1/4 o inferiore. Obbediscono ai tuoi comandi; spariscono a 0 PF."
+    kid: "Spiriti della natura appaiono entro 18 m come animali: 1 forte (GS 2), 2 medi (GS 1), 4 piccoli (GS 1/2) o 8 piccolini (GS 1/4). Tu scegli quanti, il Master quali. Ti obbediscono e combattono per te."
+    tip: "Nelle lotte grandi, quando servono tanti alleati."
+  daylight:
+    name: Luce Diurna
+    level: 3
+    lists: [cleric, druid, paladin, ranger, sorcerer]
+    school: invocazione
+    range: 18
+    cast: "1 azione"
+    duration: "1 ora"
+    text: "Sfera di luce intensa di raggio 18 m (più 18 m di luce fioca) per 1 ora; dissolve l'oscurità creata da incantesimi di 3° livello o inferiore."
+    kid: "Una luce forte come il sole illumina 18 m intorno a un punto entro 18 m (e un po' meno per altri 18 m), per 1 ora. Puoi metterla su un oggetto e portarla con te. Cancella il buio magico."
+    tip: "Contro il buio magico o in un sotterraneo enorme."
+  dispel_magic:
+    name: Dissolvi Magie
+    level: 3
+    lists: [bard, cleric, druid, paladin, sorcerer, warlock, wizard]
+    school: abiurazione
+    range: 36
+    cast: "1 azione"
+    duration: "istantanea"
+    text: "Termina gli incantesimi di 3° livello o inferiore su una creatura, un oggetto o un effetto; per quelli superiori, prova di caratteristica CD 10 + livello."
+    kid: "Scegli una creatura, un oggetto o un effetto magico entro 36 m: le magie di 3° livello o meno su di esso finiscono. Per quelle più forti tira d20{mod}: con 10 + il loro livello o più, finiscono anche loro."
+    tip: "Quando un nemico è protetto da una magia o un'amica è stregata."
+  meld_into_stone:
+    name: Fondersi nella Pietra
+    level: 3
+    lists: [cleric, druid]
+    school: trasmutazione
+    range: contatto
+    ritual: true
+    cast: "1 azione"
+    duration: "8 ore"
+    text: "Entri in una superficie di pietra per 8 ore; puoi uscirne usando il movimento, dal punto in cui sei entrato (se la pietra viene danneggiata in parte, vieni espulso e subisci 6d6 danni contundenti)."
+    kid: "Entri dentro una grande roccia o un muro di pietra con tutto quello che porti, fino a 8 ore. Lì dentro senti ma non vedi fuori. Esci muovendoti, dallo stesso punto. Se la pietra si rompe, ti fai male."
+    tip: "Per nasconderti o riposare al sicuro."
+  plant_growth:
+    name: Crescita Vegetale
+    level: 3
+    lists: [bard, druid, ranger]
+    school: trasmutazione
+    range: 45
+    cast: "1 azione o 8 ore"
+    duration: "istantanea"
+    text: "In 1 azione: raggio 30 m di vegetazione intricata (movimento ridotto a 1/4). In 8 ore: le piante entro 800 m raddoppiano il raccolto per 1 anno."
+    kid: "In 1 azione: le piante in un cerchio di 30 m di raggio (entro 45 m) diventano fittissime, e chi le attraversa va 4 volte più piano. In 8 ore: i campi intorno (800 m) danno il doppio del raccolto per 1 anno."
+    tip: "Per rallentare tanti nemici, o per aiutare dei contadini."
+  protection_from_energy:
+    name: Protezione dall'Energia
+    level: 3
+    lists: [cleric, druid, ranger, sorcerer, wizard]
+    school: abiurazione
+    range: contatto
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 ora"
+    text: "Per 1 ora la creatura toccata ha resistenza a un tipo di danno a scelta tra acido, freddo, fulmine, fuoco o tuono."
+    kid: "Tocchi una creatura e scegli: acido, freddo, fulmine, fuoco o tuono. Per 1 ora quel tipo di danno le fa solo metà danni."
+    tip: "Prima di affrontare un drago o un mostro di fuoco o ghiaccio."
+  sleet_storm:
+    name: Tempesta di Nevischio
+    level: 3
+    lists: [druid, sorcerer, wizard]
+    school: evocazione
+    range: 45
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    save: dex
+    text: "Cilindro di raggio 12 m, alto 6 m, per 1 minuto: area pesantemente oscurata, terreno difficile, spegne fiamme; chi vi entra per la prima volta in un turno o vi inizia il turno deve superare un TS su DES o cade prono; TS su COS per mantenere la concentrazione."
+    kid: "Nevischio e ghiaccio in un cerchio di 12 m di raggio, entro 45 m: dentro non si vede e si scivola. Chi entra o inizia il turno lì tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): se fallisce cade a terra."
+    tip: "Contro un gruppo di nemici, o per disturbare le magie dei loro incantatori."
+  speak_with_plants:
+    name: Parlare con i Vegetali
+    level: 3
+    lists: [bard, druid, ranger]
+    school: trasmutazione
+    range: personale
+    cast: "1 azione"
+    duration: "10 minuti"
+    text: "Per 10 minuti comunichi con le piante entro 9 m, che possono rivelare eventi e liberare il passaggio."
+    kid: "Per 10 minuti le piante entro 9 m ti capiscono: puoi chiedere cosa è successo lì nell'ultimo giorno, e chiedere a rami e rovi di spostarsi o di bloccare la strada."
+    tip: "Per sapere chi è passato di lì o aprire un passaggio."
+  water_breathing:
+    name: Respirare Sott'acqua
+    level: 3
+    lists: [druid, ranger, sorcerer, wizard]
+    school: trasmutazione
+    range: 9
+    ritual: true
+    cast: "1 azione"
+    duration: "24 ore"
+    text: "Fino a 10 creature consenzienti respirano sott'acqua per 24 ore."
+    kid: "Fino a 10 creature che vedi entro 9 m possono respirare sott'acqua per 24 ore (e continuano a respirare normalmente anche fuori)."
+    tip: "Prima di tuffarvi in un lago o nel mare."
+  water_walk:
+    name: Camminare sull'Acqua
+    level: 3
+    lists: [cleric, druid, ranger, sorcerer]
+    school: trasmutazione
+    range: 9
+    ritual: true
+    cast: "1 azione"
+    duration: "1 ora"
+    text: "Fino a 10 creature consenzienti camminano su liquidi (acqua, acido, lava, neve) per 1 ora."
+    kid: "Fino a 10 creature che vedi entro 9 m possono camminare sull'acqua (e su fango, neve, sabbie mobili, acido o lava) come sulla terra, per 1 ora. Sulla lava però il calore brucia lo stesso!"
+    tip: "Per attraversare un fiume o un lago senza barca."
+  wind_wall:
+    name: Muro di Vento
+    level: 3
+    lists: [druid, ranger]
+    school: invocazione
+    range: 36
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    save: str
+    damage: 3d8
+    damage_type: contundente
+    text: "Muro di vento lungo 15 m, alto 4,5 m, spesso 30 cm per 1 minuto: quando appare, chi è nell'area fa un TS su FOR o subisce 3d8 danni contundenti (metà se supera); devia frecce e gas, impedisce il passaggio alle creature volanti Minuscole o Piccole."
+    kid: "Alzi un muro di vento (lungo 15 m, alto 4,5 m) entro 36 m. Quando appare, chi è lì tira un d20 per resistere (tiro salvezza su Forza contro {cd}): 3d8 danni, metà se riesce. Frecce, nebbia e piccoli volatori non passano."
+    tip: "Contro nemici con archi o frecce."
+
+  # ================= Incantesimi da mago di 1° e 2° livello (PHB 2014) =================
+
+  alarm:
+    name: Allarme
+    level: 1
+    lists: [ranger, wizard]
+    school: abiurazione
+    range: 9
+    ritual: true
+    cast: "1 minuto"
+    duration: "8 ore"
+    text: "Proteggi una porta, una finestra o un'area non più grande di un cubo di 6 m: per 8 ore, quando una creatura Minuscola o più grande (tranne quelle che designi) la tocca o vi entra, scatta un allarme mentale (ti avvisa e ti sveglia, se sei entro 1,5 km) o udibile (suono di campanello per 10 secondi, udibile entro 18 m)."
+    kid: "Metti un allarme invisibile su una porta o su un pezzo di stanza per 8 ore. Se entra qualcuno che non hai scelto, senti un campanello nella testa (anche se dormi) oppure suona forte per tutti."
+    tip: "Prima di dormire all'accampamento o in una stanza pericolosa."
+
+  burning_hands:
+    name: Mani Brucianti
+    level: 1
+    lists: [sorcerer, wizard]
+    school: invocazione
+    range: "personale (cono di 4,5 m)"
+    cast: "1 azione"
+    duration: "istantanea"
+    save: dex
+    damage: 3d6
+    damage_type: fuoco
+    text: "Un ventaglio di fiamme in un cono di 4,5 m: ogni creatura nell'area deve superare un TS su DES o subisce 3d6 danni da fuoco (metà se supera). Incendia gli oggetti infiammabili non indossati né trasportati. +1d6 per slot superiore."
+    kid: "Dalle tue mani esce un ventaglio di fuoco lungo 4,5 m. Ogni nemico lì dentro tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): se fallisce subisce 3d6 danni, se riesce la metà."
+    tip: "Quando 2-3 nemici sono vicini e raggruppati davanti a te."
+
+  chromatic_orb:
+    name: Globo Cromatico
+    level: 1
+    lists: [sorcerer, wizard]
+    school: invocazione
+    range: 27
+    cast: "1 azione"
+    duration: "istantanea"
+    attack: true
+    damage: 3d8
+    damage_type: "a scelta"
+    text: "Scagli una sfera di energia di un tipo a scelta tra acido, freddo, fuoco, fulmine, veleno o tuono: attacco con incantesimo a distanza, 3d8 danni del tipo scelto. Richiede un diamante da 50 mo (non consumato). +1d8 per slot superiore."
+    kid: "Lanci una palla di energia del tipo che vuoi (fuoco, ghiaccio, fulmine, acido, veleno o tuono). Tira d20{att}: se arrivi alla CA del nemico, lo colpisci e fai 3d8 danni. Serve un diamante da 50 mo."
+    tip: "Contro nemici deboli a un elemento: scegli quello che li ferisce di più."
+
+  color_spray:
+    name: Spruzzo Colorato
+    level: 1
+    lists: [sorcerer, wizard]
+    school: illusione
+    range: "personale (cono di 4,5 m)"
+    cast: "1 azione"
+    duration: "1 round"
+    text: "Tira 6d10: è il totale di PF di creature che puoi influenzare in un cono di 4,5 m, partendo da quella con meno PF attuali; ognuna è accecata fino alla fine del tuo prossimo turno. Non influenza creature prive di sensi o che non possono vedere. +2d10 per slot superiore."
+    kid: "Dalle mani escono lampi di colori (cono di 4,5 m). Tira 6d10: i nemici più deboli, fino a quel totale di punti ferita, restano accecati (non vedono nulla) fino al tuo prossimo turno. Niente tiro per resistere!"
+    tip: "Contro gruppi di nemici deboli: gli alleati poi li colpiscono più facilmente."
+
+  comprehend_languages:
+    name: Comprensione dei Linguaggi
+    level: 1
+    lists: [bard, sorcerer, warlock, wizard]
+    school: divinazione
+    range: personale
+    ritual: true
+    cast: "1 azione"
+    duration: "1 ora"
+    text: "Per 1 ora capisci il significato letterale di qualsiasi lingua parlata che senti e, toccando la superficie su cui è scritta, di qualsiasi lingua scritta (circa 1 minuto per pagina). Non decifra codici segreti né rivela il messaggio di un glifo magico."
+    kid: "Per 1 ora capisci qualsiasi lingua che senti parlare e, toccando una scritta, riesci a leggerla. Però non sai parlarla né scriverla!"
+    tip: "Con iscrizioni antiche, libri strani o creature che parlano lingue sconosciute."
+
+  disguise_self:
+    name: Camuffare Se Stesso
+    level: 1
+    lists: [bard, sorcerer, wizard]
+    school: illusione
+    range: personale
+    cast: "1 azione"
+    duration: "1 ora"
+    text: "Per 1 ora cambi il tuo aspetto, compresi vestiti, armatura, armi ed equipaggiamento: puoi sembrare più alto o più basso di 30 cm e più magro o più grasso, ma con la stessa forma del corpo. L'illusione non regge al tatto; con un'azione una creatura può scoprirla con una prova di Intelligenza (Indagare) contro la CD del tuo incantesimo."
+    kid: "Per 1 ora sembri un'altra persona: cambi faccia, capelli e vestiti come vuoi. Ma se qualcuno ti tocca capisce il trucco, e chi ti studia bene può scoprirti (prova di Indagare contro {cd})."
+    tip: "Per infiltrarti, spiare o non farti riconoscere in città."
+
+  expeditious_retreat:
+    name: Ritirata Rapida
+    level: 1
+    lists: [sorcerer, warlock, wizard]
+    school: trasmutazione
+    range: personale
+    conc: true
+    cast: "1 azione bonus"
+    duration: "fino a 10 minuti"
+    text: "Quando lo lanci, e poi come azione bonus in ognuno dei tuoi turni finché dura (fino a 10 minuti), puoi effettuare l'azione di Scatto."
+    kid: "Diventi velocissima per 10 minuti: ogni turno, con l'azione bonus, puoi correre una seconda volta (Scatto). Così ti resta l'azione per fare altro."
+    tip: "Per scappare, inseguire qualcuno o attraversare in fretta un'area pericolosa."
+
+  false_life:
+    name: Vita Falsata
+    level: 1
+    lists: [sorcerer, wizard]
+    school: necromanzia
+    range: personale
+    cast: "1 azione"
+    duration: "1 ora"
+    text: "Ottieni 1d4 + 4 punti ferita temporanei per 1 ora. +5 PF temporanei per slot superiore."
+    kid: "Ti dai energia magica extra: 1d4+4 punti ferita in più (temporanei) per 1 ora. Quando ti colpiscono, si consumano prima questi."
+    tip: "Poco prima di un combattimento, per avere un cuscinetto di punti ferita."
+
+  feather_fall:
+    name: Caduta Morbida
+    level: 1
+    lists: [bard, sorcerer, wizard]
+    school: trasmutazione
+    range: 18
+    cast: "1 reazione"
+    duration: "1 minuto"
+    text: "Reazione quando tu o una creatura entro 18 m cadete: fino a 5 creature che cadono scendono lentamente (18 m per round) per 1 minuto; se toccano terra prima della fine non subiscono danni da caduta e atterrano in piedi."
+    kid: "Se tu o un amico cadete, lo lanci subito, anche se non è il tuo turno: fino a 5 persone scendono piano come piume e atterrano in piedi senza farsi male."
+    tip: "Quando qualcuno cade da un burrone, da un ponte o in una trappola."
+
+  find_familiar:
+    name: Trova Famiglio
+    level: 1
+    lists: [wizard]
+    school: evocazione
+    range: 3
+    ritual: true
+    cast: "1 ora"
+    duration: "istantanea"
+    text: "Ottieni un famiglio, uno spirito (celestiale, folletto o immondo) con la forma di un animale a scelta (gatto, gufo, corvo, falco, rospo, ratto, pipistrello, ragno, serpente velenoso, ecc.). Ti obbedisce, comunicate telepaticamente entro 30 m e con un'azione vedi e senti attraverso i suoi sensi; non può attaccare, ma può usare l'azione di Aiuto e trasmettere i tuoi incantesimi a contatto. Componenti da 10 mo consumate."
+    kid: "Chiami un animaletto magico tutto tuo (gatto, gufo, corvo, rospo...). Ti obbedisce, ti parla nella mente e puoi vedere con i suoi occhi. Non combatte, ma può aiutare: chi attacca tira 2 d20 e tiene il più alto."
+    tip: "Appena puoi: esploratore, spia e aiutante in battaglia."
+
+  grease:
+    name: Unto
+    level: 1
+    lists: [wizard]
+    school: evocazione
+    range: 18
+    cast: "1 azione"
+    duration: "1 minuto"
+    save: dex
+    text: "Uno strato di grasso copre un quadrato di 3 m per 1 minuto e lo rende terreno difficile: ogni creatura che si trova nell'area quando appare, che vi entra o che vi termina il turno deve superare un TS su DES o cade prona."
+    kid: "Ricopri il pavimento (quadrato di 3 m) di grasso scivoloso per 1 minuto. Chi ci passa tira un d20 per restare in piedi (tiro salvezza su Destrezza contro {cd}): se sbaglia, scivola e cade a terra."
+    tip: "In corridoi stretti o per fermare chi ti corre addosso."
+
+  identify:
+    name: Identificare
+    level: 1
+    lists: [bard, wizard]
+    school: divinazione
+    range: contatto
+    ritual: true
+    cast: "1 minuto"
+    duration: "istantanea"
+    text: "Tocchi un oggetto per tutto il lancio: se è magico ne scopri le proprietà e come usarle, se richiede sintonia e quante cariche ha, e quali incantesimi agiscono su di esso. Se invece tocchi una creatura, scopri quali incantesimi la stanno influenzando. Richiede una perla da 100 mo e una piuma di gufo."
+    kid: "Tocchi un oggetto magico per 1 minuto e scopri tutti i suoi poteri e come si usa. Oppure tocchi una persona per sapere quali magie ha addosso. Ti serve una perla da 100 mo."
+    tip: "Appena trovi un oggetto misterioso in un tesoro (meglio come rituale)."
+
+  illusory_script:
+    name: Scritto Illusorio
+    level: 1
+    lists: [bard, warlock, wizard]
+    school: illusione
+    range: contatto
+    ritual: true
+    cast: "1 minuto"
+    duration: "10 giorni"
+    text: "Scrivi su pergamena o carta un messaggio che per 10 giorni solo tu e le creature che designi potete leggere; per gli altri appare in una scrittura magica incomprensibile o come un messaggio del tutto diverso. Chi ha vista pura legge il vero testo. Inchiostro a base di piombo da 10 mo (consumato)."
+    kid: "Scrivi un messaggio segreto: solo gli amici che scegli lo leggono davvero. Per tutti gli altri sembrano scarabocchi incomprensibili, oppure un messaggio finto che inventi tu. Dura 10 giorni."
+    tip: "Per lasciare istruzioni segrete al gruppo o a un alleato."
+
+  mage_armor:
+    name: Armatura Magica
+    level: 1
+    lists: [sorcerer, wizard]
+    school: abiurazione
+    range: contatto
+    cast: "1 azione"
+    duration: "8 ore"
+    text: "Una creatura consenziente che non indossa armatura ha CA base 13 + modificatore di Destrezza per 8 ore. Termina se il bersaglio indossa un'armatura o se lo congedi con un'azione."
+    kid: "Una forza invisibile ti protegge per 8 ore: la tua CA (quanto è difficile colpirti) diventa 13 + il tuo modificatore di Destrezza. Funziona solo se non indossi un'armatura."
+    tip: "Ogni mattina appena sveglia: dura tutta la giornata di avventura."
+
+  magic_missile:
+    name: Dardo Incantato
+    level: 1
+    lists: [sorcerer, wizard]
+    school: invocazione
+    range: 36
+    cast: "1 azione"
+    duration: "istantanea"
+    damage: 1d4+1
+    damage_type: forza
+    text: "Crei tre dardi di forza che colpiscono automaticamente una o più creature che vedi entro gittata: ognuno infligge 1d4 + 1 danni da forza. +1 dardo per slot superiore."
+    kid: "Spari 3 dardi di luce che colpiscono SEMPRE, anche nemici diversi: ogni dardo fa 1d4+1 danni. Con uno slot di 2° livello: 4 dardi."
+    tip: "Per finire un nemico ferito o colpire chi ha una CA altissima."
+
+  protection_from_evil_and_good:
+    name: Protezione dal Bene e dal Male
+    level: 1
+    lists: [cleric, paladin, warlock, wizard]
+    school: abiurazione
+    range: contatto
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 10 minuti"
+    text: "Per 10 minuti una creatura consenziente è protetta da aberrazioni, celestiali, elementali, folletti, immondi e non morti: hanno svantaggio ai tiri per colpirla e non possono affascinarla, spaventarla o possederla (se lo è già, ha vantaggio al nuovo TS). Acqua santa o polvere d'argento e ferro (consumate)."
+    kid: "Proteggi un amico per 10 minuti da demoni, spiriti, non morti e mostri strani: lo attaccano con svantaggio (tirano 2 d20 e tengono il più basso) e non possono spaventarlo, affascinarlo o possederlo."
+    tip: "Contro demoni, fantasmi, non morti o creature che controllano la mente."
+
+  ray_of_sickness:
+    name: Raggio Nauseante
+    level: 1
+    lists: [sorcerer, wizard]
+    school: necromanzia
+    range: 18
+    cast: "1 azione"
+    duration: "istantanea"
+    attack: true
+    save: con
+    damage: 2d8
+    damage_type: veleno
+    text: "Attacco con incantesimo a distanza: 2d8 danni da veleno e il bersaglio deve superare un TS su COS o è avvelenato fino alla fine del tuo prossimo turno. +1d8 per slot superiore."
+    kid: "Spari un raggio verde disgustoso: tira d20{att}, se arrivi alla CA del nemico gli fai 2d8 danni. Poi lui tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): se fallisce è avvelenato e attacca peggio."
+    tip: "Contro un nemico forte che non è immune al veleno (no non morti)."
+
+  shield:
+    name: Scudo
+    level: 1
+    lists: [sorcerer, wizard]
+    school: abiurazione
+    range: personale
+    cast: "1 reazione"
+    duration: "1 round"
+    text: "Reazione quando vieni colpito da un attacco o bersagliato da dardo incantato: +5 alla CA fino all'inizio del tuo prossimo turno, anche contro l'attacco che l'ha provocato, e non subisci danni da dardo incantato."
+    kid: "Quando un nemico ti colpisce, lo lanci subito, anche nel suo turno: una barriera invisibile ti dà +5 alla CA fino all'inizio del tuo prossimo turno. Spesso così l'attacco ti manca!"
+    tip: "Quando un attacco ti colpisce di poco: diventa un colpo mancato."
+
+  silent_image:
+    name: Immagine Silenziosa
+    level: 1
+    lists: [bard, sorcerer, wizard]
+    school: illusione
+    range: 18
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 10 minuti"
+    text: "Crei l'immagine di un oggetto, una creatura o un fenomeno visibile, non più grande di un cubo di 4,5 m, senza suoni né odori. Con un'azione puoi muoverla; un'interazione fisica rivela che è un'illusione, e con un'azione una creatura può scoprirla con una prova di Intelligenza (Indagare) contro la CD del tuo incantesimo."
+    kid: "Crei un'immagine finta grande fino a 4,5 m: un muro, un mostro, un baule. Si vede ma non fa rumore, e con un'azione la muovi. Chi la tocca capisce che è finta; chi la studia deve battere {cd}."
+    tip: "Per nasconderti dietro un finto muro o distrarre le guardie."
+
+  sleep:
+    name: Sonno
+    level: 1
+    lists: [bard, sorcerer, wizard]
+    school: ammaliamento
+    range: 27
+    cast: "1 azione"
+    duration: "1 minuto"
+    text: "Tira 5d8: è il totale di PF di creature entro 6 m da un punto scelto che cadono addormentate per 1 minuto, partendo da quella con meno PF attuali. Si svegliano se subiscono danni o se qualcuno usa un'azione per scuoterle. Non influenza non morti e creature immuni all'affascinamento. +2d8 per slot superiore."
+    kid: "Fai addormentare i nemici in un cerchio di 6 m di raggio. Tira 5d8: si addormentano i più deboli, fino a quel totale di punti ferita. Niente tiro per resistere! Si svegliano se colpiti o scossi."
+    tip: "A inizio combattimento contro gruppi di nemici deboli."
+
+  tashas_hideous_laughter:
+    name: Risata Incontenibile di Tasha
+    level: 1
+    lists: [bard, wizard]
+    school: ammaliamento
+    range: 9
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    save: wis
+    text: "Una creatura deve superare un TS su SAG o cade prona in preda alle risate: è incapacitata e non può rialzarsi per 1 minuto. Non influenza creature con INT 4 o meno. Ripete il TS alla fine di ogni suo turno e ogni volta che subisce danni (con vantaggio se causato dai danni)."
+    kid: "Un nemico scoppia a ridere così forte che cade a terra e non può fare niente. Lui tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}) e ci riprova a ogni suo turno e quando viene colpito."
+    tip: "Per bloccare il nemico più pericoloso mentre il gruppo pensa agli altri."
+
+  tensers_floating_disk:
+    name: Disco Fluttuante di Tenser
+    level: 1
+    lists: [wizard]
+    school: evocazione
+    range: 9
+    ritual: true
+    cast: "1 azione"
+    duration: "1 ora"
+    text: "Crei un disco di forza orizzontale di 90 cm di diametro che fluttua a 90 cm da terra per 1 ora e regge fino a 250 kg (se di più, l'incantesimo termina). Ti segue restando entro 6 m da te, ma non supera dislivelli di 3 m o più; se ti allontani oltre 30 m, termina."
+    kid: "Crei un disco magico che galleggia nell'aria e ti segue come un cagnolino per 1 ora. Ci puoi mettere sopra fino a 250 kg: tesori, zaini o un amico ferito!"
+    tip: "Per trasportare tesori pesanti o un compagno svenuto."
+
+  unseen_servant:
+    name: Servitore Inosservato
+    level: 1
+    lists: [bard, warlock, wizard]
+    school: evocazione
+    range: 18
+    ritual: true
+    cast: "1 azione"
+    duration: "1 ora"
+    text: "Crei per 1 ora una forza invisibile e senza mente (CA 10, 1 PF, Forza 2, non può attaccare) che svolge semplici compiti: portare oggetti, pulire, rammendare, accendere il fuoco, servire. Una volta per turno, con un'azione bonus, le ordini di muoversi di 4,5 m e interagire con un oggetto; termina se va a 0 PF o oltre 18 m da te."
+    kid: "Crei un aiutante invisibile per 1 ora: porta oggetti, apre porte, pulisce, accende il fuoco. Non sa combattere ed è debolissimo (1 punto ferita). Ogni turno gli dai un ordine con l'azione bonus."
+    tip: "Per aprire porte o toccare oggetti sospetti al posto tuo (trappole!)."
+
+  witch_bolt:
+    name: Dardo Stregato
+    level: 1
+    lists: [sorcerer, warlock, wizard]
+    school: invocazione
+    range: 9
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    attack: true
+    damage: 1d12
+    damage_type: fulmine
+    text: "Attacco con incantesimo a distanza: 1d12 danni da fulmine e un arco di energia ti collega al bersaglio. Nei turni seguenti puoi usare l'azione per infliggergli automaticamente 1d12 danni da fulmine; termina se usi l'azione per altro, se il bersaglio va oltre 9 m o ha copertura totale. +1d12 al danno iniziale per slot superiore."
+    kid: "Un fulmine blu ti collega al nemico: tira d20{att}, se arrivi alla sua CA lo colpisci e fai 1d12 danni. Nei turni dopo, usando la tua azione, gli fai altri 1d12 danni senza tirare, se resta entro 9 m."
+    tip: "Contro un singolo nemico grosso e lento che non riesce ad allontanarsi."
+
+  alter_self:
+    name: Alterare Se Stesso
+    level: 2
+    lists: [sorcerer, wizard]
+    school: trasmutazione
+    range: personale
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 ora"
+    text: "Per 1 ora assumi una forma diversa scegliendo un'opzione (con un'azione puoi cambiarla): Adattamento Acquatico (respiri sott'acqua, velocità di nuoto pari alla tua velocità), Cambiare Aspetto (stessa taglia e forma di base) o Armi Naturali (artigli, zanne o simili: colpi senz'armi magici da 1d6 con +1 a tiri per colpire e danni)."
+    kid: "Per 1 ora cambi il tuo corpo: branchie per nuotare e respirare sott'acqua, un aspetto diverso (faccia, capelli, voce) oppure artigli magici che fanno 1d6 danni. Con un'azione passi da una forma all'altra."
+    tip: "Per esplorare sott'acqua o travestirti in modo più convincente."
+
+  arcane_lock:
+    name: Serratura Arcana
+    level: 2
+    lists: [wizard]
+    school: abiurazione
+    range: contatto
+    cast: "1 azione"
+    duration: "finché non viene dissolto"
+    text: "Chiudi magicamente una porta, finestra, cancello, forziere o altro ingresso: tu e le creature che designi lo aprite normalmente, e una parola d'ordine (pronunciata entro 1,5 m) lo sblocca per 1 minuto. Per gli altri resta chiuso; la CD per sfondarlo o scassinarlo aumenta di 10. Polvere d'oro da 25 mo (consumata)."
+    kid: "Chiudi una porta o un baule con una serratura magica che dura per sempre. Solo tu e chi scegli potete aprirla; per tutti gli altri è difficilissimo forzarla. Costa 25 mo di polvere d'oro."
+    tip: "Per proteggere la tua base, il tuo laboratorio o un forziere prezioso."
+
+  blindness_deafness:
+    name: Cecità/Sordità
+    level: 2
+    lists: [bard, cleric, sorcerer, wizard]
+    school: necromanzia
+    range: 9
+    cast: "1 azione"
+    duration: "1 minuto"
+    save: con
+    text: "Una creatura deve superare un TS su COS o è accecata o assordata (a tua scelta) per 1 minuto; ripete il TS alla fine di ogni suo turno. Non richiede concentrazione. +1 bersaglio per slot superiore."
+    kid: "Rendi un nemico cieco (o sordo) per 1 minuto. Lui tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}) e ci riprova alla fine di ogni suo turno. Da cieco attacca peggio e viene colpito più facilmente."
+    tip: "Contro un nemico forte in mischia, quando la concentrazione è già occupata."
+
+  blur:
+    name: Sfocatura
+    level: 2
+    lists: [sorcerer, wizard]
+    school: illusione
+    range: personale
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    text: "Per 1 minuto il tuo corpo diventa sfocato e ondeggiante: le creature hanno svantaggio ai tiri per colpirti, a meno che non abbiano vista cieca o vista pura o non si basino sulla vista."
+    kid: "Diventi tremolante e sfocata per 1 minuto: chi ti attacca ha svantaggio (tira 2 d20 e tiene il più basso), quindi ti colpisce molto meno."
+    tip: "Quando i nemici ti prendono di mira con tanti attacchi."
+
+  cloud_of_daggers:
+    name: Nube di Pugnali
+    level: 2
+    lists: [bard, sorcerer, warlock, wizard]
+    school: evocazione
+    range: 18
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    damage: 4d4
+    damage_type: tagliente
+    text: "Riempi un cubo di 1,5 m di pugnali vorticanti per 1 minuto: una creatura subisce 4d4 danni taglienti quando vi entra per la prima volta in un turno o vi inizia il turno. +2d4 per slot superiore."
+    kid: "Crei una nuvola di coltelli volanti in un quadratino di 1,5 m. Chi ci entra o ci comincia il turno subisce 4d4 danni, senza tiro per resistere. Dura fino a 1 minuto."
+    tip: "In una porta o un corridoio stretto, o su un nemico che non si muove."
+
+  continual_flame:
+    name: Fiamma Perenne
+    level: 2
+    lists: [cleric, wizard]
+    school: invocazione
+    range: contatto
+    cast: "1 azione"
+    duration: "finché non viene dissolto"
+    text: "Da un oggetto toccato scaturisce una fiamma luminosa come una torcia, che non produce calore, non consuma ossigeno e dura finché non viene dissolta. Può essere coperta o nascosta, ma non soffocata né spenta. Polvere di rubino da 50 mo (consumata)."
+    kid: "Accendi una fiamma magica su un oggetto: fa luce come una torcia, non scotta, non brucia niente e non si spegne mai. Costa 50 mo di polvere di rubino."
+    tip: "Per avere una luce permanente senza torce né olio."
+
+  crown_of_madness:
+    name: Corona di Follia
+    level: 2
+    lists: [bard, sorcerer, warlock, wizard]
+    school: ammaliamento
+    range: 36
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    save: wis
+    text: "Un umanoide deve superare un TS su SAG o è affascinato da te per 1 minuto: in ogni suo turno, prima di muoversi, deve usare l'azione per attaccare in mischia una creatura (non sé stesso) scelta mentalmente da te. Ripete il TS alla fine di ogni suo turno; nei tuoi turni devi usare l'azione per mantenere il controllo, o l'incantesimo termina."
+    kid: "Una corona di follia appare sulla testa di un nemico umanoide. Lui tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}): se fallisce, attacca chi scegli tu, anche un suo amico! Ogni turno usi la tua azione per guidarlo."
+    tip: "Su un guerriero nemico circondato dai suoi compagni."
+
+  darkness:
+    name: Oscurità
+    level: 2
+    lists: [sorcerer, warlock, wizard]
+    school: invocazione
+    range: 18
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 10 minuti"
+    text: "Oscurità magica riempie una sfera di raggio 4,5 m per 10 minuti (anche centrata su un oggetto che tieni): la scurovisione non vede attraverso e la luce non magica non la illumina. Dissolve la luce creata da incantesimi di 2° livello o inferiore che tocca."
+    kid: "Crei una bolla di buio totale (raggio 4,5 m) per 10 minuti. Dentro nessuno vede niente, nemmeno chi vede al buio. Attenta: neanche tu e i tuoi amici!"
+    tip: "Per accecare arcieri e incantatori nemici o coprire una fuga."
+
+  detect_thoughts:
+    name: Individuazione dei Pensieri
+    level: 2
+    lists: [bard, sorcerer, wizard]
+    school: divinazione
+    range: personale
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    save: wis
+    text: "Per 1 minuto leggi i pensieri superficiali di una creatura che vedi entro 9 m (con INT 4 o più e che parla una lingua). Con un'azione puoi sondare più a fondo: se fallisce un TS su SAG scopri ragionamenti, emozioni e preoccupazioni. Percepisci anche creature pensanti nascoste entro 9 m."
+    kid: "Per 1 minuto senti i pensieri di qualcuno vicino (entro 9 m). Per scavare più a fondo, lui tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}): se fallisce scopri cosa prova e cosa nasconde."
+    tip: "Negli interrogatori o per capire se qualcuno ti sta mentendo."
+
+  enlarge_reduce:
+    name: Ingrandire/Ridurre
+    level: 2
+    lists: [sorcerer, wizard]
+    school: trasmutazione
+    range: 9
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    save: con
+    text: "Per 1 minuto una creatura o un oggetto non indossato raddoppia o dimezza le dimensioni (una creatura non consenziente resiste con un TS su COS). Ingrandito: +1 categoria di taglia, vantaggio a prove e TS di FOR, armi +1d4 danni. Ridotto: -1 categoria di taglia, svantaggio a prove e TS di FOR, armi -1d4 danni (minimo 1)."
+    kid: "Per 1 minuto fai diventare un amico grande il doppio (più forte, +1d4 danni con le armi) o un nemico piccolo la metà (-1d4 danni). Il nemico tira un d20 per resistere (tiro salvezza su Costituzione contro {cd})."
+    tip: "Ingrandisci il guerriero del gruppo o rimpicciolisci un nemico forzuto."
+
+  gentle_repose:
+    name: Riposo Inviolato
+    level: 2
+    lists: [cleric, wizard]
+    school: necromanzia
+    range: contatto
+    ritual: true
+    cast: "1 azione"
+    duration: "10 giorni"
+    text: "Per 10 giorni un cadavere o altri resti toccati non si decompongono e non possono diventare non morti; quei giorni non contano nel limite di tempo degli incantesimi che riportano in vita. Un pizzico di sale e una moneta di rame su ogni occhio."
+    kid: "Proteggi il corpo di qualcuno che è morto per 10 giorni: non si rovina e nessuno può trasformarlo in uno zombi. Così c'è più tempo per riportarlo in vita."
+    tip: "Quando un compagno cade e serve tempo per trovare un chierico."
+
+  invisibility:
+    name: Invisibilità
+    level: 2
+    lists: [bard, sorcerer, warlock, wizard]
+    school: illusione
+    range: contatto
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 ora"
+    text: "Una creatura toccata, con tutto ciò che indossa e trasporta, diventa invisibile per 1 ora; l'incantesimo termina per lei se attacca o lancia un incantesimo. +1 bersaglio per slot superiore."
+    kid: "Tocchi te stessa o un amico: diventa invisibile per 1 ora! Ma appena attacca o lancia un incantesimo torna visibile."
+    tip: "Per esplorare, spiare o superare guardie senza combattere."
+
+  knock:
+    name: Scassinare
+    level: 2
+    lists: [bard, sorcerer, wizard]
+    school: trasmutazione
+    range: 18
+    cast: "1 azione"
+    duration: "istantanea"
+    text: "Un oggetto chiuso che vedi (porta, scrigno, lucchetto, manette...) si apre: una serratura, sbarra o blocco viene sbloccato (uno solo se ce ne sono più); una serratura arcana viene sospesa per 10 minuti. Produce un forte colpo udibile fino a 90 m."
+    kid: "Apri per magia una porta, un baule o delle manette chiuse a chiave. Però fa un TOC fortissimo che si sente fino a 90 m: tutti sapranno che sei lì!"
+    tip: "Quando nessuno sa scassinare e il rumore non è un problema."
+
+  levitate:
+    name: Levitazione
+    level: 2
+    lists: [sorcerer, wizard]
+    school: trasmutazione
+    range: 18
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 10 minuti"
+    save: con
+    text: "Una creatura o un oggetto non fissato (fino a 250 kg) si solleva verticalmente fino a 6 m e resta sospeso per 10 minuti; una creatura non consenziente resiste con un TS su COS. Puoi cambiarne l'altezza di 6 m per turno (come parte del movimento se sei tu, altrimenti con un'azione); il bersaglio si sposta solo spingendosi o tirandosi su appigli."
+    kid: "Fai fluttuare una persona o un oggetto (fino a 250 kg) fino a 6 m d'altezza, per 10 minuti. Un nemico tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}). Chi fluttua si muove solo spingendosi su muri o oggetti."
+    tip: "Per sollevare un nemico da mischia senza ali, o raggiungere un posto alto."
+
+  magic_mouth:
+    name: Bocca Magica
+    level: 2
+    lists: [bard, wizard]
+    school: illusione
+    range: 9
+    ritual: true
+    cast: "1 minuto"
+    duration: "finché non viene dissolto"
+    text: "Imprimi in un oggetto un messaggio di massimo 25 parole (pronunciabile in fino a 10 minuti) che una bocca magica recita quando si verifica una condizione visiva o sonora scelta da te entro 9 m; puoi decidere se termina dopo il messaggio o lo ripete ogni volta. Polvere di giada da 10 mo e un pezzetto di favo (consumati)."
+    kid: "Nascondi un messaggio (massimo 25 parole) dentro un oggetto. Quando succede quello che decidi tu, per esempio qualcuno apre la porta, appare una bocca che lo dice ad alta voce."
+    tip: "Per allarmi parlanti, scherzi o messaggi per chi arriverà dopo."
+
+  magic_weapon:
+    name: Arma Magica
+    level: 2
+    lists: [paladin, wizard]
+    school: trasmutazione
+    range: contatto
+    conc: true
+    cast: "1 azione bonus"
+    duration: "fino a 1 ora"
+    text: "Azione bonus: un'arma non magica toccata diventa magica per 1 ora, con +1 ai tiri per colpire e ai danni. +2 con uno slot di 4° o 5° livello, +3 con uno slot di 6° o superiore."
+    kid: "Con l'azione bonus tocchi un'arma: per 1 ora diventa magica, con +1 per colpire e +1 ai danni. Serve contro i mostri che le armi normali non riescono a ferire."
+    tip: "Contro mostri resistenti alle armi non magiche (fantasmi, licantropi...)."
+
+  melfs_acid_arrow:
+    name: Freccia Acida di Melf
+    level: 2
+    lists: [wizard]
+    school: invocazione
+    range: 27
+    cast: "1 azione"
+    duration: "istantanea"
+    attack: true
+    damage: 4d4
+    damage_type: acido
+    text: "Attacco con incantesimo a distanza: se colpisci, 4d4 danni da acido subito e 2d4 danni da acido alla fine del prossimo turno del bersaglio; se manchi, metà dei danni iniziali e nessun danno successivo. +1d4 (sia iniziale sia successivo) per slot superiore."
+    kid: "Spari una freccia di acido verde: tira d20{att}, se arrivi alla CA del nemico gli fai 4d4 danni, e alla fine del suo turno l'acido brucia ancora (2d4). Anche se manchi, fa metà dei primi danni!"
+    tip: "Quando vuoi danni sicuri: anche mancando ferisci comunque."
+
+  mirror_image:
+    name: Immagine Speculare
+    level: 2
+    lists: [sorcerer, warlock, wizard]
+    school: illusione
+    range: personale
+    cast: "1 azione"
+    duration: "1 minuto"
+    text: "Tre duplicati illusori ti circondano per 1 minuto (senza concentrazione). Quando una creatura ti attacca, tiri un d20: con 3 duplicati, 6+ e l'attacco bersaglia un duplicato (8+ con 2, 11+ con 1). Un duplicato ha CA 10 + tuo mod. DES ed è distrutto se colpito. Inutile contro chi non vede, non si basa sulla vista o ha vista pura."
+    kid: "Appaiono 3 copie finte di te. Quando un nemico ti attacca tiri un d20: se fai abbastanza (6+ con 3 copie, 8+ con 2, 11+ con 1) colpisce una copia, che sparisce. Dura 1 minuto."
+    tip: "All'inizio di uno scontro duro: non richiede concentrazione."
+
+  misty_step:
+    name: Passo Velato
+    level: 2
+    lists: [sorcerer, warlock, wizard]
+    school: evocazione
+    range: personale
+    cast: "1 azione bonus"
+    duration: "istantanea"
+    text: "Azione bonus: avvolto da una nebbia argentea, ti teletrasporti fino a 9 m in uno spazio libero che puoi vedere."
+    kid: "Con l'azione bonus sparisci in una nuvoletta d'argento e ricompari fino a 9 m più in là, dove vuoi (devi vedere il punto). Ti resta l'azione per fare altro!"
+    tip: "Quando un nemico ti blocca in mischia o sei in trappola."
+
+  nystuls_magic_aura:
+    name: Aura Magica di Nystul
+    level: 2
+    lists: [wizard]
+    school: illusione
+    range: contatto
+    cast: "1 azione"
+    duration: "24 ore"
+    text: "Per 24 ore cambi come un bersaglio appare agli incantesimi di individuazione: Falsa Aura (un oggetto sembra magico, non magico o di un'altra scuola) o Maschera (una creatura appare di un altro tipo o allineamento). Lanciato sullo stesso bersaglio ogni giorno per 30 giorni, dura finché non viene dissolto. Un quadratino di seta."
+    kid: "Inganni la magia degli altri per 24 ore: un oggetto normale sembra magico (o il contrario), oppure una persona sembra un altro tipo di creatura a chi la cerca con gli incantesimi."
+    tip: "Per nascondere un oggetto magico o ingannare chi usa Individuazione del Magico."
+
+  phantasmal_force:
+    name: Forza Fantasmatica
+    level: 2
+    lists: [bard, sorcerer, wizard]
+    school: illusione
+    range: 18
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    save: int
+    damage: 1d6
+    damage_type: psichico
+    text: "Una creatura deve superare un TS su INT o per 1 minuto percepisce come reale un'illusione (oggetto, creatura o fenomeno non più grande di un cubo di 3 m) che solo lei vede. Se l'illusione può ferirla, subisce 1d6 danni psichici in ogni tuo turno; con un'azione può smascherarla con una prova di Intelligenza (Indagare) contro la tua CD."
+    kid: "Metti un'illusione nella mente di un nemico: solo lui la vede e ci crede (un lupo, un ponte che crolla...). Lui tira un d20 per resistere (tiro salvezza su Intelligenza contro {cd}); se fallisce, l'illusione può fargli 1d6 danni ogni turno."
+    tip: "Contro nemici poco intelligenti: una gabbia, un burrone, un muro di fuoco finto."
+
+  ray_of_enfeeblement:
+    name: Raggio di Indebolimento
+    level: 2
+    lists: [warlock, wizard]
+    school: necromanzia
+    range: 18
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 minuto"
+    attack: true
+    save: con
+    text: "Attacco con incantesimo a distanza: se colpisci, per 1 minuto il bersaglio infligge solo metà dei danni con gli attacchi con armi che usano la Forza. Alla fine di ogni suo turno può fare un TS su COS per terminare l'effetto."
+    kid: "Spari un raggio nero che toglie le forze: tira d20{att}, se arrivi alla CA del nemico i suoi colpi con le armi fanno solo metà danni. A fine turno lui tira un d20 (tiro salvezza su Costituzione contro {cd}) per liberarsi."
+    tip: "Contro un bruto forzuto che picchia fortissimo in mischia."
+
+  rope_trick:
+    name: Trucco della Corda
+    level: 2
+    lists: [wizard]
+    school: trasmutazione
+    range: contatto
+    cast: "1 azione"
+    duration: "1 ora"
+    text: "Una corda lunga fino a 18 m si alza in verticale; in cima si apre un ingresso invisibile a uno spazio extradimensionale che ospita fino a otto creature Medie o più piccole per 1 ora. La corda può essere tirata dentro; attacchi e incantesimi non attraversano l'ingresso, ma da dentro si vede fuori. Alla fine dell'incantesimo tutto ciò che è dentro cade fuori."
+    kid: "Fai salire una corda dritta in aria: in cima si apre un rifugio invisibile per 8 persone. Ritirate su la corda e per 1 ora nessuno vi trova. Perfetto per riposare al sicuro!"
+    tip: "Per un riposo breve al sicuro o per nasconderti da chi ti insegue."
+
+  scorching_ray:
+    name: Raggio Rovente
+    level: 2
+    lists: [sorcerer, wizard]
+    school: invocazione
+    range: 36
+    cast: "1 azione"
+    duration: "istantanea"
+    attack: true
+    damage: 2d6
+    damage_type: fuoco
+    text: "Crei tre raggi di fuoco e li scagli contro uno o più bersagli entro gittata: un attacco con incantesimo a distanza per ogni raggio, 2d6 danni da fuoco ciascuno. +1 raggio per slot superiore."
+    kid: "Spari 3 raggi di fuoco, anche a nemici diversi. Per ognuno tira d20{att}: se arrivi alla CA del nemico fa 2d6 danni. Con uno slot di 3° livello: 4 raggi."
+    tip: "Il tuo colpo più forte su un nemico: mandagli contro tutti e 3 i raggi."
+
+  see_invisibility:
+    name: Vedere Invisibilità
+    level: 2
+    lists: [bard, sorcerer, wizard]
+    school: divinazione
+    range: personale
+    cast: "1 azione"
+    duration: "1 ora"
+    text: "Per 1 ora vedi creature e oggetti invisibili come se fossero visibili e vedi nel Piano Etereo; creature e oggetti eterei appaiono spettrali e traslucidi."
+    kid: "Per 1 ora vedi tutto ciò che è invisibile: nemici nascosti, fantasmi, spiriti. Ti appaiono come ombre trasparenti."
+    tip: "Quando sospetti un nemico invisibile o un fantasma nei paraggi."
+
+  shatter:
+    name: Frantumare
+    level: 2
+    lists: [bard, sorcerer, warlock, wizard]
+    school: invocazione
+    range: 18
+    cast: "1 azione"
+    duration: "istantanea"
+    save: con
+    damage: 3d8
+    damage_type: tuono
+    text: "Un suono assordante esplode in una sfera di raggio 3 m: ogni creatura nell'area deve superare un TS su COS o subisce 3d8 danni da tuono (metà se supera); le creature di materiale inorganico (pietra, cristallo, metallo) hanno svantaggio al TS. Danneggia anche gli oggetti non magici non indossati né trasportati. +1d8 per slot superiore."
+    kid: "Un suono fortissimo esplode in una sfera di 3 m di raggio. Ogni creatura lì tira un d20 per resistere (tiro salvezza su Costituzione contro {cd}): se fallisce subisce 3d8 danni, se riesce la metà. Attenta agli amici!"
+    tip: "Contro gruppi di nemici, golem o creature di pietra e metallo."
+
+  spider_climb:
+    name: Movimenti del Ragno
+    level: 2
+    lists: [sorcerer, warlock, wizard]
+    school: trasmutazione
+    range: contatto
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 ora"
+    text: "Per 1 ora una creatura consenziente toccata può muoversi su superfici verticali e a testa in giù sui soffitti lasciando le mani libere, e ottiene velocità di scalare pari alla sua velocità base."
+    kid: "Per 1 ora tu o un amico camminate sui muri e a testa in giù sul soffitto, come un ragno, con le mani libere!"
+    tip: "Per scalare muri, superare burroni o colpire dall'alto."
+
+  suggestion:
+    name: Suggestione
+    level: 2
+    lists: [bard, sorcerer, warlock, wizard]
+    school: ammaliamento
+    range: 9
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 8 ore"
+    save: wis
+    text: "Suggerisci in una o due frasi un'azione dall'aria ragionevole a una creatura che vedi e che può sentirti e capirti: se fallisce un TS su SAG la porta avanti al meglio per un massimo di 8 ore. Immune chi non può essere affascinato; chiedere qualcosa di palesemente dannoso fa terminare l'incantesimo, e termina se tu o i tuoi compagni la danneggiate."
+    kid: "Dici a qualcuno di fare una cosa che sembra ragionevole (es. 'lasciaci passare'). Lui tira un d20 per resistere (tiro salvezza su Saggezza contro {cd}): se fallisce, lo fa davvero, anche per ore (fino a 8)."
+    tip: "Per evitare un combattimento o convincere guardie e mostri che parlano."
+
+  web:
+    name: Ragnatela
+    level: 2
+    lists: [sorcerer, wizard]
+    school: evocazione
+    range: 18
+    conc: true
+    cast: "1 azione"
+    duration: "fino a 1 ora"
+    save: dex
+    text: "Ragnatele spesse riempiono un cubo di 6 m per 1 ora (vanno ancorate tra due superfici solide o stese su pavimento, muro o soffitto): terreno difficile e area leggermente oscurata. Chi vi inizia il turno o vi entra deve superare un TS su DES o è trattenuto; con un'azione può liberarsi con una prova di Forza contro la tua CD. Il fuoco le brucia (2d4 danni da fuoco)."
+    kid: "Riempi uno spazio grande (cubo di 6 m) di ragnatele appiccicose. Chi ci entra tira un d20 per resistere (tiro salvezza su Destrezza contro {cd}): se fallisce resta incollato finché non si libera con una prova di Forza."
+    tip: "Per bloccare un corridoio o un gruppo di nemici che avanza."

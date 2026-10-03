@@ -1,6 +1,6 @@
 # Reyla
 
-**Elfo Alto Druido 3** (Circolo della Luna) · Forestiero · Neutrale Buono · 900 PE
+**Elfa Alta Druido 3** (Circolo della Luna) · Forestiera · Neutrale Buono · 900 PE
 
 | Caratteristica | Punteggio | Mod. | TS |
 |---|---|---|---|
@@ -19,23 +19,23 @@
 
 ## Abilità
 
-- Acrobazia (DEX): +3
-- Addestrare Animali (WIS): +4 ● background (Forestiero)
+- Acrobazia (DES): +3
+- Addestrare Animali (SAG): +4 ● background (Forestiera)
 - Arcano (INT): +0
-- Atletica (STR): +1 ● background (Forestiero)
-- Furtività (DEX): +3
+- Atletica (FOR): +1 ● background (Forestiera)
+- Furtività (DES): +3
 - Indagare (INT): +0
-- Inganno (CHA): +0
-- Intimidire (CHA): +0
-- Intrattenere (CHA): +0
-- Intuizione (WIS): +2
-- Medicina (WIS): +2
+- Inganno (CAR): +0
+- Intimidire (CAR): +0
+- Intrattenere (CAR): +0
+- Intuizione (SAG): +2
+- Medicina (SAG): +2
 - Natura (INT): +2 ● classe (Druido)
-- Percezione (WIS): +4 ● razza (Sensi Acuti)
-- Persuasione (CHA): +0
-- Rapidità di Mano (DEX): +3
+- Percezione (SAG): +4 ● razza (Sensi Acuti)
+- Persuasione (CAR): +0
+- Rapidità di Mano (DES): +3
 - Religione (INT): +0
-- Sopravvivenza (WIS): +4 ● classe (Druido)
+- Sopravvivenza (SAG): +4 ● classe (Druido)
 - Storia (INT): +0
 
 ## Attacchi
@@ -48,8 +48,8 @@
 - Caratteristica: Saggezza · CD tiro salvezza 12 · attacco con incantesimo +4
 - Slot: 4 di 1°, 2 di 2°
 - Incantesimi preparabili: 5
-- Trucchetti: Illusione Minore (Elfo Alto, INT: CD 10, attacco +2), Guida (Druido), Produrre Fiamma (Druido)
-- 1° livello: Cura Ferite, Intralciare (C), Luminescenza (C), Bacche Benefiche
+- Trucchetti: Illusione Minore (Elfa Alta, INT: CD 10, attacco +2), Produrre Fiamma (Druido), Guida (Druido)
+- 1° livello: Cura Ferite, Parola Guaritrice, Intralciare (C), Bacche Benefiche
 - 2° livello: Raggio di Luna (C)
 
 ## Forma Selvatica
@@ -59,20 +59,20 @@
 
 ## Privilegi e tratti
 
-- **Scurovisione** (Elfo Alto): Vedi a 18 m nella luce fioca come se fosse luce intensa, e nell'oscurità come se fosse luce fioca (solo in scala di grigi).
-- **Sensi Acuti** (Elfo Alto): Competenza nell'abilità Percezione.
-- **Retaggio Fatato** (Elfo Alto): Vantaggio ai TS contro l'essere affascinato; la magia non può addormentarti.
-- **Trance** (Elfo Alto): Non dormi: 4 ore di meditazione semicosciente equivalgono a 8 ore di sonno.
-- **Addestramento nelle Armi Elfiche** (Elfo Alto): Competenza in spada lunga, spada corta, arco corto e arco lungo.
-- **Trucchetto** (Elfo Alto): Conosci un trucchetto dalla lista del mago (caratteristica: Intelligenza).
-- **Linguaggio Extra** (Elfo Alto): Parli, leggi e scrivi un linguaggio aggiuntivo a tua scelta.
+- **Scurovisione** (Elfa Alta): Vedi a 18 m nella luce fioca come se fosse luce intensa, e nell'oscurità come se fosse luce fioca (solo in scala di grigi).
+- **Sensi Acuti** (Elfa Alta): Competenza nell'abilità Percezione.
+- **Retaggio Fatato** (Elfa Alta): Vantaggio ai TS contro l'essere affascinato; la magia non può addormentarti.
+- **Trance** (Elfa Alta): Non dormi: 4 ore di meditazione semicosciente equivalgono a 8 ore di sonno.
+- **Addestramento nelle Armi Elfiche** (Elfa Alta): Competenza in spada lunga, spada corta, arco corto e arco lungo.
+- **Trucchetto** (Elfa Alta): Conosci un trucchetto dalla lista del mago (caratteristica: Intelligenza).
+- **Linguaggio Extra** (Elfa Alta): Parli, leggi e scrivi un linguaggio aggiuntivo a tua scelta.
 - **Druidico** (Druido): Conosci il Druidico, linguaggio segreto dei druidi; messaggi nascosti riconoscibili solo da chi lo conosce.
 - **Incantesimi** (Druido): Incantatrice completa (Saggezza). Prepari un numero di incantesimi pari a mod. SAG + livello da druido; puoi lanciare i rituali; usi un focus druidico.
 - **Forma Selvatica** (Druido): Azione: ti trasformi in una bestia già vista (vedi tabella in appendice). 2 usi per riposo breve o lungo; dura metà livello ore.
 - **Circolo Druidico** (Druido): Scegli un circolo: Terra o Luna.
 - **Forma Selvatica da Combattimento** (Circolo della Luna): Forma Selvatica come azione bonus. In forma di bestia, azione bonus: spendi uno slot per recuperare 1d8 PF per livello dello slot.
 - **Forme del Circolo** (Circolo della Luna): Forma Selvatica fino a GS 1 (dal 6°: GS pari a un terzo del livello da druido). Restano i limiti di volo e nuoto per livello.
-- **Viandante (background)** (Forestiero): Il forestiero ha un'ottima memoria per mappe e geografia e riesce sempre a ricordare la disposizione generale dei terreni; trova cibo e acqua per sé e fino a cinque persone al giorno.
+- **Viandante (background)** (Forestiera): Il forestiero ha un'ottima memoria per mappe e geografia e riesce sempre a ricordare la disposizione generale dei terreni, degli insediamenti e degli altri elementi del luogo; se la terra offre bacche, piccola selvaggina e acqua, trova cibo e acqua fresca per sé e fino a cinque persone al giorno.
 
 ## Competenze e linguaggi
 
@@ -89,4 +89,4 @@
 - Trappola da caccia
 - Trofeo di un animale ucciso
 - Abiti da viaggio
-- Monete: 10 gp
+- Monete: 10 mo

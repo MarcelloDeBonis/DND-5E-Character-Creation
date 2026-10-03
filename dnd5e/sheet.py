@@ -234,7 +234,7 @@ class SheetRenderer:
         sp = s["spellcasting"]
         if sp:
             for at in sp["spell_attacks"]:
-                atk.append(f"<b>{esc(at['name'])}</b> {esc(at['attack_str'])}, {esc(at['damage'])}" + (f" (gittata {esc(at['range'])} m)" if at.get("range") else ""))
+                atk.append(f"<b>{esc(at['name'])}</b> {esc(at['attack_str'])}, {esc(at['damage'])}" + (f" (gittata {esc(at['range'])}" + (" m)" if str(at['range'])[:1].isdigit() else ")") if at.get("range") else ""))
             atk.append(f"<b>Incantesimi:</b> {esc(sp['ability_name'])}, CD {sp['save_dc']}, attacco {esc(fmt_mod(sp['attack_bonus']))}"
                        + (", slot " + ", ".join(f"{n}×{lvl}°" for lvl, n in sp["slots"].items()) if sp["slots"] else "") + ". Vedi pagina 3.")
         ws = s["wild_shape"]

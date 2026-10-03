@@ -27,6 +27,10 @@ def cmd_build(args):
     md = out.with_suffix(".md")
     md.write_text(sheet_markdown(sheet), encoding="utf-8")
     print(f"PDF: {out}\nRiepilogo: {md}")
+    if sheet.get("simple") or args.guide:
+        from .guide import build_guide
+        g = build_guide(sheet, rules, out.with_name(out.stem + "_guida.pdf"))
+        print(f"Guida: {g}")
     for w in sheet["warnings"]:
         print(f"AVVISO: {w}")
 
@@ -68,6 +72,7 @@ def main(argv=None):
     b.add_argument("-o", "--output")
     b.add_argument("-t", "--template", default=None, help="official | official_it (default: campo template del personaggio)")
     b.add_argument("--no-appendix", action="store_true", help="non aggiungere la pagina di appendice")
+    b.add_argument("--guide", action="store_true", help="genera anche la guida semplice <nome>_guida.pdf (automatica con simple: true)")
     b.set_defaults(func=cmd_build)
     s = sub.add_parser("summary", help="stampa il riepilogo calcolato")
     s.add_argument("character")

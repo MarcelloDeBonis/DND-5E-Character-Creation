@@ -1,75 +1,1258 @@
 # Bestie del Manuale dei Mostri / SRD 5.1 utilizzabili con Forma Selvatica (GS fino a 1).
 # cr: grado di sfida. speed in metri (walk; climb/burrow/fly/swim se presenti). attacks: testo riassuntivo. traits: capacità speciali.
 # Nomi italiani della traduzione ufficiale Asmodee del Manuale dei Mostri.
-baboon:            {name: Babbuino,          name_en: Baboon,            cr: 0,     size: Piccola, ac: 12, hp: 3,  speed: {walk: 9, climb: 9},  attacks: "Morso +1, 1d4-1 perforanti", traits: "Tattiche di Branco"}
-badger:            {name: Tasso,             name_en: Badger,            cr: 0,     size: Minuscola, ac: 10, hp: 3, speed: {walk: 6, burrow: 1.5}, attacks: "Morso +2, 1 perforante", traits: "Olfatto Acuto, scurovisione 9 m"}
-cat:               {name: Gatto,             name_en: Cat,               cr: 0,     size: Minuscola, ac: 12, hp: 2, speed: {walk: 12, climb: 9}, attacks: "Artigli +0, 1 tagliente", traits: "Olfatto Acuto"}
-deer:              {name: Cervo,             name_en: Deer,              cr: 0,     size: Media,   ac: 13, hp: 4,  speed: {walk: 15},           attacks: "Morso +2, 1d4 perforanti", traits: ""}
-giant_fire_beetle: {name: Scarabeo di Fuoco Gigante, name_en: Giant Fire Beetle, cr: 0, size: Piccola, ac: 13, hp: 4, speed: {walk: 9}, attacks: "Morso +1, 1d6-1 taglienti", traits: "Illuminazione (luce intensa 3 m, fioca per altri 3 m), Vista Cieca 9 m"}
-goat:              {name: Capra,             name_en: Goat,              cr: 0,     size: Media,   ac: 10, hp: 4,  speed: {walk: 12},           attacks: "Incornata +3, 1d4+1 contundenti", traits: "Carica (+1d4, TS FOR CD 10 o prono), Piede Sicuro"}
-hyena:             {name: Iena,              name_en: Hyena,             cr: 0,     size: Media,   ac: 11, hp: 5,  speed: {walk: 15},           attacks: "Morso +2, 1d6 perforanti", traits: "Tattiche di Branco"}
-jackal:            {name: Sciacallo,         name_en: Jackal,            cr: 0,     size: Piccola, ac: 12, hp: 3,  speed: {walk: 12},           attacks: "Morso +1, 1d4-1 perforanti", traits: "Udito e Olfatto Acuti, Tattiche di Branco"}
-lizard:            {name: Lucertola,         name_en: Lizard,            cr: 0,     size: Minuscola, ac: 10, hp: 2, speed: {walk: 6, climb: 6}, attacks: "Morso +0, 1 perforante", traits: "Scurovisione 9 m"}
-rat:               {name: Ratto,             name_en: Rat,               cr: 0,     size: Minuscola, ac: 10, hp: 1, speed: {walk: 6},           attacks: "Morso +0, 1 perforante", traits: "Olfatto Acuto, scurovisione 9 m"}
-scorpion:          {name: Scorpione,         name_en: Scorpion,          cr: 0,     size: Minuscola, ac: 11, hp: 1, speed: {walk: 3},           attacks: "Pungiglione +2, 1 perforante + TS COS CD 9 o 1d8 veleno", traits: "Vista Cieca 3 m"}
-spider:            {name: Ragno,             name_en: Spider,            cr: 0,     size: Minuscola, ac: 12, hp: 1, speed: {walk: 6, climb: 6}, attacks: "Morso +4, 1 perforante + TS COS CD 9 o 1d4 veleno", traits: "Scalatore Ragno, Senso della Ragnatela, Camminare sulle Ragnatele, scurovisione 9 m"}
-weasel:            {name: Donnola,           name_en: Weasel,            cr: 0,     size: Minuscola, ac: 13, hp: 1, speed: {walk: 9},           attacks: "Morso +5, 1 perforante", traits: "Udito e Olfatto Acuti"}
-camel:             {name: Cammello,          name_en: Camel,             cr: 0.125, size: Grande,  ac: 9,  hp: 15, speed: {walk: 15},           attacks: "Morso +5, 1d4 contundenti", traits: ""}
-giant_rat:         {name: Ratto Gigante,     name_en: Giant Rat,         cr: 0.125, size: Piccola, ac: 12, hp: 7,  speed: {walk: 9},            attacks: "Morso +4, 1d4+2 perforanti", traits: "Olfatto Acuto, Tattiche di Branco, scurovisione 18 m"}
-giant_weasel:      {name: Donnola Gigante,   name_en: Giant Weasel,      cr: 0.125, size: Media,   ac: 13, hp: 9,  speed: {walk: 12},           attacks: "Morso +5, 1d4+3 perforanti", traits: "Udito e Olfatto Acuti, scurovisione 18 m"}
-mastiff:           {name: Mastino,           name_en: Mastiff,           cr: 0.125, size: Media,   ac: 12, hp: 5,  speed: {walk: 12},           attacks: "Morso +3, 1d6+1 perforanti + TS FOR CD 11 o prono", traits: "Udito e Olfatto Acuti"}
-mule:              {name: Mulo,              name_en: Mule,              cr: 0.125, size: Media,   ac: 10, hp: 11, speed: {walk: 12},           attacks: "Zoccoli +2, 1d4+2 contundenti", traits: "Bestia da Soma, Piede Sicuro"}
-pony:              {name: Pony,              name_en: Pony,              cr: 0.125, size: Media,   ac: 10, hp: 11, speed: {walk: 12},           attacks: "Zoccoli +4, 2d4+2 contundenti", traits: ""}
-axe_beak:          {name: Becco d'Ascia,     name_en: Axe Beak,          cr: 0.25,  size: Grande,  ac: 11, hp: 19, speed: {walk: 15},           attacks: "Becco +4, 1d8+2 taglienti", traits: ""}
-boar:              {name: Cinghiale,         name_en: Boar,              cr: 0.25,  size: Media,   ac: 11, hp: 11, speed: {walk: 12},           attacks: "Zanna +3, 1d6+1 taglienti", traits: "Carica (+1d6, TS FOR CD 11 o prono), Implacabile (1 PF invece di 0 se il danno è ≤ 7, 1/riposo breve)"}
-draft_horse:       {name: Cavallo da Tiro,   name_en: Draft Horse,       cr: 0.25,  size: Grande,  ac: 10, hp: 19, speed: {walk: 12},           attacks: "Zoccoli +6, 2d4+4 contundenti", traits: ""}
-elk:               {name: Alce,              name_en: Elk,               cr: 0.25,  size: Grande,  ac: 10, hp: 13, speed: {walk: 15},           attacks: "Incornata +5, 1d6+3 contundenti; Zoccoli +5, 2d4+3 contundenti (solo contro creature prone)", traits: "Carica (+2d6, TS FOR CD 13 o prono)"}
-giant_badger:      {name: Tasso Gigante,     name_en: Giant Badger,      cr: 0.25,  size: Media,   ac: 10, hp: 13, speed: {walk: 9, burrow: 3}, attacks: "Multiattacco: Morso +3, 1d6+1 perforanti; Artigli +3, 2d4+1 taglienti", traits: "Olfatto Acuto, scurovisione 9 m"}
-giant_centipede:   {name: Millepiedi Gigante, name_en: Giant Centipede,  cr: 0.25,  size: Piccola, ac: 13, hp: 4,  speed: {walk: 9, climb: 9},  attacks: "Morso +4, 1d4+2 perforanti + TS COS CD 11 o 3d6 veleno (paralizzato se scende a 0 PF)", traits: "Vista Cieca 9 m"}
-giant_lizard:      {name: Lucertola Gigante, name_en: Giant Lizard,      cr: 0.25,  size: Grande,  ac: 12, hp: 19, speed: {walk: 9, climb: 9},  attacks: "Morso +4, 1d8+2 perforanti", traits: "Scurovisione 9 m"}
-giant_wolf_spider: {name: Ragno Lupo Gigante, name_en: Giant Wolf Spider, cr: 0.25, size: Media,   ac: 13, hp: 11, speed: {walk: 12, climb: 12}, attacks: "Morso +3, 1d6+1 perforanti + TS COS CD 11 o 2d6 veleno", traits: "Scalatore Ragno, Senso della Ragnatela, Camminare sulle Ragnatele, Vista Cieca 3 m, scurovisione 18 m"}
-panther:           {name: Pantera,           name_en: Panther,           cr: 0.25,  size: Media,   ac: 12, hp: 13, speed: {walk: 15, climb: 12}, attacks: "Morso +4, 1d6+2 perforanti; Artiglio +4, 1d4+2 taglienti", traits: "Olfatto Acuto, Balzo (prono + morso bonus dopo 6 m di carica)"}
-riding_horse:      {name: Cavallo da Sella,  name_en: Riding Horse,      cr: 0.25,  size: Grande,  ac: 10, hp: 13, speed: {walk: 18},           attacks: "Zoccoli +5, 2d4+3 contundenti", traits: ""}
-wolf:              {name: Lupo,              name_en: Wolf,              cr: 0.25,  size: Media,   ac: 13, hp: 11, speed: {walk: 12},           attacks: "Morso +4, 2d4+2 perforanti + TS FOR CD 11 o prono", traits: "Udito e Olfatto Acuti, Tattiche di Branco"}
-ape:               {name: Scimmia,           name_en: Ape,               cr: 0.5,   size: Media,   ac: 12, hp: 19, speed: {walk: 9, climb: 9},  attacks: "Multiattacco: 2 Pugni +5, 1d6+3 contundenti; Sasso +5, 1d6+3 (gittata 7,5/15 m)", traits: ""}
-black_bear:        {name: Orso Nero,         name_en: Black Bear,        cr: 0.5,   size: Media,   ac: 11, hp: 19, speed: {walk: 12, climb: 9}, attacks: "Multiattacco: Morso +3, 1d6+2 perforanti; Artigli +3, 2d4+2 taglienti", traits: "Olfatto Acuto"}
-giant_goat:        {name: Capra Gigante,     name_en: Giant Goat,        cr: 0.5,   size: Grande,  ac: 11, hp: 19, speed: {walk: 12},           attacks: "Incornata +5, 2d4+3 contundenti", traits: "Carica (+2d4, TS FOR CD 13 o prono), Piede Sicuro"}
-warhorse:          {name: Cavallo da Guerra, name_en: Warhorse,          cr: 0.5,   size: Grande,  ac: 11, hp: 19, speed: {walk: 18},           attacks: "Zoccoli +6, 2d6+4 contundenti", traits: "Carica Travolgente (TS FOR CD 14 o prono, poi zoccoli come azione bonus)"}
-brown_bear:        {name: Orso Bruno,        name_en: Brown Bear,        cr: 1,     size: Grande,  ac: 11, hp: 34, speed: {walk: 12, climb: 9}, attacks: "Multiattacco: Morso +5, 1d8+4 perforanti; Artigli +5, 2d6+4 taglienti", traits: "Olfatto Acuto"}
-dire_wolf:         {name: Lupo Crudele,      name_en: Dire Wolf,         cr: 1,     size: Grande,  ac: 14, hp: 37, speed: {walk: 15},           attacks: "Morso +5, 2d6+3 perforanti + TS FOR CD 13 o prono", traits: "Udito e Olfatto Acuti, Tattiche di Branco"}
-giant_hyena:       {name: Iena Gigante,      name_en: Giant Hyena,       cr: 1,     size: Grande,  ac: 12, hp: 45, speed: {walk: 15},           attacks: "Morso +5, 2d6+3 perforanti", traits: "Furia (dopo aver ridotto una creatura a 0 PF: azione bonus di movimento + morso)"}
-giant_spider:      {name: Ragno Gigante,     name_en: Giant Spider,      cr: 1,     size: Grande,  ac: 14, hp: 26, speed: {walk: 9, climb: 9},  attacks: "Morso +5, 1d8+3 perforanti + TS COS CD 11 o 2d8 veleno; Ragnatela +5 (ricarica 5-6, gittata 9/18 m): trattenuto", traits: "Scalatore Ragno, Senso della Ragnatela, Camminare sulle Ragnatele, Vista Cieca 3 m, scurovisione 18 m"}
-lion:              {name: Leone,             name_en: Lion,              cr: 1,     size: Grande,  ac: 12, hp: 26, speed: {walk: 15},           attacks: "Morso +5, 1d8+3 perforanti; Artiglio +5, 1d6+3 taglienti", traits: "Olfatto Acuto, Tattiche di Branco, Balzo, Salto con Rincorsa (7,5 m)"}
-tiger:             {name: Tigre,             name_en: Tiger,             cr: 1,     size: Grande,  ac: 12, hp: 37, speed: {walk: 12},           attacks: "Morso +5, 1d10+3 perforanti; Artiglio +5, 1d8+3 taglienti", traits: "Olfatto Acuto, Balzo, scurovisione 18 m"}
+#
+# Campi per la guida illustrata (una scheda per bestia, linguaggio semplice, seconda persona):
+#   role:        combattere | esplorare | viaggiare | nuotare | volare  (a cosa serve di più questa forma)
+#   kid:         una frase semplice su cosa sa fare bene
+#   multi:       (solo se ha Multiattacco) quali attacchi puoi fare nello stesso turno
+#   kid_attacks: un elemento per attacco: name, hit (bonus per colpire), damage (dadi; "1" se fisso;
+#                "-" se non fa danni), type (tipo di danno), extra (opzionale: effetto spiegato semplice)
+#   kid_traits:  "Nome: spiegazione semplice" (lista vuota se non ne ha)
+
+baboon:
+  name: Babbuino
+  name_en: Baboon
+  cr: 0
+  size: Piccola
+  ac: 12
+  hp: 3
+  speed: {walk: 9, climb: 9}
+  attacks: "Morso +1, 1d4-1 perforanti"
+  traits: "Tattiche di Branco"
+  role: esplorare
+  kid: "Una scimmietta che si arrampica dappertutto: ottima per salire sugli alberi e spiare dall'alto."
+  kid_attacks:
+    - {name: "Morso", hit: "+1", damage: "1d4-1", type: "perforanti"}
+  kid_traits:
+    - "Tattiche di Branco: se un tuo amico che può combattere è accanto al nemico (entro 1,5 m), quando lo attacchi tiri 2 d20 e tieni il più alto (vantaggio)."
+
+badger:
+  name: Tasso
+  name_en: Badger
+  cr: 0
+  size: Minuscola
+  ac: 10
+  hp: 3
+  speed: {walk: 6, burrow: 1.5}
+  attacks: "Morso +2, 1 perforante"
+  traits: "Olfatto Acuto, scurovisione 9 m"
+  role: esplorare
+  kid: "Un animaletto che scava: puoi infilarti sotto terra (piano piano) e seguire le tracce con il naso."
+  kid_attacks:
+    - {name: "Morso", hit: "+2", damage: "1", type: "perforante"}
+  kid_traits:
+    - "Olfatto Acuto: annusi benissimo: quando cerchi qualcosa con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Scurovisione 9 m: vedi al buio fino a 9 m (in bianco e nero)."
+
+cat:
+  name: Gatto
+  name_en: Cat
+  cr: 0
+  size: Minuscola
+  ac: 12
+  hp: 2
+  speed: {walk: 12, climb: 9}
+  attacks: "Artigli +0, 1 tagliente"
+  traits: "Olfatto Acuto"
+  role: esplorare
+  kid: "Un gatto non lo nota nessuno: perfetto per entrare di nascosto, arrampicarti e spiare."
+  kid_attacks:
+    - {name: "Artigli", hit: "+0", damage: "1", type: "tagliente"}
+  kid_traits:
+    - "Olfatto Acuto: annusi benissimo: quando cerchi qualcosa con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+
+deer:
+  name: Cervo
+  name_en: Deer
+  cr: 0
+  size: Media
+  ac: 13
+  hp: 4
+  speed: {walk: 15}
+  attacks: "Morso +2, 1d4 perforanti"
+  traits: ""
+  role: viaggiare
+  kid: "Velocissimo (15 m a turno): ottimo per correre lontano, scappare o portare un messaggio in fretta."
+  kid_attacks:
+    - {name: "Morso", hit: "+2", damage: "1d4", type: "perforanti"}
+  kid_traits: []
+
+giant_fire_beetle:
+  name: Scarabeo di Fuoco Gigante
+  name_en: Giant Fire Beetle
+  cr: 0
+  size: Piccola
+  ac: 13
+  hp: 4
+  speed: {walk: 9}
+  attacks: "Morso +1, 1d6-1 taglienti"
+  traits: "Illuminazione (luce intensa 3 m, fioca per altri 3 m), Vista Cieca 9 m"
+  role: esplorare
+  kid: "Uno scarabeo che brilla: fa luce come una lanterna nei posti bui e sente chi c'è vicino anche senza vedere."
+  kid_attacks:
+    - {name: "Morso", hit: "+1", damage: "1d6-1", type: "taglienti"}
+  kid_traits:
+    - "Illuminazione: brilli! Fai luce forte fino a 3 m intorno a te e luce debole per altri 3 m: sei una lanterna vivente."
+    - "Vista Cieca 9 m: senti tutto quello che c'è intorno a te fino a 9 m anche senza vedere, perfino al buio."
+
+goat:
+  name: Capra
+  name_en: Goat
+  cr: 0
+  size: Media
+  ac: 10
+  hp: 4
+  speed: {walk: 12}
+  attacks: "Incornata +3, 1d4+1 contundenti"
+  traits: "Carica (+1d4, TS FOR CD 10 o prono), Piede Sicuro"
+  role: esplorare
+  kid: "Una capra che non cade mai: brava sui sentieri di montagna e capace di dare una cornata di corsa."
+  kid_attacks:
+    - {name: "Incornata", hit: "+3", damage: "1d4+1", type: "contundenti"}
+  kid_traits:
+    - "Carica: se corri dritta verso il nemico per almeno 6 m e lo colpisci con l'Incornata, fai 1d4 danni in più e lui tira un d20 per non cadere (tiro salvezza su Forza contro 10): se sbaglia cade a terra."
+    - "Piede Sicuro: è difficile farti cadere: quando fai un tiro salvezza per non finire a terra tiri 2 d20 e tieni il più alto (vantaggio)."
+
+hyena:
+  name: Iena
+  name_en: Hyena
+  cr: 0
+  size: Media
+  ac: 11
+  hp: 5
+  speed: {walk: 15}
+  attacks: "Morso +2, 1d6 perforanti"
+  traits: "Tattiche di Branco"
+  role: viaggiare
+  kid: "Corre veloce (15 m a turno) e morde meglio quando un amico è vicino al nemico."
+  kid_attacks:
+    - {name: "Morso", hit: "+2", damage: "1d6", type: "perforanti"}
+  kid_traits:
+    - "Tattiche di Branco: se un tuo amico che può combattere è accanto al nemico (entro 1,5 m), quando lo attacchi tiri 2 d20 e tieni il più alto (vantaggio)."
+
+jackal:
+  name: Sciacallo
+  name_en: Jackal
+  cr: 0
+  size: Piccola
+  ac: 12
+  hp: 3
+  speed: {walk: 12}
+  attacks: "Morso +1, 1d4-1 perforanti"
+  traits: "Udito e Olfatto Acuti, Tattiche di Branco"
+  role: esplorare
+  kid: "Piccolo e furbo, con orecchie e naso super: ottimo per seguire le tracce e accorgerti dei pericoli."
+  kid_attacks:
+    - {name: "Morso", hit: "+1", damage: "1d4-1", type: "perforanti"}
+  kid_traits:
+    - "Udito e Olfatto Acuti: senti e annusi benissimo: quando cerchi qualcosa con le orecchie o con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Tattiche di Branco: se un tuo amico che può combattere è accanto al nemico (entro 1,5 m), quando lo attacchi tiri 2 d20 e tieni il più alto (vantaggio)."
+
+lizard:
+  name: Lucertola
+  name_en: Lizard
+  cr: 0
+  size: Minuscola
+  ac: 10
+  hp: 2
+  speed: {walk: 6, climb: 6}
+  attacks: "Morso +0, 1 perforante"
+  traits: "Scurovisione 9 m"
+  role: esplorare
+  kid: "Una lucertolina che si arrampica sui muri: perfetta per passare inosservata e infilarti nelle fessure."
+  kid_attacks:
+    - {name: "Morso", hit: "+0", damage: "1", type: "perforante"}
+  kid_traits:
+    - "Scurovisione 9 m: vedi al buio fino a 9 m (in bianco e nero)."
+
+rat:
+  name: Ratto
+  name_en: Rat
+  cr: 0
+  size: Minuscola
+  ac: 10
+  hp: 1
+  speed: {walk: 6}
+  attacks: "Morso +0, 1 perforante"
+  traits: "Olfatto Acuto, scurovisione 9 m"
+  role: esplorare
+  kid: "Un topolino che nessuno nota: perfetto per entrare nei buchi, spiare e ascoltare di nascosto."
+  kid_attacks:
+    - {name: "Morso", hit: "+0", damage: "1", type: "perforante"}
+  kid_traits:
+    - "Olfatto Acuto: annusi benissimo: quando cerchi qualcosa con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Scurovisione 9 m: vedi al buio fino a 9 m (in bianco e nero)."
+
+scorpion:
+  name: Scorpione
+  name_en: Scorpion
+  cr: 0
+  size: Minuscola
+  ac: 11
+  hp: 1
+  speed: {walk: 3}
+  attacks: "Pungiglione +2, 1 perforante + TS COS CD 9, 1d8 veleno, metà se supera"
+  traits: "Vista Cieca 3 m"
+  role: esplorare
+  kid: "Minuscolo e lento, ma con un pungiglione velenoso: bravo a nasconderti e a sentire chi si avvicina."
+  kid_attacks:
+    - {name: "Pungiglione", hit: "+2", damage: "1", type: "perforante", extra: "Se colpisci, il nemico tira un d20 (tiro salvezza su Costituzione contro 9): se sbaglia subisce anche 1d8 danni da veleno, se riesce ne subisce la metà."}
+  kid_traits:
+    - "Vista Cieca 3 m: senti tutto quello che c'è intorno a te fino a 3 m anche senza vedere, perfino al buio."
+
+spider:
+  name: Ragno
+  name_en: Spider
+  cr: 0
+  size: Minuscola
+  ac: 12
+  hp: 1
+  speed: {walk: 6, climb: 6}
+  attacks: "Morso +4, 1 perforante + TS COS CD 9 o 1d4 veleno"
+  traits: "Scalatore Ragno, Senso della Ragnatela, Camminare sulle Ragnatele, scurovisione 9 m"
+  role: esplorare
+  kid: "Un ragnetto che cammina su muri e soffitti: la spia perfetta, nessuno ti nota."
+  kid_attacks:
+    - {name: "Morso", hit: "+4", damage: "1", type: "perforante", extra: "Se colpisci, il nemico tira un d20 (tiro salvezza su Costituzione contro 9): se sbaglia subisce anche 1d4 danni da veleno."}
+  kid_traits:
+    - "Scalatore Ragno: cammini sui muri e a testa in giù sul soffitto senza tirare dadi."
+    - "Senso della Ragnatela: quando tocchi una ragnatela sai sempre dove si trova chiunque altro la stia toccando."
+    - "Camminare sulle Ragnatele: le ragnatele non ti bloccano mai."
+    - "Scurovisione 9 m: vedi al buio fino a 9 m (in bianco e nero)."
+
+weasel:
+  name: Donnola
+  name_en: Weasel
+  cr: 0
+  size: Minuscola
+  ac: 13
+  hp: 1
+  speed: {walk: 9}
+  attacks: "Morso +5, 1 perforante"
+  traits: "Udito e Olfatto Acuti"
+  role: esplorare
+  kid: "Piccola, agile e con sensi finissimi: brava a infilarti ovunque e a scoprire chi si nasconde."
+  kid_attacks:
+    - {name: "Morso", hit: "+5", damage: "1", type: "perforante"}
+  kid_traits:
+    - "Udito e Olfatto Acuti: senti e annusi benissimo: quando cerchi qualcosa con le orecchie o con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+
+camel:
+  name: Cammello
+  name_en: Camel
+  cr: 0.125
+  size: Grande
+  ac: 9
+  hp: 15
+  speed: {walk: 15}
+  attacks: "Morso +5, 1d4 contundenti"
+  traits: ""
+  role: viaggiare
+  kid: "Grande e resistente: puoi portare in groppa un amico o tanti bagagli, anche nel deserto."
+  kid_attacks:
+    - {name: "Morso", hit: "+5", damage: "1d4", type: "contundenti"}
+  kid_traits: []
+
+giant_rat:
+  name: Ratto Gigante
+  name_en: Giant Rat
+  cr: 0.125
+  size: Piccola
+  ac: 12
+  hp: 7
+  speed: {walk: 9}
+  attacks: "Morso +4, 1d4+2 perforanti"
+  traits: "Olfatto Acuto, Tattiche di Branco, scurovisione 18 m"
+  role: esplorare
+  kid: "Un ratto grosso che vede bene al buio: perfetto per esplorare fogne, grotte e cunicoli."
+  kid_attacks:
+    - {name: "Morso", hit: "+4", damage: "1d4+2", type: "perforanti"}
+  kid_traits:
+    - "Olfatto Acuto: annusi benissimo: quando cerchi qualcosa con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Tattiche di Branco: se un tuo amico che può combattere è accanto al nemico (entro 1,5 m), quando lo attacchi tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Scurovisione 18 m: vedi al buio fino a 18 m (in bianco e nero)."
+
+giant_weasel:
+  name: Donnola Gigante
+  name_en: Giant Weasel
+  cr: 0.125
+  size: Media
+  ac: 13
+  hp: 9
+  speed: {walk: 12}
+  attacks: "Morso +5, 1d4+3 perforanti"
+  traits: "Udito e Olfatto Acuti, scurovisione 18 m"
+  role: esplorare
+  kid: "Agile, con sensi finissimi e vista al buio: bravissima a seguire le tracce e a scoprire nemici nascosti."
+  kid_attacks:
+    - {name: "Morso", hit: "+5", damage: "1d4+3", type: "perforanti"}
+  kid_traits:
+    - "Udito e Olfatto Acuti: senti e annusi benissimo: quando cerchi qualcosa con le orecchie o con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Scurovisione 18 m: vedi al buio fino a 18 m (in bianco e nero)."
+
+mastiff:
+  name: Mastino
+  name_en: Mastiff
+  cr: 0.125
+  size: Media
+  ac: 12
+  hp: 5
+  speed: {walk: 12}
+  attacks: "Morso +3, 1d6+1 perforanti + TS FOR CD 11 o prono"
+  traits: "Udito e Olfatto Acuti"
+  role: esplorare
+  kid: "Un grosso cane da guardia: segue le tracce con il naso e con un morso può far cadere i nemici."
+  kid_attacks:
+    - {name: "Morso", hit: "+3", damage: "1d6+1", type: "perforanti", extra: "Se colpisci, il nemico tira un d20 per non cadere (tiro salvezza su Forza contro 11): se sbaglia cade a terra (e chi lo attacca da vicino ha vantaggio)."}
+  kid_traits:
+    - "Udito e Olfatto Acuti: senti e annusi benissimo: quando cerchi qualcosa con le orecchie o con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+
+mule:
+  name: Mulo
+  name_en: Mule
+  cr: 0.125
+  size: Media
+  ac: 10
+  hp: 11
+  speed: {walk: 12}
+  attacks: "Zoccoli +4, 1d4+2 contundenti"
+  traits: "Bestia da Soma, Piede Sicuro"
+  role: viaggiare
+  kid: "Forte e testardo: porti carichi pesantissimi e non scivoli sui sentieri difficili."
+  kid_attacks:
+    - {name: "Zoccoli", hit: "+4", damage: "1d4+2", type: "contundenti"}
+  kid_traits:
+    - "Bestia da Soma: porti carichi pesanti come un animale Grande, cioè il doppio del normale per la tua taglia."
+    - "Piede Sicuro: è difficile farti cadere: quando fai un tiro salvezza per non finire a terra tiri 2 d20 e tieni il più alto (vantaggio)."
+
+pony:
+  name: Pony
+  name_en: Pony
+  cr: 0.125
+  size: Media
+  ac: 10
+  hp: 11
+  speed: {walk: 12}
+  attacks: "Zoccoli +4, 2d4+2 contundenti"
+  traits: ""
+  role: viaggiare
+  kid: "Un cavallino: puoi portare in groppa un amico piccolo (come uno gnomo o un halfling) o i bagagli del gruppo."
+  kid_attacks:
+    - {name: "Zoccoli", hit: "+4", damage: "2d4+2", type: "contundenti"}
+  kid_traits: []
+
+axe_beak:
+  name: Becco d'Ascia
+  name_en: Axe Beak
+  cr: 0.25
+  size: Grande
+  ac: 11
+  hp: 19
+  speed: {walk: 15}
+  attacks: "Becco +4, 1d8+2 taglienti"
+  traits: ""
+  role: viaggiare
+  kid: "Un uccellone che non vola ma corre velocissimo (15 m a turno) e dà forti beccate: un amico può salirti in groppa."
+  kid_attacks:
+    - {name: "Becco", hit: "+4", damage: "1d8+2", type: "taglienti"}
+  kid_traits: []
+
+boar:
+  name: Cinghiale
+  name_en: Boar
+  cr: 0.25
+  size: Media
+  ac: 11
+  hp: 11
+  speed: {walk: 12}
+  attacks: "Zanna +3, 1d6+1 taglienti"
+  traits: "Carica (+1d6, TS FOR CD 11 o prono), Implacabile (1 PF invece di 0 se il danno è ≤ 7, 1/riposo breve)"
+  role: combattere
+  kid: "Piccolo ma testardissimo: carichi i nemici e resti in piedi anche quando dovresti cadere."
+  kid_attacks:
+    - {name: "Zanna", hit: "+3", damage: "1d6+1", type: "taglienti"}
+  kid_traits:
+    - "Carica: se corri dritta verso il nemico per almeno 6 m e lo colpisci con la Zanna, fai 1d6 danni in più e lui tira un d20 per non cadere (tiro salvezza su Forza contro 11): se sbaglia cade a terra."
+    - "Implacabile: se un colpo da 7 danni o meno ti porterebbe a 0 PF, resti in piedi con 1 PF. Funziona una volta, poi serve un riposo (breve o lungo)."
+
+draft_horse:
+  name: Cavallo da Tiro
+  name_en: Draft Horse
+  cr: 0.25
+  size: Grande
+  ac: 10
+  hp: 19
+  speed: {walk: 12}
+  attacks: "Zoccoli +6, 2d4+4 contundenti"
+  traits: ""
+  role: viaggiare
+  kid: "Un cavallone fortissimo: tiri i carri e porti in groppa un amico nei viaggi lunghi."
+  kid_attacks:
+    - {name: "Zoccoli", hit: "+6", damage: "2d4+4", type: "contundenti"}
+  kid_traits: []
+
+elk:
+  name: Alce
+  name_en: Elk
+  cr: 0.25
+  size: Grande
+  ac: 10
+  hp: 13
+  speed: {walk: 15}
+  attacks: "Incornata +5, 1d6+3 contundenti; Zoccoli +5, 2d4+3 contundenti (solo contro creature prone)"
+  traits: "Carica (+2d6, TS FOR CD 13 o prono)"
+  role: combattere
+  kid: "Grande e veloce (15 m a turno): prendi la rincorsa e travolgi i nemici con le corna."
+  kid_attacks:
+    - {name: "Incornata", hit: "+5", damage: "1d6+3", type: "contundenti"}
+    - {name: "Zoccoli", hit: "+5", damage: "2d4+3", type: "contundenti", extra: "Puoi usarli solo contro un nemico che è già a terra."}
+  kid_traits:
+    - "Carica: se corri dritta verso il nemico per almeno 6 m e lo colpisci con l'Incornata, fai 2d6 danni in più e lui tira un d20 per non cadere (tiro salvezza su Forza contro 13): se sbaglia cade a terra."
+
+giant_badger:
+  name: Tasso Gigante
+  name_en: Giant Badger
+  cr: 0.25
+  size: Media
+  ac: 10
+  hp: 13
+  speed: {walk: 9, burrow: 3}
+  attacks: "Multiattacco: Morso +3, 1d6+1 perforanti; Artigli +3, 2d4+1 taglienti"
+  traits: "Olfatto Acuto, scurovisione 9 m"
+  role: combattere
+  kid: "Piccolo ma feroce: morde e graffia nello stesso turno, e sa scavare sotto terra."
+  multi: "Nello stesso turno puoi fare sia il Morso che gli Artigli."
+  kid_attacks:
+    - {name: "Morso", hit: "+3", damage: "1d6+1", type: "perforanti"}
+    - {name: "Artigli", hit: "+3", damage: "2d4+1", type: "taglienti"}
+  kid_traits:
+    - "Olfatto Acuto: annusi benissimo: quando cerchi qualcosa con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Scurovisione 9 m: vedi al buio fino a 9 m (in bianco e nero)."
+
+giant_centipede:
+  name: Millepiedi Gigante
+  name_en: Giant Centipede
+  cr: 0.25
+  size: Piccola
+  ac: 13
+  hp: 4
+  speed: {walk: 9, climb: 9}
+  attacks: "Morso +4, 1d4+2 perforanti + TS COS CD 11 o 3d6 veleno; se il veleno lo porta a 0 PF il bersaglio è stabile ma avvelenato e paralizzato per 1 ora"
+  traits: "Vista Cieca 9 m"
+  role: esplorare
+  kid: "Un millepiedi che si arrampica dappertutto: è fragile, ma il suo veleno può paralizzare i nemici."
+  kid_attacks:
+    - {name: "Morso", hit: "+4", damage: "1d4+2", type: "perforanti", extra: "Se colpisci, il nemico tira un d20 (tiro salvezza su Costituzione contro 11): se sbaglia subisce anche 3d6 danni da veleno. Se il veleno lo porta a 0 PF non muore: resta stabile, ma avvelenato e paralizzato (non può muoversi) per 1 ora."}
+  kid_traits:
+    - "Vista Cieca 9 m: senti tutto quello che c'è intorno a te fino a 9 m anche senza vedere, perfino al buio."
+
+giant_lizard:
+  name: Lucertola Gigante
+  name_en: Giant Lizard
+  cr: 0.25
+  size: Grande
+  ac: 12
+  hp: 19
+  speed: {walk: 9, climb: 9}
+  attacks: "Morso +4, 1d8+2 perforanti"
+  traits: "Scurovisione 9 m"
+  role: viaggiare
+  kid: "Una lucertola grande che si arrampica: un amico può salirti in groppa e arrivare dove a piedi non si va."
+  kid_attacks:
+    - {name: "Morso", hit: "+4", damage: "1d8+2", type: "perforanti"}
+  kid_traits:
+    - "Scurovisione 9 m: vedi al buio fino a 9 m (in bianco e nero)."
+
+giant_wolf_spider:
+  name: Ragno Lupo Gigante
+  name_en: Giant Wolf Spider
+  cr: 0.25
+  size: Media
+  ac: 13
+  hp: 11
+  speed: {walk: 12, climb: 12}
+  attacks: "Morso +3, 1d6+1 perforanti + TS COS CD 11, 2d6 veleno, metà se supera; se il veleno lo porta a 0 PF il bersaglio è stabile ma avvelenato e paralizzato per 1 ora"
+  traits: "Scalatore Ragno, Senso della Ragnatela, Camminare sulle Ragnatele, Vista Cieca 3 m, scurovisione 18 m"
+  role: esplorare
+  kid: "Un ragno grande e veloce che cammina su muri e soffitti: perfetto per spiare e fare agguati dall'alto."
+  kid_attacks:
+    - {name: "Morso", hit: "+3", damage: "1d6+1", type: "perforanti", extra: "Se colpisci, il nemico tira un d20 (tiro salvezza su Costituzione contro 11): se sbaglia subisce anche 2d6 danni da veleno, se riesce ne subisce la metà. Se il veleno lo porta a 0 PF non muore: resta stabile, ma avvelenato e paralizzato (non può muoversi) per 1 ora."}
+  kid_traits:
+    - "Scalatore Ragno: cammini sui muri e a testa in giù sul soffitto senza tirare dadi."
+    - "Senso della Ragnatela: quando tocchi una ragnatela sai sempre dove si trova chiunque altro la stia toccando."
+    - "Camminare sulle Ragnatele: le ragnatele non ti bloccano mai."
+    - "Vista Cieca 3 m: senti tutto quello che c'è intorno a te fino a 3 m anche senza vedere, perfino al buio."
+    - "Scurovisione 18 m: vedi al buio fino a 18 m (in bianco e nero)."
+
+panther:
+  name: Pantera
+  name_en: Panther
+  cr: 0.25
+  size: Media
+  ac: 12
+  hp: 13
+  speed: {walk: 15, climb: 12}
+  attacks: "Morso +4, 1d6+2 perforanti; Artiglio +4, 1d4+2 taglienti"
+  traits: "Olfatto Acuto, Balzo (dopo 6 m di corsa in linea retta, se colpisce con l'Artiglio: TS FOR CD 12 o prono, poi Morso come azione bonus)"
+  role: combattere
+  kid: "Silenziosa e velocissima: ti arrampichi, salti addosso al nemico e lo butti a terra."
+  kid_attacks:
+    - {name: "Morso", hit: "+4", damage: "1d6+2", type: "perforanti"}
+    - {name: "Artiglio", hit: "+4", damage: "1d4+2", type: "taglienti", extra: "Usalo dopo una corsa di 6 m per fare il Balzo."}
+  kid_traits:
+    - "Olfatto Acuto: annusi benissimo: quando cerchi qualcosa con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Balzo: se corri dritta verso un nemico per almeno 6 m e lo colpisci con l'Artiglio, lui tira un d20 per non cadere (tiro salvezza su Forza contro 12): se sbaglia cade a terra e tu puoi dargli subito un Morso in più (azione bonus)."
+
+riding_horse:
+  name: Cavallo da Sella
+  name_en: Riding Horse
+  cr: 0.25
+  size: Grande
+  ac: 10
+  hp: 13
+  speed: {walk: 18}
+  attacks: "Zoccoli +5, 2d4+3 contundenti"
+  traits: ""
+  role: viaggiare
+  kid: "Velocissimo (18 m a turno): porti in groppa un amico e fai viaggiare tutti più in fretta."
+  kid_attacks:
+    - {name: "Zoccoli", hit: "+5", damage: "2d4+3", type: "contundenti"}
+  kid_traits: []
+
+wolf:
+  name: Lupo
+  name_en: Wolf
+  cr: 0.25
+  size: Media
+  ac: 13
+  hp: 11
+  speed: {walk: 12}
+  attacks: "Morso +4, 2d4+2 perforanti + TS FOR CD 11 o prono"
+  traits: "Udito e Olfatto Acuti, Tattiche di Branco"
+  role: combattere
+  kid: "Combatte in squadra: con un amico vicino al nemico colpisci più facilmente e lo butti a terra."
+  kid_attacks:
+    - {name: "Morso", hit: "+4", damage: "2d4+2", type: "perforanti", extra: "Se colpisci, il nemico tira un d20 per non cadere (tiro salvezza su Forza contro 11): se sbaglia cade a terra (e chi lo attacca da vicino ha vantaggio)."}
+  kid_traits:
+    - "Udito e Olfatto Acuti: senti e annusi benissimo: quando cerchi qualcosa con le orecchie o con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Tattiche di Branco: se un tuo amico che può combattere è accanto al nemico (entro 1,5 m), quando lo attacchi tiri 2 d20 e tieni il più alto (vantaggio)."
+
+ape:
+  name: Scimmia
+  name_en: Ape
+  cr: 0.5
+  size: Media
+  ac: 12
+  hp: 19
+  speed: {walk: 9, climb: 9}
+  attacks: "Multiattacco: 2 Pugni +5, 1d6+3 contundenti; Sasso +5, 1d6+3 contundenti (gittata 7,5/15 m)"
+  traits: ""
+  role: combattere
+  kid: "Forte e brava ad arrampicarsi: dai due pugni a turno oppure lanci sassi da lontano."
+  multi: "Nello stesso turno puoi dare 2 Pugni. Il Sasso invece è un attacco da solo."
+  kid_attacks:
+    - {name: "Pugno", hit: "+5", damage: "1d6+3", type: "contundenti"}
+    - {name: "Sasso", hit: "+5", damage: "1d6+3", type: "contundenti", extra: "Lo lanci fino a 7,5 m (o fino a 15 m, ma allora tiri 2 d20 e tieni il più basso)."}
+  kid_traits: []
+
+black_bear:
+  name: Orso Nero
+  name_en: Black Bear
+  cr: 0.5
+  size: Media
+  ac: 11
+  hp: 19
+  speed: {walk: 12, climb: 9}
+  attacks: "Multiattacco: Morso +3, 1d6+2 perforanti; Artigli +3, 2d4+2 taglienti"
+  traits: "Olfatto Acuto"
+  role: combattere
+  kid: "Robusto e bravo ad arrampicarsi: morde e graffia nello stesso turno."
+  multi: "Nello stesso turno puoi fare sia il Morso che gli Artigli."
+  kid_attacks:
+    - {name: "Morso", hit: "+3", damage: "1d6+2", type: "perforanti"}
+    - {name: "Artigli", hit: "+3", damage: "2d4+2", type: "taglienti"}
+  kid_traits:
+    - "Olfatto Acuto: annusi benissimo: quando cerchi qualcosa con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+
+giant_goat:
+  name: Capra Gigante
+  name_en: Giant Goat
+  cr: 0.5
+  size: Grande
+  ac: 11
+  hp: 19
+  speed: {walk: 12}
+  attacks: "Incornata +5, 2d4+3 contundenti"
+  traits: "Carica (+2d4, TS FOR CD 13 o prono), Piede Sicuro"
+  role: combattere
+  kid: "Una grande capra di montagna: prendi la rincorsa, dai una cornata fortissima e non cadi mai."
+  kid_attacks:
+    - {name: "Incornata", hit: "+5", damage: "2d4+3", type: "contundenti"}
+  kid_traits:
+    - "Carica: se corri dritta verso il nemico per almeno 6 m e lo colpisci con l'Incornata, fai 2d4 danni in più e lui tira un d20 per non cadere (tiro salvezza su Forza contro 13): se sbaglia cade a terra."
+    - "Piede Sicuro: è difficile farti cadere: quando fai un tiro salvezza per non finire a terra tiri 2 d20 e tieni il più alto (vantaggio)."
+
+warhorse:
+  name: Cavallo da Guerra
+  name_en: Warhorse
+  cr: 0.5
+  size: Grande
+  ac: 11
+  hp: 19
+  speed: {walk: 18}
+  attacks: "Zoccoli +6, 2d6+4 contundenti"
+  traits: "Carica Travolgente (TS FOR CD 14 o prono, poi zoccoli come azione bonus)"
+  role: combattere
+  kid: "Velocissimo (18 m a turno) e fortissimo: travolgi i nemici di corsa e puoi portare in groppa un amico."
+  kid_attacks:
+    - {name: "Zoccoli", hit: "+6", damage: "2d6+4", type: "contundenti"}
+  kid_traits:
+    - "Carica Travolgente: se corri dritta verso un nemico per almeno 6 m e lo colpisci con gli Zoccoli, lui tira un d20 per non cadere (tiro salvezza su Forza contro 14): se sbaglia cade a terra e tu puoi dargli subito un altro colpo di Zoccoli (azione bonus)."
+
+brown_bear:
+  name: Orso Bruno
+  name_en: Brown Bear
+  cr: 1
+  size: Grande
+  ac: 11
+  hp: 34
+  speed: {walk: 12, climb: 9}
+  attacks: "Multiattacco: Morso +6, 1d8+4 perforanti; Artigli +6, 2d6+4 taglienti"
+  traits: "Olfatto Acuto"
+  role: combattere
+  kid: "Grande e fortissimo: perfetto per stare davanti e proteggere gli amici, mordendo e graffiando nello stesso turno."
+  multi: "Nello stesso turno puoi fare sia il Morso che gli Artigli."
+  kid_attacks:
+    - {name: "Morso", hit: "+6", damage: "1d8+4", type: "perforanti"}
+    - {name: "Artigli", hit: "+6", damage: "2d6+4", type: "taglienti"}
+  kid_traits:
+    - "Olfatto Acuto: annusi benissimo: quando cerchi qualcosa con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+
+dire_wolf:
+  name: Lupo Crudele
+  name_en: Dire Wolf
+  cr: 1
+  size: Grande
+  ac: 14
+  hp: 37
+  speed: {walk: 15}
+  attacks: "Morso +5, 2d6+3 perforanti + TS FOR CD 13 o prono"
+  traits: "Udito e Olfatto Acuti, Tattiche di Branco"
+  role: combattere
+  kid: "Un lupo enorme e resistente: con un amico vicino colpisci più spesso e butti a terra i nemici."
+  kid_attacks:
+    - {name: "Morso", hit: "+5", damage: "2d6+3", type: "perforanti", extra: "Se colpisci, il nemico tira un d20 per non cadere (tiro salvezza su Forza contro 13): se sbaglia cade a terra (e chi lo attacca da vicino ha vantaggio)."}
+  kid_traits:
+    - "Udito e Olfatto Acuti: senti e annusi benissimo: quando cerchi qualcosa con le orecchie o con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Tattiche di Branco: se un tuo amico che può combattere è accanto al nemico (entro 1,5 m), quando lo attacchi tiri 2 d20 e tieni il più alto (vantaggio)."
+
+giant_hyena:
+  name: Iena Gigante
+  name_en: Giant Hyena
+  cr: 1
+  size: Grande
+  ac: 12
+  hp: 45
+  speed: {walk: 15}
+  attacks: "Morso +5, 2d6+3 perforanti"
+  traits: "Furia (quando nel suo turno riduce una creatura a 0 PF con un attacco in mischia: azione bonus per muoversi fino a metà velocità e mordere)"
+  role: combattere
+  kid: "Tantissimi punti ferita (45!): ogni volta che butti giù un nemico puoi correre e mordere ancora."
+  kid_attacks:
+    - {name: "Morso", hit: "+5", damage: "2d6+3", type: "perforanti"}
+  kid_traits:
+    - "Furia: se nel tuo turno porti un nemico a 0 PF con un Morso, puoi subito correre fino a metà della tua velocità e dare un altro Morso (azione bonus)."
+
+giant_spider:
+  name: Ragno Gigante
+  name_en: Giant Spider
+  cr: 1
+  size: Grande
+  ac: 14
+  hp: 26
+  speed: {walk: 9, climb: 9}
+  attacks: "Morso +5, 1d8+3 perforanti + TS COS CD 11, 2d8 veleno, metà se supera; se il veleno lo porta a 0 PF il bersaglio è stabile ma avvelenato e paralizzato per 1 ora; Ragnatela +5 (ricarica 5-6, gittata 9/18 m): trattenuto (prova di FOR CD 12 per liberarsi)"
+  traits: "Scalatore Ragno, Senso della Ragnatela, Camminare sulle Ragnatele, Vista Cieca 3 m, scurovisione 18 m"
+  role: combattere
+  kid: "Un ragno enorme: blocchi i nemici con la ragnatela, li avveleni con il morso e cammini sui soffitti."
+  kid_attacks:
+    - {name: "Morso", hit: "+5", damage: "1d8+3", type: "perforanti", extra: "Se colpisci, il nemico tira un d20 (tiro salvezza su Costituzione contro 11): se sbaglia subisce anche 2d8 danni da veleno, se riesce ne subisce la metà. Se il veleno lo porta a 0 PF non muore: resta stabile, ma avvelenato e paralizzato (non può muoversi) per 1 ora."}
+    - {name: "Ragnatela", hit: "+5", damage: "-", type: "nessun danno", extra: "La lanci fino a 9 m (o fino a 18 m, ma allora tiri 2 d20 e tieni il più basso). Se colpisci, il nemico è trattenuto: non si muove, colpisce peggio (svantaggio) e tutti colpiscono lui più facilmente (vantaggio). Per liberarsi deve usare la sua azione e fare almeno 12 con una prova di Forza, oppure qualcuno deve rompere la ragnatela (CA 10, 5 PF; il fuoco la rompe più in fretta). Dopo averla usata, all'inizio di ogni tuo turno tira un d6: con 5 o 6 puoi usarla di nuovo."}
+  kid_traits:
+    - "Scalatore Ragno: cammini sui muri e a testa in giù sul soffitto senza tirare dadi."
+    - "Senso della Ragnatela: quando tocchi una ragnatela sai sempre dove si trova chiunque altro la stia toccando."
+    - "Camminare sulle Ragnatele: le ragnatele non ti bloccano mai."
+    - "Vista Cieca 3 m: senti tutto quello che c'è intorno a te fino a 3 m anche senza vedere, perfino al buio."
+    - "Scurovisione 18 m: vedi al buio fino a 18 m (in bianco e nero)."
+
+lion:
+  name: Leone
+  name_en: Lion
+  cr: 1
+  size: Grande
+  ac: 12
+  hp: 26
+  speed: {walk: 15}
+  attacks: "Morso +5, 1d8+3 perforanti; Artiglio +5, 1d6+3 taglienti"
+  traits: "Olfatto Acuto, Tattiche di Branco, Balzo (TS FOR CD 13), Salto con Rincorsa (7,5 m)"
+  role: combattere
+  kid: "Il re degli animali: salti addosso ai nemici, li butti a terra e combatti ancora meglio in squadra."
+  kid_attacks:
+    - {name: "Morso", hit: "+5", damage: "1d8+3", type: "perforanti"}
+    - {name: "Artiglio", hit: "+5", damage: "1d6+3", type: "taglienti", extra: "Usalo dopo una corsa di 6 m per fare il Balzo."}
+  kid_traits:
+    - "Olfatto Acuto: annusi benissimo: quando cerchi qualcosa con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Tattiche di Branco: se un tuo amico che può combattere è accanto al nemico (entro 1,5 m), quando lo attacchi tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Balzo: se corri dritta verso un nemico per almeno 6 m e lo colpisci con l'Artiglio, lui tira un d20 per non cadere (tiro salvezza su Forza contro 13): se sbaglia cade a terra e tu puoi dargli subito un Morso in più (azione bonus)."
+    - "Salto con Rincorsa: se prendi la rincorsa per almeno 3 m, salti in lungo fino a 7,5 m."
+
+tiger:
+  name: Tigre
+  name_en: Tiger
+  cr: 1
+  size: Grande
+  ac: 12
+  hp: 37
+  speed: {walk: 12}
+  attacks: "Morso +5, 1d10+3 perforanti; Artiglio +5, 1d8+3 taglienti"
+  traits: "Olfatto Acuto, Balzo (TS FOR CD 13), scurovisione 18 m"
+  role: combattere
+  kid: "Fortissima e con tanti punti ferita (37): salti addosso al nemico, lo butti a terra e vedi al buio."
+  kid_attacks:
+    - {name: "Morso", hit: "+5", damage: "1d10+3", type: "perforanti"}
+    - {name: "Artiglio", hit: "+5", damage: "1d8+3", type: "taglienti", extra: "Usalo dopo una corsa di 6 m per fare il Balzo."}
+  kid_traits:
+    - "Olfatto Acuto: annusi benissimo: quando cerchi qualcosa con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Balzo: se corri dritta verso un nemico per almeno 6 m e lo colpisci con l'Artiglio, lui tira un d20 per non cadere (tiro salvezza su Forza contro 13): se sbaglia cade a terra e tu puoi dargli subito un Morso in più (azione bonus)."
+    - "Scurovisione 18 m: vedi al buio fino a 18 m (in bianco e nero)."
+
 # --- Bestie con nuoto o volo (escluse ai livelli bassi; incluse per completezza) ---
-giant_frog:        {name: Rana Gigante,      name_en: Giant Frog,        cr: 0.25,  size: Media,   ac: 11, hp: 18, speed: {walk: 9, swim: 9},   attacks: "Morso +3, 1d6+1 perforanti + afferrato; Inghiottire", traits: "Anfibio, Salto Potenziato (salto in lungo 6 m, in alto 3 m), scurovisione 9 m"}
-constrictor_snake: {name: Serpente Costrittore, name_en: Constrictor Snake, cr: 0.25, size: Grande, ac: 12, hp: 13, speed: {walk: 9, swim: 9}, attacks: "Morso +4, 1d6+2 perforanti; Stretta +4, 1d8+2 contundenti + afferrato (CD 14)", traits: "Vista Cieca 3 m"}
-crocodile:         {name: Coccodrillo,       name_en: Crocodile,         cr: 0.5,   size: Grande,  ac: 12, hp: 19, speed: {walk: 6, swim: 9},   attacks: "Morso +4, 1d10+2 perforanti + afferrato (CD 12)", traits: "Trattenere il Respiro (15 minuti)"}
-giant_toad:        {name: Rospo Gigante,      name_en: Giant Toad,        cr: 1,     size: Grande,  ac: 11, hp: 39, speed: {walk: 6, swim: 12},  attacks: "Morso +4, 1d10+2 perforanti + 1d10 veleno + afferrato; Inghiottire", traits: "Anfibio, Salto Potenziato (salto in lungo 6 m, in alto 3 m), scurovisione 9 m"}
-giant_octopus:     {name: Piovra Gigante,    name_en: Giant Octopus,     cr: 1,     size: Grande,  ac: 11, hp: 52, speed: {walk: 3, swim: 18},  attacks: "Tentacoli +5 (portata 4,5 m), 2d6+3 contundenti + afferrato e trattenuto (CD 16)", traits: "Respira solo sott'acqua (Trattenere il Respiro: 1 ora fuori dall'acqua), Nube d'Inchiostro, Camuffamento Subacqueo, scurovisione 18 m"}
-giant_bat:         {name: Pipistrello Gigante, name_en: Giant Bat,       cr: 0.25,  size: Grande,  ac: 13, hp: 22, speed: {walk: 3, fly: 18},   attacks: "Morso +4, 1d6+2 perforanti", traits: "Ecolocazione, Udito Acuto, Vista Cieca 18 m"}
-giant_owl:         {name: Gufo Gigante,      name_en: Giant Owl,         cr: 0.25,  size: Grande,  ac: 12, hp: 19, speed: {walk: 1.5, fly: 18}, attacks: "Artigli +3, 2d6+1 taglienti", traits: "Volo Radente (non provoca attacchi di opportunità uscendo in volo dalla portata di un nemico), Udito e Vista Acuti, scurovisione 36 m"}
-giant_eagle:       {name: Aquila Gigante,    name_en: Giant Eagle,       cr: 1,     size: Grande,  ac: 13, hp: 26, speed: {walk: 3, fly: 24},   attacks: "Multiattacco: Becco +5, 1d6+3 perforanti; Artigli +5, 2d6+3 taglienti", traits: "Vista Acuta"}
-giant_vulture:     {name: Avvoltoio Gigante, name_en: Giant Vulture,     cr: 1,     size: Grande,  ac: 10, hp: 22, speed: {walk: 3, fly: 18},   attacks: "Multiattacco: Becco +4, 2d4+2 perforanti; Artigli +4, 2d6+2 taglienti", traits: "Vista e Olfatto Acuti, Tattiche di Branco"}
+giant_frog:
+  name: Rana Gigante
+  name_en: Giant Frog
+  cr: 0.25
+  size: Media
+  ac: 11
+  hp: 18
+  speed: {walk: 9, swim: 9}
+  attacks: "Morso +3, 1d6+1 perforanti + afferrato (fuga CD 11) e trattenuto; Inghiottire: Morso contro una creatura Piccola o più piccola già afferrata, se colpisce la inghiotte (accecata, trattenuta, copertura totale, 2d4 acido all'inizio di ogni turno della rana; una sola alla volta)"
+  traits: "Anfibio, Salto da Fermo (salto in lungo 6 m, in alto 3 m, anche senza rincorsa), scurovisione 9 m"
+  role: nuotare
+  kid: "Nuoti bene, salti lontanissimo e puoi perfino inghiottire i nemici piccoli!"
+  kid_attacks:
+    - {name: "Morso", hit: "+3", damage: "1d6+1", type: "perforanti", extra: "Se colpisci, tieni il nemico in bocca: è afferrato e trattenuto (non si muove, colpisce peggio e tutti colpiscono lui più facilmente). Per liberarsi deve usare la sua azione e fare almeno 11 con una prova di Forza (Atletica) o Destrezza (Acrobazia). Finché lo tieni non puoi mordere nessun altro."}
+    - {name: "Inghiottire", hit: "+3", damage: "1d6+1", type: "perforanti", extra: "Un Morso contro un nemico Piccolo o più piccolo che stai già tenendo in bocca. Se colpisci lo inghiotti: nella tua pancia non vede niente, non si muove, nessuno da fuori può colpirlo, e all'inizio di ogni tuo turno subisce 2d4 danni da acido. Puoi averne dentro uno solo alla volta. Se la rana va a 0 PF, lui può uscire (a terra)."}
+  kid_traits:
+    - "Anfibio: respiri sia fuori che sott'acqua."
+    - "Salto da Fermo: salti in lungo fino a 6 m e in alto fino a 3 m, anche senza rincorsa."
+    - "Scurovisione 9 m: vedi al buio fino a 9 m (in bianco e nero)."
+
+constrictor_snake:
+  name: Serpente Costrittore
+  name_en: Constrictor Snake
+  cr: 0.25
+  size: Grande
+  ac: 12
+  hp: 13
+  speed: {walk: 9, swim: 9}
+  attacks: "Morso +4, 1d6+2 perforanti; Stretta +4, 1d8+2 contundenti + afferrato (fuga CD 14) e trattenuto"
+  traits: "Vista Cieca 3 m"
+  role: combattere
+  kid: "Un serpentone che stritola: ti avvolgi intorno a un nemico e lo tieni fermo mentre gli amici lo colpiscono."
+  kid_attacks:
+    - {name: "Morso", hit: "+4", damage: "1d6+2", type: "perforanti"}
+    - {name: "Stretta", hit: "+4", damage: "1d8+2", type: "contundenti", extra: "Se colpisci, ti avvolgi intorno al nemico: è afferrato e trattenuto (non si muove, colpisce peggio e tutti colpiscono lui più facilmente). Per liberarsi deve usare la sua azione e fare almeno 14 con una prova di Forza (Atletica) o Destrezza (Acrobazia). Finché lo stringi non puoi stringere nessun altro."}
+  kid_traits:
+    - "Vista Cieca 3 m: senti tutto quello che c'è intorno a te fino a 3 m anche senza vedere, perfino al buio."
+
+crocodile:
+  name: Coccodrillo
+  name_en: Crocodile
+  cr: 0.5
+  size: Grande
+  ac: 12
+  hp: 19
+  speed: {walk: 6, swim: 9}
+  attacks: "Morso +4, 1d10+2 perforanti + afferrato (fuga CD 12) e trattenuto"
+  traits: "Trattenere il Respiro (15 minuti)"
+  role: nuotare
+  kid: "In acqua sei fortissimo: nuoti veloce, afferri il nemico con la bocca e non lo lasci andare."
+  kid_attacks:
+    - {name: "Morso", hit: "+4", damage: "1d10+2", type: "perforanti", extra: "Se colpisci, tieni il nemico in bocca: è afferrato e trattenuto (non si muove, colpisce peggio e tutti colpiscono lui più facilmente). Per liberarsi deve usare la sua azione e fare almeno 12 con una prova di Forza (Atletica) o Destrezza (Acrobazia). Finché lo tieni non puoi mordere nessun altro."}
+  kid_traits:
+    - "Trattenere il Respiro: puoi stare sott'acqua 15 minuti senza respirare."
+
+giant_toad:
+  name: Rospo Gigante
+  name_en: Giant Toad
+  cr: 1
+  size: Grande
+  ac: 11
+  hp: 39
+  speed: {walk: 6, swim: 12}
+  attacks: "Morso +4, 1d10+2 perforanti + 1d10 veleno + afferrato (fuga CD 13) e trattenuto; Inghiottire: Morso contro una creatura Media o più piccola già afferrata, se colpisce la inghiotte (accecata, trattenuta, copertura totale, 3d6 acido all'inizio di ogni turno del rospo; una sola alla volta)"
+  traits: "Anfibio, Salto da Fermo (salto in lungo 6 m, in alto 3 m, anche senza rincorsa), scurovisione 9 m"
+  role: combattere
+  kid: "Grande e con tanti punti ferita (39): il tuo morso è velenoso e puoi inghiottire un nemico intero!"
+  kid_attacks:
+    - {name: "Morso", hit: "+4", damage: "1d10+2", type: "perforanti", extra: "Fai anche 1d10 danni da veleno. Se colpisci, tieni il nemico in bocca: è afferrato e trattenuto (non si muove, colpisce peggio e tutti colpiscono lui più facilmente). Per liberarsi deve usare la sua azione e fare almeno 13 con una prova di Forza (Atletica) o Destrezza (Acrobazia). Finché lo tieni non puoi mordere nessun altro."}
+    - {name: "Inghiottire", hit: "+4", damage: "1d10+2", type: "perforanti", extra: "Un Morso (sempre con 1d10 danni da veleno in più) contro un nemico Medio o più piccolo che stai già tenendo in bocca. Se colpisci lo inghiotti: nella tua pancia non vede niente, non si muove, nessuno da fuori può colpirlo, e all'inizio di ogni tuo turno subisce 3d6 danni da acido. Puoi averne dentro uno solo alla volta. Se il rospo va a 0 PF, lui può uscire (a terra)."}
+  kid_traits:
+    - "Anfibio: respiri sia fuori che sott'acqua."
+    - "Salto da Fermo: salti in lungo fino a 6 m e in alto fino a 3 m, anche senza rincorsa."
+    - "Scurovisione 9 m: vedi al buio fino a 9 m (in bianco e nero)."
+
+giant_octopus:
+  name: Piovra Gigante
+  name_en: Giant Octopus
+  cr: 1
+  size: Grande
+  ac: 11
+  hp: 52
+  speed: {walk: 3, swim: 18}
+  attacks: "Tentacoli +5 (portata 4,5 m), 2d6+3 contundenti + afferrato e trattenuto (CD 16)"
+  traits: "Respira solo sott'acqua (Trattenere il Respiro: 1 ora fuori dall'acqua), Nube d'Inchiostro (raggio 6 m), Camuffamento Subacqueo, scurovisione 18 m"
+  role: nuotare
+  kid: "La regina del mare: nuoti velocissima (18 m a turno), ti mimetizzi e afferri i nemici da lontano con i tentacoli."
+  kid_attacks:
+    - {name: "Tentacoli", hit: "+5", damage: "2d6+3", type: "contundenti", extra: "Arrivi lontano: fino a 4,5 m. Se colpisci, il nemico è afferrato e trattenuto (non si muove, colpisce peggio e tutti colpiscono lui più facilmente). Per liberarsi deve usare la sua azione e fare almeno 16 con una prova di Forza (Atletica) o Destrezza (Acrobazia). Finché lo tieni non puoi usare i tentacoli su nessun altro."}
+  kid_traits:
+    - "Respirare sott'Acqua: respiri solo sott'acqua. Fuori dall'acqua puoi trattenere il respiro per 1 ora, poi devi tornare in acqua."
+    - "Nube d'Inchiostro (1 volta, poi serve un riposo): se sei sott'acqua, al posto di attaccare spruzzi una nuvola di inchiostro di 6 m intorno a te: per 1 minuto lì dentro nessuno vede niente, e subito dopo puoi scappare veloce (Scatto come azione bonus)."
+    - "Camuffamento Subacqueo: sott'acqua ti nascondi benissimo: quando provi a non farti vedere (Furtività) tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Scurovisione 18 m: vedi al buio fino a 18 m (in bianco e nero)."
+
+giant_bat:
+  name: Pipistrello Gigante
+  name_en: Giant Bat
+  cr: 0.25
+  size: Grande
+  ac: 13
+  hp: 22
+  speed: {walk: 3, fly: 18}
+  attacks: "Morso +4, 1d6+2 perforanti"
+  traits: "Ecolocazione, Udito Acuto, Vista Cieca 18 m"
+  role: volare
+  kid: "Voli veloce (18 m a turno) e 'vedi' al buio con le orecchie: perfetto per volare nelle grotte."
+  kid_attacks:
+    - {name: "Morso", hit: "+4", damage: "1d6+2", type: "perforanti"}
+  kid_traits:
+    - "Ecolocazione: la tua Vista Cieca funziona con i suoni: se diventi sorda non funziona più."
+    - "Udito Acuto: senti benissimo: quando cerchi qualcosa con le orecchie tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Vista Cieca 18 m: senti tutto quello che c'è intorno a te fino a 18 m anche senza vedere, perfino al buio."
+
+giant_owl:
+  name: Gufo Gigante
+  name_en: Giant Owl
+  cr: 0.25
+  size: Grande
+  ac: 12
+  hp: 19
+  speed: {walk: 1.5, fly: 18}
+  attacks: "Artigli +3, 2d6+1 taglienti"
+  traits: "Volo Radente (non provoca attacchi di opportunità uscendo in volo dalla portata di un nemico), Udito e Vista Acuti, scurovisione 36 m"
+  role: volare
+  kid: "Voli in silenzio e vedi benissimo al buio: perfetto per esplorare di notte, e puoi portare in volo un amico."
+  kid_attacks:
+    - {name: "Artigli", hit: "+3", damage: "2d6+1", type: "taglienti"}
+  kid_traits:
+    - "Volo Radente: quando voli via da un nemico, lui non può colpirti mentre te ne vai (niente attacco di opportunità)."
+    - "Udito e Vista Acuti: senti e vedi benissimo: quando cerchi qualcosa con le orecchie o con gli occhi tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Scurovisione 36 m: vedi al buio fino a 36 m (in bianco e nero)."
+
+giant_eagle:
+  name: Aquila Gigante
+  name_en: Giant Eagle
+  cr: 1
+  size: Grande
+  ac: 13
+  hp: 26
+  speed: {walk: 3, fly: 24}
+  attacks: "Multiattacco: Becco +5, 1d6+3 perforanti; Artigli +5, 2d6+3 taglienti"
+  traits: "Vista Acuta"
+  role: volare
+  kid: "Voli velocissima (24 m a turno): puoi portare in volo un amico e attaccare con becco e artigli nello stesso turno."
+  multi: "Nello stesso turno puoi fare sia il Becco che gli Artigli."
+  kid_attacks:
+    - {name: "Becco", hit: "+5", damage: "1d6+3", type: "perforanti"}
+    - {name: "Artigli", hit: "+5", damage: "2d6+3", type: "taglienti"}
+  kid_traits:
+    - "Vista Acuta: vedi benissimo anche da lontano: quando cerchi qualcosa con gli occhi tiri 2 d20 e tieni il più alto (vantaggio)."
+
+giant_vulture:
+  name: Avvoltoio Gigante
+  name_en: Giant Vulture
+  cr: 1
+  size: Grande
+  ac: 10
+  hp: 22
+  speed: {walk: 3, fly: 18}
+  attacks: "Multiattacco: Becco +4, 2d4+2 perforanti; Artigli +4, 2d6+2 taglienti"
+  traits: "Vista e Olfatto Acuti, Tattiche di Branco"
+  role: volare
+  kid: "Voli alto e vedi lontano: attacchi con becco e artigli nello stesso turno, ancora meglio in squadra."
+  multi: "Nello stesso turno puoi fare sia il Becco che gli Artigli."
+  kid_attacks:
+    - {name: "Becco", hit: "+4", damage: "2d4+2", type: "perforanti"}
+    - {name: "Artigli", hit: "+4", damage: "2d6+2", type: "taglienti"}
+  kid_traits:
+    - "Vista e Olfatto Acuti: vedi e annusi benissimo: quando cerchi qualcosa con gli occhi o con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Tattiche di Branco: se un tuo amico che può combattere è accanto al nemico (entro 1,5 m), quando lo attacchi tiri 2 d20 e tieni il più alto (vantaggio)."
 
 # --- Altre bestie GS 0-1/2 con volo o nuoto (SRD 5.1) ---
-bat:               {name: Pipistrello,       name_en: Bat,               cr: 0,     size: Minuscola, ac: 12, hp: 1, speed: {walk: 1.5, fly: 9}, attacks: "Morso +0, 1 perforante", traits: "Ecolocazione, Udito Acuto, Vista Cieca 18 m"}
-crab:              {name: Granchio,          name_en: Crab,              cr: 0,     size: Minuscola, ac: 11, hp: 2, speed: {walk: 6, swim: 6},   attacks: "Chela +0, 1 contundente", traits: "Anfibio, Vista Cieca 9 m"}
-eagle:             {name: Aquila,            name_en: Eagle,             cr: 0,     size: Piccola, ac: 12, hp: 3,  speed: {walk: 3, fly: 18},   attacks: "Artigli +4, 1d4+2 taglienti", traits: "Vista Acuta"}
-frog:              {name: Rana,              name_en: Frog,              cr: 0,     size: Minuscola, ac: 11, hp: 1, speed: {walk: 6, swim: 6},   attacks: "Nessun attacco", traits: "Anfibio, Salto Potenziato (salto in lungo 3 m, in alto 1,5 m), scurovisione 9 m"}
-hawk:              {name: Falco,             name_en: Hawk,              cr: 0,     size: Minuscola, ac: 13, hp: 1, speed: {walk: 3, fly: 18},   attacks: "Artigli +5, 1 tagliente", traits: "Vista Acuta"}
-octopus:           {name: Piovra,            name_en: Octopus,           cr: 0,     size: Piccola, ac: 12, hp: 3,  speed: {walk: 1.5, swim: 9}, attacks: "Tentacoli +4, 1 contundente + afferrato (CD 10); Nube d'Inchiostro (raggio 1,5 m)", traits: "Respira solo sott'acqua (Trattenere il Respiro: 30 minuti), Camuffamento Subacqueo, scurovisione 9 m"}
-owl:               {name: Gufo,              name_en: Owl,               cr: 0,     size: Minuscola, ac: 11, hp: 1, speed: {walk: 1.5, fly: 18}, attacks: "Artigli +3, 1 tagliente", traits: "Volo Radente, Udito e Vista Acuti, scurovisione 36 m"}
-quipper:           {name: Quipper,           name_en: Quipper,           cr: 0,     size: Minuscola, ac: 13, hp: 1, speed: {walk: 0, swim: 12},  attacks: "Morso +5, 1 perforante", traits: "Frenesia di Sangue (vantaggio contro creature non a PF pieni), respira solo sott'acqua, scurovisione 18 m"}
-raven:             {name: Corvo,             name_en: Raven,             cr: 0,     size: Minuscola, ac: 12, hp: 1, speed: {walk: 3, fly: 15},   attacks: "Becco +4, 1 perforante", traits: "Mimetismo (imita suoni semplici; Saggezza (Intuizione) CD 10 per accorgersene)"}
-sea_horse:         {name: Cavalluccio Marino, name_en: Sea Horse,        cr: 0,     size: Minuscola, ac: 11, hp: 1, speed: {walk: 0, swim: 6},   attacks: "Nessun attacco", traits: "Respira solo sott'acqua"}
-vulture:           {name: Avvoltoio,         name_en: Vulture,           cr: 0,     size: Media,   ac: 10, hp: 5,  speed: {walk: 3, fly: 15},   attacks: "Becco +2, 1d4 perforanti", traits: "Vista e Olfatto Acuti, Tattiche di Branco"}
-blood_hawk:        {name: Falco Sanguinario, name_en: Blood Hawk,        cr: 0.125, size: Piccola, ac: 12, hp: 7,  speed: {walk: 3, fly: 18},   attacks: "Becco +4, 1d4+2 perforanti", traits: "Vista Acuta, Tattiche di Branco"}
-flying_snake:      {name: Serpente Volante,  name_en: Flying Snake,      cr: 0.125, size: Minuscola, ac: 14, hp: 5, speed: {walk: 9, fly: 18, swim: 9}, attacks: "Morso +6, 1 perforante + 3d4 veleno", traits: "Volo Radente, Vista Cieca 3 m"}
-giant_crab:        {name: Granchio Gigante,  name_en: Giant Crab,        cr: 0.125, size: Media,   ac: 15, hp: 13, speed: {walk: 9, swim: 9},   attacks: "Chela +3, 1d6+1 contundenti + afferrato (CD 11; due chele, una presa ciascuna)", traits: "Anfibio, Vista Cieca 9 m"}
-poisonous_snake:   {name: Serpente Velenoso, name_en: Poisonous Snake,   cr: 0.125, size: Minuscola, ac: 13, hp: 2, speed: {walk: 9, swim: 9}, attacks: "Morso +5, 1 perforante + TS COS CD 10 o 2d4 veleno (metà se supera)", traits: "Vista Cieca 3 m"}
-stirge:            {name: Stirge,            name_en: Stirge,            cr: 0.125, size: Minuscola, ac: 14, hp: 2, speed: {walk: 3, fly: 12},  attacks: "Succhiare Sangue +5, 1d4+3 perforanti e resta attaccato (1d4+3 PF all'inizio di ogni suo turno)", traits: "Scurovisione 18 m"}
-giant_poisonous_snake: {name: Serpente Velenoso Gigante, name_en: Giant Poisonous Snake, cr: 0.25, size: Media, ac: 14, hp: 11, speed: {walk: 9, swim: 9}, attacks: "Morso +6 (portata 3 m), 1d4+4 perforanti + TS COS CD 11 o 3d6 veleno (metà se supera)", traits: "Vista Cieca 3 m"}
-giant_sea_horse:   {name: Cavalluccio Marino Gigante, name_en: Giant Sea Horse, cr: 0.5, size: Grande, ac: 13, hp: 16, speed: {walk: 0, swim: 12}, attacks: "Incornata +3, 1d6+1 contundenti", traits: "Carica (+2d6, TS FOR CD 11 o prono), respira solo sott'acqua"}
-giant_wasp:        {name: Vespa Gigante,     name_en: Giant Wasp,        cr: 0.5,   size: Media,   ac: 12, hp: 13, speed: {walk: 3, fly: 15},   attacks: "Pungiglione +4, 1d6+2 perforanti + TS COS CD 11 o 3d6 veleno (metà se supera; paralizzato se scende a 0 PF)", traits: ""}
-reef_shark:        {name: Squalo della Barriera, name_en: Reef Shark,    cr: 0.5,   size: Media,   ac: 12, hp: 22, speed: {walk: 0, swim: 12},  attacks: "Morso +4, 1d8+2 perforanti", traits: "Tattiche di Branco, respira solo sott'acqua, Vista Cieca 9 m"}
+bat:
+  name: Pipistrello
+  name_en: Bat
+  cr: 0
+  size: Minuscola
+  ac: 12
+  hp: 1
+  speed: {walk: 1.5, fly: 9}
+  attacks: "Morso +0, 1 perforante"
+  traits: "Ecolocazione, Udito Acuto, Vista Cieca 18 m"
+  role: volare
+  kid: "Un pipistrellino: voli nel buio senza farti notare e senti tutto con le orecchie."
+  kid_attacks:
+    - {name: "Morso", hit: "+0", damage: "1", type: "perforante"}
+  kid_traits:
+    - "Ecolocazione: la tua Vista Cieca funziona con i suoni: se diventi sorda non funziona più."
+    - "Udito Acuto: senti benissimo: quando cerchi qualcosa con le orecchie tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Vista Cieca 18 m: senti tutto quello che c'è intorno a te fino a 18 m anche senza vedere, perfino al buio."
+
+crab:
+  name: Granchio
+  name_en: Crab
+  cr: 0
+  size: Minuscola
+  ac: 11
+  hp: 2
+  speed: {walk: 6, swim: 6}
+  attacks: "Chela +0, 1 contundente"
+  traits: "Anfibio, Vista Cieca 9 m"
+  role: nuotare
+  kid: "Un granchietto: cammini sott'acqua e sulla spiaggia senza che nessuno ti noti."
+  kid_attacks:
+    - {name: "Chela", hit: "+0", damage: "1", type: "contundente"}
+  kid_traits:
+    - "Anfibio: respiri sia fuori che sott'acqua."
+    - "Vista Cieca 9 m: senti tutto quello che c'è intorno a te fino a 9 m anche senza vedere, perfino al buio."
+
+eagle:
+  name: Aquila
+  name_en: Eagle
+  cr: 0
+  size: Piccola
+  ac: 12
+  hp: 3
+  speed: {walk: 3, fly: 18}
+  attacks: "Artigli +4, 1d4+2 taglienti"
+  traits: "Vista Acuta"
+  role: volare
+  kid: "Voli alta (18 m a turno) e vedi tutto da lontano: perfetta per guardare dall'alto cosa c'è più avanti."
+  kid_attacks:
+    - {name: "Artigli", hit: "+4", damage: "1d4+2", type: "taglienti"}
+  kid_traits:
+    - "Vista Acuta: vedi benissimo anche da lontano: quando cerchi qualcosa con gli occhi tiri 2 d20 e tieni il più alto (vantaggio)."
+
+frog:
+  name: Rana
+  name_en: Frog
+  cr: 0
+  size: Minuscola
+  ac: 11
+  hp: 1
+  speed: {walk: 6, swim: 6}
+  attacks: "Nessun attacco"
+  traits: "Anfibio, Salto da Fermo (salto in lungo 3 m, in alto 1,5 m, anche senza rincorsa), scurovisione 9 m"
+  role: nuotare
+  kid: "Una ranocchia minuscola: nuoti, salti e ti nascondi nell'erba. Attenta: non sai attaccare!"
+  kid_attacks: []
+  kid_traits:
+    - "Anfibio: respiri sia fuori che sott'acqua."
+    - "Salto da Fermo: salti in lungo fino a 3 m e in alto fino a 1,5 m, anche senza rincorsa."
+    - "Scurovisione 9 m: vedi al buio fino a 9 m (in bianco e nero)."
+
+hawk:
+  name: Falco
+  name_en: Hawk
+  cr: 0
+  size: Minuscola
+  ac: 13
+  hp: 1
+  speed: {walk: 3, fly: 18}
+  attacks: "Artigli +5, 1 tagliente"
+  traits: "Vista Acuta"
+  role: volare
+  kid: "Un piccolo falco veloce con una vista super: perfetto per controllare la zona dall'alto."
+  kid_attacks:
+    - {name: "Artigli", hit: "+5", damage: "1", type: "tagliente"}
+  kid_traits:
+    - "Vista Acuta: vedi benissimo anche da lontano: quando cerchi qualcosa con gli occhi tiri 2 d20 e tieni il più alto (vantaggio)."
+
+octopus:
+  name: Piovra
+  name_en: Octopus
+  cr: 0
+  size: Piccola
+  ac: 12
+  hp: 3
+  speed: {walk: 1.5, swim: 9}
+  attacks: "Tentacoli +4, 1 contundente + afferrato (CD 10); Nube d'Inchiostro (raggio 1,5 m)"
+  traits: "Respira solo sott'acqua (Trattenere il Respiro: 30 minuti), Camuffamento Subacqueo, scurovisione 9 m"
+  role: nuotare
+  kid: "Una piccola piovra: sott'acqua ti mimetizzi, ti infili nelle fessure e scappi dietro una nuvola d'inchiostro."
+  kid_attacks:
+    - {name: "Tentacoli", hit: "+4", damage: "1", type: "contundente", extra: "Se colpisci, il nemico è afferrato: non può allontanarsi da te. Per liberarsi deve usare la sua azione e fare almeno 10 con una prova di Forza (Atletica) o Destrezza (Acrobazia). Finché lo tieni non puoi usare i tentacoli su nessun altro."}
+  kid_traits:
+    - "Respirare sott'Acqua: respiri solo sott'acqua. Fuori dall'acqua puoi trattenere il respiro per 30 minuti, poi devi tornare in acqua."
+    - "Nube d'Inchiostro (1 volta, poi serve un riposo): se sei sott'acqua, al posto di attaccare spruzzi una nuvola di inchiostro di 1,5 m intorno a te: per 1 minuto lì dentro nessuno vede niente, e subito dopo puoi scappare veloce (Scatto come azione bonus)."
+    - "Camuffamento Subacqueo: sott'acqua ti nascondi benissimo: quando provi a non farti vedere (Furtività) tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Scurovisione 9 m: vedi al buio fino a 9 m (in bianco e nero)."
+
+owl:
+  name: Gufo
+  name_en: Owl
+  cr: 0
+  size: Minuscola
+  ac: 11
+  hp: 1
+  speed: {walk: 1.5, fly: 18}
+  attacks: "Artigli +3, 1 tagliente"
+  traits: "Volo Radente, Udito e Vista Acuti, scurovisione 36 m"
+  role: volare
+  kid: "Un gufetto silenzioso che vede al buio: la spia perfetta per la notte."
+  kid_attacks:
+    - {name: "Artigli", hit: "+3", damage: "1", type: "tagliente"}
+  kid_traits:
+    - "Volo Radente: quando voli via da un nemico, lui non può colpirti mentre te ne vai (niente attacco di opportunità)."
+    - "Udito e Vista Acuti: senti e vedi benissimo: quando cerchi qualcosa con le orecchie o con gli occhi tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Scurovisione 36 m: vedi al buio fino a 36 m (in bianco e nero)."
+
+quipper:
+  name: Quipper
+  name_en: Quipper
+  cr: 0
+  size: Minuscola
+  ac: 13
+  hp: 1
+  speed: {walk: 0, swim: 12}
+  attacks: "Morso +5, 1 perforante"
+  traits: "Frenesia di Sangue (vantaggio contro creature non a PF pieni), respira solo sott'acqua, scurovisione 18 m"
+  role: nuotare
+  kid: "Un pesciolino piccolo e feroce: nuoti veloce, ma fuori dall'acqua non puoi respirare."
+  kid_attacks:
+    - {name: "Morso", hit: "+5", damage: "1", type: "perforante"}
+  kid_traits:
+    - "Frenesia di Sangue: se il nemico è già ferito (non ha tutti i suoi PF), quando lo attacchi da vicino tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Respirare sott'Acqua: respiri solo sott'acqua: fuori dall'acqua soffochi, quindi usa questa forma solo quando sei già in acqua."
+    - "Scurovisione 18 m: vedi al buio fino a 18 m (in bianco e nero)."
+
+raven:
+  name: Corvo
+  name_en: Raven
+  cr: 0
+  size: Minuscola
+  ac: 12
+  hp: 1
+  speed: {walk: 3, fly: 15}
+  attacks: "Becco +4, 1 perforante"
+  traits: "Mimetismo (imita suoni semplici; Saggezza (Intuizione) CD 10 per accorgersene)"
+  role: volare
+  kid: "Un corvo che sa imitare i suoni: voli in giro a spiare e puoi distrarre i nemici con voci finte."
+  kid_attacks:
+    - {name: "Becco", hit: "+4", damage: "1", type: "perforante"}
+  kid_traits:
+    - "Mimetismo: sai imitare suoni semplici che hai sentito (qualcuno che sussurra, un bimbo che piange, il verso di un animale). Chi ti sente capisce che è finto solo se fa almeno 10 con una prova di Saggezza (Intuizione)."
+
+sea_horse:
+  name: Cavalluccio Marino
+  name_en: Sea Horse
+  cr: 0
+  size: Minuscola
+  ac: 11
+  hp: 1
+  speed: {walk: 0, swim: 6}
+  attacks: "Nessun attacco"
+  traits: "Respira solo sott'acqua"
+  role: nuotare
+  kid: "Un cavalluccio marino minuscolo: puoi solo nuotare e nasconderti tra le alghe. Attenta: non sai attaccare!"
+  kid_attacks: []
+  kid_traits:
+    - "Respirare sott'Acqua: respiri solo sott'acqua: fuori dall'acqua soffochi, quindi usa questa forma solo quando sei già in acqua."
+
+vulture:
+  name: Avvoltoio
+  name_en: Vulture
+  cr: 0
+  size: Media
+  ac: 10
+  hp: 5
+  speed: {walk: 3, fly: 15}
+  attacks: "Becco +2, 1d4 perforanti"
+  traits: "Vista e Olfatto Acuti, Tattiche di Branco"
+  role: volare
+  kid: "Un avvoltoio che vola alto e vede e annusa da lontano: bravo a cercare cose dall'alto."
+  kid_attacks:
+    - {name: "Becco", hit: "+2", damage: "1d4", type: "perforanti"}
+  kid_traits:
+    - "Vista e Olfatto Acuti: vedi e annusi benissimo: quando cerchi qualcosa con gli occhi o con il naso tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Tattiche di Branco: se un tuo amico che può combattere è accanto al nemico (entro 1,5 m), quando lo attacchi tiri 2 d20 e tieni il più alto (vantaggio)."
+
+blood_hawk:
+  name: Falco Sanguinario
+  name_en: Blood Hawk
+  cr: 0.125
+  size: Piccola
+  ac: 12
+  hp: 7
+  speed: {walk: 3, fly: 18}
+  attacks: "Becco +4, 1d4+2 perforanti"
+  traits: "Vista Acuta, Tattiche di Branco"
+  role: volare
+  kid: "Un falco aggressivo: voli veloce, vedi lontano e attacchi meglio quando un amico è vicino al nemico."
+  kid_attacks:
+    - {name: "Becco", hit: "+4", damage: "1d4+2", type: "perforanti"}
+  kid_traits:
+    - "Vista Acuta: vedi benissimo anche da lontano: quando cerchi qualcosa con gli occhi tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Tattiche di Branco: se un tuo amico che può combattere è accanto al nemico (entro 1,5 m), quando lo attacchi tiri 2 d20 e tieni il più alto (vantaggio)."
+
+flying_snake:
+  name: Serpente Volante
+  name_en: Flying Snake
+  cr: 0.125
+  size: Minuscola
+  ac: 14
+  hp: 5
+  speed: {walk: 9, fly: 18, swim: 9}
+  attacks: "Morso +6, 1 perforante + 3d4 veleno"
+  traits: "Volo Radente, Vista Cieca 3 m"
+  role: volare
+  kid: "Un serpentello con le ali: voli, nuoti, e il tuo morso velenoso fa sempre male."
+  kid_attacks:
+    - {name: "Morso", hit: "+6", damage: "1", type: "perforante", extra: "Fai sempre anche 3d4 danni da veleno, senza tiro salvezza."}
+  kid_traits:
+    - "Volo Radente: quando voli via da un nemico, lui non può colpirti mentre te ne vai (niente attacco di opportunità)."
+    - "Vista Cieca 3 m: senti tutto quello che c'è intorno a te fino a 3 m anche senza vedere, perfino al buio."
+
+giant_crab:
+  name: Granchio Gigante
+  name_en: Giant Crab
+  cr: 0.125
+  size: Media
+  ac: 15
+  hp: 13
+  speed: {walk: 9, swim: 9}
+  attacks: "Chela +3, 1d6+1 contundenti + afferrato (CD 11; due chele, una presa ciascuna)"
+  traits: "Anfibio, Vista Cieca 9 m"
+  role: nuotare
+  kid: "Un granchio con la corazza durissima (CA 15): cammini sott'acqua e afferri i nemici con le chele."
+  kid_attacks:
+    - {name: "Chela", hit: "+3", damage: "1d6+1", type: "contundenti", extra: "Se colpisci, il nemico è afferrato: non può allontanarsi da te. Per liberarsi deve usare la sua azione e fare almeno 11 con una prova di Forza (Atletica) o Destrezza (Acrobazia). Hai due chele: puoi tenere fino a due nemici, uno per chela."}
+  kid_traits:
+    - "Anfibio: respiri sia fuori che sott'acqua."
+    - "Vista Cieca 9 m: senti tutto quello che c'è intorno a te fino a 9 m anche senza vedere, perfino al buio."
+
+poisonous_snake:
+  name: Serpente Velenoso
+  name_en: Poisonous Snake
+  cr: 0.125
+  size: Minuscola
+  ac: 13
+  hp: 2
+  speed: {walk: 9, swim: 9}
+  attacks: "Morso +5, 1 perforante + TS COS CD 10 o 2d4 veleno (metà se supera)"
+  traits: "Vista Cieca 3 m"
+  role: esplorare
+  kid: "Un serpentello velenoso: strisci di nascosto, nuoti, e il tuo morso avvelena."
+  kid_attacks:
+    - {name: "Morso", hit: "+5", damage: "1", type: "perforante", extra: "Se colpisci, il nemico tira un d20 (tiro salvezza su Costituzione contro 10): se sbaglia subisce anche 2d4 danni da veleno, se riesce ne subisce la metà."}
+  kid_traits:
+    - "Vista Cieca 3 m: senti tutto quello che c'è intorno a te fino a 3 m anche senza vedere, perfino al buio."
+
+stirge:
+  name: Stirge
+  name_en: Stirge
+  cr: 0.125
+  size: Minuscola
+  ac: 14
+  hp: 2
+  speed: {walk: 3, fly: 12}
+  attacks: "Succhiare Sangue +5, 1d4+3 perforanti e resta attaccato (1d4+3 PF all'inizio di ogni suo turno)"
+  traits: "Scurovisione 18 m"
+  role: volare
+  kid: "Un piccolo mostriciattolo volante che si attacca ai nemici e succhia il loro sangue."
+  kid_attacks:
+    - {name: "Succhiare Sangue", hit: "+5", damage: "1d4+3", type: "perforanti", extra: "Se colpisci, resti attaccata al nemico e non attacchi più: all'inizio di ogni tuo turno lui perde 1d4+3 PF. Ti stacchi quando gli hai succhiato 10 PF in tutto o se muore (o quando vuoi, usando 1,5 m di movimento). Il nemico o un suo amico può usare la sua azione per staccarti."}
+  kid_traits:
+    - "Scurovisione 18 m: vedi al buio fino a 18 m (in bianco e nero)."
+
+giant_poisonous_snake:
+  name: Serpente Velenoso Gigante
+  name_en: Giant Poisonous Snake
+  cr: 0.25
+  size: Media
+  ac: 14
+  hp: 11
+  speed: {walk: 9, swim: 9}
+  attacks: "Morso +6 (portata 3 m), 1d4+4 perforanti + TS COS CD 11 o 3d6 veleno (metà se supera)"
+  traits: "Vista Cieca 3 m"
+  role: combattere
+  kid: "Un serpente velenoso grande: mordi da lontano (fino a 3 m) e il tuo veleno fa tanto male."
+  kid_attacks:
+    - {name: "Morso", hit: "+6", damage: "1d4+4", type: "perforanti", extra: "Arrivi fino a 3 m. Se colpisci, il nemico tira un d20 (tiro salvezza su Costituzione contro 11): se sbaglia subisce anche 3d6 danni da veleno, se riesce ne subisce la metà."}
+  kid_traits:
+    - "Vista Cieca 3 m: senti tutto quello che c'è intorno a te fino a 3 m anche senza vedere, perfino al buio."
+
+giant_sea_horse:
+  name: Cavalluccio Marino Gigante
+  name_en: Giant Sea Horse
+  cr: 0.5
+  size: Grande
+  ac: 13
+  hp: 16
+  speed: {walk: 0, swim: 12}
+  attacks: "Incornata +3, 1d6+1 contundenti"
+  traits: "Carica (+2d6, TS FOR CD 11 o prono), respira solo sott'acqua"
+  role: nuotare
+  kid: "Un grande cavalluccio marino: un amico può cavalcarti sott'acqua e tu puoi caricare i nemici."
+  kid_attacks:
+    - {name: "Incornata", hit: "+3", damage: "1d6+1", type: "contundenti"}
+  kid_traits:
+    - "Carica: se nuoti dritta verso il nemico per almeno 6 m e lo colpisci con l'Incornata, fai 2d6 danni in più e lui tira un d20 per non cadere (tiro salvezza su Forza contro 11): se sbaglia viene rovesciato (prono)."
+    - "Respirare sott'Acqua: respiri solo sott'acqua: fuori dall'acqua soffochi, quindi usa questa forma solo quando sei già in acqua."
+
+giant_wasp:
+  name: Vespa Gigante
+  name_en: Giant Wasp
+  cr: 0.5
+  size: Media
+  ac: 12
+  hp: 13
+  speed: {walk: 3, fly: 15}
+  attacks: "Pungiglione +4, 1d6+2 perforanti + TS COS CD 11, 3d6 veleno, metà se supera; se il veleno lo porta a 0 PF il bersaglio è stabile ma avvelenato e paralizzato per 1 ora"
+  traits: ""
+  role: volare
+  kid: "Una vespa grande che vola veloce: il suo pungiglione velenoso può paralizzare i nemici."
+  kid_attacks:
+    - {name: "Pungiglione", hit: "+4", damage: "1d6+2", type: "perforanti", extra: "Se colpisci, il nemico tira un d20 (tiro salvezza su Costituzione contro 11): se sbaglia subisce anche 3d6 danni da veleno, se riesce ne subisce la metà. Se il veleno lo porta a 0 PF non muore: resta stabile, ma avvelenato e paralizzato (non può muoversi) per 1 ora."}
+  kid_traits: []
+
+reef_shark:
+  name: Squalo della Barriera
+  name_en: Reef Shark
+  cr: 0.5
+  size: Media
+  ac: 12
+  hp: 22
+  speed: {walk: 0, swim: 12}
+  attacks: "Morso +4, 1d8+2 perforanti"
+  traits: "Tattiche di Branco, respira solo sott'acqua, Vista Cieca 9 m"
+  role: nuotare
+  kid: "Uno squalo: nuoti veloce, senti i nemici in acqua anche senza vederli e mordi forte in squadra."
+  kid_attacks:
+    - {name: "Morso", hit: "+4", damage: "1d8+2", type: "perforanti"}
+  kid_traits:
+    - "Tattiche di Branco: se un tuo amico che può combattere è accanto al nemico (entro 1,5 m), quando lo attacchi tiri 2 d20 e tieni il più alto (vantaggio)."
+    - "Respirare sott'Acqua: respiri solo sott'acqua: fuori dall'acqua soffochi, quindi usa questa forma solo quando sei già in acqua."
+    - "Vista Cieca 9 m: senti tutto quello che c'è intorno a te fino a 9 m anche senza vedere, perfino al buio."

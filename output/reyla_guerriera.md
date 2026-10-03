@@ -19,23 +19,23 @@
 
 ## Abilità
 
-- Acrobazia (DEX): +5 ● classe (Guerriero)
-- Addestrare Animali (WIS): +1
+- Acrobazia (DES): +5 ● classe (Guerriero)
+- Addestrare Animali (SAG): +1
 - Arcano (INT): +0
-- Atletica (STR): +3 ● background (Forestiero)
-- Furtività (DEX): +3
+- Atletica (FOR): +3 ● background (Forestiero)
+- Furtività (DES): +3
 - Indagare (INT): +0
-- Inganno (CHA): -1
-- Intimidire (CHA): -1
-- Intrattenere (CHA): -1
-- Intuizione (WIS): +3 ● classe (Guerriero)
-- Medicina (WIS): +1
+- Inganno (CAR): -1
+- Intimidire (CAR): -1
+- Intrattenere (CAR): -1
+- Intuizione (SAG): +3 ● classe (Guerriero)
+- Medicina (SAG): +1
 - Natura (INT): +0
-- Percezione (WIS): +3 ● razza (Sensi Acuti)
-- Persuasione (CHA): -1
-- Rapidità di Mano (DEX): +3
+- Percezione (SAG): +3 ● razza (Sensi Acuti)
+- Persuasione (CAR): -1
+- Rapidità di Mano (DES): +3
 - Religione (INT): +0
-- Sopravvivenza (WIS): +3 ● background (Forestiero)
+- Sopravvivenza (SAG): +3 ● background (Forestiero)
 - Storia (INT): +0
 
 ## Attacchi
@@ -66,7 +66,7 @@
 - **Superiorità in Combattimento** (Maestro di Battaglia): Conosci 3 manovre e hai 4 dadi di superiorità (d8), recuperati con un riposo breve o lungo. CD manovre = 8 + comp. + mod. FOR o DES.
 - **Studioso di Guerra** (Maestro di Battaglia): Competenza in uno strumento da artigiano a scelta.
 - **Stile di Combattimento: Tiro** (Guerriero): +2 ai tiri per colpire con le armi a distanza.
-- **Viandante (background)** (Forestiero): Il forestiero ha un'ottima memoria per mappe e geografia e riesce sempre a ricordare la disposizione generale dei terreni; trova cibo e acqua per sé e fino a cinque persone al giorno.
+- **Viandante (background)** (Forestiero): Il forestiero ha un'ottima memoria per mappe e geografia e riesce sempre a ricordare la disposizione generale dei terreni, degli insediamenti e degli altri elementi del luogo; se la terra offre bacche, piccola selvaggina e acqua, trova cibo e acqua fresca per sé e fino a cinque persone al giorno.
 - **Manovra: Attacco Preciso**: Quando effettui un tiro per colpire con un'arma, puoi spendere un dado di superiorità e aggiungerlo al tiro (anche dopo aver tirato, prima di sapere l'esito).
 - **Manovra: Attacco Sbilanciante**: Quando colpisci con un'arma, spendi un dado di superiorità: danni extra pari al dado; se il bersaglio è Grande o più piccolo deve superare un TS su FOR o cade prono.
 - **Manovra: Attacco Minaccioso**: Quando colpisci con un'arma, spendi un dado di superiorità: danni extra pari al dado e il bersaglio deve superare un TS su SAG o è spaventato da te fino alla fine del tuo prossimo turno.
@@ -87,4 +87,4 @@
 - Trappola da caccia
 - Trofeo di un animale ucciso
 - Abiti da viaggio
-- Monete: 10 gp
+- Monete: 10 mo
